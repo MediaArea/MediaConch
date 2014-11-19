@@ -1,0 +1,93 @@
+Example of upcoming MediaInfo v0.7.70 report and trace for a PDF/A-1b.
+A-1b conformance metadata is in the XML (not shown) at offset 0001E878.
+
+General
+Complete name                            : PDF A-1b example.pdf
+Format                                   : PDF
+Format version                           : 1.4
+Format profile                           : A-1b
+File size                                : 127 KiB
+
+00000000 File Header (15 bytes)
+00000000  Header:                                   %PDF-1.4
+00000009  Comment:                                  %«Ïè¢
+0001FDCB End Of File (6 bytes)
+0001FDCC  Object name:                              %%EOF
+0001FDC1 Cross-Reference Table Offset (10 bytes)
+0001FDC1  Object name:                              ref
+0001FDC5  xref Offset:                              129579
+0001FA2B Cross-Reference Table (790 bytes)
+0001FA2B  Cross-Reference Section (790 bytes)
+0001FA2B   Object name:                             xref
+0001FA2F   Cross-Reference SubSection (786 bytes)
+0001FA30    Header:                                 0 39
+0001FA35    Entry:                                  0000000000 65535 f - 0
+0001FA49    Entry:                                  0000009885 00000 n - 1
+0001FA5D    Entry:                                  0000128949 00000 n - 2
+0001FA71    Entry:                                  0000009819 00000 n - 3
+0001FA85    Entry:                                  0000126957 00000 n - 4
+0001FA99    Entry:                                  0000128831 00000 n - 5
+0001FAAD    Entry:                                  0000009459 00000 n - 6
+0001FAC1    Entry:                                  0000000015 00000 n - 7
+0001FAD5    Entry:                                  0000004465 00000 n - 8
+0001FAE9    Entry:                                  0000010000 00000 n - 9
+0001FAFD    Entry:                                  0000010042 00000 n - 10
+0001FB11    Entry:                                  0000010461 00000 n - 11
+0001FB25    Entry:                                  0000012527 00000 n - 12
+0001FB39    Entry:                                  0000011348 00000 n - 13
+0001FB4D    Entry:                                  0000079603 00000 n - 14
+0001FB61    Entry:                                  0000011581 00000 n - 15
+0001FB75    Entry:                                  0000080027 00000 n - 16
+0001FB89    Entry:                                  0000012293 00000 n - 17
+0001FB9D    Entry:                                  0000124359 00000 n - 18
+0001FBB1    Entry:                                  0000010196 00000 n - 19
+0001FBC5    Entry:                                  0000010228 00000 n - 20
+0001FBD9    Entry:                                  0000010258 00000 n - 21
+0001FBED    Entry:                                  0000009638 00000 n - 22
+0001FC01    Entry:                                  0000004485 00000 n - 23
+0001FC15    Entry:                                  0000009438 00000 n - 24
+0001FC29    Entry:                                  0000011118 00000 n - 25
+0001FC3D    Entry:                                  0000058896 00000 n - 26
+0001FC51    Entry:                                  0000010323 00000 n - 27
+0001FC65    Entry:                                  0000010355 00000 n - 28
+0001FC79    Entry:                                  0000010385 00000 n - 29
+0001FC8D    Entry:                                  0000012742 00000 n - 30
+0001FCA1    Entry:                                  0000059086 00000 n - 31
+0001FCB5    Entry:                                  0000079774 00000 n - 32
+0001FCC9    Entry:                                  0000080239 00000 n - 33
+0001FCDD    Entry:                                  0000124530 00000 n - 34
+0001FCF1    Entry:                                  0000011259 00000 n - 35
+0001FD05    Entry:                                  0000011487 00000 n - 36
+0001FD19    Entry:                                  0000012432 00000 n - 37
+0001FD2D    Entry:                                  0000125048 00000 n - 38
+0001FD41 Trailer (122 bytes)
+0001FD41  Object name:                              trailer
+0001FD4C  Key-Value:                                /Size 39
+0001FD55  Key-Value:                                /Root 1 0 R - Document Catalog is at offset 0x269D
+0001FD61  Key-Value:                                /Info 2 0 R - Info is at offset 0x1F7B5
+0001FD6D  Key-Value:                                /ID [<E1B6AA3CF6099F50950061F92302BC71><E1B6AA3CF6099F50950061F92302BC71>]
+0000269D Object - 1 - Document Catalog (115 bytes)
+0000269D  Header:                                   1 0 obj
+000026A7  Key-Value:                                /Type /Catalog
+000026B6  Key-Value:                                /Pages 3 0 R
+000026C3  Key-Value:                                /OutputIntents [ 5 0 R ]
+000026DC  Key-Value:                                /OpenAction [6 0 R /Fit]
+000026F5  Key-Value:                                /Metadata 38 0 R - Metadata is at offset 0x125048
+00002709  Footer:                                   endobj
+0001E878 Object - 38 - Metadata (1909 bytes)
+0001E878  Header:                                   38 0 obj
+0001E883  Key-Value:                                /Type/Metadata
+0001E892  Key-Value:                                /Subtype/XML
+0001E89E  Key-Value:                                /Length 1832
+0001E8AC  Stream, Header:                           stream
+0001E8B3  Stream, Data:                             (1832 bytes)
+0001EFDC  Stream, Footer:                           endstream
+0001EFE6  Footer:                                   endobj
+0001F7B5 Object - 2 - Info (630 bytes)
+0001F7B5  Header:                                   2 0 obj
+0001F7BF  Key-Value:                                /Producer(\376\377\000B\000u\000l\000l\000z\000i\000p\000 \000P\000D\000F\000 \000P\000r\000i\000n\000t\000e\000r\000 \000/\000 \000w\000w\000w\000.\000b\000u\000l\000l\000z\000i\000p\000.\000c\000o\000m\000 \000/\000 \000F\000r\000e\000e\000w\000a\000r\000e\000 \000E\000d\000i\000t\000i\000o\000n)
+0001F8EB  Key-Value:                                /CreationDate(D:20140811171453+02'00')
+0001F912  Key-Value:                                /ModDate(D:20140811171453+02'00')
+0001F934  Key-Value:                                /Title(\376\377\000R\000\351\000s\000u\000m\000\351\000 \000J\000\351\000r\000\364\000m\000e\000 \000M\000a\000r\000t\000i\000n\000e\000z)
+0001F9BF  Key-Value:                                /Author(\376\377\000J\000\351\000r\000\364\000m\000e\000 \000M\000a\000r\000t\000i\000n\000e\000z)
+0001FA24  Footer:                                   endobj
