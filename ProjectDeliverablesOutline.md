@@ -1,17 +1,45 @@
-MediaInfo been awarded the PREFORMA first phase design contract for FFV1, Matroska, and LPCM file formats.
+1. Establish a methodology objective
 
-PREFORMA (PREservation FORMAts for culture information/e-archives) is a Pre-Commercial Procurement (PCP) project co-funded by the European Commission under its FP7-ICT Programme. PREFORMA aims to address the challenge of implementing good quality standardised file formats for preserving data content in the long term. The main objective is to give memory institutions full control of the process of the conformity tests of files to be ingested into archives. MediaArea is one of six teams that will present their software architecture to the PREFORMA panel in March 2015. The panel will then make a further selection amongst suppliers from phase 1 (research) to proceed to phase 2 (development).
+* Documentation of work plan (consideration to OSS only), strategy for collaborative workflow (“nightly builds”, open platform, software mgmt systems, bug trackers, forums, mailing lists, IRC, roadmaps and documentation…
 
-MediaInfo has been tasked with researching community standards and developing standard conformance checks for FFV1, Matroska Multimedia Container, and Linear Pulse-Code Modulated Audio (LPCM) to support efforts of long-term preservation in memory institutions.
+* Set up organizational github account, invite and folder structure, etc. through MediaArea organizational account.
 
-The MediaInfo team has worked on several software tools used in preservation data conformance, including the self-named MediaInfo software, a tool to extract metadata from audio and video files, and Bay Area Video Coalition's QCTools project, a tool that performs quality control checks and analysis on digitized analog video.
 
-MediaInfo will be reaching out to related, interested communities for input and feedback on the standard and specifications of each file format and future of each format for a preservation-standard conformancy checker software. If you work with these formats and are interested in contributing your requirements, please contact us at info@mediaarea.net.
 
-Links to more information: 
-<a href="http://mediaarea.net/en/MediaInfo">MediaInfo</a>
-<a href="http://preforma-project.eu">PreForma Project</a> 
-<a href="http://www.ffv1.info/">FFV1 Quick Start Guide</a>
-<a href="http://ffmpeg.org/~michael/ffv1.html">Official FFmpeg Spec for FFV1</a>
-<a href="http://www.matroska.org/">Matroska Official Site</a>
-<a href="http://www.digitalpreservation.gov/formats/fdd/fdd000011.shtml">Library of Congress Spec</a>
+2. Research into what makes a file valid
+
+* Overview of each format (mkv, ffv1, PCM), benefits/negatives with regards to use as a preservation standard, technical and structural metadata for a/v streams within container
+
+* Writeup of tests that need to happen in order to test integrity of file, limits as defined by technical details
+
+* Establish profile for each a/v preservation file
+
+* Check if file complies with standard specifications (how to do this)
+
+* Check if file complies with the acceptance criteria of memory institutions (how to do this)
+
+* Report back to human and software agents (how to do this)
+
+* Performs simple fixes (how to do this, what kind of fixes can be done within technical limits)
+
+* Plan for machine-readable report (including preservation metadata for each file checked and 
+
+allowing external software agents to furtherprocess the file) using XML
+
+* Plan for human-readable report, “assessing the preservation status of a batch of files as a 
+
+whole, reporting to a non-expert audience whether a file is compliant with the standard 
+
+specifications, and addressing improvements in the creation/digitisation process.”
+
+* Plan for fully automated fixes (what can be fixed within each format, ranges)
+
+* Research into “checking for the existence of standard functionalities and 
+
+whether they are implemented in accordance with the corresponding specifications”
+
+
+
+3. How to sustain open source long-term
+
+* Plan for fostering open source collaboration practices
