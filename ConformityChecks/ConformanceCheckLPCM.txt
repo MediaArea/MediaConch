@@ -1,0 +1,19 @@
+
+I. Corroboration of container values:
+
+1. Channels                              
+2. SamplesPerSec                  
+3. BitsPerSample            
+4. SamplesCount
+
+II. Digital encoding traits
+
+1. Bit depth padding
+
+II. Analog encoding traits
+
+1. Overly random behavior
+2. Concurrent peak values
+3. Positive/negative peak discrepancies
+4. Inverted chanels
+5. Audio out-of-phase 
