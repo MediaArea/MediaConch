@@ -1,0 +1,55 @@
+Questionnaire for user communities, regarding general conformance checks as well as ffv1, mkv, lpcm (In-Progress)
+
+
+
+-What type of institution do you work at?
+
+(Library, Archive, Museum, Other)
+
+-How many employees?
+
+(Under 10, 10-50, Over 50)
+
+-What is your role at this institution?
+
+(Archivist, Digital Archivist, A/V Specialist, Other)
+
+-Does your institution maintain a digital repository?
+
+(Yes, No)
+
+-(If Yes) Does your institution implement repository procedures based on the Open Archival Information System (OAIS) reference model?
+
+(Yes, No, I don’t know, What is OAIS?)
+
+-Does your institution subscribe to any standards bodies?
+
+(Yes, No, I don’t know)
+
+-(If Yes) What standards bodies does your institution subscribe to?
+
+(SMPTE, ANSI, ISO, ITU, EBU, Other)
+
+-Does your institution perform in-house digitization of audiovisual materials?
+
+(Yes, No)
+
+-(If yes) Who typically performs the digital reformatting of audiovisual materials in-house?
+
+(Full-time institutional employee, Part-time institutional employee, departmental intern, volunteer, other)
+
+-Does your institution perform downstream encoding of audiovisual materials in-house?
+
+(Yes, No)
+
+-(If Yes) What type of software is employed for this task?
+
+(Adobe Media Encoder, Apple Compressor, MPEG Streamclip, FFMPEG, Other)
+
+-What time of operating system does your institution typically employ for quality control / file inspection?
+
+(Mac OS, PC, Linux, Other)
+
+-How often is technical metadata on incoming files routinely checked for conformance?
+
+(Always, Usually, Never)
