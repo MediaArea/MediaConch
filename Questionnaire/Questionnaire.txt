@@ -2,9 +2,9 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 
 
--What type of institution do you work at?
+-What type of institution do you currently work for?
 
-(Library, Archive, Museum, Other)
+(Library, Archive, Museum, Broadcast, Media and Entertainment, Non-profit, Post-Production, Other)
 
 -How many employees?
 
@@ -65,3 +65,11 @@ Questionnaire for user communities, regarding general conformance checks as well
 -(If Yes) What type of software is usually employed for this task?
 
 (MediaInfo, ExifTool, MDQC, Other)
+
+-Is additional metadata created?
+
+(Yes, No)
+
+-What types of metadata standards are referenced/used?
+
+(AES-57 2011, MPEG-7, PBCore, reVTMD, videoMD, PREMIS, Other)
