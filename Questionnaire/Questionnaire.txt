@@ -54,7 +54,11 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 (Mac OS, PC, Linux, Other)
 
--How often is technical metadata on incoming files routinely checked for conformance?
+-How often is technical metadata on incoming files checked for conformance?
+
+(Always, Usually, Never)
+
+-How often is technical metadata on accessioned files routinely checked for conformance?
 
 (Always, Usually, Never)
 
