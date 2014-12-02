@@ -50,7 +50,7 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 (Adobe Media Encoder, Apple Compressor, MPEG Streamclip, FFMPEG, Other)
 
--What time of operating system does your institution typically employ for quality control / file inspection?
+-What type of operating system does your institution typically employ for quality control / file inspection?
 
 (Mac OS, PC, Linux, Other)
 
