@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  <table>
+  <table border="1" style="width:60%">
     <tbody>
       <tr>
         <th colspan="5" id="nesting">Nesting Information (tags containing other
@@ -68,6 +68,8 @@
         "Defines if either TagString or TagBinary is used">Type</th>
 
         <th>Description</th>
+
+        <th>Regex parameters</th>
       </tr>
 
       <tr id="Organizational">
@@ -81,6 +83,8 @@
 
         <td>Total number of parts defined at the first lower level. (e.g. if
         TargetType is ALBUM, the total number of tracks of an audio CD)</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -90,6 +94,8 @@
 
         <td>Number of the current part of the current level. (e.g. if
         TargetType is TRACK, the track number of an audio CD)</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -100,6 +106,8 @@
         <td>A number to add to PART_NUMBER when the parts at that level don't
         start at 1. (e.g. if TargetType is TRACK, the track number of the
         second audio CD)</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr id="titles">
@@ -114,6 +122,8 @@
         <td>The title of this item. For example, for music you might label this
         "Canon in D", or for video's audio track you might use "English 5.1"
         This is akin to the TIT2 tag in ID3.</td>
+
+        <td>Limit to standard characters only</td>
       </tr>
 
       <tr>
@@ -122,6 +132,8 @@
         <td>UTF-8</td>
 
         <td>Sub Title of the entity.</td>
+
+        <td>Limit to standard characters only</td>
       </tr>
 
       <tr id="nested">
@@ -134,6 +146,8 @@
         <td>UTF-8</td>
 
         <td>URL corresponding to the tag it's included in.</td>
+
+        <td>Verify it is a URL</td>
       </tr>
 
       <tr>
@@ -146,6 +160,7 @@
         Shop Boys". Or "Marley Bob" and "Marley Ziggy" (no comma needed).</td>
       </tr>
 
+        <td>Limit to standard characters only</td>
       <tr>
         <td>INSTRUMENTS</td>
 
@@ -154,6 +169,8 @@
         <td>The instruments that are being used/played, separated by a comma.
         It should be a child of the following tags: ARTIST, LEAD_PERFORMER or
         ACCOMPANIMENT.</td>
+
+        <td>Commas are okay, no restrictions</td>
       </tr>
 
       <tr id="Email">
@@ -162,6 +179,8 @@
         <td>UTF-8</td>
 
         <td>Email corresponding to the tag it's included in.</td>
+
+        <td>Email regex (@ sign with letters/numbers on both sides and at least one . after it</td>
       </tr>
 
       <tr id="Address">
@@ -171,6 +190,8 @@
 
         <td>The physical address of the entity. The address should include a
         country code. It can be useful for a recording label.</td>
+
+        <td>Country code?</td>
       </tr>
 
       <tr id="Fax">
@@ -180,6 +201,8 @@
 
         <td>The fax number corresponding to the tag it's included in. It can be
         useful for a recording label.</td>
+
+        <td>Numbers only (dashes?)</td>
       </tr>
 
       <tr id="Phone">
@@ -189,6 +212,8 @@
 
         <td>The phone number corresponding to the tag it's included in. It can
         be useful for a recording label.</td>
+
+        <td>Numbers only (dashes?)</td>
       </tr>
 
       <tr id="Entities">
@@ -205,6 +230,8 @@
           work. This is akin to the <a href=
           "http://www.id3.org/id3v2.3.0.html#TPE1">TPE1 tag in ID3.</a>
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -214,6 +241,8 @@
 
         <td>Lead Performer/Soloist(s). This can sometimes be the same as
         ARTIST.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -225,6 +254,8 @@
           Band/orchestra/accompaniment/musician. This is akin to the <a href=
           "http://www.id3.org/id3v2.3.0.html#TPE2">TPE2 tag in ID3.</a>
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -244,6 +275,8 @@
         <td>UTF-8</td>
 
         <td>The person who arranged the piece, e.g., Ravel.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -255,6 +288,8 @@
         is not known or as a doublon to a subtitle track). Editing this value
         when subtitles are found should also result in editing the subtitle
         track for more consistency.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -267,6 +302,8 @@
           the <a href="http://www.id3.org/id3v2.3.0.html#TEXT">TEXT</a> tag in
           ID3.
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -278,6 +315,8 @@
           Conductor/performer refinement. This is akin to the <a href=
           "http://www.id3.org/id3v2.3.0.html#TPE3">TPE3 tag in ID3.</a>
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -289,6 +328,8 @@
           This is akin to the <a href="othertagsystems/riffmcispecs.html">IART
           tag in RIFF</a>.
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -297,6 +338,8 @@
         <td>UTF-8</td>
 
         <td>The name of the assistant director.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -306,6 +349,8 @@
 
         <td>The name of the director of photography, also known as
         cinematographer. This is akin to the ICNM tag in Extended RIFF.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -314,6 +359,8 @@
         <td>UTF-8</td>
 
         <td>The name of the sound engineer or sound recordist.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -323,6 +370,8 @@
 
         <td>The person who oversees the artists and craftspeople who build the
         sets.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -332,6 +381,8 @@
 
         <td>Artist responsible for designing the overall visual appearance of a
         movie.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -340,6 +391,8 @@
         <td>UTF-8</td>
 
         <td>The name of the choregrapher</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -348,6 +401,8 @@
         <td>UTF-8</td>
 
         <td>The name of the costume designer</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -358,6 +413,8 @@
         <td>An actor or actress playing a role in this movie. This is the
         person's real name, not the character's name the person is
         playing.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -368,6 +425,8 @@
         <td>The name of the character an actor or actress plays in this movie.
         This should be a sub-tag of an <code>ACTOR</code> tag in order not to
         cause ambiguities.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -377,6 +436,8 @@
 
         <td>The author of the story or script (used for movies and TV
         shows).</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -386,6 +447,8 @@
 
         <td>The author of the screenplay or scenario (used for movies and TV
         shows).</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -394,6 +457,8 @@
         <td>UTF-8</td>
 
         <td>This is akin to the IEDT tag in Extended RIFF.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -402,6 +467,8 @@
         <td>UTF-8</td>
 
         <td>Produced by. This is akin to the IPRO tag in Extended RIFF.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -410,6 +477,8 @@
         <td>UTF-8</td>
 
         <td>The name of a co-producer.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -418,6 +487,8 @@
         <td>UTF-8</td>
 
         <td>The name of an executive producer.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -426,6 +497,8 @@
         <td>UTF-8</td>
 
         <td>This is akin to the IDST tag in Extended RIFF.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -435,6 +508,8 @@
 
         <td>The engineer who mastered the content for a physical medium or for
         digital distribution.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -446,6 +521,8 @@
           This is akin to the <a href=
           "http://www.id3.org/id3v2.3.0.html#TENC">TENC tag</a> in ID3.
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -454,6 +531,8 @@
         <td>UTF-8</td>
 
         <td>DJ mix by the artist specified</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -465,6 +544,8 @@
           Interpreted, remixed, or otherwise modified by. This is akin to the
           <a href="http://www.id3.org/id3v2.3.0.html#TPE4">TPE4 tag in ID3.</a>
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -473,6 +554,8 @@
         <td>UTF-8</td>
 
         <td>This is akin to the ISTD tag in Extended RIFF.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -481,6 +564,8 @@
         <td>UTF-8</td>
 
         <td>A very general tag for everyone else that wants to be listed.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -492,6 +577,8 @@
           This is akin to the <a href=
           "http://www.id3.org/id3v2.3.0.html#TPUB">TPUB tag in ID3.</a>
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -500,6 +587,8 @@
         <td>UTF-8</td>
 
         <td>The record label or imprint on the disc.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Search">
@@ -513,6 +602,8 @@
 
         <td>The main genre (classical, ambient-house, synthpop, sci-fi, drama,
         etc). The format follows the infamous TCON tag in ID3.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr class="subjective" id="Mood">
@@ -523,6 +614,8 @@
         <td>Intended to reflect the mood of the item with a few keywords, e.g.
         "Romantic", "Sad" or "Uplifting". The format follows that of the TMOO
         tag in ID3.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="OriginalMediaType">
@@ -536,6 +629,8 @@
           to the <a href="http://www.id3.org/id3v2.3.0.html#TMED">TMED tag in
           ID3.</a>
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Type">
@@ -545,6 +640,8 @@
 
         <td>The type of the item. e.g. Documentary, Feature Film, Cartoon,
         Music Video, Music, Sound FX, ...</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Subject">
@@ -554,6 +651,8 @@
 
         <td>Describes the topic of the file, such as "Aerial view of
         Seattle."</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Description">
@@ -563,6 +662,8 @@
 
         <td>A short description of the content, such as "Two birds
         flying."</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Keywords">
@@ -571,6 +672,8 @@
         <td>UTF-8</td>
 
         <td>Keywords to the item separated by a comma, used for searching.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -579,6 +682,8 @@
         <td>UTF-8</td>
 
         <td>A plot outline or a summary of the story.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -587,6 +692,8 @@
         <td>UTF-8</td>
 
         <td>A description of the story line of the item.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="InitialKey">
@@ -596,6 +703,8 @@
 
         <td>The initial key that a musical track starts in. The format is
         identical to ID3.</td>
+
+        <td>Limit to possible keys</td>
       </tr>
 
       <tr>
@@ -605,6 +714,8 @@
 
         <td>Describes the period that the piece is from or about. For example,
         "Renaissance".</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="law_rating">
@@ -617,6 +728,8 @@
           the rating of a movie (P, R, X in the USA, an age in other countries
           or a URI defining a logo).
         </td>
+
+        <td>Limit to potential ratings but depends on global standards</td>
       </tr>
 
       <tr id="icra">
@@ -628,6 +741,8 @@
           The <a href="http://www.icra.org/">ICRA</a> content rating for
           parental control. (Previously RSACi)
         </td>
+
+        <td>Binary</td>
       </tr>
 
       <tr id="Temporal">
@@ -641,6 +756,8 @@
 
         <td>The time that the item was originaly released. This is akin to the
         TDRL tag in ID3.</td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr>
@@ -650,6 +767,8 @@
 
         <td>The time that the recording began. This is akin to the TDRC tag in
         ID3.</td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr>
@@ -659,6 +778,8 @@
 
         <td>The time that the encoding of this item was completed began. This
         is akin to the TDEN tag in ID3.</td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr>
@@ -668,6 +789,8 @@
 
         <td>The time that the tags were done for this item. This is akin to the
         TDTG tag in ID3.</td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr>
@@ -677,6 +800,8 @@
 
         <td>The time that the item was tranfered to a digital medium. This is
         akin to the IDIT tag in RIFF.</td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr>
@@ -685,6 +810,8 @@
         <td>UTF-8</td>
 
         <td>The time that the writing of the music/script began.</td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr>
@@ -696,6 +823,8 @@
           Information on when the file was purchased (see also <a href=
           "#commercial">purchase tags</a>).
         </td>
+
+        <td>Numbers and number-related characters only</td>
       </tr>
 
       <tr id="Spacial">
@@ -722,6 +851,8 @@
           province/state is unknown, but you want to store the city, simply
           leave a space between the two commas. For example, "US, , Austin".
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -744,6 +875,8 @@
           province/state is unknown, but you want to store the city, simply
           leave a space between the two commas. For example, "US, , Austin".
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr>
@@ -759,6 +892,8 @@
           "http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html">
           ISO-3166</a>.
         </td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Personal">
@@ -771,6 +906,8 @@
         <td>UTF-8</td>
 
         <td>Any comment related to the content.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr class="subjective" id="PlayCounter">
@@ -779,6 +916,8 @@
         <td>UTF-8</td>
 
         <td>The number of time the item has been played.</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr class="subjective" id="rating">
@@ -790,6 +929,8 @@
         The number is between 0 and 5 with decimal values possible (e.g. 2.7),
         5(.0) being the highest possible rating. Other rating systems with
         different ranges will have to be scaled.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="Technical">
@@ -803,6 +944,8 @@
 
         <td>The software or hardware used to encode this item. ("LAME" or
         "XviD")</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="EncodeSettings">
@@ -812,6 +955,8 @@
 
         <td>A list of the settings used for encoding this item. No specific
         format.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="BitsPS">
@@ -822,6 +967,8 @@
         <td>The average bits per second of the specified item. This is only the
         data in the Blocks, and excludes headers and any container
         overhead.</td>
+
+        <td>No limit</td>
       </tr>
 
       <tr id="FramesPS">
@@ -833,6 +980,8 @@
         typically the average number of Blocks per second. In the event that
         lacing is used, each laced chunk is to be counted as a seperate
         frame.</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr id="BPM">
@@ -842,6 +991,8 @@
 
         <td>Average number of beats per minute in the complete target (e.g. a
         chapter). Usually a decimal number.</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr id="MEASURE">
@@ -854,6 +1005,8 @@
         musical notation by the time signature.. The majority of the
         contemporary rock and pop music you hear on the radio these days is
         written in the 4/4 time signature.</td>
+
+        <td>Numbers only (or related symbols)</td>
       </tr>
 
       <tr id="TUNING">
@@ -864,6 +1017,8 @@
         <td>It is saved as a frequency in hertz to allow near-perfect tuning of
         instruments to the same tone as the musical piece (e.g. "441.34" in
         Hertz). The default value is 440.0 Hz.</td>
+
+        <td>Numbers only (or related symbols)</td>
       </tr>
 
       <tr id="REPLAYGAIN_GAIN">
@@ -877,6 +1032,8 @@
           that ReplayGain information can be found at all TargetType levels
           (track, album, etc).
         </td>
+
+        <td>Binary</td>
       </tr>
 
       <tr id="REPLAYGAIN_PEAK">
@@ -888,6 +1045,8 @@
           The maximum absolute peak value of the item. This is based on the
           <a href="http://www.replaygain.org/">Replay Gain standard</a>.
         </td>
+
+        <td>Binary</td>
       </tr>
 
       <tr id="identifiers">
@@ -905,6 +1064,8 @@
           Standard Recording Code</a>, excluding the "ISRC" prefix and
           including hyphens.
         </td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -914,6 +1075,8 @@
 
         <td>This is a binary dump of the TOC of the CDROM that this item was
         taken from. This holds the same information as the MCDI in ID3.</td>
+
+        <td>Binary</td>
       </tr>
 
       <tr>
@@ -925,6 +1088,8 @@
           <a href="http://www.isbn-international.org/">International Standard
           Book Number</a>
         </td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -937,6 +1102,8 @@
           Numbering) or <a href="http://www.uc-council.org/">UPC-A</a>
           (Universal Product Code) bar code identifier
         </td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -946,6 +1113,8 @@
 
         <td>A label-specific string used to identify the release (TIC 01 for
         example).</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -956,6 +1125,8 @@
         <td>A 4-digit or 5-digit number to identify the record label, typically
         printed as (LC) xxxx or (LC) 0xxxx on CDs medias or covers (only the
         number is stored).</td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr>
@@ -967,6 +1138,8 @@
           <a href="http://www.loc.gov/marc/lccn.html">Library of Congress
           Control Number</a>
         </td>
+
+        <td>Numbers only</td>
       </tr>
 
       <tr id="commercial">
@@ -980,6 +1153,8 @@
 
         <td>URL to purchase this file. This is akin to the WPAY tag in
         ID3.</td>
+
+        <td>Must be URL</td>
       </tr>
 
       <tr>
@@ -989,6 +1164,8 @@
 
         <td>Information on where to purchase this album. This is akin to the
         WCOM tag in ID3.</td>
+
+        <td>No limits</td>
       </tr>
 
       <tr>
@@ -1000,6 +1177,8 @@
           Information on the person who purchased the file. This is akin to the
           <a href="http://www.id3.org/id3v2.3.0.html#TOWN">TOWN tag in ID3</a>.
         </td>
+
+        <td>No limits</td>
       </tr>
 
       <tr id="Price">
@@ -1010,6 +1189,8 @@
         <td>The amount paid for entity. There should only be a numeric value in
         here. Only numbers, no letters or symbols other than ".". For instance,
         you would store "15.59" instead of "$15.59USD".</td>
+
+        <td>Numbers and . only</td>
       </tr>
 
       <tr id="Currency">
@@ -1022,6 +1203,8 @@
           "http://www.xe.com/iso4217.htm">ISO-4217</a> for the 3 letter
           currency code.
         </td>
+
+        <td>3-letter currency code</td>
       </tr>
 
       <tr id="legal">
@@ -1035,6 +1218,8 @@
 
         <td>The copyright information as per the copyright holder. This is akin
         to the TCOP tag in ID3.</td>
+
+        <td>No limits</td>
       </tr>
 
       <tr>
@@ -1044,6 +1229,8 @@
 
         <td>The copyright information as per the production copyright holder.
         This is akin to the TPRO tag in ID3.</td>
+
+        <td>No limits</td>
       </tr>
 
       <tr>
@@ -1053,6 +1240,8 @@
 
         <td>The license applied to the content (like Creative Commons
         variants).</td>
+
+        <td>No limits</td>
       </tr>
 
       <tr>
@@ -1062,6 +1251,8 @@
 
         <td>The terms of use for this item. This is akin to the USER tag in
         ID3.</td>
+
+        <td>No limits</td>
       </tr>
     </tbody>
   </table>
