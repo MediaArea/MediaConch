@@ -2,7 +2,7 @@
 
 Mockups forthcoming
 
-- Video playback view (if MKV/ffv1)
+- Video playback view (for MKV/ffv1)
 - Playback control deck (play, pause, step forward, step backward, etc.)
 - Filter options (view YUV, etc.)
 - Metadata view (see more below)
@@ -17,7 +17,7 @@ Metadata integral to the file structure vs metadata that may/may not exist based
 
 ### Metadata (required)
 
-Exported, from the Issues page:
+Export sample, taken from the Issues page:
 ```
 Sample_data sample_value
 presentation_timestamp 00:00:00.880000
