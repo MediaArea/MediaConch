@@ -1,4 +1,4 @@
-Questionnaire for user communities, regarding general conformance checks as well as ffv1, mkv, lpcm (In-Progress)
+Questionnaire for user communities, regarding general conformance checks as well as ffv1, mkv, lpcm 
 
 
 
@@ -18,9 +18,13 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 (Yes, No)
 
+-(If Yes) How long has this system been implemented?
+
+(Less than 1 Year, 1-5 Years, Over 5 Years)
+
 -(If Yes) Does your institution implement repository procedures based on the Open Archival Information System (OAIS) reference model?
 
-(Yes, No, I don’t know, What is OAIS?)
+(Yes, No, I don’t know)
 
 -Does your institution subscribe to any relevant standards bodies?
 
@@ -38,7 +42,7 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 (Full-time institutional employee, Part-time institutional employee, departmental intern, volunteer, other)
 
--Does your institution perform downstream encoding of audiovisual materials in-house?
+-Does your institution perform transcoding or downstream encoding of audiovisual materials in-house?
 
 (Yes, No, I don't know)
 
