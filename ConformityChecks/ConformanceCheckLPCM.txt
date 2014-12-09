@@ -17,3 +17,26 @@ II. Analog encoding traits
 3. Positive/negative peak discrepancies
 4. Inverted chanels
 5. Audio out-of-phase 
+
+III General ideas
+
+1/ Matroska track definition for an audio track (sampling frequency, channel count and Bitdepth Matroska element are mandatory): these tests are actually included in the Matroska conformance checker.
+
+2/ Specific tests about how PCM "codec" identifier is sometimes registered in Matroska: these tests are about the AVI/WAV transwrapping layer in Matroska (Matroska embeds an AVI/WAV header in order to define "exotic" formats, and PCM is one of such formats). It is not LPCM specific, it is more focused on the intermediate layer between the PCM raw data and the Matroska container. Note: PCM in Matroska may be identified directly with PCM CodecID or with AVI/WAV transwrapping layer (which has some risks about patents), and we plan to add the possibility to forbid the AVI/WAV transwrapping layer in a profile of the policy checker.
+
+3/ Container/stream crosscheck: the only possible test is the real bit rate test (sampling frequency x channel count x Bitdepth must be equal to the bit rate)
+
+4/ Dolby E detection: Dolby E is often hidden in a LPCM track: the goal of Dolby E is to be transported by an AES3 pair (so initially used for LPCM) and is often used by broadcasters. Dolby E is a proprietary format and should not be in content used by archivists. We are able to detect Dolby E hidden in LPCM tracks. Is such detection interesting for archivists?
+
+5/ Detection of LTC (Linear Time Code) inside a PCM track and conformance checking of this format (and time code discontinuity test...)
+
+6/ Should we implement conformance checker of other classic container formats transporting LPCM (e.g. WAV)?
+
+7/ Another idea about formats using LPCM is the conformance checking of IEC 60958-1 / EBU Tech 3250 a.k.a. AES3 a.k.a. AES/EBU (professional variant) a.k.a. S/PDIF (consumer-grade variant), which has a bitstream specification but is rarely or not used by memory institutions as far as we know.
+
+8/ The other tests we are thinking to are "baseband" tests i.e. analysis of the content.
+Example of test: EBU R 128 (permitted maximum level of audio signals), too many successful identical none zero samples, audio clipping, out of phase audio...
+Such test are not a conformance checking, so they look like outside of the tender but memory institutions may be interested in such tests.
+
+9/ We are also wondering about the motivation behind the usage of no compression for the audio part: FFV1 is a lossless and Open Source compression format for video, the logical equivalent would be the FLAC format which is a lossless and Open Source compression format for audio.
+It may be pertinent to do some evangelism about the usage of FLAC in memory institutions for the same reason they use FFV1 (e.g. less disk usage without destroying the content), and create a FLAC conformance checker. 
