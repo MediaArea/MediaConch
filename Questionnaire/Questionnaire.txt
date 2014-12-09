@@ -1,12 +1,11 @@
 Questionnaire for user communities, regarding general conformance checks as well as ffv1, mkv, lpcm 
 
 
-
--What type of institution do you currently work for?
+-What type of cultural heritage institution do you currently work for?
 
 (Library, Archive, Museum, Broadcast, Media and Entertainment, Non-profit, Post-Production, Other)
 
--How many employees?
+-How many employees work at this institution?
 
 (Under 10, 10-50, Over 50)
 
@@ -14,23 +13,11 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 (Librarian, Archivist, Digital Archivist, A/V Specialist, Conservator, Manager, Other)
 
--Does your institution maintain a digital repository for collection materials?
-
-(Yes, No)
-
--(If Yes) How long has this system been implemented?
-
-(Less than 1 Year, 1-5 Years, Over 5 Years)
-
--(If Yes) Does your institution implement repository procedures based on the Open Archival Information System (OAIS) reference model?
+-Does this institution subscribe to any relevant standards bodies for media preservation?
 
 (Yes, No, I don’t know)
 
--Does your institution subscribe to any relevant standards bodies?
-
-(Yes, No, I don’t know)
-
--(If Yes) What standards bodies does your institution subscribe to?
+-(If Yes) What relevant standards bodies does your institution subscribe to?
 
 (SMPTE, ANSI, ISO, ITU, EBU, Other)
 
@@ -81,3 +68,29 @@ Questionnaire for user communities, regarding general conformance checks as well
 -What types of metadata standards are referenced/used?
 
 (AES-57 2011, MPEG-7, PBCore, reVTMD, videoMD, PREMIS, Other)
+
+-Does your institution maintain a digital repository for collection materials?
+
+(Yes, No)
+
+-(If Yes) How long has this system been implemented?
+
+(Less than 1 Year, 1-5 Years, Over 5 Years)
+
+-(If Yes) Does your institution implement repository procedures based on the Open Archival Information System (OAIS) reference model?
+
+(Yes, No, I don’t know)
+
+-Is your institution engaged with the open-source community?
+
+(Yes, No, I don't know)
+
+-What (if any) open file codecs and wrappers are currently implemented at your institution?
+
+(ffv1, mkv (Matroska), LPCM, Other)
+
+What characteristics make an idea file format for preservation? (Arrange in order beginning from most important to least important)
+
+Low cost of implementation, low storage cost, availability of tools, transparency, metadata capabilities, interoperability
+
+
