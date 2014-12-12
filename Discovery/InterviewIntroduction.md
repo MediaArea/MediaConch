@@ -10,17 +10,17 @@ MediaArea is reaching out to select archivists, vendors, and technologists who u
 
 During the interview we would like to cover the following quesitons in regards to one or more of the following formats: FFV1, Matroska, LPCM:
 
-- [ ] Please describe your use of the format?
+- [ ] Please describe your use of the format.
 - [ ] For what circumstances or uses would you recommend or not recommend the format?
 - [ ] Please describe any concerns in the use or the selection of the format for preservation use.
 - [ ] Please describe any lessons learned in the use of the format.
 - [ ] How do you recommend assessing quality of or validating the format?
-- [ ] Please describe any workflow or use of tools for file format conformance checking?
+- [ ] Please describe any workflow or use of tools for file format conformance checking.
 - [ ] What functions or features are essential in these workflows or tools? How could they be improved or expanded?
 - [ ] What tools would better enable the use of the format within the OAIS model?
 - [ ] What specifications, practices, rules, or expectations do you apply to the use of the format?
 - [ ] Do you recommend specific conditions when using the format?
-- [ ] Is there anyhting else you'd like to say about the format, conformance checking tools, or the project?
+- [ ] Is there anything else you'd like to say about the format, conformance checking tools, or the project?
 
 # Use of the Interview
 
