@@ -3,13 +3,14 @@
 ## Introduction
 
 This documentation explains the elements, structure, and intent of the Preforma Mediainfo Conformance Check Registry.
-A conformance check is a particular test applied to a files or section of a file in order to quantify the adherence of such data to selected sets of rules and practices.
+A conformance check is a particular test applied to a files or section of a file in order to quantify the adherence of such data to associated sets of rules and practices.
 
 ## Conformance Check Registry Requirements
 Open documentation must be maintained for each Conformance Check.
 Documentation for Conformance Checks must offer hierarchical relationships between related checks.
 Conformance Checks must be documented according to their CCID (Conformance Check Identifier) and Version number.
 Any revised Conformance Check must maintain a changelog as well as records of all past versions of the conformity check.
+The following keywords to indicate requirement levels when used in a conformance check description MUST be used according to their definitions provided by (RFC2119)[http://tools.ietf.org/html/rfc2119]: "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL".
 
 ## Elements
 
@@ -38,3 +39,18 @@ Restricted Vocabulary:
 
 ### Threshold
 If 'Test Type' is set to Numerical Range, the threshold provides an equation applied to the number to achieve a True/False result.
+
+### Definition
+A clear description of conformanace check.
+
+## Definitions
+
+### Codec
+
+### Container
+
+### Frame
+
+### Conformance
+
+## Abbreviations
