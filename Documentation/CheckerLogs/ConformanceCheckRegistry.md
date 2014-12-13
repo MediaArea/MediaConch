@@ -27,6 +27,15 @@ The version number of the reference Conformance Check.
 The authority associates each conformance check with a standards organization, community, or logic from which the conformance check is derived. Examples: EBU, Microsoft.
 Within the use of a Conformance Checker, the user may enable or disable check from certain authorities; for instance to perform checks against specifications of Standards Organization A and Community Practice B, but not Standards Organization C or Community Practice D.
 
+### Target Format
+The name of the file format, codec, or bit stream that is to be test.
+
+### Target Format Version
+Identify the version of range of versions of the target format which are eligible for the conformance test. A numeric range should be used or the word "all" if the rule applies to all known versions.
+
+### Target Format Part
+The name of a chunk, atom, element, bitstream, or other smaller component of the target format that the conformance check relates to.
+
 ### Citation
 A reference of the specific document, specification, or reference from which the conformance check is derived. Typically the citation will be a publication or expression of the 'Authority'.
 
