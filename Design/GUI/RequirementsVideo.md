@@ -2,13 +2,45 @@
 
 Mockups forthcoming
 
+## FFV1
+
 - Video playback view (for MKV/ffv1)
+- Support playback of ffv1 in other container formats (mov, avi, nut)
+- Suppoer presentation of decoded ffv1 video frames alongside metadata about that frame
+- Suppoer presentation of decoded ffv1 video frames alongside metadata about that frame and a selected number of neighboring frames
 - Playback control deck (play, pause, step forward, step backward, etc.)
-- Filter options (view YUV, etc.)
-- Metadata view (see more below)
+- Support keyboard shortcuts for playback (k=play/pause, j=play backwards, l=play forwards)
+- Allow ffv1 video planes to be shown independently in grayscale
+- Support waveform, vectorscope, and histogram presentations of video data
+- Frame Metadata view (see more below)
+- Support temporal annotations from the operator
+
+## MKV
+### Structure
+- Present graphical hierarchical view of MKV structure that is capable of representing all MKV components (tags, chapters, segments, attachments, tracks, etc)
+- Allow hierarchical view of MKV structure to be expanded or condensed according to section
+- Allow search for subsections of an MKV structure (for one or many open files)
+- Support presentation of all features in the Matroska Test Suite
+
+### Tags
+- Allow MKV metadata tags to be created, read, updated and/or deleted
+- Allow MKV metadata tags to be relocated or nested under other tags
+
+### Attachments
+- Allow MKV attachments to be created, read, updated and/or deleted
+- Allow MKV attachments to be relocated or nested under other tags
+
+### MKV Fixity
+- Present all CRC-32 elements where applicable
+- Allow option to validate any effected CRC-32 before a file edit
+- Support validating all CRC elements present
+
+##Overall
+
+- Allow more than one file to be open for inspection at once
 - Error summary
-- Option to export machine-readable metadata
-- Option to export human-readable metadata
+- Option to export machine-readable metadata in XML
+- Option to export human-readable metadata in TXT or PDF
 - Option to export human-readable summary (maybe diff from above, maybe not)
 
 ## Metadata
