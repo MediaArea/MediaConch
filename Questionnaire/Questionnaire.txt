@@ -11,19 +11,35 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 -What is your role at this institution?
 
-(Librarian, Archivist, Digital Archivist, Specialist, Conservator, Collections Manager, Other)
+(Librarian, Archivist, Digital Archivist, Specialist, Conservator, Collections/Information Manager, Other)
 
 -How many total media items does your institution's collection hold?
 
-(Under 100, 100-1,000, 1,000-10,0000, 10,000-100,000, Over 100,000)
+(Under 100, 100-1,000, 1,000-10,0000, 10,000-100,000, Over 100,000, I don't know)
 
--What portion of your institution's collection has been either digitally re-formatted or is "born digital"?
+-What is the annual budget allocated to the preservation of media collections?
+
+(Under $10,0000, $10,000-$50,000, Over $50,000, I don't know)
+
+-What portion of your institution's collection has been either digitally re-formatted or exists as "born-digital"?
 
 (1-10%, 11-25%, 26-50%, 51-75%, 76-100%)
 
 -What percentage of your institutional collection is digitally re-formatted per year?
 
 (None, Less than 1%, 1-5%, 6-10%, 11-15%, 16-20%, Over 21%)
+
+-Does your institution use outside vendors for digitization of audiovisual materials?
+
+(Yes, No)
+
+-Does your institution use outside vendors for transcoding or downstream encoding of audiovisual materials?
+
+(Yes, No)
+
+-(If yes) Is fixity performed on any incoming digital assets?
+
+(Yes, No, I don't know)
 
 -Does your institution perform any in-house digitization of audiovisual materials?
 
@@ -43,7 +59,15 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 -(If Yes) What type of software is usually employed for this task?
 
-(Adobe Media Encoder, Apple Compressor, MPEG Streamclip, FFMPEG, Other)
+(Adobe Media Encoder, Apple Compressor, MPEG Streamclip, FFMpeg, Custom Software, Other)
+
+-Is fixity performed on newly created assets?
+
+(Yes, No, I don't know)
+
+-What kind of software is used for fixity?
+
+(MD5, Bagger/BagIt, Custom Software, Other)
 
 -What type of operating system does your institution typically employ for quality control / file inspection?
 
@@ -63,7 +87,7 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 -(If Yes) What type of software is usually employed for this task?
 
-(MediaInfo, ExifTool, MDQC, Other)
+(MediaInfo, ExifTool, MDQC, Custom Software, Other)
 
 -Is additional metadata created?
 
@@ -71,7 +95,11 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 -What types of metadata standards are referenced/used?
 
-(AES-57 2011, MPEG-7, PBCore, reVTMD, videoMD, PREMIS, Other)
+(AES-57 2011, MPEG-7, PBCore, reVTMD, videoMD, PREMIS, None, Other)
+
+-Does your institution maintain an in-house IT department?
+
+(Yes, No, I don't know)
 
 -Does your institution maintain a digital repository for collection materials?
 
@@ -93,15 +121,19 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 (SMPTE, ANSI, ISO, ITU, EBU, Other)
 
--Is your institution engaged with the open-source community?
+-Does your institution incorporate any open-source technology?
 
 (Yes, No, I don't know)
 
 -What (if any) open file codecs and wrappers are currently implemented at your institution?
 
-(ffv1, mkv (Matroska), LPCM, Other)
+(FFv1, MKV (Matroska), LPCM, Other)
 
-What characteristics make an idea file format for preservation? (Arrange in order beginning from most important to least important)
+-(If yes) At what preservation stage are open file codecs and wrappers used?
+
+(Preservation Master, Mezzanine, Access Copy, Other)
+
+What characteristics make an ideal file format for preservation? (Arrange in order beginning from most important to least important)
 
 Low cost of implementation, low storage cost, availability of tools, transparency, metadata capabilities, interoperability
 
