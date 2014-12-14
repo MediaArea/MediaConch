@@ -1,0 +1,188 @@
+tracing `ffmpeg -f lavfi -i color=s=2x2 -c:v rawvideo -f matroska -vframes 1 small.mkv`
+
+
+1A 45 DF A3                  EBML Element ID
+    01                          VINT: Element Size (2 bytes)
+    00 00 00 00 00 00 23        35 bytes
+42 86                               EBML_ID: EBMLVersion
+    81                                  Element Size: 1 byte
+    01                                  1 byte
+42 F7                               EBMLReadVersion
+    81                                  Element Size: 1 byte
+    01                                  1 byte
+42 F2                               EBMLMaxIDLength
+    81                                  Element Size: 1 byte
+    04                                  4 bytes
+42 F3                               EXMLMaxSizeLength
+    81                                  Element Size: 1 byte
+    08                                8 bytes
+42 82                               DocType
+    88 6D 61 74 72 6F 73 6B 61          "matroska"
+42 87                               DocTypeVersion
+    81                                  Element Size: 1 byte
+    04                                  4
+42 85                               DocTypeReadVersion
+    81                                  Element Size: 1 byte
+    02                                  2
+
+18 53 80 67                     Segment
+    0100000000000250                592 bytes
+    11 4D 9B 74                     SeekHead
+        403B                            59 bytes   /* Why 0x403B, why not 0xBB?
+        4D BB                           Seek
+            8B                              11 bytes
+            53 AB                           SeekID
+                84                              4 bytes
+                15 49 A9 66                     EMBL_ID:Info
+            53 AC                           SeekPosition
+            81                                  Element Size: 1 byte
+            DF                                  223
+        4D BB                           Seek
+            8C                              12 bytes
+            53 AB                           SeekID
+                84                              4 bytes
+                16 54 AE 6B                     EMBL_ID:Tracks
+            53 AC                           SeekPosition
+            82                                  Element Size: 2 bytes
+            01 30                               304
+        4D BB                           Seek
+            8C                              12 bytes
+            53 AB                           SeekID
+                84                              4 bytes
+                12 54 C3 67                     EMBL_ID:Tags
+            53 AC                           SeekPosition
+            82                                  Element Size: 2 bytes
+            01 90                               400
+        4D BB                           Seek
+            8C                              12 bytes
+            53 AB                           SeekID
+                84                              4 bytes
+                1C 53 BB 6B                     EMBL_ID:Cues
+            53 AC                           SeekPosition
+            82                                  Element Size: 2 bytes
+            02 33                               563
+    EC                              Void
+        01 00 00 00 00 00 00 95             159 bytes
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    
+    15 49 A9 66                     Info
+    01 00 00 00 00 00 00 45             69 bytes
+        2A D7 B1                    TimeCodeScale
+            83                          Element Size: 3 bytes
+            0F 42 40                    1,000,000
+        4D 80                       MuxingApp
+            8D                          Element Size: 13 bytes
+            4C 61 76 66 35 36 2E 31 30 2E 31 30 30  "Lavf56.10.100"
+        57 41                       WritingApp
+            8D                          Element Size: 13 bytes
+            4C 61 76 66 35 36 2E 31 30 2E 31 30 30  "Lavf56.10.100"
+        73 A4                       SegmentUID
+            90                          Element Size: 16 bytes
+            51 C5 D1 8C 98 C8 D3 A6 9C B6 38 10 84 01 B1 2B
+        44 89                       Duration
+            88                          Element Size: 8 bytes
+            40 44 00 00 00 00 00 00     ? somehow this is 00:00:00.040
+    16 54 AE 6B                     Tracks
+    01 00 00 00 00 00 00 54             84 bytes
+        AE                              TrackEntry
+        01 00 00 00 00 00 00 4B             75 bytes
+            D7                              TrackNumber
+                81                              Element Size: 1 byte
+                01                              1
+            73 C5                           TrackUID
+                81                              Element Size: 1 byte
+                01                              1
+            9C                              FlagLacing
+                81                              Element Size: 1 byte
+                00                              0
+            22 B5 9C                        Language
+                83                              Element Size: 3 bytes
+                75 6E 64                        "und"
+            86                              CodecID
+                8E                              Element Size: 14 bytes
+                56 5F 55 4E 43 4F 4D 50 52 45 53 53 45 44   "V_UNCOMPRESSED"
+            83                              TrackType
+                81                              Element Size: 1 byte
+                01                              1 (video)
+            23 E3 83                        DefaultDuration
+                84                              Element Size: 4 bytes
+                02 62 5A 00                     ?
+            E0                              VideoSettings
+                01 00 00 00 00 00 00 16
+                    B0                          PixelWidth
+                        81                          Element Size: 1 byte
+                        02                          2
+                    BA                          PixelHeight
+                        81                          Element Size: 1 byte
+                        02                          2
+                    54 B0                       DisplayWidth
+                        81                          Element Size: 1 byte
+                        02                          2
+                    54 BA                       DisplayHeight
+                        81                          Element Size: 1 byte
+                        02                          2
+                    2E B5 24                    Colorspace
+                        84                          Element Size: 4 bytes
+                        49 34 32 30                 "I420"
+    12 54 C3 67                         Tags
+        01 00 00 00 00 00 00 7C             Element Size: 124 bytes
+        73 73                               Tag
+            01 00 00 00 00 00 00 2E             Element Size: 46 bytes
+            63 C0                               Targets
+                01 00 00 00 00 00 00 00             0
+            67 C8                               SimpleTag
+                01 00 00 00 00 00 00 1A             26 bytes
+                45 A3                               TagName
+                    87                                  Element Size: 7 bytes
+                    45 4E 43 4F 44 45 52                "ENCODER"
+                44 87                               TagString
+                    8D                                  Element Size: 13 bytes
+                    4C 61 76 66 35 36 2E 31 30 2E 31 30 30  "Lavf56.10.100"
+        73 73
+            01 00 00 00 00 00 00 3A
+            63 C0                               Targets
+                01 00 00 00 00 00 00 04             4
+            63 C5                               TagTrackUID
+                81                                  Element Size: 1 byte
+                01                                  1
+            67 C8                               SimpleTag
+                01 00 00 00 00 00 00 22                 Element Size: 34 bytes
+                45 A3                               TagName
+                    87                                  Element Size: 7 bytes
+                    45 4E 43 4F 44 45 52                "ENCODER"
+                44 87                               TagString
+                    95                                  Element Size: 21 bytes
+                    4C 61 76 63 35 36 2E 39 2E 31 30 30 20 72 61 77 76 69 64 65 6F  "Lavc56.9.100 rawvideo"
+    1F 43 B6 75                         Cluster
+        01 00 00 00 00 00 00 0F             Element Size: 15 bytes
+        E7                                  Timecode
+            81                                  Element Size: 1 byte
+            00                                  0
+        A3                              SimpleBlock
+            8A                             Element Size: 10 bytes
+            81 00 00 80
+            10 10 10 10                     < uncompressed 2x2 pixel data
+            80 80
+        1C 53 BB 6B                     Cues
+            01 00 00 00 00 00 00 11         Element Size: 17 bytes
+            BB                              CuePoint
+                8F                              Element Size: 15 bytes
+                B3                              CueTime
+                    81                              Element Size: 1 byte
+                    00                              0
+                B7                              CueTrackPositions
+                    8A                              Element Size: 10 bytes
+                    F7                              CueTrack
+                        81                              Element Size: 1 byte
+                        01                              1
+                    F1                              CueClusterPosition
+                        82                              Element Size: 2 bytes
+                        02 18                           536
+                    F0                              CueRelativePosition
+                        81                              Element Size: 1 byte
+                        03                              3
