@@ -24,6 +24,8 @@ Mockups forthcoming
 - Allow all EBML Elements with unknown ElementIDs to be identified and inspected even though contents aren't understood
 - Show ElementIDs according to hex value, name, and associated definition via major versions of Matroska's XML representation of the specification, specdata.xml.
 - Allow users to supply alternative versions of specdata.xml.
+- Allow for a comparison between two Matroska structures.
+- Allow data access to Void Element data payloads.
 
 ### Tags
 - Allow MKV metadata tags to be created, read, updated and/or deleted
