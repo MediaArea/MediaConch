@@ -1,27 +1,27 @@
-## Questionnaire for user communities, regarding general conformance checks as well as FFv1, MKV, LPCM
+## Questionnaire for user communities regarding FFv1, MKV, LPCM and general conformance checks
 
 
-## [1] What type of institution do you currently work for?
+### 1. What type of institution do you currently work for?
 
 (Library, Archive, Museum, Broadcast, Media and Entertainment, Post-Production, Information Management/Technology, Other)
 
--How many employees work at this institution?
+### 2. How many employees work at this institution?
 
 (Under 10, 10-50, Over 50)
 
--What is your role at this institution?
+### 3. What is your role at this institution?
 
 (Librarian, Archivist, Digital Archivist, Specialist, Conservator, Collections/Information Manager, Other)
 
--How many total media items does your institution's collection hold?
+### 4. How many total media items does your institution's collection hold?
 
 (Under 100, 100-1,000, 1,000-10,0000, 10,000-100,000, Over 100,000, I don't know)
 
--What is the annual budget allocated to the preservation of media collections?
+### 5. What is the annual budget allocated to the preservation of media collections?
 
 (Under $10,0000, $10,000-$50,000, Over $50,000, I don't know)
 
--What portion of your institution's collection has been either digitally re-formatted or exists as "born-digital"?
+### 6. What portion of your institution's collection has been either digitally re-formatted or exists as "born-digital"?
 
 (1-10%, 11-25%, 26-50%, 51-75%, 76-100%)
 
