@@ -21,6 +21,9 @@ Mockups forthcoming
 - Allow hierarchical view of MKV structure to be expanded or condensed according to section
 - Allow search for subsections of an MKV structure (for one or many open files)
 - Support presentation of all features in the Matroska Test Suite
+- Allow all EBML Elements with unknown ElementIDs to be identified and inspected even though contents aren't understood
+- Show ElementIDs according to hex value, name, and associated definition via major versions of Matroska's XML representation of the specification, specdata.xml.
+- Allow users to supply alternative versions of specdata.xml.
 
 ### Tags
 - Allow MKV metadata tags to be created, read, updated and/or deleted
