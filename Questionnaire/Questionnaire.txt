@@ -1,9 +1,9 @@
-Questionnaire for user communities, regarding general conformance checks as well as ffv1, mkv, lpcm 
+Questionnaire for user communities, regarding general conformance checks as well as FFv1, MKV, LPCM
 
 
--What type of cultural heritage institution do you currently work for?
+-What type of institution do you currently work for?
 
-(Library, Archive, Museum, Broadcast, Media and Entertainment, Non-profit, Post-Production, Other)
+(Library, Archive, Museum, Broadcast, Media and Entertainment, Post-Production, Information Management/Technology, Other)
 
 -How many employees work at this institution?
 
@@ -11,17 +11,21 @@ Questionnaire for user communities, regarding general conformance checks as well
 
 -What is your role at this institution?
 
-(Librarian, Archivist, Digital Archivist, A/V Specialist, Conservator, Manager, Other)
+(Librarian, Archivist, Digital Archivist, Specialist, Conservator, Collections Manager, Other)
 
--Does this institution subscribe to any relevant standards bodies for media preservation?
+-How many total media items does your institution's collection hold?
 
-(Yes, No, I don’t know)
+(Under 100, 100-1,000, 1,000-10,0000, 10,000-100,000, Over 100,000)
 
--(If Yes) What relevant standards bodies does your institution subscribe to?
+-What portion of your institution's collection has been either digitally re-formatted or is "born digital"?
 
-(SMPTE, ANSI, ISO, ITU, EBU, Other)
+(1-10%, 11-25%, 26-50%, 51-75%, 76-100%)
 
--Does your institution perform in-house digitization of audiovisual materials?
+-What percentage of your institutional collection is digitally re-formatted per year?
+
+(None, Less than 1%, 1-5%, 6-10%, 11-15%, 16-20%, Over 21%)
+
+-Does your institution perform any in-house digitization of audiovisual materials?
 
 (Yes, No)
 
@@ -80,6 +84,14 @@ Questionnaire for user communities, regarding general conformance checks as well
 -(If Yes) Does your institution implement repository procedures based on the Open Archival Information System (OAIS) reference model?
 
 (Yes, No, I don’t know)
+
+-Does your institution subscribe to any relevant standards bodies for media preservation?
+
+(Yes, No, I don’t know)
+
+-(If Yes) What relevant media standards bodies does your institution subscribe to?
+
+(SMPTE, ANSI, ISO, ITU, EBU, Other)
 
 -Is your institution engaged with the open-source community?
 
