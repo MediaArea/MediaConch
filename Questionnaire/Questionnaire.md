@@ -19,7 +19,7 @@
 
 ### 5. What is the annual budget allocated to the preservation of media collections?
 
-(Under $10,0000, $10,000-$50,000, Over $50,000, I don't know)
+(Under $10,0000 (~8,000 Euros), $10,000-$50,000 (~8,000-40,000 Euros), Over $50,000 (~40,000 Euros), I don't know)
 
 ### 6. What portion of your institution's collection has been either digitally re-formatted or exists as "born-digital"?
 
