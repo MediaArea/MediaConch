@@ -3,7 +3,7 @@ tracing `ffmpeg -f lavfi -i color=s=2x2 -c:v rawvideo -f matroska -vframes 1 sma
 
 1A 45 DF A3                  EBML Element ID
     01                          VINT: Element Size (2 bytes)
-    00 00 00 00 00 00 23        35 bytes
+    00 00 00 00 00 00 23        35 bytes    /* Why 0x0100000000000023, why not 0xA3?
 42 86                               EBML_ID: EBMLVersion
     81                                  Element Size: 1 byte
     01                                  1 byte
