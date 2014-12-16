@@ -3,14 +3,14 @@
 
 ### 1. What type of institution do you currently work for?
 
-- [ ]Library
-- [ ]Archive
-- [ ]Museum
-- [ ]Broadcast
-- [ ]Media and Entertainment
-- [ ]Post-Production
-- [ ]Information Management/Technology
-- [ ]Other
+- [ ] Library
+- [ ] Archive
+- [ ] Museum
+- [ ] Broadcast
+- [ ] Media and Entertainment
+- [ ] Post-Production
+- [ ] Information Management/Technology
+- [ ] Other
 
 ### 2. How many employees work at this institution?
 
