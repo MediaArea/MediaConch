@@ -93,88 +93,150 @@
 
 ### 13. Does your institution perform transcoding or downstream encoding of audiovisual materials in-house?
 
-(Yes, No, I don't know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 14. (If yes) Who routinely performs downstream encoding of audiovisual materials in-house?
 
-(Full-time institutional employee, Part-time institutional employee, departmental intern, volunteer, other)
+- [ ] Full-time institutional employee
+- [ ] Part-time institutional employee
+- [ ] departmental intern
+- [ ] volunteer
+- [ ] other
 
 ### 15. (If Yes) What type of software is usually employed for this task?
 
-(Adobe Media Encoder, Apple Compressor, MPEG Streamclip, FFMpeg, Custom Software, Other)
+- [ ] Adobe Media Encoder
+- [ ] Apple Compressor
+- [ ] MPEG Streamclip
+- [ ] FFMpeg, Custom Software, Other)
 
 ### 16. Is fixity performed on newly created assets?
 
-(Yes, No, I don't know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 17. What kind of software is used for fixity?
 
-(MD5, Bagger/BagIt, Custom Software, Other)
+- [ ] MD5
+- [ ] Bagger/BagIt
+- [ ] Custom Software
+- [ ] Other
 
 ### 18. What type of operating system does your institution typically employ for quality control / file inspection?
 
-(Mac OS, PC, Linux, Other)
+- [ ] Mac OS
+- [ ] PC
+- [ ] Linux
+- [ ] Other
 
 ### 19. How often is technical metadata on incoming files checked for conformance?
 
-(Always, Usually, Never)
+- [ ] Always
+- [ ] Usually
+- [ ] Never
 
 ### 20. How often is technical metadata on accessioned files routinely checked for conformance?
 
-(Always, Usually, Never)
+- [ ] Always
+- [ ] Usually
+- [ ] Never
 
 ### 21. Are files checked for conformance individually, or, as a group?
 
-(Individually, As A Group, Other)
+- [ ] Individually
+- [ ] As A Group
+- [ ] Other)
 
 ### 22. (If Yes) What type of software is usually employed for this task?
 
-(MediaInfo, ExifTool, MDQC, Custom Software, Other)
+- [ ] MediaInfo
+- [ ] ExifTool
+- [ ] MDQC
+- [ ] Custom Software
+- [ ] Other
 
 ### 23. Is additional metadata created?
 
-(Yes, No)
+- [ ] Yes
+- [ ] No
 
 ### 24. What types of metadata standards are referenced/used?
 
-(AES-57 2011, MPEG-7, PBCore, reVTMD, videoMD, PREMIS, None, Other)
+- [ ] AES-57 2011
+- [ ] MPEG-7
+- [ ] PBCore
+- [ ] reVTMD
+- [ ] videoMD
+- [ ] PREMIS
+- [ ] None
+- [ ] Other
 
 ### 25. Does your institution maintain an in-house IT department?
 
-(Yes, No, I don't know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 26. Does your institution maintain a digital repository for collection materials?
 
-(Yes, No)
+- [ ] Yes
+- [ ] No
 
 ### 27. (If Yes) How long has this system been implemented?
 
-(Less than 1 Year, 1-5 Years, Over 5 Years)
+- [ ] Less than 1 Year
+- [ ] 1-5 Years
+- [ ] Over 5 Years
 
 ### 28. (If Yes) Does your institution implement repository procedures based on the Open Archival Information System (OAIS) reference model?
 
-(Yes, No, I don’t know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 29. Does your institution subscribe to any relevant standards bodies for media preservation?
 
-(Yes, No, I don’t know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 30. (If Yes) What relevant media standards bodies does your institution subscribe to?
 
-(SMPTE, ANSI, ISO, ITU, EBU, Other)
+- [ ] SMPTE
+- [ ] ANSI
+- [ ] ISO
+- [ ] ITU
+- [ ] EBU
+- [ ] Other
 
 ### 31. Does your institution incorporate any open-source technology?
 
-(Yes, No, I don't know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 32. What (if any) open file codecs and wrappers are currently implemented at your institution?
 
-(FFv1, MKV (Matroska), LPCM, Other)
+- [ ] FFv1
+- [ ] MKV (Matroska)
+- [ ] LPCM
+- [ ] Other
 
 ### 33. (If yes) At what preservation stage are open file codecs and wrappers used?
 
-(Preservation Master, Mezzanine, Access Copy, Other)
+- [ ] Preservation Master
+- [ ] Mezzanine
+- [ ] Access Copy
+- [ ] Other
 
 ### 34. What characteristics make an ideal file format for preservation? (Arrange in order beginning from most important to least important)
 
-Low cost of implementation, low storage cost, availability of tools, transparency, metadata capabilities, interoperability
+- [ ] Low cost of implementation
+- [ ] low storage cost
+- [ ] availability of tools
+- [ ] transparency
+- [ ] metadata capabilities
+- [ ] interoperability
