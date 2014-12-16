@@ -14,49 +14,82 @@
 
 ### 2. How many employees work at this institution?
 
-- [ ]Under 10
-- [ ]10-50
-- [ ]Over 50
+- [ ] Under 10
+- [ ] 10-50
+- [ ] Over 50
 
 ### 3. What is your role at this institution?
 
-(Librarian, Archivist, Digital Archivist, Specialist, Conservator, Collections/Information Manager, Other)
+- [ ] Librarian
+- [ ] Archivist
+- [ ] Digital Archivist
+- [ ] Specialist
+- [ ] Conservator
+- [ ] Collections/Information Manager
+- [ ] Other
 
 ### 4. How many total media items does your institution's collection hold?
 
-(Under 100, 100-1,000, 1,000-10,0000, 10,000-100,000, Over 100,000, I don't know)
+- [ ] Under 100
+- [ ] 100-1,000
+- [ ] 1,000-10,0000
+- [ ] 10,000-100,000
+- [ ] Over 100,000
+- [ ] I don't know
 
 ### 5. What is the annual budget allocated to the preservation of media collections?
 
-(Under $10,0000/8,000€, $10,000-$50,000/8,000-40,000€, Over $50,000/~40,000€, I don't know)
+- [ ] Under $10,0000/8,000€
+- [ ] $10,000-$50,000/8,000-40,000€
+- [ ] Over $50,000/~40,000€
+- [ ] I don't know
 
 ### 6. What portion of your institution's collection has been either digitally re-formatted or exists as "born-digital"?
 
-(1-10%, 11-25%, 26-50%, 51-75%, 76-100%)
+- [ ] 1-10%
+- [ ] 11-25%
+- [ ] 26-50%
+- [ ] 51-75%
+- [ ] 76-100%
 
 ### 7. What percentage of your institutional collection is digitally re-formatted per year?
 
-(None, Less than 1%, 1-5%, 6-10%, 11-15%, 16-20%, Over 21%)
+- [ ] None
+- [ ] Less than 1%
+- [ ] 1-5%
+- [ ] 6-10%
+- [ ] 11-15%
+- [ ] 16-20%
+- [ ] Over 21%
 
 ### 8. Does your institution use outside vendors for digitization of audiovisual materials?
 
-(Yes, No)
+- [ ] Yes
+- [ ] No
 
 ###  9. Does your institution use outside vendors for transcoding or downstream encoding of audiovisual materials?
 
-(Yes, No)
+- [ ] Yes
+- [ ] No
 
 ### 10. (If yes) Is fixity performed on any incoming digital assets?
 
-(Yes, No, I don't know)
+- [ ] Yes
+- [ ] No
+- [ ] I don't know
 
 ### 11. Does your institution perform any in-house digitization of audiovisual materials?
 
-(Yes, No)
+- [ ] Yes
+- [ ] No
 
 ### 12. (If yes) Who routinely performs digital reformatting of audiovisual materials in-house?
 
-(Full-time institutional employee, Part-time institutional employee, departmental intern, volunteer, other)
+- [ ] Full-time institutional employee
+- [ ] Part-time institutional employee
+- [ ] Departmental intern
+- [ ] Volunteer
+- [ ] Other
 
 ### 13. Does your institution perform transcoding or downstream encoding of audiovisual materials in-house?
 
