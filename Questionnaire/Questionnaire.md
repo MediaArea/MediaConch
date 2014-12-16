@@ -3,11 +3,20 @@
 
 ### 1. What type of institution do you currently work for?
 
-(Library, Archive, Museum, Broadcast, Media and Entertainment, Post-Production, Information Management/Technology, Other)
+- [ ]Library
+- [ ]Archive
+- [ ]Museum
+- [ ]Broadcast
+- [ ]Media and Entertainment
+- [ ]Post-Production
+- [ ]Information Management/Technology
+- [ ]Other
 
 ### 2. How many employees work at this institution?
 
-(Under 10, 10-50, Over 50)
+- [ ]Under 10
+- [ ]10-50
+- [ ]Over 50
 
 ### 3. What is your role at this institution?
 
