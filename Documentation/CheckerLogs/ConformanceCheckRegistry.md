@@ -21,7 +21,7 @@ A human-readable name for the conformance check.
 Conformance Check Identifier. An alphanumeric identifier used to reference or identify the conformance check to order to relate code, documentation, and reports that reference the check.
 
 ### Version
-The version number of the reference Conformance Check.
+The version number of the reference Conformance Check. This value should be expressed as a standard GNU version number in major.minor.revision format. A value of "0" may be used to indictate draft status.
 
 ### Authority
 The authority associates each conformance check with a standards organization, community, or logic from which the conformance check is derived. Examples: EBU, Microsoft.
