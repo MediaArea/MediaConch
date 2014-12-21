@@ -1,10 +1,15 @@
 # File Conformance Checker UI Design Report
 
+Overview of similar software tools used for analysis and quality control.
+
+
 ## [QCTools](http://www.bavc.org/qctools)
 
 *QCTools (Quality Control Tools for Video Preservation) is a free and open source software tool that helps users analyze and understand their digitized video files through use of audiovisual analytics and filtering. QCTools is funded by the National Endowment for the Humanities and developed by the Bay Area Video Coalition.*
 
 Review of design elements:
+
+QCTools provides charted graph analytics as well as video playback and filters for multiple video files with separate views for each.
 
 Incorporation:
 
