@@ -6,8 +6,8 @@ Mockups forthcoming
 
 - Video playback view (for MKV/ffv1)
 - Support playback of ffv1 in other container formats (mov, avi, nut)
-- Suppoer presentation of decoded ffv1 video frames alongside metadata about that frame
-- Suppoer presentation of decoded ffv1 video frames alongside metadata about that frame and a selected number of neighboring frames
+- Support presentation of decoded ffv1 video frames alongside metadata about that frame
+- Support presentation of decoded ffv1 video frames alongside metadata about that frame and a selected number of neighboring frames
 - Playback control deck (play, pause, step forward, step backward, etc.)
 - Support keyboard shortcuts for playback (k=play/pause, j=play backwards, l=play forwards)
 - Allow ffv1 video planes to be shown independently in grayscale
@@ -40,13 +40,13 @@ Mockups forthcoming
 - Allow option to validate any effected CRC-32 before a file edit
 - Support validating all CRC elements present
 
-##Overall
+## Overall
 
 - Allow more than one file to be open for inspection at once
 - Error summary
 - Option to export machine-readable metadata in XML
 - Option to export human-readable metadata in TXT or PDF
-- Option to export human-readable summary (maybe diff from above, maybe not)
+- Option to export human-readable summary
 
 ## Metadata
 
