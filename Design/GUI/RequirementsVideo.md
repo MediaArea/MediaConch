@@ -14,6 +14,7 @@ Mockups forthcoming
 - Support waveform, vectorscope, and histogram presentations of video data
 - Frame Metadata view (see more below)
 - Support temporal annotations from the operator
+- Verify an ffv1 stream against an external framemd5 or framecrc report
 
 ## MKV
 ### Structure
