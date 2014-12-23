@@ -2,13 +2,14 @@
 
 Mockups forthcoming
 
-- Audio playback view (graphs, left/right channel)
-- Playback control deck (play, pause, step forward, step backward, etc.)
-- Filter options (view YUV, etc.)
+- Audio playback view (bar graphs, mono/left/right channel, waveform in dB)
+- Playback control deck (pause, play, stop, rewind, fast forward)
+- Filter options (spectrogram, pitch)
 - Metadata view (see more below)
-- Error summary
-- Option to export machine-readable metadata
-- Option to export human-readable metadata
+- Log of errors and operations
+- Verbose trace view with associated memory addresses
+- Option to export machine-readable metadata (XML, CSV)
+- Option to export human-readable metadata (TXT)
 - Option to export human-readable summary (maybe diff from above, maybe not)
 
 ## Metadata
