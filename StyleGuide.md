@@ -41,10 +41,9 @@ Development of software in open source projects in PREFORMA MUST utilise effecti
 * use of an open platform for open development (e.g. Github)
   An open platform on which to develop software facilitates the open development of that software. Public visibility and ability to contribute to the software by anyone allows for heartier, more reliable software. Feedback is more easily sought and more readily provided with the use of an open platform. Github will be used as the open platform for open development of this project.
 
-## Platform
+## Open Source Platforms
 
-All development of software in PREFORMA MUST be conducted and provided in open source projects at open development platforms (e.g. GitHub, or equivalent).
-All development of digital assets (related to developed open source software) in PREFORMA MUST be provided at open development platforms (e.g. GitHub, or equivalent).
+All development of software and all development of digital assets (related to developed open source software) in PREFORMA MUST be conducted and provided in open source projects at open development platforms.
 
 # Contribution Guide
 
