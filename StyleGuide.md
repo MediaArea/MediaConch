@@ -4,7 +4,7 @@
 
 ## Portability
 
-Source code MUST be built for portability between technical deployment platforms. (platform independent)
+Source code MUST be built for portability between technical deployment platforms. 
 
 ## Modularity
 
@@ -12,7 +12,17 @@ Source code MUST be built in a modular fashion for improved maintainability.
 
 ## Deployment
 
-The Conformance Checker MUST allow for deployment in the five infrastructures/environments defined in the Challenge Brief.
+The Conformance Checker MUST allow for deployment in these five infrastructures/environments: The PREFORMA website, an evaluation framework, a stand-alone system, a network-based system, and legacy systems.
+
+To sufficiently demonstrate the scope and functionality of the Conformance Checker, it, along with associated documentation and guidelines, must be made available at the PREFORMA project website. The PREFORMA website will be considered as the deliverable for the PREFORMA project.
+
+In order to gather sufficient structured feedback on the conformance checking process, the Conformance Checker will require deployment within the DIRECT infrastructure for test and evaluation of the tool in the PCP procedure. 
+
+The Conformance Checker must have the capability to be packaged and run as an executible on a PC running any standard operating system. This ensures the conformance checker can be used in small-scale institutions without centralized IT infrastructure. 
+
+The Conformance Checker must allow for deployment in network-based solutions (dedicated server, cloud solutions) for digital repositories.
+
+The Conformance Checker must have the capability of being plugged into legacy systems via written API integration.
 
 ## API's
 
