@@ -33,8 +33,13 @@ The Conformance Checker MUST interface with other software systems via API’s.
 ## Development
 
 Development of software in open source projects in PREFORMA MUST utilise effective open source work practices. Effective open source work practices include:
-      use of nightly builds, use of an open platform for open development (e.g. Github),
-      use of software configuration management systems (e.g. Git),
+
+* use of nightly builds
+    Nightly builds are automated neutral builds that reflect the current, most up-to-date status of a piece of developed software. Access made to nightly builds allow for groups of developers to work collaboratively and always assess the most current state of the software, with consideration to potential bugs or other hazards that could occur during the development process. Programmers are able to confidently determine if they "broke the build" (made the software inoperable) with their code and prevent or correct changes quickly, as needed.
+* use of software configuration management systems (e.g. Git)
+  Using a software configuration management system allow for version and revision control, an essential component to developers working collaboratively. A version control system allows multiple people to work on same or similar sections of the source code base at the same time with awareness and prevention of overlapping or conflicting work. Git will be used as the software configuration management system for this project.
+* use of an open platform for open development (e.g. Github)
+  An open platform on which to develop software facilitates the open development of that software. Public visibility and ability to contribute to the software by anyone allows for heartier, more reliable software. Feedback is more easily sought and more readily provided with the use of an open platform. Github will be used as the open platform for open development of this project.
 
 ## Platform
 
