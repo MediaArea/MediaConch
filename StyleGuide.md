@@ -18,7 +18,7 @@ To sufficiently demonstrate the scope and functionality of the Conformance Check
 
 In order to gather sufficient structured feedback on the conformance checking process, the Conformance Checker will require deployment within the DIRECT infrastructure for test and evaluation of the tool in the PCP procedure. 
 
-The Conformance Checker must have the capability to be packaged and run as an executible on a PC running any standard operating system. This ensures the conformance checker can be used in small-scale institutions without centralized IT infrastructure. 
+The Conformance Checker must have the capability to be packaged and run as an executible on a PC running any standard operating system (at least for: MS Windows 7, Mac OSX, common Linux distributions such as Ubuntu, Fedora, Debian, and Suse). This ensures the conformance checker can be used in small-scale institutions without centralized IT infrastructure. 
 
 The Conformance Checker must allow for deployment in network-based solutions (dedicated server, cloud solutions) for digital repositories.
 
@@ -77,3 +77,14 @@ Feedback of all kind is encouraged and can either be made through [opening an is
 ## Linking
 
 In order to facilitate self-description, intuitive discovery, and use of resulting code and documentation it is highly encouraged to utilize linking through documentation, tickets, commit messages, and within the code. For instance the registry itemizes individual conformance checks should link to code blocks and/or commits as software is developed that is associated to that conformance check. In this manner it should be feasible to easily review both human-readable descriptions of conformity checks and associated programmatic implementations.
+
+# License
+
+The software and digital assets delivered by tenderer are made available under the following IPR conditions:
+          
+All software developed during the PREFORMA project MUST be provided under the two specific open source licenses: “GPLv3 or later” and “MPLv2 or later”.
+          
+All source code for all software developed during the PREFORMA project MUST always be identical between the two specific open source licenses (“GPLv3 or later” and “MPLv2 or later”).
+          
+All digital assets developed during the PREFORMA project MUST be provided under the open access license: Creative Commons CC-BY v4.0 and in open file formats, i.e. an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004) 
+
