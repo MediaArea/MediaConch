@@ -10,7 +10,7 @@
 - [ ] Media and Entertainment
 - [ ] Post-Production
 - [ ] Information Management/Technology
-- [ ] Other
+- [ ] Other ______________
 
 ### How many employees work at this institution as a whole?
 
@@ -26,15 +26,15 @@
 - [ ] Specialist
 - [ ] Conservator
 - [ ] Collections/Information Manager
-- [ ] Other
+- [ ] Other _________________
 
-### How many employees work within your department at this institution?
+### How many employees work within your department?
 
 - [ ] Under 10
 - [ ] 10-50
 - [ ] Over 50
 
-### How many total media items does your institution currently hold?  (audiovisual items only) 
+### How many total media items does this institution currently hold?  (audiovisual items only) 
 
 - [ ] Under 100
 - [ ] 100-1,000
@@ -58,7 +58,7 @@
 - [ ] 51-75%
 - [ ] 76-100%
 
-### On average, what percentage of this institutional collection is digitally re-formatted per year (audiovisual items only)?
+### On average, what percentage of this institutional collection is digitally re-formatted per year? (audiovisual items only)
 
 - [ ] None
 - [ ] Less than 1%
@@ -92,23 +92,47 @@
 - [ ] Yes
 - [ ] No
 
-### Does your institution use outside vendors for transcoding or downstream encoding of audiovisual materials?
+### Are outside vendors considered Producers by your institution according to the OAIS reference model? (eg., provide assets in the form of Information Packages)
 
 - [ ] Yes
 - [ ] No
 
-### Is fixity performed on any incoming digital assets (described in the OAIS reference model as information related to Preservation Description Information (PDI)?
+### What additional information packages (if any) are made by outside vendors? (more than one answer may apply)
 
-- [ ] Yes
-- [ ] No
-- [ ] I don't know
+- [ ] Submission Information Packages (SIPs)
+- [ ] Archival Information Packages (AIPs)
+- [ ] Dissemination Information Packages (DIPs)
+- [ ] None
+
+### What kind of Preservation Description Information is created for Information Packages by outside vendors? (more than one answer may apply)
+
+- [ ] Provenance Information
+- [ ] Reference Information
+- [ ] Fixity Information
+- [ ] Context Information
+- [ ] Access Rights Information
+- [ ] None
+- [ ] Other
+
+### Approximately what percent of free and open source software (FOSS) is used by outside vendors in the creation of media assets and any associated information packages?
+
+- [ ] Under 10%
+- [ ] 10-50%
+- [ ] Over 50%
 
 ### Does your institution perform any in-house digital reformatting of audiovisual materials?
 
 - [ ] Yes
 - [ ] No
 
-### (If yes) Who routinely performs digital reformatting of audiovisual materials in-house?
+### What information packages (if any) are usually created in-house? (more than one answer may apply)
+
+- [ ] Submission Information Packages (SIPs)
+- [ ] Archival Information Packages (AIPs)
+- [ ] Dissemination Information Packages (DIPs)
+- [ ] None
+
+### (If yes) Who routinely performs digital reformatting of audiovisual materials in-house? (More than one may apply)
 
 - [ ] Full-time institutional employee
 - [ ] Part-time institutional employee
@@ -116,41 +140,23 @@
 - [ ] Volunteer
 - [ ] Other
 
-### Does your institution perform transcoding or downstream encoding of audiovisual materials in-house?
+### What kind of Preservation Description Information is created for Information Packages? (more than one answer may apply)
 
-- [ ] Yes
-- [ ] No
-- [ ] I don't know
-
-### (If yes) Who routinely performs downstream encoding of audiovisual materials in-house?
-
-- [ ] Full-time institutional employee
-- [ ] Part-time institutional employee
-- [ ] departmental intern
-- [ ] volunteer
-- [ ] other
-
-### (If Yes) What type of software is usually employed for this task?
-
-- [ ] Adobe Media Encoder
-- [ ] Apple Compressor
-- [ ] MPEG Streamclip
-- [ ] FFMpeg, Custom Software, Other)
-
-### Is fixity performed on newly created assets?
-
-- [ ] Yes
-- [ ] No
-- [ ] I don't know
-
-### What kind of software is used for fixity?
-
-- [ ] MD5
-- [ ] Bagger/BagIt
-- [ ] Custom Software
+- [ ] Provenance Information
+- [ ] Reference Information
+- [ ] Fixity Information
+- [ ] Context Information
+- [ ] Access Rights Information
+- [ ] None
 - [ ] Other
 
-### What type of operating system does your institution typically employ for quality control / file inspection?
+### Approximately what percent of free and open source software (FOSS) is used in the creation of media assets and any associated information packages?
+
+- [ ] Under 10%
+- [ ] 10-50%
+- [ ] Over 50%
+
+### What type of operating system does your institution typically employ for digital reformatting, quality control, and fixity?
 
 - [ ] Mac OS
 - [ ] PC
