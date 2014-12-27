@@ -3,7 +3,7 @@ report_basename="PreformaMediainfoDesignReport"
 pwd=$(pwd)
 cd $(dirname "${0}")
 echo "" > "${report_basename}.md"
-for report in ../Introduction.md ../Architecture.md ../Narrative.md ../StyleGuide.md ; do
+for report in ../Introduction.md ../Narrative.md ../Architecture.md ../StyleGuide.md ; do
     echo "${report}"
     if [ -f "${report}" ] ; then
         cat "${report}" >> "${report_basename}.md"
