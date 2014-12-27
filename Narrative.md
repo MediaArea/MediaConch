@@ -50,6 +50,15 @@ To counteract arising obsolescence challenges it is critical to have access to t
 
 ## Introduction of Formats
 
+During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added.
+
+Matroska, FFV1, and LPCM describe very unique concepts of information including:
+- a container format (Matroska)
+- a codec for audio data (LPCM)
+- a codec for video data (FFV1)
+
+Additionally other formats currently being addressed by PreForma fit within these three conceptual categories; for instance, PDF and TIFF are containers and JPEG2000 is a video container. These three concepts affect the design of an overall application shell as conformance information for each category can have its own optimized user interface.
+
 ### Matroska
 
 Matroska is a open-licensed audiovisual container format with extensive and flexible features and an active user community. The format is supported by a set of core utilities for manipulating and assessing Matroska files, such as mkvtoolnix and mkvalidator.
@@ -63,6 +72,10 @@ Matroska integrates a flexible and semantically comprehensive hierarchical metad
 FFV1 is a efficient lossless video codec which is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominence, aspect ratio, and colorspace so that it is not reliant on a container format to store this information. FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resillience, or encoding speed.
 
 ### Linear PCM
+
+Linear PCM is a ubitiquous and simple audio format. PCM audio streams may be comprised of signed or unsiged samples, arranged in little-endian or big-endian arragements, in any number of audio channels. PCM is very flexible but is not self-descriptive. A raw PCM file can not properly be decoded without knowing the sample encoding, channel count, endianness, bit depth, and sample rate. PCM is typically dependent on its container to store sufficient metadata for its decoding.
+
+Because PCM streams contain only audio samples without any codec structure or metadata within the stream, by itself any data could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container.
 
 ## Development of an Open Source Conformance Checker
 
