@@ -29,25 +29,31 @@ DCP / IMF
 OGG
 … Any other wrapper on sponsor request (we have skills in LXF, GXF, Flash video, DV, DASH, CDXA, HLS, HDS, ISM, MPEG-TS, MPEG-PS, Real Media, WMV/WMA…)
 
-## Container/Wrapper demuxer
-Preforma MediaInfo native:
-MKV (including WebM)
-MXF (lot of archive institutions use JPEG 2000 in MXF)
-MOV/MP4 (lot of archive institutions use JPEG 2000 in MOV/MP4)
-AVI (lot of archive institutions use FFV1 in AVI)
-WAV (a common container for PCM)
+## Container/Wrapper Demultiplexing
 
-Used as a proof of concept of plugin integration:
-FFmpeg demuxer (GPLv2+ license, compatible with GPLv3+ but not with MPL2+)
-Available, optionally to be included in Preforma project:
-AAF (ancestror of MXF, sometimes used in archive institutions)
-DCP / IMF
-OGG
-XDCAM Clips
-P2 camera XMLs
+### MediaInfo
 
-Planned, optionally to be included in Preforma project:
-… Any other wrapper already developed for MediaInfo (LXF, GXF, Flash video, DV, DASH, CDXA, HLS, HDS, ISM, MPEG-TS, MPEG-PS, Real Media, WMV/WMA…)
+PreForma MediaInfo will utilizing MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):
+
+- MXF (commonly found within memory institutions)
+- MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
+- AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek)
+- WAV (a common container for LPCM)
+
+By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.
+
+### FFmpeg
+
+FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing. For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.
+
+Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as:
+
+- Video Waveform Monitor
+- Vectorscope
+- Ability to inspect luminance and chroma planes separately
+- Audio Meters
+
+We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.
 
 ## Stream / Essence implementation checker
 Preforma MediaInfo native:
@@ -82,6 +88,7 @@ Used as a proof of concept of plugin integration:
 QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)
 
 ## Hypervisor
+
 Communication between all plugins
 Shudeling
 Statistics
