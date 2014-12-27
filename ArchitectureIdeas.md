@@ -37,6 +37,7 @@ PreForma MediaInfo will utilizing MediaInfo's existing demuxing libraries which 
 
 - MXF (commonly found within memory institutions)
 - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
+- DV (video stream format which uses LPCM)
 - AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek)
 - WAV (a common container for LPCM)
 
