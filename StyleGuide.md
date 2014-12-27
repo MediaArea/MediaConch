@@ -1,16 +1,16 @@
-# Style Guide
+## Style Guide
 --
-# Source Code Guide
+## Source Code Guide
 
-## Portability
+### Portability
 
 Source code MUST be built for portability between technical deployment platforms. 
 
-## Modularity
+### Modularity
 
 Source code MUST be built in a modular fashion for improved maintainability.
 
-## Deployment
+### Deployment
 
 The Conformance Checker MUST allow for deployment in these five infrastructures/environments: The PREFORMA website, an evaluation framework, a stand-alone system, a network-based system, and legacy systems.
 
@@ -24,13 +24,13 @@ The Conformance Checker must allow for deployment in network-based solutions (de
 
 The Conformance Checker must have the capability of being plugged into legacy systems via written API integration.
 
-## API's
+### API's
 
 The Conformance Checker MUST interface with other software systems via API’s. 
 
-# Open Source Practices
+## Open Source Practices
 
-## Development
+### Development
 
 Development of software in open source projects in PREFORMA MUST utilise effective open source work practices. Effective open source work practices include:
 
@@ -41,26 +41,26 @@ Development of software in open source projects in PREFORMA MUST utilise effecti
 * use of an open platform for open development (e.g. Github)
   An open platform on which to develop software facilitates the open development of that software. Public visibility and ability to contribute to the software by anyone allows for heartier, more reliable software. Feedback is more easily sought and more readily provided with the use of an open platform. Github will be used as the open platform for open development of this project.
 
-## Open Source Platforms
+### Open Source Platforms
 
 All development of software and all development of digital assets (related to developed open source software) in PREFORMA MUST be conducted and provided in open source projects at open development platforms.
 
-# Contribution Guide
+## Contribution Guide
 
-## File Naming Conventions
+### File Naming Conventions
 
 Files related to documentation should be named in CamelCase. Sample data should be added in snake_case with a sufficiently descriptive title.
 
 Commit messages should concisely summarize the contribution. Commits should be cohesive and only include changes to relevant files (e.g. do not fix a typo in the Style Guide, change scope paramaters, and fix a bug all in the same commit).
 
-## Rules for Qt/C++ code:
+### Rules for Qt/C++ code:
 
 4 spaces are used for indentation. Tabs are never used.
 
 For more guidelines, refer to the Qt Coding Style guide: http://qt-project.org/wiki/Qt_Coding_Style
 For even more guidelines, Google guide on C++: http://google-styleguide.googlecode.com/svn/trunk/cppguide.html
 
-## Rules for contributing code
+### Rules for contributing code
 
 Contributions of code or additions to documentation must be written with Qt and must be made in the form of a branch submitted as a pull request. 
 
@@ -70,15 +70,15 @@ Contributions of code or additions to documentation must be written with Qt and 
   4.  Push to the branch (`git push origin my-new-feature`)
   5.  Create a new Pull Request with a more verbose description of the proposed changes
 
-## Rules for contributing feedback
+### Rules for contributing feedback
 
 Feedback of all kind is encouraged and can either be made through [opening an issue](https://github.com/MediaArea/PreFormaMediaInfo/issues) or by contacting the team directly at info@mediaarea.net
 
-## Linking
+### Linking
 
 In order to facilitate self-description, intuitive discovery, and use of resulting code and documentation it is highly encouraged to utilize linking through documentation, tickets, commit messages, and within the code. For instance the registry itemizes individual conformance checks should link to code blocks and/or commits as software is developed that is associated to that conformance check. In this manner it should be feasible to easily review both human-readable descriptions of conformity checks and associated programmatic implementations.
 
-# License
+## License
 
 The software and digital assets delivered by tenderer are made available under the following IPR conditions:
           
