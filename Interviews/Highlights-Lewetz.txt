@@ -24,27 +24,27 @@ Peter:  Openness is extremely import in comparing standardization [audio cut out
 
 Dave:  ...any containers you worked with you struggled to understand the technology?
 
-Peter: some but not too many XMF files; not just during evaluation of which format to use but from broadcasters; but some times some parts worked, some didn’t, and you couldn’t figure out what was going on.  Born-digital files created in unknown conditions.  PLaying back with VLC worked fine, but transcoding it caused the audio to not work.
+Peter: some but not too many MXF files; not just during evaluation of which format to use but from broadcasters; but some times some parts worked, some didn’t, and you couldn’t figure out what was going on.  Born-digital files created in unknown conditions.  Playing back with VLC worked fine, but transcoding it caused the audio to not work.
 
 Dave:  [question]
 
-Hermann: What I’ve learned in 4 years about fflv1 is it just works; we can migrate from this without a loss, but meanwhile I don’t think I’ve thought about migrating
+Hermann: What I’ve learned in 4 years about ffv1 is it just works; we can migrate from this without a loss, but meanwhile I don’t think I’ve thought about migrating
 
 Peter: to be less afraid of using something because everyone is using something else. afer 5 years, many institutions I’ve talked with, they were very skeptical about something new working.  This first step of trying something that is not accepted within the community or domain we’re working in.  And I’ve also seen that in other areas where IT is used and people are super cautious.
 
-Hermann: in the beginning, I tried to find people; I talked with James Pepper and I tried to find out why jpeg2000 was so important to him, what he thinks about another option.  I had the same doubts; if this is so good, why weren’t other people using it or trying it?
+Hermann: in the beginning, I tried to find people; I talked with James Snyder and I tried to find out why jpeg2000 was so important to him, what he thinks about another option.  I had the same doubts; if this is so good, why weren’t other people using it or trying it?
 
 Dave: talk more about conformance and valdiation; how do you assess qualitiy or conformance? Workflow for conformance checking?
 
 Peter:  ffmpeg running for transcoding; autocreate access copy [missed]; if mpeg plays well audio is there from beginning to end, everythng--we do not deeply inspect bitstream for standards compliance; but we have ffmpeg tell us if something is wrong. I don’t think there is a need to do bitstream analysis, but it would be really nice for the newer version to know whether the right parameters have actually been set. Currently I don’t know if there is a possibility of actually checking that.
 
-Dave: debug1; intended encoding and actual
+Dave: Refers to ffmpeg's -debug 1 option for analysis.
 
 Hermann: necessary to have it in a standard workflow; it would be great to have it 
 
-Peter: ran massive test suites; what is lacking there are fake tests.  [Test-driven development!]  I’m a bit afraid of silent regressions happen.
+Peter: ran massive test suites; what is lacking there are FATE tests.  [Test-driven development!]  I’m a bit afraid of silent regressions happen.
 
-Hermann: another advantage of ffv1; there are few different implementations; few implemenations, all use the same implmentatipns; what I fear is moment when big vendors accept ffv1 as a standard and they start to create implement different implementations; same thing as happened to jpeg2000.  A standardization/conformance checker would be incredibly important now.
+Hermann: another advantage of ffv1; there are few different implementations; few implemenations, all use the same implmentations; what I fear is moment when big vendors accept ffv1 as a standard and they start to create implement different implementations; same thing as happened to jpeg2000.  A standardization/conformance checker would be incredibly important now.
 
 Peter: people who intend to buy any product using ffv1 make sure that implementation conforms to the your [preforma] conformance checks. [Will send citation for AMIA-list quote]
 
@@ -52,13 +52,11 @@ Erik:  reformatting workflow?
 
 Hermann: when we ingest analog material we directly ingest in ffv1; no intermediate format
 
-Erik:  ffv1 not too incorporated iwht analog-digital converters
+Erik:  ffv1 not too incorporated with analog-digital converters
 
 Hermann: we started having a converter converting all into SDI; and we have a [something] card with; using ffshort trial [check recording]; but beause we are not very happy with the converters, we will try some other options. 
 
 Peter: but itwas not necessary to have ffv1 directly in the confirm hardware.  It turned out in the past hardware impementations might be nice but very often you’re locked into whatever they offer you and hae not ability to change it.  Other parts of workflow where we use ffv1: for borndigital we have whitelist of codecs that we allow into archive for the time being because of space considerations, so we don’t transcode to fffv1; everything else is blown up to ffv1.
 [check recording]
 
-a very important factor is support of ffv1 in tools used through tool chain. we use KDM5/KDN Live? and virutal[check recording].
-
-
+A very important factor is support of ffv1 in tools used through tool chain. we use kdenlive and virutaldub.
