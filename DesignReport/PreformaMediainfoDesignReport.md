@@ -399,3 +399,2074 @@ All source code for all software developed during the PREFORMA project MUST alwa
           
 All digital assets developed during the PREFORMA project MUST be provided under the open access license: Creative Commons CC-BY v4.0 and in open file formats, i.e. an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004) 
 
+## Checker Design: Conformance and Coherency
+
+Conformance checks for both container formats (such as Matroska) and streams (such as LPCM and FFV1) shall be defined, registered, and associated with the code that performs the check. PreForma MediaInfo will perform and report on a growing list of tests per format. Many of these tests will be derived directly from the specifications or standard documents of a given file format, but other tests will derive from expected patterns and structural incoherency. Some checks focus on coherency between a stream and a container (such as if the container and stream utilize contradictory aspect ratios).
+
+These checks shall have logical cause and effect or conditional relationships and shall be documented by the citation of external standards documentation or by the project’s own research and development. MediaArea plans to provide guidance for user communities to develop and explain their own ruleset in shareable form. An XML schema for conformance definition is provided. MediaArea’s development of conformance and policy checkers will involve several categories of tests. In addition to supporting conformity checks and logical interpretation of selected file formats, there is user desire for checks performed based on internal or institutional policy that are not necessarily embedded in the file format technical specifications. A PreForma MediaArea 'shell' shall be able to load multiple sets of conformity/coherency rulesets so that users may select which rulesets they choose to adhere to as well as create their own.
+
+Conformance and coherency rulesets specifically targeting specification compliance of FFV1, Matroska, and LPCM are currently under development.
+### Matroska Conformance Checks (Draft)
+### Extension Test
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EXT|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|File name|
+|Citation|http://www.matroska.org/node/2/revisions/153/view|
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    The file extension SHOULD be one of the following (MKV, MKA, MKS, MK3D, WEBM)
+
+
+### Extension Test MKV
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EXT-MKV|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|File name|
+|Citation|http://www.matroska.org/node/2/revisions/153/view|
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    If the file extension is MKV, the file SHOULD contain at least one video track.
+
+
+### Extension Test MKA
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EXT-MKA|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|File name|
+|Citation|http://www.matroska.org/node/7/revisions/214/view|
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    If the file extension is MKA, the file SHOULD contain at least one audio track and no other type of track, i.e. "audio-only".
+
+
+### Extension Test MKS
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EXT-MKS|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|File name|
+|Citation|http://www.matroska.org/node/2/revisions/153/view|
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    If the file extension is MKS, the file SHOULD contain at least one subtitle track and no other type of track, i.e. "subtitle-only".
+
+
+### Extension Test MK3D
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EXT-MK3D|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|?|
+|Target Format Part|File name, StereoMode element|
+|Citation|http://www.matroska.org/node/2/revisions/153/view|
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    If the file extension is MKV3D the file SHOULD contain at least one video track AND SHOULD contain at least one StereoMode element.
+
+
+### EBML Element Start
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-ELEM-START|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    "Set the EBML characteristics of the data to follow. Each EBML document has to start with this."
+Definition:
+    An Matroska file MUST start with an EBML element id, ie. 0x1A45DFA3.
+
+
+### EBML vint efficiency
+|Descriptor|Value|
+|:---------|:----|
+|CCID|EBML-VINT-EFF|
+|Version|0|
+|Authority|EBML Specification|
+|Target Format|EBML|
+|Target Format Version|all|
+|Target Format Part|EBML Structure|
+|Citation|http://matroska.org/technical/specs/rfc/index.html|
+|Rule Clarify||
+
+Quote:
+    Section 2.2 "IDs are always encoded in their shortest form, e.g. 1 is always encoded as 0x81 and never as 0x4001."
+Definition:
+    The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits,  i.e. vint is expressed as efficiently as feasible.
+
+
+### Element ID Registered
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-KNOWN-ELEM|
+|Version|0|
+|Authority||
+|Target Format|EBML|
+|Target Format Version|all|
+|Target Format Part||
+|Citation||
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    Ensure MKV Element ID is registered in specdata.xml (as of Dec. 13, 2014 this is 224 registered Element IDs)
+
+
+### Element Size 0x7F Reservation
+|Descriptor|Value|
+|:---------|:----|
+|CCID|EBML-ELEM-SIZE-7F|
+|Version|0|
+|Authority|EBML Specification|
+|Target Format|EBML|
+|Target Format Version|all|
+|Target Format Part|EBML Element Size|
+|Citation|http://matroska.org/technical/specs/rfc/index.html|
+|Rule Clarify|Warning, since it is possible (though unlikely) element size is unknown but then happens to be 127 bytes.|
+
+Quote:
+    "Note that the shortest encoding form for 127 is 0x407f since 0x7f is reserved."
+Definition:
+    If Element Size is set to 0x11111111 but element size is actually 127 bytes provide a warning.
+
+
+### Element Size Byte Length Limit
+|Descriptor|Value|
+|:---------|:----|
+|CCID|EBML-ELEM-SIZE-CAP|
+|Version|0|
+|Authority|EBML Specification|
+|Target Format|EBML|
+|Target Format Version|all|
+|Target Format Part|EBML Element Size|
+|Citation|http://matroska.org/technical/specs/rfc/index.html|
+|Rule Clarify||
+
+Quote:
+    Section 2.3: "The EBML element data size is encoded as a variable size integer with, by default, widths up to 8."
+Definition:
+    The first eight bits of any Element Size may not start with 0b00000000.
+
+
+### Element Size Unknown
+|Descriptor|Value|
+|:---------|:----|
+|CCID|EBML-ELEM-SIZE-UNK|
+|Version|0|
+|Authority|EBML Specification|
+|Target Format|EBML|
+|Target Format Version|all|
+|Target Format Part|EBML Element Size|
+|Citation|Dave|
+|Rule Clarify|Warning|
+
+Quote:
+    "Values with all data bits set to 1 means size unknown, which allows for dynamically generated EBML streams where the final size isn't known beforehand."
+Definition:
+    Warning on unknown element sizes, unoptimized MKV.
+
+
+### Level 0 Segment
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-LEVEL-0|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    Inferred: EBML and Segment are the only level 0 elements, both are allowed to occur multiple times.
+Definition:
+    The EBML Header MUST be immediately followed by another EBML Header Element, 0x1A45DFA3, or a Segment Element, 0x18538067. {{Can global Elements exist at level 0?!}}
+
+
+### Only One EBML Header recommended
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-1-EBML|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Matroska structure|
+|Citation|is there a rule to prevent this?|
+|Rule Clarify|Warning|
+
+Quote:
+    Assumed: Two EBML Headers in one MKV file seems contradictory.
+Definition:
+    There SHOULD only occur one EBML level 0 element within an MKV file. (EBML Headers could recur if an MKV file is an attachment of an MKV file).
+
+
+### File Size Consistency
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-FILESIZE-MATCH|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Matroska structure|
+|Citation|http://www.matroska.org/technical/specs/index.html#block_structure|
+|Rule Clarify||
+
+Quote:
+    Inferred
+Definition:
+    The actual file size should be the sum of all level 0 Element Size declarations plus the sum of the byte sizes of level 0 Element IDs and Element Sizes.
+
+
+### EBMLVersion Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-VER|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    Within any EBML Header exactly one EMBL Version element must be present.
+
+
+### EBMLReadVersion Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-RV|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### EBMLMaxIDLength Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-MAXIDL|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### EBMLMaxSizeLength Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-MAXSL|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### DocType Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-DOCT|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### DocTypeVersion Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-DOCTV|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### DocTypeReadVersion Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-EBML-DOCTRV|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### EBML Version Coherency
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-VER-COH|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation|http://www.matroska.org/technical/specs/index.html#block_structure|
+|Rule Clarify|Inferred|
+
+Quote:
+    
+Definition:
+    The value of EBMLVersion MUST be greater than or equal to the vale of EBMLReadVersion.
+
+
+### EBMLMaxIDLength Limits
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-MAXID-LIMIT|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation|specdata.xml|
+|Rule Clarify|Spec says "4 or less", but since the EBML ID length itself is 4, the EBMLMaxIDLength has not other valid value.|
+
+Quote:
+    
+Definition:
+    MUST equal 4
+
+
+### EBMLMaxSizeLength Limit
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-MAXSL-LIMIT|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation|specdata.xml|
+|Rule Clarify|"The maximum length of the sizes you'll find in this file (8 or less in Matroska)."|
+
+Quote:
+    
+Definition:
+    Must be less than or equal to 8 and greater than or equal to 1.
+
+
+### EBMLMaxSizeLength Matches
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-MAXSL-MATCH|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    No Element Size Length exceeds the length noted in EBMLMaxSizeLength
+
+
+### DocType
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-DOCT-KNOWN|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    MUST equal either "matroska" or "webm"
+
+
+### DocTypeVersion Coherency
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-DOCTV-COH|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    The value of DocTypeVersion MUST be greater than or equal to the vale of DocTypeReadVersion.
+
+
+### DocTypeVersion Limits
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-DOCTV-LIMIT|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|EBML Header|
+|Citation||
+|Rule Clarify|Warning|
+
+Quote:
+    
+Definition:
+    Values for DocTypeVersion and DocTypeReadVersion must be either 1, 2, 3, or 4.
+
+
+### Top Elements Coded on 4 Octets
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TOP-ELEM-4CODE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Matroska structure|
+|Citation|http://www.matroska.org/technical/specs/index.html#block_structure|
+|Rule Clarify|"All top-levels elements (Segment and direct sub-elements) are coded on 4 octets, i.e. class D elements."|
+
+Quote:
+    
+Definition:
+    Note: this seems to contradict EBML rule to use most efficient element size, but perhaps this is an intention deviation of MKV to achieve top elements starting on mutiples of 4 octets. ?
+
+
+### CRC Order
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-CRC-ORDER|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|CRC Element|
+|Citation|http://www.matroska.org/technical/specs/index.html#block_structure|
+|Rule Clarify|"The CRC element should be the first in it's parent master for easier reading."|
+
+Quote:
+    
+Definition:
+    CRC Elements SHOULD be the first sub-Element of its parent Element.
+
+
+### CRC-32 Size Coherency
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-CRC-COH|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|CRC Element|
+|Citation|http://www.matroska.org/technical/specs/index.html#block_structure|
+|Rule Clarify|Inferred: "The CRC in use is the IEEE CRC32 Little Endian"|
+
+Quote:
+    
+Definition:
+    The Element Size of the CRC-32 Element MUST be 4 bytes (aka 32 bit).
+
+
+### CRC Validation
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-CRC-VAL|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|CRC Element|
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    The crc hash of the CRC-32 element MUST validate the subsequent data of the parent Element, from the Element that follows the CRC-32 element to the end of the parent Element.
+
+
+### CRC Not Pointlessly Used
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-CRC-REASON|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|CRC Element|
+|Citation|author|
+|Rule Clarify|Recommended|
+
+Quote:
+    
+Definition:
+    A CRC-32 element should not be the only child Element of its parent Element (ie hashing no data).
+
+
+### CRC-Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-CRC-PRES|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|CRC Element|
+|Citation||
+|Rule Clarify|"All level 1 elements should include a CRC-32." but CRC-32 Element is NOT Mandatory.  ?|
+
+Quote:
+    
+Definition:
+    Warning when Level 1 elements have no CRC-32. Very common.
+
+
+### Single Segment Composition
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part||
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    "Typically a Matroska file is composed of 1 segment."
+Definition:
+    File MUST contain at least one segment.
+
+
+### Seek-Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEEK-PRES|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Meta Seek Element|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    File MUST contain at least one Seek element.
+
+
+### SeekID-Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEEKID-PRES|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Meta Seek Element|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    File MUST contain at least one SeekID element.
+
+
+### SeekID-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEEKID-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Meta Seek Element|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    SeekID MUST be in binary format.
+
+
+### SeekPosition-Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEEKPOSITION-PRES|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Meta Seek Element|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    File MUST contain at least one SeekPosition element.
+
+
+### Segment-Info-Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTINFO-PRES|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    Segment information MUST contain at least one Info element.
+
+
+### SegmentUID-Range
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTUID-RNG|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify|Range cannot be zero.|
+
+Quote:
+    
+Definition:
+    SegmentUID MUST be greater than zero.
+
+
+### SegmentUID-Size
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTUID-SIZE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, SegmentUID MUST be 128 bits (16 bytes) in size.
+
+
+### SegmentUID-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTUID-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, SegmentUID MUST be in binary format.
+
+
+### SegmentFilename-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTFILENAME-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, SegmentFilename MUST be in UTF-8 format.
+
+
+### PrevUID-Size
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-PREVUID-SIZE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, PrevUID MUST be in binary format.
+
+
+### PrevUID-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-PREVUID-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, PrevUID MUST be 128 bits (16 bytes) in size.
+
+
+### PrevFilename-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-PREVFILENAME-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, PrevFilename MUST be in UTF-8 format.
+
+
+### NextUID-Size
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-NEXTUID-SIZE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, NextUID MUST be in binary format.
+
+
+### NextUID-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-NEXTUID-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, NextUID MUST be 128 bits (16 bytes) in size.
+
+
+### NextFilename-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-NEXTFILENAME-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, NextFilename MUST be in UTF-8 format.
+
+
+### SegmentFamily-Size
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTFAMILY-SIZE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, SegmentFamily MUST be in binary format.
+
+
+### SegmentFamily-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-SEGMENTFAMILY-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, SegmentFamily MUST be 128 bits (16 bytes) in size.
+
+
+### TimecodeScale-Presence
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TIMECODESCALE-PRES|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    File MUST contain at least one TimecodeScale element.
+
+
+### Duration-Range
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-DURATION-RANG|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, duration range MUST be greater than 0
+
+
+### Duration-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-DURATION-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|http://www.matroska.org/technical/specs/index.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, duration type MUST be float integer.
+
+
+### DateUTC-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-DATEUTC-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|specdata.xml|
+|Rule Clarify|UTC standards inferred.|
+
+Quote:
+    
+Definition:
+    If present, DateUTC MUST be in date format and follow UTC standards.
+
+
+### Title-Type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TITLE-TYPE|
+|Version|0|
+|Authority|Matroska Specification|
+|Target Format|Matroska|
+|Target Format Version|all|
+|Target Format Part|Segment Element|
+|Citation|specdata.xml|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    If present, Title MUST be in UTF-8 format.
+
+
+### FFV1 Conformance Checks (Draft)
+### Missing header
+|Descriptor|Value|
+|:---------|:----|
+|CCID|OUTOFBAND-HEADER-MISSING|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1 >=2|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify||
+
+Quote:
+    "Version 2 and later files use a global header"
+Definition:
+    If version is 2 or more, there should be a global header in the container private data
+
+
+### version
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-version|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify|Warning|
+
+Quote:
+    "version 0, 1 or 3"
+Definition:
+    Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)
+
+
+### version 2
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-version2|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify|Warning|
+
+Quote:
+    "Version 2 was never enabled in the encoder thus version 2 files should not exist"
+Definition:
+    Version 2 is forbidden, analysis stops
+
+
+### micro_version 2
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-micro_version|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify|Warning|
+
+Quote:
+    "For version 3, micro_version is 4, micro versions prior to this represent pre standard"
+Definition:
+    Not supported version, high risk of decoding issue
+
+
+### coder_type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-coder_type|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify||
+
+Quote:
+    "0 (Golomb Rice), 1 (Range coder), 2 (Range coder with custom state transition table)"
+Definition:
+    coder_type >2 is not supported
+
+
+### state_transition_delta
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-state_transition_delta|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    (To be defined)
+
+
+### colorspace_type
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-colorspace_type|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify||
+
+Quote:
+    "0 (YCbCr), 1 (JPEG2000_RCT) "
+Definition:
+    colorspace_type >1 is not supported
+
+
+### bits_per_raw_sample
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-bits_per_raw_sample|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format|FFV1|
+|Target Format Version|all|
+|Target Format Part|Header|
+|Citation|http://www.ffmpeg.org/~michael/ffv1.html|
+|Rule Clarify|Are other values valid?|
+
+Quote:
+    "commonly 8, 9, 10 or 16 "
+Definition:
+    
+
+
+### (More header tests to add)
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    
+
+
+### crc_parity
+|Descriptor|Value|
+|:---------|:----|
+|CCID|FFV1-HEADER-crc_parity|
+|Version|0|
+|Authority|FVV1 Specification|
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+|Rule Clarify||
+
+Quote:
+    "32bit that are choosen so that the global header as a whole or slice as a whole has a crc"
+Definition:
+    
+
+
+### LPCM Conformance Checks (Draft)
+### formatType
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-FMT|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 16|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    "If the <wFormatTag> field of the <fmt-ck> is set to WAVE_FORMAT_PCM, then the waveform data consists of samples represented in pulse code modulation (PCM) format."
+Definition:
+    WAVE_FORMAT_PCM = 0x0001
+
+
+### bitsPerSample
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-BPS|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 17|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    "The <nBitsPerSample> field specifies the number of bits of data used to represent each sample of each channel. If there are multiple channels, the sample size is the same for each channel."
+Definition:
+    valid bits per sample 16, 20 or 24
+
+
+### bytesPerSecond
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-BYT|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 17|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    "For PCM data, the <nAvgBytesPerSec> field of the ‘fmt’ chunk should be equal to the following formula rounded up to the next whole number: (nChannels x nSamplesPerSecond x nBitsPerSample) / 8"
+Definition:
+    MUST equal (nChannels x nSamplesPerSecond x nBitsPerSample) / 8    **only important for compressed formats
+
+
+### blockAlignment
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-BLK|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 17|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    "The <nBlockAlign> field should be equal to the following formula, rounded to the next whole number: (nChannels x nBitsPerSample)/8"
+Definition:
+    C ontainer size (in bytes) of one set of samples. MUST equal (nChannels x nBitsPerSample)/8EBU        **Note: The above formulae do not always give the correct answer. Strictly speaking, the number of bytes per sample (nBitsPerSample/8) should be rounded first. Then this integer should be multiplied by <nChannels> (which is always an integer) to give <nBlockAlign>. This in turn should be multiplied by <nSamplesPerSecond> to give <nAvgBytesPerSec>].
+
+
+### channelCount
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-CHN|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 17|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    1 = mono, 2 = stereo, etc.
+Definition:
+    1 = mono, 2 = stereo, etc.
+
+
+### nChannels
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-CHN|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 17|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    "Number of channels in the wave, 1 for mono, 2 for stereo"
+Definition:
+    1 = mono, 2 = stereo, etc.
+
+
+### sampleRate
+|Descriptor|Value|
+|:---------|:----|
+|CCID|BWF-LPCM-SRT|
+|Version|0|
+|Authority|EBU BWAV v2 Specification|
+|Target Format|BWF|
+|Target Format Version|2|
+|Target Format Part|FormatChunk 'fmt'|
+|Citation|EBU Tech 3285 v2, pg. 17|
+
+Rule Clarify:
+    Inferred
+
+Quote:
+    "Frequency of the sample rate of the wave file. This should be 48000 or 44100 etc. This rate is also used by the sample size entry in the fact chunk to determine the length in time of the data."
+Definition:
+    32000, 44100, 48000, etc.
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### 
+|Descriptor|Value|
+|:---------|:----|
+|CCID||
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarify:
+    
+
+Quote:
+    
+Definition:
+    
+
+
+### Container/Stream Coherency Checks (Draft)
+### Aspect Ratio Match
+|Descriptor|Value|
+|:---------|:----|
+|CCID|COHERENCY-DAR|
+|Version|0|
+|Authority||
+|Target Format|FFV1/MKV|
+|Target Format Version||
+|Target Format Part||
+|Citation||
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    Display Aspect Ratio indicated in the container (e.g. Matroska) is not the Display Aspect Ratio indicated in the FFV1 stream
+
+
+### Width Match
+|Descriptor|Value|
+|:---------|:----|
+|CCID|COHERENCY-WIDTH|
+|Version|0|
+|Authority|FVV1 and Container Specifications|
+|Target Format|FFV1|
+|Target Format Version|Container|
+|Target Format Part|all|
+|Citation|Header|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    Width indicated in the container (e.g. Matroska) is not the width indicated in the FFV1 stream
+
+
+### Height Match
+|Descriptor|Value|
+|:---------|:----|
+|CCID|COHERENCY-HEIGHT|
+|Version|0|
+|Authority|FVV1 and Container Specifications|
+|Target Format|FFV1|
+|Target Format Version|Container|
+|Target Format Part|all|
+|Citation|Header|
+|Rule Clarify||
+
+Quote:
+    
+Definition:
+    Height indicated in the container (e.g. Matroska) is not the height indicated in the FFV1 stream
+
+
