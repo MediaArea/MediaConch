@@ -1,33 +1,24 @@
-# Layers
-## Transport interface
-Preforma MediaInfo native:
-Direct file access (file API of each operating system), including growing files (creation time)
-Direct memory mapping (useful for third parties)
+## Native Plugins
+
+We propose incorporating several compatible utilities into PreForma MediaInfo to extend functionality and add immediate convenience for users.
+
+### MediaInfo
+
+MediaInfo is comprehensive tool for providing technical metadata for a variety of formats. While MediaInfo will be a foundational building block for much of the Matroska, LPCM, and FFV1 functions of the tool, the incorporation of MediaInfo makes several features easily accessible such as exporting technical metadata in PBCore, EBUCore, MPEG-7, and MediaInfo XML formats.
+
+MediaInfo also offers a file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.
+
+###libcURL
+
+libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into PreForma MediaInfo the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.
+
+Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.
 
 Used as a proof of concept of plugin integration:
 HTTP/HTTPS/FTP/FTPS/  ? MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)
 
-Planned, optionally to be included in Preforma project:
-ISO file (DVD-Video, used in some archives)
-ZIP file (used for e.g. transporting a bunch of JPEG 2000 images)
-Amazon S3
-
-## Container/Wrapper implementation checker (and metadata fixer)
-Preforma MediaInfo native:
-WAV (a common container for PCM)
-MKV (including WebM)
-
 Used as a proof of concept of plugin integration:
 mkvalidator for MKV (BSD license, compatible with GPLv3+/MPL2+)
-
-Planned, optionally to be included in Preforma project:
-MXF (including  AS specifications conformance checking)
-MXF (lot of archive institutions use JPEG 2000 in MXF)
-MOV/MP4 (lot of archive institutions use JPEG 2000 in MOV/MP4)
-AVI (lot of archive institutions use FFV1 in AVI)
-DCP / IMF
-OGG
-… Any other wrapper on sponsor request (we have skills in LXF, GXF, Flash video, DV, DASH, CDXA, HLS, HDS, ISM, MPEG-TS, MPEG-PS, Real Media, WMV/WMA…)
 
 ## Container/Wrapper Demultiplexing
 
