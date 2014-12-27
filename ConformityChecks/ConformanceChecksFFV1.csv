@@ -9,6 +9,3 @@ colorspace_type,FFV1-HEADER-colorspace_type,0,FVV1 Specification,FFV1,all,Header
 bits_per_raw_sample,FFV1-HEADER-bits_per_raw_sample,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""commonly 8, 9, 10 or 16 """,Are other values valid?,
 (More header tests to add),,,,,,,,,,
 crc_parity,FFV1-HEADER-crc_parity ,0,FVV1 Specification,,,,,"""32bit that are choosen so that the global header as a whole or slice as a whole has a crc""",,
-Container width,COHERENCY-WIDTH,0,FVV1 and Container Specifications,FFV1, Container,all,Header,,,Width indicated in the container (e.g. Matroska) is not the width indicated in the FFV1 stream
-Container height,COHERENCY-HEIGHT,0,FVV1 and Container Specifications,FFV1, Container,all,Header,,,Height indicated in the container (e.g. Matroska) is not the height indicated in the FFV1 stream
-(To be continued),,,,,,,,,,
