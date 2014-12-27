@@ -7,13 +7,14 @@ Grant Agreement number: 619568
 Project Title: PREservation FORMAts for culture information/e-archives
 
 Prepared by:
+
 - MediaArea SARL
--- Jérôme Martinez
--- Dave Rice
--- Tessa Fallon
--- Ashley Blewer
--- Erik Piil
--- Guillaume Roques
+- Jérôme Martinez
+- Dave Rice
+- Tessa Fallon
+- Ashley Blewer
+- Erik Piil
+- Guillaume Roques
 
 Prepared for:
 
