@@ -41,9 +41,31 @@ Because PCM streams contain only audio samples without any codec structure or me
 
 ## Development of a Conformance Checker
 
+The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components:
+- implementation checker
+- policy checker
+- reporter
+- metadata fixer
+
 The conformance checker developed within the PreForma project must document and associate conformance rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution).
 
-### Design Considerations
+### Implementation Checker
+
+### Policy Checker
+
+### Reporter
+
+MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting. The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, at what verbosity). The XML Schema should be supported by a data dictionary that is also collaboratively written. MediaArea anticipates that the implementations and features performed against a common XML Schema may vary from supplier to supplier or per conformance checker.
+
+MediaArea plans to include these features in MKV, FFV1, and LPCM reporters:
+- Export of a standardized PreForma XML
+- Export of the same data within JSON format
+- Export of the same data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful
+- Ability to read a collection of PreForma XMLs and provide a comprehensive summary and technical statistics of a collection to allow for prioritization and planning.
+
+### Metadata Fixer
+
+### Shell
 
 #### Interfaces
 
