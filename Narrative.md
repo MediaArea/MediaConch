@@ -51,7 +51,25 @@ The conformance checker developed within the PreForma project must document and 
 
 ### Implementation Checker
 
+Each implementation checker (for Matroska, FFV1, and LPCM) should assess compliance and/or deviation between files and a series of conformance checks which are written by dissected all rules from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PreForma design phase and plans to collaborate with each format's specificiation communities to refine them.
+
+For streams such as FFV1 some implementation checks may be performed frame-by-frame to discover frame-specific issues such as CRC mismatches or invalid frame headers. Frame-by-frame implementation assessments will naturally take longers as nearly the entire file must be read. In order to accommodate user's various time priorities the implementation checker will use options to perform implementation checks on the first few frames of a stream, a percentage of the frames, or all of the frames.
+
+MediaArea has drafted a registry of metadata elements to be used in described an implemtentation conformance check, which provides unique identifier, the scope, and underlying rationale and authority for the check. Code created to preform implementation checks will be interned documented with references to conformance checks unique identifiers, so that MediaArea may create resources for each conformance check that relate the identity of the check, it's underlying authority, and associated code.
+
 ### Policy Checker
+
+For each format addressed through a conformance checker MediaArea will create a vocabulary list of technical metadata and contextual descriptions. Additionally MediaArea will define a list of operators to enable various comparators between the actual technical metadata and the user-provided expected metadata. Such defined language will allow users to make policy check expressions such as:
+
+- FFV1.gop_size MUST_EQUAL "1"
+- FFV1.slice_crc MUST_BE_ENABLED
+- FFV1.version GREATER_THAN_OR_EQUAL "3"
+- MKV.tag.BARCODE MUST_START_WITH "ABC"
+- MKV.tag.DATE_DIGITZED IS_BEFORE "2014-01-01"
+
+MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema and associated data dictionary. The collaboration would include agreement on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each conformance checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against.
+
+MediaArea will provide sample sets of policy checks based on interviews with memeory institutions and community practice.
 
 ### Reporter
 
@@ -64,7 +82,7 @@ MediaArea plans to include these features commonly within MKV, FFV1, and LPCM re
 - Export of a standardized PreFormaXML
 - Export PreFormaXML with gzip compression (to reduce the impact of large and highly verbose XML files)
 - Export of the same data within JSON format
-- Other functions bases on PreFormaXML (such as generation of PDF formats or summarization of multiple collections of PreFormaXML) will happen within the "Shell" component
+- Other functions based on PreFormaXML (such as generation of PDF formats or summarization of multiple collections of PreFormaXML) will happen within the "Shell" component
 
 ### Metadata Fixer
 
