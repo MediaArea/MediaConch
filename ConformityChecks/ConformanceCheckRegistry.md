@@ -1,16 +1,22 @@
 ## Conformance Check Registry
 
 This documentation explains the elements, structure, and intent of the Preforma Mediainfo Conformance Check Registry.
-A conformance check is a particular test applied to a files or section of a file in order to quantify the adherence of such data to associated sets of rules and practices.
+
+A conformance check is a particular test applied to a file format, stream, or section of a format or stream in order to quantify the adherence of such data to associated sets of rules and practices. The registry refers specifically to checks performed by the implementation checker. Rules performed by the policy checker are defined elsewhere.
+
+MediaArea plans to maintain an identity and open documentation for each Conformance Check in both a public online space and within the internal help documentation of a PreForma MediaInfo Shell. As the implementation checker assesses given files against a series of checks and the reporter presents the findings to the user, MediaArea plans for the shell to facilitate the user to discover more underlying information, advice, or responses to conformance checks that appear as problematic from the implementation checker.
 
 ### Conformance Check Registry Requirements
-Open documentation must be maintained for each Conformance Check.
-Documentation for Conformance Checks must offer hierarchical relationships between related checks.
-Conformance Checks must be documented according to their CCID (Conformance Check Identifier) and Version number.
-Any revised Conformance Check must maintain a changelog as well as records of all past versions of the conformity check.
-The following keywords to indicate requirement levels when used in a conformance check description MUST be used according to their definitions provided by (RFC2119)[http://tools.ietf.org/html/rfc2119]: "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL".
+
+- Each conformance check must be identitified by a unique identifier.
+- Documentation for Conformance Checks must offer hierarchical relationships between related checks.
+- Conformance Checks must be documented according to their CCID (Conformance Check Identifier) and Version number.
+- Any revised Conformance Check must maintain a changelog as well as records of all past versions of the conformity check.
+- The following keywords to indicate requirement levels when used in a conformance check description MUST be used according to their definitions provided by (RFC2119)[http://tools.ietf.org/html/rfc2119]: "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL".
 
 ### Elements
+
+A draft list of elements to be used in the definition of an implementation confomrance check are provided.
 
 #### Name
 A human-readable name for the conformance check.
