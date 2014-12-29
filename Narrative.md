@@ -230,6 +230,7 @@ MediaArea has long been an Open-Source natives and has an Open-Source business m
 - OpenSuse: http://packman.links2linux.org/package/mediainfo
 - Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
 - FreeBSD: http://www.freshports.org/multimedia/mediainfo/
+- Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo
 
 ### Cross Platform Support
 
