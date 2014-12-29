@@ -22,30 +22,35 @@ Date: December 31, 2014
 
 Licensed under: Creative Commons CC-BY v4.0
 
+Summary: This reports serves as a snapshot of MediaArea's research, planning, and design work to develop a conformance checker, tentatively entitled PreForma MediaInfo.
+
 
 
 <!-- toc -->
 
-  * [Summary](#summary)
+  * [Project Introduction](#project-introduction)
+  * [Introduction of Featured Formats](#introduction-of-featured-formats)
+    * [Matroska](#matroska)
+    * [FFV1](#ffv1)
+    * [Linear PCM](#linear-pcm)
+  * [Development of a Conformance Checker](#development-of-a-conformance-checker)
+    * [Implementation Checker](#implementation-checker)
+    * [Policy Checker](#policy-checker)
+    * [Reporter](#reporter)
+    * [Fixer](#fixer)
+    * [Shell](#shell)
+    * [Optimization for Large File Size](#optimization-for-large-file-size)
+    * [Focus on Fixity](#focus-on-fixity)
+    * [Reference and Test Files](#reference-and-test-files)
   * [Intended Behavior by Use Case](#intended-behavior-by-use-case)
     * [Overview](#overview)
     * [Conformance Checking at Creation Time](#conformance-checking-at-creation-time)
     * [Conformance Checking at Transfer Time](#conformance-checking-at-transfer-time)
     * [Conformance Checking at Digitization Time](#conformance-checking-at-digitization-time)
     * [Conformance Checking at Migration Time](#conformance-checking-at-migration-time)
-  * [Introduction of Formats](#introduction-of-formats)
-    * [Matroska](#matroska)
-    * [FFV1](#ffv1)
-    * [Linear PCM](#linear-pcm)
-  * [Development of an Open Source Conformance Checker](#development-of-an-open-source-conformance-checker)
-    * [Design Considerations](#design-considerations)
-    * [Compliance with Standard Specifications](#compliance-with-standard-specifications)
-    * [Compliance with Community-Driven Implementation Standards](#compliance-with-community-driven-implementation-standards)
-    * [Compliance with Local Institutional Criteria](#compliance-with-local-institutional-criteria)
-    * [Performance of Fixes](#performance-of-fixes)
-    * [Focus on Fixity](#focus-on-fixity)
-  * [Ecosystem around Open Source Reference Implementation](#ecosystem-around-open-source-reference-implementation)
-    * [Feedback and Reporting](#feedback-and-reporting)
+  * [Open Source Ecosystem](#open-source-ecosystem)
+    * [Cross Platform Support](#cross-platform-support)
+    * [Online Resources](#online-resources)
     * [Advance Improvement of Standard Specification](#advance-improvement-of-standard-specification)
     * [Advance Business Cases for Managing Preservation Files](#advance-business-cases-for-managing-preservation-files)
 * [Architectural Layers](#architectural-layers)
@@ -73,7 +78,6 @@ Licensed under: Creative Commons CC-BY v4.0
     * [Preforma MediaInfo](#preforma-mediainfo)
     * [Plugin integration proof of concept: QCTools](#plugin-integration-proof-of-concept-qctools)
   * [Controler](#controler)
-  * [Ideas to put in the final doc](#ideas-to-put-in-the-final-doc)
   * [Style Guide](#style-guide)
   * [Source Code Guide](#source-code-guide)
     * [Portability](#portability)
@@ -91,6 +95,9 @@ Licensed under: Creative Commons CC-BY v4.0
     * [Linking](#linking)
   * [License](#license)
   * [Checker Design: Conformance and Coherency](#checker-design-conformance-and-coherency)
+  * [Conformance Check Registry](#conformance-check-registry)
+    * [Conformance Check Registry Requirements](#conformance-check-registry-requirements)
+    * [Elements](#elements)
   * [Matroska Conformance Checks (Draft)](#matroska-conformance-checks-draft)
     * [Extension Test](#extension-test)
     * [Extension Test MKV](#extension-test-mkv)
@@ -149,6 +156,44 @@ Licensed under: Creative Commons CC-BY v4.0
     * [Duration-Type](#duration-type)
     * [DateUTC-Type](#dateutc-type)
     * [Title-Type](#title-type)
+    * [Tag Total Parts](#tag-total-parts)
+    * [Tag Part Number](#tag-part-number)
+    * [Tag Part Offset](#tag-part-offset)
+    * [Tag Title](#tag-title)
+    * [Tag Subtitle](#tag-subtitle)
+    * [Tag URL](#tag-url)
+    * [Tag Sort_with](#tag-sortwith)
+    * [Tag Email](#tag-email)
+    * [Tag Address](#tag-address)
+    * [Tag Fax](#tag-fax)
+    * [Tag Phone](#tag-phone)
+    * [Tag Initial_Key](#tag-initialkey)
+    * [Tag Law_Rating](#tag-lawrating)
+    * [TAG ICRA](#tag-icra)
+    * [Tag DATE_RELEASED](#tag-datereleased)
+    * [Tag DATE_RECORDED](#tag-daterecorded)
+    * [Tag DATE_ENCODED](#tag-dateencoded)
+    * [Tag DATE_TAGGED](#tag-datetagged)
+    * [Tag DATE_DIGITIZED](#tag-datedigitized)
+    * [Tag DATE_WRITTEN](#tag-datewritten)
+    * [Tag DATE_PURCHASED](#tag-datepurchased)
+    * [Tag Play_Counter](#tag-playcounter)
+    * [Tag FPS](#tag-fps)
+    * [Tag BPM](#tag-bpm)
+    * [Tag Measure](#tag-measure)
+    * [Tag Tuning](#tag-tuning)
+    * [Tag Replay Gain (Gain)](#tag-replay-gain-gain)
+    * [Tag Replay Gain (Peak)](#tag-replay-gain-peak)
+    * [Tag (Identifiers) ISRC](#tag-identifiers-isrc)
+    * [Tag (Identifiers) MCDI](#tag-identifiers-mcdi)
+    * [Tag (Identifiers) ISBN](#tag-identifiers-isbn)
+    * [Tag (Identifiers) Barcode](#tag-identifiers-barcode)
+    * [Tag (Identifiers) Catalog number](#tag-identifiers-catalog-number)
+    * [Tag (Identifiers) Label code](#tag-identifiers-label-code)
+    * [Tag (Identifiers) LCCN](#tag-identifiers-lccn)
+    * [Tag (Commercial) Purchase Item](#tag-commercial-purchase-item)
+    * [Tag (Commercial) Purchase Price](#tag-commercial-purchase-price)
+    * [Tag (Commercial) Purchase Currency](#tag-commercial-purchase-currency)
   * [FFV1 Conformance Checks (Draft)](#ffv1-conformance-checks-draft)
     * [Missing header](#missing-header)
     * [version](#version)
@@ -176,9 +221,188 @@ Licensed under: Creative Commons CC-BY v4.0
 <!-- toc stop -->
 
 
-## Summary
+## Project Introduction
 
-This reports serves as a snapshot of MediaArea's research, planning, and design work to develop a conformance checker, tentatively entitled PreForma MediaInfo.
+The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report encompasses a snapshot of MediaArea's design plans to create a toolset (tentatively entitled "PreForma MediaInfo") as the conformance checker, policy checker, reporter, and fixer of a select list of formats.
+
+As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however most file format specifications are not officially tied to any validation tool. Most archival standards are documented and defined through human-readable narrative without equivalent computer-actionable validation tools. Where a metadata standard may be described in both a data dictionary and a computer usable XML Schema, file formats standards often lack a computer-useable verification method. The PREFORMA project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.
+
+MediaArea's approach to this challenge centers on Free Software, modular design, and interoperability and will rely strongly on MediaInfo (a MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged it’s integration into several archival repository systems and OAIS workflows to assist archival with technical control of collections.
+
+MediaArea sees community involvement as a key factor of evaluating the success of the project. To encourage this, during the prototype phase MediaArea will perform the development work for command line utilities, graphical user interfaces, and documentation in publicly accessible repositories at github.com. We will set up an online set of project resources such as public access to a corpus of test media, an IRC channel, and a responsive public issue tracker.
+
+## Introduction of Featured Formats
+
+During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added.
+
+Matroska, FFV1, and LPCM describe very unique concepts of information including:
+- a container format, Matroska
+- an audio stream, LPCM
+- a video stream, FFV1
+
+These three information concepts will inform distinct user interface and reporting design in order to process these concepts through differing strategies. For instance reporting on the status of 100,000 of video frames within a video recording may be done more efficiently in a different interface as one designed to communicate the hierarchical structure of a file format.
+
+Additionally other formats currently being addressed by PreForma fit within these three conceptual categories; for instance, PDF and TIFF are formats (containers) and JPEG2000 is a video stream. These three concepts affect the design of an overall application shell as conformance information for each category can have its own optimized user interface.
+
+### Matroska
+
+Matroska is a open-licensed audiovisual container format with extensive and flexible features and an active user community. The format is supported by a set of core utilities for manipulating and assessing Matroska files, such as mkvtoolnix and mkvalidator.
+
+Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many "Elements". Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements. The Matroska element is analoguous to QuickTime's atom and AVI's chunk.
+
+Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements.
+
+### FFV1
+
+FFV1 is a efficient lossless video stream which is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominence, aspect ratio, and colorspace so that it is not reliant on a container format to store this information. FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resillience, or encoding speed.
+
+### Linear PCM
+
+Linear PCM is a ubitiquous and simple audio stream. PCM audio streams may be comprised of signed or unsiged samples, arranged in little-endian or big-endian arragements, in any number of audio channels. PCM is very flexible but is not self-descriptive. A raw PCM file can not properly be decoded without knowing the sample encoding, channel count, endianness, bit depth, and sample rate. PCM is typically dependent on its container format (such as WAV) to store sufficient metadata for its decoding.
+
+Because PCM streams contain only audio samples without any codec structure or metadata within the stream, by itself any data could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container format.
+
+## Development of a Conformance Checker
+
+The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components:
+- implementation checker
+- policy checker
+- reporter
+- metadata fixer
+
+The conformance checker developed within the PreForma project must document and associate conformance rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution).
+
+### Implementation Checker
+
+Each implementation checker (for Matroska, FFV1, and LPCM) should assess compliance and/or deviation between files and a series of conformance checks which are written by dissected all rules from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PreForma design phase and plans to collaborate with each format's specificiation communities to refine them.
+
+For streams such as FFV1 some implementation checks may be performed frame-by-frame to discover frame-specific issues such as CRC mismatches or invalid frame headers. Frame-by-frame implementation assessments will naturally take longers as nearly the entire file must be read. In order to accommodate user's various time priorities the implementation checker will use options to perform implementation checks on the first few frames of a stream, a percentage of the frames, or all of the frames.
+
+MediaArea has drafted a registry of metadata elements to be used in described an implemtentation conformance check, which provides unique identifier, the scope, and underlying rationale and authority for the check. Code created to preform implementation checks will be interned documented with references to conformance checks unique identifiers, so that MediaArea may create resources for each conformance check that relate the identity of the check, it's underlying authority, and associated code.
+
+### Policy Checker
+
+For each format addressed through a conformance checker MediaArea will create a vocabulary list of technical metadata and contextual descriptions. Additionally MediaArea will define a list of operators to enable various comparators between the actual technical metadata and the user-provided expected metadata. Such defined language will allow users to make policy check expressions such as:
+
+- FFV1.gop_size MUST_EQUAL "1"
+- FFV1.slice_crc MUST_BE_ENABLED
+- FFV1.version GREATER_THAN_OR_EQUAL "3"
+- MKV.tag.BARCODE MUST_START_WITH "ABC"
+- MKV.tag.DATE_DIGITZED IS_BEFORE "2014-01-01"
+- MKV.tag.ISBN MATCHES_REGEX "(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$"
+
+MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema and associated data dictionary. The collaboration would include agreement on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each conformance checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against.
+
+MediaArea will provide sample sets of policy checks based on interviews with memeory institutions and community practice.
+
+### Reporter
+
+MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting (referred to here as "PreFormaXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PreForma suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per conformance checker, but that adherence to a common schema is essential to interoperability amongst conformance checkers.
+
+The PreFormaXML schema should accommodate the expression of results from multiple conformance checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, an FFV1 stream, and an LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check.
+
+MediaArea plans to include these features commonly within MKV, FFV1, and LPCM reporters:
+
+- Export of a standardized PreFormaXML
+- Export PreFormaXML with gzip compression (to reduce the impact of large and highly verbose XML files)
+- Export of the same data within JSON format
+- Other functions based on PreFormaXML (such as generation of PDF formats or summarization of multiple collections of PreFormaXML) will happen within the "Shell" component
+
+### Fixer
+
+MediaArea will produce a fixer that allows for editing the file. Enabling this function will be performed with a substantial amount of caution as in some cases a user could use it to change a file considered a preservation master. The fixer will support assessing a file first to determine the risk of editing a structurally unhealthy file and provide suitable levels of warning to the user.
+
+The metadata fixer shall support both direct editing on the input file (with warning) or producing a new output file as a copy which the metadata change as requested.
+
+The metadata fixer will support comprehensive logging of the change and offer options to log the performance of the edit itself with the file if it has a means to accommodate it (such as Matroska).
+
+In addition to metadata manipulation the fixer will accommodate structural fixes to improve the structural health of the file, such as repairing Matroska Element order if ordered incorrectly, or validating or adding Matroska CRC Elements at selected levels, or fixing EBML structures of truncated Matroska files.
+
+Substantial care should be exercised to ensure that the Conformance Checker properly associates risk, user warnings, and assessments with each fix allowed. In order to allow a fix the software must properly understand and classify what may be fixed and be aware of how the result may be an improvement. Adjustments directly to a preservation file must be handled programmatically with great caution with diligent levels of information provided to the user.
+
+An example of a fix that could be enabled in the RIFF format could be verifying that any odd-byte length chunk is properly followed by a null-filled byte. Odd-byte length chunks that do not adhere to this rule cause substantial interoperability issues with data in any chunk following the odd-byte length one (this is particularly found in 24 bit mono WAV files). If the odd-byte length chunk is not followed by a null-filled padding byte, then most typically the next chunk starts where the padding byte is and the padding byte may be inserted so that other following chunks increase their offset by one byte. This scenario can be verified by testing chunk id and size declaration of all following bytes so that the software may know beforehand if the fix (inserting the null-filled padding byte) will succeed in correcting the RIFF chunk structure’s adherence to its specification.
+
+Fixes for Matroska files could include fixing metadata tags that don’t include a SimpleTag element or re-clustering frames if a cluster does not start on a keyframe.
+
+### Shell
+
+The Shell shall coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PreForma seeks that the Shell developed by each supplier supports each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional conformance checkers to utilitize the produced shells.
+
+The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial documentation that mimics the online resources that we will provide so that the shell and conformance checker function well offline.
+
+MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs.
+
+#### Implementation Checker (Shell)
+
+The shell produced will support all functions and requirements of the implementation checker as described as an independent utility and also support:
+
+- Allow the user to open one or many files at a time.
+- Allow the user to queue simultaneous or consective file analysis.
+- Allow the user to select how comprehensive or verbose an implementation check may be (for instance, samples frames or all frames of video).
+- Enable the user to select sections of conformance checks or sets of conformance checks that they may wish to ignore.
+- Enable the user to associate certain actions or warnings with the occurance of particular checks.
+- Provide feedback and status information live during the file analysis.
+- (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file with the corresponding policy outcome for each policy check.
+
+#### Policy Checker (Shell)
+
+The shell produced will support all functions and requirements of the policy checker as described as an independent utility and also support:
+
+- Allow PreForma-support technical metadata vocabularies to be imported or synchronized against an online registry.
+- Provide an interface for the user to import, create, edit, or export a valid set of policy checks.
+- Implement selected set of policy checks on all open files or selected files.
+- Present the outcome of policy checks in a manner that allows comparison and sorting of the policy status of many files.
+- Allows particular sets of policy to be associated with particular sets of files, based on file identification or naming patterns.
+- (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file with the corresponding policy outcome for each policy check.
+
+#### Reporter (Shell)
+
+The shell produced will support all functions and requirements of the reporter as described as an independent utility and also support:
+
+- Export of the PreFormaXML data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful.
+- Ability to read a collection of PreForma XMLs and provide a comprehensive summary and technical statistics of a collection to allow for prioritization, comparison, and planning.
+
+#### Fixer (Shell)
+
+The shell produced will support all functions and requirements of the reporter as described as an independent utility and also support:
+
+- Allow for single file or batch editing of file format metadata.
+- Allow for selected metadata to be copied from one file to another or from one file to all other open files.
+- Allow for file format metadata to be exported and imported to CSV or XML to enable metadata manipulation in other programs to then be imported back into the Shell and applied to the associated files.
+- (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file and allows the user to create, edit, or remove (with warning) any EBML element and display the asscoiated policy or implementation check that corresponds with such actions.
+
+#### Interfaces
+
+The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
+
+An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.
+
+MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.
+
+The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
+
+### Optimization for Large File Size
+
+Design of a conformance checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
+
+A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processes on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker and allow assessment of files even as they are being written.
+
+### Focus on Fixity
+
+Both FFV1 and Matroska provide fixity features that serve the objectives of digitial preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRC's on each frame. Matroska documents methods to embed checksums in Matroska elements to allow for future validation of any content.
+
+Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.
+
+The advantages of embedded fixity in preservation media files is significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).
+
+### Reference and Test Files
+
+Test files;
+- PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/
+- JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
+- Matroska buggy files: Homemade + request to Matroska mailing list
+- FFV1 buggy files: Homemade+ request to FFmpeg mailing list
+
 
 ## Intended Behavior by Use Case
 
@@ -220,70 +444,27 @@ Migration is typically an ideal time to perform obsolescence monitoring and prep
 
 To counteract arising obsolescence challenges it is critical to have access to thorough sets of technical metadata in order to associate certain codecs, formats, or technologies with sustainability risks or to identify what one format should be superceded by another in a particular digital preservation. For instance an institution that utilized FFV1 version 0 as a lossless preservation codec may wish to identify such files to reformat them to FFV1 version 3 (now that it is non-experimental) in order to take advantage of version 3's additional advantages. In our research one archive found that some digitized material received from a vendor was missing technical metadata about field dominance and had to identify exactly which materials were affected to order to rectify the issue.
 
-## Introduction of Formats
+## Open Source Ecosystem
 
-### Matroska
+MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions.
+- Debian: https://packages.debian.org/wheezy/mediainfo
+- Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
+- RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
+- OpenSuse: http://packman.links2linux.org/package/mediainfo
+- Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
+- FreeBSD: http://www.freshports.org/multimedia/mediainfo/
 
-Matroska is a open-licensed audiovisual container format with extensive and flexible features and an active user community. The format is supported by a set of core utilities for manipulating and assessing Matroska files, such as mkvtoolnix and mkvalidator.
+### Cross Platform Support
 
-Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many "Elements". Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements.
+MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.
 
-Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements.
+### Online Resources
 
-### FFV1
+MediaArea will utilize github as a social and development center for PreForma MediaInfo development and uses github's issue tracker and wiki features alongside development.
 
-FFV1 is a efficient lossless video codec which is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominence, aspect ratio, and colorspace so that it is not reliant on a container format to store this information. FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resillience, or encoding speed.
+For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.
 
-### Linear PCM
-
-## Development of an Open Source Conformance Checker
-
-The conformance checker developed within the PreForma project must document and associate conformance rules with data types (such as containers or frames) and authorities (such as specifications, community practices, or the local rules of a memory institution). This design document focuses particularly on Matroska, FFV1, and LPCM.
-
-### Design Considerations
-
-#### Interfaces
-
-The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
-
-An interface for assessing conformance of FFV1 video should enable review of the decoded FFV1 frames in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.
-
-MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.
-
-The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
-
-#### Optimization for Large File Size
-
-Design of a conformance checker should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
-
-A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processing on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker.
-
-### Compliance with Standard Specifications
-
-### Compliance with Community-Driven Implementation Standards
-
-### Compliance with Local Institutional Criteria
-
-
-### Performance of Fixes
-
-Substantial care should be exercised to ensure that the Conformance Checker properly associates risk, user warnings, and assessments with each fix allowed. In order to allow a fix the software must properly understand and classify what may be fixed and be aware of how the result may be an improvement. Adjustments directly to a preservation file must be handled programmatically with great caution with diligent levels of information provided to the user.
-
-An example of a fix that could be enabled in the RIFF format could be verifying that any odd-byte length chunk is properly followed by a null-filled byte. Odd-byte length chunks that do not adhere to this rule cause substantial interoperability issues with data in any chunk following the odd-byte length one (this is particularly found in 24 bit mono WAV files). If the odd-byte length chunk is not followed by a null-filled padding byte, then most typically the next chunk starts where the padding byte is and the padding byte may be inserted so that other following chunks increase their offset by one byte. This scenario can be verified by testing chunk id and size declaration of all following bytes so that the software may know beforehand if the fix (inserting the null-filled padding byte) will succeed in correcting the RIFF chunk structure’s adherence to its specification.
-
-Fixes for Matroska files could include fixing metadata tags that don’t include a SimpleTag element or re-clustering frames if a cluster does not start on a keyframe.
-
-### Focus on Fixity
-
-Both FFV1 and Matroska provide fixity features that serve the objectives of digitial preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRC's on each frame. Matroska documents methods to embed checksums in Matroska elements to allow for future validation of any content.
-
-Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.
-
-The advantages of embedded fixity in preservation media files is significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).
-
-## Ecosystem around Open Source Reference Implementation
-
-### Feedback and Reporting
+MediaArea will solicit, create, and accept test files and reference files that highlight various features of the conformance checker and illustrate likely preservation issues that may occur within the selected formats.
 
 ### Advance Improvement of Standard Specification
 
@@ -301,11 +482,11 @@ Considering the 2 year timeline of the PreForma project and usual pace of IETF s
 
 #### Matroska Specification
 
-Both the Matroska specification and its underlying specification for EBML are at mature and stable stage with thorough documentation and existing validators, but several efforts of the PreForma project can serve as contributions to this specifications. The underlying EBML specification [1] has already been drafted into RFC format but is has not yet been submitted to IETF as an Independent Submission or otherwise.
+Both the Matroska specification and its underlying specification for EBML are at mature and stable stage with thorough documentation and existing validators, but several efforts of the PreForma project can serve as contributions to this specifications. The underlying EBML specification [2] has already been drafted into RFC format but is has not yet been submitted to IETF as an Independent Submission or otherwise.
 
 Matroska has a detailed metadata specification at http://www.matroska.org/technical/specs/tagging/index.html. Each tag has an official name and description while provides rules and recommendations for use. Many of these tags could be associated with validation rules, such as expressed by regular expression to assure that the content of the tag conforms to expectations. For instance tag such as URL, EMAIL, or ISBN have specific allowable patterns for what may be contained. As part of build a conformance tool for Matroska, MediaArea will generate conformance tests for individual tags and these tests may be contributed back to the Matroska specification in a list of regex values, an XML schematron file, or other acceptable contribution method.
 
-[1]: http://matroska.org/technical/specs/rfc/index.html
+[2]: http://matroska.org/technical/specs/rfc/index.html
 
 #### Other Suggested Improvements or Contributions to Standard Specifications
 
@@ -443,27 +624,6 @@ Communication between all plugins
 - GUI (based on Qt)
 - Web UI (server/client)
 
-## Ideas to put in the final doc
-We are Open-Source natives: we do Open-Source since the first days. We have an Open-Source business model based on sponsored support (bug correction and feature requests).
-We don’t do Open-Source only because Performa wants it, we believe in Open-Source.
-We are open to Open-source and non Open-Source (we can do non Open-source small developments on request, depending of the business model of the sponsor)
-Do other project  think to demux (e.g. how do they plan to analyze JPEG 2000 in MOV)?
-
-We are already involved in Open-Source with MediaInfo and recognized as it, e.g. we are officially provided by Open Source distros:
-- Debian: https://packages.debian.org/wheezy/mediainfo
-- Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
-- RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
-- OpenSuse: http://packman.links2linux.org/package/mediainfo
-- Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
-- FreeBSD: http://www.freshports.org/multimedia/mediainfo/
-
-We see 4 projects: Text, Image, A/V except JPEG 2000, JPEG 2000. Only 3 selected entities for phase 2 (3-5 written in call to tender, 3 written in kickoff meeting report)?
-
-Test files;
-- PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/
-- JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
-- Matroska buggy files: Homemade + request to Matroska mailing list
-- FFV1 buggy files: Homemade+ request to FFmpeg mailing list
 ## Style Guide
 --
 ## Source Code Guide
@@ -561,6 +721,66 @@ Conformance checks for both container formats (such as Matroska) and streams (su
 These checks shall have logical cause and effect or conditional relationships and shall be documented by the citation of external standards documentation or by the project’s own research and development. MediaArea plans to provide guidance for user communities to develop and explain their own ruleset in shareable form. An XML schema for conformance definition is provided. MediaArea’s development of conformance and policy checkers will involve several categories of tests. In addition to supporting conformity checks and logical interpretation of selected file formats, there is user desire for checks performed based on internal or institutional policy that are not necessarily embedded in the file format technical specifications. A PreForma MediaArea 'shell' shall be able to load multiple sets of conformity/coherency rulesets so that users may select which rulesets they choose to adhere to as well as create their own.
 
 Conformance and coherency rulesets specifically targeting specification compliance of FFV1, Matroska, and LPCM are currently under development.
+
+The Conformance Check Registry defines the basis of how a conformance check may be expressed. MediaArea proposes developing online resources that define checks and relate them to sample files, associated code, rationale, potential responses and community discussion. The Conformance Check Registry provides a basis on how information on the implementation checks themselves can be communicated to users.
+
+## Conformance Check Registry
+
+This documentation explains the elements, structure, and intent of the Preforma Mediainfo Conformance Check Registry.
+
+A conformance check is a particular test applied to a file format, stream, or section of a format or stream in order to quantify the adherence of such data to associated sets of rules and practices. The registry refers specifically to checks performed by the implementation checker. Rules performed by the policy checker are defined elsewhere.
+
+MediaArea plans to maintain an identity and open documentation for each Conformance Check in both a public online space and within the internal help documentation of a PreForma MediaInfo Shell. As the implementation checker assesses given files against a series of checks and the reporter presents the findings to the user, MediaArea plans for the shell to facilitate the user to discover more underlying information, advice, or responses to conformance checks that appear as problematic from the implementation checker.
+
+### Conformance Check Registry Requirements
+
+- Each conformance check must be identitified by a unique identifier.
+- Documentation for Conformance Checks must offer hierarchical relationships between related checks.
+- Conformance Checks must be documented according to their CCID (Conformance Check Identifier) and Version number.
+- Any revised Conformance Check must maintain a changelog as well as records of all past versions of the conformity check.
+- The following keywords to indicate requirement levels when used in a conformance check description MUST be used according to their definitions provided by (RFC2119)[http://tools.ietf.org/html/rfc2119]: "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL".
+
+### Elements
+
+A draft list of elements to be used in the definition of an implementation confomrance check are provided.
+
+#### Name
+A human-readable name for the conformance check.
+
+#### CCID
+Conformance Check Identifier. An alphanumeric identifier used to reference or identify the conformance check to order to relate code, documentation, and reports that reference the check.
+
+#### Version
+The version number of the reference Conformance Check. This value should be expressed as a standard GNU version number in major.minor.revision format. A value of "0" may be used to indictate draft status.
+
+#### Authority
+The authority associates each conformance check with a standards organization, community, or logic from which the conformance check is derived. Examples: EBU, Microsoft.
+Within the use of a Conformance Checker, the user may enable or disable check from certain authorities; for instance to perform checks against specifications of Standards Organization A and Community Practice B, but not Standards Organization C or Community Practice D.
+
+#### Target Format
+The name of the file format, codec, or bit stream that is to be test.
+
+#### Target Format Version
+Identify the version of range of versions of the target format which are eligible for the conformance test. A numeric range should be used or the word "all" if the rule applies to all known versions.
+
+#### Target Format Part
+The name of a chunk, atom, element, bitstream, or other smaller component of the target format that the conformance check relates to.
+
+#### Citation
+A reference of the specific document, specification, or reference from which the conformance check is derived. Typically the citation will be a publication or expression of the 'Authority'.
+
+#### Quote
+A quote from the authority that demonstrates the logic or reaons for the check.
+
+#### Rule Clarity
+Expresses whether the check is based of an explicit statement of an underlying specificiation or based on deductive logic or inference from a reading of the specification.
+
+#### Definition
+A clear description of conformanace check.
+
+#### Regex Parameters
+
+#### Regex Expression
 
 ## Matroska Conformance Checks (Draft)
 ### Extension Test
@@ -1758,6 +1978,804 @@ Quote:
 
 Definition:
     If present, Title MUST be in UTF-8 format.
+
+
+### Tag Total Parts
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-TOTALPARTS|
+|Version|0|
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Part Number
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PARTNUMBER|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Part Offset
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PARTOFFSET|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Title
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-TITLE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Subtitle
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-SUBTITLE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag URL
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-URL|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Sort_with
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-SORT_WITH|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Email
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-EMAIL|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Address
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-ADDRESS|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Fax
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-FAX|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Phone
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PHONE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Initial_Key
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-INITIAL_KEY|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Law_Rating
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-LAW_RATING|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### TAG ICRA
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-ICRA|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_RELEASED
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_RELEASED|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_RECORDED
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_RECORDED|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_ENCODED
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_ENCODED|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_TAGGED
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_TAGGED|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_DIGITIZED
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_DIGITIZED|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_WRITTEN
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_WRITTEN|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag DATE_PURCHASED
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-DATE_PURCHASED|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Play_Counter
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PLAY_COUNTER|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag FPS
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-FPS|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag BPM
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-BPM|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Measure
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-MEASURE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Tuning
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-TUNING|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Replay Gain (Gain)
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-REPLAYGAIN_GAIN|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag Replay Gain (Peak)
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-REPLAYGAIN_PEAK|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) ISRC
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-ISRC|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) MCDI
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-MCDI|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) ISBN
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-ISBN|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) Barcode
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-BARCODE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) Catalog number
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-CATALOG_NUMBERA|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) Label code
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-LABEL_CODE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Identifiers) LCCN
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-LCCN|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Commercial) Purchase Item
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PURCHASE_ITEM|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Commercial) Purchase Price
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PURCHASE_PRICE|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
+
+
+### Tag (Commercial) Purchase Currency
+
+|Descriptor|Value|
+|:---------|:----|
+|CCID|MKV-TAG-PURCHASE_CURRENCY|
+|Version||
+|Authority||
+|Target Format||
+|Target Format Version||
+|Target Format Part||
+|Citation||
+
+Rule Clarity:    
+
+Quote:
+    
+
+Definition:
+    
 
 
 ## FFV1 Conformance Checks (Draft)
