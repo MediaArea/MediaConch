@@ -55,17 +55,23 @@ The conformance checker developed within the PreForma project must document and 
 
 ### Reporter
 
-MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting. The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, at what verbosity). The XML Schema should be supported by a data dictionary that is also collaboratively written. MediaArea anticipates that the implementations and features performed against a common XML Schema may vary from supplier to supplier or per conformance checker.
+MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting (referred to here as "PreFormaXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PreForma suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per conformance checker, but that adherence to a common schema is essential to interoperability amongst conformance checkers.
 
-MediaArea plans to include these features in MKV, FFV1, and LPCM reporters:
-- Export of a standardized PreForma XML
+The PreFormaXML schema should accommodate the expression of results from multiple conformance checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, an FFV1 stream, and an LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check.
+
+MediaArea plans to include these features commonly within MKV, FFV1, and LPCM reporters:
+
+- Export of a standardized PreFormaXML
+- Export PreFormaXML with gzip compression (to reduce the impact of large and highly verbose XML files)
 - Export of the same data within JSON format
-- Export of the same data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful
-- Ability to read a collection of PreForma XMLs and provide a comprehensive summary and technical statistics of a collection to allow for prioritization and planning.
+- Other functions bases on PreFormaXML (such as generation of PDF formats or summarization of multiple collections of PreFormaXML) will happen within the "Shell" component
 
 ### Metadata Fixer
 
 ### Shell
+
+- Export of the same data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful
+- Ability to read a collection of PreForma XMLs and provide a comprehensive summary and technical statistics of a collection to allow for prioritization and planning.
 
 #### Interfaces
 
