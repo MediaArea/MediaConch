@@ -66,6 +66,7 @@ For each format addressed through a conformance checker MediaArea will create a 
 - FFV1.version GREATER_THAN_OR_EQUAL "3"
 - MKV.tag.BARCODE MUST_START_WITH "ABC"
 - MKV.tag.DATE_DIGITZED IS_BEFORE "2014-01-01"
+- MKV.tag.ISBN MATCHES_REGEX "(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$"
 
 MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema and associated data dictionary. The collaboration would include agreement on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each conformance checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against.
 
@@ -84,42 +85,79 @@ MediaArea plans to include these features commonly within MKV, FFV1, and LPCM re
 - Export of the same data within JSON format
 - Other functions based on PreFormaXML (such as generation of PDF formats or summarization of multiple collections of PreFormaXML) will happen within the "Shell" component
 
-### Metadata Fixer
+### Fixer
 
-### Shell
+MediaArea will produce a fixer that allows for editing the file. Enabling this function will be performed with a substantial amount of caution as in some cases a user could use it to change a file considered a preservation master. The fixer will support assessing a file first to determine the risk of editing a structurally unhealthy file and provide suitable levels of warning to the user.
 
-- Export of the same data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful
-- Ability to read a collection of PreForma XMLs and provide a comprehensive summary and technical statistics of a collection to allow for prioritization and planning.
+The metadata fixer shall support both direct editing on the input file (with warning) or producing a new output file as a copy which the metadata change as requested.
 
-#### Interfaces
+The metadata fixer will support comprehensive logging of the change and offer options to log the performance of the edit itself with the file if it has a means to accommodate it (such as Matroska).
 
-The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
-
-An interface for assessing conformance of FFV1 video should enable review of the decoded FFV1 frames in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.
-
-MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.
-
-The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
-
-#### Optimization for Large File Size
-
-Design of a conformance checker should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
-
-A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processing on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker.
-
-### Compliance with Standard Specifications
-
-### Compliance with Community-Driven Implementation Standards
-
-### Compliance with Local Institutional Criteria
-
-### Performance of Fixes
+In addition to metadata manipulation the fixer will accommodate structural fixes to improve the structural health of the file, such as repairing Matroska Element order if ordered incorrectly, or validating or adding Matroska CRC Elements at selected levels, or fixing EBML structures of truncated Matroska files.
 
 Substantial care should be exercised to ensure that the Conformance Checker properly associates risk, user warnings, and assessments with each fix allowed. In order to allow a fix the software must properly understand and classify what may be fixed and be aware of how the result may be an improvement. Adjustments directly to a preservation file must be handled programmatically with great caution with diligent levels of information provided to the user.
 
 An example of a fix that could be enabled in the RIFF format could be verifying that any odd-byte length chunk is properly followed by a null-filled byte. Odd-byte length chunks that do not adhere to this rule cause substantial interoperability issues with data in any chunk following the odd-byte length one (this is particularly found in 24 bit mono WAV files). If the odd-byte length chunk is not followed by a null-filled padding byte, then most typically the next chunk starts where the padding byte is and the padding byte may be inserted so that other following chunks increase their offset by one byte. This scenario can be verified by testing chunk id and size declaration of all following bytes so that the software may know beforehand if the fix (inserting the null-filled padding byte) will succeed in correcting the RIFF chunk structure’s adherence to its specification.
 
 Fixes for Matroska files could include fixing metadata tags that don’t include a SimpleTag element or re-clustering frames if a cluster does not start on a keyframe.
+
+### Shell
+
+The Shell shall coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PreForma seeks that the Shell developed by each supplier supports each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional conformance checkers to utilitize the produced shells.
+
+#### Implementation Checker (Shell)
+
+The shell produced will support all functions and requirements of the implementation checker as described as an independent utility and also support:
+
+- Allow the user to open one or many files at a time.
+- Allow the user to queue simultaneous or consective file analysis.
+- Allow the user to select how comprehensive or verbose an implementation check may be (for instance, samples frames or all frames of video).
+- Enable the user to select sections of conformance checks or sets of conformance checks that they may wish to ignore.
+- Enable the user to associate certain actions or warnings with the occurance of particular checks.
+- Provide feedback and status information live during the file analysis.
+- (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file with the corresponding policy outcome for each policy check.
+
+#### Policy Checker (Shell)
+
+The shell produced will support all functions and requirements of the policy checker as described as an independent utility and also support:
+
+- Allow PreForma-support technical metadata vocabularies to be imported or synchronized against an online registry.
+- Provide an interface for the user to import, create, edit, or export a valid set of policy checks.
+- Implement selected set of policy checks on all open files or selected files.
+- Present the outcome of policy checks in a manner that allows comparison and sorting of the policy status of many files.
+- Allows particular sets of policy to be associated with particular sets of files, based on file identification or naming patterns.
+- (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file with the corresponding policy outcome for each policy check.
+
+#### Reporter (Shell)
+
+The shell produced will support all functions and requirements of the reporter as described as an independent utility and also support:
+
+- Export of the PreFormaXML data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful.
+- Ability to read a collection of PreForma XMLs and provide a comprehensive summary and technical statistics of a collection to allow for prioritization, comparison, and planning.
+
+#### Fixer (Shell)
+
+The shell produced will support all functions and requirements of the reporter as described as an independent utility and also support:
+
+- Allow for single file or batch editing of file format metadata.
+- Allow for file format metadata to be exported and imported to CSV or XML to enable metadata manipulation in other programs to then be imported back into the Shell and applied to the associated files.
+- (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file and allows the user to create, edit, or remove (with warning) any EBML element and display the asscoiated policy or implementation check that corresponds with such actions.
+
+#### Interfaces
+
+The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
+
+An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.
+
+MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.
+
+The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
+
+### Optimization for Large File Size
+
+Design of a conformance checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
+
+A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processes on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker and allow assessment of files even as they are being written.
 
 ### Focus on Fixity
 
