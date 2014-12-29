@@ -105,6 +105,10 @@ Fixes for Matroska files could include fixing metadata tags that don’t include
 
 The Shell shall coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PreForma seeks that the Shell developed by each supplier supports each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional conformance checkers to utilitize the produced shells.
 
+The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial documentation that mimics the online resources that we will provide so that the shell and conformance checker function well offline.
+
+MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs.
+
 #### Implementation Checker (Shell)
 
 The shell produced will support all functions and requirements of the implementation checker as described as an independent utility and also support:
@@ -140,6 +144,7 @@ The shell produced will support all functions and requirements of the reporter a
 The shell produced will support all functions and requirements of the reporter as described as an independent utility and also support:
 
 - Allow for single file or batch editing of file format metadata.
+- Allow for selected metadata to be copied from one file to another or from one file to all other open files.
 - Allow for file format metadata to be exported and imported to CSV or XML to enable metadata manipulation in other programs to then be imported back into the Shell and applied to the associated files.
 - (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file and allows the user to create, edit, or remove (with warning) any EBML element and display the asscoiated policy or implementation check that corresponds with such actions.
 
@@ -166,6 +171,15 @@ Both FFV1 and Matroska provide fixity features that serve the objectives of digi
 Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.
 
 The advantages of embedded fixity in preservation media files is significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).
+
+### Reference and Test Files
+
+Test files;
+- PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/
+- JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
+- Matroska buggy files: Homemade + request to Matroska mailing list
+- FFV1 buggy files: Homemade+ request to FFmpeg mailing list
+
 
 ## Intended Behavior by Use Case
 
@@ -207,9 +221,27 @@ Migration is typically an ideal time to perform obsolescence monitoring and prep
 
 To counteract arising obsolescence challenges it is critical to have access to thorough sets of technical metadata in order to associate certain codecs, formats, or technologies with sustainability risks or to identify what one format should be superceded by another in a particular digital preservation. For instance an institution that utilized FFV1 version 0 as a lossless preservation codec may wish to identify such files to reformat them to FFV1 version 3 (now that it is non-experimental) in order to take advantage of version 3's additional advantages. In our research one archive found that some digitized material received from a vendor was missing technical metadata about field dominance and had to identify exactly which materials were affected to order to rectify the issue.
 
-## Ecosystem around Open Source Reference Implementation
+## Open Source Ecosystem
 
-### Feedback and Reporting
+MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions.
+- Debian: https://packages.debian.org/wheezy/mediainfo
+- Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
+- RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
+- OpenSuse: http://packman.links2linux.org/package/mediainfo
+- Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
+- FreeBSD: http://www.freshports.org/multimedia/mediainfo/
+
+### Cross Platform Support
+
+MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.
+
+### Online Resources
+
+MediaArea will utilize github as a social and development center for PreForma MediaInfo development and uses github's issue tracker and wiki features alongside development.
+
+For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.
+
+MediaArea will solicit, create, and accept test files and reference files that highlight various features of the conformance checker and illustrate likely preservation issues that may occur within the selected formats.
 
 ### Advance Improvement of Standard Specification
 
