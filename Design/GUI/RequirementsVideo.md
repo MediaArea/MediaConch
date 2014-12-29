@@ -31,6 +31,8 @@ Mockups forthcoming
 ### Tags
 - Allow MKV metadata tags to be created, read, updated and/or deleted
 - Allow MKV metadata tags to be relocated or nested under other tags
+- Verify the presence of metadata tags
+- Verify metadata tag values against defined regular expressions
 
 ### Attachments
 - Allow MKV attachments to be created, read, updated and/or deleted

@@ -1,0 +1,3642 @@
+<h1 id="preforma-mediainfo">PreForma MediaInfo</h1>
+<p>Project Acronym: PREFORMA</p>
+<p>Grant Agreement number: 619568</p>
+<p>Project Title: PREservation FORMAts for culture information/e-archives</p>
+<p>Prepared by:</p>
+<ul>
+<li>MediaArea SARL</li>
+<li>Jérôme Martinez</li>
+<li>Dave Rice</li>
+<li>Tessa Fallon</li>
+<li>Ashley Blewer</li>
+<li>Erik Piil</li>
+<li>Guillaume Roques</li>
+</ul>
+<p>Prepared for:</p>
+<p>Date: December 31, 2014</p>
+<p>Licensed under: Creative Commons CC-BY v4.0</p>
+<!-- toc -->
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#intended-behavior-by-use-case">Intended Behavior by Use Case</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#conformance-checking-at-creation-time">Conformance Checking at Creation Time</a></li>
+<li><a href="#conformance-checking-at-transfer-time">Conformance Checking at Transfer Time</a></li>
+<li><a href="#conformance-checking-at-digitization-time">Conformance Checking at Digitization Time</a></li>
+<li><a href="#conformance-checking-at-migration-time">Conformance Checking at Migration Time</a></li>
+</ul></li>
+<li><a href="#introduction-of-formats">Introduction of Formats</a>
+<ul>
+<li><a href="#matroska">Matroska</a></li>
+<li><a href="#ffv1">FFV1</a></li>
+<li><a href="#linear-pcm">Linear PCM</a></li>
+</ul></li>
+<li><a href="#development-of-an-open-source-conformance-checker">Development of an Open Source Conformance Checker</a>
+<ul>
+<li><a href="#design-considerations">Design Considerations</a></li>
+<li><a href="#compliance-with-standard-specifications">Compliance with Standard Specifications</a></li>
+<li><a href="#compliance-with-community-driven-implementation-standards">Compliance with Community-Driven Implementation Standards</a></li>
+<li><a href="#compliance-with-local-institutional-criteria">Compliance with Local Institutional Criteria</a></li>
+<li><a href="#performance-of-fixes">Performance of Fixes</a></li>
+<li><a href="#focus-on-fixity">Focus on Fixity</a></li>
+</ul></li>
+<li><a href="#ecosystem-around-open-source-reference-implementation">Ecosystem around Open Source Reference Implementation</a>
+<ul>
+<li><a href="#feedback-and-reporting">Feedback and Reporting</a></li>
+<li><a href="#advance-improvement-of-standard-specification">Advance Improvement of Standard Specification</a></li>
+<li><a href="#advance-business-cases-for-managing-preservation-files">Advance Business Cases for Managing Preservation Files</a></li>
+</ul></li>
+<li><a href="#architectural-layers">Architectural Layers</a></li>
+<li><a href="#transport-layer">Transport layer</a>
+<ul>
+<li><a href="#preforma-mediainfo-file-on-disk-or-direct-memory-mapping">Preforma MediaInfo: File on disk or direct memory mapping</a></li>
+<li><a href="#plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</a></li>
+</ul></li>
+<li><a href="#containerwrapper-implementation-checker">Container/Wrapper implementation checker</a>
+<ul>
+<li><a href="#preforma-mediainfo-matroska-checker">Preforma MediaInfo: Matroska checker</a></li>
+<li><a href="#plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</a></li>
+</ul></li>
+<li><a href="#containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</a>
+<ul>
+<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
+</ul></li>
+<li><a href="#stream-essence-implementation-checker">Stream / Essence implementation checker</a>
+<ul>
+<li><a href="#preforma-mediainfo">Preforma MediaInfo:</a></li>
+<li><a href="#plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</a></li>
+<li><a href="#plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</a></li>
+<li><a href="#optional">Optional</a></li>
+</ul></li>
+<li><a href="#containerwrapper-vs-stream-essence-coherency-checker">Container/Wrapper vs Stream / Essence coherency checker</a>
+<ul>
+<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+</ul></li>
+<li><a href="#stream-essence-decoder">Stream / Essence decoder</a>
+<ul>
+<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
+<li><a href="#plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</a></li>
+</ul></li>
+<li><a href="#baseband-analyzer">Baseband analyzer</a>
+<ul>
+<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</a></li>
+</ul></li>
+<li><a href="#controler">Controler</a></li>
+<li><a href="#ideas-to-put-in-the-final-doc">Ideas to put in the final doc</a></li>
+<li><a href="#style-guide">Style Guide</a></li>
+<li><a href="#source-code-guide">Source Code Guide</a>
+<ul>
+<li><a href="#portability">Portability</a></li>
+<li><a href="#modularity">Modularity</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#apis">API's</a></li>
+</ul></li>
+<li><a href="#open-source-practices">Open Source Practices</a>
+<ul>
+<li><a href="#development">Development</a></li>
+<li><a href="#open-source-platforms">Open Source Platforms</a></li>
+</ul></li>
+<li><a href="#contribution-guide">Contribution Guide</a>
+<ul>
+<li><a href="#file-naming-conventions">File Naming Conventions</a></li>
+<li><a href="#rules-for-qtc-code">Rules for Qt/C++ code:</a></li>
+<li><a href="#rules-for-contributing-code">Rules for contributing code</a></li>
+<li><a href="#rules-for-contributing-feedback">Rules for contributing feedback</a></li>
+<li><a href="#linking">Linking</a></li>
+</ul></li>
+<li><a href="#license">License</a></li>
+<li><a href="#checker-design-conformance-and-coherency">Checker Design: Conformance and Coherency</a></li>
+<li><a href="#matroska-conformance-checks-draft">Matroska Conformance Checks (Draft)</a>
+<ul>
+<li><a href="#extension-test">Extension Test</a></li>
+<li><a href="#extension-test-mkv">Extension Test MKV</a></li>
+<li><a href="#extension-test-mka">Extension Test MKA</a></li>
+<li><a href="#extension-test-mks">Extension Test MKS</a></li>
+<li><a href="#extension-test-mk3d">Extension Test MK3D</a></li>
+<li><a href="#ebml-element-start">EBML Element Start</a></li>
+<li><a href="#ebml-vint-efficiency">EBML vint efficiency</a></li>
+<li><a href="#element-id-registered">Element ID Registered</a></li>
+<li><a href="#element-size-0x7f-reservation">Element Size 0x7F Reservation</a></li>
+<li><a href="#element-size-byte-length-limit">Element Size Byte Length Limit</a></li>
+<li><a href="#element-size-unknown">Element Size Unknown</a></li>
+<li><a href="#level-0-segment">Level 0 Segment</a></li>
+<li><a href="#only-one-ebml-header-recommended">Only One EBML Header recommended</a></li>
+<li><a href="#file-size-consistency">File Size Consistency</a></li>
+<li><a href="#ebmlversion-presence">EBMLVersion Presence</a></li>
+<li><a href="#ebmlreadversion-presence">EBMLReadVersion Presence</a></li>
+<li><a href="#ebmlmaxidlength-presence">EBMLMaxIDLength Presence</a></li>
+<li><a href="#ebmlmaxsizelength-presence">EBMLMaxSizeLength Presence</a></li>
+<li><a href="#doctype-presence">DocType Presence</a></li>
+<li><a href="#doctypeversion-presence">DocTypeVersion Presence</a></li>
+<li><a href="#doctypereadversion-presence">DocTypeReadVersion Presence</a></li>
+<li><a href="#ebml-version-coherency">EBML Version Coherency</a></li>
+<li><a href="#ebmlmaxidlength-limits">EBMLMaxIDLength Limits</a></li>
+<li><a href="#ebmlmaxsizelength-limit">EBMLMaxSizeLength Limit</a></li>
+<li><a href="#ebmlmaxsizelength-matches">EBMLMaxSizeLength Matches</a></li>
+<li><a href="#doctype">DocType</a></li>
+<li><a href="#doctypeversion-coherency">DocTypeVersion Coherency</a></li>
+<li><a href="#doctypeversion-limits">DocTypeVersion Limits</a></li>
+<li><a href="#top-elements-coded-on-4-octets">Top Elements Coded on 4 Octets</a></li>
+<li><a href="#crc-order">CRC Order</a></li>
+<li><a href="#crc-32-size-coherency">CRC-32 Size Coherency</a></li>
+<li><a href="#crc-validation">CRC Validation</a></li>
+<li><a href="#crc-not-pointlessly-used">CRC Not Pointlessly Used</a></li>
+<li><a href="#crc-presence">CRC-Presence</a></li>
+<li><a href="#single-segment-composition">Single Segment Composition</a></li>
+<li><a href="#seek-presence">Seek-Presence</a></li>
+<li><a href="#seekid-presence">SeekID-Presence</a></li>
+<li><a href="#seekid-type">SeekID-Type</a></li>
+<li><a href="#seekposition-presence">SeekPosition-Presence</a></li>
+<li><a href="#segment-info-presence">Segment-Info-Presence</a></li>
+<li><a href="#segmentuid-range">SegmentUID-Range</a></li>
+<li><a href="#segmentuid-size">SegmentUID-Size</a></li>
+<li><a href="#segmentuid-type">SegmentUID-Type</a></li>
+<li><a href="#segmentfilename-type">SegmentFilename-Type</a></li>
+<li><a href="#prevuid-size">PrevUID-Size</a></li>
+<li><a href="#prevuid-type">PrevUID-Type</a></li>
+<li><a href="#prevfilename-type">PrevFilename-Type</a></li>
+<li><a href="#nextuid-size">NextUID-Size</a></li>
+<li><a href="#nextuid-type">NextUID-Type</a></li>
+<li><a href="#nextfilename-type">NextFilename-Type</a></li>
+<li><a href="#segmentfamily-size">SegmentFamily-Size</a></li>
+<li><a href="#segmentfamily-type">SegmentFamily-Type</a></li>
+<li><a href="#timecodescale-presence">TimecodeScale-Presence</a></li>
+<li><a href="#duration-range">Duration-Range</a></li>
+<li><a href="#duration-type">Duration-Type</a></li>
+<li><a href="#dateutc-type">DateUTC-Type</a></li>
+<li><a href="#title-type">Title-Type</a></li>
+</ul></li>
+<li><a href="#ffv1-conformance-checks-draft">FFV1 Conformance Checks (Draft)</a>
+<ul>
+<li><a href="#missing-header">Missing header</a></li>
+<li><a href="#version">version</a></li>
+<li><a href="#version-2">version 2</a></li>
+<li><a href="#microversion-2">micro_version 2</a></li>
+<li><a href="#codertype">coder_type</a></li>
+<li><a href="#statetransitiondelta">state_transition_delta</a></li>
+<li><a href="#colorspacetype">colorspace_type</a></li>
+<li><a href="#bitsperrawsample">bits_per_raw_sample</a></li>
+<li><a href="#more-header-tests-to-add">(More header tests to add)</a></li>
+<li><a href="#crcparity">crc_parity</a></li>
+</ul></li>
+<li><a href="#lpcm-conformance-checks-draft">LPCM Conformance Checks (Draft)</a>
+<ul>
+<li><a href="#formattype">formatType</a></li>
+<li><a href="#bitspersample">bitsPerSample</a></li>
+<li><a href="#bytespersecond">bytesPerSecond</a></li>
+<li><a href="#blockalignment">blockAlignment</a></li>
+<li><a href="#channelcount">channelCount</a></li>
+<li><a href="#nchannels">nChannels</a></li>
+<li><a href="#samplerate">sampleRate</a></li>
+</ul></li>
+<li><a href="#containerstream-coherency-checks-draft">Container/Stream Coherency Checks (Draft)</a>
+<ul>
+<li><a href="#aspect-ratio-match">Aspect Ratio Match</a></li>
+<li><a href="#width-match">Width Match</a></li>
+<li><a href="#height-match">Height Match</a></li>
+</ul></li>
+</ul>
+<!-- toc stop -->
+<h2 id="summary">Summary</h2>
+<p>This reports serves as a snapshot of MediaArea's research, planning, and design work to develop a conformance checker, tentatively entitled PreForma MediaInfo.</p>
+<h2 id="intended-behavior-by-use-case">Intended Behavior by Use Case</h2>
+<h3 id="overview">Overview</h3>
+<p>[[OAIS introduction]]</p>
+<h3 id="conformance-checking-at-creation-time">Conformance Checking at Creation Time</h3>
+<h3 id="conformance-checking-at-transfer-time">Conformance Checking at Transfer Time</h3>
+<h3 id="conformance-checking-at-digitization-time">Conformance Checking at Digitization Time</h3>
+<h4 id="verification-of-lossless-digitization">Verification of Lossless Digitization</h4>
+<p>Until recently audiovisual digitization required a fairly inflexible set of hardware requirements and extremely limited possibilities for an open source approach to video digitization. Due to the bandwidth and processing requirements for the digitization of standard definition video required the installation of PCI cards and often the use of hardware encoders that were designed to encode video as fast as the video was being received to codecs like MPEG2 or JPEG2000. With modern connectivity options such as USB 3 and Thunderbolt it is easier to add video digitization capabilities to modern computers. Additionally modern computer processers can now transcode video losslessly in software from a video input without the need to rely on proprietary hardware-based encoders. Open source solutions such as DVA Profession, bmdcapture, and FFmpeg along with the open provision of video digitization software development kits, such as the Blackmagic SDK are facilitating new open development projects for archival video digitization.</p>
+<p>As vendors and memory institutions are increasing considering and implementing digitization workflows that encode video directly to lossless codecs with the use of an intermediate file-based uncompressed audiovisual data, it is increasingly crucial to assess this lossless file soon after creation to detect any flaws within the digitization process.</p>
+<p>For those digitizing video through processes that incorporate libav or FFmpeg such as bmdcapture of FFmpeg's decklink integration, a separate framemd5 may be written alongside the encoded ffv1 data. The resulting ffv1 data may then be verified against the framemd5 to verify that the correct bits were written to disk.</p>
+<p>An inspiration for the use of framemd5 reports within a digitization workflow is inspired by the verify option with the flac utility available at http://flac.sourceforge.net/. The ‘-V’ or –verify command is used to decode the encoded stream in parallel to the encoding process to double-check the losslessness of the transcoding. With this method any discrepancy between what data is read and transcoded versus what data is written to disk could be identified in a subsequent verification process. The use of framemd5 data within a digitization workflow enables verification in cases where an option similar to flac's --verify argument isn't available.</p>
+<h4 id="assessment-of-vendor-deliverables">Assessment of Vendor Deliverables</h4>
+<p>For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adher to particular patterns as expressed through regular expressions.</p>
+<p>The conformance checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.</p>
+<h3 id="conformance-checking-at-migration-time">Conformance Checking at Migration Time</h3>
+<h4 id="fixity-verification">Fixity Verification</h4>
+<p>Migration of large amounts of data introduce risk for digital corruption, sector loss. Ongoing data migration is essential for digital preservation but can require time consuming verification process. Both Matroska and FFV1 contain features for internal fixity, so that a file copied from point A to point B can be assessed at point B alone to verify the data integrity of the frames. MediaArea recommends uses Matroska's CRC features for use in digital preservation to allow for fixity verification to be more stable and achievable with the file alone without necessarily depending on external databases or records of checksums.</p>
+<h4 id="obsolescence-monitoring">Obsolescence Monitoring</h4>
+<p>Migration is typically an ideal time to perform obsolescence monitoring and preparing actions to limit complications in obsolescence status. Just as memory institutions must maintain the technology that their physical collections are dependent upon, this is equally true for digital collections. As this maintainance becomes more complex, costly, or unlikely archives will typically reformat material (with as little compromise to the content and characteristics of the source as possible) to a format that has more sustainable characteristics.</p>
+<p>To counteract arising obsolescence challenges it is critical to have access to thorough sets of technical metadata in order to associate certain codecs, formats, or technologies with sustainability risks or to identify what one format should be superceded by another in a particular digital preservation. For instance an institution that utilized FFV1 version 0 as a lossless preservation codec may wish to identify such files to reformat them to FFV1 version 3 (now that it is non-experimental) in order to take advantage of version 3's additional advantages. In our research one archive found that some digitized material received from a vendor was missing technical metadata about field dominance and had to identify exactly which materials were affected to order to rectify the issue.</p>
+<h2 id="introduction-of-formats">Introduction of Formats</h2>
+<h3 id="matroska">Matroska</h3>
+<p>Matroska is a open-licensed audiovisual container format with extensive and flexible features and an active user community. The format is supported by a set of core utilities for manipulating and assessing Matroska files, such as mkvtoolnix and mkvalidator.</p>
+<p>Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many &quot;Elements&quot;. Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements.</p>
+<p>Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements.</p>
+<h3 id="ffv1">FFV1</h3>
+<p>FFV1 is a efficient lossless video codec which is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominence, aspect ratio, and colorspace so that it is not reliant on a container format to store this information. FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resillience, or encoding speed.</p>
+<h3 id="linear-pcm">Linear PCM</h3>
+<h2 id="development-of-an-open-source-conformance-checker">Development of an Open Source Conformance Checker</h2>
+<p>The conformance checker developed within the PreForma project must document and associate conformance rules with data types (such as containers or frames) and authorities (such as specifications, community practices, or the local rules of a memory institution). This design document focuses particularly on Matroska, FFV1, and LPCM.</p>
+<h3 id="design-considerations">Design Considerations</h3>
+<h4 id="interfaces">Interfaces</h4>
+<p>The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.</p>
+<p>An interface for assessing conformance of FFV1 video should enable review of the decoded FFV1 frames in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.</p>
+<p>MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.</p>
+<p>The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.</p>
+<h4 id="optimization-for-large-file-size">Optimization for Large File Size</h4>
+<p>Design of a conformance checker should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.</p>
+<p>A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processing on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker.</p>
+<h3 id="compliance-with-standard-specifications">Compliance with Standard Specifications</h3>
+<h3 id="compliance-with-community-driven-implementation-standards">Compliance with Community-Driven Implementation Standards</h3>
+<h3 id="compliance-with-local-institutional-criteria">Compliance with Local Institutional Criteria</h3>
+<h3 id="performance-of-fixes">Performance of Fixes</h3>
+<p>Substantial care should be exercised to ensure that the Conformance Checker properly associates risk, user warnings, and assessments with each fix allowed. In order to allow a fix the software must properly understand and classify what may be fixed and be aware of how the result may be an improvement. Adjustments directly to a preservation file must be handled programmatically with great caution with diligent levels of information provided to the user.</p>
+<p>An example of a fix that could be enabled in the RIFF format could be verifying that any odd-byte length chunk is properly followed by a null-filled byte. Odd-byte length chunks that do not adhere to this rule cause substantial interoperability issues with data in any chunk following the odd-byte length one (this is particularly found in 24 bit mono WAV files). If the odd-byte length chunk is not followed by a null-filled padding byte, then most typically the next chunk starts where the padding byte is and the padding byte may be inserted so that other following chunks increase their offset by one byte. This scenario can be verified by testing chunk id and size declaration of all following bytes so that the software may know beforehand if the fix (inserting the null-filled padding byte) will succeed in correcting the RIFF chunk structure’s adherence to its specification.</p>
+<p>Fixes for Matroska files could include fixing metadata tags that don’t include a SimpleTag element or re-clustering frames if a cluster does not start on a keyframe.</p>
+<h3 id="focus-on-fixity">Focus on Fixity</h3>
+<p>Both FFV1 and Matroska provide fixity features that serve the objectives of digitial preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRC's on each frame. Matroska documents methods to embed checksums in Matroska elements to allow for future validation of any content.</p>
+<p>Although the Matroska specification states that &quot;All level 1 elements should include a CRC-32&quot; this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.</p>
+<p>The advantages of embedded fixity in preservation media files is significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).</p>
+<h2 id="ecosystem-around-open-source-reference-implementation">Ecosystem around Open Source Reference Implementation</h2>
+<h3 id="feedback-and-reporting">Feedback and Reporting</h3>
+<h3 id="advance-improvement-of-standard-specification">Advance Improvement of Standard Specification</h3>
+<h4 id="ffv1-specification">FFV1 Specification</h4>
+<p>Efforts to create an FFV1 specification began in April 2012, continuing through the August 2013 release of FFV1 version 3. Currently the specification remains in development at http://github.com/ffmpeg/ffv1. Ideally a specification should fully inform the development of a decoder or parser without the need to reference existing implementations (such as the ffv1 implementations within ffmpeg and libav); however MediaArea's initial research and prototyping efforts with FFV1 found the current specification insufficient to create a decoder. As a result MediaArea utilized ffmpeg’s FFV1 implementation to fully interpret the specification. Several threads on the ffmpeg-devel and libav-devel listserv reference discussions about the development of the FFV1 specification and consideration of efforts to standardize the specification through a standards organization, such as IETF (Internet Engineering Task Force) <a href="http://matroska.org/technical/specs/rfc/index.html">1</a>.</p>
+<p>In consideration of FFV1’s utilization within preservation contexts, the standardization of the codec through an open standards organization would better establish FFV1 as a trustworthy, stable, and documented option. At the moment FFV1 can be seen at a tipping point in its use within preservation context. It’s speed, accessibility, and digital preservation features make it an increasingly attractive option for lossless video encoding that can be found in more and more large scale projects; the standardization of FFV1 through an open standards organization would be of broad interest to digital preservation communities and facilitate greater accessibility of lossless encoding options that are both efficient and standardization.</p>
+<p>MediaArea proposes working closely with the lead authors of the FFV1 specification in order to update the current FFV1 specification to increase its self-reliance and increase its clarity. Development of the FFV1 specification early within the PreForma project will generate substantial feedback to the authors of the specification which could then be offered through the specification’s github page via pull requests or the issue tracker. MediaArea proposes at a later stage of development that the Preforma project serve as a catalyst to organize, facilitate, and sponsor the IETF standardization process for FFV1.</p>
+<p>Considering the 2 year timeline of the PreForma project and usual pace of IETF standardization projects, we proprose at least submitting FFV1 as an Independent Submission to IETF which could provide workable timeline, encourage a detailed review process, and assign a formal RFC number to the specification.</p>
+<h4 id="matroska-specification">Matroska Specification</h4>
+<p>Both the Matroska specification and its underlying specification for EBML are at mature and stable stage with thorough documentation and existing validators, but several efforts of the PreForma project can serve as contributions to this specifications. The underlying EBML specification <a href="http://matroska.org/technical/specs/rfc/index.html">1</a> has already been drafted into RFC format but is has not yet been submitted to IETF as an Independent Submission or otherwise.</p>
+<p>Matroska has a detailed metadata specification at http://www.matroska.org/technical/specs/tagging/index.html. Each tag has an official name and description while provides rules and recommendations for use. Many of these tags could be associated with validation rules, such as expressed by regular expression to assure that the content of the tag conforms to expectations. For instance tag such as URL, EMAIL, or ISBN have specific allowable patterns for what may be contained. As part of build a conformance tool for Matroska, MediaArea will generate conformance tests for individual tags and these tests may be contributed back to the Matroska specification in a list of regex values, an XML schematron file, or other acceptable contribution method.</p>
+<h4 id="other-suggested-improvements-or-contributions-to-standard-specifications">Other Suggested Improvements or Contributions to Standard Specifications</h4>
+<p>Register an official mime type via IETF for Matroska.</p>
+<p>Register dedicated FFV1 codecid with Matroska (current use is via fourcc).</p>
+<p>Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.</p>
+<p>Feedback for features and functions of FFV1 version 4, which is currently under development.</p>
+<p>Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.</p>
+<h3 id="advance-business-cases-for-managing-preservation-files">Advance Business Cases for Managing Preservation Files</h3>
+<h1 id="architectural-layers">Architectural Layers</h1>
+<p>The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Hypervisor. The layers shall include:</p>
+<ul>
+<li>Input Layer</li>
+<li>Container Conformance Check</li>
+<li>Container Demuxer</li>
+<li>Stream Conformance Check</li>
+<li><p>Stream Coherancy Check</p></li>
+<li>Stream Decoding (through plugin)</li>
+<li>Baseband Analysis (through plugin)</li>
+<li><p>Playback and Playback Analysis (through plugin)</p></li>
+</ul>
+<p>Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in conformance checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the conformance checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a conformance checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a conformance checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.</p>
+<p>We propose incorporating several compatible utilities into PreForma MediaInfo to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.</p>
+<h2 id="transport-layer">Transport layer</h2>
+<h3 id="preforma-mediainfo-file-on-disk-or-direct-memory-mapping">Preforma MediaInfo: File on disk or direct memory mapping</h3>
+<p>Preforma MediaInfo natively offers a file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.</p>
+<h3 id="plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</h3>
+<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into PreForma MediaInfo the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
+<p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
+<p>Used as a proof of concept of plugin integration:<br />HTTP/HTTPS/FTP/FTPS support via MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)</p>
+<h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
+<h3 id="preforma-mediainfo-matroska-checker">Preforma MediaInfo: Matroska checker</h3>
+<h3 id="plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</h3>
+<p>mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.</p>
+<h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
+<h3 id="preforma-mediainfo-1">Preforma MediaInfo</h3>
+<p>PreForma MediaInfo will utilizing MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)): - MXF (commonly found within memory institutions) - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM) - DV (video stream format which uses LPCM) - AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek) - WAV (a common container for LPCM)</p>
+<p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.</p>
+<h3 id="plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</h3>
+<p>FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing. For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.</p>
+<p>Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as: - Video Waveform Monitor - Vectorscope - Ability to inspect luminance and chroma planes separately - Audio Meters</p>
+<p>We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.</p>
+<h2 id="stream-essence-implementation-checker">Stream / Essence implementation checker</h2>
+<h3 id="preforma-mediainfo-2">Preforma MediaInfo:</h3>
+<ul>
+<li>FFV1</li>
+<li>PCM (including D-10 Audio, AES3)</li>
+</ul>
+<h3 id="plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</h3>
+<p>For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)</p>
+<h3 id="plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</h3>
+<p>For DV (BSD license, compatible with GPLv3+ and MPL2+)</p>
+<h3 id="optional">Optional</h3>
+<ul>
+<li>MPEG-1/2 Video (including IMX, AS-07, D-10 Video, FIMS…)</li>
+<li>H.264/AVC (including AS-07)</li>
+<li>Dirac</li>
+<li>AC-3 (including AS-07)</li>
+<li>MPEG 1/2 Audio</li>
+<li>AAC</li>
+<li>Any other essence format on sponsor request (we have skills in DV, VC-1, VC-3, MPEG-4 Visual, H.263, H.265/HEVC, FLAC, Musepack, Wavepack, , BMP, DPX, EXR, JPEG, PNG, SubRip, WebVTT, N19/STL, TTML…)</li>
+</ul>
+<h2 id="containerwrapper-vs-stream-essence-coherency-checker">Container/Wrapper vs Stream / Essence coherency checker</h2>
+<h3 id="preforma-mediainfo-3">Preforma MediaInfo</h3>
+<p>PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream / Essence implementation checker parts)</p>
+<h2 id="stream-essence-decoder">Stream / Essence decoder</h2>
+<h3 id="preforma-mediainfo-4">Preforma MediaInfo</h3>
+<ul>
+<li>PCM (including D-10 Audio, AES3)</li>
+</ul>
+<h3 id="plugin-integration-proof-of-concept-ffmpeg-1">Plugin integration proof of concept: FFmpeg</h3>
+<p>FFmpeg decoder (GPLv2+ license, compatible with GPLv3+ but not with MPL2+)</p>
+<h3 id="plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</h3>
+<p>OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)</p>
+<h2 id="baseband-analyzer">Baseband analyzer</h2>
+<h3 id="preforma-mediainfo-5">Preforma MediaInfo</h3>
+<ul>
+<li>None (only creation of the API)</li>
+</ul>
+<h3 id="plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</h3>
+<p>QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)</p>
+<h2 id="controler">Controler</h2>
+<p>Communication between all plugins - Shudeling - Statistics - Reporting - User management - Policies management - Human interface - Command line interface - GUI (based on Qt) - Web UI (server/client)</p>
+<h2 id="ideas-to-put-in-the-final-doc">Ideas to put in the final doc</h2>
+<p>We are Open-Source natives: we do Open-Source since the first days. We have an Open-Source business model based on sponsored support (bug correction and feature requests). We don’t do Open-Source only because Performa wants it, we believe in Open-Source. We are open to Open-source and non Open-Source (we can do non Open-source small developments on request, depending of the business model of the sponsor) Do other project think to demux (e.g. how do they plan to analyze JPEG 2000 in MOV)?</p>
+<p>We are already involved in Open-Source with MediaInfo and recognized as it, e.g. we are officially provided by Open Source distros: - Debian: https://packages.debian.org/wheezy/mediainfo - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo - OpenSuse: http://packman.links2linux.org/package/mediainfo - Arch Linux: https://www.archlinux.org/packages/?q=mediainfo - FreeBSD: http://www.freshports.org/multimedia/mediainfo/</p>
+<p>We see 4 projects: Text, Image, A/V except JPEG 2000, JPEG 2000. Only 3 selected entities for phase 2 (3-5 written in call to tender, 3 written in kickoff meeting report)?</p>
+<p>Test files; - PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/ - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files - Matroska buggy files: Homemade + request to Matroska mailing list - FFV1 buggy files: Homemade+ request to FFmpeg mailing list ## Style Guide -- ## Source Code Guide</p>
+<h3 id="portability">Portability</h3>
+<p>Source code MUST be built for portability between technical deployment platforms.</p>
+<h3 id="modularity">Modularity</h3>
+<p>Source code MUST be built in a modular fashion for improved maintainability.</p>
+<h3 id="deployment">Deployment</h3>
+<p>The Conformance Checker MUST allow for deployment in these five infrastructures/environments: The PREFORMA website, an evaluation framework, a stand-alone system, a network-based system, and legacy systems.</p>
+<p>To sufficiently demonstrate the scope and functionality of the Conformance Checker, it, along with associated documentation and guidelines, must be made available at the PREFORMA project website. The PREFORMA website will be considered as the deliverable for the PREFORMA project.</p>
+<p>In order to gather sufficient structured feedback on the conformance checking process, the Conformance Checker will require deployment within the DIRECT infrastructure for test and evaluation of the tool in the PCP procedure.</p>
+<p>The Conformance Checker must have the capability to be packaged and run as an executible on a PC running any standard operating system (at least for: MS Windows 7, Mac OSX, common Linux distributions such as Ubuntu, Fedora, Debian, and Suse). This ensures the conformance checker can be used in small-scale institutions without centralized IT infrastructure.</p>
+<p>The Conformance Checker must allow for deployment in network-based solutions (dedicated server, cloud solutions) for digital repositories.</p>
+<p>The Conformance Checker must have the capability of being plugged into legacy systems via written API integration.</p>
+<h3 id="apis">API's</h3>
+<p>The Conformance Checker MUST interface with other software systems via API’s.</p>
+<h2 id="open-source-practices">Open Source Practices</h2>
+<h3 id="development">Development</h3>
+<p>Development of software in open source projects in PREFORMA MUST utilise effective open source work practices. Effective open source work practices include:</p>
+<ul>
+<li>use of nightly builds Nightly builds are automated neutral builds that reflect the current, most up-to-date status of a piece of developed software. Access made to nightly builds allow for groups of developers to work collaboratively and always assess the most current state of the software, with consideration to potential bugs or other hazards that could occur during the development process. Programmers are able to confidently determine if they &quot;broke the build&quot; (made the software inoperable) with their code and prevent or correct changes quickly, as needed.</li>
+<li>use of software configuration management systems (e.g. Git) Using a software configuration management system allow for version and revision control, an essential component to developers working collaboratively. A version control system allows multiple people to work on same or similar sections of the source code base at the same time with awareness and prevention of overlapping or conflicting work. Git will be used as the software configuration management system for this project.</li>
+<li>use of an open platform for open development (e.g. Github) An open platform on which to develop software facilitates the open development of that software. Public visibility and ability to contribute to the software by anyone allows for heartier, more reliable software. Feedback is more easily sought and more readily provided with the use of an open platform. Github will be used as the open platform for open development of this project.</li>
+</ul>
+<h3 id="open-source-platforms">Open Source Platforms</h3>
+<p>All development of software and all development of digital assets (related to developed open source software) in PREFORMA MUST be conducted and provided in open source projects at open development platforms.</p>
+<h2 id="contribution-guide">Contribution Guide</h2>
+<h3 id="file-naming-conventions">File Naming Conventions</h3>
+<p>Files related to documentation should be named in CamelCase. Sample data should be added in snake_case with a sufficiently descriptive title.</p>
+<p>Commit messages should concisely summarize the contribution. Commits should be cohesive and only include changes to relevant files (e.g. do not fix a typo in the Style Guide, change scope paramaters, and fix a bug all in the same commit).</p>
+<h3 id="rules-for-qtc-code">Rules for Qt/C++ code:</h3>
+<p>4 spaces are used for indentation. Tabs are never used.</p>
+<p>For more guidelines, refer to the Qt Coding Style guide: http://qt-project.org/wiki/Qt_Coding_Style For even more guidelines, Google guide on C++: http://google-styleguide.googlecode.com/svn/trunk/cppguide.html</p>
+<h3 id="rules-for-contributing-code">Rules for contributing code</h3>
+<p>Contributions of code or additions to documentation must be written with Qt and must be made in the form of a branch submitted as a pull request.</p>
+<ol style="list-style-type: decimal">
+<li>Fork this repository (https://github.com/MediaArea/PreFormaMediaInfo/fork)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request with a more verbose description of the proposed changes</li>
+</ol>
+<h3 id="rules-for-contributing-feedback">Rules for contributing feedback</h3>
+<p>Feedback of all kind is encouraged and can either be made through <a href="https://github.com/MediaArea/PreFormaMediaInfo/issues">opening an issue</a> or by contacting the team directly at info@mediaarea.net</p>
+<h3 id="linking">Linking</h3>
+<p>In order to facilitate self-description, intuitive discovery, and use of resulting code and documentation it is highly encouraged to utilize linking through documentation, tickets, commit messages, and within the code. For instance the registry itemizes individual conformance checks should link to code blocks and/or commits as software is developed that is associated to that conformance check. In this manner it should be feasible to easily review both human-readable descriptions of conformity checks and associated programmatic implementations.</p>
+<h2 id="license">License</h2>
+<p>The software and digital assets delivered by tenderer are made available under the following IPR conditions:</p>
+<p>All software developed during the PREFORMA project MUST be provided under the two specific open source licenses: “GPLv3 or later” and “MPLv2 or later”.</p>
+<p>All source code for all software developed during the PREFORMA project MUST always be identical between the two specific open source licenses (“GPLv3 or later” and “MPLv2 or later”).</p>
+<p>All digital assets developed during the PREFORMA project MUST be provided under the open access license: Creative Commons CC-BY v4.0 and in open file formats, i.e. an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004)</p>
+<h2 id="checker-design-conformance-and-coherency">Checker Design: Conformance and Coherency</h2>
+<p>Conformance checks for both container formats (such as Matroska) and streams (such as LPCM and FFV1) shall be defined, registered, and associated with the code that performs the check. PreForma MediaInfo will perform and report on a growing list of tests per format. Many of these tests will be derived directly from the specifications or standard documents of a given file format, but other tests will derive from expected patterns and structural incoherency. Some checks focus on coherency between a stream and a container (such as if the container and stream utilize contradictory aspect ratios).</p>
+<p>These checks shall have logical cause and effect or conditional relationships and shall be documented by the citation of external standards documentation or by the project’s own research and development. MediaArea plans to provide guidance for user communities to develop and explain their own ruleset in shareable form. An XML schema for conformance definition is provided. MediaArea’s development of conformance and policy checkers will involve several categories of tests. In addition to supporting conformity checks and logical interpretation of selected file formats, there is user desire for checks performed based on internal or institutional policy that are not necessarily embedded in the file format technical specifications. A PreForma MediaArea 'shell' shall be able to load multiple sets of conformity/coherency rulesets so that users may select which rulesets they choose to adhere to as well as create their own.</p>
+<p>Conformance and coherency rulesets specifically targeting specification compliance of FFV1, Matroska, and LPCM are currently under development.</p>
+<h2 id="matroska-conformance-checks-draft">Matroska Conformance Checks (Draft)</h2>
+<h3 id="extension-test">Extension Test</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EXT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">File name</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/node/2/revisions/153/view</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: The file extension SHOULD be one of the following (MKV, MKA, MKS, MK3D, WEBM)</p>
+<h3 id="extension-test-mkv">Extension Test MKV</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EXT-MKV</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">File name</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/node/2/revisions/153/view</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: If the file extension is MKV, the file SHOULD contain at least one video track.</p>
+<h3 id="extension-test-mka">Extension Test MKA</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EXT-MKA</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">File name</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/node/7/revisions/214/view</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: If the file extension is MKA, the file SHOULD contain at least one audio track and no other type of track, i.e. &quot;audio-only&quot;.</p>
+<h3 id="extension-test-mks">Extension Test MKS</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EXT-MKS</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">File name</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/node/2/revisions/153/view</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: If the file extension is MKS, the file SHOULD contain at least one subtitle track and no other type of track, i.e. &quot;subtitle-only&quot;.</p>
+<h3 id="extension-test-mk3d">Extension Test MK3D</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EXT-MK3D</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">?</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">File name, StereoMode element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/node/2/revisions/153/view</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: If the file extension is MKV3D the file SHOULD contain at least one video track AND SHOULD contain at least one StereoMode element.</p>
+<h3 id="ebml-element-start">EBML Element Start</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-ELEM-START</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: &quot;Set the EBML characteristics of the data to follow. Each EBML document has to start with this.&quot;</p>
+<p>Definition: An Matroska file MUST start with an EBML element id, ie. 0x1A45DFA3.</p>
+<h3 id="ebml-vint-efficiency">EBML vint efficiency</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">EBML-VINT-EFF</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBML Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">EBML</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Structure</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://matroska.org/technical/specs/rfc/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: Section 2.2 &quot;IDs are always encoded in their shortest form, e.g. 1 is always encoded as 0x81 and never as 0x4001.&quot;</p>
+<p>Definition: The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits, i.e. vint is expressed as efficiently as feasible.</p>
+<h3 id="element-id-registered">Element ID Registered</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-KNOWN-ELEM</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">EBML</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: Ensure MKV Element ID is registered in specdata.xml (as of Dec. 13, 2014 this is 224 registered Element IDs)</p>
+<h3 id="element-size-0x7f-reservation">Element Size 0x7F Reservation</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">EBML-ELEM-SIZE-7F</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBML Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">EBML</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Element Size</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://matroska.org/technical/specs/rfc/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning, since it is possible (though unlikely) element size is unknown but then happens to be 127 bytes.</p>
+<p>Quote: &quot;Note that the shortest encoding form for 127 is 0x407f since 0x7f is reserved.&quot;</p>
+<p>Definition: If Element Size is set to 0x11111111 but element size is actually 127 bytes provide a warning.</p>
+<h3 id="element-size-byte-length-limit">Element Size Byte Length Limit</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">EBML-ELEM-SIZE-CAP</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBML Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">EBML</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Element Size</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://matroska.org/technical/specs/rfc/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: Section 2.3: &quot;The EBML element data size is encoded as a variable size integer with, by default, widths up to 8.&quot;</p>
+<p>Definition: The first eight bits of any Element Size may not start with 0b00000000.</p>
+<h3 id="element-size-unknown">Element Size Unknown</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">EBML-ELEM-SIZE-UNK</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBML Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">EBML</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Element Size</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">Dave</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning</p>
+<p>Quote: &quot;Values with all data bits set to 1 means size unknown, which allows for dynamically generated EBML streams where the final size isn't known beforehand.&quot;</p>
+<p>Definition: Warning on unknown element sizes, unoptimized MKV.</p>
+<h3 id="level-0-segment">Level 0 Segment</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-LEVEL-0</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: Inferred: EBML and Segment are the only level 0 elements, both are allowed to occur multiple times.</p>
+<p>Definition: The EBML Header MUST be immediately followed by another EBML Header Element, 0x1A45DFA3, or a Segment Element, 0x18538067. {{Can global Elements exist at level 0?!}}</p>
+<h3 id="only-one-ebml-header-recommended">Only One EBML Header recommended</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-1-EBML</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Matroska structure</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">is there a rule to prevent this?</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning</p>
+<p>Quote: Assumed: Two EBML Headers in one MKV file seems contradictory.</p>
+<p>Definition: There SHOULD only occur one EBML level 0 element within an MKV file. (EBML Headers could recur if an MKV file is an attachment of an MKV file).</p>
+<h3 id="file-size-consistency">File Size Consistency</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-FILESIZE-MATCH</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Matroska structure</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html#block_structure</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: Inferred</p>
+<p>Definition: The actual file size should be the sum of all level 0 Element Size declarations plus the sum of the byte sizes of level 0 Element IDs and Element Sizes.</p>
+<h3 id="ebmlversion-presence">EBMLVersion Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-VER</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Within any EBML Header exactly one EMBL Version element must be present.</p>
+<h3 id="ebmlreadversion-presence">EBMLReadVersion Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-RV</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="ebmlmaxidlength-presence">EBMLMaxIDLength Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-MAXIDL</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="ebmlmaxsizelength-presence">EBMLMaxSizeLength Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-MAXSL</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="doctype-presence">DocType Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-DOCT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="doctypeversion-presence">DocTypeVersion Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-DOCTV</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="doctypereadversion-presence">DocTypeReadVersion Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-EBML-DOCTRV</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="ebml-version-coherency">EBML Version Coherency</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-VER-COH</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html#block_structure</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote:</p>
+<p>Definition: The value of EBMLVersion MUST be greater than or equal to the vale of EBMLReadVersion.</p>
+<h3 id="ebmlmaxidlength-limits">EBMLMaxIDLength Limits</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-MAXID-LIMIT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Spec says &quot;4 or less&quot;, but since the EBML ID length itself is 4, the EBMLMaxIDLength has not other valid value.</p>
+<p>Quote:</p>
+<p>Definition: MUST equal 4</p>
+<h3 id="ebmlmaxsizelength-limit">EBMLMaxSizeLength Limit</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-MAXSL-LIMIT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: &quot;The maximum length of the sizes you'll find in this file (8 or less in Matroska).&quot;</p>
+<p>Quote:</p>
+<p>Definition: Must be less than or equal to 8 and greater than or equal to 1.</p>
+<h3 id="ebmlmaxsizelength-matches">EBMLMaxSizeLength Matches</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-MAXSL-MATCH</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: No Element Size Length exceeds the length noted in EBMLMaxSizeLength</p>
+<h3 id="doctype">DocType</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-DOCT-KNOWN</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: MUST equal either &quot;matroska&quot; or &quot;webm&quot;</p>
+<h3 id="doctypeversion-coherency">DocTypeVersion Coherency</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-DOCTV-COH</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: The value of DocTypeVersion MUST be greater than or equal to the vale of DocTypeReadVersion.</p>
+<h3 id="doctypeversion-limits">DocTypeVersion Limits</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-DOCTV-LIMIT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">EBML Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning</p>
+<p>Quote:</p>
+<p>Definition: Values for DocTypeVersion and DocTypeReadVersion must be either 1, 2, 3, or 4.</p>
+<h3 id="top-elements-coded-on-4-octets">Top Elements Coded on 4 Octets</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-TOP-ELEM-4CODE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Matroska structure</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html#block_structure</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: &quot;All top-levels elements (Segment and direct sub-elements) are coded on 4 octets, i.e. class D elements.&quot;</p>
+<p>Quote:</p>
+<p>Definition: Note: this seems to contradict EBML rule to use most efficient element size, but perhaps this is an intention deviation of MKV to achieve top elements starting on mutiples of 4 octets. ?</p>
+<h3 id="crc-order">CRC Order</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-CRC-ORDER</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">CRC Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html#block_structure</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: &quot;The CRC element should be the first in it's parent master for easier reading.&quot;</p>
+<p>Quote:</p>
+<p>Definition: CRC Elements SHOULD be the first sub-Element of its parent Element.</p>
+<h3 id="crc-32-size-coherency">CRC-32 Size Coherency</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-CRC-COH</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">CRC Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html#block_structure</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred: &quot;The CRC in use is the IEEE CRC32 Little Endian&quot;</p>
+<p>Quote:</p>
+<p>Definition: The Element Size of the CRC-32 Element MUST be 4 bytes (aka 32 bit).</p>
+<h3 id="crc-validation">CRC Validation</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-CRC-VAL</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">CRC Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: The crc hash of the CRC-32 element MUST validate the subsequent data of the parent Element, from the Element that follows the CRC-32 element to the end of the parent Element.</p>
+<h3 id="crc-not-pointlessly-used">CRC Not Pointlessly Used</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-CRC-REASON</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">CRC Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">author</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Recommended</p>
+<p>Quote:</p>
+<p>Definition: A CRC-32 element should not be the only child Element of its parent Element (ie hashing no data).</p>
+<h3 id="crc-presence">CRC-Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-CRC-PRES</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">CRC Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: &quot;All level 1 elements should include a CRC-32.&quot; but CRC-32 Element is NOT Mandatory. ?</p>
+<p>Quote:</p>
+<p>Definition: Warning when Level 1 elements have no CRC-32. Very common.</p>
+<h3 id="single-segment-composition">Single Segment Composition</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: &quot;Typically a Matroska file is composed of 1 segment.&quot;</p>
+<p>Definition: File MUST contain at least one segment.</p>
+<h3 id="seek-presence">Seek-Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEEK-PRES</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Meta Seek Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: File MUST contain at least one Seek element.</p>
+<h3 id="seekid-presence">SeekID-Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEEKID-PRES</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Meta Seek Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: File MUST contain at least one SeekID element.</p>
+<h3 id="seekid-type">SeekID-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEEKID-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Meta Seek Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: SeekID MUST be in binary format.</p>
+<h3 id="seekposition-presence">SeekPosition-Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEEKPOSITION-PRES</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Meta Seek Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: File MUST contain at least one SeekPosition element.</p>
+<h3 id="segment-info-presence">Segment-Info-Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTINFO-PRES</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Segment information MUST contain at least one Info element.</p>
+<h3 id="segmentuid-range">SegmentUID-Range</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTUID-RNG</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Range cannot be zero.</p>
+<p>Quote:</p>
+<p>Definition: SegmentUID MUST be greater than zero.</p>
+<h3 id="segmentuid-size">SegmentUID-Size</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTUID-SIZE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, SegmentUID MUST be 128 bits (16 bytes) in size.</p>
+<h3 id="segmentuid-type">SegmentUID-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTUID-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, SegmentUID MUST be in binary format.</p>
+<h3 id="segmentfilename-type">SegmentFilename-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTFILENAME-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, SegmentFilename MUST be in UTF-8 format.</p>
+<h3 id="prevuid-size">PrevUID-Size</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-PREVUID-SIZE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, PrevUID MUST be in binary format.</p>
+<h3 id="prevuid-type">PrevUID-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-PREVUID-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, PrevUID MUST be 128 bits (16 bytes) in size.</p>
+<h3 id="prevfilename-type">PrevFilename-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-PREVFILENAME-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, PrevFilename MUST be in UTF-8 format.</p>
+<h3 id="nextuid-size">NextUID-Size</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-NEXTUID-SIZE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, NextUID MUST be in binary format.</p>
+<h3 id="nextuid-type">NextUID-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-NEXTUID-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, NextUID MUST be 128 bits (16 bytes) in size.</p>
+<h3 id="nextfilename-type">NextFilename-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-NEXTFILENAME-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, NextFilename MUST be in UTF-8 format.</p>
+<h3 id="segmentfamily-size">SegmentFamily-Size</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTFAMILY-SIZE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, SegmentFamily MUST be in binary format.</p>
+<h3 id="segmentfamily-type">SegmentFamily-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-SEGMENTFAMILY-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, SegmentFamily MUST be 128 bits (16 bytes) in size.</p>
+<h3 id="timecodescale-presence">TimecodeScale-Presence</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-TIMECODESCALE-PRES</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: File MUST contain at least one TimecodeScale element.</p>
+<h3 id="duration-range">Duration-Range</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-DURATION-RANG</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, duration range MUST be greater than 0</p>
+<h3 id="duration-type">Duration-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-DURATION-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.matroska.org/technical/specs/index.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, duration type MUST be float integer.</p>
+<h3 id="dateutc-type">DateUTC-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-DATEUTC-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: UTC standards inferred.</p>
+<p>Quote:</p>
+<p>Definition: If present, DateUTC MUST be in date format and follow UTC standards.</p>
+<h3 id="title-type">Title-Type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">MKV-TITLE-TYPE</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Matroska Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">Matroska</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Segment Element</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">specdata.xml</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: If present, Title MUST be in UTF-8 format.</p>
+<h2 id="ffv1-conformance-checks-draft">FFV1 Conformance Checks (Draft)</h2>
+<h3 id="missing-header">Missing header</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">OUTOFBAND-HEADER-MISSING</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1 &gt;=2</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: &quot;Version 2 and later files use a global header&quot;</p>
+<p>Definition: If version is 2 or more, there should be a global header in the container private data</p>
+<h3 id="version">version</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-version</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning</p>
+<p>Quote: &quot;version 0, 1 or 3&quot;</p>
+<p>Definition: Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)</p>
+<h3 id="version-2">version 2</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-version2</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning</p>
+<p>Quote: &quot;Version 2 was never enabled in the encoder thus version 2 files should not exist&quot;</p>
+<p>Definition: Version 2 is forbidden, analysis stops</p>
+<h3 id="micro_version-2">micro_version 2</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-micro_version</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Warning</p>
+<p>Quote: &quot;For version 3, micro_version is 4, micro versions prior to this represent pre standard&quot;</p>
+<p>Definition: Not supported version, high risk of decoding issue</p>
+<h3 id="coder_type">coder_type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-coder_type</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: &quot;0 (Golomb Rice), 1 (Range coder), 2 (Range coder with custom state transition table)&quot;</p>
+<p>Definition: coder_type &gt;2 is not supported</p>
+<h3 id="state_transition_delta">state_transition_delta</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-state_transition_delta</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: (To be defined)</p>
+<h3 id="colorspace_type">colorspace_type</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-colorspace_type</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: &quot;0 (YCbCr), 1 (JPEG2000_RCT) &quot;</p>
+<p>Definition: colorspace_type &gt;1 is not supported</p>
+<h3 id="bits_per_raw_sample">bits_per_raw_sample</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-bits_per_raw_sample</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">all</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">Header</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">http://www.ffmpeg.org/~michael/ffv1.html</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Are other values valid?</p>
+<p>Quote: &quot;commonly 8, 9, 10 or 16 &quot;</p>
+<p>Definition:</p>
+<h3 id="more-header-tests-to-add">(More header tests to add)</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition:</p>
+<h3 id="crc_parity">crc_parity</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">FFV1-HEADER-crc_parity</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote: &quot;32bit that are choosen so that the global header as a whole or slice as a whole has a crc&quot;</p>
+<p>Definition:</p>
+<h2 id="lpcm-conformance-checks-draft">LPCM Conformance Checks (Draft)</h2>
+<h3 id="formattype">formatType</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-FMT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 16</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: &quot;If the <wFormatTag> field of the <fmt-ck> is set to WAVE_FORMAT_PCM, then the waveform data consists of samples represented in pulse code modulation (PCM) format.&quot;</p>
+<p>Definition: WAVE_FORMAT_PCM = 0x0001</p>
+<h3 id="bitspersample">bitsPerSample</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-BPS</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 17</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: &quot;The <nBitsPerSample> field specifies the number of bits of data used to represent each sample of each channel. If there are multiple channels, the sample size is the same for each channel.&quot;</p>
+<p>Definition: valid bits per sample 16, 20 or 24</p>
+<h3 id="bytespersecond">bytesPerSecond</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-BYT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 17</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: &quot;For PCM data, the <nAvgBytesPerSec> field of the ‘fmt’ chunk should be equal to the following formula rounded up to the next whole number: (nChannels x nSamplesPerSecond x nBitsPerSample) / 8&quot;</p>
+<p>Definition: MUST equal (nChannels x nSamplesPerSecond x nBitsPerSample) / 8 **only important for compressed formats</p>
+<h3 id="blockalignment">blockAlignment</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-BLK</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 17</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: &quot;The <nBlockAlign> field should be equal to the following formula, rounded to the next whole number: (nChannels x nBitsPerSample)/8&quot;</p>
+<p>Definition: C ontainer size (in bytes) of one set of samples. MUST equal (nChannels x nBitsPerSample)/8EBU **Note: The above formulae do not always give the correct answer. Strictly speaking, the number of bytes per sample (nBitsPerSample/8) should be rounded first. Then this integer should be multiplied by <nChannels> (which is always an integer) to give <nBlockAlign>. This in turn should be multiplied by <nSamplesPerSecond> to give <nAvgBytesPerSec>].</p>
+<h3 id="channelcount">channelCount</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-CHN</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 17</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: 1 = mono, 2 = stereo, etc.</p>
+<p>Definition: 1 = mono, 2 = stereo, etc.</p>
+<h3 id="nchannels">nChannels</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-CHN</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 17</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: &quot;Number of channels in the wave, 1 for mono, 2 for stereo&quot;</p>
+<p>Definition: 1 = mono, 2 = stereo, etc.</p>
+<h3 id="samplerate">sampleRate</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">BWF-LPCM-SRT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">EBU BWAV v2 Specification</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">BWF</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">FormatChunk 'fmt'</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">EBU Tech 3285 v2, pg. 17</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity: Inferred</p>
+<p>Quote: &quot;Frequency of the sample rate of the wave file. This should be 48000 or 44100 etc. This rate is also used by the sample size entry in the fact chunk to determine the length in time of the data.&quot;</p>
+<p>Definition: 32000, 44100, 48000, etc.</p>
+<h2 id="containerstream-coherency-checks-draft">Container/Stream Coherency Checks (Draft)</h2>
+<h3 id="aspect-ratio-match">Aspect Ratio Match</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">COHERENCY-DAR</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1/MKV</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Display Aspect Ratio indicated in the container (e.g. Matroska) is not the Display Aspect Ratio indicated in the FFV1 stream</p>
+<h3 id="width-match">Width Match</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">COHERENCY-WIDTH</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 and Container Specifications</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">Container</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">all</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">Header</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Width indicated in the container (e.g. Matroska) is not the width indicated in the FFV1 stream</p>
+<h3 id="height-match">Height Match</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">COHERENCY-HEIGHT</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">FVV1 and Container Specifications</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">Container</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">all</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">Header</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Height indicated in the container (e.g. Matroska) is not the height indicated in the FFV1 stream</p>
