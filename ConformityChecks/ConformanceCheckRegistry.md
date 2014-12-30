@@ -50,8 +50,10 @@ A quote from the authority that demonstrates the logic or reaons for the check.
 Expresses whether the check is based of an explicit statement of an underlying specificiation or based on deductive logic or inference from a reading of the specification.
 
 #### Definition
-A clear description of conformanace check.
+A clear description of conformance check.
 
 #### Regex Parameters
+A human-readable description of what the regular expression must check for.
 
-#### Regex Expression
+#### Regular Expression
+Code that checks for conformance to the suggested parameters.
