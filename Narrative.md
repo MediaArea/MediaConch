@@ -181,13 +181,15 @@ Test files;
 - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
 - Matroska buggy files: Homemade + request to Matroska mailing list
 - FFV1 buggy files: Homemade + request to FFmpeg mailing list
-
+- LCPM buggy files: Homemade + request to ARSC/AES listervs
 
 ## Intended Behavior by Use Case
 
 ### Overview
 
-[[OAIS introduction]]
+MediaArea recognizes the recommended practices laid out in the Open Archival Information System (OAIS) reference model, intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The stated conformance checker should be developed to address all areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.  
+
+Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, accessed by Consumers, and maintained by Management in the archive. To take one example of such as service, the Ingest Functional Entity, or Ingest, performs quality assurance on incoming Submission Information Packages (SIPs). Here the conformance checker, as an implementation and policy checker, would serve as the primary tool to verify SIPs and other Preservation Description Information submitted by Producers. 
 
 ### Conformance Checking at Creation Time
 
