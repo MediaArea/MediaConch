@@ -13,6 +13,7 @@ MediaArea sees community involvement as a key factor of evaluating the success o
 During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added.
 
 Matroska, FFV1, and LPCM describe very unique concepts of information including:
+
 - a container format, Matroska
 - an audio stream, LPCM
 - a video stream, FFV1
@@ -42,6 +43,7 @@ Because PCM streams contain only audio samples without any codec structure or me
 ## Development of a Conformance Checker
 
 The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components:
+
 - implementation checker
 - policy checker
 - reporter
@@ -224,6 +226,7 @@ To counteract arising obsolescence challenges it is critical to have access to t
 ## Open Source Ecosystem
 
 MediaArea has long been an open source natives[<-- native? ] and has an open source business model based on sponsored support (including bug correction and feature requests). For instance, MediaInfo is officially provided by multiple open source distributions.
+
 - Debian: https://packages.debian.org/wheezy/mediainfo
 - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
 - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
@@ -267,14 +270,10 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 
 #### Other Suggested Improvements or Contributions to Standard Specifications
 
-Register an official mime type via IETF for Matroska.
-
-Register dedicated FFV1 codecid with Matroska (current use is via fourcc).
-
-Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.
-
-Feedback for features and functions of FFV1 version 4, which is currently under development.
-
-Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
+- Register an official mime type via IETF for Matroska.
+- Register dedicated FFV1 codecid with Matroska (current use is via fourcc).
+- Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.
+- Feedback for features and functions of FFV1 version 4, which is currently under development.
+- Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
 
 ### Advance Business Cases for Managing Preservation Files
