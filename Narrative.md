@@ -248,7 +248,7 @@ MediaArea will solicit, create, and accept test files and reference files that h
 
 ### Community Interviews
 
-In December 2013, MediaArea started conducting interviews with ffv1, Matrokska, and LPCM stakeholders in order to collect feedback and insights from the archives community.  To date, interviews have been conducted with:
+In December 2014, MediaArea started conducting interviews with FFV1, Matrokska, and LPCM stakeholders in order to collect feedback and insights from the archives community.  To date, interviews have been conducted with:
 
 - Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek
 - Ian Henderson; UK National Archives
