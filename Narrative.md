@@ -246,6 +246,17 @@ For communication MediaArea will establish public mailing lists and an IRC chann
 
 MediaArea will solicit, create, and accept test files and reference files that highlight various features of the conformance checker and illustrate likely preservation issues that may occur within the selected formats.
 
+### Community Interviews
+
+In December 2013, MediaArea started conducting interviews with ffv1, Matrokska, and LPCM stakeholders in order to collect feedback and insights from the archives community.  To date, interviews have been conducted with:
+
+- Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek
+- Ian Henderson; UK National Archives
+- Christophe Kummer; NOA
+- George Blood; George Blood, L.P.
+
+Notes and partial transcripts (in English) from the interviews are available in the MediaInfo PreForma GitHub repository.  Public release of interviews is pending complete transcriptions and review of transcriptions by all participants in order to ensure accuracy and compliance with Creative Commons CC-BY 4.0.  The interviewees' feedback will help inform MediaArea's approach to development in all areas, and especially reinforced our plans to standardize the FFV1 specification through an open-source standards organization.
+
 ### Advance Improvement of Standard Specification
 
 #### FFV1 Specification
