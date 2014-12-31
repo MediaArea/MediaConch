@@ -1,5 +1,5 @@
 # Style Guide
---
+
 ## Source Code Guide
 
 ### Portability
