@@ -152,9 +152,13 @@ The shell produced will support all functions and requirements of the reporter a
 
 The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
 
+![frame scrolling mockup](/Design/GUI/CheckerMockup.png)
+
 Assessment of file conformance.
 
-![frame scrolling mockup](/Design/GUI/CheckerMockup.png)
+![CLI conformance output sample](/Design/CLI/CLIOutputMockup_Checker.png)
+
+Assessment of file conformance can be displayed via a command line interface.
 
 An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.
 
@@ -172,9 +176,7 @@ The Matroska container requires a distinct interface that allows for its hierarc
 
 ![CLI output sample](/Design/CLI/CLIOutputMockup.png)
 
-Assessment of file conformance can also be displayed via a command line interface for quick reference or export.
-
-![CLI conformance output sample](/Design/CLI/CLIOutputMockup_Checker.png)
+A summary of the file properties can also be displayed via a command line interface for quick reference or export.
 
 ### Optimization for Large File Size
 
