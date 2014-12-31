@@ -200,8 +200,9 @@ The advantages of embedded fixity in preservation media files is significant. Th
 
 ### Reference and Test Files
 
-Test files;
+MediaArea anticipates creating a large library of reference files that highlight many of the issues documented in our conformance check registry. Such files will be release under PreForma's selected open licenses. Additionally we will curate references to relevant files in other reference libraries:
 
+- Selections from http://samples.ffmpeg.org
 - PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/
 - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
 - Matroska buggy files: Homemade + request to Matroska mailing list
