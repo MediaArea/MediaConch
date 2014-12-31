@@ -13,6 +13,7 @@ MediaArea sees community involvement as a key factor of evaluating the success o
 During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added.
 
 Matroska, FFV1, and LPCM describe very unique concepts of information including:
+
 - a container format, Matroska
 - an audio stream, LPCM
 - a video stream, FFV1
@@ -42,6 +43,7 @@ Because PCM streams contain only audio samples without any codec structure or me
 ## Development of a Conformance Checker
 
 The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components:
+
 - implementation checker
 - policy checker
 - reporter
@@ -152,9 +154,15 @@ The shell produced will support all functions and requirements of the reporter a
 
 The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
 
+![frame view mockup](/Design/GUI/FrameViewMockup.png)
+
 An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association with the presentation issues it may cause.
 
+![frame scrolling mockup](/Design/GUI/FrameScrollingMockup.png)
+
 MediaArea proposes an interface that will present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or CRC validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.
+
+![MediaInfo Windows](/Design/GUI/MediaInfoWindows.png)
 
 The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
 
@@ -179,13 +187,19 @@ Test files;
 - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
 - Matroska buggy files: Homemade + request to Matroska mailing list
 - FFV1 buggy files: Homemade + request to FFmpeg mailing list
-
+- LCPM buggy files: Homemade + request to ARSC/AES listervs
 
 ## Intended Behavior by Use Case
 
 ### Overview
 
-[[OAIS introduction]]
+The following indended behaviors are described in the form of use cases by the intended conformance checker. 
+
+#### Conformance Checking in the Open Archival Information System (OAIS)
+
+MediaArea recognizes the recommended practices laid out in the Open Archival Information System (OAIS) reference model, intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The stated conformance checker should be developed to address all areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.  
+
+Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, accessed by Consumers, and maintained by Management in the Archive. To take one example of such a service model, the Ingest Functional Entity, or Ingest, performs quality assurance on incoming Submission Information Packages (SIPs). The conformance checker, as both an implementation and policy checker, would serve here as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. As Archival Information Packages (AIPs) are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. And, upon a dissemination request, reports created by the conformance checker would be used as desriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
 
 ### Conformance Checking at Creation Time
 
@@ -203,7 +217,7 @@ For those digitizing video through processes that incorporate libav or FFmpeg su
 
 An inspiration for the use of framemd5 reports within a digitization workflow is inspired by the verify option with the flac utility available at http://flac.sourceforge.net/. The ‘-V’ or –verify command is used to decode the encoded stream in parallel to the encoding process to double-check the losslessness of the transcoding. With this method any discrepancy between what data is read and transcoded versus what data is written to disk could be identified in a subsequent verification process. The use of framemd5 data within a digitization workflow enables verification in cases where an option similar to flac's --verify argument isn't available.
 
-#### Assessment of Vendor Deliverables
+#### Assessment of Vendor/Producer Deliverables
 
 For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.
 
@@ -224,6 +238,7 @@ To counteract arising obsolescence challenges it is critical to have access to t
 ## Open Source Ecosystem
 
 MediaArea has long been an open source natives[<-- native? ] and has an open source business model based on sponsored support (including bug correction and feature requests). For instance, MediaInfo is officially provided by multiple open source distributions.
+
 - Debian: https://packages.debian.org/wheezy/mediainfo
 - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
 - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
@@ -243,13 +258,24 @@ For communication MediaArea will establish public mailing lists and an IRC chann
 
 MediaArea will solicit, create, and accept test files and reference files that highlight various features of the conformance checker and illustrate likely preservation issues that may occur within the selected formats.
 
+### Community Interviews
+
+In December 2014, MediaArea started conducting interviews with FFV1, Matrokska, and LPCM stakeholders in order to collect feedback and insights from the archives community.  To date, interviews have been conducted with:
+
+- Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek
+- Ian Henderson; UK National Archives
+- Christophe Kummer; NOA
+- George Blood; George Blood, L.P.
+
+Notes and partial transcripts (in English) from the interviews are available in the MediaInfo PreForma GitHub repository.  Public release of interviews is pending complete transcriptions and review of transcriptions by all participants in order to ensure accuracy and compliance with Creative Commons CC-BY 4.0.  The interviewees' feedback will help inform MediaArea's approach to development in all areas, and especially reinforced our plans to standardize the FFV1 specification through an open source standards organization.
+
 ### Advance Improvement of Standard Specification
 
 #### FFV1 Specification
 
 Efforts to create an FFV1 specification began in April 2012, continuing through the August 2013 release of FFV1 version 3. Currently the specification remains in development at http://github.com/ffmpeg/ffv1. Ideally a specification should fully inform the development of a decoder or parser without the need to reference existing implementations (such as the FFV1 implementations within ffmpeg and libav); however MediaArea's initial research and prototyping efforts with FFV1 found the current specification insufficient to create a decoder. As a result MediaArea utilized ffmpeg’s FFV1 implementation to fully interpret the specification. Several threads on the ffmpeg-devel and libav-devel listserv reference discussions about the development of the FFV1 specification and consideration of efforts to standardize the specification through a standards organization, such as IETF (Internet Engineering Task Force) [1].
 
-In consideration of FFV1’s utilization within preservation contexts, the standardization of the codec through an open standards organization would better establish FFV1 as a trustworthy, stable, and documented option. At the moment FFV1 can be seen at a tipping point in its use within preservation context. Its speed, accessibility, and digital preservation features make it an increasingly attractive option for lossless video encoding that can be found in more and more large scale projects; the standardization of FFV1 through an open standards organization would be of broad interest to digital preservation communities and facilitate greater accessibility of lossless encoding options that are both efficient and standardized.
+In consideration of FFV1’s utilization within preservation contexts, the standardization of the codec through an open standards organization would better establish FFV1 as a trustworthy, stable, and documented option. In MediaArea's interviews with FFV1 adopters, interviewees noted that FFV1's current status proved problematic in gaining organizational buy-in for adoption of FFV1. Additionally, standardization of FFV1 would increase awareness of and interest in FFV1. This increased visibility is vital to engaging an overly cautious archives community.  At the moment FFV1 can be seen at a tipping point in its use within preservation context. Its speed, accessibility, and digital preservation features make it an increasingly attractive option for lossless video encoding that can be found in more and more large scale projects; the standardization of FFV1 through an open standards organization would be of broad interest to digital preservation communities and facilitate greater accessibility of lossless encoding options that are both efficient and standardized.
 
 MediaArea proposes working closely with the lead authors of the FFV1 specification in order to update the current FFV1 specification to increase its self-reliance and increase its clarity. Development of the FFV1 specification early within the PreForma project will generate substantial feedback to the authors of the specification which could then be offered through the specification’s GitHub page via pull requests or the issue tracker. MediaArea proposes at a later stage of development that the PreForma project serve as a catalyst to organize, facilitate, and sponsor the IETF standardization process for FFV1.
 
@@ -267,14 +293,10 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 
 #### Other Suggested Improvements or Contributions to Standard Specifications
 
-Register an official mime type via IETF for Matroska.
-
-Register dedicated FFV1 codecid with Matroska (current use is via fourcc).
-
-Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.
-
-Feedback for features and functions of FFV1 version 4, which is currently under development.
-
-Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
+- Register an official mime type via IETF for Matroska.
+- Register dedicated FFV1 codecid with Matroska (current use is via fourcc).
+- Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.
+- Feedback for features and functions of FFV1 version 4, which is currently under development.
+- Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
 
 ### Advance Business Cases for Managing Preservation Files
