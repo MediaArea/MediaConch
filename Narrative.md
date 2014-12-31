@@ -283,7 +283,10 @@ MediaArea has long been an open source natives and has an open source business m
 
 MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.
 
-For an impression of MediaArea's focus on cross platform usability please see our download page: http://mediaarea.net/en/MediaInfo/Download.
+For an impression of MediaArea's focus on cross platform usability please see our download pages:
+
+- http://mediaarea.net/en/MediaInfo/Download
+- http://bavc.org/qctools-downloads
 
 ### Online Resources
 
