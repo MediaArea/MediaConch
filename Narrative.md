@@ -225,6 +225,18 @@ The conformance checker in effect resembles a complex Representation Net in the 
 
 ### Conformance Checking at Digitization Time
 
+#### Verification of Digitization Policy
+
+Archival digitization workflows are generally highly defined and consistant so that various analog source objects are associated with particurly digitization requirements. Generally digitization specifications are selected in order to reduce alterations to the sigificant characteristics of the analog source material. Example of such digitization scenarios may be:
+
+- A PAL Betacam SX tape is digitized to a Matroska/FFV1 file at PAL specifications with YUV 4:2:2 8 bit video and 4 channels of 24 bit LPCM audio
+- A NTSC U-Matic tape is digitized to a Matroska/FFV1 file at NTSC specifications with YUV 4:2:2 10 bit video and 2 channels of 24 bit LPCM audio
+- A 1/4" audio reel is digitized to a 2 channel 96000 Hz, 24 bit audio LPCM file
+- A CD-R is ripped to a 44100 Hz, 16 bit, 2 channel LPCM file
+- A DAT tape is ripped to either a 32000, 44100, or 48000 Hz 16 bit file
+
+Such digitization requiments may be expressed into a policy checker set through the shell or policy checker to verify that the results of digitization are consistent with the archive's specifications. This includes both sets of technical metadata and specification as well as anticipated embedded descriptive, preservation, or administrative metadata.
+
 #### Verification of Lossless Digitization
 
 Until recently audiovisual digitization required a fairly inflexible set of hardware requirements and extremely limited possibilities for an open source approach to video digitization. Due to the bandwidth and processing requirements for the digitization of standard definition video required the installation of PCI cards and often the use of hardware encoders that were designed to encode video as fast as the video was being received to codecs like MPEG2 or JPEG2000. With modern connectivity options such as USB 3 and Thunderbolt it is easier to add video digitization capabilities to modern computers. Additionally modern computer processers can now transcode video losslessly in software from a video input without the need to rely on proprietary hardware-based encoders. Open source solutions such as DVA Profession, bmdcapture, and FFmpeg along with the open provision of video digitization software development kits, such as the Blackmagic SDK are facilitating new open development projects for archival video digitization.
