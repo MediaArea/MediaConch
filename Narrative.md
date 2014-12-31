@@ -168,6 +168,10 @@ MediaArea proposes an interface that will present conformity issues for audio an
 
 The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
 
+![CLI output sample](/Design/CLI/CLIOutputMockup.png)
+
+Assessment of file conformance can also be displayed via a command line interface for quick reference or export.
+
 ### Optimization for Large File Size
 
 Design of a conformance checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
