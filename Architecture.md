@@ -49,6 +49,7 @@ mkvalidator is a basic and no more maintained Matroska checker (BSD license, com
 ### Preforma MediaInfo
 
 PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):
+
 - MXF (commonly found within memory institutions)
 - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
 - DV (video stream format which uses LPCM)
@@ -62,6 +63,7 @@ By supporting the demultiplexing of these formats through MediaInfo, the develop
 FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing. For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.
 
 Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as:
+
 - Video Waveform Monitor
 - Vectorscope
 - Ability to inspect luminance and chroma planes separately
@@ -73,6 +75,7 @@ We anticipate that the implementation of FFmpeg plugin support will substantiall
 ## Stream/Essence implementation checker
 
 ### Preforma MediaInfo:
+
 - FFV1
 - PCM (including D-10 Audio, AES3)
 
@@ -83,6 +86,7 @@ For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)
 For DV (BSD license, compatible with GPLv3+ and MPL2+)
 
 ### Optional
+
 - MPEG-1/2 Video (including IMX, AS-07, D-10 Video, FIMS…)
 - H.264/AVC (including AS-07)
 - Dirac
@@ -94,6 +98,7 @@ For DV (BSD license, compatible with GPLv3+ and MPL2+)
 ## Stream/Essence decoder
 
 ### Preforma MediaInfo
+
 - PCM (including D-10 Audio, AES3)
 
 ### Plugin integration proof of concept: FFmpeg
@@ -112,6 +117,7 @@ PreForma MediaInfo will support the coherency check between all suppoted formats
 ## Baseband Analyzer
 
 ### Preforma MediaInfo
+
 - None (only creation of the API)
 
 ### Plugin integration proof of concept: QCTools
@@ -121,6 +127,7 @@ QCTools graphs (report on and graph data documenting video signal loss, flag err
 ## Hyperviser (Controller)
 
 The Hyperviser serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Hyperviser layer supports the following requirements:
+
 - Scheduling
 - Statistics
 - Reporting
@@ -130,10 +137,16 @@ The Hyperviser serves as communication between all plugins within and outside of
 ## Human interface
 
 PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are:
+
 - Command line interface
-  A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support.
+
+    A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support.
+
 - GUI (based on Qt)
-  The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.
+
+    The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.
+
 - Web UI (server/client)
-  The web interface will provide access to conformance checks without software installation.
+
+    The web interface will provide access to conformance checks without software installation.
 

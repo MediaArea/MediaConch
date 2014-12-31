@@ -44,6 +44,7 @@ Because PCM streams contain only audio samples without any codec structure or me
 ## Development of a Conformance Checker
 
 The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components:
+
 - implementation checker
 - policy checker
 - reporter
@@ -197,6 +198,7 @@ The advantages of embedded fixity in preservation media files is significant. Th
 ### Reference and Test Files
 
 Test files;
+
 - PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/
 - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
 - Matroska buggy files: Homemade + request to Matroska mailing list
@@ -250,6 +252,7 @@ To counteract arising obsolescence challenges it is critical to have access to t
 ## Open Source Ecosystem
 
 MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions.
+
 - Debian: https://packages.debian.org/wheezy/mediainfo
 - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
 - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
