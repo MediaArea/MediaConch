@@ -158,13 +158,11 @@ The shell produced will support all functions and requirements of the reporter a
 
 The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
 
-![frame scrolling mockup](./Design/GUI/CheckerMockup.png)
+Assessment of file conformance can be displayed via a graphical user interface or a command line interface.
 
-Assessment of file conformance.
+![GUI conformance output sample](./Design/GUI/CheckerMockup.png)
 
 ![CLI conformance output sample](./Design/CLI/CLIOutputMockup_Checker.png)
-
-Assessment of file conformance can be displayed via a command line interface.
 
 An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.
 
@@ -174,15 +172,13 @@ MediaArea proposes an interface to present conformity issues for audio and video
 
 ![frame scrolling mockup](./Design/GUI/FrameScrollingMockup.png)
 
-An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association with the presentation issues it may cause.
+For deep analysis, a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV and FFV1 elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
 
 ![MediaInfo Windows](./Design/GUI/MediaInfoWindows.png)
 
-For deep analysis, a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV and FFV1 elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
+A summary of the file properties can also be displayed via a command line interface for quick reference or export.
 
 ![CLI output sample](./Design/CLI/CLIOutputMockup.png)
-
-A summary of the file properties can also be displayed via a command line interface for quick reference or export.
 
 ### Optimization for Large File Size
 
