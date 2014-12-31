@@ -287,5 +287,3 @@ Proposal of a tagging extension to Matroska based on the requirements of the dig
 Feedback for features and functions of FFV1 version 4, which is currently under development.
 
 Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
-
-### Advance Business Cases for Managing Preservation Files
