@@ -47,6 +47,7 @@
 <li><a href="#cross-platform-support">Cross Platform Support</a></li>
 <li><a href="#online-resources">Online Resources</a></li>
 <li><a href="#advance-improvement-of-standard-specification">Advance Improvement of Standard Specification</a></li>
+<li><a href="#sustainable-open-source-business-ecosystem">Sustainable Open Source Business Ecosystem</a></li>
 </ul></li>
 <li><a href="#architectural-layers">Architectural Layers</a></li>
 <li><a href="#transport-layer">Transport layer</a>
@@ -351,31 +352,35 @@
 </ul>
 <h4 id="interfaces">Interfaces</h4>
 <p>The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.</p>
+<p>Assessment of file conformance can be displayed via a graphical user interface or a command line interface.</p>
 <div class="figure">
-<img src="./Design/GUI/CheckerMockup.png" alt="frame scrolling mockup" /><p class="caption">frame scrolling mockup</p>
+<img src="./Design/GUI/CheckerMockup.png" alt="GUI conformance output sample" />
+<p class="caption">GUI conformance output sample</p>
 </div>
-<p>Assessment of file conformance.</p>
 <div class="figure">
-<img src="./Design/CLI/CLIOutputMockup_Checker.png" alt="CLI conformance output sample" /><p class="caption">CLI conformance output sample</p>
+<img src="./Design/CLI/CLIOutputMockup_Checker.png" alt="CLI conformance output sample" />
+<p class="caption">CLI conformance output sample</p>
 </div>
-<p>Assessment of file conformance can be displayed via a command line interface.</p>
 <p>An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.</p>
 <div class="figure">
-<img src="./Design/GUI/FrameViewMockup.png" alt="frame view mockup" /><p class="caption">frame view mockup</p>
+<img src="./Design/GUI/FrameViewMockup.png" alt="frame view mockup" />
+<p class="caption">frame view mockup</p>
 </div>
 <p>MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.</p>
 <div class="figure">
-<img src="./Design/GUI/FrameScrollingMockup.png" alt="frame scrolling mockup" /><p class="caption">frame scrolling mockup</p>
-</div>
-<p>An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association with the presentation issues it may cause.</p>
-<div class="figure">
-<img src="./Design/GUI/MediaInfoWindows.png" alt="MediaInfo Windows" /><p class="caption">MediaInfo Windows</p>
+<img src="./Design/GUI/FrameScrollingMockup.png" alt="frame scrolling mockup" />
+<p class="caption">frame scrolling mockup</p>
 </div>
 <p>For deep analysis, a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV and FFV1 elements to be expanded, condensed, or filtered according to element id or associated conformity issues.</p>
 <div class="figure">
-<img src="./Design/CLI/CLIOutputMockup.png" alt="CLI output sample" /><p class="caption">CLI output sample</p>
+<img src="./Design/GUI/MediaInfoWindows.png" alt="MediaInfo Windows" />
+<p class="caption">MediaInfo Windows</p>
 </div>
 <p>A summary of the file properties can also be displayed via a command line interface for quick reference or export.</p>
+<div class="figure">
+<img src="./Design/CLI/CLIOutputMockup.png" alt="CLI output sample" />
+<p class="caption">CLI output sample</p>
+</div>
 <h3 id="optimization-for-large-file-size">Optimization for Large File Size</h3>
 <p>Design of a conformance checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.</p>
 <p>A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processes on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker and allow assessment of files even as they are being written.</p>
@@ -439,7 +444,11 @@
 </ul>
 <h3 id="cross-platform-support">Cross Platform Support</h3>
 <p>MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.</p>
-<p>For an impression of MediaArea's focus on cross platform usability please see our download page: http://mediaarea.net/en/MediaInfo/Download.</p>
+<p>For an impression of MediaArea's focus on cross platform usability please see our download pages:</p>
+<ul>
+<li>http://mediaarea.net/en/MediaInfo/Download</li>
+<li>http://bavc.org/qctools-downloads</li>
+</ul>
 <h3 id="online-resources">Online Resources</h3>
 <p>MediaArea will utilize GitHub as a social and development center for PreForma MediaInfo development and uses GitHub's issue tracker and wiki features alongside development.</p>
 <p>For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.</p>
@@ -459,10 +468,14 @@
 <li>Register dedicated FFV1 codecid with Matroska (current use is via fourcc).</li>
 <li>Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.</li>
 <li>Feedback for features and functions of FFV1 version 4, which is currently under development.</li>
-<li>Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska. # Architectural Layers</li>
+<li>Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.</li>
 </ul>
+<h3 id="sustainable-open-source-business-ecosystem">Sustainable Open Source Business Ecosystem</h3>
+<p>MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV conformance checker, professional metadata editor and fixer BWF MetaEdit; the AVI conformance checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, Preforma plays a major role in the creation of a fully integrated and open source conformance checker.</p>
+<p>MediaArea plans to build this stable, integrated solution over the course of the Preforma project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other Preforma investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from Preforma developers and stakeholders is provided in a meaningful timeframe. After the Preforma project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a Preforma-specific version, free of non-Preforma related layers, as a subset of our own integrated solution. # Architectural Layers</p>
 <div class="figure">
-<img src="./SoftwareArchitectureLayers.png" alt="software architecture layers" /><p class="caption">software architecture layers</p>
+<img src="./SoftwareArchitectureLayers.png" alt="software architecture layers" />
+<p class="caption">software architecture layers</p>
 </div>
 <p>The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Hypervisor. The layers shall include:</p>
 <ul>
