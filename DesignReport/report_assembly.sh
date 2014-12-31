@@ -18,6 +18,7 @@ cat ConformityChecks/ConformanceChecksHeader.md >> "tmp_${report_basename}.md"
 echo "" >> "tmp_${report_basename}.md"
 cat ConformityChecks/ConformanceCheckRegistry.md >> "tmp_${report_basename}.md"
 echo "" >> "tmp_${report_basename}.md"
+
 echo "## Matroska Conformance Checks (Draft)" >> "tmp_${report_basename}.md"
 cat ConformityChecks/ConformanceChecksMatroska.csv | csvprintf -i '### %1$s\n\n|Descriptor|Value|\n|:---------|:----|\n|CCID|%2$s|\n|Version|%3$s|\n|Authority|%4$s|\n|Target Format|%5$s|\n|Target Format Version|%6$s|\n|Target Format Part|%7$s|\n|Citation|%8$s|\n\nRule Clarity:    %10$s\n\nQuote:\n    %9$s\n\nDefinition:\n    %11$s\n\n\n'  >> "tmp_${report_basename}.md"
 
