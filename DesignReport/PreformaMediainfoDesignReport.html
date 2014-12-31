@@ -266,7 +266,13 @@
 <p>Linear Pulse Code Modulation (LPCM) is a ubitiquous and simple audio stream. PCM audio streams may be comprised of signed or unsiged samples, arranged in little-endian or big-endian arragements, in any number of audio channels. PCM is very flexible but is not self-descriptive. A raw PCM file can not properly be decoded without knowing the sample encoding, channel count, endianness, bit depth, and sample rate. PCM is typically dependent on its container format (such as WAV) to store sufficient metadata for its decoding.</p>
 <p>Because PCM streams contain only audio samples without any codec structure or metadata within the stream, by itself any data could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container format.</p>
 <h2 id="development-of-a-conformance-checker">Development of a Conformance Checker</h2>
-<p>The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components: - implementation checker - policy checker - reporter - metadata fixer</p>
+<p>The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components:</p>
+<ul>
+<li>implementation checker</li>
+<li>policy checker</li>
+<li>reporter</li>
+<li>metadata fixer</li>
+</ul>
 <p>The conformance checker developed within the PreForma project must document and associate conformance rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution).</p>
 <h3 id="implementation-checker">Implementation Checker</h3>
 <p>Each implementation checker (for Matroska, FFV1, and LPCM) should assess compliance and/or deviation between files and a series of conformance checks which are written by dissected all rules from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PreForma design phase and plans to collaborate with each format's specificiation communities to refine them.</p>
@@ -376,7 +382,14 @@
 <p>Although the Matroska specification states that &quot;All level 1 elements should include a CRC-32&quot; this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.</p>
 <p>The advantages of embedded fixity in preservation media files is significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).</p>
 <h3 id="reference-and-test-files">Reference and Test Files</h3>
-<p>Test files; - PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/ - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files - Matroska buggy files: Homemade + request to Matroska mailing list - FFV1 buggy files: Homemade + request to FFmpeg mailing list - LPCM files: Homemade</p>
+<p>Test files;</p>
+<ul>
+<li>PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/</li>
+<li>JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files</li>
+<li>Matroska buggy files: Homemade + request to Matroska mailing list</li>
+<li>FFV1 buggy files: Homemade + request to FFmpeg mailing list</li>
+<li>LPCM files: Homemade</li>
+</ul>
 <h2 id="intended-behavior-by-use-case">Intended Behavior by Use Case</h2>
 <h3 id="overview">Overview</h3>
 <p>The following use cases are presented to describe intended behaviors of the conformance checker:</p>
@@ -400,7 +413,16 @@
 <p>Migration is typically an ideal time to perform obsolescence monitoring and preparing actions to limit complications in obsolescence status. Just as memory institutions must maintain the technology that their physical collections are dependent upon, this is equally true for digital collections. As this maintainance becomes more complex, costly, or unlikely archives will typically reformat material (with as little compromise to the content and characteristics of the source as possible) to a format that has more sustainable characteristics.</p>
 <p>To counteract arising obsolescence challenges it is critical to have access to thorough sets of technical metadata in order to associate certain codecs, formats, or technologies with sustainability risks or to identify what one format should be superceded by another in a particular digital preservation. For instance an institution that utilized FFV1 version 0 as a lossless preservation codec may wish to identify such files to reformat them to FFV1 version 3 (now that it is non-experimental) in order to take advantage of version 3's additional advantages. In our research one archive found that some digitized material received from a vendor was missing technical metadata about field dominance and had to identify exactly which materials were affected to order to rectify the issue.</p>
 <h2 id="open-source-ecosystem">Open Source Ecosystem</h2>
-<p>MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions. - Debian: https://packages.debian.org/wheezy/mediainfo - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo - OpenSuse: http://packman.links2linux.org/package/mediainfo - Arch Linux: https://www.archlinux.org/packages/?q=mediainfo - FreeBSD: http://www.freshports.org/multimedia/mediainfo/ - Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo</p>
+<p>MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions.</p>
+<ul>
+<li>Debian: https://packages.debian.org/wheezy/mediainfo</li>
+<li>Ubuntu: http://packages.ubuntu.com/utopic/mediainfo</li>
+<li>RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo</li>
+<li>OpenSuse: http://packman.links2linux.org/package/mediainfo</li>
+<li>Arch Linux: https://www.archlinux.org/packages/?q=mediainfo</li>
+<li>FreeBSD: http://www.freshports.org/multimedia/mediainfo/</li>
+<li>Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo</li>
+</ul>
 <h3 id="cross-platform-support">Cross Platform Support</h3>
 <p>MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.</p>
 <h3 id="online-resources">Online Resources</h3>
@@ -453,11 +475,24 @@
 <p>mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.</p>
 <h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
 <h3 id="preforma-mediainfo-1">Preforma MediaInfo</h3>
-<p>PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)): - MXF (commonly found within memory institutions) - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM) - DV (video stream format which uses LPCM) - AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek) - WAV (a common container for LPCM)</p>
+<p>PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
+<ul>
+<li>MXF (commonly found within memory institutions)</li>
+<li>MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)</li>
+<li>DV (video stream format which uses LPCM)</li>
+<li>AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek)</li>
+<li>WAV (a common container for LPCM)</li>
+</ul>
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.</p>
 <h3 id="plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</h3>
 <p>FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing. For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.</p>
-<p>Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as: - Video Waveform Monitor - Vectorscope - Ability to inspect luminance and chroma planes separately - Audio Meters</p>
+<p>Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as:</p>
+<ul>
+<li>Video Waveform Monitor</li>
+<li>Vectorscope</li>
+<li>Ability to inspect luminance and chroma planes separately</li>
+<li>Audio Meters</li>
+</ul>
 <p>We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.</p>
 <h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <h3 id="preforma-mediainfo-2">Preforma MediaInfo:</h3>
@@ -499,9 +534,24 @@
 <h3 id="plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</h3>
 <p>QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)</p>
 <h2 id="hyperviser-controller">Hyperviser (Controller)</h2>
-<p>The Hyperviser serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Hyperviser layer supports the following requirements: - Scheduling - Statistics - Reporting - User management - Policies management</p>
+<p>The Hyperviser serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Hyperviser layer supports the following requirements:</p>
+<ul>
+<li>Scheduling</li>
+<li>Statistics</li>
+<li>Reporting</li>
+<li>User management</li>
+<li>Policies management</li>
+</ul>
 <h2 id="human-interface">Human interface</h2>
-<p>PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are: - Command line interface A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support. - GUI (based on Qt) The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms. - Web UI (server/client) The web interface will provide access to conformance checks without software installation.</p>
+<p>PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are:</p>
+<ul>
+<li><p>Command line interface</p>
+<p>A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support.</p></li>
+<li><p>GUI (based on Qt)</p>
+<p>The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.</p></li>
+<li><p>Web UI (server/client)</p>
+<p>The web interface will provide access to conformance checks without software installation.</p></li>
+</ul>
 <h2 id="style-guide">## Style Guide</h2>
 <h2 id="source-code-guide">Source Code Guide</h2>
 <h3 id="portability">Portability</h3>
