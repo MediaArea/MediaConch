@@ -10,6 +10,7 @@ The design of the conformance checker portion of the PreForma MediaInfo applicat
 - Stream Implementation (Conformance Check)
 - Stream Decoding (through plugin)
 - Stream/Container Coherency Check
+- Policy Check
 - Baseband Analysis (through plugin)
 - Data Aggregation
 - Playback and Playback Analysis (through plugin)
