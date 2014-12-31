@@ -269,7 +269,7 @@ To counteract arising obsolescence challenges it is critical to have access to t
 
 ## Open Source Ecosystem
 
-MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions.
+MediaArea has long been an open source natives and has an open source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple open source distributions.
 
 - Debian: https://packages.debian.org/wheezy/mediainfo
 - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo

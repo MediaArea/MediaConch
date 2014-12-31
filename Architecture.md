@@ -33,7 +33,7 @@ libcURL is licensed under an MIT license that is compatible with both GPLv3+ and
 Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.
 
 Used as a proof of concept of plugin integration: 
-HTTP/HTTPS/FTP/FTPS support via MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)
+HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)
 
 
 ## Container/Wrapper implementation checker
