@@ -70,7 +70,7 @@ For each format addressed through a conformance checker MediaArea will create a 
 
 MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema and associated data dictionary. The collaboration would include agreement on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each conformance checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against.
 
-MediaArea will provide sample sets of policy checks based on interviews with memeory institutions and community practice.
+MediaArea will provide sample sets of policy checks based on interviews with memory institutions and community practice.
 
 ### Reporter
 
@@ -193,13 +193,19 @@ Test files;
 - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files
 - Matroska buggy files: Homemade + request to Matroska mailing list
 - FFV1 buggy files: Homemade+ request to FFmpeg mailing list
-
+- LPCM files: Homemade
 
 ## Intended Behavior by Use Case
 
 ### Overview
 
-[[OAIS introduction]]
+The following use cases are presented to describe intended behaviors of the conformance checker:
+
+#### Conformance Checking in the Open Archival Information System (OAIS)
+
+MediaArea recognizes the recommended practices described in the Open Archival Information System (OAIS) reference model, intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The stated conformance checker should be developed to address all areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.  
+
+Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, maintained by Management in the Archive, and later, retreived and put to use by Consumers. To take an example of such a service model, the Ingest Functional Entity, or Ingest, performs quality assurance on incoming Submission Information Packages (SIPs). The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. As Archival Information Packages (AIPs) are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. And upon a dissemination request, reports created by the conformance checker would be used as desriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
 
 ### Conformance Checking at Creation Time
 
