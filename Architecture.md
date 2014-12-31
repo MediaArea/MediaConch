@@ -1,5 +1,7 @@
 # Architectural Layers
 
+![software rechitecture layers](SoftwareArchitectureLayers.png)
+
 The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Hypervisor. The layers shall include:
 
 - Input Layer
