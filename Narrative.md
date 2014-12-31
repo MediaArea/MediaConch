@@ -201,15 +201,13 @@ Test files;
 
 The following use cases are presented to describe intended behaviors of the conformance checker:
 
-#### Conformance Checking in the Open Archival Information System (OAIS)
+#### Conformance Checking in an Open Archival Information System (OAIS)
 
-MediaArea recognizes the recommended practices described in the Open Archival Information System (OAIS) reference model, intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The stated conformance checker should be developed to address all areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.  
+MediaArea recognizes the recommended practices described in the Open Archival Information System (OAIS) reference model, intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The stated conformance checker should be developed to address all relevant areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.  
 
-Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, maintained by Management in the Archive, and later, retreived and put to use by Consumers. To take an example of such a service model, the Ingest Functional Entity, or Ingest, performs quality assurance on incoming Submission Information Packages (SIPs). The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. As Archival Information Packages (AIPs) are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. And upon a dissemination request, reports created by the conformance checker would be used as desriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
+Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, maintained by Management in the Archive, and later, retreived and put to use by Consumers and/or Designated Community. To take an example of such a service model, the Ingest Functional Entity of OAIS, or Ingest, performs quality assurance on incoming Submission Information Packages (SIPs). The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. As Archival Information Packages (AIPs) are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. And upon a dissemination request, reports created by the conformance checker would be used as desriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
 
-### Conformance Checking at Creation Time
-
-### Conformance Checking at Transfer Time
+The conformance checker in effect resembles a complex Representation Net in the OAIS Archive, providing information needed to adequately understand the proper playback of the associated data object. 
 
 ### Conformance Checking at Digitization Time
 
@@ -223,9 +221,9 @@ For those digitizing video through processes that incorporate libav or FFmpeg su
 
 An inspiration for the use of framemd5 reports within a digitization workflow is inspired by the verify option with the flac utility available at http://flac.sourceforge.net/. The ‘-V’ or –verify command is used to decode the encoded stream in parallel to the encoding process to double-check the losslessness of the transcoding. With this method any discrepancy between what data is read and transcoded versus what data is written to disk could be identified in a subsequent verification process. The use of framemd5 data within a digitization workflow enables verification in cases where an option similar to flac's --verify argument isn't available.
 
-#### Assessment of Vendor Deliverables
+#### Assessment of Vendor/Producer Deliverables
 
-For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adher to particular patterns as expressed through regular expressions.
+For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.
 
 The conformance checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.
 
@@ -258,7 +256,7 @@ MediaArea excels in open source development for cross-platform support and choos
 
 ### Online Resources
 
-MediaArea will utilize github as a social and development center for PreForma MediaInfo development and uses github's issue tracker and wiki features alongside development.
+MediaArea will utilize GitHub as a social and development center for PreForma MediaInfo development and uses GitHub's issue tracker and wiki features alongside development.
 
 For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.
 
