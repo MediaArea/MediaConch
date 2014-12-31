@@ -39,8 +39,6 @@
 <li><a href="#intended-behavior-by-use-case">Intended Behavior by Use Case</a>
 <ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#conformance-checking-at-creation-time">Conformance Checking at Creation Time</a></li>
-<li><a href="#conformance-checking-at-transfer-time">Conformance Checking at Transfer Time</a></li>
 <li><a href="#conformance-checking-at-digitization-time">Conformance Checking at Digitization Time</a></li>
 <li><a href="#conformance-checking-at-migration-time">Conformance Checking at Migration Time</a></li>
 </ul></li>
@@ -49,7 +47,6 @@
 <li><a href="#cross-platform-support">Cross Platform Support</a></li>
 <li><a href="#online-resources">Online Resources</a></li>
 <li><a href="#advance-improvement-of-standard-specification">Advance Improvement of Standard Specification</a></li>
-<li><a href="#advance-business-cases-for-managing-preservation-files">Advance Business Cases for Managing Preservation Files</a></li>
 </ul></li>
 <li><a href="#architectural-layers">Architectural Layers</a></li>
 <li><a href="#transport-layer">Transport layer</a>
@@ -67,29 +64,30 @@
 <li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
 <li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
 </ul></li>
-<li><a href="#stream-essence-implementation-checker">Stream / Essence implementation checker</a>
+<li><a href="#streamessence-implementation-checker">Stream/Essence implementation checker</a>
 <ul>
 <li><a href="#preforma-mediainfo">Preforma MediaInfo:</a></li>
 <li><a href="#plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</a></li>
 <li><a href="#plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</a></li>
 <li><a href="#optional">Optional</a></li>
 </ul></li>
-<li><a href="#containerwrapper-vs-stream-essence-coherency-checker">Container/Wrapper vs Stream / Essence coherency checker</a>
-<ul>
-<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
-</ul></li>
-<li><a href="#stream-essence-decoder">Stream / Essence decoder</a>
+<li><a href="#streamessence-decoder">Stream/Essence decoder</a>
 <ul>
 <li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
 <li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
 <li><a href="#plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</a></li>
 </ul></li>
-<li><a href="#baseband-analyzer">Baseband analyzer</a>
+<li><a href="#containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</a>
+<ul>
+<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+</ul></li>
+<li><a href="#baseband-analyzer">Baseband Analyzer</a>
 <ul>
 <li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
 <li><a href="#plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</a></li>
 </ul></li>
-<li><a href="#controler">Controler</a></li>
+<li><a href="#hyperviser-controller">Hyperviser (Controller)</a></li>
+<li><a href="#human-interface">Human interface</a></li>
 <li><a href="#style-guide">Style Guide</a></li>
 <li><a href="#source-code-guide">Source Code Guide</a>
 <ul>
@@ -248,23 +246,24 @@
 </ul>
 <!-- toc stop -->
 <h2 id="project-introduction">Project Introduction</h2>
-<p>The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report encompasses a snapshot of MediaArea's design plans to create a toolset (tentatively entitled &quot;PreForma MediaInfo&quot;) as the conformance checker, policy checker, reporter, and fixer of a select list of formats.</p>
-<p>As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however most file format specifications are not officially tied to any validation tool. Most archival standards are documented and defined through human-readable narrative without equivalent computer-actionable validation tools. Where a metadata standard may be described in both a data dictionary and a computer usable XML Schema, file formats standards often lack a computer-useable verification method. The PREFORMA project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.</p>
-<p>MediaArea's approach to this challenge centers on Free Software, modular design, and interoperability and will rely strongly on MediaInfo (a MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged it’s integration into several archival repository systems and OAIS workflows to assist archival with technical control of collections.</p>
+<p>The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report encompasses a snapshot of MediaArea's design plans to create a toolset (tentatively entitled &quot;PreForma MediaInfo&quot;) as the conformance checker, policy checker, reporter, and fixer of a select list of formats.</p>
+<p>As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer usable XML Schema, file formats standards often lack a computer-useable verification method. The PreForma project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.</p>
+<p>MediaArea's approach to this challenge centers on Free Software, modular design, and interoperability and will rely strongly on MediaInfo (an open source MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged its integration into several archival repository systems and OAIS workflows to assist archival with technical control of collections.</p>
 <p>MediaArea sees community involvement as a key factor of evaluating the success of the project. To encourage this, during the prototype phase MediaArea will perform the development work for command line utilities, graphical user interfaces, and documentation in publicly accessible repositories at github.com. We will set up an online set of project resources such as public access to a corpus of test media, an IRC channel, and a responsive public issue tracker.</p>
 <h2 id="introduction-of-featured-formats">Introduction of Featured Formats</h2>
-<p>During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added.</p>
+<p>During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added alongside or after development.</p>
 <p>Matroska, FFV1, and LPCM describe very unique concepts of information including: - a container format, Matroska - an audio stream, LPCM - a video stream, FFV1</p>
 <p>These three information concepts will inform distinct user interface and reporting design in order to process these concepts through differing strategies. For instance reporting on the status of 100,000 of video frames within a video recording may be done more efficiently in a different interface as one designed to communicate the hierarchical structure of a file format.</p>
 <p>Additionally other formats currently being addressed by PreForma fit within these three conceptual categories; for instance, PDF and TIFF are formats (containers) and JPEG2000 is a video stream. These three concepts affect the design of an overall application shell as conformance information for each category can have its own optimized user interface.</p>
 <h3 id="matroska">Matroska</h3>
 <p>Matroska is a open-licensed audiovisual container format with extensive and flexible features and an active user community. The format is supported by a set of core utilities for manipulating and assessing Matroska files, such as mkvtoolnix and mkvalidator.</p>
-<p>Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many &quot;Elements&quot;. Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements. The Matroska element is analoguous to QuickTime's atom and AVI's chunk.</p>
+<p>Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many defined &quot;Elements&quot;. Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements. The top level elements of Matroska focus on track definition, chapters, attachment management, metadata tags, and encapsulation of audiovisual data. The Matroska element is analoguous to QuickTime's atom and AVI's chunk.</p>
 <p>Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements.</p>
 <h3 id="ffv1">FFV1</h3>
-<p>FFV1 is a efficient lossless video stream which is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominence, aspect ratio, and colorspace so that it is not reliant on a container format to store this information. FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resillience, or encoding speed.</p>
+<p>FFV1 is an efficient lossless video stream which is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominence, aspect ratio, and colorspace so that it is not reliant on a container format to store this information (other streams that rely heavily on its container for technical description often face interoperability challenges).</p>
+<p>FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resillience, or encoding speed.</p>
 <h3 id="linear-pcm">Linear PCM</h3>
-<p>Linear PCM is a ubitiquous and simple audio stream. PCM audio streams may be comprised of signed or unsiged samples, arranged in little-endian or big-endian arragements, in any number of audio channels. PCM is very flexible but is not self-descriptive. A raw PCM file can not properly be decoded without knowing the sample encoding, channel count, endianness, bit depth, and sample rate. PCM is typically dependent on its container format (such as WAV) to store sufficient metadata for its decoding.</p>
+<p>Linear Pulse Code Modulation (LPCM) is a ubitiquous and simple audio stream. PCM audio streams may be comprised of signed or unsiged samples, arranged in little-endian or big-endian arragements, in any number of audio channels. PCM is very flexible but is not self-descriptive. A raw PCM file can not properly be decoded without knowing the sample encoding, channel count, endianness, bit depth, and sample rate. PCM is typically dependent on its container format (such as WAV) to store sufficient metadata for its decoding.</p>
 <p>Because PCM streams contain only audio samples without any codec structure or metadata within the stream, by itself any data could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container format.</p>
 <h2 id="development-of-a-conformance-checker">Development of a Conformance Checker</h2>
 <p>The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The conformance checker is comprised of four components: - implementation checker - policy checker - reporter - metadata fixer</p>
@@ -284,7 +283,7 @@
 <li>MKV.tag.ISBN MATCHES_REGEX &quot;(?=[-0-9xX ]{13}<span class="math">)(? : [0 − 9] + [ − ])3[0 − 9] * [<em>x</em><em>X</em>0 − 9]</span>&quot;</li>
 </ul>
 <p>MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema and associated data dictionary. The collaboration would include agreement on the operators (&quot;Greater Than&quot;, &quot;Starts With&quot;, etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each conformance checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against.</p>
-<p>MediaArea will provide sample sets of policy checks based on interviews with memeory institutions and community practice.</p>
+<p>MediaArea will provide sample sets of policy checks based on interviews with memory institutions and community practice.</p>
 <h3 id="reporter">Reporter</h3>
 <p>MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting (referred to here as &quot;PreFormaXML&quot;). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PreForma suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per conformance checker, but that adherence to a common schema is essential to interoperability amongst conformance checkers.</p>
 <p>The PreFormaXML schema should accommodate the expression of results from multiple conformance checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, an FFV1 stream, and an LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check.</p>
@@ -344,9 +343,31 @@
 </ul>
 <h4 id="interfaces">Interfaces</h4>
 <p>The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.</p>
+<div class="figure">
+<img src="./Design/GUI/CheckerMockup.png" alt="frame scrolling mockup" /><p class="caption">frame scrolling mockup</p>
+</div>
+<p>Assessment of file conformance.</p>
+<div class="figure">
+<img src="./Design/CLI/CLIOutputMockup_Checker.png" alt="CLI conformance output sample" /><p class="caption">CLI conformance output sample</p>
+</div>
+<p>Assessment of file conformance can be displayed via a command line interface.</p>
 <p>An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association of the presentation issues it may cause.</p>
+<div class="figure">
+<img src="./Design/GUI/FrameViewMockup.png" alt="frame view mockup" /><p class="caption">frame view mockup</p>
+</div>
 <p>MediaArea proposes an interface to present conformity issues for audio and video streams (FFV1 and LPCM) on a timeline, so that conformance events, such as error concealment or crc validation issues may be reviewed effectively according to presentation, parent Matroska block element, or video frame.</p>
-<p>The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.</p>
+<div class="figure">
+<img src="./Design/GUI/FrameScrollingMockup.png" alt="frame scrolling mockup" /><p class="caption">frame scrolling mockup</p>
+</div>
+<p>An interface for assessing conformance of FFV1 video could enable review of the decoded FFV1 frames (via a plugin) in association with conformance data so that inconsistencies or conformity issues may be reviewed in association with the presentation issues it may cause.</p>
+<div class="figure">
+<img src="./Design/GUI/MediaInfoWindows.png" alt="MediaInfo Windows" /><p class="caption">MediaInfo Windows</p>
+</div>
+<p>For deep analysis, a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV and FFV1 elements to be expanded, condensed, or filtered according to element id or associated conformity issues.</p>
+<div class="figure">
+<img src="./Design/CLI/CLIOutputMockup.png" alt="CLI output sample" /><p class="caption">CLI output sample</p>
+</div>
+<p>A summary of the file properties can also be displayed via a command line interface for quick reference or export.</p>
 <h3 id="optimization-for-large-file-size">Optimization for Large File Size</h3>
 <p>Design of a conformance checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.</p>
 <p>A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processes on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker and allow assessment of files even as they are being written.</p>
@@ -355,33 +376,35 @@
 <p>Although the Matroska specification states that &quot;All level 1 elements should include a CRC-32&quot; this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.</p>
 <p>The advantages of embedded fixity in preservation media files is significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).</p>
 <h3 id="reference-and-test-files">Reference and Test Files</h3>
-<p>Test files; - PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/ - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files - Matroska buggy files: Homemade + request to Matroska mailing list - FFV1 buggy files: Homemade+ request to FFmpeg mailing list</p>
+<p>Test files; - PDF/A files buggy files: http://www.pdfa.org/2011/08/isartor-test-suite/ - JPEG 2000 files: https://github.com/openplanets/jpylyzer-test-files - Matroska buggy files: Homemade + request to Matroska mailing list - FFV1 buggy files: Homemade + request to FFmpeg mailing list - LPCM files: Homemade</p>
 <h2 id="intended-behavior-by-use-case">Intended Behavior by Use Case</h2>
 <h3 id="overview">Overview</h3>
-<p>[[OAIS introduction]]</p>
-<h3 id="conformance-checking-at-creation-time">Conformance Checking at Creation Time</h3>
-<h3 id="conformance-checking-at-transfer-time">Conformance Checking at Transfer Time</h3>
+<p>The following use cases are presented to describe intended behaviors of the conformance checker:</p>
+<h4 id="conformance-checking-in-an-open-archival-information-system-oais">Conformance Checking in an Open Archival Information System (OAIS)</h4>
+<p>MediaArea recognizes the recommended practices described in the Open Archival Information System (OAIS) reference model, intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The stated conformance checker should be developed to address all relevant areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.</p>
+<p>Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, maintained by Management in the Archive, and later, retrieved and put to use by Consumers and/or Designated Community. To take an example of such a service model, the Ingest Functional Entity of OAIS, or Ingest, performs quality assurance on incoming Submission Information Packages (SIPs). The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. As Archival Information Packages (AIPs) are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. And upon a dissemination request, reports created by the conformance checker would be used as desriptive information needed for the processing of objects for the Dissemination Information Package (DIP).</p>
+<p>The conformance checker in effect resembles a complex Representation Net in the OAIS Archive, providing information needed to adequately understand the proper playback of the associated data object.</p>
 <h3 id="conformance-checking-at-digitization-time">Conformance Checking at Digitization Time</h3>
 <h4 id="verification-of-lossless-digitization">Verification of Lossless Digitization</h4>
 <p>Until recently audiovisual digitization required a fairly inflexible set of hardware requirements and extremely limited possibilities for an open source approach to video digitization. Due to the bandwidth and processing requirements for the digitization of standard definition video required the installation of PCI cards and often the use of hardware encoders that were designed to encode video as fast as the video was being received to codecs like MPEG2 or JPEG2000. With modern connectivity options such as USB 3 and Thunderbolt it is easier to add video digitization capabilities to modern computers. Additionally modern computer processers can now transcode video losslessly in software from a video input without the need to rely on proprietary hardware-based encoders. Open source solutions such as DVA Profession, bmdcapture, and FFmpeg along with the open provision of video digitization software development kits, such as the Blackmagic SDK are facilitating new open development projects for archival video digitization.</p>
 <p>As vendors and memory institutions are increasing considering and implementing digitization workflows that encode video directly to lossless codecs with the use of an intermediate file-based uncompressed audiovisual data, it is increasingly crucial to assess this lossless file soon after creation to detect any flaws within the digitization process.</p>
 <p>For those digitizing video through processes that incorporate libav or FFmpeg such as bmdcapture of FFmpeg's decklink integration, a separate framemd5 may be written alongside the encoded ffv1 data. The resulting ffv1 data may then be verified against the framemd5 to verify that the correct bits were written to disk.</p>
 <p>An inspiration for the use of framemd5 reports within a digitization workflow is inspired by the verify option with the flac utility available at http://flac.sourceforge.net/. The ‘-V’ or –verify command is used to decode the encoded stream in parallel to the encoding process to double-check the losslessness of the transcoding. With this method any discrepancy between what data is read and transcoded versus what data is written to disk could be identified in a subsequent verification process. The use of framemd5 data within a digitization workflow enables verification in cases where an option similar to flac's --verify argument isn't available.</p>
-<h4 id="assessment-of-vendor-deliverables">Assessment of Vendor Deliverables</h4>
-<p>For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adher to particular patterns as expressed through regular expressions.</p>
+<h4 id="assessment-of-vendorproducer-deliverables">Assessment of Vendor/Producer Deliverables</h4>
+<p>For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.</p>
 <p>The conformance checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.</p>
 <h3 id="conformance-checking-at-migration-time">Conformance Checking at Migration Time</h3>
 <h4 id="fixity-verification">Fixity Verification</h4>
-<p>Migration of large amounts of data introduce risk for digital corruption, sector loss. Ongoing data migration is essential for digital preservation but can require time consuming verification process. Both Matroska and FFV1 contain features for internal fixity, so that a file copied from point A to point B can be assessed at point B alone to verify the data integrity of the frames. MediaArea recommends uses Matroska's CRC features for use in digital preservation to allow for fixity verification to be more stable and achievable with the file alone without necessarily depending on external databases or records of checksums.</p>
+<p>Migration of large amounts of data introduce risk for digital corruption and/or sector loss. Ongoing data migration is essential for digital preservation but can require a time consuming verification process. Both Matroska and FFV1 contain features for internal fixity so that a file copied from point A to point B can be assessed at point B alone to verify the data integrity of the frames. MediaArea recommends using Matroska's CRC features for use in digital preservation to allow for fixity verification to be more stable and achievable with the file alone without necessarily depending on external databases or records of checksums.</p>
 <h4 id="obsolescence-monitoring">Obsolescence Monitoring</h4>
 <p>Migration is typically an ideal time to perform obsolescence monitoring and preparing actions to limit complications in obsolescence status. Just as memory institutions must maintain the technology that their physical collections are dependent upon, this is equally true for digital collections. As this maintainance becomes more complex, costly, or unlikely archives will typically reformat material (with as little compromise to the content and characteristics of the source as possible) to a format that has more sustainable characteristics.</p>
 <p>To counteract arising obsolescence challenges it is critical to have access to thorough sets of technical metadata in order to associate certain codecs, formats, or technologies with sustainability risks or to identify what one format should be superceded by another in a particular digital preservation. For instance an institution that utilized FFV1 version 0 as a lossless preservation codec may wish to identify such files to reformat them to FFV1 version 3 (now that it is non-experimental) in order to take advantage of version 3's additional advantages. In our research one archive found that some digitized material received from a vendor was missing technical metadata about field dominance and had to identify exactly which materials were affected to order to rectify the issue.</p>
 <h2 id="open-source-ecosystem">Open Source Ecosystem</h2>
-<p>MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions. - Debian: https://packages.debian.org/wheezy/mediainfo - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo - OpenSuse: http://packman.links2linux.org/package/mediainfo - Arch Linux: https://www.archlinux.org/packages/?q=mediainfo - FreeBSD: http://www.freshports.org/multimedia/mediainfo/</p>
+<p>MediaArea has long been an Open-Source natives and has an Open-Source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple Open Source distributions. - Debian: https://packages.debian.org/wheezy/mediainfo - Ubuntu: http://packages.ubuntu.com/utopic/mediainfo - RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo - OpenSuse: http://packman.links2linux.org/package/mediainfo - Arch Linux: https://www.archlinux.org/packages/?q=mediainfo - FreeBSD: http://www.freshports.org/multimedia/mediainfo/ - Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo</p>
 <h3 id="cross-platform-support">Cross Platform Support</h3>
 <p>MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.</p>
 <h3 id="online-resources">Online Resources</h3>
-<p>MediaArea will utilize github as a social and development center for PreForma MediaInfo development and uses github's issue tracker and wiki features alongside development.</p>
+<p>MediaArea will utilize GitHub as a social and development center for PreForma MediaInfo development and uses GitHub's issue tracker and wiki features alongside development.</p>
 <p>For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.</p>
 <p>MediaArea will solicit, create, and accept test files and reference files that highlight various features of the conformance checker and illustrate likely preservation issues that may occur within the selected formats.</p>
 <h3 id="advance-improvement-of-standard-specification">Advance Improvement of Standard Specification</h3>
@@ -398,19 +421,22 @@
 <p>Register dedicated FFV1 codecid with Matroska (current use is via fourcc).</p>
 <p>Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.</p>
 <p>Feedback for features and functions of FFV1 version 4, which is currently under development.</p>
-<p>Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.</p>
-<h3 id="advance-business-cases-for-managing-preservation-files">Advance Business Cases for Managing Preservation Files</h3>
-<h1 id="architectural-layers">Architectural Layers</h1>
+<p>Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska. # Architectural Layers</p>
+<div class="figure">
+<img src="./SoftwareArchitectureLayers.png" alt="software architecture layers" /><p class="caption">software architecture layers</p>
+</div>
 <p>The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Hypervisor. The layers shall include:</p>
 <ul>
-<li>Input Layer</li>
-<li>Container Conformance Check</li>
+<li>Transport Layer</li>
+<li>Container Implementation (Conformance Check)</li>
 <li>Container Demuxer</li>
-<li>Stream Conformance Check</li>
-<li><p>Stream Coherancy Check</p></li>
+<li>Stream Implementation (Conformance Check)</li>
 <li>Stream Decoding (through plugin)</li>
+<li>Stream/Container Coherency Check</li>
 <li>Baseband Analysis (through plugin)</li>
-<li><p>Playback and Playback Analysis (through plugin)</p></li>
+<li>Data Aggregation</li>
+<li>Playback and Playback Analysis (through plugin)</li>
+<li>Human Interface</li>
 </ul>
 <p>Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in conformance checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the conformance checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a conformance checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a conformance checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.</p>
 <p>We propose incorporating several compatible utilities into PreForma MediaInfo to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.</p>
@@ -420,20 +446,20 @@
 <h3 id="plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</h3>
 <p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into PreForma MediaInfo the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
 <p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
-<p>Used as a proof of concept of plugin integration:<br />HTTP/HTTPS/FTP/FTPS support via MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)</p>
+<p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
 <h3 id="preforma-mediainfo-matroska-checker">Preforma MediaInfo: Matroska checker</h3>
 <h3 id="plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</h3>
 <p>mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.</p>
 <h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
 <h3 id="preforma-mediainfo-1">Preforma MediaInfo</h3>
-<p>PreForma MediaInfo will utilizing MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)): - MXF (commonly found within memory institutions) - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM) - DV (video stream format which uses LPCM) - AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek) - WAV (a common container for LPCM)</p>
+<p>PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)): - MXF (commonly found within memory institutions) - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM) - DV (video stream format which uses LPCM) - AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek) - WAV (a common container for LPCM)</p>
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.</p>
 <h3 id="plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</h3>
 <p>FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing. For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.</p>
 <p>Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as: - Video Waveform Monitor - Vectorscope - Ability to inspect luminance and chroma planes separately - Audio Meters</p>
 <p>We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.</p>
-<h2 id="stream-essence-implementation-checker">Stream / Essence implementation checker</h2>
+<h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <h3 id="preforma-mediainfo-2">Preforma MediaInfo:</h3>
 <ul>
 <li>FFV1</li>
@@ -453,11 +479,8 @@
 <li>AAC</li>
 <li>Any other essence format on sponsor request (we have skills in DV, VC-1, VC-3, MPEG-4 Visual, H.263, H.265/HEVC, FLAC, Musepack, Wavepack, , BMP, DPX, EXR, JPEG, PNG, SubRip, WebVTT, N19/STL, TTML…)</li>
 </ul>
-<h2 id="containerwrapper-vs-stream-essence-coherency-checker">Container/Wrapper vs Stream / Essence coherency checker</h2>
+<h2 id="streamessence-decoder">Stream/Essence decoder</h2>
 <h3 id="preforma-mediainfo-3">Preforma MediaInfo</h3>
-<p>PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream / Essence implementation checker parts)</p>
-<h2 id="stream-essence-decoder">Stream / Essence decoder</h2>
-<h3 id="preforma-mediainfo-4">Preforma MediaInfo</h3>
 <ul>
 <li>PCM (including D-10 Audio, AES3)</li>
 </ul>
@@ -465,15 +488,20 @@
 <p>FFmpeg decoder (GPLv2+ license, compatible with GPLv3+ but not with MPL2+)</p>
 <h3 id="plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</h3>
 <p>OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)</p>
-<h2 id="baseband-analyzer">Baseband analyzer</h2>
+<h2 id="containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</h2>
+<h3 id="preforma-mediainfo-4">Preforma MediaInfo</h3>
+<p>PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)</p>
+<h2 id="baseband-analyzer">Baseband Analyzer</h2>
 <h3 id="preforma-mediainfo-5">Preforma MediaInfo</h3>
 <ul>
 <li>None (only creation of the API)</li>
 </ul>
 <h3 id="plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</h3>
 <p>QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)</p>
-<h2 id="controler">Controler</h2>
-<p>Communication between all plugins - Shudeling - Statistics - Reporting - User management - Policies management - Human interface - Command line interface - GUI (based on Qt) - Web UI (server/client)</p>
+<h2 id="hyperviser-controller">Hyperviser (Controller)</h2>
+<p>The Hyperviser serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Hyperviser layer supports the following requirements: - Scheduling - Statistics - Reporting - User management - Policies management</p>
+<h2 id="human-interface">Human interface</h2>
+<p>PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are: - Command line interface A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support. - GUI (based on Qt) The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms. - Web UI (server/client) The web interface will provide access to conformance checks without software installation.</p>
 <h2 id="style-guide">## Style Guide</h2>
 <h2 id="source-code-guide">Source Code Guide</h2>
 <h3 id="portability">Portability</h3>
@@ -564,11 +592,11 @@
 <h4 id="rule-clarity">Rule Clarity</h4>
 <p>Expresses whether the check is based of an explicit statement of an underlying specificiation or based on deductive logic or inference from a reading of the specification.</p>
 <h4 id="definition">Definition</h4>
-<p>A clear description of conformanace check.</p>
+<p>A clear description of conformance check.</p>
 <h4 id="regex-parameters">Regex Parameters</h4>
-<h4 id="regex-expression">Regex Expression</h4>
-<h2 id="matroska-conformance-checks-draft">Matroska Conformance Checks (Draft)</h2>
-<h3 id="extension-test">Extension Test</h3>
+<p>A human-readable description of what the regular expression must check for.</p>
+<h4 id="regular-expression">Regular Expression</h4>
+<p>Code that checks for conformance to the suggested parameters. ## Matroska Conformance Checks (Draft) ### Extension Test</p>
 <table>
 <thead>
 <tr class="header">
