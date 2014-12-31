@@ -1,22 +1,24 @@
 # Architectural Layers
 
-![software rechitecture layers](SoftwareArchitectureLayers.png)
+![software architecture layers](SoftwareArchitectureLayers.png)
 
 The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Hypervisor. The layers shall include:
 
-- Input Layer
-- Container Conformance Check
+- Transport Layer
+- Container Implementation (Conformance Check)
 - Container Demuxer
-- Stream Conformance Check
-- Stream Coherancy Check
-
+- Stream Implementation (Conformance Check)
 - Stream Decoding (through plugin)
+- Stream/Container Coherency Check
 - Baseband Analysis (through plugin)
+- Data Aggregation
 - Playback and Playback Analysis (through plugin)
+- Human Interface
 
 Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in conformance checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the conformance checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a conformance checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a conformance checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.
 
 We propose incorporating several compatible utilities into PreForma MediaInfo to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.
+
 
 ## Transport layer
 
@@ -33,12 +35,14 @@ Since we will be generating a library of reference and sample files that will in
 Used as a proof of concept of plugin integration:  
 HTTP/HTTPS/FTP/FTPS support via MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)
 
+
 ## Container/Wrapper implementation checker
 
 ### Preforma MediaInfo: Matroska checker
 
 ### Plugin integration proof of concept: mkvalidator
 mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.
+
 
 ## Container/Wrapper Demultiplexing
 
@@ -65,7 +69,8 @@ Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the
 
 We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.
 
-## Stream / Essence implementation checker
+
+## Stream/Essence implementation checker
 
 ### Preforma MediaInfo:
 - FFV1
@@ -86,12 +91,7 @@ For DV (BSD license, compatible with GPLv3+ and MPL2+)
 - AAC
 - Any other essence format on sponsor request (we have skills in DV, VC-1, VC-3, MPEG-4 Visual, H.263, H.265/HEVC, FLAC, Musepack, Wavepack, , BMP, DPX, EXR, JPEG, PNG, SubRip, WebVTT, N19/STL, TTML…)
 
-## Container/Wrapper vs Stream / Essence coherency checker
-
-### Preforma MediaInfo
-PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream / Essence implementation checker parts)
-
-## Stream / Essence decoder
+## Stream/Essence decoder
 
 ### Preforma MediaInfo
 - PCM (including D-10 Audio, AES3)
@@ -102,7 +102,14 @@ FFmpeg decoder (GPLv2+ license, compatible with GPLv3+ but not with MPL2+)
 ### Plugin integration proof of concept: OpenJPEG
 OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)
 
-## Baseband analyzer
+
+## Container/Wrapper vs Stream/Essence Coherency Check
+
+### Preforma MediaInfo
+PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)
+
+
+## Baseband Analyzer
 
 ### Preforma MediaInfo
 - None (only creation of the API)
@@ -110,7 +117,8 @@ OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)
 ### Plugin integration proof of concept: QCTools
 QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)
 
-## Controler
+
+## Hyperviser (Controller)
 
 Communication between all plugins
 - Shudeling
@@ -118,7 +126,9 @@ Communication between all plugins
 - Reporting
 - User management
 - Policies management
-- Human interface
+
+## Human interface
+
 - Command line interface
 - GUI (based on Qt)
 - Web UI (server/client)
