@@ -32,7 +32,7 @@ libcURL is licensed under an MIT license that is compatible with both GPLv3+ and
 
 Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.
 
-Used as a proof of concept of plugin integration:  
+Used as a proof of concept of plugin integration: 
 HTTP/HTTPS/FTP/FTPS support via MediaInfo Open-Source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)
 
 
@@ -48,7 +48,7 @@ mkvalidator is a basic and no more maintained Matroska checker (BSD license, com
 
 ### Preforma MediaInfo
 
-PreForma MediaInfo will utilizing MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):
+PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):
 - MXF (commonly found within memory institutions)
 - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
 - DV (video stream format which uses LPCM)
@@ -120,8 +120,8 @@ QCTools graphs (report on and graph data documenting video signal loss, flag err
 
 ## Hyperviser (Controller)
 
-Communication between all plugins
-- Shudeling
+The Hyperviser serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Hyperviser layer supports the following requirements:
+- Scheduling
 - Statistics
 - Reporting
 - User management
@@ -129,7 +129,11 @@ Communication between all plugins
 
 ## Human interface
 
+PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are:
 - Command line interface
+  A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support.
 - GUI (based on Qt)
+  The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.
 - Web UI (server/client)
+  The web interface will provide access to conformance checks without software installation.
 
