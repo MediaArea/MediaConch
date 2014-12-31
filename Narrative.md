@@ -265,16 +265,6 @@ To counteract arising obsolescence challenges it is critical to have access to t
 
 ## Open Source Ecosystem
 
-MediaArea has long been an open source natives and has an open source business model based on sponsored support (bug correction and feature requests). For instance, MediaInfo is officially provided by multiple open source distributions.
-
-- Debian: https://packages.debian.org/wheezy/mediainfo
-- Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
-- RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
-- OpenSuse: http://packman.links2linux.org/package/mediainfo
-- Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
-- FreeBSD: http://www.freshports.org/multimedia/mediainfo/
-- Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo
-
 ### Cross Platform Support
 
 MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.
@@ -283,6 +273,16 @@ For an impression of MediaArea's focus on cross platform usability please see ou
 
 - http://mediaarea.net/en/MediaInfo/Download
 - http://bavc.org/qctools-downloads
+
+MediaInfo is also officially provided by multiple open source distributions:
+
+- Debian: https://packages.debian.org/wheezy/mediainfo
+- Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
+- RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
+- OpenSuse: http://packman.links2linux.org/package/mediainfo
+- Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
+- FreeBSD: http://www.freshports.org/multimedia/mediainfo/
+- Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo
 
 ### Online Resources
 
@@ -323,6 +323,8 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 - Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
 
 ### Sustainable Open Source Business Ecosystem
+
+MediaArea has long been an open source natives and has an open source business model based on sponsored support (bug correction and feature requests).
 
 MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV conformance checker, professional metadata editor and fixer BWF MetaEdit; the AVI conformance checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, Preforma  plays a major role in the creation of a fully integrated and open source conformance checker.
 
