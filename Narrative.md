@@ -172,7 +172,7 @@ An interface for assessing conformance of FFV1 video could enable review of the 
 
 ![MediaInfo Windows](/Design/GUI/MediaInfoWindows.png)
 
-The Matroska container requires a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
+For deep analysis, a distinct interface that allows for its hierarchical structure to be reviewed and navigated. The presentation should allow for MKV and FFV1 elements to be expanded, condensed, or filtered according to element id or associated conformity issues.
 
 ![CLI output sample](/Design/CLI/CLIOutputMockup.png)
 
