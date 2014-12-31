@@ -6,7 +6,7 @@ Grant Agreement number: 619568
 
 Project Title: PREservation FORMAts for culture information/e-archives
 
-Prepared by: MediaArea SARL
+Prepared by: MediaArea.net SARL
 
   - Jérôme Martinez
   - Dave Rice
