@@ -264,6 +264,12 @@ Migration is typically an ideal time to perform obsolescence monitoring and prep
 
 To counteract arising obsolescence challenges it is critical to have access to thorough sets of technical metadata in order to associate certain codecs, formats, or technologies with sustainability risks or to identify what one format should be superseded by another in a particular digital preservation. For instance an institution that utilized FFV1 version 0 as a lossless preservation codec may wish to identify such files to reformat them to FFV1 version 3 (now that it is non-experimental) in order to take advantage of version 3's additional advantages. In our research one archive found that some digitized material received from a vendor was missing technical metadata about field dominance and had to identify exactly which materials were affected to order to rectify the issue.
 
+## The team and roles
+
+- Jérôme Martinez (Digital Media Specialist): technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata.
+- Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation.
+- Guillaume Roques (Back end / Front end developer): database management, automation, performance optimization, reporting, shell.
+
 ## Open Source Ecosystem
 
 ### Cross Platform Support
