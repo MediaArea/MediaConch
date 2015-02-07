@@ -269,6 +269,8 @@ To counteract arising obsolescence challenges it is critical to have access to t
 - Jérôme Martinez (Digital Media Specialist): technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata.
 - Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation.
 - Guillaume Roques (Back end / Front end developer): database management, automation, performance optimization, reporting, shell.
+- Moritz Bunkus (Matroska main developer): validation of Matroska tests, Matroska specific technical support
+- (Name to be confirmed) : validation of FFV1 tests, FFV1 specific technical support
 
 ## Open Source Ecosystem
 
