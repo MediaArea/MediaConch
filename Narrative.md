@@ -362,3 +362,10 @@ In 2014, MediaArea closely worked with NLW and EBU (European Broadcast Union) in
 As a result, NLW is deploying (as of February 2015) a metadata retrieval project and save metadata in EBUCore 1.5 format which is provided by provided by MediaArea's software MediaInfo, and EBU is updating EBUCore 1.6 with new fields.
 
 MediaArea demonstrated his capability to understand the need of the memory institution, to "translate" it in a technical implementation, and to discuss with a standardization institution.
+
+### Participation at Open Source conferences
+
+MediaArea team is active in the open source community and presented his work on Preforma at different conferences during Phase 1:
+- Dave Rice presented our work on Preforma at FOSDEM on January 31st https://fosdem.org/2015/schedule/event/enabling_video_preservation/
+- Ashley Blewer presented our work at Code4Lib on February 11th http://wiki.code4lib.org/2015_Lightning_Talks
+
