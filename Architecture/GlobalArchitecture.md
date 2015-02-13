@@ -5,7 +5,7 @@
 
 ## Common to all elements
 
-All elements can be installed on the same server or on different servers, depending of the expected workload.
+All elements can be installed on the same server or on different servers, depending on the expected workload.
 
 ## Core
 
@@ -23,7 +23,7 @@ Interface :
 
 * Database : native driver
 
-Programing language : C++
+Programming language : C++
 
 ## Database
 
@@ -59,7 +59,7 @@ Software : RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)
 
 Background process that listen for news files available for validating. Use inotify notification system API for Linux kernel or kqueue/kevent for BSD kernel.
 
-Programing language : C++
+Programming language : C++
 
 ## Conformance checker and metadata grabbing module
 
@@ -79,7 +79,7 @@ Interface :
 
 * Scheduler : AMQP
 
-Programing language : C++ for MediaArea, depends of other participants for JPEG 2000, TIFF, PDF.
+Programming language : C++ for MediaArea, depends on other participants for JPEG 2000, TIFF, PDF.
 
 ## Policy checker
 
@@ -91,17 +91,19 @@ Interface :
 
 * Core : REST API
 
-Programing language : C++
+Programming language : C++
 
 ## User Interface
 
 Display test results and control the Core
 
+Allow metadata (descriptive and structural) to be edited
+
 Interface :
 
 * Core : REST API
 
-Programing language :
+Programming language :
 
 * CLI : C++
 
