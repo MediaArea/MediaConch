@@ -1,11 +1,11 @@
 Name,CCID,Version,Authority,Target Format,Target Format Version,Target Format Part,Citation,Quote,Rule Clarity?,Definition
-Missing header,OUTOFBAND-HEADER-MISSING,0,FVV1 Specification,FFV1 >=2,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""Version 2 and later files use a global header""",,"If version is 2 or more, there should be a global header in the container private data"
-version,FFV1-HEADER-version,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""version 0, 1 or 3""",Warning,"Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)"
-version 2,FFV1-HEADER-version2,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""Version 2 was never enabled in the encoder thus version 2 files should not exist""",Warning,"Version 2 is forbidden, analysis stops"
-micro_version 2,FFV1-HEADER-micro_version,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""For version 3, micro_version is 4, micro versions prior to this represent pre standard""",Warning,"Not supported version, high risk of decoding issue"
-coder_type,FFV1-HEADER-coder_type,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""0 (Golomb Rice), 1 (Range coder), 2 (Range coder with custom state transition table)""",,coder_type >2 is not supported
-state_transition_delta,FFV1-HEADER-state_transition_delta,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,,,(To be defined)
-colorspace_type,FFV1-HEADER-colorspace_type,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""0 (YCbCr), 1 (JPEG2000_RCT) """,,colorspace_type >1 is not supported
-bits_per_raw_sample,FFV1-HEADER-bits_per_raw_sample,0,FVV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""commonly 8, 9, 10 or 16 """,Are other values valid?,
+Missing header,OUTOFBAND-HEADER-MISSING,0,FFV1 Specification,FFV1 >=2,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""Version 2 and later files use a global header""",,"If version is 2 or more, there should be a global header in the container private data"
+version,FFV1-HEADER-version,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""version 0, 1 or 3""",Warning,"Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)"
+version 2,FFV1-HEADER-version2,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""Version 2 was never enabled in the encoder thus version 2 files should not exist""",Warning,"Version 2 is forbidden, analysis stops"
+micro_version 2,FFV1-HEADER-micro_version,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""For version 3, micro_version is 4, micro versions prior to this represent pre standard""",Warning,"Not supported version, high risk of decoding issue"
+coder_type,FFV1-HEADER-coder_type,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""0 (Golomb Rice), 1 (Range coder), 2 (Range coder with custom state transition table)""",,coder_type >2 is not supported
+state_transition_delta,FFV1-HEADER-state_transition_delta,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,,,(To be defined)
+colorspace_type,FFV1-HEADER-colorspace_type,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""0 (YCbCr), 1 (JPEG2000_RCT) """,,colorspace_type >1 is not supported
+bits_per_raw_sample,FFV1-HEADER-bits_per_raw_sample,0,FFV1 Specification,FFV1,all,Header,http://www.ffmpeg.org/~michael/ffv1.html,"""commonly 8, 9, 10 or 16 """,Are other values valid?,
 (More header tests to add),,,,,,,,,,
-crc_parity,FFV1-HEADER-crc_parity ,0,FVV1 Specification,,,,,"""32bit that are choosen so that the global header as a whole or slice as a whole has a crc""",,
+crc_parity,FFV1-HEADER-crc_parity ,0,FFV1 Specification,,,,,"""32bit that are choosen so that the global header as a whole or slice as a whole has a crc""",,
