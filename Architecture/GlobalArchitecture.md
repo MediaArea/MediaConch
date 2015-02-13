@@ -1,7 +1,7 @@
 # PreForma Global Architecture
 
 ## Architecture schema
-![Global Architecture Schema](./GlabalArchitecture.png)
+![Global Architecture Schema](./GlobalArchitecture.png)
 
 ## Common to all elements
 
