@@ -1,19 +1,56 @@
-## Metadata Fixer
+## Metadata Fixer GUI
 
 ### Design & Functional Requirements
 
 #### File List Layout
 
-- List open files in a table with the following metadata
-    - File name
-    - File size
+The GUI version of the metadata fixer will provide an interface to see a table of summarized metadata for one or many open files. The intent is to go allow files to be sorted by particular technical qualities or the content of embedded metadata. A table-based presentation will also allow the inconsistancies of technical metadata to be easily revealed and repaired.
+
+MediaArea has developed such interfaces in other conformance- and metadata-focused projects such as BWF MetaEdit and QCTools and plans to use the File List Layout as an interface center for batch file metadata operations.
+
+##### Customizable Sections
+
+The contents of the File List will be configurable according to the metadata values indexed by MediaInfo during a file parse. In the case of Matroska files these metadata values will also be categorized according to their enclosing Matroska section. These sections include:
+
+    - Header
+    - Meta Seek
+    - Segments
+    - Tracks
+    - Chapters
+    - Clusters
+    - Cueing Data
+    - Attachment
+    - Tagging
+    
+In additional to Matroska sections a category of file attribute data will also be provided to show information such as file size, file name, etc. Additional a 'global' section is provided to show summarization of the file's status and structure.
+    
+A toolbar in the File List Layout will enable the user to select one or many sections to allow for focus on a particular section.
+
+As an example, checking to show the columns associated with the Matroska Header shall reveal columns such as:
+
     - File format (Matroska, Webm, etc)
     - Format version (version of Matroska, etc)
-    - Percentage of CRC protection
+    - Minimum read version
+
+A global section would provide informational columns such as:
+
+    - Amount of VOID data with the Matroska file
+    - Percentage of CRC coverage with the Matroska file
     - Number of metadata tags
     - Number of chapters
     - Number of attachments
-    - Selected Level 4 Matroska tag names
+
+As metadata tags may vary substantially, the tagging section of the File List Layout will show selected level 4 metadata tags as well as a column to summarize what level 4 metadata tags are unshown. Columns values which show level 4 metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of metadata tags in level 5 and below can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown Level 4 metadata tags may be edited directly.
+
+The order and selection of viewed columns within the File List Layout may be saved and labelled to configure the display. This feature will allow users to design and configure layouts for particular metadata workflows. MediaArea plans to provide specific layouts in accordance with the objective of particularly OAIS functions, such as to supply contextual metadata about a digitization or acquisition event.
+
+##### Managing State of Metadata Edits/Fixes
+
+A toggle within the toolbar will switch the table's editable entries from read-only to editable, to help prevent inadvertant edits. Each row of the File List Layout shall contain a visual status icon (File Edit State Icon) to depict the state of the file's metadata state. The File Edit State Icon will show if the file has been edited through the UI to different values than the file actually has; for instance, if the file must be saved before the shown changes are written back tot the file. Metadata values within editable layouts shall appear in a different font, style or color depending on if they show what is actually stored or altered data that has not yet been saved back to the file. By selected a row which has an edited but unsaved state, the user shall be able to selet a toolbar option to revert the file's record back to its original saved state (to undo the unsaved edit).
+
+##### Relational to Conformance / Policy Layouts
+
+The File List Layout shall contain a column to summarize conformance and policy issues with each open file and link back to the associated sections to reveal more information about these issues.
 
 #### MKV Metadata Editor Layout
 
