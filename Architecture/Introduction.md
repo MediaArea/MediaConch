@@ -32,6 +32,8 @@ This is broken down by category and the categories are as follows:
 
 * Policy Checker
 
+* Reporter
+
 * User Interface(s)
 
 ** CLI (Command line interface)
