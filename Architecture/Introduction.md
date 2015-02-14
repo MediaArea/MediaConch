@@ -4,7 +4,7 @@ This is a roadmap for the technical components of the project.
 
 ## Global Architecture
 
-The global architecture schema defines the context in which the PreFormaMediaInfo software is situated.
+The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software.
 
 This includes the following:
 

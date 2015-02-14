@@ -11,12 +11,15 @@ All elements can be installed on the same server or on different servers, depend
 
 The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. 
 
-* controls the checkers and manages data for the User Interface
-* waits for commands from new files daemon and User Interface
-* send commands to the scheduler for files checking
-* communicates with the database to store and retrieve data from the checkers
+The Core has several major functions:
 
-The Hyperviser layer supports the following requirements:
+* controls the checkers and manages data for the User Interface
+* waits for commands from the New Files Daemon and User Interface
+* send commands to the scheduler for file-checking
+* communicates with the database to store and retrieve data from the checkers
+* sends data to DIRECT
+
+The Core supports the following requirements:
 
 - Scheduling
 - Statistics
@@ -26,7 +29,7 @@ The Hyperviser layer supports the following requirements:
 
 Interface :
 
-* Scheduler : AMQP
+* Scheduler : Advanced Message Queuing Protocol
 * Policy checker / User Interface / DIRECT : REST API
 * Database : native driver
 
@@ -57,8 +60,8 @@ The Scheduler element is a form of software "middleware" that distributes the fi
 
 Interface :
 
-* Core : AMQP
-* Checkers : AMQP
+* Core : Advanced Message Queuing Protocol
+* Checkers : Advanced Message Queuing Protocol
 
 Software : 
 
@@ -66,7 +69,7 @@ RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)
 
 ## New Files Daemon
 
-The New Files Daemon is a background process that listen for new files available for validating. Use inotify notification system API for Linux kernel or kqueue/kevent for BSD kernel.
+The New Files Daemon is a background process that listen for new files available for validating. It uses the inotify notification system API for a Linux kernel or kqueue/kevent for a BSD kernel.
 
 Programming language : C++
 
@@ -74,9 +77,7 @@ Programming language : C++
 
 This module can utilize one or more checkers for each media type.
 
-As the conformance checker could be very long we use an asynchronous system based on messaging system to not lock the system.
-
-Metadata and conformance check result are send back to the Core to be stored in the database.
+As the conformance checker process could be very long, we use an asynchronous system based on messaging system to not lock the system. Metadata and conformance check result are send back to the Core to be stored in the database.
 
 * runs the conformance tests for the different type of media files.
 * grabs metadata (used for policy checking).
@@ -85,7 +86,7 @@ See [Checker Architecture](CheckerArchitecture.md) for more details.
 
 Interface :
 
-* Scheduler : AMQP
+* Scheduler : Advanced Message Queuing Protocol
 
 Programming language : C++ for MediaArea, depends on other participants for JPEG 2000, TIFF, PDF.
 
