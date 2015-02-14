@@ -9,12 +9,20 @@ All elements can be installed on the same server or on different servers, depend
 
 ## Core
 
-The Core is the main service and runs in a passive, background mode.
+The Core is the main service and runs in a passive, background mode. The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers.
 
 * controls the checkers and manages data for the User Interface
 * waits for commands from new files daemon and User Interface
 * send commands to the scheduler for files checking
 * communicates with the database to store and retrieve data from the checkers
+
+The Hyperviser layer supports the following requirements:
+
+- Scheduling
+- Statistics
+- Reporting
+- User management
+- Policies management
 
 Interface :
 
@@ -93,10 +101,24 @@ Interface :
 
 Programming language : C++
 
-## User Interface
+## User interface
 
 * displays test results and control the Core
 * allows metadata (descriptive and structural) to be edited
+
+PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are:
+
+- CLI (Command line interface)
+
+    A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support. It allows for integration into a batch-mode processing workflow for analyzing files at scale.
+
+- GUI (Graphical user interface)
+
+    The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.
+
+- Web UI (server/client)
+
+    The web interface will provide access to conformance checks without software installation.
 
 Interface :
 
@@ -109,4 +131,3 @@ Programming language :
 * GUI : C++ / Qt (LGPLv3+)
 
 * Web : PHP/Symfony (MIT)
-
