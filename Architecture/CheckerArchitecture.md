@@ -1,4 +1,4 @@
-# Software Architectural Layers
+# Checker Architectural Layers
 
 ![software architecture layers](./SoftwareArchitectureLayers.png)
 
