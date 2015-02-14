@@ -1,4 +1,4 @@
-## Metadata Fixer
+## Metadata Fixer GUI
 
 ### Design & Functional Requirements
 
@@ -7,6 +7,9 @@
 - List open files in a table with the following metadata
     - File name
     - File size
+The GUI version of the metadata fixer will provide an interface to see a table of summarized metadata for one or many open files. The intent is to go allow files to be sorted by particular technical qualities or the content of embedded metadata. A table-based presentation will also allow the inconsistancies of technical metadata to be easily revealed and repaired.
+
+MediaArea has developed such interfaces in other conformance- and metadata-focused projects such as BWF MetaEdit and QCTools and plans to use the File List Layout as an interface center for batch file metadata operations.
     - File format (Matroska, Webm, etc)
     - Format version (version of Matroska, etc)
     - Percentage of CRC protection
