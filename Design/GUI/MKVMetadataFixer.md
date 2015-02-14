@@ -4,19 +4,41 @@
 
 #### File List Layout
 
-- List open files in a table with the following metadata
-    - File name
-    - File size
 The GUI version of the metadata fixer will provide an interface to see a table of summarized metadata for one or many open files. The intent is to go allow files to be sorted by particular technical qualities or the content of embedded metadata. A table-based presentation will also allow the inconsistancies of technical metadata to be easily revealed and repaired.
 
 MediaArea has developed such interfaces in other conformance- and metadata-focused projects such as BWF MetaEdit and QCTools and plans to use the File List Layout as an interface center for batch file metadata operations.
+
+##### Customizable Sections
+
+The contents of the File List will be configurable according to the metadata values indexed by MediaInfo during a file parse. In the case of Matroska files these metadata values will also be categorized according to their enclosing Matroska section. These sections include:
+
+    - Header
+    - Meta Seek
+    - Segments
+    - Tracks
+    - Chapters
+    - Clusters
+    - Cueing Data
+    - Attachment
+    - Tagging
+    
+In additional to Matroska sections a category of file attribute data will also be provided to show information such as file size, file name, etc. Additional a 'global' section is provided to show summarization of the file's status and structure.
+    
+A toolbar in the File List Layout will enable the user to select one or many sections to allow for focus on a particular section.
+
+As an example, checking to show the columns associated with the Matroska Header shall reveal columns such as:
+
     - File format (Matroska, Webm, etc)
     - Format version (version of Matroska, etc)
-    - Percentage of CRC protection
+    - Minimum read version
+
+A global section would provide informational columns such as:
+
+    - Amount of VOID data with the Matroska file
+    - Percentage of CRC coverage with the Matroska file
     - Number of metadata tags
     - Number of chapters
     - Number of attachments
-    - Selected Level 4 Matroska tag names
 
 #### MKV Metadata Editor Layout
 
