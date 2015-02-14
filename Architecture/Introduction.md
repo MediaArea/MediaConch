@@ -1,0 +1,57 @@
+# Introduction to Architecture
+
+This is a roadmap for the technical components of the project.
+
+## 1. Global Architecture
+
+The global architecture schema defines the context in which the PreFormaMediaInfo software is situated.
+
+This includes the following:
+
+### Technical specifications
+
+### Open source conformance compliancy
+
+### 
+
+This is broken down by category and the categories are as follows:
+
+### Common Elements
+
+### Core
+
+### Database
+
+### Scheduler
+
+### New file daemon
+
+### Conformance checker and metadata grabbing module
+
+### Policy Checker
+
+### User Interface
+
+## 2. Software Architecture
+
+The software architecture schema defines the structure of the core PreForma platform.
+
+### Transport interface
+
+### Container/wrapper implementation
+
+### Container/wrapper demuxer
+
+### Stream/essence implementation
+
+### Stream/essence decoder
+
+### Stream/container coherency check
+
+###  Baseband analyzer
+
+### Data aggregation
+
+### Hypervisor
+
+### Human interfaces
