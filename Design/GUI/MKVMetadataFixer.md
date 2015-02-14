@@ -117,6 +117,10 @@ The validation status indicators and associated procedures are central to the ob
 
 In many cases repairs to well defined validation issues are repairable programmatically. The Validation Status section of layouts will show related repair procedures (if defined) and summarize (to the extent feasible) the before-and-after effects on the file.
 
+#### Metadata Import / Export
+
+Both the GUI and CLI of the Metadata fixer will allow Matroska metadata tags to be imported into or exported from a Matroska file using Matroska existing XML tagging form. In addition to information typically found in Matoroska's XML tag format, information on validation status will be included.
+
 #### Layout Preferences
 
 - Checkboxes to disable appearance of columns in File List Layout
