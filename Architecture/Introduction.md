@@ -41,9 +41,9 @@ This is broken down by category and the categories are as follows:
 #### Web (Web based interface)
 
 
-## Checker
+## Checker Architecture
 
-More details about the Conformance checker and metadata grabbing module
+The Checker Architecture details the structural components of the conformance checker and metadata grabbing module.
 
 ### Transport interface
 

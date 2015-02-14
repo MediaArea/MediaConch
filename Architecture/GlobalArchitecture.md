@@ -9,7 +9,7 @@ All elements can be installed on the same server or on different servers, depend
 
 ## Core
 
-The Core is the main service and runs in a passive, background mode. The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers.
+The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. 
 
 * controls the checkers and manages data for the User Interface
 * waits for commands from new files daemon and User Interface
@@ -72,7 +72,7 @@ Programming language : C++
 
 ## Conformance Checker and Metadata Grabbing Module
 
-The Conformance Checker and Metadata Grabbing Module This module can utilize one or more checkers for each media type.
+This module can utilize one or more checkers for each media type.
 
 As the conformance checker could be very long we use an asynchronous system based on messaging system to not lock the system.
 
@@ -81,7 +81,7 @@ Metadata and conformance check result are send back to the Core to be stored in 
 * runs the conformance tests for the different type of media files.
 * grabs metadata (used for policy checking).
 
-See [Software Architecture](SoftwareArchitecture.md) for more details.
+See [Checker Architecture](CheckerArchitecture.md) for more details.
 
 Interface :
 
@@ -131,3 +131,5 @@ Programming language :
 * GUI : C++ / Qt (LGPLv3+)
 
 * Web : PHP/Symfony (MIT)
+
+## Playback and Playback Analysis (through plugin)
