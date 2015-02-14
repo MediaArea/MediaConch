@@ -106,7 +106,6 @@ OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)
 ### Preforma MediaInfo
 PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)
 
-
 ## Baseband Analyzer
 
 ### Preforma MediaInfo

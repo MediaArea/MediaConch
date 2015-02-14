@@ -7,7 +7,7 @@
 
 All elements can be installed on the same server or on different servers, depending on the expected workload.
 
-## Core
+## Core (Controller)
 
 The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. 
 
@@ -120,6 +120,31 @@ PreForma MediaInfo will provide three different options for a human interface fo
 - Web UI (server/client)
 
     The web interface will provide access to conformance checks without software installation.
+
+Interface :
+
+* Core : REST API
+
+Programming language :
+
+* CLI : C++
+
+* GUI : C++ / Qt (LGPLv3+)
+
+* Web : PHP/Symfony (MIT)
+
+## Reporter
+
+Within the user interfaces are ways to export raw metadata and human-readible JSON/XML.
+
+* exports a machine readable report, including preservation metadata for each file checked
+* exports a report that allows external software agents to further process the file
+* exports a human readable report
+* exports a "fool-proof" report which also indicates what should be done to fix the non-conformances
+
+The machine readable report will be produced using a standard XML format, implemented by all conformance checkers in the PREFORMA ecosystem, which allows the reported module to combine output from multiple checker components in one report. The report will be based on a standard output format that will be made by the consortium.
+
+The human readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications, and addressing improvements in the creation/digitisation process
 
 Interface :
 
