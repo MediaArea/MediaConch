@@ -114,6 +114,8 @@ The Formatted String Editor
 #### Layout Preferences
 
 - Checkboxes to disable appearance of columns in File List Layout
+- Functions to allow the currently selected File List Layout options to be saved and labelled
+- An ability to load pre-designed or user-created File List Layout options
 - A list to specify level 4 Matroska tags to appear in File List Layout as a column
 - Default value to use for the default value of TagLanguage on new metadata tags
 
