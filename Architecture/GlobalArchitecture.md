@@ -95,9 +95,8 @@ Programming language : C++
 
 ## User Interface
 
-Display test results and control the Core
-
-Allow metadata (descriptive and structural) to be edited
+* displays test results and control the Core
+* allows metadata (descriptive and structural) to be edited
 
 Interface :
 

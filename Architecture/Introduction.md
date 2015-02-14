@@ -41,9 +41,9 @@ This is broken down by category and the categories are as follows:
 #### Web (Web based interface)
 
 
-## Conformance checker and metadata grabbing module
+## Checker
 
-More details about the Cconformance checker and metadata grabbing module
+More details about the Conformance checker and metadata grabbing module
 
 ### Transport interface
 
