@@ -1,5 +1,13 @@
 ## Metadata Fixer GUI
 
+### Introduction
+
+Although audiovisual formats often contain comprehensive metadata support but archivists often face a dilemma regarding the application of it. On one hand bit-by-bit veriable data preservation is a significant priority but so is having archival objects be self-descriptive. For an archive managing digital files as preservation objects, a change or fix to the file's metadata is a change to a preservation object which results in a different file size and checksum. Because file edits prevent fixity functions, the decision on whether or not to fix or add metadata within OAIS workflows is often complex.
+
+The design of the Matroska file format finds a balance between these two considers. Rather than relying on an external checksumming process to validate the fixity of the file, Matroska provides a mechanism for doing so internally. The CRC elements of Matroska may be used within any Element to document the subsequent data of the parent element's payload. With this feature a Matroska file may be edited in one particular section while the other sections maintain their ability to be easily validated. Thus in addition to (or possibly in lieu of) generating a file checksum during acquisition, a archive may use PreForma's Matroska tools to embed CRC elements if they do not already exist. When a Matroska file is internally protected by CRCs, the sections of the file may be edited or fixed while maintaining a function to verify the un-edited functions.
+
+Because of these Matroska features, we are very interested in how archivists may work more actively with internal file metadata through various parts of the OAIS framework. For instance reports on file edits, repairs, and outcomes of preservation events may be added directly to the file. With such tools as proposed by this project, archivists and repository systems may work with living Matroska preservation objects which internally define the context and lifecycle of themselves over time while maintaining the fixity features of the contained audiovisual data which is the essence of the overall preservation focus and what the Matroska container may be used to describe, validate, and support.
+
 ### Design & Functional Requirements
 
 #### File List Layout
@@ -54,6 +62,8 @@ The File List Layout shall contain a column to summarize conformance and policy 
 
 #### MKV Metadata Editor Layout
 
+The Metadata Editor Layout is designed to efficiency create, edit, of fix metadata on a file-by-file basis. The interface will show the contents of the Matroska tag section and provide various UI to facilitate guided metadata operations, such as providing a date and time interface to provide expresses for temporal fields, but also allowing text string expressions for all string tags as Matroska allows.
+
 - Provide a table to show one row per metadata tag
 - Provide columns with following values
     - [Hierarchy](#hierarchy)
@@ -104,6 +114,8 @@ The Formatted String Editor
 #### Layout Preferences
 
 - Checkboxes to disable appearance of columns in File List Layout
+- Functions to allow the currently selected File List Layout options to be saved and labelled
+- An ability to load pre-designed or user-created File List Layout options
 - A list to specify level 4 Matroska tags to appear in File List Layout as a column
 - Default value to use for the default value of TagLanguage on new metadata tags
 
