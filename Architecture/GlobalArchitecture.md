@@ -37,6 +37,8 @@ Programming language : C++
 
 ## Database
 
+The Database is responsible for storing the associated metadata and results of the conformance checker, including the policy checker rules and the user rights management.
+
 * store metadata and results of the conformance checker
 * store the policy checker rules
 * user rights management
@@ -57,6 +59,7 @@ Potential database management system options, contingent on open source licensin
 The Scheduler element is a form of software "middleware" that distributes the files to be checked across the conformance checkers by using a message broker interface. It translates the file data into one unified language for access within all aspects of the software.
 
 * distributes files
+* translates file data into unified language
 
 Interface :
 
@@ -75,12 +78,10 @@ Programming language : C++
 
 ## Conformance Checker and Metadata Grabbing Module
 
-This module can utilize one or more checkers for each media type.
+This module can utilize one or more checkers for each media type. As the conformance checker process could be very long, we use an asynchronous system based on messaging system to not lock the system. Metadata and conformance check result are send back to the Core to be stored in the database.
 
-As the conformance checker process could be very long, we use an asynchronous system based on messaging system to not lock the system. Metadata and conformance check result are send back to the Core to be stored in the database.
-
-* runs the conformance tests for the different type of media files.
-* grabs metadata (used for policy checking).
+* runs the conformance tests for the different type of media files
+* grabs metadata (used for policy checking)
 
 See [Checker Architecture](CheckerArchitecture.md) for more details.
 
@@ -92,9 +93,9 @@ Programming language : C++ for MediaArea, depends on other participants for JPEG
 
 ## Policy checker
 
-Run the policy tests for the different type of media files.
+The policy checker run tests on metadata grabbed by the conformance checker and metadata grabbing module (the Checker).
 
-The policy checker run tests on metadata grabbed by the conformance checker and metadata grabbing module.
+* runs the policy tests for the different type of media files.
 
 Interface :
 
