@@ -2,7 +2,7 @@
 
 This is a roadmap for the technical components of the project.
 
-## 1. Global Architecture
+## Global Architecture
 
 The global architecture schema defines the context in which the PreFormaMediaInfo software is situated.
 
@@ -12,7 +12,9 @@ This includes the following:
 
 ### Open source conformance compliancy
 
-### 
+### Relationships between frameworks
+
+### Framework traversal patterns
 
 This is broken down by category and the categories are as follows:
 
@@ -30,9 +32,16 @@ This is broken down by category and the categories are as follows:
 
 ### Policy Checker
 
-### User Interface
+### User Interface(s)
 
-## 2. Software Architecture
+#### CLI (Command line interface)
+
+#### GUI (Graphical user interface)
+
+#### Web (Web based interface)
+
+
+## Software Architecture
 
 The software architecture schema defines the structure of the core PreForma platform.
 

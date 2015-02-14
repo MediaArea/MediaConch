@@ -9,11 +9,12 @@ All elements can be installed on the same server or on different servers, depend
 
 ## Core
 
-Main service, in background, control the checkers and manage data for the User Interface.
+The Core is the main service and runs in a passive, background mode.
 
-Wait for commands from new files daemon and User Interface, send commands to the scheduler for files checking.
-
-Communicate with the database to store and retrieve datas from the checkers.
+* controls the checkers and manages data for the User Interface.
+* waits for commands from new files daemon and User Interface
+* send commands to the scheduler for files checking.
+* communicates with the database to store and retrieve data from the checkers.
 
 Interface :
 

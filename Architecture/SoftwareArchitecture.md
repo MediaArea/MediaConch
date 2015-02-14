@@ -139,11 +139,11 @@ The Hyperviser serves as communication between all plugins within and outside of
 
 PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are:
 
-- Command line interface
+- CLI (Command line interface)
 
-    A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support.
+    A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support. It allows for integration into a batch-mode processing workflow for analyzing files at scale.
 
-- GUI (based on Qt)
+- GUI (Graphical user interface)
 
     The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.
 
