@@ -41,9 +41,9 @@ This is broken down by category and the categories are as follows:
 #### Web (Web based interface)
 
 
-## Software Architecture
+## Conformance checker and metadata grabbing module
 
-The software architecture schema defines the structure of the core PreForma platform.
+More details about the Cconformance checker and metadata grabbing module
 
 ### Transport interface
 
@@ -58,9 +58,3 @@ The software architecture schema defines the structure of the core PreForma plat
 ### Stream/container coherency check
 
 ###  Baseband analyzer
-
-### Data aggregation
-
-### Hypervisor
-
-### Human interfaces
