@@ -132,5 +132,3 @@ Programming language :
 * GUI : C++ / Qt (LGPLv3+)
 
 * Web : PHP/Symfony (MIT)
-
-## Playback and Playback Analysis (through plugin)

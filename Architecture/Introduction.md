@@ -8,53 +8,53 @@ The global architecture schema defines the context in which the PreFormaMediaInf
 
 This includes the following:
 
-### Technical specifications
+* Technical specifications
 
-### Open source conformance compliancy
+* Open source conformance compliancy
 
-### Relationships between frameworks
+* Relationships between frameworks
 
-### Framework traversal patterns
+* Framework traversal patterns
 
 This is broken down by category and the categories are as follows:
 
-### Common Elements
+* Common Elements
 
-### Core
+* Core
 
-### Database
+* Database
 
-### Scheduler
+* Scheduler
 
-### New file daemon
+* New file daemon
 
-### Conformance checker and metadata grabbing module
+* Conformance checker and metadata grabbing module
 
-### Policy Checker
+* Policy Checker
 
-### User Interface(s)
+* User Interface(s)
 
-#### CLI (Command line interface)
+** CLI (Command line interface)
 
-#### GUI (Graphical user interface)
+** GUI (Graphical user interface)
 
-#### Web (Web based interface)
+** Web (Web based interface)
 
 
 ## Checker Architecture
 
-The Checker Architecture details the structural components of the conformance checker and metadata grabbing module.
+The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.
 
-### Transport interface
+* Transport interface
 
-### Container/wrapper implementation
+* Container/wrapper implementation
 
-### Container/wrapper demuxer
+* Container/wrapper demuxer
 
-### Stream/essence implementation
+* Stream/essence implementation
 
-### Stream/essence decoder
+* Stream/essence decoder
 
-### Stream/container coherency check
+* Stream/container coherency check
 
-###  Baseband analyzer
+* Baseband analyzer
