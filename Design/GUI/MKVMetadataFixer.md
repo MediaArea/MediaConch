@@ -62,6 +62,8 @@ The File List Layout shall contain a column to summarize conformance and policy 
 
 #### MKV Metadata Editor Layout
 
+The Metadata Editor Layout is designed to efficiency create, edit, of fix metadata on a file-by-file basis. The interface will show the contents of the Matroska tag section and provide various UI to facilitate guided metadata operations, such as providing a date and time interface to provide expresses for temporal fields, but also allowing text string expressions for all string tags as Matroska allows.
+
 - Provide a table to show one row per metadata tag
 - Provide columns with following values
     - [Hierarchy](#hierarchy)
