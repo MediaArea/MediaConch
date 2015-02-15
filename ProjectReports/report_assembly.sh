@@ -56,7 +56,7 @@ cat ConformityChecks/CoherencyChecks.csv | csvprintf -i '### %1$s\n\n|Descriptor
 
 for reportbase in "${design_report_basename}" "${technical_report_basename}" "${conformance_check_appendix_basename}" ; do
     toc "tmp_${reportbase}.md"
-    pandoc -V geometry:margin=1in -o "DesignReport/${reportbase}.pdf" "tmp_${reportbase}.md"
-    pandoc -o "DesignReport/${reportbase}.html" "tmp_${reportbase}.md"
+    pandoc -V geometry:margin=1in -o "ProjectReports/${reportbase}.pdf" "tmp_${reportbase}.md"
+    pandoc -o "ProjectReports/${reportbase}.html" "tmp_${reportbase}.md"
 done
 cd "${pwd}"
