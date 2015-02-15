@@ -30,3 +30,12 @@ The policy designer interface enables users to create, edit, and share sets of p
 - use a list of policy test operators as defined in the policy expression XSD
 - allow policies to be encapsulate within over conditional tests with an if/else approach
 
+#### File Selection Interface
+
+The file selection interface shall allow the operator to load files through such methods as drag-and-drop, selection through system dialogs, or file system queries. Such sets of files or queries to identify files may then be saved, name, and described. Thus an operator may define a particular directory as an entry point for acquisitions, a queue for quality control assessment, or archival storage.
+
+#### Policy Test Interface
+
+Within the Policy Test Interface, the user may associate policy sets and file selections to form a policy test. Policy tests may contain name and descriptions which will be passed through to the resulting report to provide context. The policy tests may then be run directly or assigned to the task scheduler of the Shell. Within the Policy Checker GUI the results of the policy tests may then viewed or analysis within the Reporter GUI.
+
+The policy test interface will provide access to a log of policy tests, the context of each test, and any errors in running the policy test (such as the file selection being unavailable).
