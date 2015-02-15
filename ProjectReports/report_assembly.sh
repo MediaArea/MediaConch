@@ -24,7 +24,7 @@ for report in \
     ArchitectureIntroduction.md \
     GlobalArchitecture.md \
     CheckerArchitecture.md \
-    FuncReqMetadataFixer.md \
+    FuncReqMetadataFixerGUI.md \
     FuncReqMetadataFixerCLI.md \
     FuncReqPolicyCheckerGUI.md \
     StyleGuide.md
