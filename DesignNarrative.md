@@ -350,23 +350,22 @@ MediaArea's long term goal is to merge previous open source standalone products 
 
 MediaArea plans to build this stable, integrated solution over the course of the Preforma project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other Preforma investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from Preforma developers and stakeholders is provided in a meaningful timeframe. After the Preforma project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a Preforma-specific version, free of non-Preforma related layers, as a subset of our own integrated solution.
 
-### Example of Usage in an European memory institution
+### Example of usage in European memory institutions
 
-A use case is the National Library of Wales (NLW).
+The National Library of Wales (NLW) has used MediaInfo in their digital audiovisual preservation workflow for several years.
 
-They use MediaInfo for several years.  
 Former Chief Technical Officer of the National Library of Wales said:  
 "As a National Library incorporating the National Screen and Sound Archive of Wales, we have to preserve digital audiovisual material in perpetuity. Part of this work is characterising AV files and extracting technical metadata. We found no better tool at this job than MediaInfo, and the support and response from MediaArea.net SARL has always been excellent."
 
-In 2014, MediaArea closely worked with NLW and EBU (European Broadcast Union) in order to validate the implementation of metadata specifications Tech 3293 also known as [EBUCore 1.5](https://tech.ebu.ch/MetadataEbuCore) in MediaInfo. MediaArea analysed the EBUCore specification and proposed several updates to the EBUCore specification in order to meet the needs of the memory institution (e.g. adding new fields to the EBUCore specification, handling of corner cases)
-As a result, NLW is deploying (as of February 2015) a metadata retrieval project and save metadata in EBUCore 1.5 format which is provided by provided by MediaArea's software MediaInfo, and EBU is updating EBUCore 1.6 with new fields.
+In 2014, MediaArea closely worked with NLW and EBU (European Broadcast Union) in order to validate the implementation of metadata specifications Tech 3293, also known as [EBUCore 1.5](https://tech.ebu.ch/MetadataEbuCore), in MediaInfo. MediaArea analysed the EBUCore specification and proposed several updates to the EBUCore specification in order to meet the needs of the memory institution (e.g. adding new fields to the EBUCore specification, handling of corner cases)
 
-MediaArea demonstrated his capability to understand the need of the memory institution, to "translate" it in a technical implementation, and to discuss with a standardization institution.
+As a result, NLW is deploying (as of February 2015) a metadata retrieval project and saves metadata in the EBUCore 1.5 format, which is provided by provided by MediaArea's software MediaInfo. EBU is updating EBUCore 1.6 with new fields.
+
+MediaArea demonstrated his capability to understand the need of the memory institution, to "translate" it in a technical implementation, and to discuss the project with a standardization institution.
 
 ### Participation at Open Source conferences
 
-MediaArea team is active in the open source community and presented his work on Preforma at different conferences during Phase 1:
+The MediaArea team is active in the open source community and has presented the work on Preforma at two conferences during Phase 1:
 
 - Dave Rice presented our work on Preforma at FOSDEM on January 31st https://fosdem.org/2015/schedule/event/enabling_video_preservation/
 - Ashley Blewer presented our work at Code4Lib on February 11th http://wiki.code4lib.org/2015_Lightning_Talks
-
