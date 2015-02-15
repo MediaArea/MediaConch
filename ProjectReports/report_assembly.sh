@@ -24,9 +24,18 @@ for report in \
     ArchitectureIntroduction.md \
     GlobalArchitecture.md \
     CheckerArchitecture.md \
+    FuncReqConformanceCheckGUI.md \
+    FuncReqConformanceCheckCLI.md \
+    FuncReqConformanceCheckWeb.md \
+    FuncReqPolicyCheckGUI.md \
+    FuncReqPolicyCheckCLI.md \
+    FuncReqPolicyCheckWeb.md \
     FuncReqMetadataFixerGUI.md \
     FuncReqMetadataFixerCLI.md \
-    FuncReqPolicyCheckerGUI.md \
+    FuncReqMetadataFixerWeb.md \
+    FuncReqReporterGUI.md \
+    FuncReqReporterCLI.md \
+    FuncReqReporterWeb.md \
     StyleGuide.md
 do
     if [ -f "${report}" ] ; then
