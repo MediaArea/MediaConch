@@ -22,7 +22,9 @@ MediaArea recommends the policy expressions be standardizing with an XML Schema 
 
 The policy designer interface enables users to create, edit, and share sets of policies. The functions of the policy designer interface shall include allowing the user to:
 
-- import, export, and validate XML files of policy expressions
+- create, edit, and remove policy sets
+- name and describe policy sets
+- import, export, and validate XML files of policy sets
 - allow new policies to be added, edited, or removed from policy sets
 - synchronize a vocabulary between the terminology registered in MediaInfo and the user interface
 - use a list of policy test operators as defined in the policy expression XSD
