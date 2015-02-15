@@ -80,6 +80,12 @@ In order to facilitate self-description, intuitive discovery, and use of resulti
 
 ## Test Files
 
+Test files exist in the SampleTestFiles folder, separated into respective folders by file format and testing parameters. 
+
+The test files include the following:
+	* files that conform to the technical specification of the file format
+	* files for the open source project that by design deliberately deviate from the technical specification of the file format (with proposed associated error messages)
+	* files from memory institutions for the open source project that conform (or do not conform) to the technical specification of the file format
 
 ## License
 
