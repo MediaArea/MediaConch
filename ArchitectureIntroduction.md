@@ -28,11 +28,9 @@ Summary:
 
 # Introduction to Architecture
 
-This is a roadmap for the technical components of the project.
+This is a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.
 
 ## Global Architecture
-
-The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software.
 
 This includes the following:
 
@@ -58,7 +56,13 @@ This is broken down by category and the categories are as follows:
 
 ## Checker Architecture
 
-The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.
+This includes the following:
+
+* Technical specifications
+* Relationships between each structural component
+* Relationships between plugins
+
+This is broken down by category and the categories are as follows:
 
 * Transport interface
 * Container/wrapper implementation
