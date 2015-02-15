@@ -37,6 +37,7 @@ do
 done
 
 # Report on conformance check registry
+echo "" > "tmp_${conformance_check_appendix_basename}.md"
 cat ConformityChecks/ConformanceChecksHeader.md >> "tmp_${conformance_check_appendix_basename}.md"
 echo "" >> "tmp_${conformance_check_appendix_basename}.md"
 cat ConformityChecks/ConformanceCheckRegistry.md >> "tmp_${conformance_check_appendix_basename}.md"
