@@ -1,3 +1,32 @@
+# PreForma MediaInfo
+# Appendix: Conformace Check Registry and Expression Snapshot
+
+Project Acronym: PREFORMA
+
+Grant Agreement number: 619568
+
+Project Title: PREservation FORMAts for culture information/e-archives
+
+Prepared by: MediaArea.net SARL
+
+  - Jérôme Martinez
+  - Dave Rice
+  - Tessa Fallon
+  - Ashley Blewer
+  - Erik Piil
+  - Guillaume Roques
+
+Prepared for:
+
+Date: February 28, 2015
+
+Licensed under: Creative Commons CC-BY v4.0
+
+Summary: 
+
+<!-- toc -->
+
+
 ## Checker Design: Conformance and Coherency
 
 Conformance checks for both container formats (such as Matroska) and streams (such as LPCM and FFV1) shall be defined, registered, and associated with the code that performs the check. PreForma MediaInfo will perform and report on a growing list of tests per format. Many of these tests will be derived directly from the specifications or standard documents of a given file format, but other tests will derive from expected patterns and structural incoherency. Some checks focus on coherency between a stream and a container (such as if the container and stream utilize contradictory aspect ratios).
