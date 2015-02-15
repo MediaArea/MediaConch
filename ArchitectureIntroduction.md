@@ -1,3 +1,31 @@
+# PreForma MediaInfo
+# Technical and Architecturual Report
+
+Project Acronym: PREFORMA
+
+Grant Agreement number: 619568
+
+Project Title: PREservation FORMAts for culture information/e-archives
+
+Prepared by: MediaArea.net SARL
+
+  - Jérôme Martinez
+  - Dave Rice
+  - Tessa Fallon
+  - Ashley Blewer
+  - Erik Piil
+  - Guillaume Roques
+
+Prepared for:
+
+Date: February 28, 2015
+
+Licensed under: Creative Commons CC-BY v4.0
+
+Summary: 
+
+<!-- toc -->
+
 # Introduction to Architecture
 
 This is a roadmap for the technical components of the project.
