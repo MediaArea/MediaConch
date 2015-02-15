@@ -30,6 +30,33 @@ Summary:
 
 This is a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.
 
+The conformance checker's goals are based on the following core principles:
+
+### Interoperability
+
+The checker has the capability to be packaged and run as an executible on a PC running any standard operating system. For this reason, the shell has plans to be integrated into three platforms: Command line, graphical user interface, and web-based (server-client) platform. Qt was chosen as the core platform for the development of the graphical user interface because of its flexibility and ability to be deployed across many different operating system platforms.
+
+### Scalability
+
+Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the conformance checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata.
+
+### Portability
+
+The source code will reside on Github for easy access and distribution during all stages of development, including the ability to extract nightly builds and deploy using continuous integration. The software can then be built on any platform.
+
+### Modularity
+
+MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional conformance checkers that will utilize the conformance checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features.
+
+### Deployment
+
+The shell will be deployed on the PREFORMA website, as a stand alone shell, networked with other PREFORMA shells currently in development, and in test environments. Due to the levels of interoperability set up as an integral component of the conformance checker, it can be utilized within legacy systems as well as future systems.
+
+### Interface
+
+MediaArea's API will allow for the full integration and interoperability between all software systems.
+
+
 ## Global Architecture
 
 This includes the following:
