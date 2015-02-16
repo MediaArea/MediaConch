@@ -269,8 +269,20 @@ To counteract arising obsolescence challenges it is critical to have access to t
 - Jérôme Martinez (Digital Media Specialist): technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata.
 - Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation.
 - Guillaume Roques (Back end / Front end developer): database management, automation, performance optimization, reporting, shell.
+- Ashley Blewer (Archivist): technical writing and documentation, design and user experience optimization
+- Tessa Fallon (Archivist): technical writing and documentation, community outreach, standards organization
+- Erik Piil (Archivist): technical writing and documentation, OAIS compliance support
+
+## Community
+
+### Project Advisors
+
+MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relavent to the project. This initiative also kickstarts the relationship between the project, open source development communities, and PreForma's target users. Such partners would receive a fixed stipend amount from our proposed in exchange for participation in the projects mailing list, occasional requested meetings, and commenting on the project.
+
 - Moritz Bunkus (Matroska main developer): validation of Matroska tests, Matroska specific technical support
 - (Name to be confirmed) : validation of FFV1 tests, FFV1 specific technical support
+
+Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.
 
 ## Open Source Ecosystem
 
