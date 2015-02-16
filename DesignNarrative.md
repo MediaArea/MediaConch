@@ -356,7 +356,17 @@ As with recent software development projects, the MediaArea team will ensure pro
 
 MediaArea will provide day to day project management, administration and document meetings, provide overgoing assessment of project risks and opportunties, and assign expert personel to each component of the project. MediaArea agrees to fulfill all reporting obligations necessary according to the project’s plans and requirements.
 
-The MediaArea team has a long history of exercising collaboration and teamwork in an open manner. We encourage relevant communities to see the development as it progresses and will coordinate our project planning, timeline, and priorities through public tools, such as github.com.
+Transparency is a key to successful risk management in open source projects. The MediaArea team has a long history of exercising collaboration and teamwork in an open manner. We encourage relevant communities to see the development as it progresses and will coordinate our project planning, timeline, and priorities through public tools, such as github.com.
+
+#### Risk Management Strategy
+
+* Avoidance
+
+* Modification
+
+* Retention
+
+* Sharing
 
 ### Example of usage in European memory institutions
 
