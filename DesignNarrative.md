@@ -350,12 +350,20 @@ MediaArea's long term goal is to merge previous open source standalone products 
 
 MediaArea plans to build this stable, integrated solution over the course of the Preforma project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other Preforma investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from Preforma developers and stakeholders is provided in a meaningful timeframe. After the Preforma project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a Preforma-specific version, free of non-Preforma related layers, as a subset of our own integrated solution.
 
+### Project Management Strategy
+
+As with recent software development projects, the MediaArea team will ensure project achievements by tracking progress in an open issue tracker, offering frequent detailed project reports, foster an environment of feedback, and facilitate recurring project meetings.
+
+MediaArea will provide day to day project management, administration and document meetings, provide overgoing assessment of project risks and opportunties, and assign expert personel to each component of the project. MediaArea agrees to fulfill all reporting obligations necessary according to the project’s plans and requirements.
+
+The MediaArea team has a long history of exercising collaboration and teamwork in an open manner. We encourage relevant communities to see the development as it progresses and will coordinate our project planning, timeline, and priorities through public tools, such as github.com.
+
 ### Example of usage in European memory institutions
 
 The National Library of Wales (NLW) has used MediaInfo in their digital audiovisual preservation workflow for several years.
 
 Former Chief Technical Officer of the National Library of Wales said:  
-"As a National Library incorporating the National Screen and Sound Archive of Wales, we have to preserve digital audiovisual material in perpetuity. Part of this work is characterising AV files and extracting technical metadata. We found no better tool at this job than MediaInfo, and the support and response from MediaArea.net SARL has always been excellent."
+"As a National Library incorporating the National Screen and Sound Archive of Wales, we have to preserve digital audiovisual material in perpetuity. Part of this work is characterising AV files and extracting technical metadata. We found no better tool at this job than MediaInfo, and the support and response from MediaArea SARL has always been excellent."
 
 In 2014, MediaArea closely worked with NLW and EBU (European Broadcast Union) in order to validate the implementation of metadata specifications Tech 3293, also known as [EBUCore 1.5](https://tech.ebu.ch/MetadataEbuCore), in MediaInfo. MediaArea analysed the EBUCore specification and proposed several updates to the EBUCore specification in order to meet the needs of the memory institution (e.g. adding new fields to the EBUCore specification, handling of corner cases)
 
