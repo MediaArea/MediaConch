@@ -6,16 +6,18 @@
 ## Common to all elements
 
 All elements can be installed on the same server or on different servers, depending on the expected workload.
+All elements use a LAN network to communicate but don't need an internet access.
 
 ## Core (Controller)
 
-The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. 
+The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode.
 
 The Core has several major functions:
 
 * controls the checkers and manages data for the User Interface
-* waits for commands from the New Files Daemon and User Interface
+* waits for commands from the Files listener and User Interface
 * send commands to the scheduler for file-checking
+* launch periodical checks
 * communicates with the database to store and retrieve data from the checkers
 * sends data to DIRECT
 
@@ -30,7 +32,7 @@ The Core supports the following requirements:
 Interface :
 
 * Scheduler : Advanced Message Queuing Protocol
-* Policy checker / User Interface / DIRECT : REST API
+* Policy checker / Files listener / User Interface / DIRECT : REST API
 * Database : native driver
 
 Programming language : C++
@@ -49,6 +51,7 @@ Interface :
 
 Software :
 
+As the main purpose is to store flat datas it's more suitable to use a document oriented database (NoSQL) but a more traditional relational database can be used also.
 Potential database management system options, contingent on open source licensing requirements.
 
 * Relational database : MySQL (GPLv2) / PostgreSQL (PostgreSQL License) / SQLite (Public domain)
@@ -60,19 +63,23 @@ The Scheduler element is a form of software "middleware" that distributes the fi
 
 * distributes files
 * translates file data into unified language
+* batch processing
 
 Interface :
 
 * Core : Advanced Message Queuing Protocol
 * Checkers : Advanced Message Queuing Protocol
 
-Software : 
+Software :
 
 RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)
 
-## New Files Daemon
+## Files listener
 
-The New Files Daemon is a background process that listen for new files available for validating. It uses the inotify notification system API for a Linux kernel or kqueue/kevent for a BSD kernel.
+The Files listener is a background process that listen for new files available for validating. Each time a new file is available or if a file is modified an event is sent to the Core wich automatically request a check.
+Different solutions can be implemented depending of the files storage and operating system : inotify notification system API for a Linux kernel, kqueue/kevent for a BSD kernel or files directory scanning.
+
+* Automated checks
 
 Programming language : C++
 
@@ -130,21 +137,28 @@ Programming language :
 
 ## User interface
 
-* displays test results and control the Core
+This is the shell component to allow interaction between users (or other systems) and the PreForma components :
+
+* displays test results
+* control the Core
 * allows metadata (descriptive and structural) to be edited
+* edit configuration (periodical checks, policy checker, user rights)
 
 PreForma MediaInfo will provide three different options for a human interface for maximum flexibility. These three interfaces are:
 
 - CLI (Command line interface)
 
     A command line interface will be functional on nearly all kinds of operating systems, including those with very little graphical interface support. It allows for integration into a batch-mode processing workflow for analyzing files at scale.
+    It's more intendeed for expert users and for non human interaction.
 
 - GUI (Graphical user interface)
 
+    Provide a graphical interface for expert and non-expert users
     The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms.
 
 - Web UI (server/client)
 
+    Provide an optional web based graphical interface for expert and non-expert users. An internet access is not needed, only local network access.
     The web interface will provide access to conformance checks without software installation.
 
 Interface :
