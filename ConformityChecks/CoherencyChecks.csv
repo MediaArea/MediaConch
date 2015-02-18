@@ -1,4 +1,5 @@
 Name,CCID,Version,Authority,Target Format,Target Format Version,Target Format Part,Citation,Quote,Rule Clarity?,Definition
+CodecID mismatch,COHERENCY-CODECID,0,,FFV1/MKV ,,,,,,Codec identifier indicated in the container (e.g. Matroska) is not the real content (e.g. Codec identifier is V_FFV1 but real content is MPEG Video)
 Aspect Ratio Match,COHERENCY-DAR,0,,FFV1/MKV ,,,,,,Display Aspect Ratio indicated in the container (e.g. Matroska) is not the Display Aspect Ratio indicated in the FFV1 stream
 Width Match,COHERENCY-WIDTH,0,FVV1 and Container Specifications,FFV1, Container,all,Header,,,Width indicated in the container (e.g. Matroska) is not the width indicated in the FFV1 stream
 Height Match,COHERENCY-HEIGHT,0,FVV1 and Container Specifications,FFV1, Container,all,Header,,,Height indicated in the container (e.g. Matroska) is not the height indicated in the FFV1 stream
