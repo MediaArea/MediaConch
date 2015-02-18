@@ -2,3 +2,4 @@ Name,CCID,Version,Authority,Target Format,Target Format Version,Target Format Pa
 Aspect Ratio Match,COHERENCY-DAR,0,,FFV1/MKV ,,,,,,Display Aspect Ratio indicated in the container (e.g. Matroska) is not the Display Aspect Ratio indicated in the FFV1 stream
 Width Match,COHERENCY-WIDTH,0,FVV1 and Container Specifications,FFV1, Container,all,Header,,,Width indicated in the container (e.g. Matroska) is not the width indicated in the FFV1 stream
 Height Match,COHERENCY-HEIGHT,0,FVV1 and Container Specifications,FFV1, Container,all,Header,,,Height indicated in the container (e.g. Matroska) is not the height indicated in the FFV1 stream
+Frame duration,COHERENCY-FRAMEDURATION,0,Stream and Container Specifications,PCM,Container,all,Header,,,Duration computed from the the container (e.g. Matroska or WAV) is not the duration computed from the stream (for PCM: based on Channels x SamplesPerSecond x BitsPerSample) / 8)
