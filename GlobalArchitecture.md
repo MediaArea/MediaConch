@@ -60,10 +60,15 @@ Potential database management system options, contingent on open source licensin
 ## Scheduler
 
 The Scheduler element is a form of software "middleware" that distributes the files to be checked across the conformance checkers by using a message broker interface. It translates the file data into one unified language for access within all aspects of the software.
+The scheduler can take care of priority for the conformance checkers :
+* high : for checks requested by user
+* normal : for automated checks
+* low : for periodical checks
 
 * distributes files
 * translates file data into unified language
 * batch processing
+* priority
 
 Interface :
 
