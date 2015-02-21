@@ -8,19 +8,21 @@ The design of the conformance checker portion of the PreForma MediaInfo applicat
 - Container Implementation (Conformance Check)
 - Container Demuxer
 - Stream Implementation (Conformance Check)
-- Stream Decoding (through plugin)
+- Stream Decoding (optional through plugin)
 - Stream/Container Coherency Check
-- Baseband Analysis (through plugin)
+- Baseband Analysis (optional through plugin)
 
 ## Transport layer
 
 ### Preforma MediaInfo: File on disk or direct memory mapping
 
-Preforma MediaInfo natively offers a file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.
+Preforma MediaInfo uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.
+
+Binding: C++, C...
 
 ### Plugin integration proof of concept: libcURL
 
-libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into PreForma MediaInfo the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.
+libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into PreForma MediaInfo the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.
 
 Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.
 
@@ -40,31 +42,27 @@ mkvalidator is a basic and no more maintained Matroska checker (BSD license, com
 
 ### Preforma MediaInfo
 
-PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):
+PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL....) which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):
 
 - MXF (commonly found within memory institutions)
 - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
 - DV (video stream format which uses LPCM)
 - AVI (used with FFV1 by DV Profession, NOA, Austria Mediathek)
 - WAV (a common container for LPCM)
+- WAVE64 (64-bit extensions of WAV for 2GB+ files)
+- RF64 (64-bit extensions of WAV for 2GB+ files)
 
 By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.
 
 ### Plugin integration proof of concept: FFmpeg
 
-FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing. For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.
+FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing.
 
 Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as:
 
-- Video Waveform Monitor
-- Vectorscope
-- Ability to inspect luminance and chroma planes separately
-- Audio Meters
-
-We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.
-
-
 ## Stream/Essence implementation checker
+
+Plugin
 
 ### Preforma MediaInfo:
 
@@ -77,7 +75,9 @@ For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)
 ### Plugin integration proof of concept: DV Analyzer
 For DV (BSD license, compatible with GPLv3+ and MPL2+)
 
-### Optional
+### Optional 
+
+(Not part of the original PreForma tender but can potentially be added upon request after in context of professional services)
 
 - MPEG-1/2 Video (including IMX, AS-07, D-10 Video, FIMS…)
 - H.264/AVC (including AS-07)
@@ -89,12 +89,23 @@ For DV (BSD license, compatible with GPLv3+ and MPL2+)
 
 ## Stream/Essence decoder
 
+(Not part of the original PreForma tender but can potentially be added upon request after in context of professional services)
+
 ### Preforma MediaInfo
 
 - PCM (including D-10 Audio, AES3)
 
 ### Plugin integration proof of concept: FFmpeg
 FFmpeg decoder (GPLv2+ license, compatible with GPLv3+ but not with MPL2+)
+
+For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.
+
+- Video Waveform Monitor
+- Vectorscope
+- Ability to inspect luminance and chroma planes separately
+- Audio Meters
+
+We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.
 
 ### Plugin integration proof of concept: OpenJPEG
 OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)
