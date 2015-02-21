@@ -82,6 +82,10 @@ MediaArea proposes that PreForma suppliers collaborate to create a common XML Sc
 
 The PreFormaXML schema should accommodate the expression of results from multiple conformance checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
 
+We can also add a JPEG2000 image as an attachment or a PDF as an attachment. Matroska is flexible.
+
+CRC files can be added as attachments to reenforce OAIS.
+
 MediaArea plans to include these features commonly within MKV, FFV1, and LPCM reporters:
 
 - Export of a standardized PreFormaXML
@@ -107,26 +111,26 @@ Fixes for Matroska files could include fixing metadata tags that don’t include
 
 Because many files focused on with FFV1 and Matroska conformance checkers will be quite large, MediaArea plans to provide options to either rewrite the original file with the check or edit the file in place so that the file is only changed according to the fix that is request. With the latter option is the user is 'fixing' the metadata in a 50 gigabyte Matroska file only the last few megabytes of the Matroska tagging element may be rewritten without a requirement to rewrite the non tagging elements at the beginning of the file (MediaArea deployed a similar feature within BWF MetaEdit).
 
-### Shell
+### Core
 
-The shell will coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PreForma seeks that the shell developed by each supplier supports each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional conformance checkers to utilize the produced shells.
+The shell will coordinate the actions of the conformance checker, policy checker, reporter and fixer. As PreForma seeks that the shell developed by each supplier supports each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional conformance checkers to utilize the produced shells.
 
 The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial internal documentation that mimics the online resources that we will provide so that the shell and conformance checker function well offline.
 
 MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs. Because of the size of data involved in audiovisual checkers MediaArea will give priority to designing the shell and conformance checker to perform multi-threaded and optimized processing.
 
-#### Implementation Checker (Shell)
+#### Conformance Checker (Shell)
 
-The shell produced will support all functions and requirements of the implementation checker as described as an independent utility and also support:
+The shell produced will support all functions and requirements of the conformance checker as described as an independent utility and also support:
 
 - Allow the user to open one or many files at a time.
 - Allow the user to queue simultaneous or consecutive file analysis.
-- Allow the user to select how comprehensive or verbose an implementation check may be (for instance, samples frames or all frames of video).
+- Allow the user to select how comprehensive or verbose an conformance check may be (for instance, samples frames or all frames of video).
 - Enable the user to select sections of conformance checks or sets of conformance checks that they may wish to ignore.
 - Enable the user to associate certain actions or warnings with the occurence of particular checks.
 - Provide feedback and status information live during the file analysis.
 - (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file with the corresponding policy outcome for each policy check.
-- (For FFV1) Present a user interface that displays frame metadata in a table and enable the user to filter the presentation of frame metadata according to warnings or coherency events (for example, discontinuous aspect ratio).
+- (For FFV1) Present a user interface that displays frame bitstream in a table and enable the user to filter the presentation of frame bitstream according to warnings or coherency events (for example, discontinuous aspect ratio).
 
 #### Policy Checker (Shell)
 
@@ -138,6 +142,7 @@ The shell produced will support all functions and requirements of the policy che
 - Present the outcome of policy checks in a manner that allows comparison and sorting of the policy status of many files.
 - Allows particular sets of policy to be associated with particular sets of files, based on file identification or naming patterns.
 - (For Matroska) Present a user interface that displays the hierarchical EBML structure of the file with the corresponding policy outcome for each policy check.
+- Can display the FFV1 bitstream.
 
 #### Reporter (Shell)
 
@@ -189,7 +194,7 @@ A video conformance checker should be well optimized and multi-threaded to allow
 
 ### Focus on Fixity
 
-Both FFV1 and Matroska provide fixity features that serve the objectives of digital preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRCs on each frame. Matroska documents methods to embed checksums in Matroska elements to allow for future validation of any content.
+Both FFV1 and Matroska provide fixity features that serve the objectives of digital preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRCs on each frame. Matroska documents methods to embed checksums (MD5) in Matroska elements to allow for future validation of any content.
 
 Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.
 
@@ -275,8 +280,9 @@ To counteract arising obsolescence challenges it is critical to have access to t
 ## The team and roles
 
 - Jérôme Martinez (Digital Media Specialist): technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata.
+- Guillaume Roques (Back end / Front end developer): database management, automation, performance optimization, shell.
+- Name to be confirmed (Junior developer): GUI development, reporting.
 - Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation.
-- Guillaume Roques (Back end / Front end developer): database management, automation, performance optimization, reporting, shell.
 - Ashley Blewer (Archivist): technical writing and documentation, design and user experience optimization
 - Tessa Fallon (Archivist): technical writing and documentation, community outreach, standards organization
 - Erik Piil (Archivist): technical writing and documentation, OAIS compliance support
@@ -288,7 +294,7 @@ To counteract arising obsolescence challenges it is critical to have access to t
 MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relavent to the project. This initiative also kickstarts the relationship between the project, open source development communities, and PreForma's target users. Such partners would receive a fixed stipend amount from our proposed in exchange for participation in the projects mailing list, occasional requested meetings, and commenting on the project.
 
 - Moritz Bunkus (Matroska main developer): validation of Matroska tests, Matroska specific technical support
-- (Name to be confirmed) : validation of FFV1 tests, FFV1 specific technical support
+- Name to be confirmed (FFv1 main developer): validation of FFV1 tests, FFV1 specific technical support
 
 Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.
 
@@ -296,7 +302,7 @@ Through real-time feedback and specialized review these participants will provid
 
 ### Cross Platform Support
 
-MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework.
+MediaArea excels in open source development for cross-platform support and chooses development frameworks and tools that enable cross-platform support to be maintained. Several applications developed by MediaArea such as QCTools, MediaInfo, and DVAnalyzer are available under nearly all major operating systems. To achieve this we will program in C++ and use the Qt application framework (only for the GUI, pending licensing).
 
 For an impression of MediaArea's focus on cross platform usability please see our download pages:
 
@@ -330,7 +336,7 @@ In December 2014, MediaArea started conducting interviews with FFV1, Matroska, a
 - Christophe Kummer; NOA
 - George Blood; George Blood, L.P.
 
-Notes and partial transcripts (in English) from the interviews are available in the MediaInfo PreForma GitHub repository.  Public release of interviews is pending complete transcriptions and review of transcriptions by all participants in order to ensure accuracy and compliance with Creative Commons CC-BY 4.0.  The interviewees' feedback will help inform MediaArea's approach to development in all areas, and especially reinforced our plans to standardize the FFV1 specification through an open source standards organization
+Notes and partial transcripts (in English) from the interviews are available in the MediaInfo PreForma GitHub repository. Public release of interviews is pending complete transcriptions and review of transcriptions by all participants in order to ensure accuracy and compliance with Creative Commons CC-BY 4.0.  The interviewees' feedback will help inform MediaArea's approach to development in all areas, and especially reinforced our plans to standardize the FFV1 specification through an open source standards organization
 
 ### Advance Improvement of Standard Specification
 
@@ -357,14 +363,16 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 #### Other Suggested Improvements or Contributions to Standard Specifications
 
 - Register an official mime type via IETF for Matroska.
-- Register dedicated FFV1 codecid with Matroska (current use is via fourcc).
+- Register dedicated FFV1 codecid with Matroska (current use is via fourcc)*.
 - Proposal of a tagging extension to Matroska based on the requirements of the digital preservation community.
 - Feedback for features and functions of FFV1 version 4, which is currently under development.
 - Creation of metadata translators to convert common descriptive metadata formats within memory institution. For instance convert EBUCore into the XML representation of the Matroska tagging specification so that such metadata may be easily imported and exported between EBUCore and Matroska.
 
+* fourcc is AVI-style with some bitstreams not having a clear license due to coming from Microsoft
+
 ### Sustainable Open Source Business Ecosystem
 
-MediaArea has long been an open source native and has an open source business model based on sponsored support (bug correction and feature requests), application support, and branched customization based on an institution's specific needs.
+MediaArea has long been an open source native and has an open source business model based on sponsored support (bug correction and feature requests), application support, and branched customization based on an institution's specific needs since 2007. Previously existing in a non-business capacity since 2002.
 
 MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV conformance checker, professional metadata editor and fixer BWF MetaEdit; the AVI conformance checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, Preforma  plays a major role in the creation of a fully integrated and open source conformance checker.
 
