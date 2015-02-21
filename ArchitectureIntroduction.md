@@ -32,15 +32,19 @@ This is a roadmap for the technical components of the project, split into two ca
 
 The conformance checker's goals are based on the following core principles:
 
-### Interoperability
+### Portability
 
-The checker has the capability to be packaged and run as an executible on a PC running any standard operating system. For this reason, the shell has plans to be integrated into three platforms: Command line, graphical user interface, and web-based (server-client) platform. Qt was chosen as the core platform for the development of the graphical user interface because of its flexibility and ability to be deployed across many different operating system platforms.
+The checker has the capability to be packaged and run as an executible on a computer running any common operating system. For this reason, the shell has plans to be integrated into three platforms: Command line, graphical user interface, and web-based (server-client) platform. Qt was chosen as the core toolkit for the development of the graphical user interface because of its flexibility and ability to be deployed across many different operating system platforms.
+
+add about web UI working on 3 major clients (FF, Chrome, IE)
 
 ### Scalability
 
 Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the conformance checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata.
 
-### Portability
+Each component may be used on separate computer
+
+### Distribution
 
 The source code will reside on Github for easy access and distribution during all stages of development, including the ability to extract nightly builds and deploy using continuous integration. The software can then be built on any platform.
 
@@ -48,11 +52,15 @@ The source code will reside on Github for easy access and distribution during al
 
 MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional conformance checkers that will utilize the conformance checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features.
 
+Provided in C++ but is able to be compatible with other language
+"bindings" to other language
+C, C++, Python, Java, C#, 
+
 ### Deployment
 
 The shell will be deployed on the PREFORMA website, as a stand alone shell, networked with other PREFORMA shells currently in development, and in test environments. Due to the levels of interoperability set up as an integral component of the conformance checker, it can be utilized within legacy systems as well as future systems.
 
-### Interface
+### Interoperability
 
 MediaArea's API will allow for the full integration and interoperability between all software systems.
 
@@ -76,7 +84,7 @@ This is broken down by category and the categories are as follows:
 * Conformance checker and metadata grabbing module
 * Policy Checker
 * Reporter
-* User Interface(s)
+* Shell(s)
 ** CLI (Command line interface)
 ** GUI (Graphical user interface)
 ** Web (Web based interface)
@@ -95,6 +103,6 @@ This is broken down by category and the categories are as follows:
 * Container/wrapper implementation
 * Container/wrapper demuxer
 * Stream/essence implementation
-* Stream/essence decoder
+* Stream/essence decoder (through plugin)
 * Stream/container coherency check
-* Baseband analyzer
+* Baseband analyzer (optional, through plugin)
