@@ -1,29 +1,19 @@
-## Functional Requirements Reporter
+## Reporter - Graphical User Interface
 
+### Functional Overview
 
-* exports a machine readable report, including preservation metadata for each file checked
-* exports a report that allows external software agents to further process the file
-* exports a human readable report
-* exports a "fool-proof" report which also indicates what should be done to fix the non-conformances
+In the context of the Graphical User Interface, the Reporter presents human and machine-readable  information related to metadata readouts of individual files, policy checking errors, conformance checking errors, and metadata fixing documentation. This information is derived from multiple APIs, passed through the PreForma core and finally combined and transformed into a desired output. 
 
-Creation of PDF
+Reports may include an option to report verbose bit traces of individual files, as well as information on preventative measures for nonconformed files. Batch reporting features the option to nest specific objects. 
 
-Creation of XML
+###Design and Functional Requirements
 
-Creation of JSON
+#####Reporter General Interface
 
-Creation of CSV/TSV (optional)
+The General Reporter Interface displays human and machine-readable data to the end user. Through a drop-down menu a user can select the following out formats:
 
-Creation of a bit trace feature
+Human-readable formats: PDF, TXT
+Machine-readable formats: XML, JSON
+Optional machine-readable formats: CSV/TSV
 
-List of errors
-
-List of policy errors
-
-Export of Text
-
-Ability to do nesting
-
-Ability to do batching
-
-Takes the Conf checker and the Policy checker and puts them together but they have different APIs
+Several of these formats will allow for external software agents to futher process this information. 

@@ -1,4 +1,4 @@
-## Policy Checker GUI
+## Policy Checker - Graphical User Interface
 
 ### Introduction
 
