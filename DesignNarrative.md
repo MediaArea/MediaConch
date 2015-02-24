@@ -378,17 +378,85 @@ MediaArea's long term goal is to merge previous open source standalone products 
 
 MediaArea plans to build this stable, integrated solution over the course of the Preforma project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other Preforma investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from Preforma developers and stakeholders is provided in a meaningful timeframe. After the Preforma project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a Preforma-specific version, free of non-Preforma related layers, as a subset of our own integrated solution.
 
-### Project Management Strategy
+# Project Management Strategy
 
-To ensure a vital project, the MediaArea team will track processes through an open issue tracker, allowing for consistent and detailed reports with an emphasis on feedback and transparent communication throughout various iterations of the project. It is through daily task distribution, management and reflection that project advancements, as well as risks, are addressed. Such open, community-based interaction in the management and implementation of the project allows evolution to occur in all components of the endeavor, which includes but is not limited to: management, administration, and documentation with the allowance for other opportunities for discussion and change to emerge throughout the whole of the project. In the process, the MediaArea team will provide detailed project reports that encourage open, constructive feedback during the testing process that will shape and influence discussions during project meetings. The MediaArea team will use the Github Issue Tracker to provide context on known bugs and issues, and offer the ability for users to contribute patches for solving these problems.
+## Goal:
 
-Regularly held meetings and daily communication aim to build a sense of community that can freely and continually address all deviations and uncertainties, highlighting changes and assessing the benefits, as well as problems with each shift in the projects testing and implementation. By communicating daily, evaluations, critiques and suggestions can be addressed with quick efficiency. This approach to risk management is well-established within The MediaArea team’s previous work, with openness between all involved being strongly encouraged. The MediaArea hopes for and invites all relevant communities involvement in the strategy and management of the project, developing and including use of public tools (github.com, wikis, forums, etc.) and other communication during the planning and implementation of the project timeline. Such interactions and testing of software are welcome at any point during the implementation stage. These engagements will help immensely in addressing and evaluation of priorities and outcomes of the project. Through a process of constant assessment and open access the MediaArea team can respond to changes in software and address performance and usability of the software in its various forms. 
+To ensure a vital project, the MediaArea.net team will track processes through an open issue tracker, allowing for consistent and detailed reports with an emphasis on feedback and transparent communication throughout various iterations of the project. 
 
-When addressing and successfully approaching risk management within open source projects transparency is of the utmost concern. While the MediaArea team has historically exercised teamwork and collaboration in an open manner, we invite relevant communities to join in progressing development during planning and execution of the timeline through the use of various public tools (github.com, wikis, forums, etc.). When approaching risk management, the MediaArea team will address risks and follow such notations with a decision to cease activities which increase chances of the established risk occurring. Only when such risks might give way to an opportunity worth pursuing will such risk-inducing behaviors remain a part of the project. When such decisions arise the MediaArea team will remain open about such endeavors, working quickly to create the best iteration of risk management possible. When a source of risk lacking a greater opportunity does arise, such risks will be removed with an acknowledgement for possible reconsideration throughout the process. If changes in the project can help to reduce the likelihood of a risk or decrease the consequences of established risks, such implements will occur. When necessary, risk will be shared or distributed with another party or parties. When a risk is distributed or retained, decisions will be done through informed, collective decisions emphasizing the desires of the community at large, again being open to change and evaluation throughout implementation.
+## Method:
 
-### Internal Risk Assessment
+It is through daily task distribution, management and reflection that project advancements, as well as risks, are addressed. Such open, community-based interaction in the management and implementation of the project allows evolution to occur in all components of the endeavor to include: management, administration and documentation with the allowance for other opportunities for discussion and change to emerge throughout the whole of the project. In the process, the MediaArea team will provide detailed project reports that encourage open, constructive feedback during the testing process that will shape and influence discussions during project meetings.
 
-Issues to address: (internal management, ceasing of file format, alternative version hits the market, unrealistic schedule (exceeding planned time), unrealistic budget (exceeding planned hours), software incompatibility, requirements and functionality do not match, inadequate architecture, problems with legacy systems, problems with open source compliancy)
+##  Justification/Purpose:
+
+Such assessments, occurring daily, aim to build a sense of community that can freely and continually address all deviations and uncertainties, highlighting changes and assessing the benefits, as well as problems with each shift in the projects testing and implementation. With daily communication,  evaluations, critiques and suggestions can be addressed with quickly and efficiently.
+
+## Intended Result:
+
+This approach to risk management is well-established within The MediaArea team’s previous work, with openness between all involved being strongly encouraged. The MediaArea hopes for and invites all relevant communities involvement in the strategy and management of the project, developing and including use of public tools (github.com, wikis, forums, etc.) and other communication during the planning and implementation of the project timeline. Such interactions and testing of software are welcome at any point during the implementation stage. These engagements will help immensely in addressing and evaluation of priorities and outcomes of the project. Through a process of constant assessment and open access the MediaArea team can respond to changes in software and address performance and usability of the software in its various forms. 
+
+## Risk Analysis Model
+
+* Define Risk
+* Establish date of risk
+* Define risk (factors, causes and possible effects)
+* Include other contextual information related to risk
+* Note individual who discovered risk
+* Establish risks probability and impact
+* Hypothesize time when risk could occur
+* Hypothesize the impact of risk
+* Prioritize risk based on established effects of risk
+* Classify risk
+* Establish point-person for addressing risk
+* Create method to reduce likelihood of risk or avoid risk entirely
+* Establish alternative plan should risk be unavoidable
+* Mark last emergence of possible risk
+* Declare risk concluded (Responsibility of Project Manager)
+* Note date of the ending of risk
+* Contextualize in writing
+* Share with pertinent parties
+** status and date when the status was last recorded,
+** person who accepted the risk, e.g. project manager,
+** conclusion date and
+** reason for conclusion.
+
+##  Internal Risk Assessment
+
+#### Internal Management:
+    
+To assure the flow of the project, the team will establish a team leader, as well as a junior leader, for the major components of the project. In the case of any event in which the team leader is unable to retain their duties, the junior leader will take their place. Though established as a junior leader, the leaders will function as joint team leaders through the entirety of the project, barring the stepping down of either team leader for unforeseen reasons.
+
+In the event of a major change to staff (whether through avoidance of risk to project vitality, or external life events), the remaining team members will communicate about the best method for reallocation of resources to either replace lost staff, or consider changes in distribution of work among the remaining members. All changes will occur openly, with the participation upon relevant groups and stakeholders.  In the event of a drastic shift in leadership, the newly appointed person will affirm the roles of leadership newly assigned to them and work to adhere to the standards of the original contract. If changes to the contract are required, alterations will also occur openly, with the participation of relevant groups and stakeholders. 
+
+#### Addressing Unrealistic Schedule 
+
+In the event that the project appears as though it will move beyond the original scope of time, the team will communicate and establish the reasons for the delay. If these reasons can be addressed and changed to fall within the original schedule necessary changes will be made. Such changes and discussions will remain open to relevant stakeholders. If the team communicates and  changes cannot be made to address the deadline, then a decision will occur within the team as to the plausibility of establishing a new schedule. This discussion will remain open and include all pertinent parties. If it is found that a new schedule can be implemented such changes will be made, at which point all contracts, funding schedules and likewise paperwork will be altered.
+
+In turn, should the team complete work  before the established date a meeting will occur to discuss what additional work might remain, or how the deliverable products might be further improved. If such improvements are established, the team will continue work within the schedule time. Such decisions will include input from all communities involved. Alternatively, should the team find that their work is at the point of ideal completion, they will meet to discuss how best to end before the scheduled date. This discussion will include all relevant stakeholders, with changes to contracts, financing and other factors included as necessary.
+
+#### Addressing Unrealistic Budget:
+
+In the event that the project appears as though it will exceed the proposed budget, the team will communicate and establish the reason for the change in financial expectations. If these issues can be addressed and changed to stay within the original budgeted amount, such changes will be implemented. The decisions involving these changes will be shared with pertinent parties.  If the team meets and decides that the work will exceed the budget, an establishment of the dollar amount by which the project will exceed its original amount will occur. This amount will be shared with all vital stakeholders. 
+After the team establishes the amount with which the project will run over budget, the possibility for addressing this funding change will occur, such considerations will include all relevant communities. If the new budget is attainable, work will be redistributed with all contracts, payments and financial elements in need of alteration occurring. 
+
+Should the team be unable to attain the necessary funding to continue the project. The deliverables on the project at the point of the cessation will be handed over to pertinent projects. Considerations about continuing the project will be returned to if financing opportunities emerge.
+
+In turn, should the team complete the project under the established budget, a discussion will occur as to how the remaining monetary commitments might be used to improve or expand upon the projects goals. Such discussions will be transparent and include all parties involved. If new budgeting occurs, changes to all necessary contractings and financial paperwork will occur accordingly.
+
+#### Ceasing of File Format: 
+
+Should any file format become incompatible the team has the ability to analyze and address any existing format and the changes that occur with the respective format. The project software is designed based on past project experiences, to allow for movement between different formats. The team has already dedicated research and development efforts towards standardizing formats to specifically assist in the archival sustainability of the MKV and FFV1 formats.
+
+Additionally, the software framework can easily be applied to analyze any file format with minimal change. The software is developed so that it is not difficult to swap in other formats and policies, and the MediaArea team has experience doing such with MXF or MOV file formats, should the Matroska format no longer continue development.
+
+#### Software Incompatibility:
+
+Should the software become incompatible due to major operating system updates, API conflicts, or other unforeseeable technical issues, the team has the ability to analyze and address any existing software and the changes that will occur with the respective software. The project software is designed based on past project experiences, to allow for movement between different software structures. For example, if a major operating system such as Windows changes intrinsically and does not allow for the software to run at its basic level, crucial updates will be patched as needed. The modularity of the project software allows for key components to work independent of each other, making it even more unlikely that a system-wide failure should occur based on software compatibility. The software is expressly written in C++ due to its longstanding compatibility standards and optimal portability between systems. Notable changes to software compatibility will be shared with pertinent stakeholders.
+
+#### Open Source Compliance:
+
+Should the supporting software chosen as foundational software for the creation of this project become unavailable due to open source licensing complications, an alternative open source solution will either be chosen to work in its place, or an in-house solution will be developed, depending on if an alternative solution exists or if budget constraints allow for the creation of in-house software components. Timing and budget priorities can be assessed, reviewed, and implemented according to need. All changes will be discussed and considered with the input of relevant communities.
 
 ### Example of usage in European memory institutions
 
