@@ -104,6 +104,6 @@ This is broken down by category and the categories are as follows:
 * Container/wrapper implementation
 * Container/wrapper demuxer
 * Stream/essence implementation
-* Stream/essence decoder (through plugin)
+* Stream/essence decoder (optional, through plugin)
 * Stream/container coherency check
 * Baseband analyzer (optional, through plugin)
