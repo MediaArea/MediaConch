@@ -223,23 +223,18 @@ The following use cases are presented to describe intended behaviors of the conf
 
 #### Conformance Checking in an Open Archival Information System (OAIS)
 
-MediaArea recognizes the recommended practices described in the Open Archival Information System (OAIS) Reference Model intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). The PreForma project should be developed to address all relevant areas of activity within the OAIS model, as well as minimize and/or mitigate any incompatibility with additional OAIS-related standards.
+MediaArea recognizes the recommended practices described in the Open Archival Information System (OAIS) Reference Model intended to provide long term preservation of digital information (CCSDS 650.0.-M-2). PreForma MediaArea aims to address all relevant areas of activity within the OAIS model as well as minimize any incompatibility with additional OAIS-related standards. 
 
-Conformance checking plays a major role in OAIS-type services through the Information Packages created by Producers, maintained by Management in the Archive, and later, retrieved and put to use by Consumers and/or Designated Community. Quality Assurance (QA) is just one function of the Ingest Functional Entity (aka "Ingest") found on page 12 of CCSDS 650.0-M-2. Conformance checking could be described as an activity of quality assurance in this functional entity. 
+Conformance as a service plays a major role in the creation of the OAIS conceptual containers known as Information Packages. These types of Information Packages are created by Producers (Submission Information Packages), maintained by Management in the Archive (Archival Information Packages), and later retrieved for access by Consumers and the Designated Community (Submission Information Packages). 
 
-According to the OAIS reference model, the Quality Assurance function validates the successful transfer of the Submission Information Package to the temporary storage area. Mechanisms for QA include Cyclic Redundancy Checks (CRCs) or checksums associated with each data file. 
+Quality Assurance (QA) is just one function of the Ingest Functional Entity of OAIS. Conformance checking could be described as an activity of quality assurance in this functional entity. The QA function validates the successful transfer of the Submission Information Packages to the temporary storage area. Mechanisms for QA include Cyclic Redundancy Checks (CRCs) or checksums associated with each data file.  The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. 
 
-To take an example of such a service model, the Ingest Functional Entity of OAIS, or Ingest, performs Quality Assurance (QA) on incoming Submission Information Packages (SIPs). 
+Checking file integrity and conformance is also needed in the forming of an Archival Information Packages. As Archival Information Packages are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. Upon a dissemination request, reports created by the conformance checker would be used as descriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
 
-The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. 
+Policy check expressions are useful in various functions of OAIS workflows, including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between source and target content data objects is key. For example, if the relationship between an archive's Producer and Management has deteriorated over time and previously ingested SIPs (now AIPs) have now been identified as containing incorrect metadata concerning an object's pixel aspect ratio, a fixer could in effect produce a new AIP with the corrected pixel aspect ratio while while retaining the Producer's original object. 
 
-As Archival Information Packages (AIPs) are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. And upon a dissemination request, reports created by the conformance checker would be used as descriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
+Like OAIS, PreForma aims to serve as a framework for standards-building activities. PreForma MediaArea's project produces a complex Representation Net in the OAIS Archive, providing information needed to adequately understand the proper playback of the associated data object. 
 
-Policy check expressions are also useful in various functions of OAIS workflows, including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between source and target content data objects is key. 
-
-Let's say the relationship between an archive's Producer and Management has deteriorated over time, and previously ingested SIPs (now AIPs) have now been identified as containing incorrect metadata concerning an object's pixel aspect ratio. A fixer could in effect produce a new AIP with the corrected pixel aspect ratio, wall while retaining the Producer's original object. 
-
-The conformance checker in effect resembles a complex Representation Net in the OAIS Archive, providing information needed to adequately understand the proper playback of the associated data object. 
 
 ### Conformance Checking at Digitization Time
 
