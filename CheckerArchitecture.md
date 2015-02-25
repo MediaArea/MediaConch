@@ -4,21 +4,19 @@
 
 The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Core controller. The layers shall include:
 
-- Transport Layer
-- Container Implementation (Conformance Check)
-- Container Demuxer
-- Stream Implementation (Conformance Check)
-- Stream Decoding (optional through plugin)
-- Stream/Container Coherency Check
-- Baseband Analysis (optional through plugin)
+* Transport interface
+* Container/wrapper implementation
+* Container/wrapper demuxer
+* Stream/essence implementation
+* Stream/essence decoder (optional, through plugin)
+* Stream/container coherency check
+* Baseband analyzer (optional, through plugin)
 
 ## Transport layer
 
 ### Preforma MediaInfo: File on disk or direct memory mapping
 
 Preforma MediaInfo uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.
-
-Binding: C++, C...
 
 ### Plugin integration proof of concept: libcURL
 
@@ -36,7 +34,6 @@ HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (
 
 ### Plugin integration proof of concept: mkvalidator
 mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.
-
 
 ## Container/Wrapper Demultiplexing
 
