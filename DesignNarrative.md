@@ -8,6 +8,8 @@ MediaArea's approach to this challenge centers on FOSS (Free and Open Source Sof
 
 MediaArea sees community involvement as a key factor of evaluating the success of the project. To encourage this, during the prototype phase MediaArea will perform the development work for command line utilities, graphical user interfaces, and documentation in publicly accessible repositories at github.com. We will set up an online set of project resources such as public access to a corpus of test media, an IRC channel, and a responsive public issue tracker.
 
+In order to foster and demonstrate a focus on interoperability throughout the project, MediaArea will work with Artefactual in order to facilitate integration of resulting project components into Archivematica, a digital repository focused on OAIS. This collaboration will bring the availability of additional OAIS and digital preservation expertise to the project and provide an additional means for the project deliverables to be made available to users.
+
 ## Introduction of Featured Formats
 
 During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added alongside or after development.
@@ -291,6 +293,14 @@ To counteract arising obsolescence challenges it is critical to have access to t
 - Erik Piil (Archivist): technical writing and documentation, OAIS compliance support
 
 ## Community
+
+### Artefactual Systems and Archivematica
+
+Artefactual Systems is a privately owned company incorporated in the Province of British Columbia with expertise in open-source, open-standard technologies for archival collections and digital repositories. Artefactual is best known for its two open-source software tools, the Archivematica digital preservation system and the AtoM online access system.
+
+MediaArea proposes to include within its project a component focused on implementing parts of the MediaArea conformance checker within an independent and OAIS-focused repository system. As many of Archivematica's development philsophies (modularity, OAIS, open source, and focus on memeory institutions) align well with the spirit of PREFORMA's Challenge Brief and Archivematica was an early adopter of Matroska/ffv1/LPCM within a preservation context, we have selected Artefactual as an ideal collaborator to ensure that the results of our work are well-prepared for integration within existing open source repository solutions. Archivematica can benefit from PREFORMA's development of conformance checkers to strengthen that step of the OAIS processs. Additionally the incorporation of the conformance checker into Archivematica shall allow memory institutions with a new means to access the results of the project.
+
+We believe that incorporating Artefactual into our phase 2 proposal provides a meaningful deliverable, the incorporation of a PREFORMA conformance checker into a key OAIS solution. The collaboration also provides the team with a strategic and indenpendent test case implementation. Although Artefactual will not take part directly in the development of the conformance checker, our project proposal includes funding to sponsor Artefactual to test, provide feedback upon, and implementation selections of the conformance checker. Additionally we anticipate that Artefactual's existing work on the Format Policy Registry may provide a positive influence on our work on the policy checker.
 
 ### Project Advisors
 
