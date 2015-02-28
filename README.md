@@ -1,1 +1,1 @@
-Git repository for group collaboration in the PreForma MediaInfo project.
+Git repository for group collaboration in the Conch project.

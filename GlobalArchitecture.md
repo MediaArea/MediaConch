@@ -61,7 +61,7 @@ Users will have access to this web-based user interface for basic management. Th
 
 ## Core (Controller)
 
-The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
+The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
 
 The Core has several major functions:
 
@@ -205,7 +205,7 @@ The User interface (UI) is the shell component that allows direct interaction be
 * allows metadata (descriptive and structural) to be edited
 * edit configuration (periodical checks, policy checker, user rights)
 
-PreForma MediaInfo will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:
+Conch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:
 
 - CLI (Command line interface)
 

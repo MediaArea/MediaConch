@@ -1,4 +1,4 @@
-<h1 id="preforma-mediainfo">PreForma MediaInfo</h1>
+<h1 id="preforma-mediainfo">Conch</h1>
 <h1 id="technical-and-architectural-report">Technical and Architectural Report</h1>
 <p>Project Acronym: PREFORMA</p>
 <p>Grant Agreement number: 619568</p>
@@ -51,39 +51,39 @@
 <li><a href="#user-interface">User interface</a></li>
 <li><a href="#transport-layer">Transport layer</a>
 <ul>
-<li><a href="#preforma-mediainfo-file-on-disk-or-direct-memory-mapping">Preforma MediaInfo: File on disk or direct memory mapping</a></li>
+<li><a href="#preforma-mediainfo-file-on-disk-or-direct-memory-mapping">Conch: File on disk or direct memory mapping</a></li>
 <li><a href="#plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</a></li>
 </ul></li>
 <li><a href="#containerwrapper-implementation-checker">Container/Wrapper implementation checker</a>
 <ul>
-<li><a href="#preforma-mediainfo-matroska-checker">Preforma MediaInfo: Matroska checker</a></li>
+<li><a href="#preforma-mediainfo-matroska-checker">Conch: Matroska checker</a></li>
 <li><a href="#plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</a></li>
 </ul></li>
 <li><a href="#containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</a>
 <ul>
-<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#preforma-mediainfo">Conch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
 </ul></li>
 <li><a href="#streamessence-implementation-checker">Stream/Essence implementation checker</a>
 <ul>
-<li><a href="#preforma-mediainfo">Preforma MediaInfo:</a></li>
+<li><a href="#preforma-mediainfo">Conch:</a></li>
 <li><a href="#plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</a></li>
 <li><a href="#plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</a></li>
 <li><a href="#optional">Optional</a></li>
 </ul></li>
 <li><a href="#streamessence-decoder">Stream/Essence decoder</a>
 <ul>
-<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#preforma-mediainfo">Conch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
 <li><a href="#plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</a></li>
 </ul></li>
 <li><a href="#containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</a>
 <ul>
-<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#preforma-mediainfo">Conch</a></li>
 </ul></li>
 <li><a href="#baseband-analyzer">Baseband Analyzer</a>
 <ul>
-<li><a href="#preforma-mediainfo">Preforma MediaInfo</a></li>
+<li><a href="#preforma-mediainfo">Conch</a></li>
 <li><a href="#playback-and-playback-analysis-through-plugin">Playback and Playback Analysis (through plugin)</a></li>
 <li><a href="#plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</a></li>
 <li><a href="#introduction">Introduction</a></li>
@@ -230,7 +230,7 @@
 <p>The Web-based system allows users to work both on and outside of the network as well as locally if they choose. If the user chooses to work locally, they will have access to the application server directly. This operation runs via a HTTP Daemon.</p>
 <p>Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).</p>
 <h2 id="core-controller">Core (Controller)</h2>
-<p>The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
+<p>The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
 <p>The Core has several major functions:</p>
 <ul>
 <li>controls the checkers and manages data for the User Interface</li>
@@ -347,7 +347,7 @@
 <li>allows metadata (descriptive and structural) to be edited</li>
 <li>edit configuration (periodical checks, policy checker, user rights)</li>
 </ul>
-<p>PreForma MediaInfo will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:</p>
+<p>Conch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:</p>
 <ul>
 <li>CLI (Command line interface)</li>
 </ul>
@@ -374,7 +374,7 @@
 <img src="./CheckerArchitectureLayers.png" alt="software architecture layers" />
 <p class="caption">software architecture layers</p>
 </div>
-<p>The design of the implementation checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
+<p>The design of the implementation checker portion of the Conch application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
 <ul>
 <li>Transport interface</li>
 <li>Container/wrapper implementation</li>
@@ -385,19 +385,19 @@
 <li>Baseband analyzer (optional, through plugin)</li>
 </ul>
 <h2 id="transport-layer">Transport layer</h2>
-<h3 id="preforma-mediainfo-file-on-disk-or-direct-memory-mapping">Preforma MediaInfo: File on disk or direct memory mapping</h3>
-<p>Preforma MediaInfo uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.</p>
+<h3 id="preforma-mediainfo-file-on-disk-or-direct-memory-mapping">Conch: File on disk or direct memory mapping</h3>
+<p>Conch uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.</p>
 <h3 id="plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</h3>
-<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into PreForma MediaInfo the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
+<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into Conch the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
 <p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
 <p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
-<h3 id="preforma-mediainfo-matroska-checker">Preforma MediaInfo: Matroska checker</h3>
+<h3 id="preforma-mediainfo-matroska-checker">Conch: Matroska checker</h3>
 <h3 id="plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</h3>
 <p>mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.</p>
 <h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
-<h3 id="preforma-mediainfo-1">Preforma MediaInfo</h3>
-<p>PreForma MediaInfo will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL....) which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, PreForma MediaInfo will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
+<h3 id="preforma-mediainfo-1">Conch</h3>
+<p>Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL....) which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
 <ul>
 <li>MXF (commonly found within memory institutions)</li>
 <li>MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)</li>
@@ -410,10 +410,10 @@
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.</p>
 <h3 id="plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</h3>
 <p>FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing.</p>
-<p>Although PreForma MediaInfo won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using PreForma MediaInfo could separately download FFmpeg and link the two together to enable additional tools such as:</p>
+<p>Although Conch won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using Conch could separately download FFmpeg and link the two together to enable additional tools such as:</p>
 <h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <p>Plugin</p>
-<h3 id="preforma-mediainfo-2">Preforma MediaInfo:</h3>
+<h3 id="preforma-mediainfo-2">Conch:</h3>
 <ul>
 <li>FFV1</li>
 <li>PCM (including D-10 Audio, AES3)</li>
@@ -435,7 +435,7 @@
 </ul>
 <h2 id="streamessence-decoder">Stream/Essence decoder</h2>
 <p>(Not part of the original PreForma tender but can potentially be added upon request after in context of professional services)</p>
-<h3 id="preforma-mediainfo-3">Preforma MediaInfo</h3>
+<h3 id="preforma-mediainfo-3">Conch</h3>
 <ul>
 <li>PCM (including D-10 Audio, AES3)</li>
 </ul>
@@ -452,16 +452,16 @@
 <h3 id="plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</h3>
 <p>OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</h2>
-<h3 id="preforma-mediainfo-4">Preforma MediaInfo</h3>
-<p>PreForma MediaInfo will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)</p>
+<h3 id="preforma-mediainfo-4">Conch</h3>
+<p>Conch will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)</p>
 <h2 id="baseband-analyzer">Baseband Analyzer</h2>
-<h3 id="preforma-mediainfo-5">Preforma MediaInfo</h3>
+<h3 id="preforma-mediainfo-5">Conch</h3>
 <ul>
 <li>None (only creation of the API)</li>
 </ul>
 <h3 id="playback-and-playback-analysis-through-plugin">Playback and Playback Analysis (through plugin)</h3>
 <p>Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in implementation checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the implementation checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a implementation checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a implementation checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.</p>
-<p>We propose incorporating several compatible utilities into PreForma MediaInfo to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.</p>
+<p>We propose incorporating several compatible utilities into Conch to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.</p>
 <h3 id="plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</h3>
 <p>QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.) We check the files. We have the two things, the file and specification, and they have to match.</p>
 <p>Input: file name</p>

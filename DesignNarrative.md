@@ -1,6 +1,6 @@
 ## Project Introduction
 
-The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea's design plans to create a toolset (tentatively entitled "PreForma MediaInfo") including a implementation checker, policy checker, reporter, and fixer of a select list of formats.
+The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea's design plans to create a toolset (tentatively entitled "Conch") including a implementation checker, policy checker, reporter, and fixer of a select list of formats.
 
 As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PreForma project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.
 
@@ -343,7 +343,7 @@ MediaInfo is also officially provided by multiple open source distributions:
 
 ### Online Resources
 
-MediaArea will utilize GitHub as a social and development center for PreForma MediaInfo development and uses GitHub's issue tracker and wiki features alongside development.
+MediaArea will utilize GitHub as a social and development center for Conch development and uses GitHub's issue tracker and wiki features alongside development.
 
 For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.
 
