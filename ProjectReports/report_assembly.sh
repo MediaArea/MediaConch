@@ -24,9 +24,9 @@ for report in \
     ArchitectureIntroduction.md \
     GlobalArchitecture.md \
     CheckerArchitecture.md \
-    FuncReqConformanceCheckGUI.md \
-    FuncReqConformanceCheckCLI.md \
-    FuncReqConformanceCheckWeb.md \
+    FuncReqImplementationCheckGUI.md \
+    FuncReqImplementationCheckCLI.md \
+    FuncReqImplementationCheckWeb.md \
     FuncReqPolicyCheckerGUI.md \
     FuncReqPolicyCheckerCLI.md \
     FuncReqPolicyCheckerWeb.md \
