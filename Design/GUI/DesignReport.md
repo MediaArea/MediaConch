@@ -1,4 +1,4 @@
-# File Conformance Checker UI Design Report
+# File implementation checker UI Design Report
 
 Overview of similar software tools used for analysis and quality control.
 
@@ -13,7 +13,7 @@ QCTools provides charted graph analytics as well as video playback and filters f
 
 Incorporation:
 
-Much of the QCTools design elements can be brought into a conformance checker GUI. QCTools has fully functional video playback capabilities that can be replicated and used to do frame-by-frame analysis of video file with note to specific frame-based errors.
+Much of the QCTools design elements can be brought into a implementation checker GUI. QCTools has fully functional video playback capabilities that can be replicated and used to do frame-by-frame analysis of video file with note to specific frame-based errors.
 
 ## [MediaInfo](https://mediaarea.net/us/MediaInfo)
 
@@ -39,7 +39,7 @@ BWF Metaedit extracts a lot of useful metadata from WAVE files but the GUI desig
 
 Incorporation:
 
-If a variety of rules/guidelines are to be considered in the conformance checker, options to change will have to be integrated into the software.
+If a variety of rules/guidelines are to be considered in the implementation checker, options to change will have to be integrated into the software.
 
 ## [Dumpster](http://www.atomicdumpster.com/)
 
@@ -51,4 +51,4 @@ Dumpster has a straightforward execution and its strengths lie in the presentati
 
 Incorporation: 
 
-The conformance checker’s metadata should follow a hierarchical structure when possible so that the contents are broken up in an aesthetically pleasing and easy-to-read way. The metadata should be able to be edited when and where possible within the software.
+The implementation checker’s metadata should follow a hierarchical structure when possible so that the contents are broken up in an aesthetically pleasing and easy-to-read way. The metadata should be able to be edited when and where possible within the software.

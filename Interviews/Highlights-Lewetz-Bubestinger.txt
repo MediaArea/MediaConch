@@ -46,7 +46,7 @@ Hermann: Necessary to have it in a standard workflow; and as problem accumulate,
 
 Peter: During development of ffv1 v. 3, I ran massive test suites in all variations; what is lacking there (and what I'm really looking forward to making) are fake tests.  I’m a bit afraid of silent regressions currently happening.
 
-Hermann: Another advantage of ffv1: there are few different implementations; few implementations, and all use the same implementation; what I fear is moment when big vendors accept ffv1 as a standard and they start to create different implementations; same thing as happened to jpeg2000.  A standardization/conformance checker would be more important now.
+Hermann: Another advantage of ffv1: there are few different implementations; few implementations, and all use the same implementation; what I fear is moment when big vendors accept ffv1 as a standard and they start to create different implementations; same thing as happened to jpeg2000.  A standardization/implementation checker would be more important now.
 
 Peter: It could be suggested once the integrity check exists that people who intend to buy any product using ffv1 should only do if the product complies to your checker. [Will send citation for AMIA-list quote]
 

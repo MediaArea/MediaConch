@@ -1,6 +1,6 @@
 ## Project Introduction
 
-The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report encompasses a snapshot of MediaArea's design plans to create a toolset (tentatively entitled "PreForma MediaInfo") as the conformance checker, policy checker, reporter, and fixer of a select list of formats.
+The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report encompasses a snapshot of MediaArea's design plans to create a toolset (tentatively entitled "PreForma MediaInfo") as the implementation checker, policy checker, reporter, and fixer of a select list of formats.
 
 As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PreForma project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.
 
@@ -42,16 +42,16 @@ Linear Pulse Code Modulation (LPCM) is a ubiquitous and simple audio stream. PCM
 
 Because PCM streams contain only audio samples without any codec structure or metadata within the stream, any data by itself could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container format.
 
-## Development of a Conformance Checker
+## Development of a implementation checker
 
-The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The PreForma project is comprised of four components:
+The design of the implementation checker is intended to allow interoperability between the implementation checkers with PreForma's other suppliers so that users may integrate multiple implementation checkers within a single 'shell'. The PreForma project is comprised of four components:
 
 - implementation checker
 - policy checker
 - reporter
 - metadata fixer
 
-The PreForma project must document and associate conformance rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution). MediaArea recommends that communication between the conformance checker and the shell be performed through an API designed via collaboration of the PreForma suppliers.
+The PreForma project must document and associate conformance rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution). MediaArea recommends that communication between the implementation checker and the shell be performed through an API designed via collaboration of the PreForma suppliers.
 
 ### Implementation Checker
 
@@ -63,7 +63,7 @@ MediaArea has drafted a [registry](#conformance-check-registry) of metadata elem
 
 ### Policy Checker
 
-For each format addressed through a conformance checker MediaArea will create a vocabulary list of technical metadata and contextual descriptions. Additionally MediaArea will define a list of operators to enable various comparators between the actual technical metadata and the user-provided expected metadata. Such defined language will allow users to make policy check expressions such as:
+For each format addressed through a implementation checker MediaArea will create a vocabulary list of technical metadata and contextual descriptions. Additionally MediaArea will define a list of operators to enable various comparators between the actual technical metadata and the user-provided expected metadata. Such defined language will allow users to make policy check expressions such as:
 
 - FFV1.gop_size MUST_EQUAL "1"
 - FFV1.slice_crc MUST_BE_ENABLED
@@ -72,15 +72,15 @@ For each format addressed through a conformance checker MediaArea will create a 
 - MKV.tag.DATE_DIGITZED IS_BEFORE "2014-01-01"
 - MKV.tag.ISBN MATCHES_REGEX "(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$"
 
-MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema, associated data dictionary, and vocabulary of comparative operators. The collaboration would include agreement and definition on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each policy checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against as well as inclusion within an API so that the shell can access the possible operators of any enabled conformance checker.
+MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema, associated data dictionary, and vocabulary of comparative operators. The collaboration would include agreement and definition on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each policy checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against as well as inclusion within an API so that the shell can access the possible operators of any enabled implementation checker.
 
 MediaArea will provide sample sets of policy checks based on interviews with memory institutions and community practice.
 
 ### Reporter
 
-MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting (referred to here as "PreFormaXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PreForma suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per conformance checker, but that adherence to a common schema is essential to interoperability and consistent user experience amongst conformance checkers.
+MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting (referred to here as "PreFormaXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PreForma suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per implementation checker, but that adherence to a common schema is essential to interoperability and consistent user experience amongst implementation checkers.
 
-The PreFormaXML schema should accommodate the expression of results from multiple conformance checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
+The PreFormaXML schema should accommodate the expression of results from multiple implementation checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
 
 We can also add a JPEG2000 image as an attachment or a PDF as an attachment. Matroska is flexible.
 
@@ -103,21 +103,21 @@ The metadata fixer will support comprehensive logging of the change and offer op
 
 In addition to metadata manipulation the fixer will accommodate structural fixes to improve the structural health of the file, such as repairing Matroska Element order if ordered incorrectly, or validating or adding Matroska CRC Elements at selected levels, or fixing EBML structures of truncated Matroska files.
 
-Substantial care should be exercised to ensure that the Conformance Checker properly associates risk, user warnings, and assessments with each fix allowed. In order to allow a fix the software must properly understand and classify what may be fixed and be aware of how the result may be an improvement. Adjustments directly to a preservation file must be handled programmatically with great caution with diligent levels of information provided to the user.
+Substantial care should be exercised to ensure that the implementation checker properly associates risk, user warnings, and assessments with each fix allowed. In order to allow a fix the software must properly understand and classify what may be fixed and be aware of how the result may be an improvement. Adjustments directly to a preservation file must be handled programmatically with great caution with diligent levels of information provided to the user.
 
 An example of a fix that could be enabled in the RIFF format could be verifying that any odd-byte length chunk is properly followed by a null-filled byte. Odd-byte length chunks that do not adhere to this rule cause substantial interoperability issues with data in any chunk following the odd-byte length one (this is particularly found in 24 bit mono WAV files). If the odd-byte length chunk is not followed by a null-filled padding byte, then most typically the next chunk starts where the padding byte is and the padding byte may be inserted so that other following chunks increase their offset by one byte. This scenario can be verified by testing chunk id and size declaration of all following bytes so that the software may know beforehand if the fix (inserting the null-filled padding byte) will succeed in correcting the RIFF chunk structure’s adherence to its specification.
 
 Fixes for Matroska files could include fixing metadata tags that don’t include a SimpleTag element or re-clustering frames if a cluster does not start on a keyframe.
 
-Because many files focused on with FFV1 and Matroska conformance checkers will be quite large, MediaArea plans to provide options to either rewrite the original file with the check or edit the file in place so that the file is only changed according to the fix that is request. With the latter option is the user is 'fixing' the metadata in a 50 gigabyte Matroska file only the last few megabytes of the Matroska tagging element may be rewritten without a requirement to rewrite the non tagging elements at the beginning of the file (MediaArea deployed a similar feature within BWF MetaEdit).
+Because many files focused on with FFV1 and Matroska implementation checkers will be quite large, MediaArea plans to provide options to either rewrite the original file with the check or edit the file in place so that the file is only changed according to the fix that is request. With the latter option is the user is 'fixing' the metadata in a 50 gigabyte Matroska file only the last few megabytes of the Matroska tagging element may be rewritten without a requirement to rewrite the non tagging elements at the beginning of the file (MediaArea deployed a similar feature within BWF MetaEdit).
 
 ### Core
 
-The shell will coordinate the actions of the conformance checker, policy checker, reporter and fixer. As PreForma seeks that the shell developed by each supplier supports each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional conformance checkers to utilize the produced shells.
+The shell will coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PreForma seeks that the shell developed by each supplier supports each supplier's implementation checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional implementation checkers to utilize the produced shells.
 
-The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial internal documentation that mimics the online resources that we will provide so that the shell and conformance checker function well offline.
+The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial internal documentation that mimics the online resources that we will provide so that the shell and implementation checker function well offline.
 
-MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs. Because of the size of data involved in audiovisual checkers MediaArea will give priority to designing the shell and conformance checker to perform multi-threaded and optimized processing.
+MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs. Because of the size of data involved in audiovisual checkers MediaArea will give priority to designing the shell and implementation checker to perform multi-threaded and optimized processing.
 
 #### Implementation Checker (Shell)
 
@@ -162,7 +162,7 @@ The shell produced will support all functions and requirements of the reporter a
 
 #### Interfaces
 
-The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a conformance checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
+The selected formats (MKV, FFV1, and LPCM) represent substantially distinct concepts: container, video, and audio. The optimization of a implementation checker should utilize distinct interfaces to address the conformance issues of these formats, but allow the resulting information to be summarized together.
 
 Assessment of file conformance can be displayed via a graphical user interface or a command line interface.
 
@@ -188,15 +188,15 @@ A summary of the file properties can also be displayed via a command line interf
 
 ### Optimization for Large File Size
 
-Design of a conformance checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
+Design of a implementation checker and shell should be considerate of the large file sizes associated with video. For instance, an hour-long PAL FFV1 file (which contains 90,000 frames per hour) should provide efficient access if cases where one FFV1 frame contains a CRC validation error.
 
-A video conformance checker should be well optimized and multi-threaded to allow for multiple simultaneous processes on video files. Additionally the conformance checker should allow a file to be reviewed even as it is being processed by the conformance checker and allow assessment of files even as they are being written.
+A video implementation checker should be well optimized and multi-threaded to allow for multiple simultaneous processes on video files. Additionally the implementation checker should allow a file to be reviewed even as it is being processed by the implementation checker and allow assessment of files even as they are being written.
 
 ### Focus on Fixity
 
 Both FFV1 and Matroska provide fixity features that serve the objectives of digital preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRCs on each frame. Matroska documents methods to embed checksums (MD5) in Matroska elements to allow for future validation of any content.
 
-Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a conformance checker that allows users to add CRC-32 to selected elements.
+Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a implementation checker that allows users to add CRC-32 to selected elements.
 
 The advantages of embedded fixity in preservation media files are significant. The use of traditional external checksums does not scale fairly for audiovisual files, because since the file sizes are larger than non-audiovisual files there are less checksums per byte, which creates challenges in addressing corruption. By utilizing many checksums to protect smaller amounts of data within a preservation file format, the impact of any corruption may be associated to a much smaller digital area than the entire file (as the case with most external checksum workflows).
 
@@ -219,17 +219,17 @@ MediaArea anticipates creating a large corpus of reference and test files highli
 
 ### Overview
 
-The following use cases are presented to describe intended behaviors of the conformance checker:
+The following use cases are presented to describe intended behaviors of the implementation checker:
 
 #### Conformance Checking in an Open Archival Information System (OAIS)
 
-ediaArea acknowledges recommendations described in the Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) reference model intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). PreForma MediaArea aims to address all relevant areas of the OAIS reference model with regards to its conformance checker, policy checker, reporter and metadata fixer, and will further minimize any incompatibility with other OAIS-related standards. 
+ediaArea acknowledges recommendations described in the Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) reference model intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). PreForma MediaArea aims to address all relevant areas of the OAIS reference model with regards to its implementation checker, policy checker, reporter and metadata fixer, and will further minimize any incompatibility with other OAIS-related standards. 
 
 The OAIS reference model calls for the formation of conceptual containers known as Information Packages, to be used throughout various stages of ingest through dissemination. These Information Packages are created by Producers (aka 'Submission Information Packages'), maintained by Management in the Archive (ala 'Archival Information Packages'), and later retrieved for access by Consumers and the Designated Community (aka 'Dissemination Information Packages'). These are the tenants of a Trusted Digital Repository. 
 
-Conformance services play a major role in the creation of the OAIS conceptual containers known as Information Packages. Quality Assurance (QA) is just one function of the Ingest Functional Entity of OAIS, and could be described as an activity of quality assurance in this functional entity. The QA function validates the successful transfer of the Submission Information Packages to the temporary storage area. Mechanisms for QA include Cyclic Redundancy Checks (CRCs) or checksums associated with each data file.  The conformance checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. 
+Conformance services play a major role in the creation of the OAIS conceptual containers known as Information Packages. Quality Assurance (QA) is just one function of the Ingest Functional Entity of OAIS, and could be described as an activity of quality assurance in this functional entity. The QA function validates the successful transfer of the Submission Information Packages to the temporary storage area. Mechanisms for QA include Cyclic Redundancy Checks (CRCs) or checksums associated with each data file.  The implementation checker, as both an implementation and policy checker, would serve as the primary tool to verify SIPs and other submitted Preservation Description Information (PDI), with rules and specifications defined by the Archive. 
 
-Checking file integrity and conformance is also needed in the forming of an Archival Information Packages. As Archival Information Packages are generated for the Archive, a conformance checker would map all Transformations through the collection of associated Representation, Content, and PDI information. Upon a dissemination request, reports created by the conformance checker would be used as descriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
+Checking file integrity and conformance is also needed in the forming of an Archival Information Packages. As Archival Information Packages are generated for the Archive, a implementation checker would map all Transformations through the collection of associated Representation, Content, and PDI information. Upon a dissemination request, reports created by the implementation checker would be used as descriptive information needed for the processing of objects for the Dissemination Information Package (DIP). 
 
 Policy check expressions are useful in various functions of OAIS workflows, including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between source and target content data objects is key. For example, if the relationship between an archive's Producer and Management has deteriorated over time and previously ingested SIPs (now AIPs) have now been identified as containing incorrect metadata concerning an object's pixel aspect ratio, a fixer could in effect produce a new AIP with the corrected pixel aspect ratio while while retaining the Producer's original object. 
 
@@ -262,9 +262,9 @@ An inspiration for the use of framemd5 reports within a digitization workflow is
 
 #### Assessment of Vendor/Producer Deliverables
 
-For archives that clarify specifications for audiovisual digitization projects, the conformance checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the conformance checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.
+For archives that clarify specifications for audiovisual digitization projects, the implementation checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the implementation checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.
 
-The conformance checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.
+The implementation checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.
 
 The implementation and policy checker's reporting on deliverables will enable the user to provide specific feedback to the vendor or producer to create files with greater compliance or coherency.
 
@@ -328,7 +328,7 @@ MediaArea will utilize GitHub as a social and development center for PreForma Me
 
 For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.
 
-MediaArea will solicit, create, and accept test files and reference files that highlight various features of the conformance checker and illustrate likely preservation issues that may occur within the selected formats.
+MediaArea will solicit, create, and accept test files and reference files that highlight various features of the implementation checker and illustrate likely preservation issues that may occur within the selected formats.
 
 ### Community Interviews
 
@@ -377,7 +377,7 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 
 MediaArea has long been an open source native and has an open source business model based on sponsored support (bug correction and feature requests), application support, and branched customization based on an institution's specific needs since 2007. Previously existing in a non-business capacity since 2002.
 
-MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV conformance checker, professional metadata editor and fixer BWF MetaEdit; the AVI conformance checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, Preforma  plays a major role in the creation of a fully integrated and open source conformance checker.
+MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV implementation checker, professional metadata editor and fixer BWF MetaEdit; the AVI implementation checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, Preforma  plays a major role in the creation of a fully integrated and open source implementation checker.
 
 MediaArea plans to build this stable, integrated solution over the course of the Preforma project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other Preforma investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from Preforma developers and stakeholders is provided in a meaningful timeframe. After the Preforma project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a Preforma-specific version, free of non-Preforma related layers, as a subset of our own integrated solution.
 

@@ -13,12 +13,12 @@ The source code can be shared and used between the targeted platforms and will r
 
 MediaArea’s regularly released source codes will be developed within a modularized architecture in order to create an unrestricted atmosphere for the improvement of the project’s maintainability and assembly. Conforming to this development technique and creating distinct, interchangeable modules will allow the software, and its corresponding open source community, to remain sustainable in its growth and facilitate ongoing collaborative feedback throughout the development phase. Each module will have a documented interface (API) that defines its function and interactive nature within the software.
 
-The construct and eventual structure of modularity within this project will be key to the health and sustainability of the project’s potential success as a fully integrated Conformance Checker. The regular release of source code for this project, built within this architecture, will enable better feedback and issue tracking from both users and memory institutions utilizing the software. 
+The construct and eventual structure of modularity within this project will be key to the health and sustainability of the project’s potential success as a fully integrated implementation checker. The regular release of source code for this project, built within this architecture, will enable better feedback and issue tracking from both users and memory institutions utilizing the software. 
 
 
 ### Deployment
 
-MediaArea will develop a Conformance Checker that is designed to allow for deployment in the five following types of infrastructures and environments:
+MediaArea will develop a implementation checker that is designed to allow for deployment in the five following types of infrastructures and environments:
 
 - PreForma’s website
 - Within an evaluation framework
@@ -30,18 +30,18 @@ Access release for the intended targeted users will be supported within all of t
 
 The project’s necessary PreForma website, including centralized links to all open source materials and community outreach, will be considered as the official deliverable for the entire project. The associated and required documentation, tools and instructional feedback will also be provided and accessible on the PreForma project website as well as the open source platform.
 
-The Conformance Checker will also fulfill the requirement of being deployed within the direct infrastructure to facilitate evaluation and use within the PCP system.
+The implementation checker will also fulfill the requirement of being deployed within the direct infrastructure to facilitate evaluation and use within the PCP system.
 
-For stand-alone users or smaller institutions, the Conformance Checker will be fitted with the capability to be packaged, downloaded and run as an executable on machine’s running any form of a standard operating system (MS Windows 7, Mac OSX, and Linux).
+For stand-alone users or smaller institutions, the implementation checker will be fitted with the capability to be packaged, downloaded and run as an executable on machine’s running any form of a standard operating system (MS Windows 7, Mac OSX, and Linux).
 
-The Conformance Checker will be developed to deploy within different network-based solutions and environments (including dedicated servers and cloud solutions) hosting the memory institutions’ digital repositories.
+The implementation checker will be developed to deploy within different network-based solutions and environments (including dedicated servers and cloud solutions) hosting the memory institutions’ digital repositories.
 
-Via written API integration, the Conformance Checker will also be able to properly function when plugged into various legacy systems.
+Via written API integration, the implementation checker will also be able to properly function when plugged into various legacy systems.
 
 
 ### APIs
 
-Via APIs, the developed and deployed Conformance Checker will be designed to interface and integrate with other software systems. Programming tools and software standards and practices will be upheld in order to allow for a potential software-to-software interface. A long-term sustainable usage and presence within the open source community will be further enhanced via correct implementation of this successful API integration.
+Via APIs, the developed and deployed implementation checker will be designed to interface and integrate with other software systems. Programming tools and software standards and practices will be upheld in order to allow for a potential software-to-software interface. A long-term sustainable usage and presence within the open source community will be further enhanced via correct implementation of this successful API integration.
 
 The outcome of the ability to interface with other software systems is that the software and technical documentation will have ongoing support and integration within the individual workflows of the memory institutions’ preservation plans.
 

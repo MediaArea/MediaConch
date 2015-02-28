@@ -44,7 +44,7 @@ Hermann: necessary to have it in a standard workflow; it would be great to have 
 
 Peter: ran massive test suites; what is lacking there are FATE tests.  [Test-driven development!]  I’m a bit afraid of silent regressions happen.
 
-Hermann: another advantage of ffv1; there are few different implementations; few implemenations, all use the same implmentations; what I fear is moment when big vendors accept ffv1 as a standard and they start to create implement different implementations; same thing as happened to jpeg2000.  A standardization/conformance checker would be incredibly important now.
+Hermann: another advantage of ffv1; there are few different implementations; few implemenations, all use the same implmentations; what I fear is moment when big vendors accept ffv1 as a standard and they start to create implement different implementations; same thing as happened to jpeg2000.  A standardization/implementation checker would be incredibly important now.
 
 Peter: people who intend to buy any product using ffv1 make sure that implementation conforms to the your [preforma] conformance checks. [Will send citation for AMIA-list quote]
 

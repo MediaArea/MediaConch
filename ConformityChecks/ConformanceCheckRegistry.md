@@ -29,7 +29,7 @@ The version number of the reference Conformance Check. This value should be expr
 
 #### Authority
 The authority associates each conformance check with a standards organization, community, or logic from which the conformance check is derived. Examples: EBU, Microsoft.
-Within the use of a Conformance Checker, the user may enable or disable check from certain authorities; for instance to perform checks against specifications of Standards Organization A and Community Practice B, but not Standards Organization C or Community Practice D.
+Within the use of a implementation checker, the user may enable or disable check from certain authorities; for instance to perform checks against specifications of Standards Organization A and Community Practice B, but not Standards Organization C or Community Practice D.
 
 #### Target Format
 The name of the file format, codec, or bit stream that is to be test.

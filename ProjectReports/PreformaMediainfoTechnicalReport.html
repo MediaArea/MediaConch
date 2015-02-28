@@ -45,7 +45,7 @@
 <li><a href="#database">Database</a></li>
 <li><a href="#scheduler">Scheduler</a></li>
 <li><a href="#files-listener">Files listener</a></li>
-<li><a href="#conformance-checker-and-metadata-grabbing-module">Conformance Checker and Metadata Grabbing Module</a></li>
+<li><a href="#conformance-checker-and-metadata-grabbing-module">implementation checker and Metadata Grabbing Module</a></li>
 <li><a href="#policy-checker">Policy checker</a></li>
 <li><a href="#reporter">Reporter</a></li>
 <li><a href="#user-interface">User interface</a></li>
@@ -141,25 +141,25 @@
 </ul>
 <!-- toc stop -->
 <h1 id="introduction-to-architecture">Introduction to Architecture</h1>
-<p>This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.</p>
-<p>The conformance checker's goals are based on the following core principles:</p>
+<p>This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the implementation checker and metadata-grabbing module.</p>
+<p>The implementation checker's goals are based on the following core principles:</p>
 <h3 id="portability">Portability</h3>
 <p>The checker has the capability to be packaged and run as an executable on a computer running any common operating system. For this reason, the shell has plans to be integrated into three platforms: Command line, graphical user interface, and a web-based (server-client) platform. Qt was chosen as the core toolkit for the development of the graphical user interface because of its flexibility and ability to be deployed across many different operating system platforms.</p>
-<p>The developed software will also have the capability to function as a micro-service application alongside other digital preservation systems defined by the OAIS Reference Model, such as Archivematica. With its micro-service approach, Archivematica serves as a wrapper for related task-specific software and is an open source system that also works to maintain standards based on providing access to digital collections. The conformance checker suits this systems’ design as an integrated micro-service suite, allowing for it to run alongside other third-party software tools that also serve to process digital objects and help to standardize a preservation focused ingest-to-access workflow. Within this design, various micro-services, including the conformance checker, can be built together into customized workflows and deployed across all operating systems and platforms.</p>
+<p>The developed software will also have the capability to function as a micro-service application alongside other digital preservation systems defined by the OAIS Reference Model, such as Archivematica. With its micro-service approach, Archivematica serves as a wrapper for related task-specific software and is an open source system that also works to maintain standards based on providing access to digital collections. The implementation checker suits this systems’ design as an integrated micro-service suite, allowing for it to run alongside other third-party software tools that also serve to process digital objects and help to standardize a preservation focused ingest-to-access workflow. Within this design, various micro-services, including the implementation checker, can be built together into customized workflows and deployed across all operating systems and platforms.</p>
 <p>As the shell will be developed to integrate into and perform within a web-based platform, the web user interface (UI) will function across 3 major web-based browsers. These platforms are to include Firefox, Google Chrome, and Internet Explorer. The software’s UI and capabilities will function similarly across all of these relevant web-based environments.</p>
 <h3 id="scalability">Scalability</h3>
-<p>Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the conformance checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata via standard XML reports.</p>
-<p>The scalability of each built component of the conformance checker will allow the software to scale horizontally throughout multiple computers and servers in order to potentially meet a heavy and increased workload. The software can be deployed on more computers for added speed, dexterity and reliability, distributing and partitioning tasks to a cluster of machines in order to improve performance and increase the working capacity of the software. Built within this architecture, the conformance checker can be expanded upon and integrated into various workflow environments with the added ability to increase its number of file requests.</p>
+<p>Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the implementation checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata via standard XML reports.</p>
+<p>The scalability of each built component of the implementation checker will allow the software to scale horizontally throughout multiple computers and servers in order to potentially meet a heavy and increased workload. The software can be deployed on more computers for added speed, dexterity and reliability, distributing and partitioning tasks to a cluster of machines in order to improve performance and increase the working capacity of the software. Built within this architecture, the implementation checker can be expanded upon and integrated into various workflow environments with the added ability to increase its number of file requests.</p>
 <h3 id="distribution">Distribution</h3>
 <p>The source code will reside on an open development platform (Github) in order to provide easy access and distribution during all stages of development. It will also have the ability to extract nightly builds of the code and deploy using continuous integration. The subsequent builds and software releases can then be downloaded, built and run on any system.</p>
 <h3 id="modularity">Modularity</h3>
-<p>MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional conformance checkers that will utilize the conformance checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features. The architecture’s modularity will also allow the software’s features ongoing and improved maintenance as well as offering reliability as a freestanding shell.</p>
+<p>MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional implementation checkers that will utilize the implementation checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features. The architecture’s modularity will also allow the software’s features ongoing and improved maintenance as well as offering reliability as a freestanding shell.</p>
 <p>The open source project will be programmed and provided in C++ but will be functionally compatible with other programming languages through the use of bindings. Other than C++, the team will support bindings to C, Python, Java, C# and other languages upon open request and feedback. The bindings will function as wrappers to allow the original code to be explicitly used and supported within other common languages. Supporting this capability will allow the API to be fully integrated within the open source community with the full potential of interoperability.</p>
 <h3 id="deployment">Deployment</h3>
-<p>The shell will be deployed on the PREFORMA website, as a stand alone shell, networked with other PREFORMA shells currently in development and used within test environments. Due to the levels of interoperability set up as an integral component of the conformance checker, it can be utilized within legacy systems as well as future systems. The shell will also be released to run on all relevant deployment platforms, implying that any user will be able to download and operate the most up-to-date version of the conformance checker.</p>
+<p>The shell will be deployed on the PREFORMA website, as a stand alone shell, networked with other PREFORMA shells currently in development and used within test environments. Due to the levels of interoperability set up as an integral component of the implementation checker, it can be utilized within legacy systems as well as future systems. The shell will also be released to run on all relevant deployment platforms, implying that any user will be able to download and operate the most up-to-date version of the implementation checker.</p>
 <h3 id="interoperability">Interoperability</h3>
 <p>MediaArea's API will allow for the full integration and interoperability between all software systems. The API will be developed to operate between the targeted systems while offering the ability to run and behave similarly across each, whether the user is operating within MS Windows, Mac OSX, or Linux distributions.</p>
-<p>To enable growth within an open source environment, it is essential for the API and all corresponding data structures and software releases to be able to comply to and function within an interoperable architecture across different deployment platforms and software systems. System-to-system interoperability can be enhanced to meet user’s potential needs, and the conformance checker’s API will help implement an effective exchange and integration of the required data and information. This integration will suit other software and will work across whichever system the user is running the software. The conformance checker’s shell will also operate within legacy and future systems.</p>
+<p>To enable growth within an open source environment, it is essential for the API and all corresponding data structures and software releases to be able to comply to and function within an interoperable architecture across different deployment platforms and software systems. System-to-system interoperability can be enhanced to meet user’s potential needs, and the implementation checker’s API will help implement an effective exchange and integration of the required data and information. This integration will suit other software and will work across whichever system the user is running the software. The implementation checker’s shell will also operate within legacy and future systems.</p>
 <h2 id="global-architecture">Global Architecture</h2>
 <p>This includes the following:</p>
 <ul>
@@ -175,7 +175,7 @@
 <li>Database</li>
 <li>Scheduler</li>
 <li>New file daemon</li>
-<li>Conformance checker and metadata grabbing module</li>
+<li>implementation checker and metadata grabbing module</li>
 <li>Policy Checker</li>
 <li>Reporter</li>
 <li>Shell(s) ** CLI (Command line interface) ** GUI (Graphical user interface) ** Web (Web based interface)</li>
@@ -204,14 +204,14 @@
 <p class="caption">Global Architecture Schema</p>
 </div>
 <h2 id="common-to-all-elements">Common to all elements</h2>
-<p>All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the conformance checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the conformance checker increases its capacity to function reliably within various anticipated workflows.</p>
+<p>All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.</p>
 <h3 id="file-access">File access</h3>
 <h4 id="file-access-using-cli">File access using CLI</h4>
 <p>To place a file into the checking system, a user may execute the CLI name file manually or they can asynchronously run the file and test for its readiness. If the files are passed in a batch format, the reports can be later retrieved by manually requesting updates from the Core.</p>
 <h4 id="file-access-using-gui">File access using GUI</h4>
 <p>To place and use a file through the checker’s GUI, both technical and non-technical users will work within windows and dialog boxes that enable them to navigate to, open, and load system files directly within the interface. A standard open dialog box will search for and load files for processing within the software. The GUI runs within a human-readable, interactive environment with visually intuitive access to the file checking process. In addition to allowing direct access to checking individual files, scheduled batch file checking via special folders residing on the user’s computer/network can also be enabled directly within the GUI.</p>
 <h4 id="file-access-using-web">File access using Web</h4>
-<p>To place and check files through the web-based browser platform, the process will be similar to working within the conformance checker’s GUI. In this case, file loading will function visually, as with the GUI platform, but within the specific web browser’s user interface (UI) and without the user having to directly download the software. Local network access will power the checker within the browser (Firefox, Chrome, or IE). Similar to the CLI and GUI, the web-based (server-client) platform allows for individual file loading and checking (via a visually intuitive designed interface) as well as enabling the capability of calling up batch-scheduled checks directly via the UI.</p>
+<p>To place and check files through the web-based browser platform, the process will be similar to working within the implementation checker’s GUI. In this case, file loading will function visually, as with the GUI platform, but within the specific web browser’s user interface (UI) and without the user having to directly download the software. Local network access will power the checker within the browser (Firefox, Chrome, or IE). Similar to the CLI and GUI, the web-based (server-client) platform allows for individual file loading and checking (via a visually intuitive designed interface) as well as enabling the capability of calling up batch-scheduled checks directly via the UI.</p>
 <h4 id="common-to-all">Common to all</h4>
 <p>Files can be copied to a special folder somewhere on the user’s computer or local network. This folder can then be set to regularly check for new files at defined intervals and process the files accordingly. This function can be set up within any of the three checker access methods (CLI, GUI, and Web UI).</p>
 <h3 id="file-processing">File processing</h3>
@@ -230,7 +230,7 @@
 <p>The Web-based system allows users to work both on and outside of the network as well as locally if they choose. If the user chooses to work locally, they will have access to the application server directly. This operation runs via a HTTP Daemon.</p>
 <p>Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).</p>
 <h2 id="core-controller">Core (Controller)</h2>
-<p>The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the conformance checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
+<p>The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
 <p>The Core has several major functions:</p>
 <ul>
 <li>controls the checkers and manages data for the User Interface</li>
@@ -256,9 +256,9 @@
 </ul>
 <p>Programming language : C++</p>
 <h2 id="database">Database</h2>
-<p>The Database is responsible for storing the associated metadata and results of the conformance checker, including the policy checker rules and the user rights management. All specific technical metadata and conformance checking results for each type of file format are sent back to the Core before being stored within the database.</p>
+<p>The Database is responsible for storing the associated metadata and results of the implementation checker, including the policy checker rules and the user rights management. All specific technical metadata and conformance checking results for each type of file format are sent back to the Core before being stored within the database.</p>
 <ul>
-<li>store metadata and results of the conformance checker</li>
+<li>store metadata and results of the implementation checker</li>
 <li>store the policy checker rules</li>
 <li>user rights management</li>
 <li>trace (optionally)</li>
@@ -275,14 +275,14 @@
 <li>Non relational database : MongoDB (AGPLv3) / Elasticsearch (Apache license 2)</li>
 </ul>
 <h2 id="scheduler">Scheduler</h2>
-<p>The Scheduler element is a form of software &quot;middleware&quot; that distributes the files to be checked across the conformance checkers by using a message broker interface. It translates the file data into one unified language for access within all aspects of the software. The Scheduler also controls priority levels for file checking.</p>
+<p>The Scheduler element is a form of software &quot;middleware&quot; that distributes the files to be checked across the implementation checkers by using a message broker interface. It translates the file data into one unified language for access within all aspects of the software. The Scheduler also controls priority levels for file checking.</p>
 <ul>
 <li>distributes files</li>
 <li>translates file data into unified language</li>
 <li>batch processing</li>
 <li>priority</li>
 </ul>
-<p>The scheduler can take care of the priority function within the conformance checkers : * high : for checks requested by user * normal : for automated checks * low : for periodical checks</p>
+<p>The scheduler can take care of the priority function within the implementation checkers : * high : for checks requested by user * normal : for automated checks * low : for periodical checks</p>
 <p>Interface :</p>
 <ul>
 <li>Core : Advanced Message Queuing Protocol</li>
@@ -297,8 +297,8 @@
 <li>Automated checks</li>
 </ul>
 <p>Programming language : C++</p>
-<h2 id="conformance-checker-and-metadata-grabbing-module">Conformance Checker and Metadata Grabbing Module</h2>
-<p>This module can utilize one or more checkers for each media type. As the conformance checker’s process could potentially run for a long time, we use an asynchronous system based on a messaging system in order to not lock up the whole process. Metadata and conformance checking results for each file are sent back to the Core to be stored within the database.</p>
+<h2 id="conformance-checker-and-metadata-grabbing-module">implementation checker and Metadata Grabbing Module</h2>
+<p>This module can utilize one or more checkers for each media type. As the implementation checker’s process could potentially run for a long time, we use an asynchronous system based on a messaging system in order to not lock up the whole process. Metadata and conformance checking results for each file are sent back to the Core to be stored within the database.</p>
 <ul>
 <li>runs the conformance tests for the different types of media files</li>
 <li>grabs metadata (used for policy checking)</li>
@@ -310,7 +310,7 @@
 </ul>
 <p>Programming language : C++ for MediaArea, depends on other participants for JPEG 2000, TIFF, PDF.</p>
 <h2 id="policy-checker">Policy checker</h2>
-<p>The policy checker serves to run tests on all metadata grabbed by the conformance checker and metadata grabbing module (the Checker). A vocabulary of technical metadata for each file format and media type will be created for the policy checker’s functions.</p>
+<p>The policy checker serves to run tests on all metadata grabbed by the implementation checker and metadata grabbing module (the Checker). A vocabulary of technical metadata for each file format and media type will be created for the policy checker’s functions.</p>
 <ul>
 <li>runs the policy tests for the different type of media files.</li>
 </ul>
@@ -327,7 +327,7 @@
 <li>exports a human readable report</li>
 <li>exports a &quot;fool-proof&quot; report which also indicates what should be done to fix the non-conformances</li>
 </ul>
-<p>The machine readable report will be produced using a standard XML format, implemented by all conformance checkers working within the PreForma ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.</p>
+<p>The machine readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PreForma ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.</p>
 <p>The human readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.</p>
 <p>Interface :</p>
 <ul>
@@ -347,7 +347,7 @@
 <li>allows metadata (descriptive and structural) to be edited</li>
 <li>edit configuration (periodical checks, policy checker, user rights)</li>
 </ul>
-<p>PreForma MediaInfo will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the conformance checker. These three interfaces are:</p>
+<p>PreForma MediaInfo will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:</p>
 <ul>
 <li>CLI (Command line interface)</li>
 </ul>
@@ -374,7 +374,7 @@
 <img src="./CheckerArchitectureLayers.png" alt="software architecture layers" />
 <p class="caption">software architecture layers</p>
 </div>
-<p>The design of the conformance checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
+<p>The design of the implementation checker portion of the PreForma MediaInfo application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
 <ul>
 <li>Transport interface</li>
 <li>Container/wrapper implementation</li>
@@ -460,7 +460,7 @@
 <li>None (only creation of the API)</li>
 </ul>
 <h3 id="playback-and-playback-analysis-through-plugin">Playback and Playback Analysis (through plugin)</h3>
-<p>Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in conformance checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the conformance checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a conformance checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a conformance checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.</p>
+<p>Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in implementation checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the implementation checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a implementation checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a implementation checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.</p>
 <p>We propose incorporating several compatible utilities into PreForma MediaInfo to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.</p>
 <h3 id="plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</h3>
 <p>QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.) We check the files. We have the two things, the file and specification, and they have to match.</p>
@@ -497,7 +497,7 @@
 <p>In the context of the Command Line Interface the Policy Checker shall allow for the Policy Set XML and the file or files to be tested to be inputs to the command line utility. The output of the utility will be a report compliant with PreForma reporting format for the expression of conformance, policy and metadata information. The command line will provide various levels of verbosity in order to show progress in processing through multiple files and allow the policy results to be shown as they are assessed.</p>
 <p>The Policy Checker will support exit codes to programmically inform to the output of the process.</p>
 <h3 id="design-and-functional-requirements">Design and Functional Requirements</h3>
-<p>Users of the command line interface will be prompted with several usage options to call specific project APIs, including the Reporter, Conformance Checker, Policy Checker, and Metadata Fixer. An additional call for &quot;--Help&quot; will prompt an extended options menu. The functions of the command line interface shall include allowing the user to:</p>
+<p>Users of the command line interface will be prompted with several usage options to call specific project APIs, including the Reporter, implementation checker, Policy Checker, and Metadata Fixer. An additional call for &quot;--Help&quot; will prompt an extended options menu. The functions of the command line interface shall include allowing the user to:</p>
 <ul>
 <li>create, edit, and remove policy sets</li>
 <li>name and describe policy sets</li>
@@ -636,9 +636,9 @@
 <p>The source code can be shared and used between the targeted platforms and will run and behave similarly across different users’ machines. The various releases will be implemented with adaptable interoperability between these platforms and the software will run dependent on which downloadable source code and executable the user’s platform requires. This means MediaArea’s open source project, throughout the development and deployment phases, will continue to always provide downloadable access to software and support for each of these individual platforms.</p>
 <h3 id="modularity-1">Modularity</h3>
 <p>MediaArea’s regularly released source codes will be developed within a modularized architecture in order to create an unrestricted atmosphere for the improvement of the project’s maintainability and assembly. Conforming to this development technique and creating distinct, interchangeable modules will allow the software, and its corresponding open source community, to remain sustainable in its growth and facilitate ongoing collaborative feedback throughout the development phase. Each module will have a documented interface (API) that defines its function and interactive nature within the software.</p>
-<p>The construct and eventual structure of modularity within this project will be key to the health and sustainability of the project’s potential success as a fully integrated Conformance Checker. The regular release of source code for this project, built within this architecture, will enable better feedback and issue tracking from both users and memory institutions utilizing the software.</p>
+<p>The construct and eventual structure of modularity within this project will be key to the health and sustainability of the project’s potential success as a fully integrated implementation checker. The regular release of source code for this project, built within this architecture, will enable better feedback and issue tracking from both users and memory institutions utilizing the software.</p>
 <h3 id="deployment-1">Deployment</h3>
-<p>MediaArea will develop a Conformance Checker that is designed to allow for deployment in the five following types of infrastructures and environments:</p>
+<p>MediaArea will develop a implementation checker that is designed to allow for deployment in the five following types of infrastructures and environments:</p>
 <ul>
 <li>PreForma’s website</li>
 <li>Within an evaluation framework</li>
@@ -648,12 +648,12 @@
 </ul>
 <p>Access release for the intended targeted users will be supported within all of these environments. In order to demonstrate the project’s successful deployment within these infrastructures, MediaArea will, in addition to supplying the standard corresponding technical documentation for each, undertake the following considerations:</p>
 <p>The project’s necessary PreForma website, including centralized links to all open source materials and community outreach, will be considered as the official deliverable for the entire project. The associated and required documentation, tools and instructional feedback will also be provided and accessible on the PreForma project website as well as the open source platform.</p>
-<p>The Conformance Checker will also fulfill the requirement of being deployed within the direct infrastructure to facilitate evaluation and use within the PCP system.</p>
-<p>For stand-alone users or smaller institutions, the Conformance Checker will be fitted with the capability to be packaged, downloaded and run as an executable on machine’s running any form of a standard operating system (MS Windows 7, Mac OSX, and Linux).</p>
-<p>The Conformance Checker will be developed to deploy within different network-based solutions and environments (including dedicated servers and cloud solutions) hosting the memory institutions’ digital repositories.</p>
-<p>Via written API integration, the Conformance Checker will also be able to properly function when plugged into various legacy systems.</p>
+<p>The implementation checker will also fulfill the requirement of being deployed within the direct infrastructure to facilitate evaluation and use within the PCP system.</p>
+<p>For stand-alone users or smaller institutions, the implementation checker will be fitted with the capability to be packaged, downloaded and run as an executable on machine’s running any form of a standard operating system (MS Windows 7, Mac OSX, and Linux).</p>
+<p>The implementation checker will be developed to deploy within different network-based solutions and environments (including dedicated servers and cloud solutions) hosting the memory institutions’ digital repositories.</p>
+<p>Via written API integration, the implementation checker will also be able to properly function when plugged into various legacy systems.</p>
 <h3 id="apis">APIs</h3>
-<p>Via APIs, the developed and deployed Conformance Checker will be designed to interface and integrate with other software systems. Programming tools and software standards and practices will be upheld in order to allow for a potential software-to-software interface. A long-term sustainable usage and presence within the open source community will be further enhanced via correct implementation of this successful API integration.</p>
+<p>Via APIs, the developed and deployed implementation checker will be designed to interface and integrate with other software systems. Programming tools and software standards and practices will be upheld in order to allow for a potential software-to-software interface. A long-term sustainable usage and presence within the open source community will be further enhanced via correct implementation of this successful API integration.</p>
 <p>The outcome of the ability to interface with other software systems is that the software and technical documentation will have ongoing support and integration within the individual workflows of the memory institutions’ preservation plans.</p>
 <h2 id="open-source-practices">Open Source Practices</h2>
 <h3 id="development">Development</h3>

@@ -7,7 +7,7 @@ PreForma strives to offer access and ease to users with a structure that operate
 
 ## Common to all elements
 
-All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the conformance checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the conformance checker increases its capacity to function reliably within various anticipated workflows. 
+All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows. 
 
 
 ### File access
@@ -22,7 +22,7 @@ To place and use a file through the checker’s GUI, both technical and non-tech
 
 #### File access using Web
  
-To place and check files through the web-based browser platform, the process will be similar to working within the conformance checker’s GUI. In this case, file loading will function visually, as with the GUI platform, but within the specific web browser’s user interface (UI) and without the user having to directly download the software. Local network access will power the checker within the browser (Firefox, Chrome, or IE). Similar to the CLI and GUI, the web-based (server-client) platform allows for individual file loading and checking (via a visually intuitive designed interface) as well as enabling the capability of calling up batch-scheduled checks directly via the UI.
+To place and check files through the web-based browser platform, the process will be similar to working within the implementation checker’s GUI. In this case, file loading will function visually, as with the GUI platform, but within the specific web browser’s user interface (UI) and without the user having to directly download the software. Local network access will power the checker within the browser (Firefox, Chrome, or IE). Similar to the CLI and GUI, the web-based (server-client) platform allows for individual file loading and checking (via a visually intuitive designed interface) as well as enabling the capability of calling up batch-scheduled checks directly via the UI.
 
 #### Common to all
 
@@ -61,7 +61,7 @@ Users will have access to this web-based user interface for basic management. Th
 
 ## Core (Controller)
 
-The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the conformance checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
+The Core serves as communication between all plugins within and outside of the PreForma MediaInfo system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
 
 The Core has several major functions:
 
@@ -90,9 +90,9 @@ Programming language : C++
 
 ## Database
 
-The Database is responsible for storing the associated metadata and results of the conformance checker, including the policy checker rules and the user rights management. All specific technical metadata and conformance checking results for each type of file format are sent back to the Core before being stored within the database.
+The Database is responsible for storing the associated metadata and results of the implementation checker, including the policy checker rules and the user rights management. All specific technical metadata and conformance checking results for each type of file format are sent back to the Core before being stored within the database.
 
-* store metadata and results of the conformance checker
+* store metadata and results of the implementation checker
 * store the policy checker rules
 * user rights management
 * trace (optionally)
@@ -113,14 +113,14 @@ There are various potential database management system options, contingent upon 
 
 ## Scheduler
 
-The Scheduler element is a form of software "middleware" that distributes the files to be checked across the conformance checkers by using a message broker interface. It translates the file data into one unified language for access within all aspects of the software. The Scheduler also controls priority levels for file checking.
+The Scheduler element is a form of software "middleware" that distributes the files to be checked across the implementation checkers by using a message broker interface. It translates the file data into one unified language for access within all aspects of the software. The Scheduler also controls priority levels for file checking.
 
 * distributes files
 * translates file data into unified language
 * batch processing
 * priority
 
-The scheduler can take care of the priority function within the conformance checkers :
+The scheduler can take care of the priority function within the implementation checkers :
 * high : for checks requested by user
 * normal : for automated checks
 * low : for periodical checks
@@ -144,9 +144,9 @@ Different solutions can be implemented depending on the file’s storage and ope
 
 Programming language : C++
 
-## Conformance Checker and Metadata Grabbing Module
+## implementation checker and Metadata Grabbing Module
 
-This module can utilize one or more checkers for each media type. As the conformance checker’s process could potentially run for a long time, we use an asynchronous system based on a messaging system in order to not lock up the whole process. Metadata and conformance checking results for each file are sent back to the Core to be stored within the database.
+This module can utilize one or more checkers for each media type. As the implementation checker’s process could potentially run for a long time, we use an asynchronous system based on a messaging system in order to not lock up the whole process. Metadata and conformance checking results for each file are sent back to the Core to be stored within the database.
 
 * runs the conformance tests for the different types of media files
 * grabs metadata (used for policy checking)
@@ -161,7 +161,7 @@ Programming language : C++ for MediaArea, depends on other participants for JPEG
 
 ## Policy checker
 
-The policy checker serves to run tests on all metadata grabbed by the conformance checker and metadata grabbing module (the Checker). A vocabulary of technical metadata for each file format and media type will be created for the policy checker’s functions.
+The policy checker serves to run tests on all metadata grabbed by the implementation checker and metadata grabbing module (the Checker). A vocabulary of technical metadata for each file format and media type will be created for the policy checker’s functions.
 
 * runs the policy tests for the different type of media files.
 
@@ -180,7 +180,7 @@ Within each of the developed user interfaces there will be ways to export raw me
 * exports a human readable report
 * exports a "fool-proof" report which also indicates what should be done to fix the non-conformances
 
-The machine readable report will be produced using a standard XML format, implemented by all conformance checkers working within the PreForma ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.
+The machine readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PreForma ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.
 
 The human readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.
 
@@ -205,7 +205,7 @@ The User interface (UI) is the shell component that allows direct interaction be
 * allows metadata (descriptive and structural) to be edited
 * edit configuration (periodical checks, policy checker, user rights)
 
-PreForma MediaInfo will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the conformance checker. These three interfaces are:
+PreForma MediaInfo will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:
 
 - CLI (Command line interface)
 

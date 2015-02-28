@@ -8,7 +8,7 @@ The Policy Checker will support exit codes to programmically inform to the outpu
 
 ###Design and Functional Requirements
 
-Users of the command line interface will be prompted with several usage options to call specific project APIs, including the Reporter, Conformance Checker, Policy Checker, and Metadata Fixer. An additional call for "--Help" will prompt an extended options menu. The functions of the command line interface shall include allowing the user to:
+Users of the command line interface will be prompted with several usage options to call specific project APIs, including the Reporter, implementation checker, Policy Checker, and Metadata Fixer. An additional call for "--Help" will prompt an extended options menu. The functions of the command line interface shall include allowing the user to:
 
 - create, edit, and remove policy sets
 - name and describe policy sets

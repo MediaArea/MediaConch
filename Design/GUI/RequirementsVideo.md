@@ -1,4 +1,4 @@
-# Requirements for conformance checker GUI
+# Requirements for implementation checker GUI
 
 Mockups forthcoming
 
