@@ -1,4 +1,4 @@
-## Metadata Fixer GUI
+## Metadata Fixer -- Graphical User Interface
 
 ### Introduction
 
@@ -129,7 +129,7 @@ Both the GUI and CLI of the Metadata fixer will allow Matroska metadata tags to 
 - A list to specify level 4 Matroska tags to appear in File List Layout as a column
 - Default value to use for the default value of TagLanguage on new metadata tags
 
-## Metadata Fixer CLI
+## Metadata Fixer -- Command Line Interface
 
 ### Functional Overview
 
@@ -145,5 +145,4 @@ Functional Requirements include:
 - preform and log identified metadata fixes
 - add, replace, or remove Matroska metadata values based on a developed EBML equivalent of XPath
 
-
-
+## Metadata Fixer -- Web Interface
