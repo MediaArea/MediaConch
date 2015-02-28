@@ -30,13 +30,17 @@ Matroska is a open-licensed audiovisual container format with extensive and flex
 
 Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many defined "Elements". Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements. The top level elements of Matroska focus on track definition, chapters, attachment management, metadata tags, and encapsulation of audiovisual data. The Matroska element is analogous to QuickTime's atom and AVI's chunk.
 
-Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements.
+Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements. Because of its ability to use internal, regional CRC protection it is possible to update a Matroska file during OAIS events without any compromise to the fixity of its audiovisual payload.
+
+Matroska has well written documentation and a draft specification but is not defined through an external standards organization although some drafts for such work have already been produced.
 
 ### FFV1
 
 FFV1 is an efficient lossless video stream that is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominance, aspect ratio, and colorspace so that it is not reliant on a container format to store this information (other streams that rely heavily on its container for technical description often face interoperability challenges).
 
 FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resilience, or encoding speed.
+
+The specification documentation for FFv1 is partially complete and has recently been funded by vendors utiliziing FFv1 as a codec for audiovisual preservation and large-scale digitization efforts.
 
 ### Linear PCM
 
