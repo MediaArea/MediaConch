@@ -1,4 +1,4 @@
-# Conch
+# Conch (Conformance checker)
 # Technical and Architectural Report
 
 Project Acronym: PREFORMA
