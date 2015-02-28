@@ -46,16 +46,16 @@ Because PCM streams contain only audio samples without any codec structure or me
 
 The design of the conformance checker is intended to allow interoperability between the conformance checkers with PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The PreForma project is comprised of four components:
 
-- conformance checker
+- implementation checker
 - policy checker
 - reporter
 - metadata fixer
 
 The PreForma project must document and associate conformance rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution). MediaArea recommends that communication between the conformance checker and the shell be performed through an API designed via collaboration of the PreForma suppliers.
 
-### Conformance Checker
+### Implementation Checker
 
-Each conformance checker (for Matroska, FFV1, and LPCM) should assess compliance and/or deviation between files and a series of conformance checks which are written by dissecting rules and logic from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PreForma design phase and plans to collaborate with each format's specification communities to refine them. See the [Conformance Check Registry](#conformance-check-registry).
+Each implementation checker (for Matroska, FFV1, and LPCM) should assess compliance and/or deviation between files and a series of adherence checks which are written by dissecting rules and logic from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PreForma design phase and plans to collaborate with each format's specification communities to refine them. See the [Conformance Check Registry](#conformance-check-registry).
 
 For streams such as FFV1 some conformance checks may be performed frame-by-frame to discover frame-specific issues such as CRC mismatches, invalid frame headers, or incomplete frames. Frame-by-frame conformance assessments will naturally be time consuming as nearly the entire file must be read. In order to accommodate user's various time priorities the checker will use options to perform checks on the first few frames of a stream, a percentage of the frames, or all of the frames.
 
@@ -119,9 +119,9 @@ The development of the shell will strive to facilitate an intuitive and informed
 
 MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs. Because of the size of data involved in audiovisual checkers MediaArea will give priority to designing the shell and conformance checker to perform multi-threaded and optimized processing.
 
-#### Conformance Checker (Shell)
+#### Implementation Checker (Shell)
 
-The shell produced will support all functions and requirements of the conformance checker as described as an independent utility and also support:
+The shell produced will support all functions and requirements of the implementation checker as described as an independent utility and also support:
 
 - Allow the user to open one or many files at a time.
 - Allow the user to queue simultaneous or consecutive file analysis.
