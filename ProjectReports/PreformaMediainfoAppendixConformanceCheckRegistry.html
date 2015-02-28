@@ -165,9 +165,11 @@
 </ul></li>
 <li><a href="#containerstream-coherency-checks-draft">Container/Stream Coherency Checks (Draft)</a>
 <ul>
+<li><a href="#codecid-mismatch">CodecID mismatch</a></li>
 <li><a href="#aspect-ratio-match">Aspect Ratio Match</a></li>
 <li><a href="#width-match">Width Match</a></li>
 <li><a href="#height-match">Height Match</a></li>
+<li><a href="#frame-duration">Frame duration</a></li>
 </ul></li>
 </ul>
 <!-- toc stop -->
@@ -5638,6 +5640,48 @@
 <p>Quote: &quot;Frequency of the sample rate of the wave file. This should be 48000 or 44100 etc. This rate is also used by the sample size entry in the fact chunk to determine the length in time of the data.&quot;</p>
 <p>Definition: 32000, 44100, 48000, etc.</p>
 <h2 id="containerstream-coherency-checks-draft">Container/Stream Coherency Checks (Draft)</h2>
+<h3 id="codecid-mismatch">CodecID mismatch</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">COHERENCY-CODECID</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">FFV1/MKV</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Codec identifier indicated in the container (e.g. Matroska) is not the real content (e.g. Codec identifier is V_FFV1 but real content is MPEG Video)</p>
 <h3 id="aspect-ratio-match">Aspect Ratio Match</h3>
 <table>
 <thead>
@@ -5764,3 +5808,45 @@
 <p>Rule Clarity:</p>
 <p>Quote:</p>
 <p>Definition: Height indicated in the container (e.g. Matroska) is not the height indicated in the FFV1 stream</p>
+<h3 id="frame-duration">Frame duration</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Descriptor</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCID</td>
+<td align="left">COHERENCY-FRAMEDURATION</td>
+</tr>
+<tr class="even">
+<td align="left">Version</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Authority</td>
+<td align="left">Stream and Container Specifications</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format</td>
+<td align="left">PCM</td>
+</tr>
+<tr class="odd">
+<td align="left">Target Format Version</td>
+<td align="left">Container</td>
+</tr>
+<tr class="even">
+<td align="left">Target Format Part</td>
+<td align="left">all</td>
+</tr>
+<tr class="odd">
+<td align="left">Citation</td>
+<td align="left">Header</td>
+</tr>
+</tbody>
+</table>
+<p>Rule Clarity:</p>
+<p>Quote:</p>
+<p>Definition: Duration computed from the the container (e.g. Matroska or WAV) is not the duration computed from the stream (for PCM: based on Channels x SamplesPerSecond x BitsPerSample) / 8)</p>

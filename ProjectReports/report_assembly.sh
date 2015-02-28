@@ -27,9 +27,9 @@ for report in \
     FuncReqConformanceCheckGUI.md \
     FuncReqConformanceCheckCLI.md \
     FuncReqConformanceCheckWeb.md \
-    FuncReqPolicyCheckGUI.md \
-    FuncReqPolicyCheckCLI.md \
-    FuncReqPolicyCheckWeb.md \
+    FuncReqPolicyCheckerGUI.md \
+    FuncReqPolicyCheckerCLI.md \
+    FuncReqPolicyCheckerWeb.md \
     FuncReqMetadataFixerGUI.md \
     FuncReqMetadataFixerCLI.md \
     FuncReqMetadataFixerWeb.md \
