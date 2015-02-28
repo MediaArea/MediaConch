@@ -4,4 +4,4 @@ The implementation checker receives the incoming data from the file added to the
 
 The results of this check is sent to the Reporter (via the Core), which then translates the errors into the expected output.
 
-An API call is required for this component only, for the use of batch processing.
+An API call is required for this component only, for use in batch processing.
