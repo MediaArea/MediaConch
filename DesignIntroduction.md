@@ -21,7 +21,7 @@ Date: December 31, 2014
 
 Licensed under: Creative Commons CC-BY v4.0
 
-Summary: This reports serves as a snapshot of MediaArea's research, planning, and design work to develop a implementation checker, tentatively entitled Conch.
+Summary: This report serves as a snapshot of MediaArea's research, planning, and design work to develop a conformance checker, tentatively entitled "Conch".
 
 <!-- toc -->
 
