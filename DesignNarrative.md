@@ -307,7 +307,13 @@ We believe that incorporating Artefactual into our phase 2 proposal provides a m
 MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relavent to the project. This initiative also kickstarts the relationship between the project, open source development communities, and PreForma's target users. Such partners would receive a fixed stipend amount from our proposed in exchange for participation in the projects mailing list, occasional requested meetings, and commenting on the project.
 
 - Moritz Bunkus (Matroska main developer): validation of Matroska tests, Matroska specific technical support
-- Name to be confirmed (FFv1 main developer): validation of FFV1 tests, FFV1 specific technical support
+- Michael Niedermayer (FFmpeg maintainer and FFv1 primary author): validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
+- Luca Barbato (Libav maintainer): validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
+- Moritz Bunkus (Matroska developer): validation of Matroska conformance specifications, review of standardization efforts
+- Ian Hendersohn (User of ffv1/mkv/lpcm in a national archive): Provide testing and feedback of project tools
+- Peter Bubestinger (User of ffv1/lpcm in a national archive): Provide testing and feedback of project tools
+- Artefactual Systems (consulting and development company): Provide testing and feedback of project tools, implement select conformance checker tools into Archivematica
+- Kieran Kuhnya (encoding strategist): Advisor on implementation and standardization efforts
 
 Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.
 
