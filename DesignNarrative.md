@@ -316,7 +316,7 @@ MediaArea has approached several individual and institutional partners from vary
 - Michael Niedermayer (FFmpeg maintainer and FFv1 primary author): validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
 - Luca Barbato (Libav maintainer): validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
 - Ian Hendersohn (User of ffv1/mkv/lpcm in a national archive): Provide testing and feedback of project tools
-- Peter Bubestinger (User of ffv1/lpcm in a national archive): Provide testing and feedback of project tools
+- Peter Bubestinger (User of ffv1/lpcm in an audiovisual archive): Provide testing and feedback of project tools
 - Artefactual Systems (consulting and development company): Provide testing and feedback of project tools, implement select conformance checker tools into Archivematica
 - Kieran Kuhnya (encoding strategist): Advisor on implementation and standardization efforts
 
