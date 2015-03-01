@@ -1,4 +1,4 @@
-# Conch (Conformance checker)
+# Conch -- Conformance checking for media files
 
 Project Acronym: PREFORMA
 
