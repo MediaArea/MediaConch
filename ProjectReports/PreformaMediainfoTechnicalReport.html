@@ -21,6 +21,7 @@
 <li><a href="#technical-and-architectural-report">Technical and Architectural Report</a></li>
 <li><a href="#introduction-to-architecture">Introduction to Architecture</a>
 <ul>
+<li><a href="#applicability">Applicability</a></li>
 <li><a href="#portability">Portability</a></li>
 <li><a href="#scalability">Scalability</a></li>
 <li><a href="#distribution">Distribution</a></li>
@@ -112,8 +113,12 @@
 <ul>
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
+<li><a href="#contents">Contents</a></li>
 </ul></li>
 <li><a href="#reporter-graphical-user-interface">Reporter - Graphical User Interface</a></li>
+<li><a href="#reporter-command-line-interface">Reporter - Command Line Interface</a></li>
+<li><a href="#reporter-web-user-interface">Reporter - Web User Interface</a></li>
+<li><a href="#style-guide">Style Guide</a></li>
 <li><a href="#source-code-guide">Source Code Guide</a>
 <ul>
 <li><a href="#portability">Portability</a></li>
@@ -141,25 +146,27 @@
 </ul>
 <!-- toc stop -->
 <h1 id="introduction-to-architecture">Introduction to Architecture</h1>
-<p>This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the implementation checker and metadata-grabbing module.</p>
-<p>The implementation checker's goals are based on the following core principles:</p>
+<p>This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PreFormaMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.</p>
+<p>The conformance checker's goals are based on the following core principles:</p>
+<h3 id="applicability">Applicability</h3>
+<p>The conformance checker will provide essential services to the functional entities described in the Consultative Committee for Space Data Systems (CCSDS) and International Organization for Standardization (ISO) reference model for an Open Archival Information System (OAIS), intended for the long term preservation of digital information.</p>
 <h3 id="portability">Portability</h3>
 <p>The checker has the capability to be packaged and run as an executable on a computer running any common operating system. For this reason, the shell has plans to be integrated into three platforms: Command line, graphical user interface, and a web-based (server-client) platform. Qt was chosen as the core toolkit for the development of the graphical user interface because of its flexibility and ability to be deployed across many different operating system platforms.</p>
-<p>The developed software will also have the capability to function as a micro-service application alongside other digital preservation systems defined by the OAIS Reference Model, such as Archivematica. With its micro-service approach, Archivematica serves as a wrapper for related task-specific software and is an open source system that also works to maintain standards based on providing access to digital collections. The implementation checker suits this systems’ design as an integrated micro-service suite, allowing for it to run alongside other third-party software tools that also serve to process digital objects and help to standardize a preservation focused ingest-to-access workflow. Within this design, various micro-services, including the implementation checker, can be built together into customized workflows and deployed across all operating systems and platforms.</p>
+<p>The developed software will also have the capability to function as a micro-service application alongside other digital preservation systems such as Archivematica. With its micro-service approach, Archivematica serves as a wrapper for related task-specific software and is an open source system that also works to maintain standards based on providing access to digital collections. The conformance checker suits this systems’ design as an integrated micro-service suite, allowing for it to run alongside other third-party software tools that also serve to process digital objects and help to standardize a preservation focused ingest-to-access workflow. Within this design, various micro-services, including the conformance checker, can be built together into customized workflows and deployed across all operating systems and platforms.</p>
 <p>As the shell will be developed to integrate into and perform within a web-based platform, the web user interface (UI) will function across 3 major web-based browsers. These platforms are to include Firefox, Google Chrome, and Internet Explorer. The software’s UI and capabilities will function similarly across all of these relevant web-based environments.</p>
 <h3 id="scalability">Scalability</h3>
-<p>Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the implementation checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata via standard XML reports.</p>
-<p>The scalability of each built component of the implementation checker will allow the software to scale horizontally throughout multiple computers and servers in order to potentially meet a heavy and increased workload. The software can be deployed on more computers for added speed, dexterity and reliability, distributing and partitioning tasks to a cluster of machines in order to improve performance and increase the working capacity of the software. Built within this architecture, the implementation checker can be expanded upon and integrated into various workflow environments with the added ability to increase its number of file requests.</p>
+<p>Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the comformance checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata via standard XML reports.</p>
+<p>The scalability of each built component of the conformance checker will allow the software to scale horizontally throughout multiple computers and servers in order to potentially meet a heavy and increased workload. The software can be deployed on more computers for added speed, dexterity and reliability, distributing and partitioning tasks to a cluster of machines in order to improve performance and increase the working capacity of the software. Built within this architecture, the conformance checker can be expanded upon and integrated into various workflow environments with the added ability to increase its number of file requests.</p>
 <h3 id="distribution">Distribution</h3>
 <p>The source code will reside on an open development platform (Github) in order to provide easy access and distribution during all stages of development. It will also have the ability to extract nightly builds of the code and deploy using continuous integration. The subsequent builds and software releases can then be downloaded, built and run on any system.</p>
 <h3 id="modularity">Modularity</h3>
-<p>MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional implementation checkers that will utilize the implementation checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features. The architecture’s modularity will also allow the software’s features ongoing and improved maintenance as well as offering reliability as a freestanding shell.</p>
+<p>MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional conformance checkers that will utilize the implementation checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features. The architecture’s modularity will also allow the software’s features ongoing and improved maintenance as well as offering reliability as a freestanding shell.</p>
 <p>The open source project will be programmed and provided in C++ but will be functionally compatible with other programming languages through the use of bindings. Other than C++, the team will support bindings to C, Python, Java, C# and other languages upon open request and feedback. The bindings will function as wrappers to allow the original code to be explicitly used and supported within other common languages. Supporting this capability will allow the API to be fully integrated within the open source community with the full potential of interoperability.</p>
 <h3 id="deployment">Deployment</h3>
-<p>The shell will be deployed on the PREFORMA website, as a stand alone shell, networked with other PREFORMA shells currently in development and used within test environments. Due to the levels of interoperability set up as an integral component of the implementation checker, it can be utilized within legacy systems as well as future systems. The shell will also be released to run on all relevant deployment platforms, implying that any user will be able to download and operate the most up-to-date version of the implementation checker.</p>
+<p>The shell will be deployed on the PREFORMA website, as a stand alone shell, networked with other PREFORMA shells currently in development and used within test environments. Due to the levels of interoperability set up as an integral component of the conformance checker, it can be utilized within legacy systems as well as future systems. The shell will also be released to run on all relevant deployment platforms, implying that any user will be able to download and operate the most up-to-date version of the conformance checker.</p>
 <h3 id="interoperability">Interoperability</h3>
 <p>MediaArea's API will allow for the full integration and interoperability between all software systems. The API will be developed to operate between the targeted systems while offering the ability to run and behave similarly across each, whether the user is operating within MS Windows, Mac OSX, or Linux distributions.</p>
-<p>To enable growth within an open source environment, it is essential for the API and all corresponding data structures and software releases to be able to comply to and function within an interoperable architecture across different deployment platforms and software systems. System-to-system interoperability can be enhanced to meet user’s potential needs, and the implementation checker’s API will help implement an effective exchange and integration of the required data and information. This integration will suit other software and will work across whichever system the user is running the software. The implementation checker’s shell will also operate within legacy and future systems.</p>
+<p>To enable growth within an open source environment, it is essential for the API and all corresponding data structures and software releases to be able to comply to and function within an interoperable architecture across different deployment platforms and software systems. System-to-system interoperability can be enhanced to meet user’s potential needs, and the conformance checker’s API will help implement an effective exchange and integration of the required data and information. This integration will suit other software and will work across whichever system the user is running the software. The conformance checker’s shell will also operate within legacy and future systems.</p>
 <h2 id="global-architecture">Global Architecture</h2>
 <p>This includes the following:</p>
 <ul>
@@ -623,14 +630,29 @@
 <h2 id="metadata-fixer----web-interface">Metadata Fixer -- Web Interface</h2>
 <h2 id="reporter-1">Reporter</h2>
 <h3 id="functional-overview-2">Functional Overview</h3>
-<p>The Reporter presents human and machine-readable information related to metadata readouts of individual files, policy checking errors, conformance checking errors, and metadata fixing documentation. This information is derived from multiple APIs passed through the PreForma core and finally combined and transformed into a desired output.</p>
-<p>Reports may include an option to report verbose bit traces of individual files, as well as information on preventative measures for nonconformed files. Batch reporting features the option to nest specific objects.</p>
+<p>The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, and other associated session documentation. This information is derived from multiple APIs passed through the PreForma core and finally combined and transformed into a desired output. Several of these output formats will allow for external software agents to futher process this information. Report information can be saved in batches and later consulted and provide a historical context for each file.</p>
 <h3 id="design-and-functional-requirements-1">Design and Functional Requirements</h3>
+<ul>
+<li>human-readable output formats: PDF, TXT</li>
+<li>machine-readable output formats: XML, JSON</li>
+<li>optional machine-readable output formats: CSV/TSV</li>
+<li>report on implementation checks, policy checks, and metadata fixes</li>
+<li>report on information concerning preventative measures for non-conformed files</li>
+<li>option to report verbose bit traces of individual files</li>
+<li>batch reporting features the option to nest specific objects.</li>
+</ul>
+<h3 id="contents">Contents</h3>
+<p>Report Name (&quot;eg., &quot;Conch Report&quot;), XXXX-XX-XX XX:XX:XX Date (ISO spec)</p>
+<p>Implementation Checking Errors Implementation Chcking Warnings</p>
+<p>Policy Checking Errors Policy Checking Warnings</p>
+<p>Metadata Fixing Documentation (Action measures and preventative measures for non-conformed files)</p>
+<p>Individual File General / Verbose bit metadata readouts</p>
 <h2 id="reporter---graphical-user-interface">Reporter - Graphical User Interface</h2>
-<p>The General Reporter Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the following out formats:</p>
-<p>Human-readable formats: PDF, TXT Machine-readable formats: XML, JSON Optional machine-readable formats: CSV/TSV</p>
-<p>On the command line interface, a user would be able to export a report using flags designating output (eg., &quot;-o&quot;) and output format (eg., &quot;-of&quot;).</p>
-<p>Several of these formats will allow for external software agents to futher process this information. This information can be saved in batches and later consulted and provide a historical context for each file.# Style Guide</p>
+<p>The Reporter's Graphical User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above mentioned output handlers.</p>
+<h2 id="reporter---command-line-interface">Reporter - Command Line Interface</h2>
+<p>On the command line interface, a user would be able to export a report using flags designating output and output format (e.g., &quot;--output=XML&quot;).</p>
+<h2 id="reporter---web-user-interface">Reporter - Web User Interface</h2>
+<p>Like the Graphical User Interface, the Reporter's Web User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above mentioned output handlers. # Style Guide</p>
 <h2 id="source-code-guide">Source Code Guide</h2>
 <h3 id="portability-1">Portability</h3>
 <p>Excelling in cross-platform open source development, MediaArea will utilize tools throughout the development phase in order to provide users with a downloadable source code that offers functional portability between the different deployment platforms (MS Windows 7, Mac OSX, and Linux).</p>
