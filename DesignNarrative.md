@@ -1,4 +1,3 @@
-<<<<<<< Local Changes
 ## Project Introduction
 
 The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea's design plan to create a toolset (tentatively entitled "Conch") consisting of an implementation checker, policy checker, reporter, and fixer of a select list of formats.
@@ -505,5 +504,3 @@ The MediaArea team is active in the open source community and has presented the 
 
 - Dave Rice presented our work on Preforma at FOSDEM on January 31st https://fosdem.org/2015/schedule/event/enabling_video_preservation/
 - Ashley Blewer presented our work at Code4Lib on February 11th http://wiki.code4lib.org/2015_Lightning_Talks
-=======
->>>>>>> External Changes
