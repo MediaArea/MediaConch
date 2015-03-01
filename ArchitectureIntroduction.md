@@ -1,4 +1,4 @@
-# Conch
+# Conch -- Conformance checking for media files
 # Technical and Architectural Report
 
 Project Acronym: PREFORMA
