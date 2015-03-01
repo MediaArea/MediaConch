@@ -235,7 +235,7 @@ The OAIS reference model calls for the formation of conceptual containers known 
 
 Conformance checking services play a major role in the OAIS reference model. The Ingest QA function in particular validates SIPs in the temporary storage area prior to AIP generation. The PreForma conformance checker and its associated toolset would verify SIPs through implementation checking and policy checking with rules and specifications defined by the Archive. The resulting report would be submitted as associated Preservation Description Information (PDI). 
 
-![OAIS Ingest Workflow](./OAISIntegration.png)
+![The OAIS Ingest Functional Entity with Conch Integration](./OAISIntegration.png)
 
 Checking file integrity and conformance is also needed in the forming of an Archival Information Packages. As Archival Information Packages are generated for the Archive, a conformance checker would map all transformations through the collection of associated Representation, Content, and PDI information. Upon a dissemination request, reports created by the conformance checker would be used as descriptive information needed for the processing of objects for the Dissemination Information Package (DIP). For Matroska, individual sub-element CRCs can be submitted as Fixity Preservation Description Information and packaged with the AIP for long-term preservation. 
 
