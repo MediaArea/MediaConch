@@ -60,7 +60,7 @@ The following standards will be useful in mapping out the most effective route t
 
 **Potential Tracks for Standardization within the IETF**
 
-![image alt text](image_0.jpg)
+![IETF process: potential tracks](ietf-process-3.jpg)
 
 ### April 2015 - June 2015 (Part 1A)
 
