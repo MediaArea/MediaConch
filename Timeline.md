@@ -51,6 +51,7 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Document and release version 2 of sample library
 -- Prepare and submit a second version of an Informational Internet-Draft for FFV1 and Matroska
 -- Provide feedback to FFmpeg and Matroska on version 4 development
+-- Finalize design and documentation of reporter output formats
 
 * October 2015
 
@@ -58,6 +59,7 @@ The timeline for facilitating standardization work through the IETF is presented
 
 * November - December 2015
 
+-- Prepare and submit final or third Internet-Draft for FFV1 and Matroska and finalize working group plans
 -- Document and release version 2 of sample library
 -- Participation in a training event for Open Source companies that will take place in Stockholm in December 2015, in connection with the first Prototype Demonstration.
 
