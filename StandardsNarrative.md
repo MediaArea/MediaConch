@@ -43,7 +43,8 @@ The following standards will be useful in mapping out the most effective route t
     * [https://tools.ietf.org/html/rfc3533](https://tools.ietf.org/html/rfc3533)
 
     * [https://tools.ietf.org/html/rfc5334](https://tools.ietf.org/html/rfc5334)
-* OAuth: this is of particular interest because the process for publication informs how we intend to pursue publication, namely by submitting an Internet-Draft and using feedback from the IETF community to inform creation of a Standards proposal.
+* OAuth
+*This is of particular interest because the process for publication informs how we intend to pursue publication, namely by submitting an Internet-Draft and using feedback from the IETF community to inform creation of a Standards proposal.*
     * [http://oauth.net/2/](http://oauth.net/2/) 
     * [https://tools.ietf.org/html/rfc5849](https://tools.ietf.org/html/rfc5849)
     * [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
