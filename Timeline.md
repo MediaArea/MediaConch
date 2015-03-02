@@ -8,7 +8,7 @@ The timeline for facilitating standardization work through the IETF is presented
 
 -- Informational postings to the Open Source Portal
 -- Release notes and coordination of monthly software release
--- Participation in meetings with Preforma, other suppliers, and community
+-- Participation in meetings with PREFORMA, other suppliers, and community
 -- Self-evaluation of adherance to project timeline, goals, and budgets
 -- Reporting on project progress
 -- Managing issue tracker
@@ -18,8 +18,8 @@ The timeline for facilitating standardization work through the IETF is presented
 * March - May 2015
 
 -- Extend FFV1 and MKV parsing within MediaInfo
--- Support Export format in Mediainfo adhering to commonly defined Preforma XML expression
--- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and Preforma
+-- Support Export format in Mediainfo adhering to commonly defined PREFORMA XML expression
+-- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA
 -- Set up milestones and tasks in github
 -- Set up project README in github
 -- Draft introductory posts to Open Source Portal
@@ -74,7 +74,7 @@ The timeline for facilitating standardization work through the IETF is presented
 
 * March 2016 - December 2016 is known as the "Second Prototype" section of Phase 2
 
-The specific timeline of the Second Prototype section is largely dependent on and responsive to the outcome of the prior Re-Design section, community response, and feedback. The timeline for the Second Prototype section will be reviewed and redesign with collaboration of Preforma but this timeline presents a basis on what we presently anticipate.
+The specific timeline of the Second Prototype section is largely dependent on and responsive to the outcome of the prior Re-Design section, community response, and feedback. The timeline for the Second Prototype section will be reviewed and redesign with collaboration of PREFORMA but this timeline presents a basis on what we presently anticipate.
 
 * March - April 2016
 
@@ -102,4 +102,4 @@ The specific timeline of the Second Prototype section is largely dependent on an
 
 * December 2017
 
--- Participation in the Preforma final conference in Stockholm.
+-- Participation in the PREFORMA final conference in Stockholm.

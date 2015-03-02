@@ -2,7 +2,7 @@
 
 ### Functional Overview
 
-The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, and other associated session documentation. This information is derived from multiple APIs passed through the PreForma core and finally combined and transformed into a desired output. Several of these output formats will allow for external software agents to futher process this information. Report information can be saved in batches and later consulted and provide a historical context for each file.
+The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, and other associated session documentation. This information is derived from multiple APIs passed through the PREFORMA core and finally combined and transformed into a desired output. Several of these output formats will allow for external software agents to futher process this information. Report information can be saved in batches and later consulted and provide a historical context for each file.
 
 ###Design and Functional Requirements
 

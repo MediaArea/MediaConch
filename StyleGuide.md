@@ -20,7 +20,7 @@ The construct and eventual structure of modularity within this project will be k
 
 MediaArea will develop a implementation checker that is designed to allow for deployment in the five following types of infrastructures and environments:
 
-- PreForma’s website
+- PREFORMA’s website
 - Within an evaluation framework
 - Within a stand-alone system (MS Windows 7, Mac OSX, and Linux)
 - Within a network-based system (server or cloud)
@@ -28,7 +28,7 @@ MediaArea will develop a implementation checker that is designed to allow for de
 
 Access release for the intended targeted users will be supported within all of these environments. In order to demonstrate the project’s successful deployment within these infrastructures, MediaArea will, in addition to supplying the standard corresponding technical documentation for each, undertake the following considerations:
 
-The project’s necessary PreForma website, including centralized links to all open source materials and community outreach, will be considered as the official deliverable for the entire project. The associated and required documentation, tools and instructional feedback will also be provided and accessible on the PreForma project website as well as the open source platform.
+The project’s necessary PREFORMA website, including centralized links to all open source materials and community outreach, will be considered as the official deliverable for the entire project. The associated and required documentation, tools and instructional feedback will also be provided and accessible on the PREFORMA project website as well as the open source platform.
 
 The implementation checker will also fulfill the requirement of being deployed within the direct infrastructure to facilitate evaluation and use within the PCP system.
 
@@ -50,7 +50,7 @@ The outcome of the ability to interface with other software systems is that the 
 
 ### Development
 
-MediaArea’s open source software development within the PreForma project will establish and uphold open source work practices and standards. These practices will abide by the following project rules:
+MediaArea’s open source software development within the PREFORMA project will establish and uphold open source work practices and standards. These practices will abide by the following project rules:
 
 - Use of nightly builds:
 A nightly build is an automated build that reflects the most up-to-date version of developed software’s source code. Users will have access to these nightly builds as their release will allow for collaborative groups of developers and users to work together and continuously gain immediate feedback and fixes to the most current state of the software. With access to the absolute latest versions, MediaArea and all open source collaborators will more readily gain insight into potential bugs and issues that could arise during the development phase. Programmers will be able to determine if they “broke the build”, making the software inoperable with their latest code.  Immediate access to fixing these issues can be made more efficiently.
@@ -63,16 +63,16 @@ MediaArea will operate within an open source platform on which to develop softwa
 
 ### Open Source Platforms
 
-All software development as well as the development of all relevant and corresponding digital assets and tools created by MediaArea during the PreForma project will exist and function as an open source project within an open source platform (Github). This open source development platform will offer full transparency and traceability throughout the development phase and facilitate a functional collaborative environment with developers, users, stakeholders, and institutions.
+All software development as well as the development of all relevant and corresponding digital assets and tools created by MediaArea during the PREFORMA project will exist and function as an open source project within an open source platform (Github). This open source development platform will offer full transparency and traceability throughout the development phase and facilitate a functional collaborative environment with developers, users, stakeholders, and institutions.
 
-Source code, issue tracking, documentation, updates, release and various forms and channels of public outreach will be centralized within the open development platform and linked to within the PreForma project page.
+Source code, issue tracking, documentation, updates, release and various forms and channels of public outreach will be centralized within the open development platform and linked to within the PREFORMA project page.
 
 
 ## Contribution Guide
 
 ### File Naming Conventions
 
-All project files related to documentation regarding the Preforma project will be named using CamelCase. Project documentation’s actual sample data will be shared using the snake_case. These objects should carry a suitably descriptive file name that elaborates on the contents of the file and follow the standard practices and expectations of their corresponding naming conventions and specifications. File naming conventions and rules will be upheld in order to implement an efficient database of document and file releases within the open source community.
+All project files related to documentation regarding the PREFORMA project will be named using CamelCase. Project documentation’s actual sample data will be shared using the snake_case. These objects should carry a suitably descriptive file name that elaborates on the contents of the file and follow the standard practices and expectations of their corresponding naming conventions and specifications. File naming conventions and rules will be upheld in order to implement an efficient database of document and file releases within the open source community.
 In regards to the required conventions for commit messages on the open source platform, all messages should be concise and clear and effectively summarize each contribution to the project. If more than one change was made, users should not create one commit message to cover all feedback and changes. New individual commits should be made to cover each individual change made to the relevant file being altered. Effective commit messages, covering context of a change, will enable MediaArea to work within a speedier, more efficient review process and better alter development around this feedback.
 
 
@@ -139,21 +139,21 @@ For a detailed account of specific rules, examples and guidelines for each secti
 
 ### Rules for contributing code
 
-Contributions of code or additions to MediaArea’s Preforma project documentation must be written with Qt (following the advised standards and practices) and must be made in the form of a branch submitted as a pull request.
+Contributions of code or additions to MediaArea’s PREFORMA project documentation must be written with Qt (following the advised standards and practices) and must be made in the form of a branch submitted as a pull request.
 
 - Create your feature branch (git checkout -b my-new-feature)
 - Commit your changes (git commit -am 'adds some feature')
 - Push to the branch (git push origin my-new-feature)
 - Create a new Pull Request with a more verbose description of the proposed changes
 
-Link to github repository: (https://github.com/MediaArea/PreFormaMediaInfo/fork)
+Link to github repository: (https://github.com/MediaArea/PREFORMAMediaInfo/fork)
 
 
 ### Rules for contributing feedback
 
 Feedback of all kind is encouraged and can either be made through opening an issue on Github or by contacting the team directly at info@mediaarea.net.
 
-Issue tracking and feedback will be encouraged directly through the open source platform (Github) around which, in addition to PreForma’s Open Source Portal, MediaArea will function and centralize the anticipated infrastructure for a collaborative community environments. In addition, contributions and feedback can be left via either the IRC channel or the mailing lists pertaining to the project.
+Issue tracking and feedback will be encouraged directly through the open source platform (Github) around which, in addition to PREFORMA’s Open Source Portal, MediaArea will function and centralize the anticipated infrastructure for a collaborative community environments. In addition, contributions and feedback can be left via either the IRC channel or the mailing lists pertaining to the project.
 
 
 ### Linking
@@ -182,7 +182,7 @@ Because it is crucial to the stimulation of a sustained and well documented open
 
 MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time. 
 
-Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PreForma project and will be developed as sustainable for a long period of time within the open source project. 
+Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project. 
 
 New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.
 
@@ -203,10 +203,10 @@ Along with the downloadable codes and tools, full supplementary documentation, d
 
 All software releases and digital assets delivered by MediaArea will be produced and made available under the following Intellectual Property Rights (IPR) conditions:
 
-- All software developed by MediaArea during the PreForma project will be provided under the following two open source licenses:
+- All software developed by MediaArea during the PREFORMA project will be provided under the following two open source licenses:
        - GNU General Public License 3.0 (GPLv3 or later)
        - Mozilla Public License (MPLv2 or later)
 
-- All source code for all software developed by MediaArea during the PreForma project will always be identical and functional between these two specific open source licenses (“GPLv3 or later” and “MPLv2 or later”).
+- All source code for all software developed by MediaArea during the PREFORMA project will always be identical and functional between these two specific open source licenses (“GPLv3 or later” and “MPLv2 or later”).
 
-- All open source digital assets for the software developed by MediaArea during the Preforma project will be made available under the open access license: Creative Commons license attribution – Sharealike 4.0 International (CC BY-SA v4.0). All assets will exist in open file formats within an open platform (an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004)).
+- All open source digital assets for the software developed by MediaArea during the PREFORMA project will be made available under the open access license: Creative Commons license attribution – Sharealike 4.0 International (CC BY-SA v4.0). All assets will exist in open file formats within an open platform (an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004)).

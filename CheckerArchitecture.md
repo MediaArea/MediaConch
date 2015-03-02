@@ -39,7 +39,7 @@ mkvalidator is a basic and no more maintained Matroska checker (BSD license, com
 
 ### Conch
 
-Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL....) which will allow for PreForma's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PreForma project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):
+Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL....) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):
 
 - MXF (commonly found within memory institutions)
 - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
@@ -49,11 +49,11 @@ Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed un
 - WAVE64 (64-bit extensions of WAV for 2GB+ files)
 - RF64 (64-bit extensions of WAV for 2GB+ files)
 
-By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PreForma's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PreForma's licensing requirements.
+By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PREFORMA's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PREFORMA's licensing requirements.
 
 ### Plugin integration proof of concept: FFmpeg
 
-FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PreForma's selected GPLv3+ license, it is not compatible with PreForma's other selected license, MPLv2+. As the PreForma conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing.
+FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PREFORMA's selected GPLv3+ license, it is not compatible with PREFORMA's other selected license, MPLv2+. As the PREFORMA conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing.
 
 Although Conch won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using Conch could separately download FFmpeg and link the two together to enable additional tools such as:
 
@@ -74,7 +74,7 @@ For DV (BSD license, compatible with GPLv3+ and MPL2+)
 
 ### Optional 
 
-(Not part of the original PreForma tender but can potentially be added upon request after in context of professional services)
+(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)
 
 - MPEG-1/2 Video (including IMX, AS-07, D-10 Video, FIMS…)
 - H.264/AVC (including AS-07)
@@ -86,7 +86,7 @@ For DV (BSD license, compatible with GPLv3+ and MPL2+)
 
 ## Stream/Essence decoder
 
-(Not part of the original PreForma tender but can potentially be added upon request after in context of professional services)
+(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)
 
 ### Conch
 
@@ -121,7 +121,7 @@ Conch will support the coherency check between all suppoted formats (see Contain
 
 ### Playback and Playback Analysis (through plugin)
 
-Note that the PreForma tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in implementation checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the implementation checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a implementation checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a implementation checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.
+Note that the PREFORMA tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in implementation checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the implementation checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a implementation checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a implementation checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.
 
 We propose incorporating several compatible utilities into Conch to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.
 

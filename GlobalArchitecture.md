@@ -1,6 +1,6 @@
-# PreForma Global Architecture
+# PREFORMA Global Architecture
 
-PreForma strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
+PREFORMA strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
 
 ## Architecture schema
 ![Global Architecture Schema](./GlobalArchitecture.png)
@@ -38,7 +38,7 @@ The architecture does not require direct internet access. Users can work with an
 
 ### Automation
 
-PreForma includes the option of automated checking, allowing for users to receive notifications when new files are placed or come into the system.
+PREFORMA includes the option of automated checking, allowing for users to receive notifications when new files are placed or come into the system.
 
 A user can set up a system on the Core which will configure the system to run scheduled automatic checks for new files and batches. This system can be accessed and configured within the user interface to run on a timed and defined schedule.
 
@@ -52,7 +52,7 @@ A user can also prioritize the checker to queue individual items and scheduled c
 
 ### 
 
-PreForma allows users to load and edit configurations within a REST API configuration that will run via HTTP.
+PREFORMA allows users to load and edit configurations within a REST API configuration that will run via HTTP.
 
 The Web-based system allows users to work both on and outside of the network as well as locally if they choose. If the user chooses to work locally, they will have access to the application server directly. This operation runs via a HTTP Daemon. 
 
@@ -180,7 +180,7 @@ Within each of the developed user interfaces there will be ways to export raw me
 * exports a human readable report
 * exports a "fool-proof" report which also indicates what should be done to fix the non-conformances
 
-The machine readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PreForma ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.
+The machine readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PREFORMA ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.
 
 The human readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.
 
@@ -194,7 +194,7 @@ Will use PoDoFo (LGPLv3+) for PDF export
 
 ## User interface
 
-The User interface (UI) is the shell component that allows direct interaction between users (or other systems) and the PreForma components:
+The User interface (UI) is the shell component that allows direct interaction between users (or other systems) and the PREFORMA components:
 
 * displays test results
 * controls the Core

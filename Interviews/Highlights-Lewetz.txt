@@ -1,4 +1,4 @@
-PreForma Interview: Highlights
+PREFORMA Interview: Highlights
 Hermann Lewetz, Peter Bubestinger
 12/16/2014
 
@@ -46,7 +46,7 @@ Peter: ran massive test suites; what is lacking there are FATE tests.  [Test-dri
 
 Hermann: another advantage of FFV1; there are few different implementations; few implemenations, all use the same implmentations; what I fear is moment when big vendors accept FFV1 as a standard and they start to create implement different implementations; same thing as happened to jpeg2000.  A standardization/implementation checker would be incredibly important now.
 
-Peter: people who intend to buy any product using FFV1 make sure that implementation conforms to the your [preforma] conformance checks. [Will send citation for AMIA-list quote]
+Peter: people who intend to buy any product using FFV1 make sure that implementation conforms to the your [PREFORMA] conformance checks. [Will send citation for AMIA-list quote]
 
 Erik:  reformatting workflow?
 

@@ -1,8 +1,8 @@
 ## Project Introduction
 
-The PreForma challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea's design plan to create a toolset (tentatively entitled "Conch") consisting of an implementation checker, policy checker, reporter, and fixer of a select list of formats.
+The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea's design plan to create a toolset (tentatively entitled "Conch") consisting of an implementation checker, policy checker, reporter, and fixer of a select list of formats.
 
-As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PreForma project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.
+As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PREFORMA project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.
 
 MediaArea's approach to this challenge centers on FOSS (Free and Open Source Software), modular design, and interoperability and will rely strongly on MediaInfo (an open source MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged its integration into several archival repository systems and OAIS-complaint workflows to assist archival with technical control of collections.
 
@@ -22,7 +22,7 @@ Matroska, FFV1, and LPCM describe very unique concepts of information including:
 
 These three information concepts will inform distinct user interface and reporting design in order to process these concepts through differing strategies. For instance, reporting on the status of 100,000 of video frames within a video recording may be done more efficiently in a different interface as one designed to communicate the hierarchical structure of a file format.
 
-Additionally other formats currently being addressed by PreForma fit within these three conceptual categories; for instance, PDF and TIFF are formats (containers) and JPEG2000 is a video stream. These three concepts affect the design of an overall application shell as conformance information for each category can have its own optimized user interface.
+Additionally other formats currently being addressed by PREFORMA fit within these three conceptual categories; for instance, PDF and TIFF are formats (containers) and JPEG2000 is a video stream. These three concepts affect the design of an overall application shell as conformance information for each category can have its own optimized user interface.
 
 ### Matroska
 
@@ -50,18 +50,18 @@ Because PCM streams contain only audio samples without any codec structure or me
 
 ## Development of a conformance checker
 
-MediaArea's design of the conformance checker is intended to allow interoperability between the conformance checkers of PreForma's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The PreForma project is comprised of four components:
+MediaArea's design of the conformance checker is intended to allow interoperability between the conformance checkers of PREFORMA's other suppliers so that users may integrate multiple conformance checkers within a single 'shell'. The PREFORMA project is comprised of four components:
 
 - implementation checker
 - policy checker
 - reporter
 - metadata fixer
 
-The PreForma project must document and associate implementation or policy rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution). MediaArea recommends that communication between the implementation checker and the shell be performed through an API designed via collaboration of the PreForma suppliers.
+The PREFORMA project must document and associate implementation or policy rules with data types (such as formats, streams, frames, etc) and authorities (such as specifications, community practices, or the local rules of a memory institution). MediaArea recommends that communication between the implementation checker and the shell be performed through an API designed via collaboration of the PREFORMA suppliers.
 
 ### Implementation Checker
 
-For each supported formats (Matroska, FFV1, and LPCM), the implementation checker should assess compliance and/or deviation between files and a series of adherence checks which are written by dissecting rules and logic from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PreForma design phase and plans to collaborate with each format's specification communities to refine them. See the [Conformance Check Registry](#conformance-check-registry).
+For each supported formats (Matroska, FFV1, and LPCM), the implementation checker should assess compliance and/or deviation between files and a series of adherence checks which are written by dissecting rules and logic from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PREFORMA design phase and plans to collaborate with each format's specification communities to refine them. See the [Conformance Check Registry](#conformance-check-registry).
 
 For streams such as FFV1 some implementation checks may be performed frame-by-frame to discover frame-specific issues such as CRC mismatches, invalid frame headers, or incomplete frames. Frame-by-frame conformance assessments will naturally be time consuming as nearly the entire file must be read. In order to accommodate user's various time priorities the checker will use options to perform checks on the first few frames of a stream, a percentage of the frames, or all of the frames.
 
@@ -78,15 +78,15 @@ For each format addressed through a implementation checker MediaArea will create
 - MKV.tag.DATE_DIGITZED IS_BEFORE "2014-01-01"
 - MKV.tag.ISBN MATCHES_REGEX "(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$"
 
-MediaArea proposes that PreForma suppliers collaborate to define a common expression for sets of policy checks via an XML Schema, associated data dictionary, and vocabulary of comparative operators. The collaboration would include agreement and definition on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each policy checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against as well as inclusion within an API so that the shell can access the possible operators of any enabled implementation checker.
+MediaArea proposes that PREFORMA suppliers collaborate to define a common expression for sets of policy checks via an XML Schema, associated data dictionary, and vocabulary of comparative operators. The collaboration would include agreement and definition on the operators ("Greater Than", "Starts With", etc) of the policy checks and attempts to normalize technical metadata between common formats where they have overlapping concepts. Each policy checker would produce a vocabulary of technical metadata specific to its format for policies to be checked against as well as inclusion within an API so that the shell can access the possible operators of any enabled implementation checker.
 
 MediaArea will provide sample sets of policy checks based on interviews with memory institutions and community practice.
 
 ### Reporter
 
-MediaArea proposes that PreForma suppliers collaborate to create a common XML Schema to define the expression of PreForma reporting (referred to here as "PreFormaXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PreForma suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per implementation checker, but that adherence to a common schema is essential to interoperability and consistent user experience amongst implementation checkers.
+MediaArea proposes that PREFORMA suppliers collaborate to create a common XML Schema to define the expression of PREFORMA reporting (referred to here as "PREFORMAXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PREFORMA suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per implementation checker, but that adherence to a common schema is essential to interoperability and consistent user experience amongst implementation checkers.
 
-The PreFormaXML schema should accommodate the expression of results from multiple implementation checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
+The PREFORMAXML schema should accommodate the expression of results from multiple implementation checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
 
 We can also add a JPEG2000 image as an attachment or a PDF as an attachment. Matroska is flexible.
 
@@ -94,10 +94,10 @@ CRC files can be added as attachments to reenforce OAIS.
 
 MediaArea plans to include these features commonly within MKV, FFV1, and LPCM reporters:
 
-- Export of a standardized PreFormaXML
-- Export PreFormaXML with gzip compression (to reduce the impact of large and highly verbose XML files)
+- Export of a standardized PREFORMAXML
+- Export PREFORMAXML with gzip compression (to reduce the impact of large and highly verbose XML files)
 - Export of the same data within a semantically equivalent JSON format
-- Other functions based on PreFormaXML (such as generation of PDF formats or summarization of multiple collections of PreFormaXML) will happen within the "Shell" component
+- Other functions based on PREFORMAXML (such as generation of PDF formats or summarization of multiple collections of PREFORMAXML) will happen within the "Shell" component
 
 ### Fixer
 
@@ -119,7 +119,7 @@ Because many files focused on with FFV1 and Matroska implementation checkers wil
 
 ### Core
 
-The shell will coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PreForma seeks that the shell developed by each supplier supports each supplier's implementation checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional implementation checkers to utilize the produced shells.
+The shell will coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PREFORMA seeks that the shell developed by each supplier supports each supplier's implementation checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional implementation checkers to utilize the produced shells.
 
 The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial internal documentation that mimics the online resources that we will provide so that the shell and implementation checker function well offline.
 
@@ -142,7 +142,7 @@ The shell produced will support all functions and requirements of the implementa
 
 The shell produced will support all functions and requirements of the policy checker as described as an independent utility and also support:
 
-- Allow PreForma-supported technical metadata vocabularies to be imported or synchronized against an online registry.
+- Allow PREFORMA-supported technical metadata vocabularies to be imported or synchronized against an online registry.
 - Provide an interface for the user to import, create, edit, or export a valid set of policy checks.
 - Implement selected set of policy checks on all open files or selected files.
 - Present the outcome of policy checks in a manner that allows comparison and sorting of the policy status of many files.
@@ -154,8 +154,8 @@ The shell produced will support all functions and requirements of the policy che
 
 The shell produced will support all functions and requirements of the reporter as described as an independent utility and also support:
 
-- Export of the PreFormaXML data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful.
-- Ability to read a collection of PreForma XML documents and provide a comprehensive summary and technical statistics of a collection to allow for prioritization, comparison, and planning.
+- Export of the PREFORMAXML data at user-selected verbosity levels in a PDF format, which data visualizations supplied where helpful.
+- Ability to read a collection of PREFORMA XML documents and provide a comprehensive summary and technical statistics of a collection to allow for prioritization, comparison, and planning.
 
 #### Fixer (Shell)
 
@@ -208,7 +208,7 @@ The advantages of embedded fixity in preservation media files are significant. T
 
 ### Reference and Test Files
 
-MediaArea anticipates creating a large corpus of reference and test files highlighting many of the issues documented in our conformance check registry. After an intital clearing of any associated rights, such files will be published under PreForma's selected open license agreements and disseminated for public consumption. Curated references to other relevant reference and test files in sample libraries will also be made available, which will include but not be limited to the following:
+MediaArea anticipates creating a large corpus of reference and test files highlighting many of the issues documented in our conformance check registry. After an intital clearing of any associated rights, such files will be published under PREFORMA's selected open license agreements and disseminated for public consumption. Curated references to other relevant reference and test files in sample libraries will also be made available, which will include but not be limited to the following:
 
 - Selections from http://samples.ffmpeg.org
 - Selections from http://archive.org
@@ -229,7 +229,7 @@ The following use cases are presented to describe intended behaviors of the impl
 
 #### Conformance Checking in an Open Archival Information System (OAIS)
 
-PreForma acknowledges the recommendations described in Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). MediaArea aims to identify all relevant areas of the OAIS reference model in relation to its proposed Conch conformance checker toolset. Moving foward, an additional examination of other OAIS-related standards will further minimize any redundancies or incompatibility with the PreForma project. 
+PREFORMA acknowledges the recommendations described in Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). MediaArea aims to identify all relevant areas of the OAIS reference model in relation to its proposed Conch conformance checker toolset. Moving foward, an additional examination of other OAIS-related standards will further minimize any redundancies or incompatibility with the PREFORMA project. 
 
 The OAIS reference model describes the transmission of data in the form of conceptual containers known as Information Packages. In the OAIS environment, Submission Information Packages (SIPs) are created by Producers (those who provide the information to be preserved), containing data objects with relevant packaging information. After undergoing a series of  processes performed by functional entities, SIPS are transformed into Archival Information Packages (AIPs) and moved into the archive's long-term storage. Upon a query request by a Consumer, AIPs can be re-called and presented in the form of a Dissemination Information Package (DIPs) to the Designated Community. 
 
@@ -241,7 +241,7 @@ Policy check expressions are also useful in other functions of OAIS workflows in
 
 For dissemination requests, the DIP generation fuction may include the encoding of an AIP data object to a smaller, more compressed transmission format for access. This is especially true for audiovisual data objects, whose AIPs might contain large uncompressed or mathematically lossless filetypes. Policy check expressions with the conformance checker at this phase would ensure that relationships to file characteristics like sub-sampling, bit-depth and frame rate are maintained throughout DIP generation. 
 
-Like the OAIS reference model itself, the PreForma conformance checker project aims to serve as a framework for standards-building activities through the creation of powerful reporting tools. By extension, MediaArea's Conch toolset enables the creation of a complex representation net in the OAIS Archive, providing information needed to adequately preserve audiovisual data objects through time. 
+Like the OAIS reference model itself, the PREFORMA conformance checker project aims to serve as a framework for standards-building activities through the creation of powerful reporting tools. By extension, MediaArea's Conch toolset enables the creation of a complex representation net in the OAIS Archive, providing information needed to adequately preserve audiovisual data objects through time. 
 
 ### Conformance Checking at Digitization Time
 
@@ -309,7 +309,7 @@ We believe that incorporating Artefactual into our phase 2 proposal provides a m
 
 ### Project Advisors
 
-MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relavent to the project. This initiative also kickstarts the relationship between the project, open source development communities, and PreForma's target users. Such partners would receive a fixed stipend amount from our proposed in exchange for participation in the projects mailing list, occasional requested meetings, and commenting on the project.
+MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relavent to the project. This initiative also kickstarts the relationship between the project, open source development communities, and PREFORMA's target users. Such partners would receive a fixed stipend amount from our proposed in exchange for participation in the projects mailing list, occasional requested meetings, and commenting on the project.
 
 - Moritz Bunkus (Matroska main developer): validation of Matroska tests, Matroska specific technical support, review of standardization efforts
 - Michael Niedermayer (FFmpeg maintainer and FFV1 primary author): validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
@@ -359,7 +359,7 @@ In December 2014, MediaArea started conducting interviews with FFV1, Matroska, a
 - Christophe Kummer; NOA
 - George Blood; George Blood, L.P.
 
-Notes and partial transcripts (in English) from the interviews are available in the MediaInfo PreForma GitHub repository. Public release of interviews is pending complete transcriptions and review of transcriptions by all participants in order to ensure accuracy and compliance with Creative Commons CC-BY 4.0.  The interviewees' feedback will help inform MediaArea's approach to development in all areas, and especially reinforced our plans to standardize the FFV1 specification through an open source standards organization
+Notes and partial transcripts (in English) from the interviews are available in the MediaInfo PREFORMA GitHub repository. Public release of interviews is pending complete transcriptions and review of transcriptions by all participants in order to ensure accuracy and compliance with Creative Commons CC-BY 4.0.  The interviewees' feedback will help inform MediaArea's approach to development in all areas, and especially reinforced our plans to standardize the FFV1 specification through an open source standards organization
 
 ### Advance Improvement of Standard Specification
 
@@ -369,15 +369,15 @@ Efforts to create an FFV1 specification began in April 2012, continuing through 
 
 In consideration of FFV1’s utilization within preservation contexts, the standardization of the codec through an open standards organization would better establish FFV1 as a trustworthy, stable, and documented option. In MediaArea's interviews with FFV1 adopters, interviewees noted that FFV1's current status proved problematic in gaining organizational buy-in for adoption of FFV1. Additionally, standardization of FFV1 would increase awareness of and interest in FFV1. This increased visibility is vital to engaging an overly cautious archives community. At the moment FFV1 can be seen at a tipping point in its use within preservation context. Its speed, accessibility, and digital preservation features make it an increasingly attractive option for lossless video encoding that can be found in more and more large scale projects; the standardization of FFV1 through an open standards organization would be of broad interest to digital preservation communities and facilitate greater accessibility of lossless encoding options that are both efficient and standardized.
 
-MediaArea proposes working closely with the lead authors of the FFV1 specification in order to update the current FFV1 specification to increase its self-reliance and clarity. Development of the FFV1 specification early within the PreForma project will generate substantial feedback to the authors of the specification which could then be offered through the specification’s github page via pull requests or the issue tracker. MediaArea proposes at a later stage of development that the Preforma project serve as a catalyst to organize, facilitate, and sponsor the IETF standardization process for FFV1.
+MediaArea proposes working closely with the lead authors of the FFV1 specification in order to update the current FFV1 specification to increase its self-reliance and clarity. Development of the FFV1 specification early within the PREFORMA project will generate substantial feedback to the authors of the specification which could then be offered through the specification’s github page via pull requests or the issue tracker. MediaArea proposes at a later stage of development that the PREFORMA project serve as a catalyst to organize, facilitate, and sponsor the IETF standardization process for FFV1.
 
-Considering the two-year timeline of the PreForma project and usual pace of IETF standardization projects, we propose at least submitting FFV1 as an Independent Submission to IETF that could provide workable timeline, encourage a detailed review process, and assign a formal RFC number to the specification.
+Considering the two-year timeline of the PREFORMA project and usual pace of IETF standardization projects, we propose at least submitting FFV1 as an Independent Submission to IETF that could provide workable timeline, encourage a detailed review process, and assign a formal RFC number to the specification.
 
 [1]: http://www.ietf.org/
 
 #### Matroska Specification
 
-Both the Matroska specification and its underlying specification for EBML are at mature and stable stage with thorough documentation and existing validators, but several efforts of the PreForma project can serve as contributions to this specifications. The underlying EBML specification [2] has already been drafted into RFC format but is has not yet been submitted to IETF as an Independent Submission or otherwise. MediaArea recommends that PreForma play a similar catalyst role for further standardization with Matroska as well, helping enable the refinement of the current RFC draft and coordinating an IETF process.
+Both the Matroska specification and its underlying specification for EBML are at mature and stable stage with thorough documentation and existing validators, but several efforts of the PREFORMA project can serve as contributions to this specifications. The underlying EBML specification [2] has already been drafted into RFC format but is has not yet been submitted to IETF as an Independent Submission or otherwise. MediaArea recommends that PREFORMA play a similar catalyst role for further standardization with Matroska as well, helping enable the refinement of the current RFC draft and coordinating an IETF process.
 
 Matroska has a detailed metadata specification at http://www.matroska.org/technical/specs/tagging/index.html. Each tag has an official name and description while provides rules and recommendations for use. Many of these tags could be associated with validation rules, such as expressed by regular expression to assure that the content of the tag conforms to expectations. For instance tags such as URL, EMAIL, or ISBN have specific allowable patterns for what may be contained. As part of build a conformance tool for Matroska, MediaArea will generate conformance tests for individual tags and these tests may be contributed back to the Matroska specification in a list of regex values, an XML schematron file, or other acceptable contribution method.
 
@@ -397,9 +397,9 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 
 MediaArea has long been an open source native and has an open source business model based on sponsored support (bug correction and feature requests), application support, and branched customization based on an institution's specific needs since 2007. Previously existing in a non-business capacity since 2002.
 
-MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV implementation checker, professional metadata editor and fixer BWF MetaEdit; the AVI implementation checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, Preforma  plays a major role in the creation of a fully integrated and open source implementation checker.
+MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV implementation checker, professional metadata editor and fixer BWF MetaEdit; the AVI implementation checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, PREFORMA  plays a major role in the creation of a fully integrated and open source implementation checker.
 
-MediaArea plans to build this stable, integrated solution over the course of the Preforma project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other Preforma investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from Preforma developers and stakeholders is provided in a meaningful timeframe. After the Preforma project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a Preforma-specific version, free of non-Preforma related layers, as a subset of our own integrated solution.
+MediaArea plans to build this stable, integrated solution over the course of the PREFORMA project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other PREFORMA investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from PREFORMA developers and stakeholders is provided in a meaningful timeframe. After the PREFORMA project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a PREFORMA-specific version, free of non-PREFORMA related layers, as a subset of our own integrated solution.
 
 # Project Management Strategy
 
@@ -460,7 +460,7 @@ In turn, should the team complete work  before the established date a meeting wi
 
 #### Addressing Unrealistic Budget:
 
-Based from the experience of MediaArea's recent software developments projects of similar scale to PreForma we are confident that our budget, objectives, and allocation of resources are appropriate and realistic.
+Based from the experience of MediaArea's recent software developments projects of similar scale to PREFORMA we are confident that our budget, objectives, and allocation of resources are appropriate and realistic.
 
 In the event that the project appears as though it will exceed the proposed budget, the team will communicate and establish the reason for the change in financial expectations. If these issues can be addressed and changed to stay within the original budgeted amount, such changes will be implemented. The decisions involving these changes will be shared with pertinent parties.  If the team meets and decides that the work will exceed the budget, an establishment of the dollar amount by which the project will exceed its original amount will occur. This amount will be shared with all vital stakeholders.
 
@@ -500,9 +500,9 @@ MediaArea demonstrated his capability to understand the need of the memory insti
 
 ### Participation at Open Source conferences
 
-The MediaArea team is active in the open source community and has presented the work on Preforma at two conferences during Phase 1:
+The MediaArea team is active in the open source community and has presented the work on PREFORMA at two conferences during Phase 1:
 
-- Dave Rice presented our work on Preforma at FOSDEM on January 31st:
+- Dave Rice presented our work on PREFORMA at FOSDEM on January 31st:
  https://fosdem.org/2015/schedule/event/enabling_video_preservation/
 - Ashley Blewer presented our work at Code4Lib on February 11th:
  http://wiki.code4lib.org/2015_Lightning_Talks
