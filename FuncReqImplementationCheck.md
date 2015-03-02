@@ -10,6 +10,12 @@ The design of the implementation checker will enable the user to have some contr
 
 Ultimately the implementation checker (supported by the other components of the conformance checker) should enable memory institutions to fully understand, validate, and control the file formats selected by the project.
 
+### Registry of Checks
+
+The implementation checker must be associated with an active and open registry of checks. The registry shall describe each conformance test in easy to understand, approachable language, with citations to the associated specification, and details of any logic, deductive reasoning, or inferrence clearly detailed. The registry should associate each test to the source code that enacts the so that the human-defined and computer-defined implementations of each check may be strongly linked.
+
+The Registry must allow support community involvement, such as associated forums, issue trackers, links to asscoiated sample files, etc. The design of the Registry and its intertwinement with the Implementation Checker will provide users with a means to navigate from their discovery to sample files, source code, community knowledge, and context.
+
 The implementation checker receives the incoming data from the file added to the system to be inspected and the desired specification chosen within the Policy Checker and verifies that they match or that the file's parameters fit within the range of the policy's rule set.
 
 The results of this check is sent to the Reporter (via the Core), which then translates the errors into the expected output.
