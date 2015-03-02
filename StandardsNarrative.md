@@ -178,13 +178,17 @@ ISOC: IETF recommends participation and membership in the Internet and Society. 
 
 Below are links to some of the IETF documents that are relevant to this project and have not been cited elsewhere in this document..  An outline of the Internet Draft to Independent Stream process (from The Tao of the IETF)  is also included to provide some reference for a timeline.
 
-IESG Procedures for Handling of Independent and IRTF Stream Submissions [https://tools.ietf.org/html/rfc5742](https://tools.ietf.org/html/rfc5742)
+IESG Procedures for Handling of Independent and IRTF Stream Submissions 
+
+[https://tools.ietf.org/html/rfc5742](https://tools.ietf.org/html/rfc5742)
 
 IETF editor model (2012)
 
 [https://tools.ietf.org/html/rfc6548](https://tools.ietf.org/html/rfc6548) 
 
-Function and responsibilities of the RFC,  Independent Submission Editor (ISE) [https://www.rfc-editor.org/indsubs.html](https://www.rfc-editor.org/indsubs.html)
+Function and responsibilities of the RFC,  Independent Submission Editor (ISE) 
+
+[https://www.rfc-editor.org/indsubs.html](https://www.rfc-editor.org/indsubs.html)
 
 Independent Stream, IETF Data tracker
 
@@ -199,6 +203,7 @@ Rights Handling, Independent Submission Stream
 [http://www.ietf.org/about/process-docs.html#RFC5744](http://www.ietf.org/about/process-docs.html#RFC5744) 
 
 The Tao of the IETF, Broad Outline of the Internet Draft to WG/Independent Stream Submission
+
 [http://www.ietf.org/tao.html](http://www.ietf.org/tao.html) 
 
 1. Publish the document as an Internet-Draft (TF: Informational Document)
