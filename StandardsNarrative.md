@@ -1,5 +1,3 @@
-[[TOC]]
-
 # INTRODUCTION
 
 Within a PREFORMA project to design tools and workflows to assess and verify the adherence of open file formats to their specifications, the specifications themselves are a crucial foundation to the ongoing stability and efficiency of the project. In the case of Matroska and FFV1 specification work have been under development but has been undertaken the vetting processes associated with a more formal standardization process. MediaArea finds that strengthening the disclosure, transparency, and credibility of Matroska and FFV1 are relevant objectives to the development of conformance checkers and present this plan to coincide with our larger proposal for software development to meet the PREFORMA Challenge.
