@@ -13,6 +13,8 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Reporting on project progress
 -- Managing issue tracker
 
+* March 2015 - October 2015 is known as the "First Prototype" section of Phase 2
+
 * March - May 2015
 
 -- Extend FFV1 and MKV parsing within MediaInfo
@@ -50,20 +52,22 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Prepare and submit a second version of an Informational Internet-Draft for FFV1 and Matroska
 -- Provide feedback to FFmpeg and Matroska on version 4 development
 
-* October - December 2015
+* October 2015
 
--- Prepare and submit final or third Internet-Draft for FFV1 and Matroska and finalize working group plans
+* November 2015 - Feburary 2016 is known as the "Re-design" section of Phase 2
 
-* December 2015
+* November - December 2015
 
 -- Document and release version 2 of sample library
 -- Participation in a training event for Open Source companies that will take place in Stockholm in December 2015, in connection with the first Prototype Demonstration.
 
-* Jan - March 2016
+* Jan - Feburary 2016
 
 -- Submit either 1) working group proposal or 2) proposal for working group consens sponsorship; prepare documentation for transition from Internet-Draft to Standards track
 
-* April 2016
+* March 2016 - December 2016 is known as the "Second Prototype" section of Phase 2
+
+* March - April 2016
 
 -- Present proposed Standard at IETF 95
 
