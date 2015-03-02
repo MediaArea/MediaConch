@@ -173,7 +173,7 @@ Programming language : C++
 
 ## Reporter
 
-Within each of the developed user interfaces there will be ways to export raw metadata and human-readable JSON/XML reports after the conformance checking process. The reporter will define and express how a file’s checked metadata corresponds to the validation result standards.
+Within each of the developed user interfaces there will be ways to export raw metadata and human-readable JSON/XML/HTML/PDF reports after the conformance checking process. The reporter will define and express how a file’s checked metadata corresponds to the validation result standards.
 
 * exports a machine readable report, including preservation metadata for each file checked
 * exports a report that allows external software agents to further process the file
@@ -188,13 +188,9 @@ Interface :
 
 * Core : REST API
 
-Programming language :
+Programming language : C++
 
-* CLI : C++
-
-* GUI : C++ / Qt (LGPLv3+)
-
-* Web : PHP/Symfony (MIT)
+Will use PoDoFo (LGPLv3+) for PDF export
 
 ## User interface
 
