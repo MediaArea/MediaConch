@@ -4,17 +4,17 @@ Mockups forthcoming
 
 ## FFV1
 
-- Video playback view (for MKV/ffv1)
-- Support playback of ffv1 in other container formats (mov, avi, nut)
-- Support presentation of decoded ffv1 video frames alongside metadata about that frame
-- Support presentation of decoded ffv1 video frames alongside metadata about that frame and a selected number of neighboring frames
+- Video playback view (for MKV/FFV1)
+- Support playback of FFV1 in other container formats (mov, avi, nut)
+- Support presentation of decoded FFV1 video frames alongside metadata about that frame
+- Support presentation of decoded FFV1 video frames alongside metadata about that frame and a selected number of neighboring frames
 - Playback control deck (play, pause, step forward, step backward, etc.)
 - Support keyboard shortcuts for playback (k=play/pause, j=play backwards, l=play forwards)
-- Allow ffv1 video planes to be shown independently in grayscale
+- Allow FFV1 video planes to be shown independently in grayscale
 - Support waveform, vectorscope, and histogram presentations of video data
 - Frame Metadata view (see more below)
 - Support temporal annotations from the operator
-- Verify an ffv1 stream against an external framemd5 or framecrc report
+- Verify an FFV1 stream against an external framemd5 or framecrc report
 
 ## MKV
 ### Structure

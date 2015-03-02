@@ -1,4 +1,4 @@
-## Questionnaire for user communities regarding FFv1, MKV, LPCM and general conformance checks
+## Questionnaire for user communities regarding FFV1, MKV, LPCM and general conformance checks
 
 
 ### What type of institution do you currently work for? (More than one may apply)
@@ -253,7 +253,7 @@
 
 ### What (if any) open file codecs and wrappers are currently implemented at your institution?
 
-- [ ] FFv1
+- [ ] FFV1
 - [ ] MKV (Matroska)
 - [ ] LPCM
 - [ ] Other

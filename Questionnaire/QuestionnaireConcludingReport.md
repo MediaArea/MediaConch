@@ -10,7 +10,7 @@ Responses to the questionnaire produced the following conclusions:
 
 -Files were checked for conformance individually using software tools such as MediaInfo (63%). When adding additional metadata, several standards were referenced, with PREMIS (33%) and PBCore (30%) being the most popular. 
 
--Open codecs and wrappers were implemented the most by institutions in the creation of preservation master assets. FFv1 and LCM were currently implemented in several institutions (13% and 17%, respectively).
+-Open codecs and wrappers were implemented the most by institutions in the creation of preservation master assets. FFV1 and LCM were currently implemented in several institutions (13% and 17%, respectively).
 
 -On characteristics that make an ideal file format for preservation, participants chose the following traits: 1) Interoperability (27/30); 2) Low cost of implementation (22/30); 3) Transparency (21/30); 4) Availability of tools (20/30); 5) Metadata capabilities (17/30); and, 6) Low storage cost (11/30). 
 

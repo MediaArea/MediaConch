@@ -13,9 +13,9 @@ Perceived wisdom in archives is that you follow what the broadcasters are doing,
 
 FFV1 seemed fairly easy and controllable option. There didn't seem to be anything negative about it in regards to preserving the original source and keeping it available for future transcriptions and migration.
 
-The reason for using Matroska: supported ffv1, we wanted to preserve all the audio streams available on the tapes (4 for HDCam, 12 for HDCam SR) and it had good support for multi-stream, and the expanded capacity for metadata storage.
+The reason for using Matroska: supported FFV1, we wanted to preserve all the audio streams available on the tapes (4 for HDCam, 12 for HDCam SR) and it had good support for multi-stream, and the expanded capacity for metadata storage.
 
-D: What tools are you using right now to work with ffv1 and/or Matroska?
+D: What tools are you using right now to work with FFV1 and/or Matroska?
 
 I: Transcoded externally via the BBC. If I need to do any work with it, I use ffmpeg.  We haven't got an awful lot of a toolset. Whatever I come across that could be useful: tools for ID, categorization, migration. At the moment, MediaInfo for examining video, and one or two other tools. QCTools was mentioned.
 
@@ -23,7 +23,7 @@ D: What tools do you use for compliance checking?
 
 I: Fairly limited.  We use Droid for ID, and MediaInfo, and basically we retrieve whatever metadata information is in there. FFprobe. Something we'll have to look at. Any advice would be appreciated.
 
-No problems with FFV1; only problem we had was with previews of files.  But with ffv1, no problems. We have 125-150 digital files output from the tape, no problems at all. Largely for checking, it was a visual comparison with the H264.  Making sure all the footage was there, the audio streams were available.  Really a manual check process. We need to get more into performance software.
+No problems with FFV1; only problem we had was with previews of files.  But with FFV1, no problems. We have 125-150 digital files output from the tape, no problems at all. Largely for checking, it was a visual comparison with the H264.  Making sure all the footage was there, the audio streams were available.  Really a manual check process. We need to get more into performance software.
 
 We only have source material. This was quite an unusual set in that it was the first time we've ever had videotape. We needed to find the best fit for that job.
 
@@ -39,9 +39,9 @@ D: Do you move MediaInfo results into a db or store in a text file?
 
 I:  We store it in an archival system. SDB. NYU uses it. The info is stored within the database, a mixture of technical and description.
 
-D: What coding specs do you use when you're requesting ffv1/Matroska?
+D: What coding specs do you use when you're requesting FFV1/Matroska?
 
-I: There weren't that many options we were worried about with ffv1. We wanted FFV1 version 3, a number of slices, CRC for slices turned on, 
+I: There weren't that many options we were worried about with FFV1. We wanted FFV1 version 3, a number of slices, CRC for slices turned on, 
 
 [audio cuts out]
 

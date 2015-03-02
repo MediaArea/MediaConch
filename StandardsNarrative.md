@@ -18,7 +18,7 @@ MKV v3 and FFV1 v3 to be submitted to the Internet Engineering Task Force(IETF) 
 
 Three options were initially considered for pursuing standardization: IETF, SMPTE (Society of Motion Picture and Television Engineers), and ISO(International Organization for Standardization. Foremost among a number of factors that made SMPTE and ISO unsuitable for this endeavor was the fact that both SMPTE and ISO have a paywall in place.  Payment for access to standards runs counter to the ideals of the PREFORMA project. Within the context of digital preservation it is imperative for file formats to be well-disclosed, understood, and controlled within an archival setting; specification paywalls provide an obstacle to this objective.
 
-Our research and conversations with users and experts led us to conclude that IETF is the most relevant body for ffv1 and MKV work. Furthermore, IETF has experience with open audiovisual file formats (e.g. RFC 3533 for OGG container format, RFC 6386 for VP8 video format and RFC 6716 for Opus audio format).
+Our research and conversations with users and experts led us to conclude that IETF is the most relevant body for FFV1 and MKV work. Furthermore, IETF has experience with open audiovisual file formats (e.g. RFC 3533 for OGG container format, RFC 6386 for VP8 video format and RFC 6716 for Opus audio format).
 
 ## Preliminary Outreach
 

@@ -8,7 +8,7 @@
 
 2. Research into what makes a file valid
 
-* Overview of each format (mkv, ffv1, PCM), benefits/negatives with regards to use as a preservation standard, technical and structural metadata for a/v streams within container
+* Overview of each format (mkv, FFV1, PCM), benefits/negatives with regards to use as a preservation standard, technical and structural metadata for a/v streams within container
 
 * Writeup of tests that need to happen in order to test integrity of file, limits as defined by technical details
 
