@@ -6,6 +6,6 @@ The PREFORMA challenge presents an opportunity for cultural heritage institution
  - re-iterate the objectives of the PREFORMA challenge brief 
  - state that the conformance checker is the core of the project and all our work is focused on developing that (and related environment) for the target community
  - mention the promise of FFV1 and mkv for digipres application but acknowledge their credibility issue and our proposal to facilitate standardization 
- - plug MediaArea's experience in qctools, the predominance of mediainfo, and development of project and risk management  strategies  
+ - plug MediaArea's experience in qctools, the predominance of MediaInfo, and development of project and risk management  strategies  
  - PREFORMA's awesome, clap, clap, clap
 	

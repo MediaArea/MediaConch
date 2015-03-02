@@ -334,12 +334,12 @@ For an impression of MediaArea's focus on cross platform usability please see ou
 
 MediaInfo is also officially provided by multiple open source distributions:
 
-- Debian: https://packages.debian.org/wheezy/mediainfo
-- Ubuntu: http://packages.ubuntu.com/utopic/mediainfo
-- RedHat / Fedora: https://apps.fedoraproject.org/packages/mediainfo
-- OpenSuse: http://packman.links2linux.org/package/mediainfo
-- Arch Linux: https://www.archlinux.org/packages/?q=mediainfo
-- FreeBSD: http://www.freshports.org/multimedia/mediainfo/
+- Debian: https://packages.debian.org/wheezy/MediaInfo
+- Ubuntu: http://packages.ubuntu.com/utopic/MediaInfo
+- RedHat / Fedora: https://apps.fedoraproject.org/packages/MediaInfo
+- OpenSuse: http://packman.links2linux.org/package/MediaInfo
+- Arch Linux: https://www.archlinux.org/packages/?q=MediaInfo
+- FreeBSD: http://www.freshports.org/multimedia/MediaInfo/
 - Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo
 
 ### Online Resources

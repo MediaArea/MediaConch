@@ -18,12 +18,12 @@ The timeline for facilitating standardization work through the IETF is presented
 * March - May 2015
 
 -- Extend FFV1 and MKV parsing within MediaInfo
--- Support Export format in Mediainfo adhering to commonly defined PREFORMA XML expression
+-- Support Export format in MediaInfo adhering to commonly defined PREFORMA XML expression
 -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA
 -- Set up milestones and tasks in github
 -- Set up project README in github
 -- Draft introductory posts to Open Source Portal
--- Automate nightly builds of mediainfo (initially) and later conch utilities
+-- Automate nightly builds of MediaInfo (initially) and later conch utilities
 -- Finalize recuitment of Document Shepard for IETF standardization process
 -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications
 -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft
