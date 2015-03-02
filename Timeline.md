@@ -69,6 +69,8 @@ The timeline for facilitating standardization work through the IETF is presented
 
 * March 2016 - December 2016 is known as the "Second Prototype" section of Phase 2
 
+The specific timeline of the Second Prototype section is largely dependent on and responsive to the outcome of the prior Re-Design section, community response, and feedback. The timeline for the Second Prototype section will be reviewed and redesign with collaboration of Preforma but this timeline presents a basis on what we presently anticipate.
+
 * March - April 2016
 
 -- Present proposed Standard at IETF 95
