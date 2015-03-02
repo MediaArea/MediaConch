@@ -502,5 +502,7 @@ MediaArea demonstrated his capability to understand the need of the memory insti
 
 The MediaArea team is active in the open source community and has presented the work on Preforma at two conferences during Phase 1:
 
-- Dave Rice presented our work on Preforma at FOSDEM on January 31st https://fosdem.org/2015/schedule/event/enabling_video_preservation/
-- Ashley Blewer presented our work at Code4Lib on February 11th http://wiki.code4lib.org/2015_Lightning_Talks
+- Dave Rice presented our work on Preforma at FOSDEM on January 31st:
+ https://fosdem.org/2015/schedule/event/enabling_video_preservation/
+- Ashley Blewer presented our work at Code4Lib on February 11th:
+ http://wiki.code4lib.org/2015_Lightning_Talks
