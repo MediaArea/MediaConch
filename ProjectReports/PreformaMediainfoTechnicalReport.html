@@ -327,7 +327,7 @@
 </ul>
 <p>Programming language : C++</p>
 <h2 id="reporter">Reporter</h2>
-<p>Within each of the developed user interfaces there will be ways to export raw metadata and human-readable JSON/XML reports after the conformance checking process. The reporter will define and express how a file’s checked metadata corresponds to the validation result standards.</p>
+<p>Within each of the developed user interfaces there will be ways to export raw metadata and human-readable JSON/XML/HTML/PDF reports after the conformance checking process. The reporter will define and express how a file’s checked metadata corresponds to the validation result standards.</p>
 <ul>
 <li>exports a machine readable report, including preservation metadata for each file checked</li>
 <li>exports a report that allows external software agents to further process the file</li>
@@ -340,12 +340,8 @@
 <ul>
 <li>Core : REST API</li>
 </ul>
-<p>Programming language :</p>
-<ul>
-<li><p>CLI : C++</p></li>
-<li><p>GUI : C++ / Qt (LGPLv3+)</p></li>
-<li><p>Web : PHP/Symfony (MIT)</p></li>
-</ul>
+<p>Programming language : C++</p>
+<p>Will use PoDoFo (LGPLv3+) for PDF export</p>
 <h2 id="user-interface">User interface</h2>
 <p>The User interface (UI) is the shell component that allows direct interaction between users (or other systems) and the PreForma components:</p>
 <ul>
@@ -495,8 +491,16 @@
 <li>allow policies to be encapsulate within over conditional tests with an if/else approach</li>
 </ul>
 <p>The policy designer interface will inform the user with a general indicator as to how time-consuming the test if. For instance to test that all selected Matroska files are version 3 or higher may be done with a quick header parse, but to test that all FFV1 frames have valid embedded CRCs would take a lot more time. Although policy sets may provide an indicator as to the amount of time required (i.e. which sets are quick and which are intensive). This information may be used to set up task scheduling efficiently.</p>
+<div class="figure">
+<img src="./Design/GUI/PolicyDesignerMockup.png" alt="policy designer interface" />
+<p class="caption">policy designer interface</p>
+</div>
 <h4 id="file-selection-interface">File Selection Interface</h4>
 <p>The file selection interface shall allow the operator to load files through such methods as drag-and-drop, selection through system dialogs, or file system queries. Such sets of files or queries to identify files may then be saved, name, and described. Thus an operator may define a particular directory as an entry point for acquisitions, a queue for quality control assessment, or archival storage.</p>
+<div class="figure">
+<img src="./Design/GUI/PolicySelectionMockup.png" alt="policy selection interface" />
+<p class="caption">policy selection interface</p>
+</div>
 <h4 id="policy-test-interface">Policy Test Interface</h4>
 <p>Within the Policy Test Interface, the user may associate policy sets and file selections to form a policy test. Policy tests may contain name and descriptions which will be passed through to the resulting report to provide context. The policy tests may then be run directly or assigned to the task scheduler of the Shell. Within the Policy Checker GUI the results of the policy tests may then viewed or analysis within the Reporter GUI.</p>
 <p>The policy test interface will provide access to a log of policy tests, the context of each test, and any errors in running the policy test (such as the file selection being unavailable).</p>
