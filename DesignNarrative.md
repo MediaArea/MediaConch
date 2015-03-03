@@ -97,7 +97,7 @@ MediaArea plans to include these features commonly within MKV, FFV1, and LPCM re
 - Export of the same data within a semantically equivalent JSON format
 - Other functions based on PREFORMAXML (such as generation of PDF formats or summarization of multiple collections of PREFORMAXML) will happen within the "Shell" component
 
-### Fixer
+### Metadata Fixer
 
 MediaArea will produce a fixer that allows for editing the file. Enabling this function will be performed with a substantial amount of caution as in some cases a user could use it to change a file considered a preservation master. The fixer will support assessing a file first to determine the risk of editing a structurally unhealthy file and provide suitable levels of warning to the user.
 
@@ -115,15 +115,13 @@ Fixes for Matroska files could include fixing metadata tags that don’t include
 
 Because many files focused on with FFV1 and Matroska implementation checkers will be quite large, MediaArea plans to provide options to either rewrite the original file with the check or edit the file in place so that the file is only changed according to the fix that is request. With the latter option is the user is 'fixing' the metadata in a 50 gigabyte Matroska file only the last few megabytes of the Matroska tagging element may be rewritten without a requirement to rewrite the non tagging elements at the beginning of the file (MediaArea deployed a similar feature within BWF MetaEdit).
 
-### Core
+### Shell
 
-The shell will coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PREFORMA seeks that the shell developed by each supplier supports each supplier's implementation checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but to support third-party development of additional implementation checkers to utilize the produced shells.
+The shell will coordinate the actions of the implementation checker, policy checker, reporter and fixer. As PREFORMA seeks that the shell developed by each supplier be modular and support each supplier's conformance checker(s), MediaArea encourages all suppliers to work collaboratively to negotiate API documentation to support not only our own interoperability but also third-party development of additional implementation checkers to utilize the produced shells.
 
 The development of the shell will strive to facilitate an intuitive and informed use by memory institutions at both expert and non-expert levels. The shell will include substantial internal documentation that mimics the online resources that we will provide so that the shell and implementation checker function well offline.
 
-MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the Shell to load queues of files from lists of filepaths or URLs. Because of the size of data involved in audiovisual checkers MediaArea will give priority to designing the shell and implementation checker to perform multi-threaded and optimized processing.
-
-#### Implementation Checker (Shell)
+MediaArea will implement a scheduling service within the shell so that large tasks may be performed overnight or according to a defined schedule. MediaArea will enable the shell to load queues of files from lists of filepaths or URLs. Because of the size of data involved in audiovisual checkers MediaArea will give priority to designing the shell and implementation checker to perform multi-threaded and optimized processing.
 
 The shell produced will support all functions and requirements of the implementation checker as described as an independent utility and also support:
 
