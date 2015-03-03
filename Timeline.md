@@ -11,7 +11,9 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Participation in meetings with PREFORMA, other suppliers, and community
 -- Self-evaluation of adherance to project timeline, goals, and budgets
 -- Reporting on project progress
--- Managing issue tracker
+-- Managing issue tracker and communication channels
+-- Promoting the PREFORMA project via social media
+-- Outreach for the PREFORMA project via open source conference presentations
 
 * March 2015 - October 2015 is known as the "First Prototype" section of Phase 2
 
@@ -20,8 +22,8 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Extend FFV1 and MKV parsing within MediaInfo
 -- Support Export format in MediaInfo adhering to commonly defined PREFORMA XML expression
 -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA
--- Set up milestones and tasks in github
--- Set up project README in github
+-- Set up milestones and tasks in Github
+-- Set up project README in Github
 -- Draft introductory posts to Open Source Portal
 -- Automate nightly builds of MediaInfo (initially) and later conch utilities
 -- Finalize recuitment of Document Shepard for IETF standardization process
@@ -52,7 +54,7 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Prepare and submit a second version of an Informational Internet-Draft for FFV1 and Matroska
 -- Provide feedback to FFmpeg and Matroska on version 4 development
 -- Publish documentation on various workflows and use cases
--- Release documentation focused on independent usage, usage in integration
+-- Release documentation focused on independent usage and usage in integration
 -- Finalize design and documentation of reporter output formats
 
 * October 2015
@@ -69,8 +71,8 @@ The timeline for facilitating standardization work through the IETF is presented
 
 * Jan - Feburary 2016
 
--- Submit either 1) working group proposal or 2) proposal for working group consens sponsorship; prepare documentation for transition from Internet-Draft to Standards track
--- Release report on the outcome of the Re-Design work, including updated timeline for Second Prototype.
+-- Submit either 1) working group proposal or 2) proposal for working group consensus sponsorship; prepare documentation for transition from Internet-Draft to Standards track
+-- Release report on the outcome of the Re-Design work, including updated timeline for Second Prototype
 
 * March 2016 - December 2016 is known as the "Second Prototype" section of Phase 2
 
@@ -78,6 +80,10 @@ The specific timeline of the Second Prototype section is largely dependent on an
 
 * March - April 2016
 
+-- Review project based on feedback and community response and integrate changes
+-- Develop strategy for continual open source support and development
+-- Finalize the development of integrating PREFORMA into the long-term MediaArea business model
+-- Plan for optimal integration with other suppliers
 -- Present proposed Standard for FFV1 and Matroska at IETF 95
 
 * May - June 2016
@@ -94,7 +100,7 @@ The specific timeline of the Second Prototype section is largely dependent on an
 
 * December 2016
 
--- Participation in Experience Workshop and prototype demostration in Berlin.
+-- Participation in Experience Workshop and prototype demostration in Berlin
 
 * June 2017
 
@@ -102,4 +108,4 @@ The specific timeline of the Second Prototype section is largely dependent on an
 
 * December 2017
 
--- Participation in the PREFORMA final conference in Stockholm.
+-- Participation in the PREFORMA final conference in Stockholm
