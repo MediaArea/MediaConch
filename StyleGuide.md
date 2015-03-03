@@ -87,36 +87,53 @@ MediaArea will follow the applicable rules for programming within the Qt cross-p
 Attention to detail will be given to the following rules/guidelines:
 
 Indentation:
+
 - Four spaces to should be given for indentation (not tabs)
 
 Variables:
-- Each variable should be declared on separate lines, only at the   moment they are needed
+
+- Each variable should be declared on separate lines, only at the moment they are needed
+
 - Avoid short names, abbreviations and single character names (only used for counters and temporaries)
+
 - Follow the case conventions for naming
 
 Whitespaces:
+
 - Use only one blank line and use when grouping statements as suited. Do not put multiple statements onto one line.
+
 - Also use a new line for the body of a control flow statement
+
 - Follow the specific single space conventions when needed
 
 Braces:
+
 - Attached braces should be used (follow guidelines for rules and exceptions)
+
 - Curly braces are used only when the body of a conditional statement contains 1+ line or when body of a conditional statement is empty (follow guidelines for rules and exceptions)
 
 Parenthesis:
+
 - Parenthesis should be used to group expressions
 
 Switch Statements and Jump Statements:
+
 - Case labels are in the same column as the switch
+
 - Each case should have a break statement at the end or a comment to indicate there is no intentional break
+
 - Do not use ‘else’ at the end of Jump Statements unless for symmetry purposes
 
 Line Breaks:
+
 - Lines should kept under 100 characters
+
 - Wrap text if necessary
+
 - Use commas at the end of wrapped text and operators at the beginning of new lines
 
 Exceptions:
+
 - Always try to achieve functional, consistent and readable code. When code does not look good, exceptions to the rules may pertain to fixing this situation.
 
 For more specific rules, examples, exceptions and guidelines, please refer to the Qt Coding Style guide: http://qt-project.org/wiki/Qt_Coding_Style
@@ -210,3 +227,5 @@ All software releases and digital assets delivered by MediaArea will be produced
 - All source code for all software developed by MediaArea during the PREFORMA project will always be identical and functional between these two specific open source licenses (“GPLv3 or later” and “MPLv2 or later”).
 
 - All open source digital assets for the software developed by MediaArea during the PREFORMA project will be made available under the open access license: Creative Commons license attribution – Sharealike 4.0 International (CC BY-SA v4.0). All assets will exist in open file formats within an open platform (an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004)).
+
+
