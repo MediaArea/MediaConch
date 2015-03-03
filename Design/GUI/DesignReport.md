@@ -31,7 +31,7 @@ MediaInfo is a powerful and valuable tool  with which to base metadata standards
 
 ## [BWF Metaedit](http://sourceforge.net/projects/bwfmetaedit/)
 
-*BWF MetaEdit was developed by the Federal Agencies Digitization Guidelines Initiative (FADGI) supported by AudioVisual Preservation Solutions. BWF MetaEdit permits embedding, validating, and exporting of metadata in Broadcast WAVE Format (BWF) files.*
+*BWF MetaEdit was developed by the Federal Agencies digitisation Guidelines Initiative (FADGI) supported by AudioVisual Preservation Solutions. BWF MetaEdit permits embedding, validating, and exporting of metadata in Broadcast WAVE Format (BWF) files.*
 
 Review of design elements:
 

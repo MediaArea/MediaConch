@@ -126,4 +126,4 @@ Note that the PREFORMA tender does not require decoding or subsequent baseband a
 We propose incorporating several compatible utilities into Conch to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.
 
 ### Plugin integration proof of concept: QCTools
-QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)
+QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitisation, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.)

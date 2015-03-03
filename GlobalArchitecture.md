@@ -49,7 +49,7 @@ A user also has the option to set up batch file checking and validating and sche
 
 ### Prioritization
 
-A user can also prioritize the checker to queue individual items and scheduled checks based on a defined priority level, with a lower priority placed on periodical checks. This function will be available through all versions of the checker (CLI, GUI, and Web UI). Priority levels for checks can be divided by High (for checks requested by user), Normal (for automated checks), Low (for periodical checks) requests.
+A user can also prioritize the checker to queue individual items and scheduled checks based on a defined priority level, with a lower priority placed on periodic checks. This function will be available through all versions of the checker (CLI, GUI, and Web UI). Priority levels for checks can be divided by High (for checks requested by user), Normal (for automated checks), Low (for periodic checks) requests.
 
 ### RESTful API
 
@@ -68,9 +68,9 @@ The Core serves as communication between all plugins within and outside of the C
 The Core has several major functions:
 
 * controls the checkers and manages data for the User Interface
-* waits for commands from the files listener and User Interface
+* waits for commands from the Files listener and User Interface
 * sends commands to the scheduler for file-checking
-* launch periodical checks
+* launch periodic checks
 * communicates with the database to store and retrieve data from the checkers
 * sends data to DIRECT
 
@@ -122,10 +122,10 @@ The Scheduler element is a form of software "middleware" that distributes the fi
 * batch processing
 * priority
 
-The scheduler can take care of the priority function within the implementation checkers :
-* high : for checks requested by user
-* normal : for automated checks
-* low : for periodical checks
+The Scheduler can take care of the priority function within the implementation checkers:
+* high: for checks requested by user
+* normal: for automated checks
+* low: for periodic checks
 
 Interface :
 
@@ -138,7 +138,7 @@ RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)
 
 ## Files listener
 
-The Files listener is a background process that listens for new files available for checking and validating. Automated checking, set up through the software, will notify when new files come into the system. Each time a new file is available, or if a file is modified, an event is sent to the Core which automatically requests a check.
+The Files listener is a background process that listens for new files available for checking and validating. Automated checking, set up through the software, will send a notification when new files come into the system. Each time a new file is available, or if a file is modified, an event is sent to the Core which automatically requests a check.
 
 Different solutions can be implemented depending on the file’s storage and operating system. Implemented solutions can include an inotify notification system API for a Linux kernel or kqueue/kevent for a BSD kernel or files directory scanning.
 
@@ -177,14 +177,14 @@ Programming language : C++
 
 Within each of the developed user interfaces there will be ways to export raw metadata and human-readable JSON/XML/HTML/PDF reports after the conformance checking process. The reporter will define and express how a file’s checked metadata corresponds to the validation result standards.
 
-* exports a machine readable report, including preservation metadata for each file checked
+* exports a machine-readable report, including preservation metadata for each file checked
 * exports a report that allows external software agents to further process the file
-* exports a human readable report
-* exports a "fool-proof" report which also indicates what should be done to fix the non-conformances
+* exports a human-readable report
+* exports a foolproof report which also indicates what should be done to fix the non-conformances
 
-The machine readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PREFORMA ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.
+The machine-readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PREFORMA ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.
 
-The human readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.
+The human-readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.
 
 Interface :
 
@@ -201,7 +201,7 @@ The User interface (UI) is the shell component that allows direct interaction be
 * displays test results
 * controls the Core
 * allows metadata (descriptive and structural) to be edited
-* edit configuration (periodical checks, policy checker, user rights)
+* edit configuration (periodic checks, policy checker, user rights)
 
 Conch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:
 
