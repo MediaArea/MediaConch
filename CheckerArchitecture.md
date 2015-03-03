@@ -106,6 +106,8 @@ Conch will support the coherency check between all suppoted formats (see Contain
 
 ## Baseband Analyzer
 
+(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)
+
 ### Conch
 
 - None (only creation of the API)
