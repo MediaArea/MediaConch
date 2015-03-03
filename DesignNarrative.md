@@ -466,10 +466,10 @@ This approach to risk management is well-established within The MediaArea teamâ€
 * Note date of the ending of risk
 * Contextualize in writing
 * Share with pertinent parties
-** status and date when the status was last recorded,
-** person who accepted the risk, e.g. project manager,
-** conclusion date and
-** reason for conclusion.
+    * status and date when the status was last recorded,
+    * person who accepted the risk, e.g. project manager,
+    * conclusion date and
+    * reason for conclusion.
 
 ###  Internal Risk Assessment
 
@@ -510,3 +510,4 @@ Should the software become incompatible due to major operating system updates, A
 #### Open Source Compliance
 
 Should the supporting software chosen as foundational software for the creation of this project become unavailable due to open source licensing complications, an alternative open source solution will either be chosen to work in its place, or an in-house solution will be developed, depending on if an alternative solution exists or if budget constraints allow for the creation of in-house software components. Timing and budget priorities can be assessed, reviewed, and implemented according to need. All changes will be discussed and considered with the input of relevant communities.
+

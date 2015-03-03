@@ -24,15 +24,15 @@ MediaArea has developed such interfaces in other conformance- and metadata-focus
 
 The contents of the File List will be configurable according to the metadata values indexed by MediaInfo during a file parse. In the case of Matroska files these metadata values will also be categorized according to their enclosing Matroska section. These sections include:
 
-    - Header
-    - Meta Seek
-    - Segments
-    - Tracks
-    - Chapters
-    - Clusters
-    - Cueing Data
-    - Attachment
-    - Tagging
+- Header
+- Meta Seek
+- Segments
+- Tracks
+- Chapters
+- Clusters
+- Cueing Data
+- Attachment
+- Tagging
 
 In addition to the Matroska sections, a category of file attribute data will also be provided to show information such as file size, file name, etc. Additionally, a 'global' section is provided to show summarization of the file's status and structure.
 
@@ -40,17 +40,17 @@ A toolbar in the File List Layout will enable the user to select one or many sec
 
 As an example, checking to show the columns associated with the Matroska Header shall reveal columns such as:
 
-    - File format (Matroska, Webm, etc)
-    - Format version (version of Matroska, etc)
-    - Minimum read version
+- File format (Matroska, Webm, etc)
+- Format version (version of Matroska, etc)
+- Minimum read version
 
 A global section would provide informational columns such as:
 
-    - Amount of VOID data with the Matroska file
-    - Percentage of CRC coverage with the Matroska file
-    - Number of metadata tags
-    - Number of chapters
-    - Number of attachments
+- Amount of VOID data with the Matroska file
+- Percentage of CRC coverage with the Matroska file
+- Number of metadata tags
+- Number of chapters
+- Number of attachments
 
 As metadata tags may vary substantially, the tagging section of the File List Layout will show selected top-level metadata tags as well as a column to summarize what top-level metadata tags are not shown. Columns values which show top-level metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of lower level metadata tags can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown top-level metadata tags may be edited directly.
 

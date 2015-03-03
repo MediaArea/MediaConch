@@ -62,9 +62,9 @@ This is broken down into the following categories:
 * Policy Checker
 * Reporter
 * Shell(s)
-** CLI (Command line interface)
-** GUI (Graphical user interface)
-** Web (Web based interface)
+    * CLI (Command line interface)
+    * GUI (Graphical user interface)
+    * Web (Web based interface)
 
 ## Checker Architecture
 
@@ -83,3 +83,4 @@ This is broken down into the following categories:
 * Stream/essence decoder (through plugin)
 * Stream/container coherency check
 * Baseband analyzer (optional, through plugin)
+

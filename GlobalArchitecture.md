@@ -123,6 +123,7 @@ The Scheduler element is a form of software "middleware" that distributes the fi
 * priority
 
 The Scheduler can take care of the priority function within the implementation checkers:
+
 * high: for checks requested by user
 * normal: for automated checks
 * low: for periodic checks

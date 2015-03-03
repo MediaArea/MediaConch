@@ -100,7 +100,7 @@ The specific timeline of the Second Prototype section is largely dependent on an
 
 * December 2016
 
--- Participation in Experience Workshop and prototype demostration in Berlin
+-- Participation in Experience Workshop and prototype demonstration in Berlin
 
 * June 2017
 
@@ -109,3 +109,5 @@ The specific timeline of the Second Prototype section is largely dependent on an
 * December 2017
 
 -- Participation in the PREFORMA final conference in Stockholm
+
+
