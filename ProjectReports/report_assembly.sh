@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# unassigned reports
+# Timeline.md
+
 reportsuffix="MediaAreaConch"
 phase1_report_basename="${reportsuffix}_DesignReport"
 conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRegistry"
@@ -65,7 +69,7 @@ for reportbase in \
     "${standardization_appendix_basename}"
 do
     toc "tmp_${reportbase}.md"
-    pandoc -V geometry:margin=1in -o "ProjectReports/${reportbase}.pdf" "tmp_${reportbase}.md"
+    pandoc -V geometry:margin=1in -V papersize:"a4paper" -o "ProjectReports/${reportbase}.pdf" "tmp_${reportbase}.md"
     pandoc -o "ProjectReports/${reportbase}.html" "tmp_${reportbase}.md"
 done
 cd "${pwd}"
