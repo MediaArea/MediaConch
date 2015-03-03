@@ -21,7 +21,8 @@ for report in \
     FuncReqPolicyChecker.md \
     FuncReqMetadataFixer.md \
     FuncReqReporter.md \
-    StyleGuide.md
+    StyleGuide.md \
+    Conclusion.md
 do
     if [ -f "${report}" ] ; then
         cat "${report}" >> "tmp_${phase1_report_basename}.md"
