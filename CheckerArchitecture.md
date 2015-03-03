@@ -63,9 +63,6 @@ Plugin
 ### Plugin integration proof of concept: jpylyzer
 For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)
 
-### Plugin integration proof of concept: DV Analyzer
-For DV (BSD license, compatible with GPLv3+ and MPL2+)
-
 ### Optional 
 
 (Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)
