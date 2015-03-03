@@ -8,6 +8,7 @@ reportsuffix="MediaAreaConch"
 phase1_report_basename="${reportsuffix}_DesignReport"
 conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRegistry"
 standardization_appendix_basename="${reportsuffix}_Appendix_Standardization"
+questionnaire_appendix_basename="${reportsuffix}_Appendix_Questionnaire"
 pwd=$(pwd)
 cd $(dirname "${0}")
 cd ..
@@ -75,4 +76,11 @@ do
     pandoc -V geometry:margin=1in -V papersize:"a4paper" -o "ProjectReports/${reportbase}.pdf" "tmp_${reportbase}.md"
     pandoc -o "ProjectReports/${reportbase}.html" "tmp_${reportbase}.md"
 done
+
+# questionnaire
+cat Questionnaire/QuestionnaireIntroAndSummary.md > "tmp_${questionnaire_appendix_basename}.md"
+pandoc -V geometry:margin=1in -V papersize:"a4paper" -o "tmp_${questionnaire_appendix_basename}.pdf" "tmp_${questionnaire_appendix_basename}.md"
+pdfjoin -o "ProjectReports/${questionnaire_appendix_basename}.pdf" "tmp_${questionnaire_appendix_basename}.pdf" "Questionnaire/QuestionnaireResponsesAnalytics.pdf"
+
 cd "${pwd}"
+
