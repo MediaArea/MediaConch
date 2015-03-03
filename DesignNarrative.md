@@ -321,6 +321,20 @@ MediaArea has approached several individual and institutional partners from vary
 
 Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.
 
+## Example of usage in European Memory Institutions
+
+The National Library of Wales (NLW) has used MediaInfo in their digital audiovisual preservation workflow for several years.
+
+Former Chief Technical Officer of the National Library of Wales said:
+"As a National Library incorporating the National Screen and Sound Archive of Wales, we have to preserve digital audiovisual material in perpetuity. Part of this work is characterising AV files and extracting technical metadata. We found no better tool at this job than MediaInfo, and the support and response from MediaArea SARL has always been excellent."
+
+Vicky Phillips, Digital Standard Manager, said:
+"The National Library of Wales has been using MediaInfo as a technical metadata extractor tool since we started preserving Off air (television and radio) recordings in 2009.  From 2009 up until last year we were using an internally developed transformation stylesheet (xslt) in order to map the output from MediaInfo to the Library of Congress audioMD and videoMD metadata standard.  This metadata was then stored alongside other administrative and descriptive metadata for that object within a METS document within our Digital Repository.  At the time this worked quite well for us, although we had to fix any issues with the xslt when changes were made to MediaInfo output, which caused our transformation to fail or produce errors.  However, we did feel that this localised schema mapping implementation wasn’t a very sustainable solution. So when we were looking at updating the system which captures our Off-air recordings last year and were looking at reviewing workflows and metadata etc. we decided that this would be a good opportunity to try and get the technical metadata we required for preservation purposes to be output directly from MediaInfo. The Library of Congress audioMD and videoMD were always seen as just a stop gap until other metadata schemas were developed. We therefore started looking at both PBCore and EBUCore. EBUCore’s elements seemed a lot more specific than PBCore and being an European standard which is utilised by a number of European projects it was felt that this was the best option for us. Discussion between MediaInfo, EBUCore and myself then commenced in order to produce EBUCore directly from MediaInfo.  With the aim being of developing a mapping which is developed and maintained by those who are involved with the software and metadata standard (developers and users). This would then enable the audio visual community to be able to save technical metadata to a globally recognised metadata standard without having to do any mapping themselves.
+We also use MediaInfo as a validation tool too (similar to JHove). For example we use it to check that the duration of the digital file isn’t empty.  If it’s empty we know that there is an issue with the file and somebody takes a look at it and sometimes the item is re-processed.
+We have been running MediaInfo on MP2-TS files from 2009 and are planning on running it on DPX, ProRes and IMX files very soon."
+
+MediaArea demonstrated his capability to understand the need of the memory institution, to "translate" it in a technical implementation, and to discuss the project with a standardization institution.
+
 ## Open Source Ecosystem
 
 ### Cross Platform Support
@@ -393,13 +407,22 @@ Matroska has a detailed metadata specification at http://www.matroska.org/techni
 
 * fourcc is AVI-style with some bitstreams not having a clear license due to coming from Microsoft
 
-### Sustainable Open Source Business Ecosystem
+## Sustainable Open Source Business Ecosystem
 
 MediaArea has long been an open source native and has an open source business model based on sponsored support (bug correction and feature requests), application support, and branched customization based on an institution's specific needs since 2007. Previously existing in a non-business capacity since 2002.
 
 MediaArea's long term goal is to merge previous open source standalone products designed specifically for broadcasting and memory institutions into its flagship product, MediaInfo. These products include the WAV implementation checker, professional metadata editor and fixer BWF MetaEdit; the AVI implementation checker, professional metadata editor and fixer AVI MetaEdit; and the baseband analyzer for quality assurance, QCTools. Each piece of aforementioned software, designed by MediaArea, has a strong focus on individual areas of digital preservation based on the specific sponsor’s needs. Thanks to our discussions with memory institutions, we strongly believe that an integrated environment for conformance checking is sorely needed in the field. By sponsoring the Matroska/FFV1/LPCM + shell/Implementation Checker/Policy Checker/Reporter/Metadata fixer parts of this project, PREFORMA  plays a major role in the creation of a fully integrated and open source implementation checker.
 
 MediaArea plans to build this stable, integrated solution over the course of the PREFORMA project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other PREFORMA investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from PREFORMA developers and stakeholders is provided in a meaningful timeframe. After the PREFORMA project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a PREFORMA-specific version, free of non-PREFORMA related layers, as a subset of our own integrated solution.
+
+## Participation at Open Source conferences
+
+The MediaArea team is active in the open source community and has presented the work on PREFORMA at two conferences during Phase 1:
+
+- Dave Rice presented our work on PREFORMA at FOSDEM on January 31st:
+ https://fosdem.org/2015/schedule/event/enabling_video_preservation/
+- Ashley Blewer presented our work at Code4Lib on February 11th:
+ http://wiki.code4lib.org/2015_Lightning_Talks
 
 ## Project Management Strategy
 
@@ -483,26 +506,3 @@ Should the software become incompatible due to major operating system updates, A
 #### Open Source Compliance:
 
 Should the supporting software chosen as foundational software for the creation of this project become unavailable due to open source licensing complications, an alternative open source solution will either be chosen to work in its place, or an in-house solution will be developed, depending on if an alternative solution exists or if budget constraints allow for the creation of in-house software components. Timing and budget priorities can be assessed, reviewed, and implemented according to need. All changes will be discussed and considered with the input of relevant communities.
-
-### Example of usage in European memory institutions
-
-The National Library of Wales (NLW) has used MediaInfo in their digital audiovisual preservation workflow for several years.
-
-Former Chief Technical Officer of the National Library of Wales said:
-"As a National Library incorporating the National Screen and Sound Archive of Wales, we have to preserve digital audiovisual material in perpetuity. Part of this work is characterising AV files and extracting technical metadata. We found no better tool at this job than MediaInfo, and the support and response from MediaArea SARL has always been excellent."
-
-Vicky Phillips, Digital Standard Manager, said:
-"The National Library of Wales has been using MediaInfo as a technical metadata extractor tool since we started preserving Off air (television and radio) recordings in 2009.  From 2009 up until last year we were using an internally developed transformation stylesheet (xslt) in order to map the output from MediaInfo to the Library of Congress audioMD and videoMD metadata standard.  This metadata was then stored alongside other administrative and descriptive metadata for that object within a METS document within our Digital Repository.  At the time this worked quite well for us, although we had to fix any issues with the xslt when changes were made to MediaInfo output, which caused our transformation to fail or produce errors.  However, we did feel that this localised schema mapping implementation wasn’t a very sustainable solution. So when we were looking at updating the system which captures our Off-air recordings last year and were looking at reviewing workflows and metadata etc. we decided that this would be a good opportunity to try and get the technical metadata we required for preservation purposes to be output directly from MediaInfo. The Library of Congress audioMD and videoMD were always seen as just a stop gap until other metadata schemas were developed. We therefore started looking at both PBCore and EBUCore. EBUCore’s elements seemed a lot more specific than PBCore and being an European standard which is utilised by a number of European projects it was felt that this was the best option for us. Discussion between MediaInfo, EBUCore and myself then commenced in order to produce EBUCore directly from MediaInfo.  With the aim being of developing a mapping which is developed and maintained by those who are involved with the software and metadata standard (developers and users). This would then enable the audio visual community to be able to save technical metadata to a globally recognised metadata standard without having to do any mapping themselves.
-We also use MediaInfo as a validation tool too (similar to JHove). For example we use it to check that the duration of the digital file isn’t empty.  If it’s empty we know that there is an issue with the file and somebody takes a look at it and sometimes the item is re-processed.
-We have been running MediaInfo on MP2-TS files from 2009 and are planning on running it on DPX, ProRes and IMX files very soon."
-
-MediaArea demonstrated his capability to understand the need of the memory institution, to "translate" it in a technical implementation, and to discuss the project with a standardization institution.
-
-### Participation at Open Source conferences
-
-The MediaArea team is active in the open source community and has presented the work on PREFORMA at two conferences during Phase 1:
-
-- Dave Rice presented our work on PREFORMA at FOSDEM on January 31st:
- https://fosdem.org/2015/schedule/event/enabling_video_preservation/
-- Ashley Blewer presented our work at Code4Lib on February 11th:
- http://wiki.code4lib.org/2015_Lightning_Talks
