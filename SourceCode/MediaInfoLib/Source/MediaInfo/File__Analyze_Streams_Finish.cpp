@@ -567,24 +567,6 @@ void File__Analyze::Streams_Finish_StreamOnly_Video(size_t Pos)
             }
         }
     #endif //defined(MEDIAINFO_VC3_YES)
-
-    //Hack for DCA: provide a non technical value. Use it at your own risks
-    if (Retrieve(Stream_Video, Pos, "DecodedWidthAfterPAR1:1Transformation").empty())
-    {
-        float64 Height;
-        if (Retrieve(Stream_Video, Pos, Video_Height_Original).empty())
-            Height=Retrieve(Stream_Video, Pos, Video_Height).To_float64();
-        else
-            Height=Retrieve(Stream_Video, Pos, Video_Height_Original).To_float64();
-        float64 DisplayAspectRatio=Retrieve(Stream_Video, Pos, Video_DisplayAspectRatio).To_float64();
-        if (Height && DisplayAspectRatio)
-        {
-            float64 DecodedWidthAfterPAR=Height*DisplayAspectRatio;
-            Fill(Stream_Video, Pos, "DecodedWidthAfterPAR1:1Transformation", DecodedWidthAfterPAR, 0);
-            (*Stream_More)[Stream_Video][Pos](Ztring().From_Local("DecodedWidthAfterPAR1:1Transformation"), Info_Options)=__T("N NT");
-        }
-    }
-    //Hack for DCA: provide a non technical value. Use it at your own risks
 }
 
 //---------------------------------------------------------------------------

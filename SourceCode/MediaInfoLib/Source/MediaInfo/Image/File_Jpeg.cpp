@@ -148,9 +148,9 @@ string Jpeg2000_Rsiz(int16u Rsiz)
 {
     switch (Rsiz)
     {
-        case 0x0000: return "Profile-0";
-        case 0x0001: return "Profile-1";
-        case 0x0002: return string(); // No restrictions
+        case 0x0000: return "No restrictions";
+        case 0x0001: return "Profile-0";
+        case 0x0002: return "Profile-1";
         case 0x0003: return "D-Cinema 2k";
         case 0x0004: return "D-Cinema 4k";
         case 0x0005: return "D-Cinema 2k Scalable";
@@ -710,7 +710,7 @@ void File_Jpeg::SIZ()
                 Fill(StreamKind_Last, 0, "ChromaSubsampling", ChromaSubsampling);
 
                 //Not for sure
-                if (ChromaSubsampling==__T("4:4:4") && (Retrieve(StreamKind_Last, 0, "Format_Profile")==__T("3") || Retrieve(StreamKind_Last, 0, "Format_Profile")==__T("4")))
+                if (ChromaSubsampling==__T("4:4:4") && (Retrieve(StreamKind_Last, 0, "Format_Profile")==__T("D-Cinema 2k") || Retrieve(StreamKind_Last, 0, "Format_Profile")==__T("D-Cinema 4k")))
                     Fill(StreamKind_Last, 0, "ColorSpace", "XYZ");
                 else if (!IsSub)
                 {
