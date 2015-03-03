@@ -313,7 +313,7 @@ MediaArea has approached several individual and institutional partners from vary
 - Ian Hendersohn (User of FFV1/mkv/lpcm in a national archive): Provide testing and feedback of project tools
 - Peter Bubestinger (User of FFV1/lpcm in an audiovisual archive): Provide testing and feedback of project tools
 - Artefactual Systems (consulting and development company): Provide testing and feedback of project tools, implement select conformance checker tools into Archivematica
-- Kieran Kuhnya (encoding strategist): Advisor on implementation and standardization efforts
+- Richard Barnes (standardization strategist): Advisor on implementation and standardization efforts
 
 Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.
 
