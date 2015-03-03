@@ -1,26 +1,28 @@
 # Introduction
 
-Within a PREFORMA project to design tools and workflows to assess and verify the adherence of open file formats to their specifications, the specifications themselves are a crucial foundation to the ongoing stability and efficiency of the project. In the case of Matroska and FFV1 specification work have been under development but has been undertaken the vetting processes associated with a more formal standardization process. MediaArea finds that strengthening the disclosure, transparency, and credibility of Matroska and FFV1 are relevant objectives to the development of conformance checkers and present this plan to coincide with our larger proposal for software development to meet the PREFORMA Challenge.
+Within a PREFORMA project to design tools and workflows to assess and verify the adherence of open file formats to their specifications, the specifications themselves are a crucial foundation to the ongoing stability and efficiency of the project. In the case of Matroska and FFV1, specification work has been under development but has yet to undertake the vetting processes associated with a more formal standardization process. MediaArea finds that strengthening the disclosure, transparency, and credibility of Matroska and FFV1 are relevant objectives to the development of conformance checkers and present this plan to coincide with our larger proposal for software development to meet the PREFORMA Challenge.
 
 # Objectives
 
-The priorities here are largely focused on FFV1 sustainability factors:
+The priorities here are largely focused on archival sustainability factors:
 
 * Ensuring that complete, authoritative, open and accessible documentation is available
 * Credibility
 * Transparency
 
-MKV v3 and FFV1 v3 to be submitted to the Internet Engineering Task Force(IETF) as informational streams. In this way both can be standardized without IETF changing what is already in use. The objective here is to improve the sustainability factors for both formats including disclosure, credibility, and transparency.
+MediaArea plans to persue, facilitate, and assist in the formalization and submission of specification documents for Matroska version 3 and FFV1 version 3 to the Internet Engineering Task Force (IETF) as informational streams. In this way both can be standardized without IETF changing what is already in use. The objective here is to improve the sustainability factors for both formats including disclosure, credibility, and transparency while also creating a mechanism to clarify, authoritatively, the intent of the specifications concurrent to the development of the conformance checker. Following the establishment of informational standards, we would coordinate a community driven effort to contribute to the development of version 4 of Matroska and FFV1 and submission of the results through more formal and vetted IETF standardization procedures.
 
 ## Advantages of Pursuing Standardization Within IETF
 
 *"The review that comes with the process leads to better designs (or at least more confidence in them by others), and less fear of the format being changed arbitrarily."* (NOTE:  From an email conversation between the PREFORMA project team and a project interviewee)
 
-Three options were initially considered for pursuing standardization: IETF, SMPTE (Society of Motion Picture and Television Engineers), and ISO(International Organization for Standardization. Foremost among a number of factors that made SMPTE and ISO unsuitable for this endeavor was the fact that both SMPTE and ISO have a paywall in place.  Payment for access to standards runs counter to the ideals of the PREFORMA project. Within the context of digital preservation it is imperative for file formats to be well-disclosed, understood, and controlled within an archival setting; specification paywalls provide an obstacle to this objective.
+Three options were initially considered for pursuing standardization: IETF, SMPTE (Society of Motion Picture and Television Engineers), and ISO (International Organization for Standardization. Foremost among a number of factors that made SMPTE and ISO unsuitable for this endeavor was the fact that both SMPTE and ISO have a paywall in place. We find that payment for access to standards runs counter to the ideals of the PREFORMA project. Within the context of digital preservation it is imperative for file formats to be well-disclosed, understood, and controlled within an archival setting; specification paywalls provide an obstacle to this objective.
 
-Our research and conversations with users and experts led us to conclude that IETF is the most relevant body for FFV1 and MKV work. Furthermore, IETF has experience with open audiovisual file formats (e.g. RFC 3533 for OGG container format, RFC 6386 for VP8 video format and RFC 6716 for Opus audio format).
+Our research and conversations with users and experts led us to conclude that IETF is the most relevant body for Matroska and FFV1 work. Furthermore, IETF has experience with open audiovisual file formats (e.g. RFC 3533 for OGG container format, RFC 6386 for VP8 video format and RFC 6716 for Opus audio format).
 
 ## Preliminary Outreach
+
+Standardization procedures require a high degree of planning, network, and strategy. MediaArea proposes to pursue a standardization plan that works well with the PREFORMA timeline, benefits the Matroska and FFV1 user community, and contributes to the development, accuracy, and credibility of Matroska and FFV1 conformance checkers. To produce a well-reasoned plan, MediaArea reached out to the following groups for advice on process, objective and strategy:
 
 * Conversations with experts and OPUS standard lead authors
 * Communication with IETF members and Working Group Area-Directors
@@ -41,14 +43,15 @@ The following standards will be useful in mapping out the most effective route t
 
 * OGG
     * [https://tools.ietf.org/html/rfc3533](https://tools.ietf.org/html/rfc3533)
-
     * [https://tools.ietf.org/html/rfc5334](https://tools.ietf.org/html/rfc5334)
+
 * OAuth
  - *OAuth is of particular interest because the process for publication informs how we intend to pursue publication,   namely by submitting an Internet-Draft and using feedback from the IETF community to inform creation of a Standards  proposal.*
 
     * [http://oauth.net/2/](http://oauth.net/2/)
     * [https://tools.ietf.org/html/rfc5849](https://tools.ietf.org/html/rfc5849)
     * [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
+
 * VP8
     * [https://tools.ietf.org/html/rfc6386](https://tools.ietf.org/html/rfc6386)
 
@@ -134,6 +137,8 @@ The following standards will be useful in mapping out the most effective route t
 
 ## Personnel
 
+For such a standardization effort, MediaArea intends to coordinate an open, transparent, and participatory process. We also plan for particular defined roles within the process and draws partly from our project advisors.
+
 1. Experts: Michael Niedermayer, Luca Barbato, Moritz Bunkus, Ian Henderson
 
 2. IETF Advisor (to be confirmed): Richard Barnes, RAI Area Director to March 2015
@@ -142,7 +147,7 @@ The following standards will be useful in mapping out the most effective route t
 
 4. Coordination Author: (NOTE:  The coordinating author and standards facilitator may or may not be the same person. The coordinating author and standards facilitator shall be outside of FFmpeg/MKV community in order to avoid conflict or perception of bias.) TBD
 
-5. Standards Facilitator: TBD
+5. Standards Facilitator: Tessa Fallon, MediaArea
 
 6. Document Shepherd (NOTE:  http://tools.ietf.org/html/rfc4858 ): may be IETF member or project member
 
@@ -156,7 +161,7 @@ Confirmed participation from staff affiliated with the following institutions/co
 
 ## Community
 
-As with the larger project, we seek a great deal of transparency and participation in the process.  Engagement with relevant communities and stakeholders will be of paramount importance to making the standardization effort successful.  To that end, the following will be implemented to ensure constructive, cooperative, and inclusive participation:
+As with the larger project, we seek a great deal of transparency and participation in the process. Engagement with relevant communities and stakeholders will be of paramount importance to making the standardization effort successful. Memory institutions, Preforma administrators, the other Preforma suppliers, the related open source communities, and Artefactual System are encouraged to participate actively. The Open Source Portal will be used to report on the progress of these efforts and promote involvement and oversight. To that end, the following will be implemented to ensure constructive, cooperative, and inclusive participation:
 
 * Code of Conduct
     * Procedures for addressing conflicts, blocking issues, etc
