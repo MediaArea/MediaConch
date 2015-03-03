@@ -1,4 +1,4 @@
-# PREFORMA Global Architecture
+# Global Architecture
 
 MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
 
@@ -8,7 +8,7 @@ MediaArea's Conch strives to offer access and ease to users with a structure tha
 
 ## Common to all elements
 
-All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.
+The components may be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.
 
 ### File access
 
@@ -38,7 +38,7 @@ The architecture does not require direct internet access. Users can work with an
 
 ### Automation
 
-PREFORMA includes the option of automated checking, allowing for users to receive notifications when new files are placed or come into the system.
+Our design includes the option of automated checking, allowing for users to receive notifications when new files enter the system or meet certain policy or implementation outcomes.
 
 A user can set up a system on the Core which will configure the system to run scheduled automatic checks for new files and batches. This system can be accessed and configured within the user interface to run on a timed and defined schedule.
 
@@ -81,7 +81,7 @@ The Core supports the following requirements:
 - User management
 - Policies management
 
-Interface :
+Interface:
 
 * Scheduler : Advanced Message Queuing Protocol
 * Policy checker / Files listener / User Interface / DIRECT : REST API
@@ -98,11 +98,11 @@ The Database is responsible for storing the associated metadata and results of t
 * user rights management
 * trace (optionally)
 
-Interface :
+Interface:
 
 * Core : native driver
 
-Software :
+Software:
 
 As the main purpose of the software build is to store flat datas, it's more suitable to use a document oriented database (NoSQL). However, a more traditional relational database can also be used.
 
@@ -126,12 +126,12 @@ The Scheduler can take care of the priority function within the implementation c
 * normal: for automated checks
 * low: for periodic checks
 
-Interface :
+Interface:
 
 * Core : Advanced Message Queuing Protocol
 * Checkers : Advanced Message Queuing Protocol
 
-Software :
+Software:
 
 RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)
 
@@ -145,7 +145,7 @@ Different solutions can be implemented depending on the file’s storage and ope
 
 Programming language : C++
 
-## implementation checker and Metadata Grabbing Module
+## Implementation checker and Metadata Grabbing Module
 
 This module can utilize one or more checkers for each media type. As the implementation checker’s process could potentially run for a long time, we use an asynchronous system based on a messaging system in order to not lock up the whole process. Metadata and conformance checking results for each file are sent back to the Core to be stored within the database.
 
@@ -154,7 +154,7 @@ This module can utilize one or more checkers for each media type. As the impleme
 
 See [Checker Architecture](CheckerArchitecture.md) for more details.
 
-Interface :
+Interface:
 
 * Scheduler : Advanced Message Queuing Protocol
 
@@ -166,7 +166,7 @@ The policy checker serves to run tests on all metadata grabbed by the implementa
 
 * runs the policy tests for the different type of media files.
 
-Interface :
+Interface:
 
 * Core : REST API
 
@@ -185,7 +185,7 @@ The machine-readable report will be produced using a standard XML format, implem
 
 The human-readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.
 
-Interface :
+Interface:
 
 * Core : REST API
 
@@ -218,11 +218,11 @@ An optional web-based user interface (UI) will also be provided for both expert 
 
 Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).
 
-Interface :
+Interface:
 
 * Core : REST API
 
-Programming language :
+Programming languages:
 
 * CLI : C++
 
