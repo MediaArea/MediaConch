@@ -2,13 +2,15 @@
 
 ### Functional Overview
 
-The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, and other associated session documentation. This information is derived from multiple APIs passed through the PREFORMA core and finally combined and transformed into a desired output. Several of these output formats will allow for external software agents to futher process this information. Report information can be saved in batches and later consulted and provide a historical context for each file.
+The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, check statistics, conformance priorities, and other associated session documentation. This information is derived from the database and multiple component project APIs, passed through the PREFORMA core and finally combined and transformed into a desired output. Several output formats allow for external software agents to futher process this reportage. 
+
+The Reporter may accept a previously-generated PREFORMAXML or other supported output format for collation with other conformance checks. Previously-generated PREFORMAXML reports may also be transformedn into additional desired outputs. 
 
 ###Design and Functional Requirements
 
-- human-readable output formats: PDF, TXT
-- machine-readable output formats: XML, JSON
-- optional machine-readable output formats: CSV/TSV
+- human-readable supported output formats: PDF, TXT
+- machine-readable supported output formats: PREFORMAXML, JSON
+- optional machine-readable supported output formats: CSV/TSV
 - report on implementation checks, policy checks, and metadata fixes
 - report on information concerning preventative measures for non-conformed files
 - option to report verbose bit traces of individual files
