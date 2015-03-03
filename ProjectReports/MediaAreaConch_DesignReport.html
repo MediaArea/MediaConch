@@ -566,11 +566,11 @@
 <li><p>March 2015 - October 2015 is known as the &quot;First Prototype&quot; section of Phase 2</p></li>
 <li><p>March - May 2015</p></li>
 </ul>
-<p>-- Extend FFV1 and MKV parsing within MediaInfo -- Support Export format in MediaInfo adhering to commonly defined PREFORMA XML expression -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA -- Set up milestones and tasks in GitHub -- Set up project README in GitHub -- Draft introductory posts to Open Source Portal -- Automate nightly builds of MediaInfo (initially) and later conch utilities -- Finalize recuitment of Document Shepard for IETF standardization process -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft -- Release initial policy checker (CLI), based on Format Policy Registry (FPR) and MediaInfo existing metadata libraries.</p>
+<p>-- Extend FFV1 and MKV parsing within MediaInfo -- Support Export format in MediaInfo adhering to commonly defined PREFORMAXML expression -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA -- Set up milestones and tasks in GitHub -- Set up project README in GitHub -- Draft introductory posts to Open Source Portal -- Automate nightly builds of MediaInfo (initially) and later Conch utilities -- Finalize recuitment of Document Shepard for IETF standardization process -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft -- Release initial policy checker (CLI), based on Format Policy Registry (FPR) and MediaInfo existing metadata libraries.</p>
 <ul>
 <li>June 2015</li>
 </ul>
-<p>-- Release initial implementation checker -- Finalize XSD for policy set expression -- Release first GUI version of conch -- Release first web client version of conch -- Request a &quot;Birds of a Feather&quot; meeting with the IETF for the IETF 93 conference -- Release and document sample library of MKV, FFV1, and LPCM files</p>
+<p>-- Release initial implementation checker -- Finalize XSD for policy set expression -- Release first GUI version of Conch -- Release first web client version of Conch -- Request a &quot;Birds of a Feather&quot; meeting with the IETF for the IETF 93 conference -- Release and document sample library of MKV, FFV1, and LPCM files</p>
 <ul>
 <li>July 2015</li>
 </ul>
@@ -580,7 +580,6 @@
 </ul>
 <p>-- Online public demonstration of project deliverables -- Document and release version 2 of sample library -- Prepare and submit a second version of an Informational Internet-Draft for FFV1 and Matroska -- Provide feedback to FFmpeg and Matroska on version 4 development -- Publish documentation on various workflows and use cases -- Release documentation focused on independent usage and usage in integration -- Finalize design and documentation of reporter output formats</p>
 <ul>
-<li><p>October 2015</p></li>
 <li><p>November 2015 - Feburary 2016 is known as the &quot;Re-Design&quot; section of Phase 2</p></li>
 <li><p>November - December 2015</p></li>
 </ul>
@@ -593,34 +592,15 @@
 <li>March 2016 - December 2016 is known as the &quot;Second Prototype&quot; section of Phase 2</li>
 </ul>
 <p>The specific timeline of the Second Prototype section is largely dependent on and responsive to the outcome of the prior Re-Design section, community response, and feedback. The timeline for the Second Prototype section will be reviewed and redesign with collaboration of PREFORMA but this timeline presents a basis on what we presently anticipate.</p>
+<p>-- Review project based on feedback and community response and integrate changes -- Develop strategy for continual open source support and development -- Finalize the development of integrating PREFORMA into the long-term MediaArea business model -- Plan for optimal integration with other suppliers -- Present proposed Standard for FFV1 and Matroska at IETF 95 -- Continue preparation and/or submission for IETF Standards track</p>
 <ul>
-<li>March - April 2016</li>
+<li>July - December 2016</li>
 </ul>
-<p>-- Review project based on feedback and community response and integrate changes -- Develop strategy for continual open source support and development -- Finalize the development of integrating PREFORMA into the long-term MediaArea business model -- Plan for optimal integration with other suppliers -- Present proposed Standard for FFV1 and Matroska at IETF 95</p>
+<p>-- Present updated work at IETF 96 (July) -- Final evaluation and decision regarding proposal status on Standards track (ultimately depends on IETF timeline) (August - Sept) -- Participation in Experience Workshop and prototype demonstration in Berlin (December)</p>
 <ul>
-<li>May - June 2016</li>
+<li>January 2017 - December 2017</li>
 </ul>
-<p>-- Continue preparation and/or submission for IETF Standards track</p>
-<ul>
-<li>July 2016</li>
-</ul>
-<p>-- Present updated work at IETF 96</p>
-<ul>
-<li>August - Sept 2016</li>
-</ul>
-<p>-- Final evaluation and decision regarding proposal status on Standards track (ultimately depends on IETF timeline)</p>
-<ul>
-<li>December 2016</li>
-</ul>
-<p>-- Participation in Experience Workshop and prototype demonstration in Berlin</p>
-<ul>
-<li>June 2017</li>
-</ul>
-<p>-- Online demonstration of project results</p>
-<ul>
-<li>December 2017</li>
-</ul>
-<p>-- Participation in the PREFORMA final conference in Stockholm</p>
+<p>-- &quot;Testing&quot; portion of Phase 2 (Jan - June) -- Online demonstration of project results (June) -- Participation in the PREFORMA final conference in Stockholm (December)</p>
 <h2 id="introduction-to-functional-specification">INTRODUCTION TO FUNCTIONAL SPECIFICATION</h2>
 <p>This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PREFORMAMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.</p>
 <p>The conformance checker's goals are based on the following core principles:</p>
@@ -913,7 +893,7 @@
 <h3 id="optional">Optional</h3>
 <p>(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)</p>
 <ul>
-<li>MPEG-1/2 Video (including IMX, AS-07, D-10 Video, FIMS…)</li>
+<li>MPEG-1/2 Video (including IMX, AS-07, D-10 Video)</li>
 <li>H.264/AVC (including AS-07)</li>
 <li>Dirac</li>
 <li>AC-3 (including AS-07)</li>
@@ -1119,8 +1099,9 @@
 <li>generate a text based representation of the EBML structure in json or xml, which identifies and categories EBML sections and which includes attributes to associate sections of the EBML structure (or the file itself) with registered conformance or policy errors</li>
 <li>validate a Matroska file against conformance or policy errors and generate a text based output which summarizes errors with associated fixes</li>
 <li>preform and log identified metadata fixes</li>
-<li>add, replace, or remove Matroska metadata values based on a developed EBML equivalent of XPath ## Reporter Functional Requirements</li>
+<li>add, replace, or remove Matroska metadata values based on a developed EBML equivalent of XPath</li>
 </ul>
+<h2 id="reporter-functional-requirements">Reporter Functional Requirements</h2>
 <h3 id="functional-overview-2">Functional Overview</h3>
 <p>The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, check statistics, conformance priorities, and other associated session documentation. This information is derived from the database and multiple component project APIs, passed through the PREFORMA core and finally combined and transformed into a desired output. Several output formats allow for external software agents to futher process this reportage.</p>
 <p>Reports will include technical metadata and related checks to formats/streams, and should encompass not only information about the files being assessed but also the conditions and context of a particular use (which shell was used, with what policy sets, at what verbosity, etc). A report should accommodate the expression of results from multiple implementation checkers upon a single file. For example, a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.</p>

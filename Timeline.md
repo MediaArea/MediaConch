@@ -20,12 +20,12 @@ The timeline for facilitating standardization work through the IETF is presented
 * March - May 2015
 
 -- Extend FFV1 and MKV parsing within MediaInfo
--- Support Export format in MediaInfo adhering to commonly defined PREFORMA XML expression
+-- Support Export format in MediaInfo adhering to commonly defined PREFORMAXML expression
 -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA
 -- Set up milestones and tasks in GitHub
 -- Set up project README in GitHub
 -- Draft introductory posts to Open Source Portal
--- Automate nightly builds of MediaInfo (initially) and later conch utilities
+-- Automate nightly builds of MediaInfo (initially) and later Conch utilities
 -- Finalize recuitment of Document Shepard for IETF standardization process
 -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications
 -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft
@@ -35,8 +35,8 @@ The timeline for facilitating standardization work through the IETF is presented
 
 -- Release initial implementation checker
 -- Finalize XSD for policy set expression
--- Release first GUI version of conch
--- Release first web client version of conch
+-- Release first GUI version of Conch
+-- Release first web client version of Conch
 -- Request a "Birds of a Feather" meeting with the IETF for the IETF 93 conference
 -- Release and document sample library of MKV, FFV1, and LPCM files
 
@@ -45,7 +45,6 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Attend IETF 93, manage a "Birds of a Feather" meeting representing the Informational Submissions for FFV1 and Matroska
 -- Coordinate and gather community feedback on the current state of version 4 of FFV1 and Matroska
 -- Draft mockups of metadata fixer GUI, update GUI design for shell and components
-
 
 * August - Sept 2015
 
@@ -56,8 +55,6 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Publish documentation on various workflows and use cases
 -- Release documentation focused on independent usage and usage in integration
 -- Finalize design and documentation of reporter output formats
-
-* October 2015
 
 * November 2015 - Feburary 2016 is known as the "Re-Design" section of Phase 2
 
@@ -78,36 +75,23 @@ The timeline for facilitating standardization work through the IETF is presented
 
 The specific timeline of the Second Prototype section is largely dependent on and responsive to the outcome of the prior Re-Design section, community response, and feedback. The timeline for the Second Prototype section will be reviewed and redesign with collaboration of PREFORMA but this timeline presents a basis on what we presently anticipate.
 
-* March - April 2016
-
 -- Review project based on feedback and community response and integrate changes
 -- Develop strategy for continual open source support and development
 -- Finalize the development of integrating PREFORMA into the long-term MediaArea business model
 -- Plan for optimal integration with other suppliers
 -- Present proposed Standard for FFV1 and Matroska at IETF 95
-
-* May - June 2016
-
 -- Continue preparation and/or submission for IETF Standards track
 
-* July 2016
+* July - December 2016
 
--- Present updated work at IETF 96
+-- Present updated work at IETF 96 (July)
+-- Final evaluation and decision regarding proposal status on Standards track (ultimately depends on IETF timeline) (August - Sept)
+-- Participation in Experience Workshop and prototype demonstration in Berlin (December)
 
-* August - Sept 2016
+* January 2017 - December 2017
 
--- Final evaluation and decision regarding proposal status on Standards track (ultimately depends on IETF timeline)
-
-* December 2016
-
--- Participation in Experience Workshop and prototype demonstration in Berlin
-
-* June 2017
-
--- Online demonstration of project results
-
-* December 2017
-
--- Participation in the PREFORMA final conference in Stockholm
+-- "Testing" portion of Phase 2 (Jan - June)
+-- Online demonstration of project results (June)
+-- Participation in the PREFORMA final conference in Stockholm (December)
 
 
