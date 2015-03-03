@@ -30,7 +30,7 @@ Matroska is a open-licensed audiovisual container format with extensive and flex
 
 Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many defined "Elements". Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements. The top level elements of Matroska focus on track definition, chapters, attachment management, metadata tags, and encapsulation of audiovisual data. The Matroska element is analogous to QuickTime's atom and AVI's chunk.
 
-Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements. Because of its ability to use internal, regional CRC protection it is possible to update a Matroska file during OAIS events without any compromise to the fixity of its audiovisual payload.
+Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements. Because of its ability to use internal, regional Cyclic Redundancy Check (CRC) protection it is possible to update a Matroska file during OAIS events without any compromise to the fixity of its audiovisual payload.
 
 Matroska has well written documentation and a draft specification but is not defined through an external standards organization although some drafts for such work have already been produced.
 
@@ -40,7 +40,7 @@ FFV1 is an efficient lossless video stream that is designed in a manner responsi
 
 FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resilience, or encoding speed.
 
-The specification documentation for FFV1 is partially complete and has recently been funded by vendors utiliziing FFV1 as a codec for audiovisual preservation and large-scale digitization efforts.
+The specification documentation for FFV1 is partially complete and has recently been funded by vendors utilizing FFV1 as a codec for audiovisual preservation and large-scale digitization efforts.
 
 ### Linear PCM
 
@@ -61,15 +61,15 @@ The PREFORMA project must document and associate implementation or policy rules 
 
 ### Implementation Checker
 
-For each supported formats (Matroska, FFV1, and LPCM), the implementation checker should assess compliance and/or deviation between files and a series of adherence checks which are written by dissecting rules and logic from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PREFORMA design phase and plans to collaborate with each format's specification communities to refine them. See the [Conformance Check Registry](#conformance-check-registry).
+For each supported format (Matroska, FFV1, and LPCM), the implementation checker should assess compliance and/or deviation between files and a series of adherence checks which are written by dissecting rules and logic from each format's underlying specifications, including rules that may be deduced or inferred from a close reading of the specification or related authoritative documentation. MediaArea has drafted registries of conformance rules within the PREFORMA design phase and plans to collaborate with each format's specification communities to refine them. See the [Conformance Check Registry](#conformance-check-registry).
 
-For streams such as FFV1 some implementation checks may be performed frame-by-frame to discover frame-specific issues such as CRC mismatches, invalid frame headers, or incomplete frames. Frame-by-frame conformance assessments will naturally be time consuming as nearly the entire file must be read. In order to accommodate user's various time priorities the checker will use options to perform checks on the first few frames of a stream, a percentage of the frames, or all of the frames.
+For streams such as FFV1, implementation checks may be performed frame-by-frame to discover frame-specific issues such as CRC mismatches, invalid frame headers, or incomplete frames. Frame-by-frame conformance assessments will naturally be time consuming as nearly the entire file must be read. In order to accommodate user's various time priorities the checker will use options to perform checks on the first few frames of a stream, a percentage of the frames, or all of the frames.
 
 MediaArea has drafted a [registry](#conformance-check-registry) of metadata elements to be used in described an implementation check, which provides unique identifier, the scope, and underlying rationale and authority for the check. Code created to preform checks will be internally documented with references to conformance check's unique identifiers, so that MediaArea may create resources for each conformance check that relate the identity of the check, its underlying authority, sample files, and associated code.
 
 ### Policy Checker
 
-For each format addressed through a implementation checker MediaArea will create a vocabulary list of technical metadata and contextual descriptions. Additionally MediaArea will define a list of operators to enable various comparators between the actual technical metadata and the user-provided expected metadata. Such defined language will allow users to make policy check expressions such as:
+For each format addressed through a implementation checker, MediaArea will create a vocabulary list of technical metadata and contextual descriptions. Additionally, MediaArea will define a list of operators to enable various comparators between the actual technical metadata and any expected user-provided metadata. Such defined language will allow users to make policy check expressions such as:
 
 - FFV1.gop_size MUST_EQUAL "1"
 - FFV1.slice_crc MUST_BE_ENABLED
@@ -84,13 +84,11 @@ MediaArea will provide sample sets of policy checks based on interviews with mem
 
 ### Reporter
 
-MediaArea proposes that PREFORMA suppliers collaborate to create a common XML Schema to define the expression of PREFORMA reporting (referred to here as "PREFORMAXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PREFORMA suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per implementation checker, but that adherence to a common schema is essential to interoperability and consistent user experience amongst implementation checkers.
+MediaArea proposes that PREFORMA suppliers collaborate to create a common XML Schema to define the expression of PREFORMA reporting (referred herein as "PREFORMAXML"). The schema should define methods to express technical metadata and relates checks to formats/streams (including components of formats and streams such as frames or attachments). The XML Schema should encompass not only information about the files being assessed but also the conditions and context of the particular use (which shell was used, with what policy sets, at what verbosity, etc). The XML Schema should be supported by a data dictionary that is also collaboratively written by PREFORMA suppliers. MediaArea anticipates that the implementations and features performed upon the basis of a common XML Schema may vary from supplier to supplier or per implementation checker, but that adherence to a common schema is essential to interoperability and consistent user experience amongst implementation checkers.
 
-The PREFORMAXML schema should accommodate the expression of results from multiple implementation checkers upon a single file. For instance a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
+The PREFORMAXML schema should accommodate the expression of results from multiple implementation checkers upon a single file. For example, a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
 
-We can also add a JPEG2000 image as an attachment or a PDF as an attachment. Matroska is flexible.
-
-CRC files can be added as attachments to reenforce OAIS.
+Because of Matroska's flexibility, ancillary objects like PDFs, JPEG2000 images and CRC files may also be added as attachments. 
 
 MediaArea plans to include these features commonly within MKV, FFV1, and LPCM reporters:
 
@@ -237,7 +235,7 @@ Conformance checking services play a major role in the OAIS reference model, spe
 
 ![The OAIS Ingest Functional Entity with Conch Integration](./OAISIntegration.png)
 
-Policy check expressions are also useful in other functions of OAIS workflows including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between migrated data objects is key. A conformance checker would be implemented to map all transformations through the collection of associated Preservation Description Information. For the Matroska format in particular, individual sub-element Cyclic Redundancy Checks (CRCs) can be submitted as a check expression and later packaged with the AIP's PDI information related to Fixity. This kind of self-descriptive information can be especially useful tool for zeroing in on potentially corrupted areas of the data object.
+Policy check expressions are also useful in other functions of OAIS workflows including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between migrated data objects is key. A conformance checker would be implemented to map all transformations through the collection of associated Preservation Description Information. For the Matroska format in particular, individual sub-element CRCs can be submitted as a check expression and later packaged with the AIP's PDI information related to Fixity. This kind of self-descriptive information can be especially useful tool for zeroing in on potentially corrupted areas of the data object.
 
 For dissemination requests, the DIP generation fuction may include the encoding of an AIP data object to a smaller, more compressed transmission format for access. This is especially true for audiovisual data objects, whose AIPs might contain large uncompressed or mathematically lossless filetypes. Policy check expressions with the conformance checker at this phase would ensure that relationships to file characteristics like sub-sampling, bit-depth and frame rate are maintained throughout DIP generation.
 
