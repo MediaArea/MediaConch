@@ -50,7 +50,7 @@ mkvinfo /Users/ashley/Desktop/pres_metadata_sample_20110609.mkv
 |  + Targets
 |  + Simple
 |   + Name: COMPATIBLE_BRANDS
-|   + String: qt  
+|   + String: qt
 |  + Simple
 |   + Name: ORIGINAL_MEDIA_TYPE
 |   + String: {Physical format of the source tape. Vocabulary?}
@@ -128,7 +128,7 @@ mkvinfo /Users/ashley/Desktop/pres_metadata_sample_20110609.mkv
 |   + String: {Protocols used to transfer audiovisual data between the playback deck and the capture device. example: Component}
 |  + Simple
 |   + Name: MAJOR_BRAND
-|   + String: qt  
+|   + String: qt
 |  + Simple
 |   + Name: MINOR_VERSION
 |   + String: 537199360

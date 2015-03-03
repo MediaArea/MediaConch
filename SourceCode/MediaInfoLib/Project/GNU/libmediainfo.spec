@@ -140,7 +140,7 @@ for development.
 %setup -q -n MediaInfoLib
 cp           Release/ReadMe_DLL_Linux.txt ReadMe.txt
 mv           History_DLL.txt History.txt
-sed -i 's/.$//' *.txt Source/Example/* 
+sed -i 's/.$//' *.txt Source/Example/*
 
 find Source -type f -exec chmod 644 {} ';'
 chmod 644 *.txt License.html

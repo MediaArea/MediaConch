@@ -22,19 +22,19 @@
 
 * Performs simple fixes (how to do this, what kind of fixes can be done within technical limits)
 
-* Plan for machine-readable report (including preservation metadata for each file checked and 
+* Plan for machine-readable report (including preservation metadata for each file checked and
 
 allowing external software agents to furtherprocess the file) using XML
 
-* Plan for human-readable report, “assessing the preservation status of a batch of files as a 
+* Plan for human-readable report, “assessing the preservation status of a batch of files as a
 
-whole, reporting to a non-expert audience whether a file is compliant with the standard 
+whole, reporting to a non-expert audience whether a file is compliant with the standard
 
 specifications, and addressing improvements in the creation/digitisation process.”
 
 * Plan for fully automated fixes (what can be fixed within each format, ranges)
 
-* Research into “checking for the existence of standard functionalities and 
+* Research into “checking for the existence of standard functionalities and
 
 whether they are implemented in accordance with the corresponding specifications”
 

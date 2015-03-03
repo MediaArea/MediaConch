@@ -48,7 +48,7 @@ AC_ARG_ENABLE([wstring_missing],  [AS_HELP_STRING(([--enable-wstring_missing],  
 AC_ARG_ENABLE([stream_missing],   [AS_HELP_STRING(([--enable-stream_missing],   [Disable stream support (old compilers)]))],    , [enable_stream_missing=no])
 AC_ARG_ENABLE([large_files],      [AS_HELP_STRING(([--disable-large_files],     [Disable large files support]))],               , [enable_large_files=yes])
 dnl AC_ARG_ENABLE([threads],          [AS_HELP_STRING(([--disable-threads],         [Disable threads support]))],                   , [enable_threads=yes])
- 
+
 
 dnl -------------------------------------------------------------------------
 dnl With

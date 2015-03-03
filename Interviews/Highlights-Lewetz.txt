@@ -40,7 +40,7 @@ Peter:  ffmpeg running for transcoding; autocreate access copy [missed]; if mpeg
 
 Dave: Refers to ffmpeg's -debug 1 option for analysis.
 
-Hermann: necessary to have it in a standard workflow; it would be great to have it 
+Hermann: necessary to have it in a standard workflow; it would be great to have it
 
 Peter: ran massive test suites; what is lacking there are FATE tests.  [Test-driven development!]  I’m a bit afraid of silent regressions happen.
 
@@ -54,7 +54,7 @@ Hermann: when we ingest analog material we directly ingest in FFV1; no intermedi
 
 Erik:  FFV1 not too incorporated with analog-digital converters
 
-Hermann: we started having a converter converting all into SDI; and we have a [something] card with; using ffshort trial [check recording]; but beause we are not very happy with the converters, we will try some other options. 
+Hermann: we started having a converter converting all into SDI; and we have a [something] card with; using ffshort trial [check recording]; but beause we are not very happy with the converters, we will try some other options.
 
 Peter: but itwas not necessary to have FFV1 directly in the confirm hardware.  It turned out in the past hardware impementations might be nice but very often you’re locked into whatever they offer you and hae not ability to change it.  Other parts of workflow where we use FFV1: for borndigital we have whitelist of codecs that we allow into archive for the time being because of space considerations, so we don’t transcode to fFFV1; everything else is blown up to FFV1.
 [check recording]

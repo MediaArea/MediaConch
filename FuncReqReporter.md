@@ -12,7 +12,7 @@ The Reporter portion of the conformance checker presents human and machine-reada
 - report on implementation checks, policy checks, and metadata fixes
 - report on information concerning preventative measures for non-conformed files
 - option to report verbose bit traces of individual files
-- batch reporting features the option to nest specific objects. 
+- batch reporting features the option to nest specific objects.
 
 ###Contents
 
@@ -34,7 +34,7 @@ The Reporter's Graphical User Interface displays human and machine-readable data
 
 ## Reporter - Command Line Interface
 
-On the command line interface, a user would be able to export a report using flags designating output and output format (e.g., "--output=XML"). 
+On the command line interface, a user would be able to export a report using flags designating output and output format (e.g., "--output=XML").
 
 ## Reporter - Web User Interface
 

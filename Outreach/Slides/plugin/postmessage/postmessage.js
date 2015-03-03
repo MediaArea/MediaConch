@@ -8,11 +8,11 @@
 	Example:
 		 var reveal =  window.frames[0];
 
-		 // Reveal.prev(); 
+		 // Reveal.prev();
 		 reveal.postMessage(JSON.stringify({method: 'prev', args: []}), '*');
-		 // Reveal.next(); 
+		 // Reveal.next();
 		 reveal.postMessage(JSON.stringify({method: 'next', args: []}), '*');
-		 // Reveal.slide(2, 2); 
+		 // Reveal.slide(2, 2);
 		 reveal.postMessage(JSON.stringify({method: 'slide', args: [2,2]}), '*');
 
 	Add to the slideshow:

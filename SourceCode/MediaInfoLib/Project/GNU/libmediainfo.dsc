@@ -7,5 +7,5 @@ Maintainer: MediaArea.net SARL <info@mediaarea.net>
 Homepage: http://MediaArea.net/MediaInfo
 Standards-Version: 3.7.3
 Build-Depends: debhelper (>= 5), doxygen, tofrodos, libzen-dev (>= 0.4.30), zlib1g-dev, pkg-config, automake, autoconf, libtool
-Files: 
+Files:
  00000000000000000000000000000000 000000 libmediainfo_0.7.72-1.tar.gz

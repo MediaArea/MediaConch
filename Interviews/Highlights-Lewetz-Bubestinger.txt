@@ -42,7 +42,7 @@ Peter:  ffmpeg running for transcoding; we autocreate mpg2 DVD access copy of FF
 
 Dave: debug1; intended encoding and actual
 
-Hermann: Necessary to have it in a standard workflow; and as problem accumulate, it would be great to have it 
+Hermann: Necessary to have it in a standard workflow; and as problem accumulate, it would be great to have it
 
 Peter: During development of FFV1 v. 3, I ran massive test suites in all variations; what is lacking there (and what I'm really looking forward to making) are fake tests.  I’m a bit afraid of silent regressions currently happening.
 
@@ -52,11 +52,11 @@ Peter: It could be suggested once the integrity check exists that people who int
 
 Erik:  reformatting workflow?
 
-Hermann: When we ingest analog material we directly ingest in FFV1; no intermediate format. 
+Hermann: When we ingest analog material we directly ingest in FFV1; no intermediate format.
 
 Erik:  FFV1 not too incorporated with analog-digital converters...
 
-Hermann: We started having a converter converting all into SDI; and we have a DeckLink card with SDI input, and we capture FFV1 directly using ffShot trial and [REtrotap?] as an application; but because we are not very happy with the converters, we will try some other options. 
+Hermann: We started having a converter converting all into SDI; and we have a DeckLink card with SDI input, and we capture FFV1 directly using ffShot trial and [REtrotap?] as an application; but because we are not very happy with the converters, we will try some other options.
 
 Peter: But it was not necessary to have FFV1 directly in the converter hardware; we prefer having uncompressed coming and use the software to choose.  It turned out in the past hardware implementations might be nice but very often you’re locked into whatever they offer you and you have no ability to change it unless it's an open hardware. Other parts of workflow where we use FFV1: for born-digital we have whitelist of codecs that we allow into archive for the time being because of space considerations, so we don’t transcode those to fFFV1; everything else is blown up to FFV1. For all edits, minor or opening it in a non-linear video editing system, we use FFV1 as a internal working format. We edit directly with FFV1, then export to FFV1 again.
 

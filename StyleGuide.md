@@ -13,7 +13,7 @@ The source code can be shared and used between the targeted platforms and will r
 
 MediaArea’s regularly released source codes will be developed within a modularized architecture in order to create an unrestricted atmosphere for the improvement of the project’s maintainability and assembly. Conforming to this development technique and creating distinct, interchangeable modules will allow the software, and its corresponding open source community, to remain sustainable in its growth and facilitate ongoing collaborative feedback throughout the development phase. Each module will have a documented interface (API) that defines its function and interactive nature within the software.
 
-The construct and eventual structure of modularity within this project will be key to the health and sustainability of the project’s potential success as a fully integrated implementation checker. The regular release of source code for this project, built within this architecture, will enable better feedback and issue tracking from both users and memory institutions utilizing the software. 
+The construct and eventual structure of modularity within this project will be key to the health and sustainability of the project’s potential success as a fully integrated implementation checker. The regular release of source code for this project, built within this architecture, will enable better feedback and issue tracking from both users and memory institutions utilizing the software.
 
 
 ### Deployment
@@ -92,7 +92,7 @@ Indentation:
 Variables:
 - Each variable should be declared on separate lines, only at the   moment they are needed
 - Avoid short names, abbreviations and single character names (only used for counters and temporaries)
-- Follow the case conventions for naming 
+- Follow the case conventions for naming
 
 Whitespaces:
 - Use only one blank line and use when grouping statements as suited. Do not put multiple statements onto one line.
@@ -180,9 +180,9 @@ Because it is crucial to the stimulation of a sustained and well documented open
 
 ## Release Schedule
 
-MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time. 
+MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
 
-Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project. 
+Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project.
 
 New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.
 
@@ -190,7 +190,7 @@ Downloads will be made available through a public repository with a functioning 
 
 All source codes and updates will be made accessible on the following platforms:
 
-- MS Windows 
+- MS Windows
 - Mac OSX
 - Linux (Ubuntu, Fedora, Debian, and Suse)
 

@@ -31,9 +31,9 @@ The contents of the File List will be configurable according to the metadata val
     - Cueing Data
     - Attachment
     - Tagging
-    
+
 In additional to Matroska sections a category of file attribute data will also be provided to show information such as file size, file name, etc. Additional a 'global' section is provided to show summarization of the file's status and structure.
-    
+
 A toolbar in the File List Layout will enable the user to select one or many sections to allow for focus on a particular section.
 
 As an example, checking to show the columns associated with the Matroska Header shall reveal columns such as:
@@ -70,7 +70,7 @@ The Metadata Editor Layout is designed to efficiency create, edit, of fix metada
 - Provide columns with following values
     - [Hierarchy](#hierarchy)
         - A relator to link tags to one another in parent/child relationships
-        - A UI toggle to show or hide child metadata tags 
+        - A UI toggle to show or hide child metadata tags
     - Target Section
         - TargetTypeValue
         - TargetType

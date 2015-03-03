@@ -36,21 +36,21 @@ Our research and conversations with users and experts led us to conclude that IE
 The following standards will be useful in mapping out the most effective route to standardization.
 
 * OPUS
-    * [http://opus-codec.org](http://opus-codec.org) 
+    * [http://opus-codec.org](http://opus-codec.org)
     * [https://tools.ietf.org/html/rfc6716](https://tools.ietf.org/html/rfc3533)
 
 * OGG
     * [https://tools.ietf.org/html/rfc3533](https://tools.ietf.org/html/rfc3533)
 
     * [https://tools.ietf.org/html/rfc5334](https://tools.ietf.org/html/rfc5334)
-* OAuth 
+* OAuth
  - *OAuth is of particular interest because the process for publication informs how we intend to pursue publication,   namely by submitting an Internet-Draft and using feedback from the IETF community to inform creation of a Standards  proposal.*
 
-    * [http://oauth.net/2/](http://oauth.net/2/) 
+    * [http://oauth.net/2/](http://oauth.net/2/)
     * [https://tools.ietf.org/html/rfc5849](https://tools.ietf.org/html/rfc5849)
     * [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
 * VP8
-    * [https://tools.ietf.org/html/rfc6386](https://tools.ietf.org/html/rfc6386) 
+    * [https://tools.ietf.org/html/rfc6386](https://tools.ietf.org/html/rfc6386)
 
 # PLANNING
 
@@ -144,7 +144,7 @@ The following standards will be useful in mapping out the most effective route t
 
 5. Standards Facilitator: TBD
 
-6. Document Shepherd (NOTE:  http://tools.ietf.org/html/rfc4858 ): may be IETF member or project member 
+6. Document Shepherd (NOTE:  http://tools.ietf.org/html/rfc4858 ): may be IETF member or project member
 
 **Partners**
 
@@ -178,33 +178,33 @@ ISOC: IETF recommends participation and membership in the Internet and Society. 
 
 Below are links to some of the IETF documents that are relevant to this project and have not been cited elsewhere in this document..  An outline of the Internet Draft to Independent Stream process (from The Tao of the IETF)  is also included to provide some reference for a timeline.
 
-IESG Procedures for Handling of Independent and IRTF Stream Submissions 
+IESG Procedures for Handling of Independent and IRTF Stream Submissions
 
 [https://tools.ietf.org/html/rfc5742](https://tools.ietf.org/html/rfc5742)
 
 IETF editor model (2012)
 
-[https://tools.ietf.org/html/rfc6548](https://tools.ietf.org/html/rfc6548) 
+[https://tools.ietf.org/html/rfc6548](https://tools.ietf.org/html/rfc6548)
 
-Function and responsibilities of the RFC,  Independent Submission Editor (ISE) 
+Function and responsibilities of the RFC,  Independent Submission Editor (ISE)
 
 [https://www.rfc-editor.org/indsubs.html](https://www.rfc-editor.org/indsubs.html)
 
 Independent Stream, IETF Data tracker
 
-[https://datatracker.ietf.org/](https://datatracker.ietf.org/) 
+[https://datatracker.ietf.org/](https://datatracker.ietf.org/)
 
-Independent Submissions to the RFC Editor 
+Independent Submissions to the RFC Editor
 
-[http://www.ietf.org/about/process-docs.html#RFC4846](http://www.ietf.org/about/process-docs.html#RFC4846) 
+[http://www.ietf.org/about/process-docs.html#RFC4846](http://www.ietf.org/about/process-docs.html#RFC4846)
 
 Rights Handling, Independent Submission Stream
 
-[http://www.ietf.org/about/process-docs.html#RFC5744](http://www.ietf.org/about/process-docs.html#RFC5744) 
+[http://www.ietf.org/about/process-docs.html#RFC5744](http://www.ietf.org/about/process-docs.html#RFC5744)
 
 The Tao of the IETF, Broad Outline of the Internet Draft to WG/Independent Stream Submission
 
-[http://www.ietf.org/tao.html](http://www.ietf.org/tao.html) 
+[http://www.ietf.org/tao.html](http://www.ietf.org/tao.html)
 
 1. Publish the document as an Internet-Draft (TF: Informational Document)
 2. Receive comments on the draft.

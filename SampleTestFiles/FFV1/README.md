@@ -28,5 +28,5 @@ Description of file: FFV1 test sample “FFV1_3.mov” is an ffmpeg generated te
 
 Creation process: ffmpeg -f lavfi -i testsrc -t 1 -c:v FFV1 -level 4 -t 1 -strict experimental FFV1_4.mov
 
-Description of file:  
+Description of file:
 FFV1 test sample “FFV1_4.mov” is an ffmpeg generated test source pattern video filter consisting of color bars and gradient with a timestamp overlay.  Encoded in the FFV1 video codec, at level 4 (experimental version), the 25 fps video includes a total running time output of 1 second with a file size of 97 KB and resolution of 320x240.  The resulting file will not open using standard applications.

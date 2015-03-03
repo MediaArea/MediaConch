@@ -66,7 +66,7 @@ Users of the command line interface will be prompted with several usage options 
 
 ####Batch Policy Checking
 
-The command line interface allows for efficient batch policy checking through calls made to the API. 
+The command line interface allows for efficient batch policy checking through calls made to the API.
 
 ## Policy Checker - Web Interface
 

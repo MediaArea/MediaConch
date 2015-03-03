@@ -7,7 +7,7 @@ Dave, Jerome, Tessa
 D: Describe your background research into FFV1 and Matroska?
 
 I: Collection of HDCam and HDCam SR tapes for one particular job. It was open at the time as to how we were going to transfer these to digital files.
-Looked at lossy compressions, various other formats, but it seemed if we're going to try and capture as much information as we can, the best way is to go with lossless compression.  So that limited the amount of options that were available.  I looked at MXF and jpeg2000 and initially I was very keen; but that actual implementation isn't very standardized. 
+Looked at lossy compressions, various other formats, but it seemed if we're going to try and capture as much information as we can, the best way is to go with lossless compression.  So that limited the amount of options that were available.  I looked at MXF and jpeg2000 and initially I was very keen; but that actual implementation isn't very standardized.
 
 Perceived wisdom in archives is that you follow what the broadcasters are doing, and I don't think that's the best fit.
 
@@ -41,7 +41,7 @@ I:  We store it in an archival system. SDB. NYU uses it. The info is stored with
 
 D: What coding specs do you use when you're requesting FFV1/Matroska?
 
-I: There weren't that many options we were worried about with FFV1. We wanted FFV1 version 3, a number of slices, CRC for slices turned on, 
+I: There weren't that many options we were worried about with FFV1. We wanted FFV1 version 3, a number of slices, CRC for slices turned on,
 
 [audio cuts out]
 

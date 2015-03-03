@@ -34,7 +34,7 @@
 - [ ] 10-50
 - [ ] Over 50
 
-### How many total media items does this institution currently hold?  (audiovisual items only) 
+### How many total media items does this institution currently hold?  (audiovisual items only)
 
 - [ ] Under 100
 - [ ] 100-1,000
@@ -43,14 +43,14 @@
 - [ ] Over 100,000
 - [ ] I don't know
 
-### What is the annual budget allocated to the reformatting and preservation of media?  (audiovisual items only) 
+### What is the annual budget allocated to the reformatting and preservation of media?  (audiovisual items only)
 
 - [ ] Under $10,0000/8,000€
 - [ ] $10,000-$50,000/8,000-40,000€
 - [ ] Over $50,000/~40,000€
 - [ ] I don't know
 
-### What portion of this institutional collection has been digitally re-formatted?  (audiovisual items only) 
+### What portion of this institutional collection has been digitally re-formatted?  (audiovisual items only)
 
 - [ ] 1-10%
 - [ ] 11-25%
@@ -218,13 +218,13 @@
 - [ ] 1-5 Years
 - [ ] Over 5 Years
 
-### Does your institution collect Representation Information objects as described by the OAIS reference model? 
+### Does your institution collect Representation Information objects as described by the OAIS reference model?
 
 - [ ] Yes
 - [ ] No
 - [ ] I don't know
 
-### (If Yes) Do these Representation Information objects require Representation Rendering Software and/or Access Software? 
+### (If Yes) Do these Representation Information objects require Representation Rendering Software and/or Access Software?
 
 - [ ] Yes
 - [ ] No

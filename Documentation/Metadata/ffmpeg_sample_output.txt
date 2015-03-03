@@ -16,7 +16,7 @@ Guessed Channel Layout for  Input Stream #0.1 : mono
 Input #0, matroska,webm, from '/Users/ashley/Desktop/pres_metadata_sample_20110609.mkv':
   Metadata:
     MINOR_VERSION   : 537199360
-    COMPATIBLE_BRANDS: qt  
+    COMPATIBLE_BRANDS: qt
     ORIGINAL_MEDIA_TYPE: {Physical format of the source tape. Vocabulary?}
     ORIGINAL_MEDIA_TYPE/BARCODE: {Barcode or other identifier from the tape.}
     ORIGINAL_MEDIA_TYPE/BARCODE/SOURCE: {name of barcode authority or creator; example "XYZ Archive Barcode"}
@@ -42,7 +42,7 @@ Input #0, matroska,webm, from '/Users/ashley/Desktop/pres_metadata_sample_201106
     ENCODED_BY/PLAYBACK_DEVICE/SERIAL_NO: abc1234
     ENCODED_BY/PLAYBACK_DEVICE/SETTINGS: {notes on adjustments or settings}
     ENCODED_BY/PLAYBACK_DEVICE/PLAYBACK_SIGNAL_PATH: {Protocols used to transfer audiovisual data between the playback deck and the capture device. example: Component}
-    MAJOR_BRAND     : qt  
+    MAJOR_BRAND     : qt
     ENCODER         : Lavf54.36.100
   Duration: 00:00:06.44, start: 0.000000, bitrate: 54085 kb/s
     Stream #0:0(eng): Video: ffv1 (FFV1 / 0x31564646), yuv422p, 720x486, SAR 9:10 DAR 4:3, 29.97 fps, 29.97 tbr, 1k tbn, 1k tbc (default)
