@@ -35,11 +35,11 @@ Individual File General / Verbose bit metadata readouts
 
 ## Reporter - Graphical User Interface
 
-The Reporter's Graphical User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above mentioned output handlers.
+The Reporter's Graphical User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above-mentioned output handlers.
 
 ## Reporter - Command Line Interface
 
-On the command line interface, a user would be able to export a report using flags designating output and output format (e.g., "--output=XML").
+On the Command Line Interface, a user would be able to export a report using flags designating output and output format (e.g., "--output=XML").
 
 ## Reporter - Web User Interface
 
