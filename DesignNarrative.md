@@ -319,6 +319,12 @@ MediaArea has approached several individual and institutional partners from vary
 
 Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.
 
+### Open Source Sponsorship
+
+Through MediaArea's project plan there are several areas where we believe the resulting implementation and use of the project deliverables would benefit from the sponsoring of related improvements through key existing open source projects. To this end, MediaArea is reserving a portion of its overall budget towards sponsoring development in external projects. These funds would be used when it is more efficient to time and project cost to sponsor a small development rather than have our own team create the patch.
+
+One specific receipent of such sponsorship would be as bounties within the issue trackers of ffmpeg, libav, vlc, and/or other related open source projects. For example, our plan anticipates supplying recommendations to next version of the Matroska file format, but such additions to the specification are not meaningful to the user community without their implementation in the key tools for reading, writing, and adjusting matroska files. Thus if working through matroska-devel we successfully present a patch for adding field dominance or color matrix expressions to increase Matroska's ability to self-describe than such funds will be available to the project implement the use of the features.
+
 ## Example of usage in European Memory Institutions
 
 The National Library of Wales (NLW) has used MediaInfo in their digital audiovisual preservation workflow for several years.
