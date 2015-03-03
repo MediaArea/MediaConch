@@ -426,6 +426,8 @@ The MediaArea team is active in the open source community and has presented the 
 - Ashley Blewer presented our work at Code4Lib on February 11th:
  - http://wiki.code4lib.org/2015_Lightning_Talks
 
+Within Phase 2, MediaArea intends to increase conference and community participation, particulary with FOSDEM and IETF conferences. Additionally MediaArea will coordinate at least two open workshops outside of PREFORMA's schedule to demonstrate the results of the project and gather feedback. Tentatively these workshops occur within the Re-Design phase and are hosted by institutions within London and Vienna.
+
 ## Project Management Strategy
 
 ### Goal:
