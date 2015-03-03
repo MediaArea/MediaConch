@@ -1,6 +1,6 @@
-## Policy Checker - Graphical User Interface
+## Policy Checker Functional Requirements
 
-### Introduction
+### Policy Checker - Graphical User Interface
 
 The policy checker graphical user interface will allow set of policy rules to be created and configured to specfic workflows and then applied to selected collections of files or file queries across a file system. Although predefined presets are available, users shall be able to use the interface to create or edit policy check presets for reuse. A policy check preset will include a list will essentially be a recipe for evaluating the technical aspects of a set of files. Although MediaArea's implementation here will focus specifically on the selected formats of Matroska, FFV1, and LPCM, the policy checker will be able to preform checks on any type of file supported by MediaInfo.
 

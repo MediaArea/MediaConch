@@ -1,8 +1,6 @@
-# Metadata Fixer
+## Metadata Fixer Functional Requirements
 
-## Metadata Fixer -- Graphical User Interface
-
-### Introduction
+### Introduction to Graphical User Interface
 
 Although many audiovisual formats contain comprehensive support for metadata, archivists are eventually faced with a dilemma regarding its application. On one hand, a bit-by-bit preservation of the original data comprising the object is a significant objective. On the other hand, archivists prioritize having archival objects be as self-descriptive as possible. While the OAIS model aims to mitigate such a dilemma through the creation of distinct Information Packages, this is not often the case. For an institution managing digital files as objects for preservation, a change to the file's metadata is a change to the object itself; significant attributes such as file size and checksum are irreversibly altered. Because such revisions to the object prevent fixity functions, the decision on whether or not to fix or add metadata within the OAIS structure is oftentimes complex.
 
@@ -146,5 +144,3 @@ Functional Requirements include:
 - validate a Matroska file against conformance or policy errors  and generate a text based output which summarizes errors with associated fixes
 - preform and log identified metadata fixes
 - add, replace, or remove Matroska metadata values based on a developed EBML equivalent of XPath
-
-## Metadata Fixer -- Web Interface

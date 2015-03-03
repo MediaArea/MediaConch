@@ -1,4 +1,4 @@
-## Reporter
+## Reporter Functional Requirements
 
 ### Functional Overview
 
