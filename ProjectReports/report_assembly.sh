@@ -1,10 +1,11 @@
 #!/bin/bash
-technical_report_basename="PreformaMediainfoTechnicalReport"
-conformance_check_appendix_basename="PreformaMediainfoAppendixConformanceCheckRegistry"
+reportsuffix="MediaAreaConch_"
+phase1_report_basename="${reportsuffix}DesignReport"
+conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRegistry"
 pwd=$(pwd)
 cd $(dirname "${0}")
 cd ..
-echo "" > "tmp_${technical_report_basename}.md"
+echo "" > "tmp_${phase1_report_basename}.md"
 for report in \
     DesignIntroduction.md \
     DesignNarrative.md \
@@ -18,7 +19,7 @@ for report in \
     StyleGuide.md
 do
     if [ -f "${report}" ] ; then
-        cat "${report}" >> "tmp_${technical_report_basename}.md"
+        cat "${report}" >> "tmp_${phase1_report_basename}.md"
     else
         echo "Warning: ${report} is missing"
     fi
@@ -43,9 +44,9 @@ cat ConformityChecks/ConformanceChecksLPCM.csv | csvprintf -i '### %1$s\n\n|Desc
 echo "## Container/Stream Coherency Checks (Draft)" >> "tmp_${conformance_check_appendix_basename}.md"
 cat ConformityChecks/CoherencyChecks.csv | csvprintf -i '### %1$s\n\n|Descriptor|Value|\n|:---------|:----|\n|CCID|%2$s|\n|Version|%3$s|\n|Authority|%4$s|\n|Target Format|%5$s|\n|Target Format Version|%6$s|\n|Target Format Part|%7$s|\n|Citation|%8$s|\n\nRule Clarity:\n    %10$s\n\nQuote:\n    %9$s\n\nDefinition:\n    %11$s\n\n\n'  >> "tmp_${conformance_check_appendix_basename}.md"
 
-for reportbase in "${technical_report_basename}" "${conformance_check_appendix_basename}" ; do
-    toc "tmp_${reportbase}.md"
-    pandoc -V geometry:margin=1in -o "ProjectReports/${reportbase}.pdf" "tmp_${reportbase}.md"
-    pandoc -o "ProjectReports/${reportbase}.html" "tmp_${reportbase}.md"
+for reportbase in "${phase1_report_basename}" "${conformance_check_appendix_basename}" ; do
+    toc "tmp_${phase1_report_basename}.md"
+    pandoc -V geometry:margin=1in -o "ProjectReports/${phase1_report_basename}.pdf" "tmp_${phase1_report_basename}.md"
+    pandoc -o "ProjectReports/${phase1_report_basename}.html" "tmp_${phase1_report_basename}.md"
 done
 cd "${pwd}"
