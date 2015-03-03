@@ -401,25 +401,25 @@ MediaArea's long term goal is to merge previous open source standalone products 
 
 MediaArea plans to build this stable, integrated solution over the course of the PREFORMA project phase, which will include the current team investigations of Matroska, FFV1, and LPCM, as well as other PREFORMA investigations such as TIFF and JPEG-2000. This will ensure that proper feedback from PREFORMA developers and stakeholders is provided in a meaningful timeframe. After the PREFORMA project is completed, MediaArea anticipates offering access to an integrated solution in two ways: as a ready-to-use environment with a subscription business model (SaaS), and as a ready-to-download version of the integrated solution. This is based on MediaArea’s future business model, which consists of a combination of subscriptions and paid punctual support, such as bug corrections and new feature requests. With this long term business model approach in mind, MediaArea will be able to continue offering a PREFORMA-specific version, free of non-PREFORMA related layers, as a subset of our own integrated solution.
 
-# Project Management Strategy
+## Project Management Strategy
 
-## Goal:
+### Goal:
 
 To ensure a vital project, the MediaArea.net team will track processes through an open issue tracker, allowing for consistent and detailed reports with an emphasis on feedback and transparent communication throughout various iterations of the project. 
 
-## Method:
+### Method:
 
 It is through daily task distribution, management and reflection that project advancements, as well as risks, are addressed. Such open, community-based interaction in the management and implementation of the project allows evolution to occur in all components of the endeavor to include: management, administration and documentation with the allowance for other opportunities for discussion and change to emerge throughout the whole of the project. In the process, the MediaArea team will provide detailed project reports that encourage open, constructive feedback during the testing process that will shape and influence discussions during project meetings.
 
-##  Justification/Purpose:
+###  Justification/Purpose:
 
 Such assessments, occurring daily, aim to build a sense of community that can freely and continually address all deviations and uncertainties, highlighting changes and assessing the benefits, as well as problems with each shift in the projects testing and implementation. With daily communication,  evaluations, critiques and suggestions can be addressed with quickly and efficiently.
 
-## Intended Result:
+### Intended Result:
 
 This approach to risk management is well-established within The MediaArea team’s previous work, with openness between all involved being strongly encouraged. The MediaArea hopes for and invites all relevant communities involvement in the strategy and management of the project, developing and including use of public tools (github.com, wikis, forums, etc.) and other communication during the planning and implementation of the project timeline. Such interactions and testing of software are welcome at any point during the implementation stage. These engagements will help immensely in addressing and evaluation of priorities and outcomes of the project. Through a process of constant assessment and open access the MediaArea team can respond to changes in software and address performance and usability of the software in its various forms. 
 
-## Risk Analysis Model
+### Risk Analysis Model
 
 * Define Risk
 * Establish date of risk
@@ -444,7 +444,7 @@ This approach to risk management is well-established within The MediaArea team�
 ** conclusion date and
 ** reason for conclusion.
 
-##  Internal Risk Assessment
+###  Internal Risk Assessment
 
 #### Internal Management:
     
