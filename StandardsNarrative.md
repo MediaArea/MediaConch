@@ -14,7 +14,7 @@ MKV v3 and FFV1 v3 to be submitted to the Internet Engineering Task Force(IETF) 
 
 ## Advantages of Pursuing Standardization Within IETF
 
-*"The review that comes with the process leads to better designs (or at least more confidence in them by others), and less fear of the format being changed arbitrarily." * (NOTE:  From an email conversation between the PREFORMA project team and a project interviewee)
+*"The review that comes with the process leads to better designs (or at least more confidence in them by others), and less fear of the format being changed arbitrarily."* (NOTE:  From an email conversation between the PREFORMA project team and a project interviewee)
 
 Three options were initially considered for pursuing standardization: IETF, SMPTE (Society of Motion Picture and Television Engineers), and ISO(International Organization for Standardization. Foremost among a number of factors that made SMPTE and ISO unsuitable for this endeavor was the fact that both SMPTE and ISO have a paywall in place.  Payment for access to standards runs counter to the ideals of the PREFORMA project. Within the context of digital preservation it is imperative for file formats to be well-disclosed, understood, and controlled within an archival setting; specification paywalls provide an obstacle to this objective.
 
