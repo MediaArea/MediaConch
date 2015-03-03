@@ -1,4 +1,3 @@
-
 ## Policy Checker - Graphical User Interface
 
 ### Introduction
@@ -55,7 +54,7 @@ In the context of the Command Line Interface the Policy Checker shall allow for 
 
 The Policy Checker will support exit codes to programmically inform to the output of the process.
 
-###Design and Functional Requirements
+### Design and Functional Requirements
 
 Users of the command line interface will be prompted with several usage options to call specific project APIs, including the Reporter, implementation checker, Policy Checker, and Metadata Fixer. An additional call for "--Help" will prompt an extended options menu. The functions of the command line interface shall include allowing the user to:
 
@@ -65,8 +64,7 @@ Users of the command line interface will be prompted with several usage options 
 - allow new policies to be added, edited, or removed from policy sets
 - allow policies to be encapsulated within over conditional tests with an if/else approach
 
-####Batch Policy Checking
+#### Batch Policy Checking
 
 The command line interface allows for efficient batch policy checking through calls made to the API.
-
 
