@@ -18,10 +18,11 @@ Prepared by: MediaArea.net SARL
 Prepared for: PREFORMA Consortium
 
 Date: December 31, 2014
+Revised Date: March 2, 2015
 
 Licensed under: Creative Commons CC-BY v4.0
 
-Summary: This report serves as a snapshot of MediaArea's research, planning, and design work to develop a conformance checker, tentatively entitled "Conch".
+Summary: This report presents MediaArea's research, planning, and design work to develop a shell and conformance checker tentatively entitled "Conch" with a particular focus on Matroska, FFV1, and LPCM.
 
 <!-- toc -->
 
