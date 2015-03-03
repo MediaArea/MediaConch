@@ -68,11 +68,11 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Participation in a training event for Open Source companies that will take place in Stockholm in December 2015, in connection with the first Prototype Demonstration.
 -- Online public demonstration of project deliverables
 
-
 * Jan - Feburary 2016
 
 -- Submit either 1) working group proposal or 2) proposal for working group consensus sponsorship; prepare documentation for transition from Internet-Draft to Standards track
 -- Release report on the outcome of the Re-Design work, including updated timeline for Second Prototype
+-- Reach out to memory institutions willing to provide feedback and local policy rules for implementation into Policy Checker
 
 * March 2016 - December 2016 is known as the "Second Prototype" section of Phase 2
 

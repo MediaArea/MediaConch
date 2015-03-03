@@ -1,3 +1,5 @@
+# Metadata Fixer
+
 ## Metadata Fixer -- Graphical User Interface
 
 ### Introduction
@@ -8,7 +10,7 @@ The intrinsic design of the Matroska file format aims to find a balance between 
 
 Because of these Matroska features, we are very interested in how archivists may work more actively with internal file metadata through various parts of the OAIS framework. For instance reports on file edits, repairs, and outcomes of preservation events may be added directly to the file. With such tools as proposed by this project, archivists and repository systems may work with living Matroska preservation objects which internally define the context and lifecycle of themselves over time while maintaining the fixity features of the contained audiovisual data which is the essence of the overall preservation focus and what the Matroska container may be used to describe, validate, and support.
 
-Although the Metadata Fixer can provide comprehensive levels of control over metadata creation and editing, the central objective of the metadata fixer is to facilitate repair procedures for conformance or policy issues. The [Tag validation status](######validation-status) will be presented in detail or summarization dependent on the active layout and related problematic aspects of the file with designed repair solutions. Because metadata fixes or repairs will alter a preservation file, MediaArea has dedicated a signficiant level of caution to the design of these operations. Learning more our similar experience with BWF MetaEdit, such designs will be based off a thorough programmatic understanding of the file, the actions to move the file towards a greater level of conformity, and the risks associated with doing so. The interfaces designed here will serve to intuitively relate file issues, with programatically proposed fixes, and inform to provide the user with an understand of the context and risk of the fix.
+Although the Metadata Fixer can provide comprehensive levels of control over metadata creation and editing, the central objective of the metadata fixer is to facilitate repair procedures for conformance or policy issues. The [Tag validation status](######validation-status) will be presented in detail or summarization dependent on the active layout and related problematic aspects of the file with designed repair solutions. Because metadata fixes or repairs will alter a preservation file, MediaArea has dedicated a signficiant level of caution to the design of these operations. Learning from our similar experience with BWF MetaEdit, such designs will be based off of a thorough programmatic understanding of the file, the actions to move the file towards a greater level of conformity, and the risks associated with doing so. The interfaces designed here will serve to intuitively relate file issues, with programatically proposed fixes, and inform to provide the user with an understand of the context and risk of the fix.
 
 ### Design & Functional Requirements
 
@@ -16,7 +18,7 @@ Although the Metadata Fixer can provide comprehensive levels of control over met
 
 The GUI version of the metadata fixer will provide an interface to see a table of summarized metadata for one or many open files. The intent is to go allow files to be sorted by particular technical qualities or the content of embedded metadata. A table-based presentation will also allow the inconsistancies of technical metadata to be easily revealed and repaired.
 
-MediaArea has developed such interfaces in other conformance- and metadata-focused projects such as BWF MetaEdit and QCTools and plans to use the File List Layout as an interface center for batch file metadata operations.
+MediaArea has developed such interfaces in other conformance- and metadata-focused projects (such as BWF MetaEdit and QCTools) and plans to use the File List Layout as an interface center for batch file metadata operations.
 
 ##### Customizable Sections
 
@@ -32,7 +34,7 @@ The contents of the File List will be configurable according to the metadata val
     - Attachment
     - Tagging
 
-In additional to Matroska sections a category of file attribute data will also be provided to show information such as file size, file name, etc. Additional a 'global' section is provided to show summarization of the file's status and structure.
+In addition to the Matroska sections, a category of file attribute data will also be provided to show information such as file size, file name, etc. Additionally, a 'global' section is provided to show summarization of the file's status and structure.
 
 A toolbar in the File List Layout will enable the user to select one or many sections to allow for focus on a particular section.
 
@@ -50,7 +52,7 @@ A global section would provide informational columns such as:
     - Number of chapters
     - Number of attachments
 
-As metadata tags may vary substantially, the tagging section of the File List Layout will show selected level 4 metadata tags as well as a column to summarize what level 4 metadata tags are unshown. Columns values which show level 4 metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of metadata tags in level 5 and below can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown Level 4 metadata tags may be edited directly.
+As metadata tags may vary substantially, the tagging section of the File List Layout will show selected top-level metadata tags as well as a column to summarize what top-level metadata tags are not shown. Columns values which show top-level metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of lower level metadata tags can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown top-level metadata tags may be edited directly.
 
 The order and selection of viewed columns within the File List Layout may be saved and labelled to configure the display. This feature will allow users to design and configure layouts for particular metadata workflows. MediaArea plans to provide specific layouts in accordance with the objective of particularly OAIS functions, such as to supply contextual metadata about a digitisation or acquisition event.
 
@@ -95,7 +97,7 @@ Each metadata tag may be associated with the context of the whole file or many s
 
 ###### Tag Content Bahavior
 
-Matroska tags may contain either a TagString or TagBinary element. When single-clicking or tabbing into a TagContent field then if the TagContent is a TagString it shall be directly editable and if the TagContent is a TagBinary the TagContentModalWindow shall appear selected to the Binary tab with a guided hex editor.
+Matroska tags may contain either a TagString or TagBinary element. When single-clicking or tabbing into a TagContent field, the TagContent is a TagString and it shall be directly editable. If the TagContent is a TagBinary, the TagContentModalWindow shall appear selected to the Binary tab with a guided hex editor.
 
 ###### Tag Content Modal Window
 

@@ -31,15 +31,15 @@ The policy designer interface enables users to create, edit, and share sets of p
 - use a list of policy test operators as defined in the policy expression XSD
 - allow policies to be encapsulate within over conditional tests with an if/else approach
 
-The policy designer interface will inform the user with a general indicator as to how time-consuming the test if. For instance to test that all selected Matroska files are version 3 or higher may be done with a quick header parse, but to test that all FFV1 frames have valid embedded CRCs would take a lot more time. Although policy sets may provide an indicator as to the amount of time required (i.e. which sets are quick and which are intensive). This information may be used to set up task scheduling efficiently.
+The policy designer interface will inform the user with a general indicator as to how time-consuming the test will be. For instance, testing that all selected Matroska files are version 3 or higher may be done with a quick header parse, but to test that all FFV1 frames have valid embedded CRCs would take a lot more time. Although policy sets may provide an indicator as to the amount of time required (i.e. which sets are quick and which are intensive). This information may be used to set up task scheduling efficiently.
 
-![policy designer interface](./Design/GUI/PolicyDesignerMockup.png)
+![Policy Designer Interface](./Design/GUI/PolicyDesignerMockup.png)
 
 #### File Selection Interface
 
 The file selection interface shall allow the operator to load files through such methods as drag-and-drop, selection through system dialogs, or file system queries. Such sets of files or queries to identify files may then be saved, name, and described. Thus an operator may define a particular directory as an entry point for acquisitions, a queue for quality control assessment, or archival storage.
 
-![policy selection interface](./Design/GUI/PolicySelectionMockup.png)
+![Policy Selection Interface](./Design/GUI/PolicySelectionMockup.png)
 
 #### Policy Test Interface
 
@@ -68,7 +68,3 @@ Users of the command line interface will be prompted with several usage options 
 ####Batch Policy Checking
 
 The command line interface allows for efficient batch policy checking through calls made to the API.
-
-## Policy Checker - Web Interface
-
-
