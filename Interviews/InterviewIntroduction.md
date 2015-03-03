@@ -20,6 +20,8 @@ Licensed under: Creative Commons CC-BY v4.0
 
 Summary: In order to design a project responsive to the needs and concerns of a community of memory institutions, we released an online survey during the design phase to cover information. This report summarizes the findings of the survey and provides the raw data from the questionairre.
 
+<!-- toc -->
+
 # Interview Introduction
 
 [PREFORMA](http://PREFORMA-project.eu/) (PREservation FORMAts for culture information/e-archives) is a Pre-Commercial Procurement (PCP) project co-funded by the European Commission under its FP7-ICT Programme. PREFORMA aims to address the challenge of implementing good quality standardised file formats for preserving data content in the long term. The main objective is to give memory institutions full control of the process of the conformity tests of files to be ingested into archives. MediaArea is one of six teams that will present their software architecture to the PREFORMA panel in March 2015. The panel will then make a further selection amongst suppliers from phase 1 (research) to proceed to phase 2 (development).
