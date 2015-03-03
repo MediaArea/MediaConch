@@ -10,6 +10,7 @@ conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRe
 standardization_appendix_basename="${reportsuffix}_Appendix_Standardization"
 questionnaire_appendix_basename="${reportsuffix}_Appendix_Questionnaire"
 interview_appendix_basename="${reportsuffix}_Appendix_Interviews"
+lettersofsupport_apendix_basename="${reportsuffix}_Appendix_Letters_of_Support"
 pwd=$(pwd)
 cd $(dirname "${0}")
 cd ..
@@ -99,6 +100,9 @@ done
 cat Questionnaire/QuestionnaireIntroAndSummary.md > "tmp_${questionnaire_appendix_basename}.md"
 pandoc -V geometry:margin=1in -V papersize:"a4paper" -o "tmp_${questionnaire_appendix_basename}.pdf" "tmp_${questionnaire_appendix_basename}.md"
 pdfjoin -o "ProjectReports/${questionnaire_appendix_basename}.pdf" "tmp_${questionnaire_appendix_basename}.pdf" "Questionnaire/QuestionnaireResponsesAnalytics.pdf"
+
+#letters of support
+pdfjoin --fitpaper 'false' --rotateoversize 'false' -o "ProjectReports/${lettersofsupport_apendix_basename}.pdf" "LettersOfSupport/TateLetterOfSupport.pdf" "LettersOfSupport/ArtefactualLetterOfSupport.pdf" "LettersOfSupport/ArtefactualSystemsCompanyInfo.pdf" "LettersOfSupport/HKBLetterOfSupport.pdf"
 
 cd "${pwd}"
 
