@@ -33,6 +33,7 @@ Metadata Fixing Documentation (Action measures and preventative measures for non
 
 Individual File General / Verbose bit metadata readouts
 
+
 ## Reporter - Graphical User Interface
 
 The Reporter's Graphical User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above-mentioned output handlers.
@@ -44,3 +45,5 @@ On the Command Line Interface, a user would be able to export a report using fla
 ## Reporter - Web User Interface
 
 Like the Graphical User Interface, the Reporter's Web User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above mentioned output handlers.
+
+

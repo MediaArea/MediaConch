@@ -31,3 +31,4 @@ Because some checks are fairly processor-intensive, MediaArea's developers will 
 The GUI of the implementation checker shall provide a configuration interface where sets of registered checks may be enabled or disabled. The interface shall link each check to documentation (internal or online) regarding the context of the check. Another interface shall allow the user to select one or many files to verify against the selected checkers. The test (associatation of files to checks) may then be run or sent to a scheduler within the Shell.
 
 The reporting of the Implementation Checker should associate checks to specific files and provide detailed context: byte offsets, links to background infromation, citations, and other supportive documentation.
+
