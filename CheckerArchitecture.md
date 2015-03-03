@@ -35,6 +35,16 @@ HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (
 ### Plugin integration proof of concept: mkvalidator
 mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.
 
+### Optional 
+
+(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)
+
+- MOV / ISO MP4
+- AVI
+- WAV
+- MXF
+- Any other container format on sponsor request (we have skills in OGG, MPEG-TS, MPEG-PS, DV, IMF…)
+
 ## Container/Wrapper Demultiplexing
 
 ### Conch
@@ -73,7 +83,7 @@ For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)
 - AC-3 (including AS-07)
 - MPEG 1/2 Audio
 - AAC
-- Any other essence format on sponsor request (we have skills in DV, VC-1, VC-3, MPEG-4 Visual, H.263, H.265/HEVC, FLAC, Musepack, Wavepack, , BMP, DPX, EXR, JPEG, PNG, SubRip, WebVTT, N19/STL, TTML…)
+- Any other essence format on sponsor request (we have skills in DV, VC-1, VC-3, MPEG-4 Visual, H.263, H.265/HEVC, FLAC, Musepack, Wavepack, BMP, DPX, EXR, JPEG, PNG, SubRip, WebVTT, N19/STL, TTML…)
 
 ## Stream/Essence decoder
 
