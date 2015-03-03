@@ -67,7 +67,7 @@ For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)
 
 (Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)
 
-- MPEG-1/2 Video (including IMX, AS-07, D-10 Video, FIMS…)
+- MPEG-1/2 Video (including IMX, AS-07, D-10 Video)
 - H.264/AVC (including AS-07)
 - Dirac
 - AC-3 (including AS-07)
