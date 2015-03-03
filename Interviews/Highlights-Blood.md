@@ -1,6 +1,6 @@
 # Interview with George Blood
 
-Date:12/16/2014
+Date: 12/16/2014
 
 Interviewers: Dave, Erik
 
