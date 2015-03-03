@@ -446,7 +446,7 @@ This approach to risk management is well-established within The MediaArea teamâ€
 * Establish date of risk
 * Define risk (factors, causes and possible effects)
 * Include other contextual information related to risk
-* Note individual who discovered risk
+* Record individual who discovered risk
 * Establish risks probability and impact
 * Hypothesize time when risk could occur
 * Hypothesize the impact of risk
