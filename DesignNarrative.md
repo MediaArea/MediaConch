@@ -418,9 +418,9 @@ MediaArea plans to build this stable, integrated solution over the course of the
 The MediaArea team is active in the open source community and has presented the work on PREFORMA at two conferences during Phase 1:
 
 - Dave Rice presented our work on PREFORMA at FOSDEM on January 31st:
- https://fosdem.org/2015/schedule/event/enabling_video_preservation/
+ - https://fosdem.org/2015/schedule/event/enabling_video_preservation/
 - Ashley Blewer presented our work at Code4Lib on February 11th:
- http://wiki.code4lib.org/2015_Lightning_Talks
+ - http://wiki.code4lib.org/2015_Lightning_Talks
 
 ## Project Management Strategy
 
