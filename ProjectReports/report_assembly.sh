@@ -2,6 +2,7 @@
 
 # unassigned reports
 # Timeline.md
+# ProjectDeliverablesOutline.md
 
 reportsuffix="MediaAreaConch"
 phase1_report_basename="${reportsuffix}_DesignReport"
@@ -14,6 +15,7 @@ echo "" > "tmp_${phase1_report_basename}.md"
 for report in \
     DesignIntroduction.md \
     DesignNarrative.md \
+    Timeline.md \
     ArchitectureIntroduction.md \
     GlobalArchitecture.md \
     CheckerArchitecture.md \
