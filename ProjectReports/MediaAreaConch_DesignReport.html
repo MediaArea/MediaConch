@@ -12,9 +12,9 @@
 <li>Guillaume Roques</li>
 </ul>
 <p>Prepared for: PREFORMA Consortium</p>
-<p>Date: December 31, 2014</p>
+<p>Date: December 31, 2014 Revised Date: March 2, 2015</p>
 <p>Licensed under: Creative Commons CC-BY v4.0</p>
-<p>Summary: This report serves as a snapshot of MediaArea's research, planning, and design work to develop a conformance checker, tentatively entitled &quot;Conch&quot;.</p>
+<p>Summary: This report presents MediaArea's research, planning, and design work to develop a shell and conformance checker tentatively entitled &quot;Conch&quot; with a particular focus on Matroska, FFV1, and LPCM.</p>
 <!-- toc -->
 <ul>
 <li><a href="#project-introduction">Project Introduction</a></li>
@@ -492,8 +492,10 @@
 <h2 id="participation-at-open-source-conferences">Participation at Open Source conferences</h2>
 <p>The MediaArea team is active in the open source community and has presented the work on PREFORMA at two conferences during Phase 1:</p>
 <ul>
-<li>Dave Rice presented our work on PREFORMA at FOSDEM on January 31st: https://fosdem.org/2015/schedule/event/enabling_video_preservation/</li>
-<li>Ashley Blewer presented our work at Code4Lib on February 11th: http://wiki.code4lib.org/2015_Lightning_Talks</li>
+<li>Dave Rice presented our work on PREFORMA at FOSDEM on January 31st:</li>
+<li>https://fosdem.org/2015/schedule/event/enabling_video_preservation/</li>
+<li>Ashley Blewer presented our work at Code4Lib on February 11th:</li>
+<li>http://wiki.code4lib.org/2015_Lightning_Talks</li>
 </ul>
 <h2 id="project-management-strategy">Project Management Strategy</h2>
 <h3 id="goal">Goal:</h3>
@@ -1046,12 +1048,13 @@
 <h2 id="metadata-fixer----web-interface">Metadata Fixer -- Web Interface</h2>
 <h2 id="reporter-2">Reporter</h2>
 <h3 id="functional-overview-2">Functional Overview</h3>
-<p>The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, and other associated session documentation. This information is derived from multiple APIs passed through the PREFORMA core and finally combined and transformed into a desired output. Several of these output formats will allow for external software agents to futher process this information. Report information can be saved in batches and later consulted and provide a historical context for each file.</p>
+<p>The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, check statistics, conformance priorities, and other associated session documentation. This information is derived from the database and multiple component project APIs, passed through the PREFORMA core and finally combined and transformed into a desired output. Several output formats allow for external software agents to futher process this reportage.</p>
+<p>The Reporter may accept a previously-generated PREFORMAXML or other supported output format for collation with other conformance checks. Previously-generated PREFORMAXML reports may also be transformedn into additional desired outputs.</p>
 <h3 id="design-and-functional-requirements-1">Design and Functional Requirements</h3>
 <ul>
-<li>human-readable output formats: PDF, TXT</li>
-<li>machine-readable output formats: XML, JSON</li>
-<li>optional machine-readable output formats: CSV/TSV</li>
+<li>human-readable supported output formats: PDF, TXT</li>
+<li>machine-readable supported output formats: PREFORMAXML, JSON</li>
+<li>optional machine-readable supported output formats: CSV/TSV</li>
 <li>report on implementation checks, policy checks, and metadata fixes</li>
 <li>report on information concerning preventative measures for non-conformed files</li>
 <li>option to report verbose bit traces of individual files</li>
