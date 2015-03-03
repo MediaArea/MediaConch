@@ -129,7 +129,7 @@ Both the GUI and CLI of the Metadata fixer will allow Matroska metadata tags to 
 - A list to specify level 4 Matroska tags to appear in File List Layout as a column
 - Default value to use for the default value of TagLanguage on new metadata tags
 
-## Metadata Fixer -- Command Line Interface
+## Metadata Fixer Command Line Interface
 
 ### Functional Overview
 

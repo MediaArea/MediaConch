@@ -109,7 +109,7 @@
 </ul></li>
 <li><a href="#containerwrapper-implementation-checker">Container/Wrapper implementation checker</a>
 <ul>
-<li><a href="#conch-matroska-checker">Conch: Matroska checker</a></li>
+<li><a href="#conch">Conch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</a></li>
 <li><a href="#optional">Optional</a></li>
 </ul></li>
@@ -145,10 +145,10 @@
 </ul></li>
 <li><a href="#policy-checker-functional-requirements">Policy Checker Functional Requirements</a>
 <ul>
-<li><a href="#policy-checker-graphical-user-interface">Policy Checker - Graphical User Interface</a></li>
+<li><a href="#policy-checker-graphical-user-interface">Policy Checker Graphical User Interface</a></li>
 <li><a href="#design-functional-requirements">Design &amp; Functional Requirements</a></li>
 </ul></li>
-<li><a href="#policy-checker-command-line-interface">Policy Checker - Command Line Interface</a>
+<li><a href="#policy-checker-command-line-interface">Policy Checker Command Line Interface</a>
 <ul>
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
@@ -158,7 +158,7 @@
 <li><a href="#introduction-to-graphical-user-interface">Introduction to Graphical User Interface</a></li>
 <li><a href="#design-functional-requirements">Design &amp; Functional Requirements</a></li>
 </ul></li>
-<li><a href="#metadata-fixer-command-line-interface">Metadata Fixer -- Command Line Interface</a>
+<li><a href="#metadata-fixer-command-line-interface">Metadata Fixer Command Line Interface</a>
 <ul>
 <li><a href="#functional-overview">Functional Overview</a></li>
 </ul></li>
@@ -167,9 +167,9 @@
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
 <li><a href="#contents">Contents</a></li>
-<li><a href="#reporter-graphical-user-interface">Reporter - Graphical User Interface</a></li>
-<li><a href="#reporter-command-line-interface">Reporter - Command Line Interface</a></li>
-<li><a href="#reporter-web-user-interface">Reporter - Web User Interface</a></li>
+<li><a href="#reporter-graphical-user-interface">Reporter Graphical User Interface</a></li>
+<li><a href="#reporter-command-line-interface">Reporter Command Line Interface</a></li>
+<li><a href="#reporter-web-user-interface">Reporter Web User Interface</a></li>
 </ul></li>
 <li><a href="#style-guide">Style Guide</a></li>
 <li><a href="#source-code-guide">Source Code Guide</a>
@@ -866,7 +866,10 @@
 <p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
 <p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, can be re-licensed to GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
-<h3 id="conch-matroska-checker">Conch: Matroska checker</h3>
+<h3 id="conch">Conch</h3>
+<ul>
+<li>Matroska checker</li>
+</ul>
 <h3 id="plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</h3>
 <p>mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.</p>
 <h3 id="optional">Optional</h3>
@@ -879,7 +882,7 @@
 <li>Any other container format on sponsor request (we have skills in OGG, MPEG-TS, MPEG-PS, DV, IMF…)</li>
 </ul>
 <h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
-<h3 id="conch">Conch</h3>
+<h3 id="conch-1">Conch</h3>
 <p>Conch will utilize MediaInfo's updated (for the project) demuxing libraries (re-licensed under GPLv3+/MPLv2+) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats found within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
 <ul>
 <li>MXF (commonly found within memory institutions)</li>
@@ -893,7 +896,7 @@
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PREFORMA's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PREFORMA's licensing requirements.</p>
 <h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <p>Plugin</p>
-<h3 id="conch-1">Conch</h3>
+<h3 id="conch-2">Conch</h3>
 <ul>
 <li>FFV1</li>
 <li>PCM (including D-10 Audio, AES3)</li>
@@ -913,17 +916,18 @@
 </ul>
 <h2 id="streamessence-decoder">Stream/Essence decoder</h2>
 <p>(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)</p>
-<h3 id="conch-2">Conch</h3>
+<h3 id="conch-3">Conch</h3>
 <ul>
 <li>PCM (including D-10 Audio, AES3)</li>
 </ul>
 <h3 id="plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</h3>
 <p>OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</h2>
-<h3 id="conch-3">Conch</h3>
+<h3 id="conch-4">Conch</h3>
 <p>Conch will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)</p>
 <h2 id="baseband-analyzer">Baseband Analyzer</h2>
-<h3 id="conch-4">Conch</h3>
+<p>(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)</p>
+<h3 id="conch-5">Conch</h3>
 <ul>
 <li>None (only creation of the API)</li>
 </ul>
@@ -945,7 +949,7 @@
 <p>The GUI of the implementation checker shall provide a configuration interface where sets of registered checks may be enabled or disabled. The interface shall link each check to documentation (internal or online) regarding the context of the check. Another interface shall allow the user to select one or many files to verify against the selected checkers. The test (associatation of files to checks) may then be run or sent to a scheduler within the Shell.</p>
 <p>The reporting of the Implementation Checker should associate checks to specific files and provide detailed context: byte offsets, links to background infromation, citations, and other supportive documentation.</p>
 <h2 id="policy-checker-functional-requirements">Policy Checker Functional Requirements</h2>
-<h3 id="policy-checker---graphical-user-interface">Policy Checker - Graphical User Interface</h3>
+<h3 id="policy-checker-graphical-user-interface">Policy Checker Graphical User Interface</h3>
 <p>The policy checker graphical user interface will allow set of policy rules to be created and configured to specfic workflows and then applied to selected collections of files or file queries across a file system. Although predefined presets are available, users shall be able to use the interface to create or edit policy check presets for reuse. A policy check preset will include a list will essentially be a recipe for evaluating the technical aspects of a set of files. Although MediaArea's implementation here will focus specifically on the selected formats of Matroska, FFV1, and LPCM, the policy checker will be able to preform checks on any type of file supported by MediaInfo.</p>
 <p>MediaArea currently manages a registry of terminology to express a diverse set of technical metadata characteristics, including information about containers, streams, contents, and file attributes. Such information is derived from container demuxing and specialized bitstream analysis. The approach of MediaInfo's design is to trace through the entire structure of a file and interpret all data in a manner that categorizes it to the content of the utilized formats underlying specifications. This interpretation of audiovisual data is comprehensive and specification based, but to supported more generalized use within media workflows, the information is then aligned to a pre-defined set of technical metadata terminology.</p>
 <p>MediaArea will extend its Matroska demultiplexer to focus on the complete potential expression allowed by all versions of Matroska (versions 1 to 3, and experimental version 4) as well as common Matroska format profiles such as WebM. Additionally MediaInfo will continue work on its FFV1 bitstream filter to efficiently analyze single frames, partial streams, or whole streams. Such work will distinguish between contextual and technical metadata unique to the four existing versions of FFV1.</p>
@@ -979,7 +983,7 @@
 <h4 id="policy-test-interface">Policy Test Interface</h4>
 <p>Within the Policy Test Interface, the user may associate policy sets and file selections to form a policy test. Policy tests may contain name and descriptions which will be passed through to the resulting report to provide context. The policy tests may then be run directly or assigned to the task scheduler of the Shell. Within the Policy Checker GUI the results of the policy tests may then viewed or analysis within the Reporter GUI.</p>
 <p>The policy test interface will provide access to a log of policy tests, the context of each test, and any errors in running the policy test (such as the file selection being unavailable).</p>
-<h2 id="policy-checker---command-line-interface">Policy Checker - Command Line Interface</h2>
+<h2 id="policy-checker-command-line-interface">Policy Checker Command Line Interface</h2>
 <h3 id="functional-overview">Functional Overview</h3>
 <p>In the context of the Command Line Interface the Policy Checker shall allow for the Policy Set XML and the file or files to be tested to be inputs to the command line utility. The output of the utility will be a report compliant with PREFORMA reporting format for the expression of conformance, policy and metadata information. The command line will provide various levels of verbosity in order to show progress in processing through multiple files and allow the policy results to be shown as they are assessed.</p>
 <p>The Policy Checker will support exit codes to programmically inform to the output of the process.</p>
@@ -1099,7 +1103,7 @@
 <li>A list to specify level 4 Matroska tags to appear in File List Layout as a column</li>
 <li>Default value to use for the default value of TagLanguage on new metadata tags</li>
 </ul>
-<h2 id="metadata-fixer----command-line-interface">Metadata Fixer -- Command Line Interface</h2>
+<h2 id="metadata-fixer-command-line-interface">Metadata Fixer Command Line Interface</h2>
 <h3 id="functional-overview-1">Functional Overview</h3>
 <p>The Matroska Metadata Fixer command line interface will provide repository systems with a means to automatically assess what potential fixes may be performed, selectively perform them, add or changes files metadata, or preform structural changes to the file.</p>
 <p>Overall all the features documented in the Metadata Fixer GUI are also feasible within the CLI, although some scripting may be necessary around the CLI to emulate a fully programmatic performance of all anticipated GUI workflows.</p>
@@ -1133,11 +1137,11 @@
 <p>Policy Checking Errors Policy Checking Warnings</p>
 <p>Metadata Fixing Documentation (Action measures and preventative measures for non-conformed files)</p>
 <p>Individual File general / verbose bit metadata readouts</p>
-<h3 id="reporter---graphical-user-interface">Reporter - Graphical User Interface</h3>
+<h3 id="reporter-graphical-user-interface">Reporter Graphical User Interface</h3>
 <p>The Reporter's Graphical User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above-mentioned output handlers.</p>
-<h3 id="reporter---command-line-interface">Reporter - Command Line Interface</h3>
+<h3 id="reporter-command-line-interface">Reporter Command Line Interface</h3>
 <p>On the Command Line Interface, a user would be able to export a report using flags designating output and output format (e.g., &quot;--output=XML&quot;).</p>
-<h3 id="reporter---web-user-interface">Reporter - Web User Interface</h3>
+<h3 id="reporter-web-user-interface">Reporter Web User Interface</h3>
 <p>Like the Graphical User Interface, the Reporter's Web User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above mentioned output handlers.</p>
 <h1 id="style-guide">Style Guide</h1>
 <h2 id="source-code-guide">Source Code Guide</h2>
