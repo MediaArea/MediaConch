@@ -136,16 +136,16 @@
 <ul>
 <li><a href="#conch">Conch</a></li>
 </ul></li>
-<li><a href="#implementation-checker">Implementation Checker</a>
+<li><a href="#implementation-checker-functional-requirements">Implementation Checker Functional Requirements</a>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#registry-of-checks">Registry of Checks</a></li>
 <li><a href="#demultiplexing">Demultiplexing</a></li>
 <li><a href="#implementation-checker">Implementation Checker</a></li>
 </ul></li>
-<li><a href="#policy-checker-graphical-user-interface">Policy Checker - Graphical User Interface</a>
+<li><a href="#policy-checker-functional-requirements">Policy Checker Functional Requirements</a>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#policy-checker-graphical-user-interface">Policy Checker - Graphical User Interface</a></li>
 <li><a href="#design-functional-requirements">Design &amp; Functional Requirements</a></li>
 </ul></li>
 <li><a href="#policy-checker-command-line-interface">Policy Checker - Command Line Interface</a>
@@ -153,18 +153,16 @@
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
 </ul></li>
-<li><a href="#metadata-fixer">Metadata Fixer</a></li>
-<li><a href="#metadata-fixer-graphical-user-interface">Metadata Fixer -- Graphical User Interface</a>
+<li><a href="#metadata-fixer-functional-requirements">Metadata Fixer Functional Requirements</a>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction-to-graphical-user-interface">Introduction to Graphical User Interface</a></li>
 <li><a href="#design-functional-requirements">Design &amp; Functional Requirements</a></li>
 </ul></li>
 <li><a href="#metadata-fixer-command-line-interface">Metadata Fixer -- Command Line Interface</a>
 <ul>
 <li><a href="#functional-overview">Functional Overview</a></li>
 </ul></li>
-<li><a href="#metadata-fixer-web-interface">Metadata Fixer -- Web Interface</a></li>
-<li><a href="#reporter">Reporter</a>
+<li><a href="#reporter-functional-requirements">Reporter Functional Requirements</a>
 <ul>
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
@@ -942,7 +940,7 @@
 <ul>
 <li>None (only creation of the API)</li>
 </ul>
-<h2 id="implementation-checker-1">Implementation Checker</h2>
+<h2 id="implementation-checker-functional-requirements">Implementation Checker Functional Requirements</h2>
 <h3 id="introduction">Introduction</h3>
 <p>The implemententation checker is the centerpiece of the project and where development efforts shall be the most consequential to memory institutions and the underlying standards organizations. MediaArea plans to use the utmost precision and transparency within the development of the implementation checker so that it may, to the greatest extent feasible, produce an accurate and referenced analysis regarding the adherence or transgression of a selected file format to its associated specifications.</p>
 <p>Measuring the extent of the adherence of files to associated specifications can be adjusted by the user, for instance the user may wish to only verify files against a particular version of a specification, or choose to exempt or excuse certain violations, or choose to only assess part of a file (for instance to only test the frame X frames of FFV1 for adherance) in the interest of time.</p>
@@ -954,13 +952,13 @@
 <p>The registered checks shall be categorized according to their respective associated authority and specification document. The grouping of rules shall enable the user to select parts of an implementation check if necessary. For instance the Matroska specificiation is comprised of several versions and several underlying specifications, such as Extensible Binary Meta Language (EBML). The implementation checker should be able to test if a file is valid according to all known checks asscoiated with Matroska, but should also be able to validate a file against only the rules derived from the EBML specification.</p>
 <h3 id="demultiplexing">Demultiplexing</h3>
 <p>MediaArea's project focus includes two formats of encoded audiovisual data (FFV1 and LPCM) that are usually found within other container formats (which may or may not be Matroska). We intend the implementation checker to function properly for FFV1 and LPCM even if they are not contained within Matroska. MediaInfo already contains the ability to parse encoded streams from container formats such as AVI, QuickTime, MXF, and many others. By re-licensing MediaInfo under PREFORMA's licensing requirements we can ensure that the implementation checker maintain relevance for file formats such as FFV1 in AVI and FFV1 in QuickTime (both found widely in early discovery interviews and surveys). In these cases the Implementation Checker will report on the implementation of the supported formats specifically (here FFV1) and not focus on unsupported container formats which happen to be deployed.</p>
-<h3 id="implementation-checker-2">Implementation Checker</h3>
+<h3 id="implementation-checker-1">Implementation Checker</h3>
 <p>The Implementation Checker, whether run via command line interface (CLI), graphical user interface (GUI), or browser-based interface, should be able to accept a file as a input. The Implementation Checker will verify that the input is relevant to the Checker (ie. is it EBML/Matroska or does it appear to contain FFV1 or LPCM). If relevant, the Implementation Checker will verify adherence or document transgressions to the test detailed in the Registry. The output will use the formats of the Reporter, specifically the PREFORMA XML format, but additional outputs in JSON, PDF, and/or HTML will be available.</p>
 <p>Because some checks are fairly processor-intensive, MediaArea's developers will focus on the efficency of intensive checks (such as verifying the CRC payloads of FFV1 or MKV) through multi-threaded processing, frequent benchmarking, and coding optimizations. Additionally the user shall be able to express settings to balance time and thoroughness of the checks.</p>
 <p>The GUI of the implementation checker shall provide a configuration interface where sets of registered checks may be enabled or disabled. The interface shall link each check to documentation (internal or online) regarding the context of the check. Another interface shall allow the user to select one or many files to verify against the selected checkers. The test (associatation of files to checks) may then be run or sent to a scheduler within the Shell.</p>
 <p>The reporting of the Implementation Checker should associate checks to specific files and provide detailed context: byte offsets, links to background infromation, citations, and other supportive documentation.</p>
-<h2 id="policy-checker---graphical-user-interface">Policy Checker - Graphical User Interface</h2>
-<h3 id="introduction-1">Introduction</h3>
+<h2 id="policy-checker-functional-requirements">Policy Checker Functional Requirements</h2>
+<h3 id="policy-checker---graphical-user-interface">Policy Checker - Graphical User Interface</h3>
 <p>The policy checker graphical user interface will allow set of policy rules to be created and configured to specfic workflows and then applied to selected collections of files or file queries across a file system. Although predefined presets are available, users shall be able to use the interface to create or edit policy check presets for reuse. A policy check preset will include a list will essentially be a recipe for evaluating the technical aspects of a set of files. Although MediaArea's implementation here will focus specifically on the selected formats of Matroska, FFV1, and LPCM, the policy checker will be able to preform checks on any type of file supported by MediaInfo.</p>
 <p>MediaArea currently manages a registry of terminology to express a diverse set of technical metadata characteristics, including information about containers, streams, contents, and file attributes. Such information is derived from container demuxing and specialized bitstream analysis. The approach of MediaInfo's design is to trace through the entire structure of a file and interpret all data in a manner that categorizes it to the content of the utilized formats underlying specifications. This interpretation of audiovisual data is comprehensive and specification based, but to supported more generalized use within media workflows, the information is then aligned to a pre-defined set of technical metadata terminology.</p>
 <p>MediaArea will extend its Matroska demultiplexer to focus on the complete potential expression allowed by all versions of Matroska (versions 1 to 3, and experimental version 4) as well as common Matroska format profiles such as WebM. Additionally MediaInfo will continue work on its FFV1 bitstream filter to efficiently analyze single frames, partial streams, or whole streams. Such work will distinguish between contextual and technical metadata unique to the four existing versions of FFV1.</p>
@@ -1009,9 +1007,8 @@
 </ul>
 <h4 id="batch-policy-checking">Batch Policy Checking</h4>
 <p>The command line interface allows for efficient batch policy checking through calls made to the API.</p>
-<h1 id="metadata-fixer-1">Metadata Fixer</h1>
-<h2 id="metadata-fixer----graphical-user-interface">Metadata Fixer -- Graphical User Interface</h2>
-<h3 id="introduction-2">Introduction</h3>
+<h2 id="metadata-fixer-functional-requirements">Metadata Fixer Functional Requirements</h2>
+<h3 id="introduction-to-graphical-user-interface">Introduction to Graphical User Interface</h3>
 <p>Although many audiovisual formats contain comprehensive support for metadata, archivists are eventually faced with a dilemma regarding its application. On one hand, a bit-by-bit preservation of the original data comprising the object is a significant objective. On the other hand, archivists prioritize having archival objects be as self-descriptive as possible. While the OAIS model aims to mitigate such a dilemma through the creation of distinct Information Packages, this is not often the case. For an institution managing digital files as objects for preservation, a change to the file's metadata is a change to the object itself; significant attributes such as file size and checksum are irreversibly altered. Because such revisions to the object prevent fixity functions, the decision on whether or not to fix or add metadata within the OAIS structure is oftentimes complex.</p>
 <p>The intrinsic design of the Matroska file format aims to find a balance between these two considerations. Rather than relying on an external checksumming process to validate the fixity of the file, Matroska provides a mechanism for doing so internally. The CRC elements of Matroska may be used within any Element to document the subsequent data of the parent element's payload. With this feature a Matroska file may be edited in one particular section while the other sections maintain their ability to be easily validated. Thus in addition to (or possibly in lieu of) generating a file checksum during acquisition, a archive may use PREFORMA's Matroska tools to embed CRC elements if they do not already exist. When a Matroska file is internally protected by CRCs, the sections of the file may be edited or fixed while maintaining a function to verify the un-edited functions.</p>
 <p>Because of these Matroska features, we are very interested in how archivists may work more actively with internal file metadata through various parts of the OAIS framework. For instance reports on file edits, repairs, and outcomes of preservation events may be added directly to the file. With such tools as proposed by this project, archivists and repository systems may work with living Matroska preservation objects which internally define the context and lifecycle of themselves over time while maintaining the fixity features of the contained audiovisual data which is the essence of the overall preservation focus and what the Matroska container may be used to describe, validate, and support.</p>
@@ -1125,10 +1122,8 @@
 <li>generate a text based representation of the EBML structure in json or xml, which identifies and categories EBML sections and which includes attributes to associate sections of the EBML structure (or the file itself) with registered conformance or policy errors</li>
 <li>validate a Matroska file against conformance or policy errors and generate a text based output which summarizes errors with associated fixes</li>
 <li>preform and log identified metadata fixes</li>
-<li>add, replace, or remove Matroska metadata values based on a developed EBML equivalent of XPath</li>
+<li>add, replace, or remove Matroska metadata values based on a developed EBML equivalent of XPath ## Reporter Functional Requirements</li>
 </ul>
-<h2 id="metadata-fixer----web-interface">Metadata Fixer -- Web Interface</h2>
-<h2 id="reporter-2">Reporter</h2>
 <h3 id="functional-overview-2">Functional Overview</h3>
 <p>The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, check statistics, conformance priorities, and other associated session documentation. This information is derived from the database and multiple component project APIs, passed through the PREFORMA core and finally combined and transformed into a desired output. Several output formats allow for external software agents to futher process this reportage.</p>
 <p>Reports will include technical metadata and related checks to formats/streams, and should encompass not only information about the files being assessed but also the conditions and context of a particular use (which shell was used, with what policy sets, at what verbosity, etc). A report should accommodate the expression of results from multiple implementation checkers upon a single file. For example, a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.</p>
