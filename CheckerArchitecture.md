@@ -39,7 +39,7 @@ mkvalidator is a basic and no more maintained Matroska checker (BSD license, com
 
 ### Conch
 
-Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats found within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):
+Conch will utilize MediaInfo's updated (for the project) demuxing libraries (re-licensed under GPLv3+/MPLv2+) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats found within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):
 
 - MXF (commonly found within memory institutions)
 - MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)
