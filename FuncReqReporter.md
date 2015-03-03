@@ -8,7 +8,7 @@ Reports will include technical metadata and related checks to formats/streams, a
 
 The Reporter may accept a previously-generated PREFORMAXML or other supported output format for collation with other conformance checks. Previously-generated PREFORMAXML reports may also be transformedn into additional desired outputs. 
 
-###Design and Functional Requirements
+### Design and Functional Requirements
 
 - human-readable supported output formats: PDF, TXT
 - machine-readable supported output formats: PREFORMAXML, JSON
@@ -19,7 +19,7 @@ The Reporter may accept a previously-generated PREFORMAXML or other supported ou
 - option to report verbose bit traces of individual files
 - batch reporting features the option to nest specific objects.
 
-###Contents
+### Contents
 
 Report Name ("eg., "Conch Report"), XXXX-XX-XX XX:XX:XX Date (ISO spec)
 
@@ -31,8 +31,7 @@ Policy Checking Warnings
 
 Metadata Fixing Documentation (Action measures and preventative measures for non-conformed files)
 
-Individual File General / Verbose bit metadata readouts
-
+Individual File general / verbose bit metadata readouts
 
 ## Reporter - Graphical User Interface
 
