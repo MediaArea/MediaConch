@@ -2,7 +2,7 @@
 
 * Documentation of work plan (consideration to OSS only), strategy for collaborative workflow (“nightly builds”, open platform, software mgmt systems, bug trackers, forums, mailing lists, IRC, roadmaps and documentation…
 
-* Set up organizational github account, invite and folder structure, etc. through MediaArea organizational account.
+* Set up organizational GitHub account, invite and folder structure, etc. through MediaArea organizational account.
 
 
 

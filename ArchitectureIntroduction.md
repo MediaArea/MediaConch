@@ -14,7 +14,7 @@ The checker has the capability to be packaged and run as an executable on a comp
 
 The developed software will also have the capability to function as a micro-service application alongside other digital preservation systems such as Archivematica. With its micro-service approach, Archivematica serves as a wrapper for related task-specific software and is an open source system that also works to maintain standards based on providing access to digital collections. The conformance checker suits this systems’ design as an integrated micro-service suite, allowing for it to run alongside other third-party software tools that also serve to process digital objects and help to standardize a preservation focused ingest-to-access workflow. Within this design, various micro-services, including the conformance checker, can be built together into customized workflows and deployed across all operating systems and platforms.
 
-As the shell will be developed to integrate into and perform within a web-based platform, the web user interface (UI) will function across 3 major web-based browsers. These platforms are to include Firefox, Google Chrome, and Internet Explorer.  The software’s UI and capabilities will function similarly across all of these relevant web-based environments.
+As the shell will be developed to integrate into and perform within a web-based platform, the web user interface (UI) will function across 3 major browsers. These platforms are to include Firefox, Google Chrome, and Internet Explorer.  The software’s UI and capabilities will function similarly across all of these relevant web-based environments.
 
 ### Scalability
 
@@ -24,7 +24,7 @@ The scalability of each built component of the conformance checker will allow th
 
 ### Distribution
 
-The source code will reside on an open development platform (Github) in order to provide easy access and distribution during all stages of development. It will also have the ability to extract nightly builds of the code and deploy using continuous integration. The subsequent builds and software releases can then be downloaded, built and run on any system.
+The source code will reside on an open development platform (GitHub) in order to provide easy access and distribution during all stages of development. It will also have the ability to extract nightly builds of the code and deploy using continuous integration. The subsequent builds and software releases can then be downloaded, built and run on any system.
 
 ### Modularity
 
@@ -51,7 +51,7 @@ This includes the following:
 * Relationships between frameworks
 * Framework traversal patterns
 
-This is broken down by category and the categories are as follows:
+This is broken down into the following categories:
 
 * Common Elements
 * Core
@@ -74,7 +74,7 @@ This includes the following:
 * Relationships between each structural component
 * Relationships between plugins
 
-This is broken down by category and the categories are as follows:
+This is broken down into the following categories:
 
 * Transport interface
 * Container/wrapper implementation

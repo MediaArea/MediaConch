@@ -22,8 +22,8 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Extend FFV1 and MKV parsing within MediaInfo
 -- Support Export format in MediaInfo adhering to commonly defined PREFORMA XML expression
 -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA
--- Set up milestones and tasks in Github
--- Set up project README in Github
+-- Set up milestones and tasks in GitHub
+-- Set up project README in GitHub
 -- Draft introductory posts to Open Source Portal
 -- Automate nightly builds of MediaInfo (initially) and later conch utilities
 -- Finalize recuitment of Document Shepard for IETF standardization process

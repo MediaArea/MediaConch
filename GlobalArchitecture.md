@@ -1,8 +1,9 @@
 # PREFORMA Global Architecture
 
-PREFORMA strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
+MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
 
 ## Architecture schema
+
 ![Global Architecture Schema](./GlobalArchitecture.png)
 
 ## Common to all elements
@@ -14,7 +15,7 @@ All elements can be installed on the same server or on different servers. This w
 
 #### File access using CLI
 
-To place a file into the checking system, a user may execute the CLI name file manually or they can asynchronously run the file and test for its readiness. If the files are passed in a batch format, the reports can be later retrieved by manually requesting updates from the Core.
+To place a file into the checking system, a user may execute the CLI name file manually or they can asynchronously run the file and test it for readiness. If the files are passed in a batch format, the reports can be later retrieved by manually requesting updates from the Core.
 
 #### File access using GUI
 
@@ -30,7 +31,7 @@ Files can be copied to a special folder somewhere on the user’s computer or lo
 
 ### File processing
 
-The architecture allows for two modes of file processing: Direct access and asynchronous. Through enabling both processes, users can choose to have the checker handle individual files or have it process them in batches. Direct access allows for files to be processed one at a time, while asynchronous allows for files to be processed in batches and returned to at a later time.
+The architecture allows for two modes of file processing: direct access and asynchronous. Through enabling both processes, users can choose to have the checker handle individual files or have it process them in batches. Direct access allows for files to be processed one at a time, while asynchronous allows for files to be processed in batches and returned to at a later time.
 
 ### Internet Access
 
@@ -50,23 +51,24 @@ A user also has the option to set up batch file checking and validating and sche
 
 A user can also prioritize the checker to queue individual items and scheduled checks based on a defined priority level, with a lower priority placed on periodical checks. This function will be available through all versions of the checker (CLI, GUI, and Web UI). Priority levels for checks can be divided by High (for checks requested by user), Normal (for automated checks), Low (for periodical checks) requests.
 
-###
+### RESTful API
 
-PREFORMA allows users to load and edit configurations within a REST API configuration that will run via HTTP.
+Much of the Architecture's components communicate with each other via a REST-based (representational state transfer) API. Transactions can be broken down into smaller modules to allow for optimal flexiblity and use. REST is based on four basic acts of transfer: "PUT" is used to change the state of or update a resource (which can be a file or a block of data); "GET" is used to retrieve a resource; "POST" is used to create that resource; and "DELETE" is used to remove the resource.
+
+### Offline Access
+
+PREFORMA allows users to load and edit configurations within a REST API configuration that will run via HTTP. Internet connectivity is not required to use any core component of the shell. 
 
 The Web-based system allows users to work both on and outside of the network as well as locally if they choose. If the user chooses to work locally, they will have access to the application server directly. This operation runs via a HTTP Daemon.
 
-Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).
-
-
 ## Core (Controller)
 
-The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
+The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates the Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
 
 The Core has several major functions:
 
 * controls the checkers and manages data for the User Interface
-* waits for commands from the Files listener and User Interface
+* waits for commands from the files listener and User Interface
 * sends commands to the scheduler for file-checking
 * launch periodical checks
 * communicates with the database to store and retrieve data from the checkers
@@ -108,7 +110,7 @@ As the main purpose of the software build is to store flat datas, it's more suit
 
 There are various potential database management system options, contingent upon the open source licensing requirements:
 
-* Relational database : MySQL (GPLv2) / PostgreSQL (PostgreSQL License) / SQLite (Public domain)
+* Relational database : MySQL (GPLv2) / PostgreSQL (PostgreSQL License) / SQLite (public domain)
 * Non relational database : MongoDB (AGPLv3) / Elasticsearch (Apache license 2)
 
 ## Scheduler
@@ -213,7 +215,9 @@ A Graphical user interface (GUI) will be developed and provided for both expert 
 
 - Web UI (server/client)
 
-An optional Web-based user interface (UI) will also be provided for both expert and non-expert users. In order to run this option, an internet access will not be needed or required.  Local network access will power the checker within the user’s chosen web-browser. The web interface will provide access to conformance checks without having to directly download and install the software.
+An optional web-based user interface (UI) will also be provided for both expert and non-expert users. In order to run this option, an internet access will not be needed or required.  Local network access will power the checker within the user’s chosen web-browser. The web interface will provide access to conformance checks without having to directly download and install the software.
+
+Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).
 
 Interface :
 

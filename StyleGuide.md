@@ -59,11 +59,11 @@ A nightly build is an automated build that reflects the most up-to-date version 
 Operating with a software configuration management system (Git) will allow MediaArea easy version control as well as knowledge of the revisions needed.  This is an essential part of the open source community that allows developers to be able to work together collaboratively. A version control system allows multiple people to work on the same or similar sections of the source code base, simultaneously and at the same time, with awareness and prevention of overlapping or conflicting work. Git will be used as the software configuration management system for this project.
 
 - Use of an open platform for open development:
-MediaArea will operate within an open source platform on which to develop software and better facilitate the open development of that software. Public visibility that allows anyone the ability to contribute to the software’s development allows for sturdier, more reliable outcomes. Feedback is more easily sought and more readily provided with the use of an open platform. Github will be used as the open platform for open development of this project.
+MediaArea will operate within an open source platform on which to develop software and better facilitate the open development of that software. Public visibility that allows anyone the ability to contribute to the software’s development allows for sturdier, more reliable outcomes. Feedback is more easily sought and more readily provided with the use of an open platform. GitHub will be used as the open platform for open development of this project.
 
 ### Open Source Platforms
 
-All software development as well as the development of all relevant and corresponding digital assets and tools created by MediaArea during the PREFORMA project will exist and function as an open source project within an open source platform (Github). This open source development platform will offer full transparency and traceability throughout the development phase and facilitate a functional collaborative environment with developers, users, stakeholders, and institutions.
+All software development as well as the development of all relevant and corresponding digital assets and tools created by MediaArea during the PREFORMA project will exist and function as an open source project within an open source platform (GitHub). This open source development platform will offer full transparency and traceability throughout the development phase and facilitate a functional collaborative environment with developers, users, stakeholders, and institutions.
 
 Source code, issue tracking, documentation, updates, release and various forms and channels of public outreach will be centralized within the open development platform and linked to within the PREFORMA project page.
 
@@ -146,14 +146,14 @@ Contributions of code or additions to MediaArea’s PREFORMA project documentati
 - Push to the branch (git push origin my-new-feature)
 - Create a new Pull Request with a more verbose description of the proposed changes
 
-Link to github repository: (https://github.com/MediaArea/PREFORMAMediaInfo/fork)
+Link to GitHub repository: (https://github.com/MediaArea/PREFORMAMediaInfo/fork)
 
 
 ### Rules for contributing feedback
 
-Feedback of all kind is encouraged and can either be made through opening an issue on Github or by contacting the team directly at info@mediaarea.net.
+Feedback of all kind is encouraged and can either be made through opening an issue on GitHub or by contacting the team directly at info@mediaarea.net.
 
-Issue tracking and feedback will be encouraged directly through the open source platform (Github) around which, in addition to PREFORMA’s Open Source Portal, MediaArea will function and centralize the anticipated infrastructure for a collaborative community environments. In addition, contributions and feedback can be left via either the IRC channel or the mailing lists pertaining to the project.
+Issue tracking and feedback will be encouraged directly through the open source platform (GitHub) around which, in addition to PREFORMA’s Open Source Portal, MediaArea will function and centralize the anticipated infrastructure for a collaborative community environments. In addition, contributions and feedback can be left via either the IRC channel or the mailing lists pertaining to the project.
 
 
 ### Linking
@@ -186,7 +186,7 @@ Certain deployed (LTS) versions, upholding the build of the stable versions, wil
 
 New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.
 
-Downloads will be made available through a public repository with a functioning issue tracker (Github). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.
+Downloads will be made available through a public repository with a functioning issue tracker (GitHub). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.
 
 All source codes and updates will be made accessible on the following platforms:
 
