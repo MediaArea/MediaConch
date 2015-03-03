@@ -50,3 +50,4 @@ During the interview we would like to cover the following quesitons in regards t
 # Use of the Interview
 
 MediaArea would like to record interviews for the purpose of generating a document of interview notes. These notes will be provided to the interviewee to allow for any modifications requested by the interviewee. Once approved by the interviewee the notes will then be released under a Creative Commons license, CC-BY v4.0. Please direct any questions to info@mediaarea.net.
+
