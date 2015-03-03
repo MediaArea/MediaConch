@@ -30,7 +30,9 @@ HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (
 
 ## Container/Wrapper implementation checker
 
-### Conch: Matroska checker
+### Conch
+
+- Matroska checker
 
 ### Plugin integration proof of concept: mkvalidator
 mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.
