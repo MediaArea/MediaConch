@@ -80,7 +80,7 @@
 </ul></li>
 <li><a href="#global-architecture">Global Architecture</a></li>
 <li><a href="#checker-architecture">Checker Architecture</a></li>
-<li><a href="#preforma-global-architecture">PREFORMA Global Architecture</a></li>
+<li><a href="#global-architecture">Global Architecture</a></li>
 <li><a href="#architecture-schema">Architecture schema</a></li>
 <li><a href="#common-to-all-elements">Common to all elements</a>
 <ul>
@@ -97,7 +97,7 @@
 <li><a href="#database">Database</a></li>
 <li><a href="#scheduler">Scheduler</a></li>
 <li><a href="#files-listener">Files listener</a></li>
-<li><a href="#implementation-checker-and-metadata-grabbing-module">implementation checker and Metadata Grabbing Module</a></li>
+<li><a href="#implementation-checker-and-metadata-grabbing-module">Implementation checker and Metadata Grabbing Module</a></li>
 <li><a href="#policy-checker">Policy checker</a></li>
 <li><a href="#reporter">Reporter</a></li>
 <li><a href="#user-interface">User interface</a></li>
@@ -120,7 +120,6 @@
 <ul>
 <li><a href="#conch">Conch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</a></li>
-<li><a href="#plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</a></li>
 <li><a href="#optional">Optional</a></li>
 </ul></li>
 <li><a href="#streamessence-decoder">Stream/Essence decoder</a>
@@ -427,7 +426,7 @@
 <li>Ian Hendersohn (User of FFV1/mkv/lpcm in a national archive): Provide testing and feedback of project tools</li>
 <li>Peter Bubestinger (User of FFV1/lpcm in an audiovisual archive): Provide testing and feedback of project tools</li>
 <li>Artefactual Systems (consulting and development company): Provide testing and feedback of project tools, implement select conformance checker tools into Archivematica</li>
-<li>Kieran Kuhnya (encoding strategist): Advisor on implementation and standardization efforts</li>
+<li>Richard Barnes (standardization strategist): Advisor on implementation and standardization efforts</li>
 </ul>
 <p>Through real-time feedback and specialized review these participants will provide crucial evaluation of the project throughout the second phase.</p>
 <h3 id="open-source-sponsorship">Open Source Sponsorship</h3>
@@ -686,7 +685,7 @@
 <li>Stream/container coherency check</li>
 <li>Baseband analyzer (optional, through plugin)</li>
 </ul>
-<h1 id="preforma-global-architecture">PREFORMA Global Architecture</h1>
+<h1 id="global-architecture-1">Global Architecture</h1>
 <p>MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.</p>
 <h2 id="architecture-schema">Architecture schema</h2>
 <div class="figure">
@@ -694,7 +693,7 @@
 <p class="caption">Global Architecture Schema</p>
 </div>
 <h2 id="common-to-all-elements">Common to all elements</h2>
-<p>All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.</p>
+<p>The components may be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.</p>
 <h3 id="file-access">File access</h3>
 <h4 id="file-access-using-cli">File access using CLI</h4>
 <p>To place a file into the checking system, a user may execute the CLI name file manually or they can asynchronously run the file and test it for readiness. If the files are passed in a batch format, the reports can be later retrieved by manually requesting updates from the Core.</p>
@@ -709,7 +708,7 @@
 <h3 id="internet-access">Internet Access</h3>
 <p>The architecture does not require direct internet access. Users can work with any version (CLI, GUI, and Web UI) offline as long as it is installed on a user’s machine (or distributed machines). In this case, for each deployment platform the version is installed and being used on, the user will be able to create an executable even when they are not connected to the internet. The web browser UI can be run using a local network access.</p>
 <h3 id="automation">Automation</h3>
-<p>PREFORMA includes the option of automated checking, allowing for users to receive notifications when new files are placed or come into the system.</p>
+<p>Our design includes the option of automated checking, allowing for users to receive notifications when new files enter the system or meet certain policy or implementation outcomes.</p>
 <p>A user can set up a system on the Core which will configure the system to run scheduled automatic checks for new files and batches. This system can be accessed and configured within the user interface to run on a timed and defined schedule.</p>
 <h3 id="batching">Batching</h3>
 <p>A user also has the option to set up batch file checking and validating and schedule it to be sent through to the checker at any later point in time. These large tasks can be set up to perform according to a defined schedule. All versions of checker access (CLI, GUI, and Web UI) will have the capacity to enable this function, either through the command line or directly through the interface.</p>
@@ -739,7 +738,7 @@
 <li>User management</li>
 <li>Policies management</li>
 </ul>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Scheduler : Advanced Message Queuing Protocol</li>
 <li>Policy checker / Files listener / User Interface / DIRECT : REST API</li>
@@ -754,11 +753,11 @@
 <li>user rights management</li>
 <li>trace (optionally)</li>
 </ul>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Core : native driver</li>
 </ul>
-<p>Software :</p>
+<p>Software:</p>
 <p>As the main purpose of the software build is to store flat datas, it's more suitable to use a document oriented database (NoSQL). However, a more traditional relational database can also be used.</p>
 <p>There are various potential database management system options, contingent upon the open source licensing requirements:</p>
 <ul>
@@ -779,12 +778,12 @@
 <li>normal: for automated checks</li>
 <li>low: for periodic checks</li>
 </ul>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Core : Advanced Message Queuing Protocol</li>
 <li>Checkers : Advanced Message Queuing Protocol</li>
 </ul>
-<p>Software :</p>
+<p>Software:</p>
 <p>RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)</p>
 <h2 id="files-listener">Files listener</h2>
 <p>The Files listener is a background process that listens for new files available for checking and validating. Automated checking, set up through the software, will send a notification when new files come into the system. Each time a new file is available, or if a file is modified, an event is sent to the Core which automatically requests a check.</p>
@@ -793,14 +792,14 @@
 <li>Automated checks</li>
 </ul>
 <p>Programming language : C++</p>
-<h2 id="implementation-checker-and-metadata-grabbing-module">implementation checker and Metadata Grabbing Module</h2>
+<h2 id="implementation-checker-and-metadata-grabbing-module">Implementation checker and Metadata Grabbing Module</h2>
 <p>This module can utilize one or more checkers for each media type. As the implementation checker’s process could potentially run for a long time, we use an asynchronous system based on a messaging system in order to not lock up the whole process. Metadata and conformance checking results for each file are sent back to the Core to be stored within the database.</p>
 <ul>
 <li>runs the conformance tests for the different types of media files</li>
 <li>grabs metadata (used for policy checking)</li>
 </ul>
 <p>See <a href="CheckerArchitecture.md">Checker Architecture</a> for more details.</p>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Scheduler : Advanced Message Queuing Protocol</li>
 </ul>
@@ -810,7 +809,7 @@
 <ul>
 <li>runs the policy tests for the different type of media files.</li>
 </ul>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Core : REST API</li>
 </ul>
@@ -825,7 +824,7 @@
 </ul>
 <p>The machine-readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PREFORMA ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.</p>
 <p>The human-readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.</p>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Core : REST API</li>
 </ul>
@@ -853,11 +852,11 @@
 </ul>
 <p>An optional web-based user interface (UI) will also be provided for both expert and non-expert users. In order to run this option, an internet access will not be needed or required. Local network access will power the checker within the user’s chosen web-browser. The web interface will provide access to conformance checks without having to directly download and install the software.</p>
 <p>Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).</p>
-<p>Interface :</p>
+<p>Interface:</p>
 <ul>
 <li>Core : REST API</li>
 </ul>
-<p>Programming language :</p>
+<p>Programming languages:</p>
 <ul>
 <li><p>CLI : C++</p></li>
 <li><p>GUI : C++ / Qt (LGPLv3+)</p></li>
@@ -884,7 +883,7 @@
 <h3 id="plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</h3>
 <p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. libcURL offers extensive support for transferring data through many protocols. By incorporating curl into Conch the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
 <p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
-<p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)</p>
+<p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, can be re-licensed to GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
 <h3 id="conch-matroska-checker">Conch: Matroska checker</h3>
 <h3 id="plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</h3>
@@ -911,8 +910,6 @@
 </ul>
 <h3 id="plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</h3>
 <p>For JPEG 2000 (GPLv3+ license, compatible with GPLv3+ but not with MPL2+)</p>
-<h3 id="plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</h3>
-<p>For DV (BSD license, compatible with GPLv3+ and MPL2+)</p>
 <h3 id="optional">Optional</h3>
 <p>(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)</p>
 <ul>
