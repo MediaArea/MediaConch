@@ -1,4 +1,4 @@
-## Project Introduction
+## INTRODUCTION TO DESIGN SPECIFICATION
 
 The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea’s design plan to create a toolset (tentatively entitled “Conch”) consisting of an implementation checker, policy checker, reporter, and fixer of a select list for formats.
 

@@ -1,4 +1,4 @@
-# Introduction to Architecture
+## INTRODUCTION TO FUNCTIONAL SPECIFICATION
 
 This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PREFORMAMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.
 
