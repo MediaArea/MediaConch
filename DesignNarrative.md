@@ -196,7 +196,7 @@ A video implementation checker should be well optimized and multi-threaded to al
 
 ### Focus on Fixity
 
-Both FFV1 and Matroska provide fixity features that serve the objectives of digital preservation by allow data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 mandates CRCs on each frame. Matroska documents methods to embed checksums (MD5) in Matroska elements to allow for future validation of any content.
+Both FFV1 and Matroska provide fixity features that serve the objectives of digital preservation by allowing data to be independently validated without the requirement of managing an external checksumming process. FFV1 version 3 in particular mandates CRCs on each frame. Matroska documents methods to embed checksums (MD5) in Matroska elements to allow for future validation of any content.
 
 Although the Matroska specification states that "All level 1 elements should include a CRC-32" this is not the practice of most Matroska multiplexers. As part of the Fixer aspect of this project, MediaArea proposes to develop a implementation checker that allows users to add CRC-32 to selected elements.
 
@@ -215,7 +215,7 @@ MediaArea anticipates creating a large corpus of reference and test files highli
 - FFV1 buggy files: Homemade + request to FFmpeg mailing list
 - LPCM files: Homemade
 
- Together these references examinine a diverse set of file format expressions created by a variety of unique software platforms.
+Together these references examinine a diverse set of file format expressions created by a variety of unique software platforms.
 
 ## Intended Behavior by Use Case
 
@@ -227,7 +227,7 @@ The following use cases are presented to describe intended behaviors of the impl
 
 PREFORMA acknowledges the recommendations described in Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). MediaArea aims to identify all relevant areas of the OAIS reference model in relation to its proposed Conch conformance checker toolset. Moving foward, an additional examination of other OAIS-related standards will further minimize any redundancies or incompatibility with the PREFORMA project.
 
-The OAIS reference model describes the transmission of data in the form of conceptual containers known as Information Packages. In the OAIS environment, Submission Information Packages (SIPs) are created by Producers (those who provide the information to be preserved), containing data objects with relevant packaging information. After undergoing a series of  processes performed by functional entities, SIPS are transformed into Archival Information Packages (AIPs) and moved into the archive's long-term storage. Upon a query request by a Consumer, AIPs can be re-called and presented in the form of a Dissemination Information Package (DIPs) to the Designated Community.
+The OAIS reference model describes the transmission of data in the form of conceptual containers known as Information Packages. In the OAIS environment, Submission Information Packages (SIPs) are created by Producers (those who provide the information to be preserved), containing data objects with relevant packaging information. After undergoing a series of  processes performed by functional entities, SIPS are transformed into Archival Information Packages (AIPs) and moved into an archive's long-term storage. Upon a query request by a Consumer, AIPs can be re-called and presented in the form of a Dissemination Information Package (DIPs) to the Designated Community.
 
 Conformance checking services play a major role in the OAIS reference model, specifically within the functional entities during the intial transmission of the SIP. The Ingest Quality Assurance (QA) function in particular validates SIPs in the temporary storage area prior to AIP generation. Here the Conch conformance checker and its associated toolset would verify SIPs through implementation checking and policy checking with rules and specifications defined by the Archive. Following an approved check, the resulting report would be submitted as associated Preservation Description Information (PDI) within the packaging information of the AIP. However, if a conformance check rejects a SIP, administrators may choose either to consult the associated Producer, or correct related issues with the toolset's metadata fixer. (See Fig. "The OAIS Ingest Functional Entity with Conch Integration")
 
@@ -257,7 +257,7 @@ Such digitisation requirements may be expressed into a policy checker set throug
 
 Until recently audiovisual digitisation required a fairly inflexible set of hardware requirements and extremely limited possibilities for an open source approach to video digitisation. Due to the bandwidth and processing requirements for the digitisation of standard definition video required the installation of PCI cards and often the use of hardware encoders that were designed to encode video as fast as the video was being received to codecs like MPEG2 or JPEG2000. With modern connectivity options such as USB 3 and Thunderbolt it is easier to add video digitisation capabilities to modern computers and more archive are performing this internally. Additionally modern computer processers can now transcode video losslessly in software from a video input without the need to rely on proprietary hardware-based encoders. Open source solutions such as DVA Profession, bmdcapture, and FFmpeg along with the open provision of video digitisation software development kits, such as the Blackmagic SDK are facilitating new open development projects for archival video digitisation.
 
-As vendors and memory institutions are increasing considering and implementing digitisation workflows that encode video directly to lossless codecs without the use of an intermediate file-based uncompressed audiovisual data, it is increasingly crucial to assess this lossless file soon after creation to detect any flaws within the digitisation process.
+As vendors and memory institutions increasingly consider implementing digitisation workflows that encode video directly to lossless codecs, it is crucial to assess this file soon after creation to detect any flaws created from the digitisation process.
 
 For those digitizing video through processes that incorporate libav or FFmpeg such as bmdcapture of FFmpeg's decklink integration, a separate framemd5 may be written alongside the encoded FFV1 data. The resulting FFV1 data may then be verified against the framemd5 to verify that the correct bits were written to disk.
 
@@ -265,7 +265,7 @@ An inspiration for the use of framemd5 reports within a digitisation workflow is
 
 #### Assessment of Vendor/Producer Deliverables
 
-For archives that clarify specifications for audiovisual digitisation projects, the implementation checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the implementation checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.
+For archives that clarify specifications for audiovisual digitisation projects, the implementation checker facilitates a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags, the implementation checker should also be able to verify any adherence to particular patterns as expressed through regular expressions.
 
 The implementation checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.
 
@@ -301,7 +301,7 @@ Artefactual Systems is a privately owned company incorporated in the Province of
 
 MediaArea proposes to include within its project a component focused on implementing parts of the MediaArea conformance checker within an independent and OAIS-focused repository system. As many of Archivematica's development philsophies (modularity, OAIS, open source, and focus on memeory institutions) align well with the spirit of PREFORMA's Challenge Brief and Archivematica was an early adopter of Matroska/FFV1/LPCM within a preservation context, we have selected Artefactual as an ideal collaborator to ensure that the results of our work are well-prepared for integration within existing open source repository solutions. Archivematica can benefit from PREFORMA's development of conformance checkers to strengthen that step of the OAIS processs. Additionally the incorporation of the conformance checker into Archivematica shall allow memory institutions with a new means to access the results of the project.
 
-We believe that incorporating Artefactual into our phase 2 proposal provides a meaningful deliverable, the incorporation of a PREFORMA conformance checker into a key OAIS solution. The collaboration also provides the team with a strategic and indenpendent test case implementation. Although Artefactual will not take part directly in the development of the conformance checker, our project proposal includes funding to sponsor Artefactual to test, provide feedback upon, and implementation selections of the conformance checker. Additionally we anticipate that Artefactual's existing work on the Format Policy Registry may provide a positive influence on our work on the policy checker.
+We believe that incorporating Artefactual into our phase 2 proposal provides a meaningful deliverable, the incorporation of a PREFORMA conformance checker into a key OAIS solution. This collaboration also provides the team with a strategic and indenpendent test case implementation. Although Artefactual will not take part directly in the development of the conformance checker, our project proposal includes funding to sponsor Artefactual to test, provide feedback upon, and implementation selections of the conformance checker. Additionally we anticipate that Artefactual's existing work on the Format Policy Registry may provide a positive influence on our work on the policy checker.
 
 ### Project Advisors
 
