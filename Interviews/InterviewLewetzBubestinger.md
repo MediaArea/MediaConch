@@ -1,8 +1,8 @@
-PREFORMA Interview: Highlights
-Hermann Lewetz, Peter Bubestinger
-12/16/2014
+# Interview with Hermann Lewetz and Peter Bubestinger
 
-Dave, Erik, Tessa
+Date: 12/16/2014
+
+Interviewers: Dave, Erik, Tessa
 
 Dave: why did you decide to use FFV1 and not Matroska?
 

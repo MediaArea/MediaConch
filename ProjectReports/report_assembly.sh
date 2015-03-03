@@ -8,6 +8,9 @@ reportsuffix="MediaAreaConch"
 phase1_report_basename="${reportsuffix}_DesignReport"
 conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRegistry"
 standardization_appendix_basename="${reportsuffix}_Appendix_Standardization"
+questionnaire_appendix_basename="${reportsuffix}_Appendix_Questionnaire"
+interview_appendix_basename="${reportsuffix}_Appendix_Interviews"
+lettersofsupport_apendix_basename="${reportsuffix}_Appendix_LettersOfSupport"
 pwd=$(pwd)
 cd $(dirname "${0}")
 cd ..
@@ -66,13 +69,40 @@ do
     fi
 done
 
+# interviews
+echo "" > "tmp_${interview_appendix_basename}.md"
+for report in \
+    Interviews/InterviewIntroduction.md \
+    Interviews/InterviewBlood.md \
+    Interviews/InterviewHenderson.md \
+    Interviews/InterviewKummer.md \
+    Interviews/InterviewLewetzBubestinger.md
+do
+    if [ -f "${report}" ] ; then
+        cat "${report}" >> "tmp_${interview_appendix_basename}.md"
+    else
+        echo "Warning: ${report} is missing"
+    fi
+done
+
 for reportbase in \
     "${phase1_report_basename}" \
     "${conformance_check_appendix_basename}" \
-    "${standardization_appendix_basename}"
+    "${standardization_appendix_basename}" \
+    ${interview_appendix_basename}
 do
     toc "tmp_${reportbase}.md"
     pandoc -V geometry:margin=1in -V papersize:"a4paper" -o "ProjectReports/${reportbase}.pdf" "tmp_${reportbase}.md"
     pandoc -o "ProjectReports/${reportbase}.html" "tmp_${reportbase}.md"
 done
+
+# questionnaire
+cat Questionnaire/QuestionnaireIntroAndSummary.md > "tmp_${questionnaire_appendix_basename}.md"
+pandoc -V geometry:margin=1in -V papersize:"a4paper" -o "tmp_${questionnaire_appendix_basename}.pdf" "tmp_${questionnaire_appendix_basename}.md"
+pdfjoin -o "ProjectReports/${questionnaire_appendix_basename}.pdf" "tmp_${questionnaire_appendix_basename}.pdf" "Questionnaire/QuestionnaireResponsesAnalytics.pdf"
+
+#letters of support
+pdfjoin --fitpaper 'false' --rotateoversize 'false' -o "ProjectReports/${lettersofsupport_apendix_basename}.pdf" "LettersOfSupport/TateLetterOfSupport.pdf" "LettersOfSupport/ArtefactualLetterOfSupport.pdf" "LettersOfSupport/ArtefactualSystemsCompanyInfo.pdf" "LettersOfSupport/HKBLetterOfSupport.pdf"
+
 cd "${pwd}"
+

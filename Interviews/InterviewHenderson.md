@@ -1,8 +1,8 @@
-PREFORMA Interview: Highlights
-Ian Henderson
-12/23/2014
+# Interview with Ian Henderson
 
-Dave, Jerome, Tessa
+Date: 12/23/2014
+
+Interviewers: Dave, Jerome, Tessa
 
 D: Describe your background research into FFV1 and Matroska?
 
@@ -66,3 +66,4 @@ J:  Is it problematic with FFV1 and Matroska not being formal standards?
 I:  For us, it was a practical, pragmatic approach, and the fact that it was open--obviously if there's any need we can always move onto a further format.  Yes, I would like to see it a bit more promoted or seen as a standardized format.
 
 FFV1: it does seem to be under-promoted; it's not on people's horizons at the moment.  People have heard something vaguely about it, or not heard of it all. It just needs its profile raised.  It does become a quite favorable option once people have had a look at it. It just needs a bit more of a push.
+
