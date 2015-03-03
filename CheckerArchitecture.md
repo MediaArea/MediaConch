@@ -55,7 +55,7 @@ By supporting the demultiplexing of these formats through MediaInfo, the develop
 
 Plugin
 
-### Conch:
+### Conch
 
 - FFV1
 - PCM (including D-10 Audio, AES3)
