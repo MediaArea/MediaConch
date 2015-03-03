@@ -80,6 +80,7 @@
 </ul></li>
 <li><a href="#global-architecture">Global Architecture</a></li>
 <li><a href="#checker-architecture">Checker Architecture</a></li>
+<li><a href="#preforma-global-architecture">PREFORMA Global Architecture</a></li>
 <li><a href="#architecture-schema">Architecture schema</a></li>
 <li><a href="#common-to-all-elements">Common to all elements</a>
 <ul>
@@ -100,6 +101,7 @@
 <li><a href="#policy-checker">Policy checker</a></li>
 <li><a href="#reporter">Reporter</a></li>
 <li><a href="#user-interface">User interface</a></li>
+<li><a href="#checker-architectural-layers">Checker Architectural Layers</a></li>
 <li><a href="#transport-layer">Transport layer</a>
 <ul>
 <li><a href="#conch-file-on-disk-or-direct-memory-mapping">Conch: File on disk or direct memory mapping</a></li>
@@ -528,7 +530,13 @@
 <li>Declare risk concluded (Responsibility of Project Manager)</li>
 <li>Note date of the ending of risk</li>
 <li>Contextualize in writing</li>
-<li>Share with pertinent parties ** status and date when the status was last recorded, ** person who accepted the risk, e.g. project manager, ** conclusion date and ** reason for conclusion.</li>
+<li>Share with pertinent parties
+<ul>
+<li>status and date when the status was last recorded,</li>
+<li>person who accepted the risk, e.g. project manager,</li>
+<li>conclusion date and</li>
+<li>reason for conclusion.</li>
+</ul></li>
 </ul>
 <h3 id="internal-risk-assessment">Internal Risk Assessment</h3>
 <h4 id="internal-management">Internal Management</h4>
@@ -607,7 +615,7 @@
 <ul>
 <li>December 2016</li>
 </ul>
-<p>-- Participation in Experience Workshop and prototype demostration in Berlin</p>
+<p>-- Participation in Experience Workshop and prototype demonstration in Berlin</p>
 <ul>
 <li>June 2017</li>
 </ul>
@@ -656,7 +664,12 @@
 <li>implementation checker and metadata grabbing module</li>
 <li>Policy Checker</li>
 <li>Reporter</li>
-<li>Shell(s) ** CLI (Command line interface) ** GUI (Graphical user interface) ** Web (Web based interface)</li>
+<li>Shell(s)
+<ul>
+<li>CLI (Command line interface)</li>
+<li>GUI (Graphical user interface)</li>
+<li>Web (Web based interface)</li>
+</ul></li>
 </ul>
 <h2 id="checker-architecture">Checker Architecture</h2>
 <p>This includes the following:</p>
@@ -673,8 +686,9 @@
 <li>Stream/essence implementation</li>
 <li>Stream/essence decoder (through plugin)</li>
 <li>Stream/container coherency check</li>
-<li>Baseband analyzer (optional, through plugin)# PREFORMA Global Architecture</li>
+<li>Baseband analyzer (optional, through plugin)</li>
 </ul>
+<h1 id="preforma-global-architecture">PREFORMA Global Architecture</h1>
 <p>MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.</p>
 <h2 id="architecture-schema">Architecture schema</h2>
 <div class="figure">
@@ -761,7 +775,12 @@
 <li>batch processing</li>
 <li>priority</li>
 </ul>
-<p>The Scheduler can take care of the priority function within the implementation checkers: * high: for checks requested by user * normal: for automated checks * low: for periodic checks</p>
+<p>The Scheduler can take care of the priority function within the implementation checkers:</p>
+<ul>
+<li>high: for checks requested by user</li>
+<li>normal: for automated checks</li>
+<li>low: for periodic checks</li>
+</ul>
 <p>Interface :</p>
 <ul>
 <li>Core : Advanced Message Queuing Protocol</li>
@@ -844,7 +863,7 @@
 <ul>
 <li><p>CLI : C++</p></li>
 <li><p>GUI : C++ / Qt (LGPLv3+)</p></li>
-<li><p>Web : PHP/Symfony (MIT)# Checker Architectural Layers</p></li>
+<li><p>Web : PHP/Symfony (MIT) # Checker Architectural Layers</p></li>
 </ul>
 <div class="figure">
 <img src="./CheckerArchitectureLayers.png" alt="Checker Architecture Layers" />
@@ -920,8 +939,9 @@
 <h2 id="baseband-analyzer">Baseband Analyzer</h2>
 <h3 id="conch-4">Conch</h3>
 <ul>
-<li>None (only creation of the API) ## Implementation Checker</li>
+<li>None (only creation of the API)</li>
 </ul>
+<h2 id="implementation-checker-1">Implementation Checker</h2>
 <h3 id="introduction">Introduction</h3>
 <p>The implemententation checker is the centerpiece of the project and where development efforts shall be the most consequential to memory institutions and the underlying standards organizations. MediaArea plans to use the utmost precision and transparency within the development of the implementation checker so that it may, to the greatest extent feasible, produce an accurate and referenced analysis regarding the adherence or transgression of a selected file format to its associated specifications.</p>
 <p>Measuring the extent of the adherence of files to associated specifications can be adjusted by the user, for instance the user may wish to only verify files against a particular version of a specification, or choose to exempt or excuse certain violations, or choose to only assess part of a file (for instance to only test the frame X frames of FFV1 for adherance) in the interest of time.</p>
@@ -933,7 +953,7 @@
 <p>The registered checks shall be categorized according to their respective associated authority and specification document. The grouping of rules shall enable the user to select parts of an implementation check if necessary. For instance the Matroska specificiation is comprised of several versions and several underlying specifications, such as Extensible Binary Meta Language (EBML). The implementation checker should be able to test if a file is valid according to all known checks asscoiated with Matroska, but should also be able to validate a file against only the rules derived from the EBML specification.</p>
 <h3 id="demultiplexing">Demultiplexing</h3>
 <p>MediaArea's project focus includes two formats of encoded audiovisual data (FFV1 and LPCM) that are usually found within other container formats (which may or may not be Matroska). We intend the implementation checker to function properly for FFV1 and LPCM even if they are not contained within Matroska. MediaInfo already contains the ability to parse encoded streams from container formats such as AVI, QuickTime, MXF, and many others. By re-licensing MediaInfo under PREFORMA's licensing requirements we can ensure that the implementation checker maintain relevance for file formats such as FFV1 in AVI and FFV1 in QuickTime (both found widely in early discovery interviews and surveys). In these cases the Implementation Checker will report on the implemetnation of the supported formats specifically (here FFV1) and not focus on unsupported container formats which happen to be deployed.</p>
-<h3 id="implementation-checker-1">Implementation Checker</h3>
+<h3 id="implementation-checker-2">Implementation Checker</h3>
 <p>The Implementation Checker, whether run via command line interface (CLI), graphical user interface (GUI), or browser-based interface, should be able to accept a file as a input. The Implementation Checker will verify that the input is relevant to the Checker (ie. is it EBML/Matroska or does it appear to contain FFV1 or LPCM). If relevant, the Implementation Checker will verify adherence or document transgressions to the test detailed in the Registry. The output will use the formats of the Reporter, specifically the PREFORMA XML format, but additional outputs in JSON, PDF, and/or HTML will be available.</p>
 <p>Because some checks are fairly processor-intensive, MediaArea's developers will focus on the efficency of intensive checks (such as verifying the CRC payloads of FFV1 or MKV) through multi-threaded processing, frequent benchmarking, and coding optimizations. Additionally the user shall be able to express settings to balance time and thoroughness of the checks.</p>
 <p>The GUI of the implementation checker shall provide a configuration interface where sets of registered checks may be enabled or disabled. The interface shall link each check to documentation (internal or online) regarding the context of the check. Another interface shall allow the user to select one or many files to verify against the selected checkers. The test (associatation of files to checks) may then be run or sent to a scheduler within the Shell.</p>
@@ -1001,27 +1021,33 @@
 <p>MediaArea has developed such interfaces in other conformance- and metadata-focused projects (such as BWF MetaEdit and QCTools) and plans to use the File List Layout as an interface center for batch file metadata operations.</p>
 <h5 id="customizable-sections">Customizable Sections</h5>
 <p>The contents of the File List will be configurable according to the metadata values indexed by MediaInfo during a file parse. In the case of Matroska files these metadata values will also be categorized according to their enclosing Matroska section. These sections include:</p>
-<pre><code>- Header
-- Meta Seek
-- Segments
-- Tracks
-- Chapters
-- Clusters
-- Cueing Data
-- Attachment
-- Tagging</code></pre>
+<ul>
+<li>Header</li>
+<li>Meta Seek</li>
+<li>Segments</li>
+<li>Tracks</li>
+<li>Chapters</li>
+<li>Clusters</li>
+<li>Cueing Data</li>
+<li>Attachment</li>
+<li>Tagging</li>
+</ul>
 <p>In addition to the Matroska sections, a category of file attribute data will also be provided to show information such as file size, file name, etc. Additionally, a 'global' section is provided to show summarization of the file's status and structure.</p>
 <p>A toolbar in the File List Layout will enable the user to select one or many sections to allow for focus on a particular section.</p>
 <p>As an example, checking to show the columns associated with the Matroska Header shall reveal columns such as:</p>
-<pre><code>- File format (Matroska, Webm, etc)
-- Format version (version of Matroska, etc)
-- Minimum read version</code></pre>
+<ul>
+<li>File format (Matroska, Webm, etc)</li>
+<li>Format version (version of Matroska, etc)</li>
+<li>Minimum read version</li>
+</ul>
 <p>A global section would provide informational columns such as:</p>
-<pre><code>- Amount of VOID data with the Matroska file
-- Percentage of CRC coverage with the Matroska file
-- Number of metadata tags
-- Number of chapters
-- Number of attachments</code></pre>
+<ul>
+<li>Amount of VOID data with the Matroska file</li>
+<li>Percentage of CRC coverage with the Matroska file</li>
+<li>Number of metadata tags</li>
+<li>Number of chapters</li>
+<li>Number of attachments</li>
+</ul>
 <p>As metadata tags may vary substantially, the tagging section of the File List Layout will show selected top-level metadata tags as well as a column to summarize what top-level metadata tags are not shown. Columns values which show top-level metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of lower level metadata tags can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown top-level metadata tags may be edited directly.</p>
 <p>The order and selection of viewed columns within the File List Layout may be saved and labelled to configure the display. This feature will allow users to design and configure layouts for particular metadata workflows. MediaArea plans to provide specific layouts in accordance with the objective of particularly OAIS functions, such as to supply contextual metadata about a digitisation or acquisition event.</p>
 <h5 id="managing-state-of-metadata-editsfixes">Managing State of Metadata Edits/Fixes</h5>
