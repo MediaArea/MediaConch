@@ -21,8 +21,8 @@
 <li><a href="#introduction-of-featured-formats">Introduction of Featured Formats</a>
 <ul>
 <li><a href="#matroska">Matroska</a></li>
-<li><a href="#ffv1">FFV1</a></li>
-<li><a href="#linear-pcm">Linear PCM</a></li>
+<li><a href="#ff-video-codec-1-ffv1">FF Video Codec 1 (FFV1)</a></li>
+<li><a href="#linear-pulse-code-modulation-lpcm">Linear Pulse Code Modulation (LPCM)</a></li>
 </ul></li>
 <li><a href="#development-of-a-conformance-checker">Development of a conformance checker</a>
 <ul>
@@ -38,7 +38,7 @@
 <li><a href="#intended-behavior-by-use-case">Intended Behavior by Use Case</a>
 <ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#conformance-checking-at-digitization-time">Conformance Checking at Digitization Time</a></li>
+<li><a href="#conformance-checking-at-digitisation-time">Conformance Checking at digitisation Time</a></li>
 <li><a href="#conformance-checking-at-migration-time">Conformance Checking at Migration Time</a></li>
 </ul></li>
 <li><a href="#the-team-and-roles">The team and roles</a></li>
@@ -88,8 +88,9 @@
 <li><a href="#automation">Automation</a></li>
 <li><a href="#batching">Batching</a></li>
 <li><a href="#prioritization">Prioritization</a></li>
+<li><a href="#restful-api">RESTful API</a></li>
+<li><a href="#offline-access">Offline Access</a></li>
 </ul></li>
-<li><a href="#" class="uri">#</a></li>
 <li><a href="#core-controller">Core (Controller)</a></li>
 <li><a href="#database">Database</a></li>
 <li><a href="#scheduler">Scheduler</a></li>
@@ -111,7 +112,6 @@
 <li><a href="#containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</a>
 <ul>
 <li><a href="#conch">Conch</a></li>
-<li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
 </ul></li>
 <li><a href="#streamessence-implementation-checker">Stream/Essence implementation checker</a>
 <ul>
@@ -123,7 +123,6 @@
 <li><a href="#streamessence-decoder">Stream/Essence decoder</a>
 <ul>
 <li><a href="#conch">Conch</a></li>
-<li><a href="#plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</a></li>
 <li><a href="#plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</a></li>
 </ul></li>
 <li><a href="#containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</a>
@@ -133,8 +132,6 @@
 <li><a href="#baseband-analyzer">Baseband Analyzer</a>
 <ul>
 <li><a href="#conch">Conch</a></li>
-<li><a href="#playback-and-playback-analysis-through-plugin">Playback and Playback Analysis (through plugin)</a></li>
-<li><a href="#plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</a></li>
 </ul></li>
 <li><a href="#implementation-checker">Implementation Checker</a>
 <ul>
@@ -153,7 +150,7 @@
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
 </ul></li>
-<li><a href="#policy-checker-web-interface">Policy Checker - Web Interface</a></li>
+<li><a href="#metadata-fixer">Metadata Fixer</a></li>
 <li><a href="#metadata-fixer-graphical-user-interface">Metadata Fixer -- Graphical User Interface</a>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
@@ -204,11 +201,11 @@
 <h2 id="project-introduction">Project Introduction</h2>
 <p>The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea's design plan to create a toolset (tentatively entitled &quot;Conch&quot;) consisting of an implementation checker, policy checker, reporter, and fixer of a select list of formats.</p>
 <p>As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PREFORMA project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.</p>
-<p>MediaArea's approach to this challenge centers on FOSS (Free and Open Source Software), modular design, and interoperability and will rely strongly on MediaInfo (an open source MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged its integration into several archival repository systems and OAIS-complaint workflows to assist archival with technical control of collections.</p>
+<p>MediaArea's approach to this challenge centers on FOSS (Free and Open Source Software), modular design, and interoperability and will rely strongly on MediaInfo (an open source MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged its integration into several archival repository systems and Open Archival Information System (OAIS)-complaint workflows to assist archival with technical control of collections.</p>
 <p>MediaArea sees community involvement as a key factor of evaluating the success of the project. To encourage this, during the prototype phase MediaArea will perform the development work for command line utilities, graphical user interfaces, and documentation in publicly accessible repositories at github.com. Mediaarea will also set up an online set of project resources such as public access to a corpus of test media, an IRC channel, and a responsive public issue tracker.</p>
 <p>In order to foster and demonstrate a focus on interoperability throughout the project, MediaArea will work with Artefactual in order to facilitate integration of resulting project components into Archivematica, a digital repository focused on OAIS. This collaboration will bring the availability of additional OAIS and digital preservation expertise to the project and provide an additional means for the project deliverables to be made available to users.</p>
 <h2 id="introduction-of-featured-formats">Introduction of Featured Formats</h2>
-<p>During the development phases MediaArea will focus on one container format, Matroska, and two streams, LPCM and FFV1. The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added alongside or after development.</p>
+<p>During the development phases MediaArea will focus on one container format, Matroska, and two streams, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1). The design work of MediaArea will address formats and codecs through a modular architecture so that other formats or codecs may easily be added alongside or after development.</p>
 <p>Matroska, FFV1, and LPCM describe very unique concepts of information including:</p>
 <ul>
 <li>a container format, Matroska</li>
@@ -222,11 +219,11 @@
 <p>Matroska is based on EBML, Extensible Binary Meta Language. An EBML file is comprised of one of many defined &quot;Elements&quot;. Each element is comprised of an identifier, a value that notes the size of the element's data payload, and the data payload itself. The data payload can either be stored data or more nested elements. The top level elements of Matroska focus on track definition, chapters, attachment management, metadata tags, and encapsulation of audiovisual data. The Matroska element is analogous to QuickTime's atom and AVI's chunk.</p>
 <p>Matroska integrates a flexible and semantically comprehensive hierarchical metadata structure as well as digital preservation features such as the ability to provide CRC checksums internally per selected elements. Because of its ability to use internal, regional Cyclic Redundancy Check (CRC) protection it is possible to update a Matroska file during OAIS events without any compromise to the fixity of its audiovisual payload.</p>
 <p>Matroska has well written documentation and a draft specification but is not defined through an external standards organization although some drafts for such work have already been produced.</p>
-<h3 id="ffv1">FFV1</h3>
+<h3 id="ff-video-codec-1-ffv1">FF Video Codec 1 (FFV1)</h3>
 <p>FFV1 is an efficient lossless video stream that is designed in a manner responsive to the requirements of digital preservation. Version 3 of this lossless codec is highly self-descriptive and stores its own information regarding field dominance, aspect ratio, and colorspace so that it is not reliant on a container format to store this information (other streams that rely heavily on its container for technical description often face interoperability challenges).</p>
 <p>FFV1 version 3 mandates storage of CRCs in frame headers to allow verification of the encoded data and stores error status messages. FFV1 version 3 is also a very flexible codec allowing adjustments to the encoding process based on different priorities such as size efficiency, data resilience, or encoding speed.</p>
-<p>The specification documentation for FFV1 is partially complete and has recently been funded by vendors utilizing FFV1 as a codec for audiovisual preservation and large-scale digitization efforts.</p>
-<h3 id="linear-pcm">Linear PCM</h3>
+<p>The specification documentation for FFV1 is partially complete and has recently been funded by vendors utilizing FFV1 as a codec for audiovisual preservation and large-scale digitisation efforts.</p>
+<h3 id="linear-pulse-code-modulation-lpcm">Linear Pulse Code Modulation (LPCM)</h3>
 <p>Linear Pulse Code Modulation (LPCM) is a ubiquitous and simple audio stream. PCM audio streams may be comprised of signed or unsigned samples, arranged in little-endian or big-endian arrangements, in any number of audio channels. PCM is very flexible but is not self-descriptive. A raw PCM file can not properly be decoded without knowing the sample encoding, channel count, endianness, bit depth, and sample rate. LPCM is typically dependent on its container format (such as WAV) to store sufficient metadata for its decoding.</p>
 <p>Because PCM streams contain only audio samples without any codec structure or metadata within the stream, any data by itself could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container format.</p>
 <h2 id="development-of-a-conformance-checker">Development of a conformance checker</h2>
@@ -380,9 +377,9 @@
 <p>Policy check expressions are also useful in other functions of OAIS workflows including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between migrated data objects is key. A conformance checker would be implemented to map all transformations through the collection of associated Preservation Description Information. For the Matroska format in particular, individual sub-element CRCs can be submitted as a check expression and later packaged with the AIP's PDI information related to Fixity. This kind of self-descriptive information can be especially useful tool for zeroing in on potentially corrupted areas of the data object.</p>
 <p>For dissemination requests, the DIP generation fuction may include the encoding of an AIP data object to a smaller, more compressed transmission format for access. This is especially true for audiovisual data objects, whose AIPs might contain large uncompressed or mathematically lossless filetypes. Policy check expressions with the conformance checker at this phase would ensure that relationships to file characteristics like sub-sampling, bit-depth and frame rate are maintained throughout DIP generation.</p>
 <p>Like the OAIS reference model itself, the PREFORMA conformance checker project aims to serve as a framework for standards-building activities through the creation of powerful reporting tools. By extension, MediaArea's Conch toolset enables the creation of a complex representation net in the OAIS Archive, providing information needed to adequately preserve audiovisual data objects through time.</p>
-<h3 id="conformance-checking-at-digitization-time">Conformance Checking at Digitization Time</h3>
-<h4 id="verification-of-digitization-policy">Verification of Digitization Policy</h4>
-<p>Archival digitization workflows are generally highly defined and consistent so that various analog source objects are associated with particularly digitization requirements. Generally digitization specifications are selected in order to reduce alterations to the significant characteristics of the analog source material. Example of such digitization scenarios may be:</p>
+<h3 id="conformance-checking-at-digitisation-time">Conformance Checking at digitisation Time</h3>
+<h4 id="verification-of-digitisation-policy">Verification of digitisation Policy</h4>
+<p>Archival digitisation workflows are generally highly defined and consistent so that various analog source objects are associated with particularly digitisation requirements. Generally digitisation specifications are selected in order to reduce alterations to the significant characteristics of the analog source material. Example of such digitisation scenarios may be:</p>
 <ul>
 <li>A PAL Betacam SX tape is digitized to a Matroska/FFV1 file at PAL specifications with YUV 4:2:2 8 bit video and 4 channels of 24 bit LPCM audio</li>
 <li>A NTSC U-Matic tape is digitized to a Matroska/FFV1 file at NTSC specifications with YUV 4:2:2 10 bit video and 2 channels of 24 bit LPCM audio</li>
@@ -390,14 +387,14 @@
 <li>A CD-R is ripped to a 44100 Hz, 16 bit, 2 channel LPCM file</li>
 <li>A DAT tape is ripped to either a 32000, 44100, or 48000 Hz 16 bit file</li>
 </ul>
-<p>Such digitization requirements may be expressed into a policy checker set through the shell or policy checker to verify that the results of digitization are consistent with the archive's specifications. This includes both sets of technical metadata and specification as well as anticipated embedded descriptive, preservation, or administrative metadata.</p>
-<h4 id="verification-of-lossless-digitization">Verification of Lossless Digitization</h4>
-<p>Until recently audiovisual digitization required a fairly inflexible set of hardware requirements and extremely limited possibilities for an open source approach to video digitization. Due to the bandwidth and processing requirements for the digitization of standard definition video required the installation of PCI cards and often the use of hardware encoders that were designed to encode video as fast as the video was being received to codecs like MPEG2 or JPEG2000. With modern connectivity options such as USB 3 and Thunderbolt it is easier to add video digitization capabilities to modern computers and more archive are performing this internally. Additionally modern computer processers can now transcode video losslessly in software from a video input without the need to rely on proprietary hardware-based encoders. Open source solutions such as DVA Profession, bmdcapture, and FFmpeg along with the open provision of video digitization software development kits, such as the Blackmagic SDK are facilitating new open development projects for archival video digitization.</p>
-<p>As vendors and memory institutions are increasing considering and implementing digitization workflows that encode video directly to lossless codecs without the use of an intermediate file-based uncompressed audiovisual data, it is increasingly crucial to assess this lossless file soon after creation to detect any flaws within the digitization process.</p>
+<p>Such digitisation requirements may be expressed into a policy checker set through the shell or policy checker to verify that the results of digitisation are consistent with the archive's specifications. This includes both sets of technical metadata and specification as well as anticipated embedded descriptive, preservation, or administrative metadata.</p>
+<h4 id="verification-of-lossless-digitisation">Verification of Lossless digitisation</h4>
+<p>Until recently audiovisual digitisation required a fairly inflexible set of hardware requirements and extremely limited possibilities for an open source approach to video digitisation. Due to the bandwidth and processing requirements for the digitisation of standard definition video required the installation of PCI cards and often the use of hardware encoders that were designed to encode video as fast as the video was being received to codecs like MPEG2 or JPEG2000. With modern connectivity options such as USB 3 and Thunderbolt it is easier to add video digitisation capabilities to modern computers and more archive are performing this internally. Additionally modern computer processers can now transcode video losslessly in software from a video input without the need to rely on proprietary hardware-based encoders. Open source solutions such as DVA Profession, bmdcapture, and FFmpeg along with the open provision of video digitisation software development kits, such as the Blackmagic SDK are facilitating new open development projects for archival video digitisation.</p>
+<p>As vendors and memory institutions are increasing considering and implementing digitisation workflows that encode video directly to lossless codecs without the use of an intermediate file-based uncompressed audiovisual data, it is increasingly crucial to assess this lossless file soon after creation to detect any flaws within the digitisation process.</p>
 <p>For those digitizing video through processes that incorporate libav or FFmpeg such as bmdcapture of FFmpeg's decklink integration, a separate framemd5 may be written alongside the encoded FFV1 data. The resulting FFV1 data may then be verified against the framemd5 to verify that the correct bits were written to disk.</p>
-<p>An inspiration for the use of framemd5 reports within a digitization workflow is inspired by the verify option with the flac utility available at http://flac.sourceforge.net/. The ‘-V’ or –verify command is used to decode the encoded stream in parallel to the encoding process to double-check the losslessness of the transcoding. With this method any discrepancy between what data is read and transcoded versus what data is written to disk could be identified in a subsequent verification process. The use of framemd5 data within a digitization workflow enables verification in cases where an option similar to flac's --verify argument isn't available.</p>
+<p>An inspiration for the use of framemd5 reports within a digitisation workflow is inspired by the verify option with the flac utility available at http://flac.sourceforge.net/. The ‘-V’ or –verify command is used to decode the encoded stream in parallel to the encoding process to double-check the losslessness of the transcoding. With this method any discrepancy between what data is read and transcoded versus what data is written to disk could be identified in a subsequent verification process. The use of framemd5 data within a digitisation workflow enables verification in cases where an option similar to flac's --verify argument isn't available.</p>
 <h4 id="assessment-of-vendorproducer-deliverables">Assessment of Vendor/Producer Deliverables</h4>
-<p>For archives that clarify specifications for audiovisual digitization projects, the implementation checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the implementation checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.</p>
+<p>For archives that clarify specifications for audiovisual digitisation projects, the implementation checker should facilitate a workflow for the archivist to express those specifications and verify received material against them. In addition to testing for the presence and order of required metadata tags the implementation checker should also be able to verify that they adhere to particular patterns as expressed through regular expressions.</p>
 <p>The implementation checker should be able to verify that files were transferred completely and that the delivered material does not contain any partial files from an incomplete or aborted transfer.</p>
 <p>The implementation and policy checker's reporting on deliverables will enable the user to provide specific feedback to the vendor or producer to create files with greater compliance or coherency.</p>
 <h3 id="conformance-checking-at-migration-time">Conformance Checking at Migration Time</h3>
@@ -559,12 +556,12 @@
 <h3 id="portability">Portability</h3>
 <p>The checker has the capability to be packaged and run as an executable on a computer running any common operating system. For this reason, the shell has plans to be integrated into three platforms: Command line, graphical user interface, and a web-based (server-client) platform. Qt was chosen as the core toolkit for the development of the graphical user interface because of its flexibility and ability to be deployed across many different operating system platforms.</p>
 <p>The developed software will also have the capability to function as a micro-service application alongside other digital preservation systems such as Archivematica. With its micro-service approach, Archivematica serves as a wrapper for related task-specific software and is an open source system that also works to maintain standards based on providing access to digital collections. The conformance checker suits this systems’ design as an integrated micro-service suite, allowing for it to run alongside other third-party software tools that also serve to process digital objects and help to standardize a preservation focused ingest-to-access workflow. Within this design, various micro-services, including the conformance checker, can be built together into customized workflows and deployed across all operating systems and platforms.</p>
-<p>As the shell will be developed to integrate into and perform within a web-based platform, the web user interface (UI) will function across 3 major web-based browsers. These platforms are to include Firefox, Google Chrome, and Internet Explorer. The software’s UI and capabilities will function similarly across all of these relevant web-based environments.</p>
+<p>As the shell will be developed to integrate into and perform within a web-based platform, the web user interface (UI) will function across 3 major browsers. These platforms are to include Firefox, Google Chrome, and Internet Explorer. The software’s UI and capabilities will function similarly across all of these relevant web-based environments.</p>
 <h3 id="scalability">Scalability</h3>
 <p>Similar to the way in which MediaInfo can be built and expanded upon in archival institutions to perform media analysis at scale, the comformance checker can be integrated into scripts and systems that can validate files en masse and deliver computer-readable and human-readable metadata via standard XML reports.</p>
 <p>The scalability of each built component of the conformance checker will allow the software to scale horizontally throughout multiple computers and servers in order to potentially meet a heavy and increased workload. The software can be deployed on more computers for added speed, dexterity and reliability, distributing and partitioning tasks to a cluster of machines in order to improve performance and increase the working capacity of the software. Built within this architecture, the conformance checker can be expanded upon and integrated into various workflow environments with the added ability to increase its number of file requests.</p>
 <h3 id="distribution">Distribution</h3>
-<p>The source code will reside on an open development platform (Github) in order to provide easy access and distribution during all stages of development. It will also have the ability to extract nightly builds of the code and deploy using continuous integration. The subsequent builds and software releases can then be downloaded, built and run on any system.</p>
+<p>The source code will reside on an open development platform (GitHub) in order to provide easy access and distribution during all stages of development. It will also have the ability to extract nightly builds of the code and deploy using continuous integration. The subsequent builds and software releases can then be downloaded, built and run on any system.</p>
 <h3 id="modularity">Modularity</h3>
 <p>MediaArea plans to collaborate with the other PREFORMA teams to support optimal interoperability with each other as well as with third-party developers of additional conformance checkers that will utilize the implementation checker shells. The checker's API allows for the checker to be integrated alongside other components and the future development of plug-in features. The architecture’s modularity will also allow the software’s features ongoing and improved maintenance as well as offering reliability as a freestanding shell.</p>
 <p>The open source project will be programmed and provided in C++ but will be functionally compatible with other programming languages through the use of bindings. Other than C++, the team will support bindings to C, Python, Java, C# and other languages upon open request and feedback. The bindings will function as wrappers to allow the original code to be explicitly used and supported within other common languages. Supporting this capability will allow the API to be fully integrated within the open source community with the full potential of interoperability.</p>
@@ -581,7 +578,7 @@
 <li>Relationships between frameworks</li>
 <li>Framework traversal patterns</li>
 </ul>
-<p>This is broken down by category and the categories are as follows:</p>
+<p>This is broken down into the following categories:</p>
 <ul>
 <li>Common Elements</li>
 <li>Core</li>
@@ -600,7 +597,7 @@
 <li>Relationships between each structural component</li>
 <li>Relationships between plugins</li>
 </ul>
-<p>This is broken down by category and the categories are as follows:</p>
+<p>This is broken down into the following categories:</p>
 <ul>
 <li>Transport interface</li>
 <li>Container/wrapper implementation</li>
@@ -610,7 +607,7 @@
 <li>Stream/container coherency check</li>
 <li>Baseband analyzer (optional, through plugin)# PREFORMA Global Architecture</li>
 </ul>
-<p>PREFORMA strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.</p>
+<p>MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.</p>
 <h2 id="architecture-schema">Architecture schema</h2>
 <div class="figure">
 <img src="./GlobalArchitecture.png" alt="Global Architecture Schema" />
@@ -620,7 +617,7 @@
 <p>All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.</p>
 <h3 id="file-access">File access</h3>
 <h4 id="file-access-using-cli">File access using CLI</h4>
-<p>To place a file into the checking system, a user may execute the CLI name file manually or they can asynchronously run the file and test for its readiness. If the files are passed in a batch format, the reports can be later retrieved by manually requesting updates from the Core.</p>
+<p>To place a file into the checking system, a user may execute the CLI name file manually or they can asynchronously run the file and test it for readiness. If the files are passed in a batch format, the reports can be later retrieved by manually requesting updates from the Core.</p>
 <h4 id="file-access-using-gui">File access using GUI</h4>
 <p>To place and use a file through the checker’s GUI, both technical and non-technical users will work within windows and dialog boxes that enable them to navigate to, open, and load system files directly within the interface. A standard open dialog box will search for and load files for processing within the software. The GUI runs within a human-readable, interactive environment with visually intuitive access to the file checking process. In addition to allowing direct access to checking individual files, scheduled batch file checking via special folders residing on the user’s computer/network can also be enabled directly within the GUI.</p>
 <h4 id="file-access-using-web">File access using Web</h4>
@@ -628,28 +625,29 @@
 <h4 id="common-to-all">Common to all</h4>
 <p>Files can be copied to a special folder somewhere on the user’s computer or local network. This folder can then be set to regularly check for new files at defined intervals and process the files accordingly. This function can be set up within any of the three checker access methods (CLI, GUI, and Web UI).</p>
 <h3 id="file-processing">File processing</h3>
-<p>The architecture allows for two modes of file processing: Direct access and asynchronous. Through enabling both processes, users can choose to have the checker handle individual files or have it process them in batches. Direct access allows for files to be processed one at a time, while asynchronous allows for files to be processed in batches and returned to at a later time.</p>
+<p>The architecture allows for two modes of file processing: direct access and asynchronous. Through enabling both processes, users can choose to have the checker handle individual files or have it process them in batches. Direct access allows for files to be processed one at a time, while asynchronous allows for files to be processed in batches and returned to at a later time.</p>
 <h3 id="internet-access">Internet Access</h3>
-<p>The architecture does not require direct internet access. Users can work with any version (CLI, GUI, and Web UI) offline as long as it is installed on a user’s machine (or distributed machines). In this case, for each deployment platform the version is installed and being used on, the user will be able to create an executable even when they are not connected to the internet. The web-browser UI can be run using a local network access.</p>
+<p>The architecture does not require direct internet access. Users can work with any version (CLI, GUI, and Web UI) offline as long as it is installed on a user’s machine (or distributed machines). In this case, for each deployment platform the version is installed and being used on, the user will be able to create an executable even when they are not connected to the internet. The web browser UI can be run using a local network access.</p>
 <h3 id="automation">Automation</h3>
 <p>PREFORMA includes the option of automated checking, allowing for users to receive notifications when new files are placed or come into the system.</p>
 <p>A user can set up a system on the Core which will configure the system to run scheduled automatic checks for new files and batches. This system can be accessed and configured within the user interface to run on a timed and defined schedule.</p>
 <h3 id="batching">Batching</h3>
 <p>A user also has the option to set up batch file checking and validating and schedule it to be sent through to the checker at any later point in time. These large tasks can be set up to perform according to a defined schedule. All versions of checker access (CLI, GUI, and Web UI) will have the capacity to enable this function, either through the command line or directly through the interface.</p>
 <h3 id="prioritization">Prioritization</h3>
-<p>A user can also prioritize the checker to queue individual items and scheduled checks based on a defined priority level, with a lower priority placed on periodical checks. This function will be available through all versions of the checker (CLI, GUI, and Web UI). Priority levels for checks can be divided by High (for checks requested by user), Normal (for automated checks), Low (for periodical checks) requests.</p>
-<h3 id="section"></h3>
-<p>PREFORMA allows users to load and edit configurations within a REST API configuration that will run via HTTP.</p>
+<p>A user can also prioritize the checker to queue individual items and scheduled checks based on a defined priority level, with a lower priority placed on periodic checks. This function will be available through all versions of the checker (CLI, GUI, and Web UI). Priority levels for checks can be divided by High (for checks requested by user), Normal (for automated checks), Low (for periodic checks) requests.</p>
+<h3 id="restful-api">RESTful API</h3>
+<p>Much of the Architecture's components communicate with each other via a REST-based (representational state transfer) API. Transactions can be broken down into smaller modules to allow for optimal flexiblity and use. REST is based on four basic acts of transfer: &quot;PUT&quot; is used to change the state of or update a resource (which can be a file or a block of data); &quot;GET&quot; is used to retrieve a resource; &quot;POST&quot; is used to create that resource; and &quot;DELETE&quot; is used to remove the resource.</p>
+<h3 id="offline-access">Offline Access</h3>
+<p>PREFORMA allows users to load and edit configurations within a REST API configuration that will run via HTTP. Internet connectivity is not required to use any core component of the shell.</p>
 <p>The Web-based system allows users to work both on and outside of the network as well as locally if they choose. If the user chooses to work locally, they will have access to the application server directly. This operation runs via a HTTP Daemon.</p>
-<p>Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).</p>
 <h2 id="core-controller">Core (Controller)</h2>
-<p>The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates The Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
+<p>The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates the Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
 <p>The Core has several major functions:</p>
 <ul>
 <li>controls the checkers and manages data for the User Interface</li>
 <li>waits for commands from the Files listener and User Interface</li>
 <li>sends commands to the scheduler for file-checking</li>
-<li>launch periodical checks</li>
+<li>launch periodic checks</li>
 <li>communicates with the database to store and retrieve data from the checkers</li>
 <li>sends data to DIRECT</li>
 </ul>
@@ -684,7 +682,7 @@
 <p>As the main purpose of the software build is to store flat datas, it's more suitable to use a document oriented database (NoSQL). However, a more traditional relational database can also be used.</p>
 <p>There are various potential database management system options, contingent upon the open source licensing requirements:</p>
 <ul>
-<li>Relational database : MySQL (GPLv2) / PostgreSQL (PostgreSQL License) / SQLite (Public domain)</li>
+<li>Relational database : MySQL (GPLv2) / PostgreSQL (PostgreSQL License) / SQLite (public domain)</li>
 <li>Non relational database : MongoDB (AGPLv3) / Elasticsearch (Apache license 2)</li>
 </ul>
 <h2 id="scheduler">Scheduler</h2>
@@ -695,7 +693,7 @@
 <li>batch processing</li>
 <li>priority</li>
 </ul>
-<p>The scheduler can take care of the priority function within the implementation checkers : * high : for checks requested by user * normal : for automated checks * low : for periodical checks</p>
+<p>The Scheduler can take care of the priority function within the implementation checkers: * high: for checks requested by user * normal: for automated checks * low: for periodic checks</p>
 <p>Interface :</p>
 <ul>
 <li>Core : Advanced Message Queuing Protocol</li>
@@ -704,7 +702,7 @@
 <p>Software :</p>
 <p>RabbitMQ (MPL 1.1) / Gearman (BSD) / ZeroMQ (LGPL v3)</p>
 <h2 id="files-listener">Files listener</h2>
-<p>The Files listener is a background process that listens for new files available for checking and validating. Automated checking, set up through the software, will notify when new files come into the system. Each time a new file is available, or if a file is modified, an event is sent to the Core which automatically requests a check.</p>
+<p>The Files listener is a background process that listens for new files available for checking and validating. Automated checking, set up through the software, will send a notification when new files come into the system. Each time a new file is available, or if a file is modified, an event is sent to the Core which automatically requests a check.</p>
 <p>Different solutions can be implemented depending on the file’s storage and operating system. Implemented solutions can include an inotify notification system API for a Linux kernel or kqueue/kevent for a BSD kernel or files directory scanning.</p>
 <ul>
 <li>Automated checks</li>
@@ -735,13 +733,13 @@
 <h2 id="reporter-1">Reporter</h2>
 <p>Within each of the developed user interfaces there will be ways to export raw metadata and human-readable JSON/XML/HTML/PDF reports after the conformance checking process. The reporter will define and express how a file’s checked metadata corresponds to the validation result standards.</p>
 <ul>
-<li>exports a machine readable report, including preservation metadata for each file checked</li>
+<li>exports a machine-readable report, including preservation metadata for each file checked</li>
 <li>exports a report that allows external software agents to further process the file</li>
-<li>exports a human readable report</li>
-<li>exports a &quot;fool-proof&quot; report which also indicates what should be done to fix the non-conformances</li>
+<li>exports a human-readable report</li>
+<li>exports a foolproof report which also indicates what should be done to fix the non-conformances</li>
 </ul>
-<p>The machine readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PREFORMA ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.</p>
-<p>The human readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.</p>
+<p>The machine-readable report will be produced using a standard XML format, implemented by all implementation checkers working within the PREFORMA ecosystem. This allows the reported module to combine output from multiple checker components into one report while also including sub-elements within the report that will address each conformity check. The report will be based on a standard output format that will be made by the consortium.</p>
+<p>The human-readable report summarizes the preservation status of a batch of files as a whole, reporting to a non-expert audience whether a file is compliant with the standard specifications of the format or institution while also addressing improvements in the creation/digitisation workflow process.</p>
 <p>Interface :</p>
 <ul>
 <li>Core : REST API</li>
@@ -754,7 +752,7 @@
 <li>displays test results</li>
 <li>controls the Core</li>
 <li>allows metadata (descriptive and structural) to be edited</li>
-<li>edit configuration (periodical checks, policy checker, user rights)</li>
+<li>edit configuration (periodic checks, policy checker, user rights)</li>
 </ul>
 <p>Conch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:</p>
 <ul>
@@ -768,7 +766,8 @@
 <ul>
 <li>Web UI (server/client)</li>
 </ul>
-<p>An optional Web-based user interface (UI) will also be provided for both expert and non-expert users. In order to run this option, an internet access will not be needed or required. Local network access will power the checker within the user’s chosen web-browser. The web interface will provide access to conformance checks without having to directly download and install the software.</p>
+<p>An optional web-based user interface (UI) will also be provided for both expert and non-expert users. In order to run this option, an internet access will not be needed or required. Local network access will power the checker within the user’s chosen web-browser. The web interface will provide access to conformance checks without having to directly download and install the software.</p>
+<p>Users will have access to this web-based user interface for basic management. This will allow users to see the list of files, as well as the processes and checking happening to each of these files. Users will also be shown demarcation of which files pass testing successfully. The web user interface (UI) will function across 3 major web-based browsers (Firefox, Google Chrome, and Internet Explorer).</p>
 <p>Interface :</p>
 <ul>
 <li>Core : REST API</li>
@@ -780,8 +779,8 @@
 <li><p>Web : PHP/Symfony (MIT)# Checker Architectural Layers</p></li>
 </ul>
 <div class="figure">
-<img src="./CheckerArchitectureLayers.png" alt="software architecture layers" />
-<p class="caption">software architecture layers</p>
+<img src="./CheckerArchitectureLayers.png" alt="Checker Architecture Layers" />
+<p class="caption">Checker Architecture Layers</p>
 </div>
 <p>The design of the implementation checker portion of the Conch application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
 <ul>
@@ -797,7 +796,7 @@
 <h3 id="conch-file-on-disk-or-direct-memory-mapping">Conch: File on disk or direct memory mapping</h3>
 <p>Conch uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.</p>
 <h3 id="plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</h3>
-<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. curl offers extensive support for transferring data through many protocols. By incorporating curl into Conch the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
+<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. libcURL offers extensive support for transferring data through many protocols. By incorporating curl into Conch the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
 <p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
 <p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
@@ -806,7 +805,7 @@
 <p>mkvalidator is a basic and no more maintained Matroska checker (BSD license, compatible with GPLv3+/MPL2+) which will be used mostly for demonstration of the plugin integration.</p>
 <h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
 <h3 id="conch">Conch</h3>
-<p>Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL....) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats founds within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
+<p>Conch will utilize MediaInfo's existing demuxing libraries (can be relicensed under GPL) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats found within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
 <ul>
 <li>MXF (commonly found within memory institutions)</li>
 <li>MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)</li>
@@ -817,9 +816,6 @@
 <li>RF64 (64-bit extensions of WAV for 2GB+ files)</li>
 </ul>
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PREFORMA's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PREFORMA's licensing requirements.</p>
-<h3 id="plugin-integration-proof-of-concept-ffmpeg">Plugin integration proof of concept: FFmpeg</h3>
-<p>FFmpeg is one of the most ubitiquous, comprehensive, and open tools for demultiplexing and decoding audiovisual data; however, although FFmpeg's GPLv2+ license is compatible with PREFORMA's selected GPLv3+ license, it is not compatible with PREFORMA's other selected license, MPLv2+. As the PREFORMA conformance project evolves to support additional formats and codecs through plugins the use of FFmpeg's features are expected to becoming more and more appealing.</p>
-<p>Although Conch won't incorporate FFmpeg in order to comply with the MPLv2+ licensing requirement, we would like to design plugin support for FFmpeg. In this way a memory institution using Conch could separately download FFmpeg and link the two together to enable additional tools such as:</p>
 <h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <p>Plugin</p>
 <h3 id="conch-1">Conch:</h3>
@@ -848,16 +844,6 @@
 <ul>
 <li>PCM (including D-10 Audio, AES3)</li>
 </ul>
-<h3 id="plugin-integration-proof-of-concept-ffmpeg-1">Plugin integration proof of concept: FFmpeg</h3>
-<p>FFmpeg decoder (GPLv2+ license, compatible with GPLv3+ but not with MPL2+)</p>
-<p>For instance the integration of FFmpeg can provide integration of very comprehensive decoding and demultiplexing support beyond what can be easily provided with MediaInfo's demuxing libraries. FFmpeg's libavfilter library also provides access to waveform monitoring, vectorscope, audio meters, and other essential audiovisual inspection tools.</p>
-<ul>
-<li>Video Waveform Monitor</li>
-<li>Vectorscope</li>
-<li>Ability to inspect luminance and chroma planes separately</li>
-<li>Audio Meters</li>
-</ul>
-<p>We anticipate that the implementation of FFmpeg plugin support will substantially simplify the development of other plugins for broader codec and format support so that an entire decoder or demuxer does not need to be written from scratch in order to extend support.</p>
 <h3 id="plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</h3>
 <p>OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</h2>
@@ -866,13 +852,8 @@
 <h2 id="baseband-analyzer">Baseband Analyzer</h2>
 <h3 id="conch-4">Conch</h3>
 <ul>
-<li>None (only creation of the API)</li>
+<li>None (only creation of the API) ## Implementation Checker</li>
 </ul>
-<h3 id="playback-and-playback-analysis-through-plugin">Playback and Playback Analysis (through plugin)</h3>
-<p>Note that the PREFORMA tender does not require decoding or subsequent baseband analysis or playback; however, from our experience in implementation checker design with DV Analyzer and QCTools and through discovery interviews, we've found that users are quick to require some form of playback in order to facilitate decision-making, response, and strategies for fixing. For instance if the implementation checker warns that the Matroska container and FFV1 codec note contradictory aspect ratios or a single FFV1 frame registers a CRC mismatch it is intuitive that the user would need to decode the video to determine which aspect ratio is correct or to assess the impact of the CRC mismatch. These layers can be supporting by designing a implementation checker and shell that is prepared to utilize FFmpeg as an optional plugin to enable additional analysis features and playback. Our overall proposal is not dependent on supporting an FFmpeg plugin but we believe that preparing a implementation checker that could support FFmpeg as an optional plugin could create a more intuitive, comprehensive, and informed user experience.</p>
-<p>We propose incorporating several compatible utilities into Conch to extend functionality and add immediate convenience for users. Each component is built as a plugin and can be replaced by a third party tool.</p>
-<h3 id="plugin-integration-proof-of-concept-qctools">Plugin integration proof of concept: QCTools</h3>
-<p>QCTools graphs (report on and graph data documenting video signal loss, flag errors in digitization, identify which errors and artifacts are in original format and which resulted from the digital transfer based on all the data collected in the past.) ## Implementation Checker</p>
 <h3 id="introduction">Introduction</h3>
 <p>The implemententation checker is the centerpiece of the project and where development efforts shall be the most consequential to memory institutions and the underlying standards organizations. MediaArea plans to use the utmost precision and transparency within the development of the implementation checker so that it may, to the greatest extent feasible, produce an accurate and referenced analysis regarding the adherence or transgression of a selected file format to its associated specifications.</p>
 <p>Measuring the extent of the adherence of files to associated specifications can be adjusted by the user, for instance the user may wish to only verify files against a particular version of a specification, or choose to exempt or excuse certain violations, or choose to only assess part of a file (for instance to only test the frame X frames of FFV1 for adherance) in the interest of time.</p>
@@ -881,22 +862,23 @@
 <h3 id="registry-of-checks">Registry of Checks</h3>
 <p>The implementation checker must be associated with an active and open registry of checks. The registry shall describe each conformance test in easy to understand, approachable language, with citations to the associated specification, and details of any logic, deductive reasoning, or inferrence clearly detailed. The registry should associate each test to the source code that enacts the so that the human-defined and computer-defined implementations of each check may be strongly linked.</p>
 <p>The Registry must allow support community involvement, such as associated forums, issue trackers, links to asscoiated sample files, etc. The design of the Registry and its intertwinement with the Implementation Checker will provide users with a means to navigate from their discovery to sample files, source code, community knowledge, and context.</p>
-<p>The registered checks shall be categorized according to its associated authority and specification document. The grouping of rules shall enable the user to select parts of an implementation check if necessary. For instance the Matroska specificiation is comprised of several versions and several underlying specifications, such as Extensible Binary Meta Language (EBML). The implementation checker should be able to test if a file is valid according to all known checks asscoiated with Matroska, but should also be able to validate a file against only the rules derived from the Extensible Binary Meta Language specification.</p>
+<p>The registered checks shall be categorized according to their respective associated authority and specification document. The grouping of rules shall enable the user to select parts of an implementation check if necessary. For instance the Matroska specificiation is comprised of several versions and several underlying specifications, such as Extensible Binary Meta Language (EBML). The implementation checker should be able to test if a file is valid according to all known checks asscoiated with Matroska, but should also be able to validate a file against only the rules derived from the EBML specification.</p>
 <h3 id="demultiplexing">Demultiplexing</h3>
-<p>MediaArea's project focus includes two formats of encoded audiovisual data (FFV1 and LPCM) that are usually found within other container formats (which may or may not be Matroska). We intend the implementation checker to function properly for FFV1 and LPCM even if they are not contained within Matroska. MediaInfo already contains the ability to parse encoded streams from container formats such as AVI, QuickTime, MXF, and many others. By re-licensing MediaInfo under PREFORMA's licesning requirements we can ensure that the implementation checker maintain relevance for file formats such as FFV1 in AVI and FFV1 in QuickTime (both found widely in early discovery interviews and surveys). In these cases the Implementation Checker will report on the implemetnation of the supported formats specifically (here FFV1) and not focus on unsupported container formats which happen to be deployed.</p>
+<p>MediaArea's project focus includes two formats of encoded audiovisual data (FFV1 and LPCM) that are usually found within other container formats (which may or may not be Matroska). We intend the implementation checker to function properly for FFV1 and LPCM even if they are not contained within Matroska. MediaInfo already contains the ability to parse encoded streams from container formats such as AVI, QuickTime, MXF, and many others. By re-licensing MediaInfo under PREFORMA's licensing requirements we can ensure that the implementation checker maintain relevance for file formats such as FFV1 in AVI and FFV1 in QuickTime (both found widely in early discovery interviews and surveys). In these cases the Implementation Checker will report on the implemetnation of the supported formats specifically (here FFV1) and not focus on unsupported container formats which happen to be deployed.</p>
 <h3 id="implementation-checker-1">Implementation Checker</h3>
-<p>The Implementation Checker, whether run via command line interface (CLI), graphical user interface (GUI), or browser-based interface, should be able to accept a file as a input. The Implementation Checker will verify that the input is relevant to the Checker (ie. is it EBML/Matroska or does it appear to contain FFV1 or LPCM). If relevant that Implementation Checker will verify adherence or document transgressions to the test detailed in the Registry. The output will use the formats of the Reporter, specifically the PREFORMA XML format, but additional outputs in JSON, PDF, and/or HTML will be available.</p>
+<p>The Implementation Checker, whether run via command line interface (CLI), graphical user interface (GUI), or browser-based interface, should be able to accept a file as a input. The Implementation Checker will verify that the input is relevant to the Checker (ie. is it EBML/Matroska or does it appear to contain FFV1 or LPCM). If relevant, the Implementation Checker will verify adherence or document transgressions to the test detailed in the Registry. The output will use the formats of the Reporter, specifically the PREFORMA XML format, but additional outputs in JSON, PDF, and/or HTML will be available.</p>
 <p>Because some checks are fairly processor-intensive, MediaArea's developers will focus on the efficency of intensive checks (such as verifying the CRC payloads of FFV1 or MKV) through multi-threaded processing, frequent benchmarking, and coding optimizations. Additionally the user shall be able to express settings to balance time and thoroughness of the checks.</p>
-<p>The graphical user interface of the implementation checker shall provide a configuration interface where sets of registrered checks may be enabled or disabled. The interface shall link each check to documentation (internal or online) regarding the context of the check. Another interface shall allow the user to select one or many files to verify against the selected checkers. The test (associatation of files to checks) may then be run or sent to a scheduler within the Shell.</p>
-<p>The reporting of the Implementation Checker should associate checks to specific files and provide detailed context: byte offsets, links to background infromation, citations, and other supportive documentation. ## Policy Checker - Graphical User Interface</p>
+<p>The GUI of the implementation checker shall provide a configuration interface where sets of registered checks may be enabled or disabled. The interface shall link each check to documentation (internal or online) regarding the context of the check. Another interface shall allow the user to select one or many files to verify against the selected checkers. The test (associatation of files to checks) may then be run or sent to a scheduler within the Shell.</p>
+<p>The reporting of the Implementation Checker should associate checks to specific files and provide detailed context: byte offsets, links to background infromation, citations, and other supportive documentation.</p>
+<h2 id="policy-checker---graphical-user-interface">Policy Checker - Graphical User Interface</h2>
 <h3 id="introduction-1">Introduction</h3>
-<p>The policy checker graphical user interface will allow set of policy rules to be created and configured to specfic workflows and then applied to selected collections of files or file-queries across a file system. Although predefined presets are available, users shall be able to use the interface to create or edit policy check presets for reuse. A policy check preset will include a list will essentially be a recipe for evaluating the technical aspects of a set of files. Although MediaArea's implementation here will focus specifically on the selected formats of Matroska, FFV1, and LPCM, the policy checker will be able to preform checks on any type of file supported by MediaInfo.</p>
+<p>The policy checker graphical user interface will allow set of policy rules to be created and configured to specfic workflows and then applied to selected collections of files or file queries across a file system. Although predefined presets are available, users shall be able to use the interface to create or edit policy check presets for reuse. A policy check preset will include a list will essentially be a recipe for evaluating the technical aspects of a set of files. Although MediaArea's implementation here will focus specifically on the selected formats of Matroska, FFV1, and LPCM, the policy checker will be able to preform checks on any type of file supported by MediaInfo.</p>
 <p>MediaArea currently manages a registry of terminology to express a diverse set of technical metadata characteristics, including information about containers, streams, contents, and file attributes. Such information is derived from container demuxing and specialized bitstream analysis. The approach of MediaInfo's design is to trace through the entire structure of a file and interpret all data in a manner that categorizes it to the content of the utilized formats underlying specifications. This interpretation of audiovisual data is comprehensive and specification based, but to supported more generalized use within media workflows, the information is then aligned to a pre-defined set of technical metadata terminology.</p>
-<p>MediaArea will extend its matroska demultiplexer to focus on the complete potential expression allowed by Matroska 3 finalized and 1 experimental version as well as common Matroska format profiles such as webM. Additionally MediaInfo will continue work on its FFV1 bitstream filter to efficiently analyze single frame, partial streams, or whole streams. Such work will distinguish between contextual and technical metadata unique to the 4 existing versions of FFV1.</p>
-<p>Within the use of the policy checker the user shall be able to comprehensive and conditional policy checks to apply to one or many files. The policy checker may be used to assess vendor deliverables, consistency in digitization efforts, obsolescence or quality monitoring, in order to better control and manage digital preservationc collections.</p>
+<p>MediaArea will extend its Matroska demultiplexer to focus on the complete potential expression allowed by all versions of Matroska (versions 1 to 3, and experimental version 4) as well as common Matroska format profiles such as WebM. Additionally MediaInfo will continue work on its FFV1 bitstream filter to efficiently analyze single frames, partial streams, or whole streams. Such work will distinguish between contextual and technical metadata unique to the four existing versions of FFV1.</p>
+<p>Within the use of the policy checker the user shall be able to comprehensive and conditional policy checks to apply to one or many files. The policy checker may be used to assess vendor deliverables, consistency in digitisation efforts, obsolescence or quality monitoring, in order to better control and manage digital preservation collections.</p>
 <h3 id="design-functional-requirements">Design &amp; Functional Requirements</h3>
 <h4 id="standardizing-policy-expressions">Standardizing Policy Expressions</h4>
-<p>To faciliate interoperability between PREFORMA's developed Policy Checkers and the Shells of all suppliers, MediaArea proposes that all suppliers collaborate to define a common data expression for policy. The policy expression standard to cover a shared registry of technical metadata that shares overlapping scope amongst all supplier policy checkers (for example: policy expressions to test against file size or file name should express those technical concepts identically). Additional policies expressions from all Suppliers should share a concept list of operators such as 'must equal', 'greater than', 'matches regex', etc. A common policy expression shall also share methods to define conditional policy checks, for instance to conditionally test if the frame size is 720x576 is the frame rate is 25 fps and to test if the frame size is 720x486 if the frame rate is 30000/1001.</p>
+<p>To faciliate interoperability between PREFORMA's developed Policy Checkers and the Shells of all suppliers, MediaArea proposes that all suppliers collaborate to define a common data expression for policy. The policy expression standard to cover a shared registry of technical metadata that shares overlapping scope amongst all supplier policy checkers (for example: policy expressions to test against file size or file name should express those technical concepts identically). Additional policies expressions from all Suppliers should share a concept list of operators such as 'must equal', 'greater than', 'matches regex', etc. A common policy expression shall also share methods to define conditional policy checks, for instance to conditionally test if the frame size is 720x576 when the frame rate is 25 fps and to test if the frame size is 720x486 when the frame rate is 30000/1001.</p>
 <p>MediaArea recommends the policy expressions be standardizing with an XML Schema co-defined by all Suppliers, managed with version control in a common GitHub account, and accessible through the documentation of the Open Source Portal.</p>
 <h4 id="policy-designer-interface">Policy Designer Interface</h4>
 <p>The policy designer interface enables users to create, edit, and share sets of policies. The functions of the policy designer interface shall include allowing the user to:</p>
@@ -909,16 +891,16 @@
 <li>use a list of policy test operators as defined in the policy expression XSD</li>
 <li>allow policies to be encapsulate within over conditional tests with an if/else approach</li>
 </ul>
-<p>The policy designer interface will inform the user with a general indicator as to how time-consuming the test if. For instance to test that all selected Matroska files are version 3 or higher may be done with a quick header parse, but to test that all FFV1 frames have valid embedded CRCs would take a lot more time. Although policy sets may provide an indicator as to the amount of time required (i.e. which sets are quick and which are intensive). This information may be used to set up task scheduling efficiently.</p>
+<p>The policy designer interface will inform the user with a general indicator as to how time-consuming the test will be. For instance, testing that all selected Matroska files are version 3 or higher may be done with a quick header parse, but to test that all FFV1 frames have valid embedded CRCs would take a lot more time. Although policy sets may provide an indicator as to the amount of time required (i.e. which sets are quick and which are intensive). This information may be used to set up task scheduling efficiently.</p>
 <div class="figure">
-<img src="./Design/GUI/PolicyDesignerMockup.png" alt="policy designer interface" />
-<p class="caption">policy designer interface</p>
+<img src="./Design/GUI/PolicyDesignerMockup.png" alt="Policy Designer Interface" />
+<p class="caption">Policy Designer Interface</p>
 </div>
 <h4 id="file-selection-interface">File Selection Interface</h4>
 <p>The file selection interface shall allow the operator to load files through such methods as drag-and-drop, selection through system dialogs, or file system queries. Such sets of files or queries to identify files may then be saved, name, and described. Thus an operator may define a particular directory as an entry point for acquisitions, a queue for quality control assessment, or archival storage.</p>
 <div class="figure">
-<img src="./Design/GUI/PolicySelectionMockup.png" alt="policy selection interface" />
-<p class="caption">policy selection interface</p>
+<img src="./Design/GUI/PolicySelectionMockup.png" alt="Policy Selection Interface" />
+<p class="caption">Policy Selection Interface</p>
 </div>
 <h4 id="policy-test-interface">Policy Test Interface</h4>
 <p>Within the Policy Test Interface, the user may associate policy sets and file selections to form a policy test. Policy tests may contain name and descriptions which will be passed through to the resulting report to provide context. The policy tests may then be run directly or assigned to the task scheduler of the Shell. Within the Policy Checker GUI the results of the policy tests may then viewed or analysis within the Reporter GUI.</p>
@@ -937,18 +919,17 @@
 <li>allow policies to be encapsulated within over conditional tests with an if/else approach</li>
 </ul>
 <h4 id="batch-policy-checking">Batch Policy Checking</h4>
-<p>The command line interface allows for efficient batch policy checking through calls made to the API.</p>
-<h2 id="policy-checker---web-interface">Policy Checker - Web Interface</h2>
+<p>The command line interface allows for efficient batch policy checking through calls made to the API. # Metadata Fixer</p>
 <h2 id="metadata-fixer----graphical-user-interface">Metadata Fixer -- Graphical User Interface</h2>
 <h3 id="introduction-2">Introduction</h3>
 <p>Although many audiovisual formats contain comprehensive support for metadata, archivists are eventually faced with a dilemma regarding its application. On one hand, a bit-by-bit preservation of the original data comprising the object is a significant objective. On the other hand, archivists prioritize having archival objects be as self-descriptive as possible. While the OAIS model aims to mitigate such a dilemma through the creation of distinct Information Packages, this is not often the case. For an institution managing digital files as objects for preservation, a change to the file's metadata is a change to the object itself; significant attributes such as file size and checksum are irreversibly altered. Because such revisions to the object prevent fixity functions, the decision on whether or not to fix or add metadata within the OAIS structure is oftentimes complex.</p>
 <p>The intrinsic design of the Matroska file format aims to find a balance between these two considerations. Rather than relying on an external checksumming process to validate the fixity of the file, Matroska provides a mechanism for doing so internally. The CRC elements of Matroska may be used within any Element to document the subsequent data of the parent element's payload. With this feature a Matroska file may be edited in one particular section while the other sections maintain their ability to be easily validated. Thus in addition to (or possibly in lieu of) generating a file checksum during acquisition, a archive may use PREFORMA's Matroska tools to embed CRC elements if they do not already exist. When a Matroska file is internally protected by CRCs, the sections of the file may be edited or fixed while maintaining a function to verify the un-edited functions.</p>
 <p>Because of these Matroska features, we are very interested in how archivists may work more actively with internal file metadata through various parts of the OAIS framework. For instance reports on file edits, repairs, and outcomes of preservation events may be added directly to the file. With such tools as proposed by this project, archivists and repository systems may work with living Matroska preservation objects which internally define the context and lifecycle of themselves over time while maintaining the fixity features of the contained audiovisual data which is the essence of the overall preservation focus and what the Matroska container may be used to describe, validate, and support.</p>
-<p>Although the Metadata Fixer can provide comprehensive levels of control over metadata creation and editing, the central objective of the metadata fixer is to facilitate repair procedures for conformance or policy issues. The <a href="######validation-status">Tag validation status</a> will be presented in detail or summarization dependent on the active layout and related problematic aspects of the file with designed repair solutions. Because metadata fixes or repairs will alter a preservation file, MediaArea has dedicated a signficiant level of caution to the design of these operations. Learning more our similar experience with BWF MetaEdit, such designs will be based off a thorough programmatic understanding of the file, the actions to move the file towards a greater level of conformity, and the risks associated with doing so. The interfaces designed here will serve to intuitively relate file issues, with programatically proposed fixes, and inform to provide the user with an understand of the context and risk of the fix.</p>
+<p>Although the Metadata Fixer can provide comprehensive levels of control over metadata creation and editing, the central objective of the metadata fixer is to facilitate repair procedures for conformance or policy issues. The <a href="######validation-status">Tag validation status</a> will be presented in detail or summarization dependent on the active layout and related problematic aspects of the file with designed repair solutions. Because metadata fixes or repairs will alter a preservation file, MediaArea has dedicated a signficiant level of caution to the design of these operations. Learning from our similar experience with BWF MetaEdit, such designs will be based off of a thorough programmatic understanding of the file, the actions to move the file towards a greater level of conformity, and the risks associated with doing so. The interfaces designed here will serve to intuitively relate file issues, with programatically proposed fixes, and inform to provide the user with an understand of the context and risk of the fix.</p>
 <h3 id="design-functional-requirements-1">Design &amp; Functional Requirements</h3>
 <h4 id="file-list-layout">File List Layout</h4>
 <p>The GUI version of the metadata fixer will provide an interface to see a table of summarized metadata for one or many open files. The intent is to go allow files to be sorted by particular technical qualities or the content of embedded metadata. A table-based presentation will also allow the inconsistancies of technical metadata to be easily revealed and repaired.</p>
-<p>MediaArea has developed such interfaces in other conformance- and metadata-focused projects such as BWF MetaEdit and QCTools and plans to use the File List Layout as an interface center for batch file metadata operations.</p>
+<p>MediaArea has developed such interfaces in other conformance- and metadata-focused projects (such as BWF MetaEdit and QCTools) and plans to use the File List Layout as an interface center for batch file metadata operations.</p>
 <h5 id="customizable-sections">Customizable Sections</h5>
 <p>The contents of the File List will be configurable according to the metadata values indexed by MediaInfo during a file parse. In the case of Matroska files these metadata values will also be categorized according to their enclosing Matroska section. These sections include:</p>
 <pre><code>- Header
@@ -960,7 +941,7 @@
 - Cueing Data
 - Attachment
 - Tagging</code></pre>
-<p>In additional to Matroska sections a category of file attribute data will also be provided to show information such as file size, file name, etc. Additional a 'global' section is provided to show summarization of the file's status and structure.</p>
+<p>In addition to the Matroska sections, a category of file attribute data will also be provided to show information such as file size, file name, etc. Additionally, a 'global' section is provided to show summarization of the file's status and structure.</p>
 <p>A toolbar in the File List Layout will enable the user to select one or many sections to allow for focus on a particular section.</p>
 <p>As an example, checking to show the columns associated with the Matroska Header shall reveal columns such as:</p>
 <pre><code>- File format (Matroska, Webm, etc)
@@ -972,8 +953,8 @@
 - Number of metadata tags
 - Number of chapters
 - Number of attachments</code></pre>
-<p>As metadata tags may vary substantially, the tagging section of the File List Layout will show selected level 4 metadata tags as well as a column to summarize what level 4 metadata tags are unshown. Columns values which show level 4 metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of metadata tags in level 5 and below can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown Level 4 metadata tags may be edited directly.</p>
-<p>The order and selection of viewed columns within the File List Layout may be saved and labelled to configure the display. This feature will allow users to design and configure layouts for particular metadata workflows. MediaArea plans to provide specific layouts in accordance with the objective of particularly OAIS functions, such as to supply contextual metadata about a digitization or acquisition event.</p>
+<p>As metadata tags may vary substantially, the tagging section of the File List Layout will show selected top-level metadata tags as well as a column to summarize what top-level metadata tags are not shown. Columns values which show top-level metadata tags which contain child elements shall note visually when that tag contains child tags and reveal a summarization of child values over mouse-over. Further interaction with of lower level metadata tags can be better found in the (Metadata Editor Layout)[####mkv-metadata-editor-layout] which shall be linked from each row of the File List Layout. Within the tag setion of the of the File List Layout the shown top-level metadata tags may be edited directly.</p>
+<p>The order and selection of viewed columns within the File List Layout may be saved and labelled to configure the display. This feature will allow users to design and configure layouts for particular metadata workflows. MediaArea plans to provide specific layouts in accordance with the objective of particularly OAIS functions, such as to supply contextual metadata about a digitisation or acquisition event.</p>
 <h5 id="managing-state-of-metadata-editsfixes">Managing State of Metadata Edits/Fixes</h5>
 <p>A toggle within the toolbar will switch the table's editable entries from read-only to editable, to help prevent inadvertant edits. Each row of the File List Layout shall contain a visual status icon (File Edit State Icon) to depict the state of the file's metadata state. The File Edit State Icon will show if the file has been edited through the UI to different values than the file actually has; for instance, if the file must be saved before the shown changes are written back to the file. Metadata values within editable layouts shall appear in a different font, style or color depending on if they show what is actually stored or altered data that has not yet been saved back to the file. By selected a row which has an edited but unsaved state, the user shall be able to selet a toolbar option to revert the file's record back to its original saved state (to undo the unsaved edit).</p>
 <h5 id="relational-to-conformance-policy-layouts">Relational to Conformance / Policy Layouts</h5>
@@ -1014,7 +995,7 @@
 <h6 id="target-summarization">Target Summarization</h6>
 <p>Each metadata tag may be associated with the context of the whole file or many specfic targets. For instance a DESCRIPTION may refer to one or many attachments or a particular chapter or a particular track, etc. In order to show the targets concisely the UI should present a coded summary to show one value that indicates the type and number of related target. The TargetSummarization may how &quot;A3&quot; to indicate that it refers to the third attachment, or &quot;T4&quot; to indicate that it refers to the fourth track. When the TargetSummarization is moused over a popup should reveal a list of associated targets with the UID and perteninet details of each target as well as a link to jump to a focus of that target within its corresponding layout (such as the Chapter Layout or Attachment Layout).</p>
 <h6 id="tag-content-bahavior">Tag Content Bahavior</h6>
-<p>Matroska tags may contain either a TagString or TagBinary element. When single-clicking or tabbing into a TagContent field then if the TagContent is a TagString it shall be directly editable and if the TagContent is a TagBinary the TagContentModalWindow shall appear selected to the Binary tab with a guided hex editor.</p>
+<p>Matroska tags may contain either a TagString or TagBinary element. When single-clicking or tabbing into a TagContent field, the TagContent is a TagString and it shall be directly editable. If the TagContent is a TagBinary, the TagContentModalWindow shall appear selected to the Binary tab with a guided hex editor.</p>
 <h6 id="tag-content-modal-window">Tag Content Modal Window</h6>
 <p>The TagContent Modal Window is a UI designed to accommodate editing of TagContent or TagBinary values. The UI shall contain three tabs:</p>
 <ul>
@@ -1054,11 +1035,13 @@
 <h2 id="reporter-2">Reporter</h2>
 <h3 id="functional-overview-2">Functional Overview</h3>
 <p>The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, check statistics, conformance priorities, and other associated session documentation. This information is derived from the database and multiple component project APIs, passed through the PREFORMA core and finally combined and transformed into a desired output. Several output formats allow for external software agents to futher process this reportage.</p>
+<p>Reports will include technical metadata and related checks to formats/streams, and should encompass not only information about the files being assessed but also the conditions and context of a particular use (which shell was used, with what policy sets, at what verbosity, etc). A report should accommodate the expression of results from multiple implementation checkers upon a single file. For example, a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.</p>
 <p>The Reporter may accept a previously-generated PREFORMAXML or other supported output format for collation with other conformance checks. Previously-generated PREFORMAXML reports may also be transformedn into additional desired outputs.</p>
 <h3 id="design-and-functional-requirements-1">Design and Functional Requirements</h3>
 <ul>
 <li>human-readable supported output formats: PDF, TXT</li>
 <li>machine-readable supported output formats: PREFORMAXML, JSON</li>
+<li>PREFORMAXML output with gzip compression to reduce the impact of large and highly verbose information</li>
 <li>optional machine-readable supported output formats: CSV/TSV</li>
 <li>report on implementation checks, policy checks, and metadata fixes</li>
 <li>report on information concerning preventative measures for non-conformed files</li>
@@ -1108,10 +1091,10 @@
 <ul>
 <li><p>Use of nightly builds: A nightly build is an automated build that reflects the most up-to-date version of developed software’s source code. Users will have access to these nightly builds as their release will allow for collaborative groups of developers and users to work together and continuously gain immediate feedback and fixes to the most current state of the software. With access to the absolute latest versions, MediaArea and all open source collaborators will more readily gain insight into potential bugs and issues that could arise during the development phase. Programmers will be able to determine if they “broke the build”, making the software inoperable with their latest code. Immediate access to fixing these issues can be made more efficiently.</p></li>
 <li><p>Use of software configuration management systems: Operating with a software configuration management system (Git) will allow MediaArea easy version control as well as knowledge of the revisions needed. This is an essential part of the open source community that allows developers to be able to work together collaboratively. A version control system allows multiple people to work on the same or similar sections of the source code base, simultaneously and at the same time, with awareness and prevention of overlapping or conflicting work. Git will be used as the software configuration management system for this project.</p></li>
-<li><p>Use of an open platform for open development: MediaArea will operate within an open source platform on which to develop software and better facilitate the open development of that software. Public visibility that allows anyone the ability to contribute to the software’s development allows for sturdier, more reliable outcomes. Feedback is more easily sought and more readily provided with the use of an open platform. Github will be used as the open platform for open development of this project.</p></li>
+<li><p>Use of an open platform for open development: MediaArea will operate within an open source platform on which to develop software and better facilitate the open development of that software. Public visibility that allows anyone the ability to contribute to the software’s development allows for sturdier, more reliable outcomes. Feedback is more easily sought and more readily provided with the use of an open platform. GitHub will be used as the open platform for open development of this project.</p></li>
 </ul>
 <h3 id="open-source-platforms">Open Source Platforms</h3>
-<p>All software development as well as the development of all relevant and corresponding digital assets and tools created by MediaArea during the PREFORMA project will exist and function as an open source project within an open source platform (Github). This open source development platform will offer full transparency and traceability throughout the development phase and facilitate a functional collaborative environment with developers, users, stakeholders, and institutions.</p>
+<p>All software development as well as the development of all relevant and corresponding digital assets and tools created by MediaArea during the PREFORMA project will exist and function as an open source project within an open source platform (GitHub). This open source development platform will offer full transparency and traceability throughout the development phase and facilitate a functional collaborative environment with developers, users, stakeholders, and institutions.</p>
 <p>Source code, issue tracking, documentation, updates, release and various forms and channels of public outreach will be centralized within the open development platform and linked to within the PREFORMA project page.</p>
 <h2 id="contribution-guide">Contribution Guide</h2>
 <h3 id="file-naming-conventions">File Naming Conventions</h3>
@@ -1151,10 +1134,10 @@
 <li>Push to the branch (git push origin my-new-feature)</li>
 <li>Create a new Pull Request with a more verbose description of the proposed changes</li>
 </ul>
-<p>Link to github repository: (https://github.com/MediaArea/PREFORMAMediaInfo/fork)</p>
+<p>Link to GitHub repository: (https://github.com/MediaArea/PREFORMAMediaInfo/fork)</p>
 <h3 id="rules-for-contributing-feedback">Rules for contributing feedback</h3>
-<p>Feedback of all kind is encouraged and can either be made through opening an issue on Github or by contacting the team directly at info@mediaarea.net.</p>
-<p>Issue tracking and feedback will be encouraged directly through the open source platform (Github) around which, in addition to PREFORMA’s Open Source Portal, MediaArea will function and centralize the anticipated infrastructure for a collaborative community environments. In addition, contributions and feedback can be left via either the IRC channel or the mailing lists pertaining to the project.</p>
+<p>Feedback of all kind is encouraged and can either be made through opening an issue on GitHub or by contacting the team directly at info@mediaarea.net.</p>
+<p>Issue tracking and feedback will be encouraged directly through the open source platform (GitHub) around which, in addition to PREFORMA’s Open Source Portal, MediaArea will function and centralize the anticipated infrastructure for a collaborative community environments. In addition, contributions and feedback can be left via either the IRC channel or the mailing lists pertaining to the project.</p>
 <h3 id="linking">Linking</h3>
 <p>MediaArea will implement linking throughout the open source community in order to create a sustainable and documented infrastructure that facilitates clarity in the progression of the project. In order to produce an environment that offers both the users and MediaArea a space for descriptive feedback, intuitive discoveries within the code, and the ability to resolve issues, linking will function through the released source code, the corresponding software documentation, a ticketing system, general feedback, and potential commit messages. In one such example, as the registry itemizes user’s individual conformance checks and tests, these tests will subsequently link to code blocks and commits so that the software can continue to be developed and associated to that conformance check.</p>
 <p>If this habit is implemented efficiently, MediaArea will create an open source community that enables ease in interacting and reviewing with both user-friendly and human-readable descriptions of conformity checks combined with their related programmatic results.</p>
@@ -1172,7 +1155,7 @@
 <p>MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.</p>
 <p>Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project.</p>
 <p>New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.</p>
-<p>Downloads will be made available through a public repository with a functioning issue tracker (Github). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.</p>
+<p>Downloads will be made available through a public repository with a functioning issue tracker (GitHub). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.</p>
 <p>All source codes and updates will be made accessible on the following platforms:</p>
 <ul>
 <li>MS Windows</li>
