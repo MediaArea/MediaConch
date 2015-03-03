@@ -4,12 +4,15 @@
 
 The Reporter portion of the conformance checker presents human and machine-readable information related to implemenation and policy checks, metadata fixes, check statistics, conformance priorities, and other associated session documentation. This information is derived from the database and multiple component project APIs, passed through the PREFORMA core and finally combined and transformed into a desired output. Several output formats allow for external software agents to futher process this reportage. 
 
+Reports will include technical metadata and related checks to formats/streams, and should encompass not only information about the files being assessed but also the conditions and context of a particular use (which shell was used, with what policy sets, at what verbosity, etc). A report should accommodate the expression of results from multiple implementation checkers upon a single file. For example, a Matroska file that contains a JPEG2000 stream, a FFV1 stream, and a LPCM stream should be able to express one XML element about the file with sub-elements about each conformity check to reduce redundancy.
+
 The Reporter may accept a previously-generated PREFORMAXML or other supported output format for collation with other conformance checks. Previously-generated PREFORMAXML reports may also be transformedn into additional desired outputs. 
 
 ###Design and Functional Requirements
 
 - human-readable supported output formats: PDF, TXT
 - machine-readable supported output formats: PREFORMAXML, JSON
+- PREFORMAXML output with gzip compression to reduce the impact of large and highly verbose information
 - optional machine-readable supported output formats: CSV/TSV
 - report on implementation checks, policy checks, and metadata fixes
 - report on information concerning preventative measures for non-conformed files
