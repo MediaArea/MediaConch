@@ -10,7 +10,6 @@ MediaArea's Conch strives to offer access and ease to users with a structure tha
 
 All elements can be installed on the same server or on different servers. This will be dependent on the expected workload and anticipated points of access. The flexibility of the architecture allows for a single user to either use the shell on one computer or to use it on multiple computers, depending on scalability and need. A distributed system can be set up to allow the implementation checker to process large files more quickly than when working on a single machine. This architecture offers this ability with relative ease for the user. In addition to added speed, this build of scalability within the implementation checker increases its capacity to function reliably within various anticipated workflows.
 
-
 ### File access
 
 #### File access using CLI
@@ -106,7 +105,6 @@ Interface :
 Software :
 
 As the main purpose of the software build is to store flat datas, it's more suitable to use a document oriented database (NoSQL). However, a more traditional relational database can also be used.
-
 
 There are various potential database management system options, contingent upon the open source licensing requirements:
 
@@ -231,3 +229,4 @@ Programming language :
 * GUI : C++ / Qt (LGPLv3+)
 
 * Web : PHP/Symfony (MIT)
+
