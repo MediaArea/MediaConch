@@ -10,7 +10,7 @@ conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRe
 standardization_appendix_basename="${reportsuffix}_Appendix_Standardization"
 questionnaire_appendix_basename="${reportsuffix}_Appendix_Questionnaire"
 interview_appendix_basename="${reportsuffix}_Appendix_Interviews"
-lettersofsupport_apendix_basename="${reportsuffix}_Appendix_Letters_of_Support"
+lettersofsupport_apendix_basename="${reportsuffix}_Appendix_LettersOfSupport"
 pwd=$(pwd)
 cd $(dirname "${0}")
 cd ..
