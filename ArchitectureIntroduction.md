@@ -1,31 +1,3 @@
-# Conch -- Conformance checking for media files
-# Technical and Architectural Report
-
-Project Acronym: PREFORMA
-
-Grant Agreement number: 619568
-
-Project Title: PREservation FORMAts for culture information/e-archives
-
-Prepared by: MediaArea.net SARL
-
-  - Jérôme Martinez
-  - Dave Rice
-  - Tessa Fallon
-  - Ashley Blewer
-  - Erik Piil
-  - Guillaume Roques
-
-Prepared for:
-
-Date: February 28, 2015
-
-Licensed under: Creative Commons CC-BY v4.0
-
-Summary:
-
-<!-- toc -->
-
 # Introduction to Architecture
 
 This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PREFORMAMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.
