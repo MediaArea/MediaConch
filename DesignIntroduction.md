@@ -15,7 +15,7 @@ Prepared by: MediaArea.net SARL
   - Erik Piil
   - Guillaume Roques
 
-Prepared for:
+Prepared for: PREFORMA Consortium
 
 Date: December 31, 2014
 
