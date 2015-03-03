@@ -17,7 +17,7 @@
 <p>Summary: This report presents MediaArea’s research, planning, and design work to develop a shell and conformance checker tentatively entitled “Conch” with a particular focus on Matroska, FF Video Codec 1 (FFV1), and Linear Pulse Code Modulated audio (LPCM).</p>
 <!-- toc -->
 <ul>
-<li><a href="#project-introduction">Project Introduction</a></li>
+<li><a href="#introduction-to-design-specification">INTRODUCTION TO DESIGN SPECIFICATION</a></li>
 <li><a href="#introduction-of-featured-formats">Introduction of Featured Formats</a>
 <ul>
 <li><a href="#matroska">Matroska</a></li>
@@ -68,7 +68,7 @@
 <li><a href="#internal-risk-assessment">Internal Risk Assessment</a></li>
 </ul></li>
 <li><a href="#timeline">Timeline</a></li>
-<li><a href="#introduction-to-architecture">Introduction to Architecture</a>
+<li><a href="#introduction-to-functional-specification">INTRODUCTION TO FUNCTIONAL SPECIFICATION</a>
 <ul>
 <li><a href="#applicability">Applicability</a></li>
 <li><a href="#portability">Portability</a></li>
@@ -118,7 +118,7 @@
 </ul></li>
 <li><a href="#streamessence-implementation-checker">Stream/Essence implementation checker</a>
 <ul>
-<li><a href="#conch">Conch:</a></li>
+<li><a href="#conch">Conch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</a></li>
 <li><a href="#plugin-integration-proof-of-concept-dv-analyzer">Plugin integration proof of concept: DV Analyzer</a></li>
 <li><a href="#optional">Optional</a></li>
@@ -169,10 +169,10 @@
 <li><a href="#functional-overview">Functional Overview</a></li>
 <li><a href="#design-and-functional-requirements">Design and Functional Requirements</a></li>
 <li><a href="#contents">Contents</a></li>
-</ul></li>
 <li><a href="#reporter-graphical-user-interface">Reporter - Graphical User Interface</a></li>
 <li><a href="#reporter-command-line-interface">Reporter - Command Line Interface</a></li>
 <li><a href="#reporter-web-user-interface">Reporter - Web User Interface</a></li>
+</ul></li>
 <li><a href="#style-guide">Style Guide</a></li>
 <li><a href="#source-code-guide">Source Code Guide</a>
 <ul>
@@ -201,7 +201,7 @@
 <li><a href="#conclusion">Conclusion</a></li>
 </ul>
 <!-- toc stop -->
-<h2 id="project-introduction">Project Introduction</h2>
+<h2 id="introduction-to-design-specification">INTRODUCTION TO DESIGN SPECIFICATION</h2>
 <p>The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea’s design plan to create a toolset (tentatively entitled “Conch”) consisting of an implementation checker, policy checker, reporter, and fixer of a select list for formats.</p>
 <p>As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through a human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PREFORMA project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.</p>
 <p>MediaArea's approach to this challenge centers on FOSS (Free and Open Source Software), modular design, and interoperability and will rely strongly on MediaInfo (an open source MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged its integration into several archival repository systems and Open Archival Information System (OAIS)-complaint workflows to assist archival institutions with technical control of collections.</p>
@@ -624,7 +624,7 @@
 <li>December 2017</li>
 </ul>
 <p>-- Participation in the PREFORMA final conference in Stockholm</p>
-<h1 id="introduction-to-architecture">Introduction to Architecture</h1>
+<h2 id="introduction-to-functional-specification">INTRODUCTION TO FUNCTIONAL SPECIFICATION</h2>
 <p>This serves as a roadmap for the technical components of the project, split into two categories: Global architecture and Checker architecture. The global architecture schema defines the context in which the PREFORMAMediaInfo software is situated and gives a high-level understanding of the software. The Checker Architecture details the structural components of the conformance checker and metadata-grabbing module.</p>
 <p>The conformance checker's goals are based on the following core principles:</p>
 <h3 id="applicability">Applicability</h3>
@@ -863,8 +863,9 @@
 <ul>
 <li><p>CLI : C++</p></li>
 <li><p>GUI : C++ / Qt (LGPLv3+)</p></li>
-<li><p>Web : PHP/Symfony (MIT) # Checker Architectural Layers</p></li>
+<li><p>Web : PHP/Symfony (MIT)</p></li>
 </ul>
+<h1 id="checker-architectural-layers">Checker Architectural Layers</h1>
 <div class="figure">
 <img src="./CheckerArchitectureLayers.png" alt="Checker Architecture Layers" />
 <p class="caption">Checker Architecture Layers</p>
@@ -905,7 +906,7 @@
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PREFORMA's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PREFORMA's licensing requirements.</p>
 <h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <p>Plugin</p>
-<h3 id="conch-1">Conch:</h3>
+<h3 id="conch-1">Conch</h3>
 <ul>
 <li>FFV1</li>
 <li>PCM (including D-10 Audio, AES3)</li>
@@ -1149,11 +1150,11 @@
 <p>Policy Checking Errors Policy Checking Warnings</p>
 <p>Metadata Fixing Documentation (Action measures and preventative measures for non-conformed files)</p>
 <p>Individual File general / verbose bit metadata readouts</p>
-<h2 id="reporter---graphical-user-interface">Reporter - Graphical User Interface</h2>
+<h3 id="reporter---graphical-user-interface">Reporter - Graphical User Interface</h3>
 <p>The Reporter's Graphical User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above-mentioned output handlers.</p>
-<h2 id="reporter---command-line-interface">Reporter - Command Line Interface</h2>
+<h3 id="reporter---command-line-interface">Reporter - Command Line Interface</h3>
 <p>On the Command Line Interface, a user would be able to export a report using flags designating output and output format (e.g., &quot;--output=XML&quot;).</p>
-<h2 id="reporter---web-user-interface">Reporter - Web User Interface</h2>
+<h3 id="reporter---web-user-interface">Reporter - Web User Interface</h3>
 <p>Like the Graphical User Interface, the Reporter's Web User Interface displays human and machine-readable data to the end user. Through a drop-down menu, a user can select the above mentioned output handlers.</p>
 <h1 id="style-guide">Style Guide</h1>
 <h2 id="source-code-guide">Source Code Guide</h2>
