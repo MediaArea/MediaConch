@@ -91,9 +91,9 @@
           <h2>Key players: Advisors</h2>
             <p>
               <ul>
-                <li>Format advisors</li>
-                <li>Institutional advisors</li>
-                <li>Standardization advisors</li>
+                <li class="fragment" data-fragment-index="1">Format advisors</li>
+                <li class="fragment" data-fragment-index="2">Institutional advisors</li>
+                <li class="fragment" data-fragment-index="3">Standardization advisors</li>
               </ul>
             </p>
             <aside class="notes">
@@ -129,6 +129,7 @@
 
         <section>
           <h2>Standardization</h2>
+            <li class="fragment" data-fragment-index="1">IETF</li>
           <aside class="notes">
             Dave - standardization proposal
           </aside>
@@ -136,55 +137,58 @@
 
         <section>
           <h2>Implementation</h2>
+		  <p>How to label and test a bitstream</p>
+		  <p>Several layers: transport, container, stream</p>
+		  <img src="../../CheckerArchitectureLayers.png" width="50%" height="50%">
           <aside class="notes">
-            Jerome - about checker implementation, refer to bitstream analysis skills
+            Jerome - about checker implementation, refer to bitstream analysis skills, about strategy to label tech metadata, and test against it (implementation rules, policy rules)
           </aside>
         </section>
 
         <section>
-          <h2>Examples of conformance checks</h2>
-          <aside class="notes">
-            Jerome - about examples of conformance checker
-          </aside>
-        </section>
-
-        <section>
-          <h2>Standardization of the expression</h2>
-          <aside class="notes">
-            Dave - about standardization of expression of conformance checker
-          </aside>
-        </section>
-
-        <section>
-          <h2>User Interface Coverage</h2>
+          <h2>Implementation checker</h2>
           <ul>
-            <li class="fragment" data-fragment-index="1">Command Line</li>
-            <li class="fragment" data-fragment-index="2">Graphical User Interface</li>
-            <li class="fragment" data-fragment-index="3">Web Interface</li>
+            <li class="fragment" data-fragment-index="1">MKV: EBMLMaxSizeLength limit, DocTypeVersion, CRC-32...</li>
+            <li class="fragment" data-fragment-index="2">FFV1: Missing header, colorspace_type, bits_per_raw_sample, crc_parity...</li>
+            <li class="fragment" data-fragment-index="3">Container/Stream cross-check: PCM block duration and bitrate, MKV/FFV1 width...</li>
           </ul>
           <aside class="notes">
-            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
+            Jerome - about examples of implementation checker
           </aside>
         </section>
 
         <section>
-          <h2>Policy Checker</h2>
+          <h2>Policy checker</h2>
+          <ul>
+            <li class="fragment" data-fragment-index="1">Must be BWF: container format must be WAV, audio format must be PCM, sampleRate must be 48000 or 44100, ...</li>
+            <li class="fragment" data-fragment-index="2">Custom policy check, e.g. PREFORMA: container format must be MKV, video format must be FFV1, audio format must be PCM...</li>
+            <li class="fragment" data-fragment-index="3">Very detailed check: MKV version, FFV1 version and micro_version, color space, bit depth, CRC-32 presence...</li>
+          </ul>
           <aside class="notes">
-            Jerome - about Policy Checker
+            Jerome - about examples of policy checks
           </aside>
         </section>
 
         <section>
-          <h2>MediaInfo's strategy</h2>
+          <h2>Reporter</h2>
+          <p>Input: analysis of the file, policies, options</p>
+          <p>Computer readable Output: XML, JSON...</p>
+          <p>Human readable Output: HTML, PDF...</p>
           <aside class="notes">
-            Jerome - about strategy to label tech metadata, and test against it
+            Jerome - about reporter
           </aside>
         </section>
 
         <section>
-          <h2>Example policy checks</h2>
+          <h2>Metadata Fixer</h2>
+          <ul>
+            <li class="fragment" data-fragment-index="1">Add CRC, coherency between container and stream</li>
+            <li class="fragment" data-fragment-index="2">Embed additional metadata</li>
+            <li class="fragment" data-fragment-index="3">Warning: not all is possible</li>
+          </ul>
+          <p></p>
           <aside class="notes">
-            Jerome - about example policy checks
+            Jerome - Stress the caution of fixer, do not fix file is not enough understood, examples from bwf metaedit
           </aside>
         </section>
 
@@ -196,74 +200,90 @@
         </section>
 
         <section>
-          <h2>Metadata Fixer</h2>
-          <aside class="notes">
-            Dave - about Metadata Fixer
-          </aside>
-        </section>
-
-        <section>
-          <h2>MKV</h2>
+          <h2>MKV and Archives</h2>
           <aside class="notes">
             Dave - Show MKV’s suitability to archival file manipulation, workflow of metadata fixing, working with mkv
           </aside>
         </section>
 
         <section>
-          <h2>Caution!</h2>
+          <h2>User Interface Coverage</h2>
+		  <p>Command Line - Checker</p>
+		  <img src="../../Design/CLI/CLIOutputMockup_Checker.png">
           <aside class="notes">
-            Jerome - Stress the caution of fixer, do not fix file is not enough understood, examples from bwf metaedit
+            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
           </aside>
         </section>
 
         <section>
-          <h2>Reporter</h2>
+          <h2>User Interface Coverage</h2>
+		  <p>Graphic User Interface - Checker</p>
+		  <img src="../../Design/GUI/CheckerMockup.png">
           <aside class="notes">
-            Dave - about Reporter Shell
+            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
           </aside>
         </section>
 
         <section>
-          <h2>Human-readible and Computer-readible</h2>
+          <h2>User Interface Coverage</h2>
+		  <p>Graphic User Interface - Checker Debug</p>
+		  <img src="../../Design/GUI/MediaInfoWindows.png">
           <aside class="notes">
-            Dave - about overview of human-readable and computer readable
+            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
+          </aside>
+        </section>
+
+        <section>
+          <h2>User Interface Coverage</h2>
+		  <p>Graphic User Interface - Fixer</p>
+		  <img src="../../Design/GUI/MetadataFixerMockup.png">
+          <aside class="notes">
+            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
+          </aside>
+        </section>
+
+        <section>
+          <h2>User Interface Coverage</h2>
+		  <p>Graphic User Interface - Policy Checker</p>
+		  <img src="../../Design/GUI/PolicyDesignerMockup.png">
+          <aside class="notes">
+            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
+          </aside>
+        </section>
+
+        <section>
+          <h2>User Interface Coverage</h2>
+		  <p>Web Interface</p>
+          <aside class="notes">
+            Jerome - as the GUI
+          </aside>
+        </section>
+
+        <section>
+          <h2>Automation</h2>
+		  <p>Periodical checks</p>
+          <p>Detection of new files</p>
+          <aside class="notes">
+            Jerome - Automation
           </aside>
         </section>
 
         <section>
           <h2>Database side</h2>
+		  <p>Configuration</p>
+          <p>Analysis of the files</p>
+		  <p>Policies</p>
           <aside class="notes">
             Jerome - about database side of reporter, statistics
           </aside>
         </section>
 
         <section>
-          <h2>Reporter UI</h2>
-          <p>Container vs Stream</p>
-          <aside class="notes">
-            Jerome - about reporter UI for container vs stream
-          </aside>
-        </section>
-
-        <section>
-          <h2>User Interfaces</h2>
-          <p>cli, gui, web, deployment</p>
-          <aside class="notes">
-            Jerome - about cli, gui, web, deployment
-          </aside>
-        </section>
-
-        <section>
           <h2>The Core</h2>
+		  <p>Interaction between all other elements</p>
+          <img src="../../GlobalArchitecture.png" width="50%" height="50%">
           <aside class="notes">
             Jerome - about The Core
-          </aside>
-        </section>
-
-        <section>
-          <h2>Integration</h2>
-          <aside class="notes">
-            Jerome - about interaction with other elements, integration
           </aside>
         </section>
 
@@ -318,10 +338,12 @@
 
         <section>
           <h2>Development Approach</h2>
-            <p>Github<br>
-            agile development<br>
-            stipended collaboratives<br>
-            community involvement</p>
+          <ul>
+            <li class="fragment" data-fragment-index="1">Github</li>
+            <li class="fragment" data-fragment-index="2">Agile development</li>
+            <li class="fragment" data-fragment-index="3">Stipended collaboratives</li>
+            <li class="fragment" data-fragment-index="4">Community involvement</li>
+          </ul>
           <aside class="notes">
             Dave - about github, agile development, stipend collaboratives, community involvement
           </aside>
@@ -329,22 +351,29 @@
 
         <section>
           <h2>Development Approach</h2>
-          <aside class="notes">
+          <ul>
+            <li class="fragment" data-fragment-index="1">Cross platform</li>
+            <li class="fragment" data-fragment-index="2">Multiple developer interfaces (bindings)</li>
+            <li class="fragment" data-fragment-index="3">Multiple end user interfaces</li>
+          </ul>
+         <aside class="notes">
             Jerome - about cross platform, frameworks, qt, cpp, openness
           </aside>
         </section>
 
         <section>
           <h2>Future Plans</h2>
+		  Support, new feature requests
           <aside class="notes">
-            Jerome - about Future plans for the checker software
+            Jerome - about Future plans for the checker software, issue tracker, maintenance
           </aside>
         </section>
 
         <section>
           <h2>MediaArea Plans</h2>
+		  Integration of other MediaArea's products
           <aside class="notes">
-            Jerome - about MediaArea plans, relation to MI, qctools, issue tracker, maintenance
+            Jerome - about MediaArea plans, relation to MI, BWF MetaEdit, qctools
           </aside>
         </section>
 
