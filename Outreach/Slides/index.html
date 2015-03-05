@@ -59,7 +59,10 @@
           <section>
             <h2>About MediaArea</h2>
             <aside class="notes">
-              Jerome - about MediaArea, company info, current relevant projects, accolades
+              Jerome - about MediaArea, company info, current relevant projects, accolades<br>
+              e.g. since 2002, incorporated in 2007<br>
+              MI 4k downloads/day, used by broadcasters and memory institutions<br>
+              MI & company expertise used as a conformance checker since 2010 for several formats by a non open source product 
             </aside>
           </section>
         </section>
@@ -69,7 +72,7 @@
           <p>"As a National Library incorporating the National Screen and Sound Archive of Wales, we have to preserve digital audiovisual material in perpetuity. Part of this work is characterising AV files and extracting technical metadata. We found no better tool at this job than MediaInfo, and the support and response from MediaArea SARL has always been excellent."<br>
           Illtud Daniel, Former Chief Technical Officer of the National Library of Wales</p>
           <aside class="notes">
-            Jerome - about accolades
+            Jerome - Example of integration in a European national library 
           </aside>
           </section>
         </section>
@@ -84,7 +87,10 @@
               <strong>Ashley Blewer</strong>, Research & Development: Design<br>
               <strong>Erik Piil</strong>, Research & Development: File Formats</p>
             <aside class="notes">
-            Jerome - about key players in the project
+            Jerome - Jerome is working on MediaInfo<br>
+            Guillaume joined MediaArea as a developer, specialized in Linux and web development
+            Dave already worked with MediaArea several times (BWF MetaEdit, AVI MetaEdit, QCTools)
+            Tessa, Ashley and Erik are joining the team thanks to thier skills in specific domains, are specialized in archives
           </aside>
         </section>
 
@@ -98,7 +104,9 @@
               </ul>
             </p>
             <aside class="notes">
-            Jerome - about key players in the project
+            Jerome - Fragments: Formats: who is better than specification creators?<br>
+            Institution: direct feedback from users<br>
+            Standards: people who already worked on the same kind of standardization.
           </aside>
         </section>
 
@@ -125,7 +133,7 @@
             <li class="fragment" data-fragment-index="3">LPCM</li>
           </ul>
           <aside class="notes">
-            Dave - about intro into mkv, lpcm status
+            Dave - about intro into mkv, lpcm status - fragments: MKV, FFV1, LPCM
           </aside>
         </section>
 
@@ -133,7 +141,7 @@
           <h2>Standardization</h2>
             <li class="fragment" data-fragment-index="1">IETF</li>
           <aside class="notes">
-            Dave - standardization proposal
+            Dave - standardization proposal - fragment: IETF
           </aside>
         </section>
 
@@ -155,7 +163,7 @@
             <li class="fragment" data-fragment-index="3">Container/Stream cross-check: PCM block duration and bitrate, MKV/FFV1 width...</li>
           </ul>
           <aside class="notes">
-            Jerome - about examples of implementation checker
+            Jerome - about examples of implementation checker - fragments: MKV, FFV1, cross check
           </aside>
         </section>
 
@@ -167,7 +175,7 @@
             <li class="fragment" data-fragment-index="3">Very detailed check: MKV version, FFV1 version and micro_version, color space, bit depth, CRC-32 presence...</li>
           </ul>
           <aside class="notes">
-            Jerome - about examples of policy checks
+            Jerome - about examples of policy checks - fragments: BWF, Policy check, detailled check
           </aside>
         </section>
 
@@ -184,13 +192,13 @@
         <section>
           <h2>Metadata Fixer</h2>
           <ul>
-            <li class="fragment" data-fragment-index="1">Add CRC, coherency between container and stream</li>
+            <li class="fragment" data-fragment-index="1">Add CRC, fix coherency between container and stream...</li>
             <li class="fragment" data-fragment-index="2">Embed additional metadata</li>
             <li class="fragment" data-fragment-index="3">Warning: not all is possible</li>
           </ul>
           <p></p>
           <aside class="notes">
-            Jerome - Stress the caution of fixer, do not fix file is not enough understood, examples from bwf metaedit
+            Jerome - Stress the caution of fixer, do not fix file is not enough understood, examples from bwf metaedit  - fragments: basic fixes, add meta, warning
           </aside>
         </section>
 
@@ -218,38 +226,28 @@
         </section>
 
         <section>
-          <h2>User Interface Coverage</h2>
-		  <p>Graphic User Interface - Checker</p>
-		  <img src="../../Design/GUI/CheckerMockup.png">
+            <section>
+              <h2>User Interface Coverage</h2>
+              <p>Graphic User Interface - Checker</p>
+              <img src="../../Design/GUI/CheckerMockup.png">
+            </section>
+            <section>
+              <h2>User Interface Coverage</h2>
+              <p>Graphic User Interface - Checker Debug</p>
+              <img src="../../Design/GUI/MediaInfoWindows.png">
+            </section>
+            <section>
+              <h2>User Interface Coverage</h2>
+              <p>Graphic User Interface - Policy Checker</p>
+              <img src="../../Design/GUI/PolicyDesignerMockup.png">
+            </section>
+            <section>
+              <h2>User Interface Coverage</h2>
+              <p>Graphic User Interface - Fixer</p>
+              <img src="../../Design/GUI/MetadataFixerMockup.png">
+            </section>
           <aside class="notes">
-            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
-          </aside>
-        </section>
-
-        <section>
-          <h2>User Interface Coverage</h2>
-		  <p>Graphic User Interface - Checker Debug</p>
-		  <img src="../../Design/GUI/MediaInfoWindows.png">
-          <aside class="notes">
-            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
-          </aside>
-        </section>
-
-        <section>
-          <h2>User Interface Coverage</h2>
-		  <p>Graphic User Interface - Fixer</p>
-		  <img src="../../Design/GUI/MetadataFixerMockup.png">
-          <aside class="notes">
-            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
-          </aside>
-        </section>
-
-        <section>
-          <h2>User Interface Coverage</h2>
-		  <p>Graphic User Interface - Policy Checker</p>
-		  <img src="../../Design/GUI/PolicyDesignerMockup.png">
-          <aside class="notes">
-            Jerome - about ui coverage, relation of conformance checks in ui to reference doc, online glossary, etc.
+            Jerome - about GUI, relation of conformance checks in ui to reference doc, online glossary, etc. - Fragments: Checker, Debug, Policy checker, Fixer
           </aside>
         </section>
 
@@ -263,10 +261,12 @@
 
         <section>
           <h2>Automation</h2>
-		  <p>Periodical checks</p>
-          <p>Detection of new files</p>
+          <ul>
+            <li class="fragment" data-fragment-index="1">Periodical checks</li>
+            <li class="fragment" data-fragment-index="2">Detection of new files</li>
+          </ul>
           <aside class="notes">
-            Jerome - Automation
+            Jerome - Automation - Fragments: Periodical, New files
           </aside>
         </section>
 
@@ -285,7 +285,7 @@
 		  <p>Interaction between all other elements</p>
           <img src="../../GlobalArchitecture.png" width="50%" height="50%">
           <aside class="notes">
-            Jerome - about The Core
+            Jerome - about The Core (Orchestor between all other components, background service)
           </aside>
         </section>
 
@@ -347,7 +347,7 @@
             <li class="fragment" data-fragment-index="4">Community involvement</li>
           </ul>
           <aside class="notes">
-            Dave - about github, agile development, stipend collaboratives, community involvement
+            Dave - fragments: about github, agile development, stipend collaboratives, community involvement
           </aside>
         </section>
 
@@ -359,7 +359,7 @@
             <li class="fragment" data-fragment-index="3">Multiple end user interfaces</li>
           </ul>
          <aside class="notes">
-            Jerome - about cross platform, frameworks, qt, cpp, openness
+            Jerome - fragments: about cross platform, frameworks, qt, cpp, openness
           </aside>
         </section>
 
@@ -383,6 +383,14 @@
           <h2>Integration & Community</h2>
           <aside class="notes">
             Dave - about integration, community, FFV1 and mkv future
+          </aside>
+        </section>
+
+        <section>
+          <h2>Trace feature demo</h2>
+          <p>How to debug MKV and FFV1 trace</p>
+          <aside class="notes">
+            Jerome
           </aside>
         </section>
 
