@@ -166,8 +166,8 @@ table {
 }
 
 table {
-  border: 1px solid #ccc;
-  margin-bottom: 32px;
+  border: 0px solid #ccc;
+  margin-bottom: 10px;
   text-align: left;
  }
 
@@ -175,14 +175,11 @@ th {
   font-family: 'Arvo', Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	font-weight: normal;
-  padding: 10px;
-  background: #232323;
-  color: #FDFEFB;
+  padding: 1px;
  }
 
 td {
-  padding: 10px;
-	background: #ccc;
+  padding: 1px;
  }
 
 
