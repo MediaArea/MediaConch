@@ -4,7 +4,7 @@
 # Timeline.md
 # ProjectDeliverablesOutline.md
 
-reportsuffix="MediaAreaMediaConch"
+reportsuffix="MediaAreaConch"
 phase1_report_basename="${reportsuffix}_DesignReport"
 conformance_check_appendix_basename="${reportsuffix}_Appendix_ConformanceCheckRegistry"
 standardization_appendix_basename="${reportsuffix}_Appendix_Standardization"
