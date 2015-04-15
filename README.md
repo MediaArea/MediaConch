@@ -1,1 +1,1 @@
-Git repository for group collaboration in the <a href="https://mediaarea.net/Conch/">:shell: Conch project</a>.
+Git repository for group collaboration in the <a href="https://mediaarea.net/MediaConch/">:shell: MediaConch project</a>.

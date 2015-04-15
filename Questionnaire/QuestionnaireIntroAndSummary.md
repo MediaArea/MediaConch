@@ -1,4 +1,4 @@
-# Conch -- Appendix: Discovery Questionnaire
+# MediaConch -- Appendix: Discovery Questionnaire
 
 Project Acronym: PREFORMA
 
@@ -24,7 +24,7 @@ Summary: In order to design a project responsive to the needs and concerns of a 
 
 # Questionnaire Summary
 
-Over the course of one week in February 2015 (2/15-2/22), thirty participants completed a web-based questionnaire developed by Conch containing questions related to digital preservation praxis. Approximately three-quarters of these survey participants identified as working at either a library or an archive, with the remainder working at museums, broadcast, media and enterainment, post-production, or other institutions.
+Over the course of one week in February 2015 (2/15-2/22), thirty participants completed a web-based questionnaire developed by MediaConch containing questions related to digital preservation praxis. Approximately three-quarters of these survey participants identified as working at either a library or an archive, with the remainder working at museums, broadcast, media and enterainment, post-production, or other institutions.
 
 Responses to the questionnaire produced the following conclusions:
 

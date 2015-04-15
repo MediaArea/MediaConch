@@ -1,4 +1,4 @@
-<h1 id="conch----conformance-checking-for-audiovisual-files">Conch -- Conformance checking for audiovisual files</h1>
+<h1 id="MediaConch----conformance-checking-for-audiovisual-files">MediaConch -- Conformance checking for audiovisual files</h1>
 <p>Project Acronym: PREFORMA</p>
 <p>Grant Agreement number: 619568</p>
 <p>Project Title: PREservation FORMAts for culture information/e-archives</p>
@@ -14,7 +14,7 @@
 <p>Prepared for: PREFORMA Consortium</p>
 <p>Date: December 31, 2014 Revised Date: March 3, 2015</p>
 <p>Licensed under: Creative Commons CC-BY v4.0</p>
-<p>Summary: This report presents MediaArea’s research, planning, and design work to develop a shell and conformance checker tentatively entitled “Conch” with a particular focus on Matroska, FF Video Codec 1 (FFV1), and Linear Pulse Code Modulated audio (LPCM).</p>
+<p>Summary: This report presents MediaArea’s research, planning, and design work to develop a shell and conformance checker tentatively entitled “MediaConch” with a particular focus on Matroska, FF Video Codec 1 (FFV1), and Linear Pulse Code Modulated audio (LPCM).</p>
 <!-- toc -->
 <ul>
 <li><a href="#introduction-to-design-specification">INTRODUCTION TO DESIGN SPECIFICATION</a></li>
@@ -104,37 +104,37 @@
 <li><a href="#checker-architectural-layers">Checker Architectural Layers</a></li>
 <li><a href="#transport-layer">Transport layer</a>
 <ul>
-<li><a href="#conch-file-on-disk-or-direct-memory-mapping">Conch: File on disk or direct memory mapping</a></li>
+<li><a href="#MediaConch-file-on-disk-or-direct-memory-mapping">MediaConch: File on disk or direct memory mapping</a></li>
 <li><a href="#plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</a></li>
 </ul></li>
 <li><a href="#containerwrapper-implementation-checker">Container/Wrapper implementation checker</a>
 <ul>
-<li><a href="#conch">Conch</a></li>
+<li><a href="#MediaConch">MediaConch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-mkvalidator">Plugin integration proof of concept: mkvalidator</a></li>
 <li><a href="#optional">Optional</a></li>
 </ul></li>
 <li><a href="#containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</a>
 <ul>
-<li><a href="#conch">Conch</a></li>
+<li><a href="#MediaConch">MediaConch</a></li>
 </ul></li>
 <li><a href="#streamessence-implementation-checker">Stream/Essence implementation checker</a>
 <ul>
-<li><a href="#conch">Conch</a></li>
+<li><a href="#MediaConch">MediaConch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-jpylyzer">Plugin integration proof of concept: jpylyzer</a></li>
 <li><a href="#optional">Optional</a></li>
 </ul></li>
 <li><a href="#streamessence-decoder">Stream/Essence decoder</a>
 <ul>
-<li><a href="#conch">Conch</a></li>
+<li><a href="#MediaConch">MediaConch</a></li>
 <li><a href="#plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</a></li>
 </ul></li>
 <li><a href="#containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</a>
 <ul>
-<li><a href="#conch">Conch</a></li>
+<li><a href="#MediaConch">MediaConch</a></li>
 </ul></li>
 <li><a href="#baseband-analyzer">Baseband Analyzer</a>
 <ul>
-<li><a href="#conch">Conch</a></li>
+<li><a href="#MediaConch">MediaConch</a></li>
 </ul></li>
 <li><a href="#implementation-checker-functional-requirements">Implementation Checker Functional Requirements</a>
 <ul>
@@ -200,7 +200,7 @@
 </ul>
 <!-- toc stop -->
 <h2 id="introduction-to-design-specification">INTRODUCTION TO DESIGN SPECIFICATION</h2>
-<p>The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea’s design plan to create a toolset (tentatively entitled “Conch”) consisting of an implementation checker, policy checker, reporter, and fixer of a select list for formats.</p>
+<p>The PREFORMA challenge illuminates and responds to a significant and real obstacle that faces the preservation community today. This report details MediaArea’s design plan to create a toolset (tentatively entitled “MediaConch”) consisting of an implementation checker, policy checker, reporter, and fixer of a select list for formats.</p>
 <p>As preservation workflows have incorporated digital technology, significant amounts of careful research have gone into the selection of file format recommendations, lists of codec specifications, and development of best practices; however, despite the existence of such recommendations, there remains a lack of assessment tools to verify and validate the implementation of such recommendations. A few validation tools (such as mkvalidator) are produced alongside the development of their associated standards; however, most file format specifications are not officially tied to any validation tool and are documented through a human-readable narrative without equivalent computer-actionable code. Where a metadata standard may be described in both a data dictionary and a computer-usable XML Schema, file formats standards often lack a computer-usable verification method. The PREFORMA project recognizes this discrepancy and the resulting long-term impacts on archival communities and seeks to fill in the gaps necessary to provide memory institutions with levels of control to verify, validate, assess and repair digital collections.</p>
 <p>MediaArea's approach to this challenge centers on FOSS (Free and Open Source Software), modular design, and interoperability and will rely strongly on MediaInfo (an open source MediaArea product) to meet this challenge. MediaInfo is often advised as the first tool to use when a media file is not playable, allowing the user to identify characteristics that would help find an appropriate playback or transcoding tools. MediaInfo’s open licensing and agility in technical metadata reporting have encouraged its integration into several archival repository systems and Open Archival Information System (OAIS)-complaint workflows to assist archival institutions with technical control of collections.</p>
 <p>MediaArea sees community involvement as a key factor of evaluating the success of the project. To encourage this, during the prototype phase MediaArea will perform the development work for command line utilities, graphical user interfaces, and documentation in publicly accessible repositories at github.com. Mediaarea will also set up an online set of project resources such as public access to a corpus of test media, an IRC channel, and a responsive public issue tracker.</p>
@@ -367,16 +367,16 @@
 <h3 id="overview">Overview</h3>
 <p>The following use cases are presented to describe intended behaviors of the implementation checker:</p>
 <h4 id="conformance-checking-in-an-open-archival-information-system-oais">Conformance Checking in an Open Archival Information System (OAIS)</h4>
-<p>PREFORMA acknowledges the recommendations described in Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). MediaArea aims to identify all relevant areas of the OAIS reference model in relation to its proposed Conch conformance checker toolset. Moving foward, an additional examination of other OAIS-related standards will further minimize any redundancies or incompatibility with the PREFORMA project.</p>
+<p>PREFORMA acknowledges the recommendations described in Consultative Committee for Space Data Systems' Open Archival Information System (OAIS) intended for the long term preservation of digital information (CCSDS 650.0.-B-1/ISO 14721:2003). MediaArea aims to identify all relevant areas of the OAIS reference model in relation to its proposed MediaConch conformance checker toolset. Moving foward, an additional examination of other OAIS-related standards will further minimize any redundancies or incompatibility with the PREFORMA project.</p>
 <p>The OAIS reference model describes the transmission of data in the form of conceptual containers known as Information Packages. In the OAIS environment, Submission Information Packages (SIPs) are created by Producers (those who provide the information to be preserved), containing data objects with relevant packaging information. After undergoing a series of processes performed by functional entities, SIPS are transformed into Archival Information Packages (AIPs) and moved into an archive's long-term storage. Upon a query request by a Consumer, AIPs can be re-called and presented in the form of a Dissemination Information Package (DIPs) to the Designated Community.</p>
-<p>Conformance checking services play a major role in the OAIS reference model, specifically within the functional entities during the intial transmission of the SIP. The Ingest Quality Assurance (QA) function in particular validates SIPs in the temporary storage area prior to AIP generation. Here the Conch conformance checker and its associated toolset would verify SIPs through implementation checking and policy checking with rules and specifications defined by the Archive. Following an approved check, the resulting report would be submitted as associated Preservation Description Information (PDI) within the packaging information of the AIP. However, if a conformance check rejects a SIP, administrators may choose either to consult the associated Producer, or correct related issues with the toolset's metadata fixer. (See Fig. &quot;The OAIS Ingest Functional Entity with Conch Integration&quot;)</p>
+<p>Conformance checking services play a major role in the OAIS reference model, specifically within the functional entities during the intial transmission of the SIP. The Ingest Quality Assurance (QA) function in particular validates SIPs in the temporary storage area prior to AIP generation. Here the MediaConch conformance checker and its associated toolset would verify SIPs through implementation checking and policy checking with rules and specifications defined by the Archive. Following an approved check, the resulting report would be submitted as associated Preservation Description Information (PDI) within the packaging information of the AIP. However, if a conformance check rejects a SIP, administrators may choose either to consult the associated Producer, or correct related issues with the toolset's metadata fixer. (See Fig. &quot;The OAIS Ingest Functional Entity with MediaConch Integration&quot;)</p>
 <div class="figure">
-<img src="./OAISIntegration.png" alt="The OAIS Ingest Functional Entity with Conch Integration" />
-<p class="caption">The OAIS Ingest Functional Entity with Conch Integration</p>
+<img src="./OAISIntegration.png" alt="The OAIS Ingest Functional Entity with MediaConch Integration" />
+<p class="caption">The OAIS Ingest Functional Entity with MediaConch Integration</p>
 </div>
 <p>Policy check expressions are also useful in other functions of OAIS workflows including Archival Storage where format migration of AIPs is periodiclally undertaken. Here the comparators of technical metadata between migrated data objects is key. A conformance checker would be implemented to map all transformations through the collection of associated Preservation Description Information. For the Matroska format in particular, individual sub-element CRCs can be submitted as a check expression and later packaged with the AIP's PDI information related to Fixity. This kind of self-descriptive information can be especially useful tool for zeroing in on potentially corrupted areas of the data object.</p>
 <p>For dissemination requests, the DIP generation fuction may include the encoding of an AIP data object to a smaller, more compressed transmission format for access. This is especially true for audiovisual data objects, whose AIPs might contain large uncompressed or mathematically lossless filetypes. Policy check expressions with the conformance checker at this phase would ensure that relationships to file characteristics like sub-sampling, bit-depth and frame rate are maintained throughout DIP generation.</p>
-<p>Like the OAIS reference model itself, the PREFORMA conformance checker project aims to serve as a framework for standards-building activities through the creation of powerful reporting tools. By extension, MediaArea's Conch toolset enables the creation of a complex representation net in the OAIS Archive, providing information needed to adequately preserve audiovisual data objects through time.</p>
+<p>Like the OAIS reference model itself, the PREFORMA conformance checker project aims to serve as a framework for standards-building activities through the creation of powerful reporting tools. By extension, MediaArea's MediaConch toolset enables the creation of a complex representation net in the OAIS Archive, providing information needed to adequately preserve audiovisual data objects through time.</p>
 <h3 id="conformance-checking-at-digitisation-time">Conformance Checking at digitisation Time</h3>
 <h4 id="verification-of-digitisation-policy">Verification of digitisation Policy</h4>
 <p>Archival digitisation workflows are generally highly defined and consistent so that various analog source objects are associated with particularly digitisation requirements. Generally digitisation specifications are selected in order to reduce alterations to the significant characteristics of the analog source material. Example of such digitisation scenarios may be:</p>
@@ -455,7 +455,7 @@
 <li>Homebrew (open source software package management system for Mac): http://brewformulas.org/MediaInfo</li>
 </ul>
 <h3 id="online-resources">Online Resources</h3>
-<p>MediaArea will utilize GitHub as a social and development center for Conch development and uses GitHub's issue tracker and wiki features alongside development.</p>
+<p>MediaArea will utilize GitHub as a social and development center for MediaConch development and uses GitHub's issue tracker and wiki features alongside development.</p>
 <p>For communication MediaArea will establish public mailing lists and an IRC channel for foster support and involvement from memory institutions.</p>
 <p>MediaArea will solicit, create, and accept test files and reference files that highlight various features of the implementation checker and illustrate likely preservation issues that may occur within the selected formats.</p>
 <h3 id="community-interviews">Community Interviews</h3>
@@ -565,11 +565,11 @@
 <li><p>March 2015 - October 2015 is known as the &quot;First Prototype&quot; section of Phase 2</p></li>
 <li><p>March - May 2015</p></li>
 </ul>
-<p>-- Extend FFV1 and MKV parsing within MediaInfo -- Support Export format in MediaInfo adhering to commonly defined PREFORMAXML expression -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA -- Set up milestones and tasks in GitHub -- Set up project README in GitHub -- Draft introductory posts to Open Source Portal -- Automate nightly builds of MediaInfo (initially) and later Conch utilities -- Finalize recuitment of Document Shepard for IETF standardization process -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft -- Release initial policy checker (CLI), based on Format Policy Registry (FPR) and MediaInfo existing metadata libraries.</p>
+<p>-- Extend FFV1 and MKV parsing within MediaInfo -- Support Export format in MediaInfo adhering to commonly defined PREFORMAXML expression -- Set up communication channels, mailing-list, project website, IRC channel, meetings with suppliers and PREFORMA -- Set up milestones and tasks in GitHub -- Set up project README in GitHub -- Draft introductory posts to Open Source Portal -- Automate nightly builds of MediaInfo (initially) and later MediaConch utilities -- Finalize recuitment of Document Shepard for IETF standardization process -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft -- Release initial policy checker (CLI), based on Format Policy Registry (FPR) and MediaInfo existing metadata libraries.</p>
 <ul>
 <li>June 2015</li>
 </ul>
-<p>-- Release initial implementation checker -- Finalize XSD for policy set expression -- Release first GUI version of Conch -- Release first web client version of Conch -- Request a &quot;Birds of a Feather&quot; meeting with the IETF for the IETF 93 conference -- Release and document sample library of MKV, FFV1, and LPCM files</p>
+<p>-- Release initial implementation checker -- Finalize XSD for policy set expression -- Release first GUI version of MediaConch -- Release first web client version of MediaConch -- Request a &quot;Birds of a Feather&quot; meeting with the IETF for the IETF 93 conference -- Release and document sample library of MKV, FFV1, and LPCM files</p>
 <ul>
 <li>July 2015</li>
 </ul>
@@ -665,7 +665,7 @@
 <li>Baseband analyzer (optional, through plugin)</li>
 </ul>
 <h1 id="global-architecture-1">Global Architecture</h1>
-<p>MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.</p>
+<p>MediaArea's MediaConch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.</p>
 <h2 id="architecture-schema">Architecture schema</h2>
 <div class="figure">
 <img src="./GlobalArchitecture.png" alt="Global Architecture Schema" />
@@ -699,7 +699,7 @@
 <p>PREFORMA allows users to load and edit configurations within a REST API configuration that will run via HTTP. Internet connectivity is not required to use any core component of the shell.</p>
 <p>The Web-based system allows users to work both on and outside of the network as well as locally if they choose. If the user chooses to work locally, they will have access to the application server directly. This operation runs via a HTTP Daemon.</p>
 <h2 id="core-controller">Core (Controller)</h2>
-<p>The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates the Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
+<p>The Core serves as communication between all plugins within and outside of the MediaConch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates the Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.</p>
 <p>The Core has several major functions:</p>
 <ul>
 <li>controls the checkers and manages data for the User Interface</li>
@@ -817,7 +817,7 @@
 <li>allows metadata (descriptive and structural) to be edited</li>
 <li>edit configuration (periodic checks, policy checker, user rights)</li>
 </ul>
-<p>Conch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:</p>
+<p>MediaConch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:</p>
 <ul>
 <li>CLI (Command line interface)</li>
 </ul>
@@ -846,7 +846,7 @@
 <img src="./CheckerArchitectureLayers.png" alt="Checker Architecture Layers" />
 <p class="caption">Checker Architecture Layers</p>
 </div>
-<p>The design of the implementation checker portion of the Conch application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
+<p>The design of the implementation checker portion of the MediaConch application will be comprised of several layers which will communicate via a Core controller. The layers shall include:</p>
 <ul>
 <li>Transport interface</li>
 <li>Container/wrapper implementation</li>
@@ -857,14 +857,14 @@
 <li>Baseband analyzer (optional, through plugin)</li>
 </ul>
 <h2 id="transport-layer">Transport layer</h2>
-<h3 id="conch-file-on-disk-or-direct-memory-mapping">Conch: File on disk or direct memory mapping</h3>
-<p>Conch uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.</p>
+<h3 id="MediaConch-file-on-disk-or-direct-memory-mapping">MediaConch: File on disk or direct memory mapping</h3>
+<p>MediaConch uses the native file API for each operating system to enable direct file access, including files that are still in the process or being written. The inclusion of MediaInfo also offers features for direct memory mapping which will be useful for third-party development or plugins.</p>
 <h3 id="plugin-integration-proof-of-concept-libcurl">Plugin integration proof of concept: libcURL</h3>
-<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. libcURL offers extensive support for transferring data through many protocols. By incorporating curl into Conch the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
+<p>libcURL is licensed under an MIT license that is compatible with both GPLv3+ and MPLv2+. We can relicense to be under GPLv3+ and MPLv2+. libcURL offers extensive support for transferring data through many protocols. By incorporating curl into MediaConch the tool will be able to assess files that may be accessible online by providing a URL (or list of URLs) in place of a filepath.</p>
 <p>Since we will be generating a library of reference and sample files that will include large audiovisual files, users will be able to assess reference files without necessarily needing to download them.</p>
 <p>Used as a proof of concept of plugin integration: HTTP/HTTPS/FTP/FTPS support via MediaInfo open source GPLv3+/MPL2+ and libcurl (MIT license, can be re-licensed to GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-implementation-checker">Container/Wrapper implementation checker</h2>
-<h3 id="conch">Conch</h3>
+<h3 id="MediaConch">MediaConch</h3>
 <ul>
 <li>Matroska checker</li>
 </ul>
@@ -880,8 +880,8 @@
 <li>Any other container format on sponsor request (we have skills in OGG, MPEG-TS, MPEG-PS, DV, IMF…)</li>
 </ul>
 <h2 id="containerwrapper-demultiplexing">Container/Wrapper Demultiplexing</h2>
-<h3 id="conch-1">Conch</h3>
-<p>Conch will utilize MediaInfo's updated (for the project) demuxing libraries (re-licensed under GPLv3+/MPLv2+) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats found within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, Conch will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
+<h3 id="MediaConch-1">MediaConch</h3>
+<p>MediaConch will utilize MediaInfo's updated (for the project) demuxing libraries (re-licensed under GPLv3+/MPLv2+) which will allow for PREFORMA's selected video codecs, FFV1 and JPEG2000, to be assessed from within many formats found within archives although these container formats themselves aren't the focus of the current PREFORMA project. Through discovery interviews with archives and vendors we have found FFV1's archival implementations to use a variety of container formats such as AVI and QuickTime as well as Matroska. In order to allow developed tools to support FFV1 even if not contained within Matroska, MediaConch will support the following formats for demuxing (though not necessarily for conformity (yet)):</p>
 <ul>
 <li>MXF (commonly found within memory institutions)</li>
 <li>MOV/MP4 (often found containing FFV1, JPEG2000, and LPCM)</li>
@@ -894,7 +894,7 @@
 <p>By supporting the demultiplexing of these formats through MediaInfo, the developed tools will be applicable to a wide variety of files that contain PREFORMA's selected codecs: FFV1, JPEG2000, and LPCM. This demultiplexing support can be available through MediaInfo's existing libraries in a manner that is compatible with PREFORMA's licensing requirements.</p>
 <h2 id="streamessence-implementation-checker">Stream/Essence implementation checker</h2>
 <p>Plugin</p>
-<h3 id="conch-2">Conch</h3>
+<h3 id="MediaConch-2">MediaConch</h3>
 <ul>
 <li>FFV1</li>
 <li>PCM (including D-10 Audio, AES3)</li>
@@ -914,18 +914,18 @@
 </ul>
 <h2 id="streamessence-decoder">Stream/Essence decoder</h2>
 <p>(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)</p>
-<h3 id="conch-3">Conch</h3>
+<h3 id="MediaConch-3">MediaConch</h3>
 <ul>
 <li>PCM (including D-10 Audio, AES3)</li>
 </ul>
 <h3 id="plugin-integration-proof-of-concept-openjpeg">Plugin integration proof of concept: OpenJPEG</h3>
 <p>OpenJPEG decoder (BSD license, compatible with GPLv3+/MPL2+)</p>
 <h2 id="containerwrapper-vs-streamessence-coherency-check">Container/Wrapper vs Stream/Essence Coherency Check</h2>
-<h3 id="conch-4">Conch</h3>
-<p>Conch will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)</p>
+<h3 id="MediaConch-4">MediaConch</h3>
+<p>MediaConch will support the coherency check between all suppoted formats (see Container/Wrapper implementation checker and Stream/Essence implementation checker parts)</p>
 <h2 id="baseband-analyzer">Baseband Analyzer</h2>
 <p>(Not part of the original PREFORMA tender but can potentially be added upon request after in context of professional services)</p>
-<h3 id="conch-5">Conch</h3>
+<h3 id="MediaConch-5">MediaConch</h3>
 <ul>
 <li>None (only creation of the API)</li>
 </ul>
@@ -1130,7 +1130,7 @@
 <li>batch reporting features the option to nest specific objects.</li>
 </ul>
 <h3 id="contents">Contents</h3>
-<p>Report Name (&quot;eg., &quot;Conch Report&quot;), XXXX-XX-XX XX:XX:XX Date (ISO spec)</p>
+<p>Report Name (&quot;eg., &quot;MediaConch Report&quot;), XXXX-XX-XX XX:XX:XX Date (ISO spec)</p>
 <p>Implementation Checking Errors Implementation Chcking Warnings</p>
 <p>Policy Checking Errors Policy Checking Warnings</p>
 <p>Metadata Fixing Documentation (Action measures and preventative measures for non-conformed files)</p>
@@ -1294,4 +1294,4 @@
 <p>The PreForma project challenge presents an opportunity for stakeholders of digital preservation to work together and develop meaningful solutions to file format conformance issues. MediaArea is proud to be among the several successful applicants of the initial PreForma tender, and is confident that our submitted Phase 1 proposal for the creation of a Matroska, FFV1 and LPCM conformance checking toolset will greatly enhance the project's overall scope.</p>
 <p>At the core of the PreForma project is the conformance checker, which, when produced, will implement meaningful file format validation for long-term digital preservation. MediaArea is focused on developing the checker and its related environment. MediaArea's previous work MediaInfo and QCTools projects have led to a refined project development with risk management strategies.</p>
 <p>While LPCM endures as a prevalent raw audio stream, Matroska and FFV1 remain largely as outliers of digital preservation policy discussions among memory institutions. We believe that this is mostly due to misapprehensions of Matroska and FFV1. In addition to the development of a conformance checker, MediaArea presents a plan to strengthen the disclosure, transparency, and credibility of Matroska and FFV1 through standardization and adoption by relevant standards bodies.</p>
-<p>MediaArea welcomes the opportunity to see the Conch project through its completion.</p>
+<p>MediaArea welcomes the opportunity to see the MediaConch project through its completion.</p>

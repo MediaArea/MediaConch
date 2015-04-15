@@ -25,7 +25,7 @@ The timeline for facilitating standardization work through the IETF is presented
 -- Set up milestones and tasks in GitHub
 -- Set up project README in GitHub
 -- Draft introductory posts to Open Source Portal
--- Automate nightly builds of MediaInfo (initially) and later Conch utilities
+-- Automate nightly builds of MediaInfo (initially) and later MediaConch utilities
 -- Finalize recuitment of Document Shepard for IETF standardization process
 -- Identify and resolve gaps or inconsistencies within the current state of FFV1 and Matroska specifications
 -- Collaborate with FFmpeg and Matroska specification authors to prepare and submit an initial version of an Informational Internet Draft
@@ -35,8 +35,8 @@ The timeline for facilitating standardization work through the IETF is presented
 
 -- Release initial implementation checker
 -- Finalize XSD for policy set expression
--- Release first GUI version of Conch
--- Release first web client version of Conch
+-- Release first GUI version of MediaConch
+-- Release first web client version of MediaConch
 -- Request a "Birds of a Feather" meeting with the IETF for the IETF 93 conference
 -- Release and document sample library of MKV, FFV1, and LPCM files
 

@@ -1,4 +1,4 @@
-# Conch -- Appendix: Discovery Interviews
+# MediaConch -- Appendix: Discovery Interviews
 
 Project Acronym: PREFORMA
 

@@ -21,7 +21,7 @@ The Reporter may accept a previously-generated PREFORMAXML or other supported ou
 
 ### Contents
 
-Report Name ("eg., "Conch Report"), XXXX-XX-XX XX:XX:XX Date (ISO spec)
+Report Name ("eg., "MediaConch Report"), XXXX-XX-XX XX:XX:XX Date (ISO spec)
 
 Implementation Checking Errors
 Implementation Chcking Warnings

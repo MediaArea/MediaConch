@@ -1,6 +1,6 @@
 # Global Architecture
 
-MediaArea's Conch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
+MediaArea's MediaConch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
 
 ## Architecture schema
 
@@ -62,7 +62,7 @@ The Web-based system allows users to work both on and outside of the network as 
 
 ## Core (Controller)
 
-The Core serves as communication between all plugins within and outside of the Conch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates the Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
+The Core serves as communication between all plugins within and outside of the MediaConch system and between all layers. The Core is the main service and runs in a passive, background mode. For example, if a user updates the Core, it will have no effect on the functionality of other systems. If a user begins using MySQL while running the implementation checker and decided to change to PostgreSQL, the Core could be adapted to address such a change. In essence, while components shift, the Core functions to present the data to all databases consistently and similarly and can adapt to different components.
 
 The Core has several major functions:
 
@@ -202,7 +202,7 @@ The User interface (UI) is the shell component that allows direct interaction be
 * allows metadata (descriptive and structural) to be edited
 * edit configuration (periodic checks, policy checker, user rights)
 
-Conch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:
+MediaConch will provide three different options for a human interface in order to introduce maximum user interaction and flexibility within the implementation checker. These three interfaces are:
 
 - CLI (Command line interface)
 

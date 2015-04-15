@@ -1,10 +1,10 @@
 ## Conformance Check Registry
 
-This documentation explains the elements, structure, and intent of the Conch Conformance Check Registry.
+This documentation explains the elements, structure, and intent of the MediaConch Conformance Check Registry.
 
 A conformance check is a particular test applied to a file format, stream, or section of a format or stream in order to quantify the adherence of such data to associated sets of rules and practices. The registry refers specifically to checks performed by the implementation checker. Rules performed by the policy checker are defined elsewhere.
 
-MediaArea plans to maintain an identity and open documentation for each Conformance Check in both a public online space and within the internal help documentation of a Conch Shell. As the implementation checker assesses given files against a series of checks and the reporter presents the findings to the user, MediaArea plans for the shell to facilitate the user to discover more underlying information, advice, or responses to conformance checks that appear as problematic from the implementation checker.
+MediaArea plans to maintain an identity and open documentation for each Conformance Check in both a public online space and within the internal help documentation of a MediaConch Shell. As the implementation checker assesses given files against a series of checks and the reporter presents the findings to the user, MediaArea plans for the shell to facilitate the user to discover more underlying information, advice, or responses to conformance checks that appear as problematic from the implementation checker.
 
 ### Conformance Check Registry Requirements
 

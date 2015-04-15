@@ -1,4 +1,4 @@
-# Conch -- Appendix on Standardization Exercises
+# MediaConch -- Appendix on Standardization Exercises
 
 Project Acronym: PREFORMA
 

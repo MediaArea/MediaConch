@@ -7,4 +7,4 @@ At the core of the PreForma project is the conformance checker, which, when prod
 
 While LPCM endures as a prevalent raw audio stream, Matroska and FFV1 remain largely as outliers of digital preservation policy discussions among memory institutions. We believe that this is mostly due to misapprehensions of Matroska and FFV1. In addition to the development of a conformance checker, MediaArea presents a plan to strengthen the disclosure, transparency, and credibility of Matroska and FFV1 through standardization and adoption by relevant standards bodies.
 
-MediaArea welcomes the opportunity to see the Conch project through its completion.
+MediaArea welcomes the opportunity to see the MediaConch project through its completion.
