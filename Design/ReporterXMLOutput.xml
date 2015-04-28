@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- some details -->
+<report xmlns="https://mediaarea.net/MediaConch" creationDateTime="2015-00-00T00:00:00.000+00:00" processingTime="00:00:00.000">
+    <containerInfo>
+        <fileName>ffv1_yuv422p10le_Colorspace-YUV_Chroma-422_10bit.mkv</fileName>
+        <filePath>/V:</filePath>
+        <format>Matroska</format>
+        <formatVersion>Version 4 / Version 2</formatVersion>
+        <fileSize>19.2 MiB</fileSize>
+        <duration>2s 0ms</duration>
+        <bitRate>80.4 Mbps</bitRate>
+        <writingApplication>Lavf55.28.100</writingApplication>
+        <writingLibrary>Lavf55.28.100</writingLibrary>
+    </containerInfo>
+    <segment>
+        <CRC></CRC>
+    </segment>
+    <track>
+        <CRC></CRC>
+        <!-- A set of track types coded on 8 bits (1: video, 2: audio, 3: complex, 0x10: logo, 0x11: subtitle, 0x12: buttons, 0x20: control) -->
+        <trackType>Video</trackType>
+        <format>FFV1</format>
+        <formatVersion>Version 3.4</format>
+        <codecID>V_MS/VFW/FOURCC / FFV1</codecID>
+        <duration>2s 0ms</duration>
+        <bitRate>78.8 Mbps</bitRate>
+        <width>720 pixels</width>
+        <height>608 pixels</height>
+        <displayAspectRatio>1.296</displayAspectRatio>
+        <frameRateMode>Constant</frameRateMode>
+        <frameRate>25.000 fps</frameRate>
+        <colorSpace>YUV</colorSpace>
+        <chromaSubsampling>4:2:2</chromaSubsampling>
+        <bitDepth>10 bits</bitDepth>
+        <compressionMode>Lossless</compressionMode>
+        <bits>7.204</bits>
+        <streamSize>18.8 MiB (98%)</streamSize>
+        <flagEnabled>No</flagEnabled>
+        <flagDefault>Yes</flagDefault>
+        <flagForced>No</flagForced>
+        <coderType>Range Coder</coderType>
+    </track>
+    <track>
+        <CRC></CRC>
+        <trackType>Audio</trackType>
+        <format>PCM</format>
+        <codecID>A_PCM/INT/LIT</codecID>
+        <duration>2s 0ms</duration>
+        <bitRateMode>Constant</bitRateMode>
+        <channel>
+            <samplingRate>48.0 KHz</samplingRate>
+            <bitDepth>16 bits</bitDepth>
+            <writingLibrary>Lavc56.26.100 pcm_s16le</writingLibrary>
+            <language>English</language>
+            <default>Yes</default>
+            <forced>No</forced>
+            <encodedDate>UTC 2014-03-14 15:19:41</encodedDate>
+        </channel>
+    </track>
+    <attachments>
+        <CRC></CRC>
+        <attachment>
+            <attachedFile></attachedFile>
+            <fileDescription></fileDescription>
+            <fileName></fileName>
+        </attachment>
+    </attachments>
+    <chapter>
+      <CRC></CRC>
+    </chapter>
+    <tags>
+      <CRC></CRC>
+    </tags>
+    <cue>
+      <CRC></CRC>
+    </cue>
+    <conformanceReport>
+      <rule></rule>
+    </conformanceReport>
+</report>
