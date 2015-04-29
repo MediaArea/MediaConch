@@ -1,0 +1,25 @@
+{% extends 'AppBundle:Default:base.html.twig' %}
+
+{% block title %}
+MediaConch Demo full file checker
+{% endblock %}
+
+{% block body %}
+<h1>MediaConch Demo full file checker</h1>
+<form action="/checker" method="post" enctype="multipart/form-data">
+    <div>
+        Select a policy :
+        <select id="policy" name="policy" required="required">
+            <option value="" select="selected">Choose a policy</option>
+            {% for item in policyList %}
+                <option value="{{ item.id }}">{{ item.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        Select a file to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload" required="required">
+        <input type="submit" value="Upload file" name="submit">
+    </div>
+</form>
+{% endblock %}

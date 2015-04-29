@@ -1,0 +1,36 @@
+{% extends 'AppBundle:Default:base.html.twig' %}
+
+{% block title %}
+MediaConch Demo multi files checker
+{% endblock %}
+
+{% block body %}
+<h1>MediaConch Demo multi files checker</h1>
+<div>
+Policy list :
+    <ul>
+    {% for item in policyList %}
+        <li><a href="{{ url('app_default_checkfiles', {'id': item.id}) }}">{{ item.name }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% if checks|length > 0 %}
+<div>
+Checks :
+    <ul>
+    {% for check in checks %}
+        <li>File : {{ check.name}} {{ check.isValid ? 'is <b>valid</b>' : 'is <b>not valid</b>' }}
+        {% if check.errors|length > 0 %}
+            <ul>
+            {% for error in check.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
