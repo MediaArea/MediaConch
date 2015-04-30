@@ -50,7 +50,7 @@ function jsUpload(options){
 
      //   self.lastModified = self.file.lastModifiedDate.getTime();
         //self.url = "../mysql-filad-server.php";
-        self.url = "/server-plaintext.php";
+        self.url = "/static/server-plaintext.php";
         self.type = self.file.type;
         self.fileName = self.file.name;
 

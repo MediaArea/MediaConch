@@ -102,7 +102,7 @@ if (isset($_POST)) {
                 );
                 $ch = curl_init();
                 $options = array(
-                    CURLOPT_URL            => 'http' . ($_SERVER['HTTPS'] ? 's' : '') .'://' . $_SERVER['SERVER_NAME'] . '/MediaConchOnline/ajaxChecker',
+                    CURLOPT_URL            => 'http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] ? 's' : '') .'://' . $_SERVER['SERVER_NAME'] . '/MediaConchOnline/ajaxChecker',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_HEADER         => false,
                     CURLOPT_FAILONERROR    => true,
