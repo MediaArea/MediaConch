@@ -241,13 +241,16 @@ class DefaultController extends Controller
         $uploadOk = 0;
         $output = array();
         $result = false;
+        $check = array('name' => basename($request->request->get('file', false)),
+            'isValid' => 0,
+            'errors' => array(),
+            'xml' => '',
+        );
+
         if ($request->request->get('file', false) && file_exists($request->request->get('file'))) {
             $uploadOk = 1;
             exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($request->request->get('file')), $output, $result);
         }
-
-        $fileIsValid = false;
-        $fileErrors = array();
 
         if (1 == $uploadOk && 0 == $result) {
             $xml = '';
@@ -255,24 +258,19 @@ class DefaultController extends Controller
                 $xml .= $out . "\n";
             }
 
+            $check['xml'] = htmlentities($xml, ENT_COMPAT, 'UTF-8');
             $MediaInfo = new MediaInfoOutput($xml);
-            $policy = $this->getDoctrine()
-                ->getRepository('AppBundle:Policy')
-                ->find($request->request->get('policy'));
-            $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $policy);
-            $policyChecker->check();
-            $check = array('name' => basename($request->request->get('file')),
-                'isValid' => $policyChecker->isValid(),
-                'errors' => $policyChecker->getErrors(),
-                'xml' => htmlentities($xml, ENT_COMPAT, 'UTF-8'),
-                );
-        }
-        else {
-            $check = array('name' => basename($request->request->get('file', false)),
-                'isValid' => 0,
-                'errors' => array(),
-                'xml' => '',
-                );
+
+            if ($request->request->get('policy', false)) {
+                $policy = $this->getDoctrine()
+                    ->getRepository('AppBundle:Policy')
+                    ->find($request->request->get('policy'));
+                $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $policy);
+                $policyChecker->check();
+                $check['isValid'] = $policyChecker->isValid();
+                $check['errors'] = $policyChecker->getErrors();
+
+            }
         }
 
         return new JsonResponse($check);
