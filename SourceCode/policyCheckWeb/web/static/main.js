@@ -120,7 +120,6 @@ function onDrop(e) {
 	if(typeof files == "undefined" || files.length == 0)
 		return;
 
-
 	createPreviewElements(files);
 
 	//show the 'start upload' button
@@ -135,7 +134,6 @@ function onDrop(e) {
 		startupload(files);
 	};
 }
-
 
 /*
 The following function will generate this <li> item:
@@ -171,13 +169,6 @@ function createPreviewElements(files){
 		filename.className = 'filename';
 		filename.innerHTML = this.fileName;
 		item.appendChild(filename);
-
-		//create space for download link
-		var downloadLink 	   = document.createElement('a');
-		downloadLink.id 	   = 'downloadLink-' + i;
-		downloadLink.className = 'downloadLink';
-		downloadLink.target    = '_blank';
-		item.appendChild(downloadLink);
 
 		//add pause button
 		var pause 		= document.createElement('div');
@@ -227,7 +218,7 @@ function createPreviewElements(files){
 			})(i, loglink);
 
 		//Update the preview of resumed uploads, passing the elements we want to change, like progressbar, pausebutton..
-		updateResumedItems(this.files[i], progress, pause, downloadLink);
+		updateResumedItems(this.files[i], progress, pause);
 
 	//end for loop
 	}
@@ -263,11 +254,6 @@ function startupload(files){
 							succeedImg.width = 40;
 
 							pauseButton.parentNode.replaceChild(succeedImg, pauseButton);
-
-							//show download link, we use the serverFileId parameter here
-							var downloadLink 	   = document.getElementById('downloadLink-' + i);
-							downloadLink.innerHTML = 'Download link';
-							downloadLink.href 	   = '/d/?id=' + serverFileId;
 						}
 					});
 			},
@@ -284,14 +270,12 @@ function startupload(files){
  * Update the preview of resumed uploads, like fix initial progressbar value or show success tick when the upload is done before
  *
  */
-function updateResumedItems(file, progressElement, pauseButton, downloadLink) {
-
+function updateResumedItems(file, progressElement, pauseButton) {
 	var fileName  = file.name;
 	var type   	  = file.type;
 	var totalSize = file.size;
 
 	var fileId = fileName +'|'+ type + '|' + totalSize;
-
 
 	//check if it already exists in localStorage, so whether to resume uploading
 	var fileData = localStorage[fileId];
@@ -308,7 +292,6 @@ function updateResumedItems(file, progressElement, pauseButton, downloadLink) {
 			return;
 		}
 
-
 		var currentPackage = fileParts[2]; // the third element in the array is the currentPackage number
 
 		//if its already uploaded then show success image and set progressbar to 100%
@@ -322,12 +305,6 @@ function updateResumedItems(file, progressElement, pauseButton, downloadLink) {
 			succeedImg.width = 40;
 
 			pauseButton.parentNode.replaceChild(succeedImg, pauseButton);
-
-			//show download link
-			var serverFileId       = fileParts[0];
-			downloadLink.innerHTML = 'Download link';
-			downloadLink.href 	   = '/d/?id=' + serverFileId;
-
 		} else {
 			//else if not uploaded the whole then get the current package number, and return the percent
 			var packetSize 	    = 512 * 512; //bytes, should be a global value in reality
@@ -340,11 +317,8 @@ function updateResumedItems(file, progressElement, pauseButton, downloadLink) {
 		$(progressElement).find('.ui-progressbar-value').addClass('ui-corner-right').stop(true).animate({
 			width: progressPercent + '%'
 		}, 400);
-
-
 	}
 }
-
 
 function htmlEscape(str) {
     return String(str)
