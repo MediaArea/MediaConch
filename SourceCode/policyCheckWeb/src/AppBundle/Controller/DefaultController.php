@@ -18,6 +18,9 @@ use AppBundle\Entity\Policy;
 use AppBundle\Form\Type\PolicyType;
 use AppBundle\Form\Type\PolicyTestType;
 
+/**
+ * @Route("/MediaConchOnline")
+ */
 class DefaultController extends Controller
 {
     /**

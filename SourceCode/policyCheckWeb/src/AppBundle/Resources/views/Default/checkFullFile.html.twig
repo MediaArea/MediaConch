@@ -6,7 +6,7 @@ MediaConch Demo full file checker
 
 {% block body %}
 <h1>MediaConch Demo full file checker</h1>
-<form action="/checker" method="post" enctype="multipart/form-data">
+<form action="{{ path('app_default_checker') }}" method="post" enctype="multipart/form-data">
     <div>
         Select a policy :
         <select id="policy" name="policy" required="required">

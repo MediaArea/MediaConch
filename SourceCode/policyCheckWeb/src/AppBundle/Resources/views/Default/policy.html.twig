@@ -45,7 +45,7 @@ function changeType(id) {
         data['type'] = $type.val();
         // Submit data via AJAX to the form's action path.
         $.ajax({
-            url : "{{ url('app_default_policyajaxfields') }}",
+            url : "{{ path('app_default_policyajaxfields') }}",
             type: "POST",
             data : data,
             success: function(data) {
@@ -67,7 +67,7 @@ function changeField(id) {
         data['field'] = $field.val();
         // Submit data via AJAX to the form's action path.
         $.ajax({
-            url : "{{ url('app_default_policyajaxvalidators') }}",
+            url : "{{ path('app_default_policyajaxvalidators') }}",
             type: "POST",
             data : data,
             success: function(data) {
