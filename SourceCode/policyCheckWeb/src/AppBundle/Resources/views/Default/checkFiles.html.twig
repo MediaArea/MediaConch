@@ -10,7 +10,7 @@ MediaConch Demo multi files checker
 Policy list :
     <ul>
     {% for item in policyList %}
-        <li><a href="{{ url('app_default_checkfiles', {'id': item.id}) }}">{{ item.name }}</a></li>
+        <li><a href="{{ path('app_default_checkfiles', {'id': item.id}) }}">{{ item.name }}</a></li>
     {% endfor %}
     </ul>
 </div>
