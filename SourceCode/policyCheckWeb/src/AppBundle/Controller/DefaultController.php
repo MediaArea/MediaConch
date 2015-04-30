@@ -240,7 +240,6 @@ class DefaultController extends Controller
     {
         $uploadOk = 0;
         $output = array();
-        $check = array();
         $result = false;
         if ($request->request->get('file', false) && file_exists($request->request->get('file'))) {
             $uploadOk = 1;
@@ -266,6 +265,13 @@ class DefaultController extends Controller
                 'isValid' => $policyChecker->isValid(),
                 'errors' => $policyChecker->getErrors(),
                 'xml' => htmlentities($xml, ENT_COMPAT, 'UTF-8'),
+                );
+        }
+        else {
+            $check = array('name' => basename($request->request->get('file', false)),
+                'isValid' => 0,
+                'errors' => array(),
+                'xml' => '',
                 );
         }
 
