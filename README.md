@@ -9,7 +9,7 @@ Website: <a href="https://mediaarea.net/MediaConch/">:shell: MediaConch project<
 November 2014 - March 2015: the team participated to the Design Phase (phase 1). Documentation available [here](https://github.com/MediaArea/MediaConch/releases/tag/2015.03.14)
 
 
-## Release Schedule
+# Release Schedule
 
 MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
 
