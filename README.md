@@ -9,6 +9,25 @@ Website: <a href="https://mediaarea.net/MediaConch/">:shell: MediaConch project<
 November 2014 - March 2015: the team participated to the Design Phase (phase 1). Documentation available [here](https://github.com/MediaArea/MediaConch/releases/tag/2015.03.14)
 
 
+## Release Schedule
+
+MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
+
+Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project.
+
+New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.
+
+Downloads will be made available through a public repository with a functioning issue tracker (GitHub). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.
+
+All source codes and updates will be made accessible on the following platforms:
+
+- MS Windows
+- Mac OSX
+- Linux (Ubuntu, Fedora, Debian, and Suse)
+
+The target release date will be the 15th of each month.
+
+
 # Funding and Licensing
 
 This project has received funding from PREFORMA, co-funded by the European Commission under its FP7-ICT Programme. All software and source code developed by MediaArea during the PREFORMA project will be provided under the following two open source licenses: GNU General Public License 3.0 (GPLv3 or later), Mozilla Public License (MPLv2 or later).
