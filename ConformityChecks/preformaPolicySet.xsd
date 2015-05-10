@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://mediaarea.net/MediaConch/PolicyXML">
+  <xsd:element name="policy">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="policySet">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element maxOccurs="1" minOccurs="1" name="trackType">
+                <xsd:annotation>
+                  <xsd:documentation>trackType restrictions</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="General"/>
+                    <xsd:enumeration value="Video"/>
+                    <xsd:enumeration value="Audio"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element> 
+              <xsd:element maxOccurs="1" minOccurs="1" name="trackNumber">
+                <xsd:annotation>
+                  <xsd:documentation>trackNumber restrictions</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:decimal">
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element> 
+              <xsd:element maxOccurs="1" minOccurs="1" name="field">
+                <xsd:annotation>
+                  <xsd:documentation>field restrictions</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <!-- needs list of options, but also broad enough for manual input -->
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element> 
+              <xsd:element maxOccurs="1" minOccurs="1" name="operator">
+                <xsd:annotation>
+                  <xsd:documentation>operator restrictions</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="Exists"/>
+                    <xsd:enumeration value="Does Not Exist"/>
+                    <xsd:enumeration value="Is Equal To"/>
+                    <xsd:enumeration value="Is Not Equal To"/>
+                    <xsd:enumeration value="Is Greater Than"/>
+                    <xsd:enumeration value="Is Greater or Equal Than"/>
+                    <xsd:enumeration value="Is Less Than"/>
+                    <xsd:enumeration value="Is Less or Equal Than"/>
+                    <xsd:enumeration value="Match Regex"/>
+                    <xsd:enumeration value="Does Not Match Regex"/>
+                    <xsd:enumeration value="Includes"/>
+                    <xsd:enumeration value="Does Not Include"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element> 
+              <xsd:element maxOccurs="1" minOccurs="1" name="value">
+                <xsd:annotation>
+                  <xsd:documentation>value restrictions</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element> 
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
