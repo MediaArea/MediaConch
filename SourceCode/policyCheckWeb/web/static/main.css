@@ -204,16 +204,6 @@ p {
 	border: 10px solid #121212;
 }
 
-#preview .downloadLink {
-	padding-left: 2em;
-	color:  #ffbf00; /*#33FF05;*/
-	text-decoration: none;
-}
-
-#preview .downloadLink:hover {
-	text-decoration: underline;
-}
-
 #uploadbutton {
 	display:none;
 	margin: 0 auto;

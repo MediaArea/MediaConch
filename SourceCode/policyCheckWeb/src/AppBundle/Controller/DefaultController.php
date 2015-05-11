@@ -269,7 +269,6 @@ class DefaultController extends Controller
                 $policyChecker->check();
                 $check['isValid'] = $policyChecker->isValid();
                 $check['errors'] = $policyChecker->getErrors();
-
             }
         }
 
