@@ -1,11 +1,17 @@
 {% extends 'AppBundle:Default:base.html.twig' %}
 
 {% block title %}
-MediaConch Demo full file checker
+MediaConch Demo online file checker
 {% endblock %}
 
 {% block body %}
-<h1>MediaConch Demo full file checker</h1>
+<h1>MediaConch Demo online file checker</h1>
+<div>
+{{ form(form) }}
+</div>
+
+{% if check != false %}
+<br />
 <div>
 Check result :
     <ul>
@@ -17,7 +23,11 @@ Check result :
             {% endfor %}
             </ul>
         {% endif %}
+            <ul>
+                <li>{% for xml in check.xml %}{{ xml }} <br /> {% endfor %}</li>
+            </ul>
         </li>
     </ul>
 </div>
+{% endif %}
 {% endblock %}

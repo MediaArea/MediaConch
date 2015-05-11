@@ -36,53 +36,100 @@ class DefaultController extends Controller
      * @Route("/checkFullFile")
      * @Template()
      */
-    public function checkFullFileAction()
+    public function checkFullFileAction(Request $request)
     {
-        $policyList = $this->getDoctrine()
-            ->getRepository('AppBundle:Policy')
-            ->findAll();
+        $check = false;
 
-        return array('policyList' => $policyList);
+        $form = $this->createFormBuilder()
+            ->add('policy', 'entity', array('class' => 'AppBundle:Policy', 'placeholder' => 'Choose a policy'))
+            ->add('file', 'file')
+            ->add('Check', 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $data = $form->getData();
+
+            if ($data['file']->isValid()) {
+                $output = array();
+                $result = false;
+                $check = array('name' => $data['file']->getClientOriginalName(),
+                    'isValid' => 0,
+                    'errors' => array(),
+                    'xml' => '',
+                );
+
+                exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($data['file']->getRealPath()), $output, $result);
+
+                if (0 == $result) {
+                    $xml = '';
+                    foreach($output as $out) {
+                        $xml .= $out . "\n";
+                    }
+
+                    $check['xml'] = $output;
+                    $MediaInfo = new MediaInfoOutput($xml);
+
+                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $data['policy']);
+                    $policyChecker->check();
+                    $check['isValid'] = $policyChecker->isValid();
+                    $check['errors'] = $policyChecker->getErrors();
+                }
+            }
+        }
+
+        return array('form' => $form->createView(), 'check' => $check);
     }
 
     /**
-     * @Route("/checker")
+     * @Route("/checkOnline")
      * @Template()
      */
-    public function checkerAction(Request $request)
+    public function checkOnlineFileAction(Request $request)
     {
-        $uploadOk = 0;
-        $output = array();
-        $result = false;
-        if ($request->request->get('submit', false) && isset($_FILES['fileToUpload']) && 0 == $_FILES['fileToUpload']['error']) {
-            $uploadOk = 1;
-            exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($_FILES['fileToUpload']['tmp_name']), $output, $result);
-        }
+        $check = false;
 
-        $fileIsValid = false;
-        $fileErrors = array();
+        $form = $this->createFormBuilder()
+            ->add('policy', 'entity', array('class' => 'AppBundle:Policy', 'placeholder' => 'Choose a policy'))
+            ->add('file', 'url')
+            ->add('Check', 'submit')
+            ->getForm();
 
-        if (1 == $uploadOk && 0 == $result) {
-            $xml = '';
-            foreach($output as $out) {
-                $xml .= $out . "\n";
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $data = $form->getData();
+
+            $output = array();
+            $result = false;
+            $check = array('name' => $data['file'],
+                'isValid' => 0,
+                'errors' => array(),
+                'xml' => '',
+            );
+
+            exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($data['file']), $output, $result);
+
+            if (0 == $result) {
+                $xml = '';
+                foreach($output as $out) {
+                    $xml .= $out . "\n";
+                }
+
+                $check['xml'] = $output;
+                $MediaInfo = new MediaInfoOutput($xml);
+
+                $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $data['policy']);
+                $policyChecker->check();
+                $check['isValid'] = $policyChecker->isValid();
+                $check['errors'] = $policyChecker->getErrors();
             }
 
-            $MediaInfo = new MediaInfoOutput($xml);
-            $policy = $this->getDoctrine()
-                ->getRepository('AppBundle:Policy')
-                ->find($request->request->get('policy'));
-            $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $policy);
-            $policyChecker->check();
-            $check = array('name' => basename($_FILES['fileToUpload']['name']),
-                'isValid' => $policyChecker->isValid(),
-                'errors' => $policyChecker->getErrors(),
-                'xml' => $xml,
-                );
-
+            //return $this->redirect($this->generateUrl('task_success'));
         }
 
-        return array('upload' => $uploadOk, 'result' => $result, 'check' => $check);
+        return array('form' => $form->createView(), 'check' => $check);
     }
 
     /**
@@ -115,7 +162,7 @@ class DefaultController extends Controller
             foreach ($policy->getItems() as $item) {
                 $originalItems->add($item);
             }
-       }
+        }
         else {
             $policy = new Policy();
         }
