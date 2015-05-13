@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://mediaarea.net/MediaConch/PolicyXML">
-  <xsd:element name="policy">
+  <xsd:element name="policySet">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element maxOccurs="unbounded" minOccurs="1" name="policySet">
+        <xsd:element maxOccurs="unbounded" minOccurs="1" name="policy">
           <xsd:complexType>
             <xsd:sequence>
               <xsd:element maxOccurs="1" minOccurs="1" name="trackType">
