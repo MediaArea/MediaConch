@@ -92,7 +92,7 @@ class DefaultController extends Controller
 
         $form = $this->createFormBuilder()
             ->add('policy', 'entity', array('class' => 'AppBundle:Policy', 'placeholder' => 'Choose a policy'))
-            ->add('file', 'url')
+            ->add('file', 'url', array('max_length' => 512))
             ->add('Check', 'submit')
             ->getForm();
 
@@ -109,7 +109,7 @@ class DefaultController extends Controller
                 'xml' => '',
             );
 
-            exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($data['file']), $output, $result);
+            exec('/usr/bin/mediainfo -f --Language=raw --Output=XML --ParseSpeed=0 ' . escapeshellarg(str_replace(' ', '%20', $data['file'])), $output, $result);
 
             if (0 == $result) {
                 $xml = '';
@@ -125,8 +125,6 @@ class DefaultController extends Controller
                 $check['isValid'] = $policyChecker->isValid();
                 $check['errors'] = $policyChecker->getErrors();
             }
-
-            //return $this->redirect($this->generateUrl('task_success'));
         }
 
         return array('form' => $form->createView(), 'check' => $check);
