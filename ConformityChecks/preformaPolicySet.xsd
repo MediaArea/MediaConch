@@ -15,6 +15,9 @@
                     <xsd:enumeration value="Format"/>
                     <xsd:enumeration value="Video"/>
                     <xsd:enumeration value="Audio"/>
+                    <xsd:enumeration value="Image"/>
+                    <xsd:enumeration value="Text"/>
+                    <xsd:enumeration value="Other"/>
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element> 
@@ -33,7 +36,6 @@
                 </xsd:annotation>
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <!-- needs list of options, but also broad enough for manual input -->
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element> 
