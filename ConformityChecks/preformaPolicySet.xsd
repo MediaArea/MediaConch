@@ -21,12 +21,12 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element> 
-              <xsd:element maxOccurs="1" minOccurs="1" name="trackNumber">
+              <xsd:element maxOccurs="1" minOccurs="0" name="trackNumber" default="all">
                 <xsd:annotation>
                   <xsd:documentation>trackNumber restrictions</xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
-                  <xsd:restriction base="xsd:int">
+                  <xsd:restriction base="xsd:string">
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:element> 
