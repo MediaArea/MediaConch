@@ -12,7 +12,7 @@
                 </xsd:annotation>
                 <xsd:simpleType>
                   <xsd:restriction base="xsd:string">
-                    <xsd:enumeration value="General"/>
+                    <xsd:enumeration value="Format"/>
                     <xsd:enumeration value="Video"/>
                     <xsd:enumeration value="Audio"/>
                   </xsd:restriction>
