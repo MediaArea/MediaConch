@@ -1,16 +1,16 @@
 {% extends 'AppBundle:Default:base.html.twig' %}
 
 {% block title %}
-MediaConch Demo
+MediaConch (Conformance Checker) Demo Web User Interface
 {% endblock %}
 
 {% block body %}
-<h1>MediaConch Demo</h1>
+<h1>MediaConch (Conformance Checker) Demo Web User Interface</h1>
 <ul>
-    <li><a href="{{ path('app_default_policy') }}">Policy management</a></li>
-    <li><a href="{{ path('app_default_checkfiles') }}">Check files on server</a></li>
-    <li><a href="{{ path('app_default_check') }}">Upload file (first megabyte) and check</a></li>
-    <li><a href="{{ path('app_default_checkfullfile') }}">Upload file (full) and check</a></li>
-    <li><a href="{{ path('app_default_checkonlinefile') }}">Check online file (cURL)</a></li>
+    <li><a href="{{ path('app_default_policy') }}">Create sets of policy rules</a></li>
+    <li><a href="{{ path('app_default_checkfiles') }}">Apply a set of policy rules to files on a server</a></li>
+    <li><a href="{{ path('app_default_check') }}">Upload file (first megabyte) and check against policy rules</a></li>
+    <li><a href="{{ path('app_default_checkfullfile') }}">Upload file (full) and check against policy rules</a></li>
+    <li><a href="{{ path('app_default_checkonlinefile') }}">Check online files (cURL) against policy rules</a></li>
 </ul>
 {% endblock %}
