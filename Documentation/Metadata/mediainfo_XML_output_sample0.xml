@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="0.7.73">
+<File>
+<track type="General">
+<Count>308</Count>
+<StreamCount>1</StreamCount>
+<StreamKind>General</StreamKind>
+<StreamKindID>0</StreamKindID>
+<VideoCount>1</VideoCount>
+<CompleteName>SampleTestFiles\FFV1\ffv1_3.mov</CompleteName>
+<FolderName>SampleTestFiles\FFV1</FolderName>
+<FileName>ffv1_3</FileName>
+<FileExtension>mov</FileExtension>
+<Format>MPEG-4</Format>
+<Format_Extensions>mp4 m4v m4a m4b m4p 3gpp 3gp 3gpp2 3g2 k3g jpm jpx mqv ismv isma f4v</Format_Extensions>
+<Format_Commercial>MPEG-4</Format_Commercial>
+<Format_Profile>QuickTime</Format_Profile>
+<InternetMediaType>video/mp4</InternetMediaType>
+<CodecID>qt  </CodecID>
+<CodecID_Url>http://www.apple.com/quicktime/download/standalone.html</CodecID_Url>
+<FileSize>125953</FileSize>
+<Duration>1000</Duration>
+<OverallBitRate>1007624</OverallBitRate>
+<FrameRate>25.000</FrameRate>
+<FrameCount>25</FrameCount>
+<StreamSize>903</StreamSize>
+<HeaderSize>28</HeaderSize>
+<DataSize>125058</DataSize>
+<FooterSize>867</FooterSize>
+<IsStreamable>No</IsStreamable>
+<File_Created_Date>UTC 2014-12-29 17:52:47.318</File_Created_Date>
+<File_Created_Date_Local>2014-12-29 19:52:47.318</File_Created_Date_Local>
+<File_Modified_Date>UTC 2014-12-29 17:52:47.318</File_Modified_Date>
+<File_Modified_Date_Local>2014-12-29 19:52:47.318</File_Modified_Date_Local>
+<Encoded_Application>Lavf56.16.102</Encoded_Application>
+</track>
+
+<track type="Video">
+<Count>313</Count>
+<StreamCount>1</StreamCount>
+<StreamKind>Video</StreamKind>
+<StreamKindID>0</StreamKindID>
+<StreamOrder>0</StreamOrder>
+<ID>1</ID>
+<Format>FFV1</Format>
+<Format_Commercial>FFV1</Format_Commercial>
+<Format_Version>Version 3.4</Format_Version>
+<CodecID>FFV1</CodecID>
+<Codec>FFV1</Codec>
+<Codec_Url>http://ffdshow-tryout.sourceforge.net/</Codec_Url>
+<Codec_CC>FFV1</Codec_CC>
+<Duration>1000</Duration>
+<BitRate>1000400</BitRate>
+<Width>320</Width>
+<Height>240</Height>
+<PixelAspectRatio>1.000</PixelAspectRatio>
+<DisplayAspectRatio>1.333</DisplayAspectRatio>
+<Rotation>0.000</Rotation>
+<FrameRate_Mode>CFR</FrameRate_Mode>
+<FrameRate>25.000</FrameRate>
+<FrameCount>25</FrameCount>
+<Resolution>8</Resolution>
+<ColorSpace>RGB</ColorSpace>
+<BitDepth>8</BitDepth>
+<ScanType>Progressive</ScanType>
+<Compression_Mode>Lossless</Compression_Mode>
+<Bits_Pixel_Frame_>0.521</Bits_Pixel_Frame_>
+<StreamSize>125050</StreamSize>
+<Language>en</Language>
+<coder_type>Golomb Rice</coder_type>
+<ErrorDetection>Per slice</ErrorDetection>
+</track>
+
+</File>
+</Mediainfo>
