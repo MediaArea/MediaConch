@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Mediainfo version="0.7.69">
+<Mediainfo version="0.7.73">
 <File>
 <track type="General">
 <UniqueID_String>235685203258899234456256974475716327849 (0xB14F51ACA3E51A68F00E65DD30C9F9A9)</UniqueID_String>
@@ -11,7 +11,7 @@
 <OverallBitRate_String>54.1 Mbps</OverallBitRate_String>
 <EncodedBy>{Name of the technician or organization responsible for the encoding and file creation process}</EncodedBy>
 <Mastered_Date>UTC {Date and time of the file creation process. Enter in ISO 8601 format.}</Mastered_Date>
-<Encoded_Application>Lavf54.36.100</Encoded_Application>
+<Encoded_Application_String>Lavf54.36.100</Encoded_Application_String>
 <Encoded_Library_String>Lavf54.36.100</Encoded_Library_String>
 <OriginalSourceForm>{Physical format of the source tape. Vocabulary?}</OriginalSourceForm>
 <ORIGINAL_MEDIA_TYPE_BARCODE>{Barcode or other identifier from the tape.}</ORIGINAL_MEDIA_TYPE_BARCODE>
@@ -41,6 +41,7 @@
 <track type="Video">
 <ID_String>1</ID_String>
 <Format>FFV1</Format>
+<Format_Version>Version 0</Format_Version>
 <CodecID>V_MS/VFW/FOURCC / FFV1</CodecID>
 <Duration_String>6s 440ms</Duration_String>
 <Width_String>720 pixel3</Width_String>
@@ -49,11 +50,15 @@
 <FrameRate_Mode_String>CFR</FrameRate_Mode_String>
 <FrameRate_String>29.970 fps3</FrameRate_String>
 <Standard>NTSC</Standard>
+<ColorSpace>YUV</ColorSpace>
+<ChromaSubsampling>4:2:2</ChromaSubsampling>
+<BitDepth_String>8 bit3</BitDepth_String>
 <Compression_Mode_String>Lossless</Compression_Mode_String>
 <Language_String>en</Language_String>
 <Default_String>Yes</Default_String>
 <Forced_String>No</Forced_String>
 <Encoded_Date>UTC 2011-05-03 02:12:03</Encoded_Date>
+<coder_type>Golomb Rice</coder_type>
 </track>
 
 <track type="Audio">
