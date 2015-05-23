@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="0.7.69">
+<File>
+<track type="General">
+<UniqueID_String>235685203258899234456256974475716327849 (0xB14F51ACA3E51A68F00E65DD30C9F9A9)</UniqueID_String>
+<CompleteName>/Users/ashley/Desktop/pres_metadata_sample_20110609.mkv</CompleteName>
+<Format>Matroska</Format>
+<Format_Version>Version 2</Format_Version>
+<FileSize_String>41.5 MiB</FileSize_String>
+<Duration_String>6s 439ms</Duration_String>
+<OverallBitRate_String>54.1 Mbps</OverallBitRate_String>
+<EncodedBy>{Name of the technician or organization responsible for the encoding and file creation process}</EncodedBy>
+<Mastered_Date>UTC {Date and time of the file creation process. Enter in ISO 8601 format.}</Mastered_Date>
+<Encoded_Application>Lavf54.36.100</Encoded_Application>
+<Encoded_Library_String>Lavf54.36.100</Encoded_Library_String>
+<OriginalSourceForm>{Physical format of the source tape. Vocabulary?}</OriginalSourceForm>
+<ORIGINAL_MEDIA_TYPE_BARCODE>{Barcode or other identifier from the tape.}</ORIGINAL_MEDIA_TYPE_BARCODE>
+<ORIGINAL_MEDIA_TYPE_BARCODE_SOURCE>{name of barcode authority or creator; example &quot;XYZ Archive Barcode&quot;}</ORIGINAL_MEDIA_TYPE_BARCODE_SOURCE>
+<ORIGINAL_MEDIA_TYPE_LABEL>{The record label or imprint on the source media object.}</ORIGINAL_MEDIA_TYPE_LABEL>
+<ORIGINAL_MEDIA_TYPE_DATE_RECORDED>{The time that the recording began. This is akin to the TDRC tag in ID3.}</ORIGINAL_MEDIA_TYPE_DATE_RECORDED>
+<ORIGINAL_MEDIA_TYPE_CONDITION>{Comments on the condition of the source, any preparation for playback of the source tape (if relevant).}</ORIGINAL_MEDIA_TYPE_CONDITION>
+<ORIGINAL_MEDIA_TYPE_INITIAL_SOURCE_TIMECODE>01:02:15;10</ORIGINAL_MEDIA_TYPE_INITIAL_SOURCE_TIMECODE>
+<ORIGINAL_MEDIA_TYPE_INITIAL_SOURCE_TIMECODE_SETTINGS>DropFrame=Yes / 24HourMax=No / IsVisual=No</ORIGINAL_MEDIA_TYPE_INITIAL_SOURCE_TIMECODE_SETTINGS>
+<ENCODED_BY_URL>{URL for the technician or organization listed in ENCODED_BY.}</ENCODED_BY_URL>
+<ENCODED_BY_PROCESSING_ACTIONS>{Description of any actions performed during processing, such as trimming silence.}</ENCODED_BY_PROCESSING_ACTIONS>
+<ENCODED_BY_CAPTURE_SOFTWARE>Blackmagic Media Express</ENCODED_BY_CAPTURE_SOFTWARE>
+<ENCODED_BY_CAPTURE_SOFTWARE_VERSION>2.0.3</ENCODED_BY_CAPTURE_SOFTWARE_VERSION>
+<ENCODED_BY_CAPTURE_OPERATING_SYSTEM>Ubuntu</ENCODED_BY_CAPTURE_OPERATING_SYSTEM>
+<ENCODED_BY_CAPTURE_OPERATING_SYSTEM_VERSION>10.10</ENCODED_BY_CAPTURE_OPERATING_SYSTEM_VERSION>
+<ENCODED_BY_CAPTURE_DEVICE>Decklink Studio SDI</ENCODED_BY_CAPTURE_DEVICE>
+<ENCODED_BY_CAPTURE_DEVICE_MANUFACTURER>Blackmagic-Design</ENCODED_BY_CAPTURE_DEVICE_MANUFACTURER>
+<ENCODED_BY_CAPTURE_DEVICE_SERIAL_NO>xyz6789</ENCODED_BY_CAPTURE_DEVICE_SERIAL_NO>
+<ENCODED_BY_CAPTURE_DEVICE_SETTINGS>{notes on adjustments or settings}</ENCODED_BY_CAPTURE_DEVICE_SETTINGS>
+<ENCODED_BY_PLAYBACK_DEVICE>SVO-5800</ENCODED_BY_PLAYBACK_DEVICE>
+<ENCODED_BY_PLAYBACK_DEVICE_MANUFACTURER>Sony</ENCODED_BY_PLAYBACK_DEVICE_MANUFACTURER>
+<ENCODED_BY_PLAYBACK_DEVICE_SERIAL_NO>abc1234</ENCODED_BY_PLAYBACK_DEVICE_SERIAL_NO>
+<ENCODED_BY_PLAYBACK_DEVICE_SETTINGS>{notes on adjustments or settings}</ENCODED_BY_PLAYBACK_DEVICE_SETTINGS>
+<ENCODED_BY_PLAYBACK_DEVICE_PLAYBACK_SIGNAL_PATH>{Protocols used to transfer audiovisual data between the playback deck and the capture device. example: Component}</ENCODED_BY_PLAYBACK_DEVICE_PLAYBACK_SIGNAL_PATH>
+</track>
+
+<track type="Video">
+<ID_String>1</ID_String>
+<Format>FFV1</Format>
+<CodecID>V_MS/VFW/FOURCC / FFV1</CodecID>
+<Duration_String>6s 440ms</Duration_String>
+<Width_String>720 pixel3</Width_String>
+<Height_String>486 pixel3</Height_String>
+<DisplayAspectRatio_String>4:3</DisplayAspectRatio_String>
+<FrameRate_Mode_String>CFR</FrameRate_Mode_String>
+<FrameRate_String>29.970 fps3</FrameRate_String>
+<Standard>NTSC</Standard>
+<Compression_Mode_String>Lossless</Compression_Mode_String>
+<Language_String>en</Language_String>
+<Default_String>Yes</Default_String>
+<Forced_String>No</Forced_String>
+<Encoded_Date>UTC 2011-05-03 02:12:03</Encoded_Date>
+</track>
+
+<track type="Audio">
+<ID_String>2</ID_String>
+<Format>PCM</Format>
+<CodecID>A_PCM/INT/LIT</CodecID>
+<Duration_String>6s 439ms</Duration_String>
+<BitRate_Mode_String>CBR</BitRate_Mode_String>
+<Channel_s__String>1 channel1</Channel_s__String>
+<SamplingRate_String>48.0 KHz</SamplingRate_String>
+<BitDepth_String>24 bit2</BitDepth_String>
+<Language_String>en</Language_String>
+<Default_String>Yes</Default_String>
+<Forced_String>No</Forced_String>
+<Encoded_Date>UTC 2011-05-03 02:12:03</Encoded_Date>
+</track>
+
+</File>
+</Mediainfo>
+

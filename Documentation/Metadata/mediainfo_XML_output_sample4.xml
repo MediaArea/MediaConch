@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="0.7.69">
+<File>
+<track type="General">
+<UniqueID_String>33450150284685119265178699431598633586 (0x192A43BD556CAB863DA550711DE43272)</UniqueID_String>
+<CompleteName>/Users/ashley/Downloads/video-sprites.mkv</CompleteName>
+<Format>Matroska</Format>
+<Format_Version>Version 2</Format_Version>
+<FileSize_String>3.54 MiB</FileSize_String>
+<Duration_String>1mn 21s</Duration_String>
+<OverallBitRate_String>364 Kbps</OverallBitRate_String>
+<Encoded_Application>Lavf54.20.4</Encoded_Application>
+<Encoded_Library_String>Lavf54.20.4</Encoded_Library_String>
+</track>
+
+<track type="Video">
+<ID_String>1</ID_String>
+<Format>AVC</Format>
+<Format_Info>Advanced Video Codec</Format_Info>
+<Format_Profile>High@L3.1</Format_Profile>
+<Format_Settings_CABAC_String>Yes</Format_Settings_CABAC_String>
+<Format_Settings_RefFrames_String>4 frame2</Format_Settings_RefFrames_String>
+<CodecID>V_MPEG4/ISO/AVC</CodecID>
+<Duration_String>1mn 21s</Duration_String>
+<BitRate_String>356 Kbps</BitRate_String>
+<Width_String>1082 pixel2</Width_String>
+<Height_String>584 pixel2</Height_String>
+<DisplayAspectRatio_String>1.85:1</DisplayAspectRatio_String>
+<FrameRate_Mode_String>CFR</FrameRate_Mode_String>
+<FrameRate_String>30.000 fps3</FrameRate_String>
+<ColorSpace>YUV</ColorSpace>
+<ChromaSubsampling>4:2:0</ChromaSubsampling>
+<BitDepth_String>8 bit3</BitDepth_String>
+<ScanType_String>Progressive</ScanType_String>
+<Bits_Pixel_Frame_>0.019</Bits_Pixel_Frame_>
+<StreamSize_String>3.47 MiB (98%)</StreamSize_String>
+<Encoded_Library_String>x264 core 142 r2389 956c8d8</Encoded_Library_String>
+<Encoded_Library_Settings>cabac=1 / ref=1 / deblock=1:0:0 / analyse=0x3:0x3 / me=dia / subme=1 / psy=1 / psy_rd=1.00:0.00 / mixed_ref=0 / me_range=16 / chroma_me=1 / trellis=0 / 8x8dct=1 / cqm=0 / deadzone=21,11 / fast_pskip=1 / chroma_qp_offset=0 / threads=4 / lookahead_threads=1 / sliced_threads=0 / nr=0 / decimate=1 / interlaced=0 / bluray_compat=0 / constrained_intra=0 / bframes=3 / b_pyramid=2 / b_adapt=1 / b_bias=0 / direct=1 / weightb=1 / open_gop=0 / weightp=1 / keyint=250 / keyint_min=25 / scenecut=40 / intra_refresh=0 / rc=crf / mbtree=0 / crf=23.0 / qcomp=0.60 / qpmin=0 / qpmax=69 / qpstep=4 / ip_ratio=1.25 / pb_ratio=1.25 / aq=1:1.00</Encoded_Library_Settings>
+<Default_String>Yes</Default_String>
+<Forced_String>No</Forced_String>
+</track>
+
+</File>
+</Mediainfo>
+

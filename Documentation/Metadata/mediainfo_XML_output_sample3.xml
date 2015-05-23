@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="0.7.69">
+<File>
+<track type="General">
+<UniqueID_String>26693808204737839813614660115670761437 (0x14150A5B4458151305CF1FD6F41BFFDD)</UniqueID_String>
+<CompleteName>/Users/ashley/small.mkv</CompleteName>
+<Format>Matroska</Format>
+<Format_Version>Version 4 / Version 2</Format_Version>
+<FileSize_String>648 Byte3</FileSize_String>
+<Duration_String>40ms</Duration_String>
+<OverallBitRate_String>130 Kbps</OverallBitRate_String>
+<Encoded_Application>Lavf56.4.101</Encoded_Application>
+<Encoded_Library_String>Lavf56.4.101</Encoded_Library_String>
+</track>
+
+<track type="Video">
+<ID_String>1</ID_String>
+<Format>RGB</Format>
+<CodecID>V_UNCOMPRESSED</CodecID>
+<CodecID_Info>Raw uncompressed video frames</CodecID_Info>
+<Duration_String>40ms</Duration_String>
+<Width_String>2 pixel2</Width_String>
+<Height_String>2 pixel2</Height_String>
+<DisplayAspectRatio_String>1.000</DisplayAspectRatio_String>
+<FrameRate_Mode_String>CFR</FrameRate_Mode_String>
+<FrameRate_String>25.000 fps3</FrameRate_String>
+<Encoded_Library_String>Lavc56.1.100 rawvideo</Encoded_Library_String>
+<Default_String>Yes</Default_String>
+<Forced_String>No</Forced_String>
+</track>
+
+</File>
+</Mediainfo>
+

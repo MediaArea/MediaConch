@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="0.7.69">
+<File>
+<track type="General">
+<Unique_ID>57797359423942728715332515487551816860 (0x2B7B5DD4649473FD8D043AC41F23849C)</Unique_ID>
+<Complete_name>/Users/erikpiil/Desktop/ffv1lpcm.mkv</Complete_name>
+<Format>Matroska</Format>
+<Format_version>Version 4 / Version 2</Format_version>
+<File_size>68.6 MiB</File_size>
+<Duration>3s 671ms</Duration>
+<Overall_bit_rate>157 Mbps</Overall_bit_rate>
+<Writing_application>Lavf56.25.101</Writing_application>
+<Writing_library>Lavf56.25.101</Writing_library>
+</track>
+
+<track type="Video">
+<ID>1</ID>
+<Format>FFV1</Format>
+<Codec_ID>V_MS/VFW/FOURCC / FFV1</Codec_ID>
+<Duration>3s 670ms</Duration>
+<Width>1 920 pixels</Width>
+<Height>1 080 pixels</Height>
+<Display_aspect_ratio>16:9</Display_aspect_ratio>
+<Frame_rate_mode>Constant</Frame_rate_mode>
+<Frame_rate>23.976 fps</Frame_rate>
+<Compression_mode>Lossless</Compression_mode>
+<Writing_library>Lavc56.26.100 ffv1</Writing_library>
+<Language>English</Language>
+<Default>Yes</Default>
+<Forced>No</Forced>
+<Encoded_date>UTC 2014-03-14 15:19:41</Encoded_date>
+<HANDLER_NAME>Apple Alias Data Handler</HANDLER_NAME>
+</track>
+
+<track type="Audio">
+<ID>2</ID>
+<Format>PCM</Format>
+<Codec_ID>A_PCM/INT/LIT</Codec_ID>
+<Duration>3s 671ms</Duration>
+<Bit_rate_mode>Constant</Bit_rate_mode>
+<Channel_s_>2 channels</Channel_s_>
+<Sampling_rate>48.0 KHz</Sampling_rate>
+<Bit_depth>16 bits</Bit_depth>
+<Writing_library>Lavc56.26.100 pcm_s16le</Writing_library>
+<Language>English</Language>
+<Default>Yes</Default>
+<Forced>No</Forced>
+<Encoded_date>UTC 2014-03-14 15:19:41</Encoded_date>
+<HANDLER_NAME>Apple Alias Data Handler</HANDLER_NAME>
+</track>
+
+</File>
+</Mediainfo>
