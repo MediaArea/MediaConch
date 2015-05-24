@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mediainfo version="0.7.73">
+<File>
+<track type="General">
+<Count>308</Count>
+<StreamCount>1</StreamCount>
+<StreamKind>General</StreamKind>
+<StreamKind_String>General</StreamKind_String>
+<StreamKindID>0</StreamKindID>
+<UniqueID>322729382845927035497048390968531719218</UniqueID>
+<UniqueID_String>322729382845927035497048390968531719218 (0xF2CB6B117DFA81D3C7C60ED309AF9432)</UniqueID_String>
+<VideoCount>1</VideoCount>
+<Video_Format_List>FFV1</Video_Format_List>
+<Video_Format_WithHint_List>FFV1</Video_Format_WithHint_List>
+<Video_Codec_List>FFV1</Video_Codec_List>
+<CompleteName>Test1.mkv</CompleteName>
+<FileName>Test1</FileName>
+<FileExtension>mkv</FileExtension>
+<Format>Matroska</Format>
+<Format_String>Matroska</Format_String>
+<Format_Url>http://packs.matroska.org/</Format_Url>
+<Format_Extensions>mkv mk3d mka mks</Format_Extensions>
+<Format_Commercial>Matroska</Format_Commercial>
+<Format_Version>Version 4 / Version 2</Format_Version>
+<Codec>Matroska</Codec>
+<Codec_String>Matroska</Codec_String>
+<Codec_Url>http://packs.matroska.org/</Codec_Url>
+<Codec_Extensions>mkv mk3d mka mks</Codec_Extensions>
+<FileSize>455522</FileSize>
+<FileSize_String>445 KiB</FileSize_String>
+<FileSize_String1>445 KiB</FileSize_String1>
+<FileSize_String2>445 KiB</FileSize_String2>
+<FileSize_String3>445 KiB</FileSize_String3>
+<FileSize_String4>444.8 KiB</FileSize_String4>
+<Duration>1001</Duration>
+<Duration_String>1s 1ms</Duration_String>
+<Duration_String1>1s 1ms</Duration_String1>
+<Duration_String2>1s 1ms</Duration_String2>
+<Duration_String3>00:00:01.001</Duration_String3>
+<Duration_String4>00:00:01;00</Duration_String4>
+<Duration_String5>00:00:01.001 (00:00:01;00)</Duration_String5>
+<OverallBitRate>3640535</OverallBitRate>
+<OverallBitRate_String>3641 Kbps</OverallBitRate_String>
+<FrameRate>29.970</FrameRate>
+<FrameRate_String>29.970 fps3</FrameRate_String>
+<FrameCount>30</FrameCount>
+<StreamSize>9064</StreamSize>
+<StreamSize_String>8.85 KiB (2%)</StreamSize_String>
+<StreamSize_String1>9 KiB</StreamSize_String1>
+<StreamSize_String2>8.9 KiB</StreamSize_String2>
+<StreamSize_String3>8.85 KiB</StreamSize_String3>
+<StreamSize_String4>8.852 KiB</StreamSize_String4>
+<StreamSize_String5>8.85 KiB (2%)</StreamSize_String5>
+<StreamSize_Proportion>0.01990</StreamSize_Proportion>
+<File_Modified_Date>UTC 2015-05-24 15:57:46</File_Modified_Date>
+<File_Modified_Date_Local>2015-05-24 11:57:46</File_Modified_Date_Local>
+<Encoded_Application>Lavf56.4.101</Encoded_Application>
+<Encoded_Application_String>Lavf56.4.101</Encoded_Application_String>
+<Encoded_Library>Lavf56.4.101</Encoded_Library>
+<Encoded_Library_String>Lavf56.4.101</Encoded_Library_String>
+</track>
+
+<track type="Video">
+<Count>314</Count>
+<StreamCount>1</StreamCount>
+<StreamKind>Video</StreamKind>
+<StreamKind_String>Video</StreamKind_String>
+<StreamKindID>0</StreamKindID>
+<StreamOrder>0</StreamOrder>
+<ID>1</ID>
+<ID_String>1</ID_String>
+<UniqueID>1</UniqueID>
+<Format>FFV1</Format>
+<Format_Commercial>FFV1</Format_Commercial>
+<Format_Version>Version 3.4</Format_Version>
+<Format_Settings_GOP>N=1</Format_Settings_GOP>
+<CodecID>V_MS/VFW/FOURCC / FFV1</CodecID>
+<CodecID_Url>http://ffdshow-tryout.sourceforge.net/</CodecID_Url>
+<Codec>FFV1</Codec>
+<Codec_String>FFV1</Codec_String>
+<Codec_Url>http://ffdshow-tryout.sourceforge.net/</Codec_Url>
+<Codec_CC>FFV1</Codec_CC>
+<Duration>1001</Duration>
+<Duration_String>1s 1ms</Duration_String>
+<Duration_String1>1s 1ms</Duration_String1>
+<Duration_String2>1s 1ms</Duration_String2>
+<Duration_String3>00:00:01.001</Duration_String3>
+<Duration_String4>00:00:01;00</Duration_String4>
+<Duration_String5>00:00:01.001 (00:00:01;00)</Duration_String5>
+<BitRate>3568088</BitRate>
+<BitRate_String>3568 Kbps</BitRate_String>
+<Width>720</Width>
+<Width_String>720 pixel3</Width_String>
+<Height>576</Height>
+<Height_String>576 pixel3</Height_String>
+<PixelAspectRatio>1.000</PixelAspectRatio>
+<DisplayAspectRatio>1.250</DisplayAspectRatio>
+<DisplayAspectRatio_String>5:4</DisplayAspectRatio_String>
+<FrameRate_Mode>CFR</FrameRate_Mode>
+<FrameRate_Mode_String>CFR</FrameRate_Mode_String>
+<FrameRate>29.970</FrameRate>
+<FrameRate_String>29.970 fps3</FrameRate_String>
+<FrameCount>30</FrameCount>
+<Resolution>8</Resolution>
+<Resolution_String>8 bit3</Resolution_String>
+<ColorSpace>RGB</ColorSpace>
+<BitDepth>8</BitDepth>
+<BitDepth_String>8 bit3</BitDepth_String>
+<Compression_Mode>Lossless</Compression_Mode>
+<Compression_Mode_String>Lossless</Compression_Mode_String>
+<Bits_Pixel_Frame_>0.287</Bits_Pixel_Frame_>
+<Delay>0</Delay>
+<Delay_String3>00:00:00.000</Delay_String3>
+<Delay_Source>Container</Delay_Source>
+<Delay_Source_String>Container</Delay_Source_String>
+<StreamSize>446458</StreamSize>
+<StreamSize_String>436 KiB (98%)</StreamSize_String>
+<StreamSize_String1>436 KiB</StreamSize_String1>
+<StreamSize_String2>436 KiB</StreamSize_String2>
+<StreamSize_String3>436 KiB</StreamSize_String3>
+<StreamSize_String4>436.0 KiB</StreamSize_String4>
+<StreamSize_String5>436 KiB (98%)</StreamSize_String5>
+<StreamSize_Proportion>0.98010</StreamSize_Proportion>
+<Encoded_Library>Lavc56.1.100 ffv1</Encoded_Library>
+<Encoded_Library_String>Lavc56.1.100 ffv1</Encoded_Library_String>
+<Default>Yes</Default>
+<Default_String>Yes</Default_String>
+<Forced>No</Forced>
+<Forced_String>No</Forced_String>
+<coder_type>Golomb Rice</coder_type>
+<MaxSlicesCount>4</MaxSlicesCount>
+<ErrorDetectionType>Per slice</ErrorDetectionType>
+</track>
+
+</File>
+</Mediainfo>
+
