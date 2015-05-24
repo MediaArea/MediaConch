@@ -14,7 +14,7 @@
       </sch:rule>
     </sch:pattern>
 
-<!-- Some logic -->
+<!-- But other file extensions can be Matroska too -->
     <sch:pattern name="If Complete_name ends in .mkv, Format must be Matroska">
       <sch:rule context="ex:File">
           <sch:assert test="(@Format = 'Matroska' and ex:Complete_name[ends-with(.mkv)]) or @Format != 'Matroska'">Format must be Matroska</sch:assert>
