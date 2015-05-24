@@ -53,4 +53,22 @@
       </sch:rule>
     </sch:pattern>
 
+    <sch:pattern name="Compression_mode must be lossless">
+      <sch:rule context="ex:track[@type='Video']">
+          <sch:assert test="(@Compression_mode = 'Lossless'">Compression_mode must be lossless</sch:assert>
+      </sch:rule>
+    </sch:pattern>
+
+    <sch:pattern name="Video Writing_library">
+      <sch:rule context="ex:track[@type='Video']">
+          <sch:assert test="(@Writing_library = 'Lavc56.26.100 ffv1'">Video Writing_library must be Lavc56.26.100 ffv1</sch:assert>
+      </sch:rule>
+    </sch:pattern>
+
+    <sch:pattern name="Audio Writing_library">
+      <sch:rule context="ex:track[@type='Audio']">
+          <sch:assert test="(@Writing_library = 'Lavc56.26.100 pcm_s16le'">Audio Writing_library must be Lavc56.26.100 pcm_s16le</sch:assert>
+      </sch:rule>
+    </sch:pattern>
+
 </sch:schema>
