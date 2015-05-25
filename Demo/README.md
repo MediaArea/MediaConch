@@ -34,10 +34,10 @@ Create associated XML:
 ### Test 2: Testing multiple files
 
 Create files:
-(found file, reverse engineer creation)
+(Files provided). Files are identical copies except Test2_2.mkv has had two bytes (value of 0000) removed. Test2_3.mkv is a copy of Test2_2.mkv with the two bytes replaced after copying.
 
 Create associated XML:
-`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv > Test2.xml`
+`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv > Test2.xml`
 
 [Schematron for multiple files](Files/Test2.sch)
 
