@@ -38,8 +38,26 @@
   </sch:pattern>
   
   <sch:pattern name="Video file has unique ID">
-    <sch:rule context="//File">
-      <sch:assert test="track[@type='Video']/UniqueID">Video track Unique ID must exist.</sch:assert>
+    <sch:rule context="//File/track[@type='Video']">
+      <sch:assert test="UniqueID">Video track Unique ID must exist.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+
+  <sch:pattern name="Video Format">
+    <sch:rule context="//File/track[@type='Video']">
+      <sch:assert test="Format = 'FFV1'">Video Format must equal FFV1.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+ 
+  <sch:pattern name="DisplayAspectRatio must be 1.333">
+    <sch:rule context="//File/track[@type='Video']">
+      <sch:assert test="DisplayAspectRatio = 1.333">DisplayAspectRatio must be 1.333.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  
+  <sch:pattern name="Coder type should be Golomb Rice">
+    <sch:rule context="//File/track[@type='Video']">
+      <sch:assert test="coder_type = 'Golomb Rice'">Coder type must be Golomb Rice.</sch:assert>
     </sch:rule>
   </sch:pattern>
   
