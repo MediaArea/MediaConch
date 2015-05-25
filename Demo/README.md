@@ -16,9 +16,9 @@ Create a file:
 Create associated XML:
 `mediaconch -ti -fx Test0.mkv > Test0.xml`
 
-Schematron for file
+[Schematron for file](Files/Test0.sch)
 
-### Test 1
+### Test 1:
 Test1.mkv -- This file has a PAL framesize but an NTSC rate, so testing for one standard or another will both fail.
 
 Create a file:
@@ -27,6 +27,19 @@ Create a file:
 Create associated XML:
 `mediaconch -ti -fx Test1.mkv > Test1.xml`
 
-Schematron for PAL
+[Schematron for PAL](Files/Test1_pal.sch)
 
-Schematron for NTSC
+[Schematron for NTSC](Files/Test1_ntsc.sch)
+
+### Test 2: Testing multiple files
+
+Create files:
+(found file, reverse engineer creation)
+
+Create associated XML:
+`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv > Test2.xml`
+
+[Schematron for multiple files](Files/Test2.sch)
+
+
+
