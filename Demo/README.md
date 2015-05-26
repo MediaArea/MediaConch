@@ -36,7 +36,7 @@ Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvaila
 
 Schematron patterns are based on rules of assertions or reports. An assertion seeks to pair a file's XPath with the expected answer and passes if the statement is true. A report is the opposite: it checks for if the test statement is true and raises an error.
 
-Schematron validation can be tested using [Oxygen XML Editor](http://www.oxygenxml.com/) or [Probatron](http://www.probatron.org/).
+Schematron validation can be tested using [xmllint](http://xmlsoft.org/xmllint.html).
 
 ## Testing
 
@@ -75,6 +75,12 @@ This policy checks all files for a framesize of 720 × 576 and a framerate of 25
 [Schematron for NTSC](Files/Test1_ntsc.sch)
 This policy checks all files for a framesize of 720 × 480 and a framerate of 29.970.
 
+To gather technical metadata with mediaconch and test a policy in one line (using xmllint to apply the schematron) run:
+
+`mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_ntsc.sch -`
+
+`mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_pal.sch -`
+
 ### Test 2: Testing multiple files
 
 Files:
@@ -88,3 +94,8 @@ Create associated XML:
 
 [Schematron for multiple files](Files/Test2.sch)
 This policy checks all the files for conformance. Test2_2.mkv and Test2_3.mkv fail because they have been manipulated, but they fail in different ways.
+
+
+As one line with mediaconch and xmllint:
+
+`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv | xmllint --noout --schematron Test2.sch -`
