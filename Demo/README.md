@@ -62,6 +62,12 @@ Create associated XML:
 
 [Schematron for NTSC](Files/Test1_ntsc.sch)
 
+To gather technical metadata with mediaconch and test a policy in one line (using xmllint to apply the schematron) run:
+
+`mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_ntsc.sch -`
+
+`mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_pal.sch -`
+
 ### Test 2: Testing multiple files
 
 Create files:
@@ -71,3 +77,7 @@ Create associated XML:
 `mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv > Test2.xml`
 
 [Schematron for multiple files](Files/Test2.sch)
+
+As one line with mediaconch and xmllint:
+
+`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv | xmllint --noout --schematron Test2.sch -`
