@@ -13,7 +13,7 @@ mediaconch FileName
 mediaconch --Help
 
 
-Warning : MediaConch ClI is installed in /usr/local/bin by default.
+Warning : MediaConch CLI is installed in /usr/local/bin by default.
 So check that /usr/local/bin is in your path.
 If MediaConch CLI does not start in Mac OS X's
 Terminal application (Utilities folder), type first
