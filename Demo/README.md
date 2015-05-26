@@ -10,7 +10,7 @@ After installation, MediaConch can be run on the command line by using the `medi
 
 `mediaconch -ti -fx FileName` will shorthand for the above and will print to the screen the associated XML with the file.
 
-`mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output. This is in beta testing phase and not suitable for use in production.
+`mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output.
 
 `mediaconch --Tool=Trace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This XML format is undergoing early development and not suitable for use in production.
 
