@@ -28,12 +28,12 @@
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediainfo/0.7.73/mediainfo-0.7.73-1.i686.Fedora_21.rpm">v15.05</a></td>
+    <td><a href="/download/binary/mediaconch/15.05/mediaconch-15.05-1.i686.Fedora_21.rpm">v15.05</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.73/libmediainfo0-0.7.73-1.i686.Fedora_21.rpm">v0.7.73</a><small> (<a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-devel-0.7.73-1.i686.Fedora_21.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-doc-0.7.73-1.i686.Fedora_21.rpm">doc</a>)</small></td>
+    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0-0.7.74-1.i686.Fedora_21.rpm">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-devel-0.7.74-1.i686.Fedora_21.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-doc-0.7.74-1.i686.Fedora_21.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -52,12 +52,12 @@
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediainfo/0.7.73/mediainfo-0.7.73-1.x86_64.Fedora_21.rpm">v15.05</a></td>
+    <td><a href="/download/binary/mediaconch/15.05/mediaconch-15.05-1.x86_64.Fedora_21.rpm">v15.05</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.73/libmediainfo0-0.7.73-1.x86_64.Fedora_21.rpm">v0.7.73</a><small> (<a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-devel-0.7.73-1.x86_64.Fedora_21.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-doc-0.7.73-1.x86_64.Fedora_21.rpm">doc</a>)</small></td>
+    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0-0.7.74-1.x86_64.Fedora_21.rpm">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-devel-0.7.74-1.x86_64.Fedora_21.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-doc-0.7.74-1.x86_64.Fedora_21.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -77,12 +77,12 @@
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediainfo/0.7.73/mediainfo-0.7.73-1.i686.Fedora_20.rpm">v15.05</a></td>
+    <td><a href="/download/binary/mediaconch/15.05/mediaconch-15.05-1.i686.Fedora_20.rpm">v15.05</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.73/libmediainfo0-0.7.73-1.i686.Fedora_20.rpm">v0.7.73</a><small> (<a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-devel-0.7.73-1.i686.Fedora_20.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-doc-0.7.73-1.i686.Fedora_20.rpm">doc</a>)</small></td>
+    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0-0.7.74-1.i686.Fedora_20.rpm">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-devel-0.7.74-1.i686.Fedora_20.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-doc-0.7.74-1.i686.Fedora_20.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -101,12 +101,12 @@
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediainfo/0.7.73/mediainfo-0.7.73-1.x86_64.Fedora_20.rpm">v15.05</a></td>
+    <td><a href="/download/binary/mediaconch/15.05/mediaconch-15.05-1.x86_64.Fedora_20.rpm">v15.05</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.73/libmediainfo0-0.7.73-1.x86_64.Fedora_20.rpm">v0.7.73</a><small> (<a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-devel-0.7.73-1.x86_64.Fedora_20.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.73/libmediainfo-doc-0.7.73-1.x86_64.Fedora_20.rpm">doc</a>)</small></td>
+    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0-0.7.74-1.x86_64.Fedora_20.rpm">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-devel-0.7.74-1.x86_64.Fedora_20.rpm">devel</a>, <a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-doc-0.7.74-1.x86_64.Fedora_20.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
