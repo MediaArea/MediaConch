@@ -16,7 +16,7 @@ Files can be dragged into the program for analysis. Multiple files can be loaded
 
 ## MediaConch CLI version 15.05
 
-## File information retrieval
+### File information retrieval
 
 After installation, MediaConch can be run on the command line by using the `mediaconch` command. Although MediaConch will result information about nearly any audiovisual file, it is specifically optimized for Matroska, FFV1, and/or PCM files.
 
@@ -32,12 +32,12 @@ After installation, MediaConch can be run on the command line by using the `medi
 
 `mediaconch -tt -fx FileName` is shorthand for the above command.
 
-## Policy Checker
+### Policy Checker
 
 In addition to checking files for conformance at a basic level, MediaConch is developing a policy checker that allows archives, museums, and other memory institutions to create their own policies to which files should comply. Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.
 
 
-## Schematron
+### Schematron
 
 Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html) (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to express policy rules for checking file conformance according to desired specifications.
 
@@ -56,13 +56,13 @@ In the above example, the Schematron pattern checks one or multiple Mediainfo Fi
 
 Schematron validation can be tested using [xmllint](http://xmlsoft.org/xmllint.html) via the command line or [Oxygen XML Editor](http://www.oxygenxml.com/) via graphical user interface. Future releases of MediaConch will have schematron validation built in.
 
-## Testing
+### Testing
 
 For all tests, sample video files have been provided. For the first two tests, the FFmpeg command to create the files are provided as well.
 
 Each test series includes XML created using the MediaConch CLI and Schematron files used to test against the XML. 
 
-### Test 0
+#### Test 0: General conformance
 
 Files: 
 Test0.mkv -- This is a normal file with associated passing Schematron.
@@ -80,7 +80,7 @@ To gather technical metadata with mediaconch and test a policy in one line (usin
 
 `mediaconch -ti -fx Test0.mkv | xmllint --noout --schematron Test0.sch -`
 
-### Test 1:
+#### Test 1: Conflicting tests
 
 Files:
 Test1.mkv -- This file has a PAL framesize but an NTSC rate, so testing for one standard or another will both cause a failure.
@@ -103,7 +103,7 @@ As one line with mediaconch and xmllint:
 
 `mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_pal.sch -`
 
-### Test 2: Testing multiple files
+#### Test 2: Testing multiple files
 
 Files:
 Files are identical copies except Test2_2.mkv has had two bytes (value of 0000) removed and Test2_3.mkv is a copy of Test2_2.mkv with the two bytes replaced after copying.
