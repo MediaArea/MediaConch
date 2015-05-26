@@ -4,15 +4,15 @@
 
 After installation, MediaConch can be run on the command line by using the `mediaconch` command. MediaConch is intended for Matroska, FFV1, and/or PCM files.
 
-`mediaconch --Tool=MediaInfo FileName` will print to the screen the most recent MediaInfo output.
+`mediaconch --Tool=Info FileName` will print to the screen the most recent MediaInfo output.
 
-`mediaconch --Tool=MediaInfo --Format=XML FileName` will print to the screen the most recent MediaInfo output in XML format.
+`mediaconch --Tool=Info --Format=XML FileName` will print to the screen the most recent MediaInfo output in XML format.
 
 `mediaconch -ti -fx FileName` will shorthand for the above and will print to the screen the associated XML with the file.
 
-`mediaconch --Tool=MediaTrace FileName` will print to the screen the most recent MediaInfo trace output. This is in beta testing phase and not suitable for use in production.
+`mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output. This is in beta testing phase and not suitable for use in production.
 
-`mediaconch --Tool=MediaTrace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This is in beta testing phase and not suitable for use in production.
+`mediaconch --Tool=Trace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This is in beta testing phase and not suitable for use in production.
 
 ## Policy Checker
 
