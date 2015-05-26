@@ -11,17 +11,19 @@ Forthcoming releases of MediaConch CLI and MediaConch Online will allow for the 
 
 ## File information retrieval
 
-After installation, MediaConch can be run on the command line by using the `mediaconch` command.
+After installation, MediaConch can be run on the command line by using the `mediaconch` command. Although MediaConch will result information about nearly any audiovisual file, it is specifically optimized for Matroska, FFV1, and/or PCM files.
 
-`mediaconch --Tool=MediaInfo FileName` will print to the screen the most recent MediaInfo output.
+`mediaconch --Tool=Info FileName` will print to the screen the most recent MediaInfo output.
 
-`mediaconch --Tool=MediaInfo --Format=XML FileName` will print to the screen the most recent MediaInfo output in XML format.
+`mediaconch --Tool=Info --Format=XML FileName` will print to the screen the most recent MediaInfo output in XML format.
 
 `mediaconch -ti -fx FileName` is shorthand for the above command and will print to the screen the associated XML with the file.
 
-`mediaconch --Tool=MediaTrace FileName` will print to the screen the most recent MediaInfo trace output. This is in beta testing phase and not suitable for use in production.
+`mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output.
 
-`mediaconch --Tool=MediaTrace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This is in beta testing phase and not suitable for use in production.
+`mediaconch --Tool=Trace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This XML format is undergoing early development and not suitable for use in production.
+
+`mediaconch -tt -fx FileName` is shorthand for the above command.
 
 ## Policy Checker
 
@@ -30,12 +32,11 @@ In addition to checking files for conformance at a basic level, MediaConch is de
 
 ## Schematron
 
-Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html) (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to create policy rules for checking file conformance according to desired specifications.
+Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html) (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to express policy rules for checking file conformance according to desired specifications.
 
 Schematron patterns are based on rules of assertions or reports. An assertion seeks to pair a file's XPath with the expected answer and passes if the statement is true. A report is the opposite: it checks for if the test statement is true and raises an error.
 
 Schematron validation can be tested using [Oxygen XML Editor](http://www.oxygenxml.com/) or [Probatron](http://www.probatron.org/).
-
 
 ## Testing
 

@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 int Help()
 {
-    TEXTOUT("Usage: \"MediaConch [-Options...] FileName1 [Filename2...]\"");
+    TEXTOUT("Usage: \"mediaconch [-Options...] FileName1 [Filename2...]\"");
     TEXTOUT("");
     TEXTOUT("Options:");
     TEXTOUT("--Help, -h");
@@ -98,8 +98,8 @@ int Help()
 //---------------------------------------------------------------------------
 int Help_Nothing()
 {
-    TEXTOUT("Usage: \"MediaConch [-Options...] FileName1 [Filename2...]\"");
-    TEXTOUT("\"MediaConch --Help\" for displaying more information");
+    TEXTOUT("Usage: \"mediaconch [-Options...] FileName1 [Filename2...]\"");
+    TEXTOUT("\"mediaconch --Help\" for displaying more information");
 
     return -1;
 }
@@ -108,7 +108,7 @@ int Help_Nothing()
 int Help_Output()
 {
     TEXTOUT("--Output=...  Specify a template (BETA)");
-    TEXTOUT("Usage: \"MediaConch --Output=[xxx;]Text FileName\"");
+    TEXTOUT("Usage: \"mediaconch --Output=[xxx;]Text FileName\"");
     TEXTOUT("");
     TEXTOUT("xxx can be: General, Video, Audio, Text, Chapter, Image, Menu");
     TEXTOUT("Text can be the template text, or a filename");
