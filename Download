@@ -21,6 +21,30 @@
     <td><a href="Mac_OS">Official releases</a></td>
 </tr>
 <tr>
+    <th><a href="Debian"><img src="/_/img/OS/Debian.png" width="229" height="61" alt="Debian" title="Debian"></a></th>
+    <td><a href="Debian">Official releases</a></td>
+</tr>
+<tr>
+    <th><a href="Ubuntu"><img src="/_/img/OS/Ubuntu.png" width="304" height="79" alt="Ubuntu" title="Ubuntu"></a></th>
+    <td><a href="Ubuntu">Official releases</a></td>
+</tr>
+<tr>
+    <th><a href="Ubuntu"><img src="/_/img/OS/Linux_Mint.png" width="256" height="75" alt="Linux Mint" title="Linux Mint"></a></th>
+    <td><a href="Ubuntu">Official releases</a></td>
+</tr>
+<tr>
+    <th><a href="RHEL"><img src="/_/img/OS/RedHat.png" width="200" height="61" alt="RedHat Entreprise Linux" title="RedHat Entreprise Linux"></a></th>
+    <td><a href="RHEL">Official releases</a></td>
+</tr>
+<tr>
+    <th><a href="CentOS"><img src="/_/img/OS/CentOS.png" width="271" height="60" alt="CentOS" title="CentOS"></a></th>
+    <td><a href="CentOS">Official releases</a></td>
+</tr>
+<tr>
+    <th><a href="Fedora"><img src="/_/img/OS/Fedora.png" width="250" height="89" alt="Fedora" title="Fedora"></a></th>
+    <td><a href="Fedora">Official releases</a></td>
+</tr>
+<tr>
     <th>&nbsp;</th>
     <td>&nbsp;</td>
 </tr>
@@ -30,30 +54,6 @@
 <tr>
     <th>&nbsp;</th>
     <td>&nbsp;</td>
-</tr>
-<tr>
-    <th><a xhref="Debian"><img src="/_/img/OS/Debian.png" width="229" height="61" alt="Debian" title="Debian"></a></th>
-    <td><a xhref="Debian">Official releases</a></td>
-</tr>
-<tr>
-    <th><a xhref="Ubuntu"><img src="/_/img/OS/Ubuntu.png" width="304" height="79" alt="Ubuntu" title="Ubuntu"></a></th>
-    <td><a xhref="Ubuntu">Official releases</a></td>
-</tr>
-<tr>
-    <th><a xhref="Ubuntu"><img src="/_/img/OS/Linux_Mint.png" width="256" height="75" alt="Linux Mint" title="Linux Mint"></a></th>
-    <td><a xhref="Ubuntu">Official releases</a></td>
-</tr>
-<tr>
-    <th><a xhref="RHEL"><img src="/_/img/OS/RedHat.png" width="200" height="61" alt="RedHat Entreprise Linux" title="RedHat Entreprise Linux"></a></th>
-    <td><a xhref="RHEL">Official releases</a></td>
-</tr>
-<tr>
-    <th><a xhref="CentOS"><img src="/_/img/OS/CentOS.png" width="271" height="60" alt="CentOS" title="CentOS"></a></th>
-    <td><a xhref="CentOS">Official releases</a></td>
-</tr>
-<tr>
-    <th><a xhref="Fedora"><img src="/_/img/OS/Fedora.png" width="250" height="89" alt="Fedora" title="Fedora"></a></th>
-    <td><a xhref="Fedora">Official releases</a></td>
 </tr>
 <tr>
     <th><a xhref="openSUSE"><img src="/_/img/OS/openSUSE.png" width="155" height="100" alt="openSUSE" title="openSUSE"></a></th>
