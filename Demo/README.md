@@ -39,7 +39,7 @@ Schematron validation can be tested using [Oxygen XML Editor](http://www.oxygenx
 
 ## Testing
 
-For all tests, sample video files have been provided. For the first two tests, the ffmpeg command to create the files are provided as well.
+For all tests, sample video files have been provided. For the first two tests, the FFmpeg command to create the files are provided as well.
 
 Each test series includes XML created using the MediaConch CLI and Schematron files used to test against the XML. 
 
@@ -55,6 +55,7 @@ Create associated XML:
 `mediaconch -ti -fx Test0.mkv > Test0.xml`
 
 [Schematron for file](Files/Test0.sch)
+This policy checks that the file follows general rules of file conformance, such as the extension being mkv, the file including a video stream, and the file having a unique ID. It also checks for assertions specific to this file, such as the duration being 1 second, the frame rate being 25 frames per second, and the coder type being Golomb Rice.
 
 ### Test 1:
 
@@ -85,3 +86,4 @@ Create associated XML:
 `mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv > Test2.xml`
 
 [Schematron for multiple files](Files/Test2.sch)
+This policy checks all the files for conformance. Test2_2.mkv and Test2_3.mkv fail because they have been manipulated, but they fail in different ways.
