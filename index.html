@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>🐚CONCH</title>
+    <title>🐚 MEDIACONCH</title>
 
     <link rel="stylesheet" href="public/stylesheets/styles.css">
     <link rel="stylesheet" href="public/stylesheets/pygment_trac.css">
@@ -16,64 +16,406 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href="Outreach/Slides/index.html">🐚 Conch</a></h1>
+        <h2><a href="Outreach/Slides/index.html">🐚MediaConch</a></h2>
         <p class="header"></p>
 
         <ul>
-<!--           <li class="download"><a class="buttons" href="https://github.com/MediaArea/PreFormaMediaInfo/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/MediaArea/PreFormaMediaInfotarball/master">Download TAR</a></li> -->
-          <li><a class="buttons github" href="https://github.com/MediaArea/PreFormaMediaInfo">View On GitHub</a></li>
+<!--           <li class="download"><a class="buttons" href="https://github.com/MediaArea/MediaConch/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/MediaArea/MediaConch/master">Download TAR</a></li> -->
+          <li><a class="buttons github" href="https://github.com/MediaArea/MediaConch">View On GitHub</a></li>
         </ul>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://www.mediaarea.net">MediaArea</a></p>
+        <p class="header">This project is maintained by <a class="header name" href="https://mediaarea.net">MediaArea</a><br /> and funded by <a href="http://www.preforma-project.eu"><img src="public/images/pfo_logo.png" width="50%" alt="PREFORMA"></a></p>
 
+        <p class="header">Stay up-to-date with the project by <a href="https://docs.google.com/forms/d/1yWJZB6bt19rMrjYEOrYgKRK5sFjd4p7ZKDdXiKZrCTI/viewform?usp=send_form">joining our mailing list.</a></p>
 
       </header>
       <section>
         <h3>
         <a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Overview</h3>
 
-        <p>Conch is an extensible, open source software project consisting of an implementation checker, policy checker, reporter, and fixer that targets preservation-level audiovisual files (specifically Matroska, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1)) for use in memory institutions, providing detailed and batch-level conformance checking via an adaptable and flexible application program interface accessible by the command line, a graphical user interface, or a web-based shell. Conch is currently being developed by the MediaArea.net team, notable for the creation of open source media checker software, MediaInfo. Furthermore, the MediaArea team is dedicated to the further development of the standardization of the Matroska and FFV1 formats to ensure their longevity as a recommended digital preservation file format.</p>
+        <p><abbr title="Media CONformance CHecker">MediaConch</abbr> is an extensible, open source software project consisting of an implementation checker, policy checker, reporter, and fixer that targets preservation-level audiovisual files (specifically Matroska, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1)) for use in memory institutions, providing detailed and batch-level conformance checking via an adaptable and flexible application program interface accessible by the command line, a graphical user interface, or a web-based shell. Conch is currently being developed by the MediaArea team, notable for the creation of open source media checker software, MediaInfo. Furthermore, the MediaArea team is dedicated to the further development of the standardization of the Matroska and FFV1 formats to ensure their longevity as a recommended digital preservation file format.</p>
+
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h2><a id="user-content-demo-for-mediaconch-version-1505" class="anchor" href="#demo-for-mediaconch-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo for MediaConch version 15.05</h2>
+<p>
+<a href="/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">Graphical User Interface version 15.05 for Windows</a><br />
+<a href="/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows.zip">Command Line Interface 15.05 for Windows</a><br />
+<a href="/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Mac.dmg">Graphical User Interface version 15.05 for Mac</a><br />
+<a href="/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Mac.dmg">Command Line Interface version 15.05 for Mac</a><br />
+<a href="Download">Other downloads... (note: Linux versions coming soon)</a><br />
+<h3>15.05 Release Notes</h3>
+
+<p>This initial release of MediaConch CLI builds on the development of MediaInfo 0.7.74.</p>
+
+<p>The priority for this release is the development of a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.</p>
+
+<p>Forthcoming releases of MediaConch will allow for the creation of and uploading of Schematron documents to facilitate file conformance checking. Instructions and files for initially testing this phase of development are below.</p>
+
+<h3><a id="user-content-mediaconch-gui-version-1505" class="anchor" href="#mediaconch-gui-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>MediaConch GUI version 15.05</h3>
+
+<p>Files can be dragged into the program for analysis. Multiple files can be loaded by adding files using the File&gt;Open menu. Analysis can toggled between Info and Trace. Display of analysis can toggle between Text and XML.</p>
+
+<h3><a id="user-content-mediaconch-cli-version-1505" class="anchor" href="#mediaconch-cli-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>MediaConch CLI version 15.05</h3>
+
+<h4><a id="user-content-file-information-retrieval" class="anchor" href="#file-information-retrieval" aria-hidden="true"><span class="octicon octicon-link"></span></a>File information retrieval</h4>
+
+<p>After installation, MediaConch can be run on the command line by using the <code>mediaconch</code> command. Although MediaConch will result information about nearly any audiovisual file, it is specifically optimized for Matroska, FFV1, and/or PCM files.</p>
+
+<p><code>mediaconch --Tool=Info FileName</code> will print to the screen the most recent MediaInfo output.</p>
+
+<p><code>mediaconch --Tool=Info --Format=XML FileName</code> will print to the screen the most recent MediaInfo output in XML format.</p>
+
+<p><code>mediaconch -ti -fx FileName</code> is shorthand for the above command and will print to the screen the associated XML with the file.</p>
+
+<p><code>mediaconch --Tool=Trace FileName</code> will print to the screen the most recent MediaInfo trace output.</p>
+
+<p><code>mediaconch --Tool=Trace --Format=XML FileName</code> will print to the screen the most recent MediaInfo trace output in XML. This XML format is undergoing early development and not suitable for use in production.</p>
+
+<p><code>mediaconch -tt -fx FileName</code> is shorthand for the above command.</p>
+
+<h4><a id="user-content-policy-checker" class="anchor" href="#policy-checker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Policy Checker</h4>
+
+<p>In addition to checking files for conformance at a basic level, MediaConch is developing a policy checker that allows archives, museums, and other memory institutions to create their own policies to which files should comply. Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.</p>
+
+<h4><a id="user-content-schematron" class="anchor" href="#schematron" aria-hidden="true"><span class="octicon octicon-link"></span></a>Schematron</h4>
+
+<p>Schematron is an <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html">ISO/IEC Standard</a> (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to express policy rules for checking file conformance according to desired specifications.</p>
+
+<p>Schematron patterns are based on rules of assertions or reports. An assertion seeks to pair a file's XPath with the expected answer and passes if the statement is true. A report is the opposite: it checks for if the test statement is true and raises an error.</p>
+
+<p>Schematron sample:</p>
+
+<div class="highlight highlight-xml"><pre>    &lt;<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">pattern</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>Each file has unique ID<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">rule</span> <span class="pl-e">context</span>=<span class="pl-s"><span class="pl-pds">"</span>/Mediainfo/File<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">assert</span> <span class="pl-e">test</span>=<span class="pl-s"><span class="pl-pds">"</span>track[@type='General']/UniqueID<span class="pl-pds">"</span></span>&gt;Unique ID must exist.&lt;/<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">assert</span>&gt;
+        &lt;/<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">rule</span>&gt;
+    &lt;/<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">pattern</span>&gt;</pre></div>
+
+<p>In the above example, the Schematron pattern checks one or multiple Mediainfo File XML for UniqueIDs in the General track. If the XML (and thus, the file being analysized) lacks a UniqueID, an assertion error will be raised: "Unique ID must exist."</p>
+
+<p>Schematron also allows for the testing of ranges. </p>
+
+<div class="highlight highlight-xml"><pre>  &lt;<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">pattern</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>Duration must be 1 second<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">rule</span> <span class="pl-e">context</span>=<span class="pl-s"><span class="pl-pds">"</span>/Mediainfo/File<span class="pl-pds">"</span></span>&gt;
+      &lt;<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">assert</span> <span class="pl-e">test</span>=<span class="pl-s"><span class="pl-pds">"</span>(track[@type='General']/Duration <span class="pl-c1">&amp;gt;</span> 500 and track[@type='General']/Duration <span class="pl-c1">&amp;lt;</span> 5000)<span class="pl-pds">"</span></span>&gt;Duration must be more than 500ms and less than 5 seconds.&lt;/<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">assert</span>&gt;
+    &lt;/<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">rule</span>&gt;
+  &lt;/<span class="pl-ent">sch</span><span class="pl-ent">:</span><span class="pl-ent">pattern</span>&gt;</pre></div>
+
+<p>In the above example, the Schematron pattern checks that files fall within a specific range of compliance. In this example, the file must be longer than half a second but less than five seconds. Any file with a duration in this range will validate.</p>
+
+<p>Schematron validation can be tested using <a href="http://xmlsoft.org/xmllint.html">xmllint</a> via the command line or <a href="http://www.oxygenxml.com/">Oxygen XML Editor</a> via graphical user interface. Future releases of MediaConch will have schematron validation built in.</p>
+
+<h4><a id="user-content-testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h4>
+
+<p>For all tests, sample video files have been provided. For the first two tests, the FFmpeg command to create the files are provided as well.</p>
+
+<p>Each test series includes XML created using the MediaConch CLI and Schematron files used to test against the XML. </p>
+
+<p>Test files:<br />
+<a href="/download/testfiles/Test0.xml">Test0.xml</a>,
+<a href="/download/testfiles/Test1.xml">Test1.xml</a>,
+<a href="/download/testfiles/Test2_0.xml">Test2_0.xml</a>,
+<a href="/download/testfiles/Test2_1.xml">Test2_1.xml</a>,
+<a href="/download/testfiles/Test2_2.xml">Test2_2.xml</a>,
+<a href="/download/testfiles/Test2_3.xml">Test2_3.xml</a><br />
+<a href="/download/testfiles/Test0.sch">Test2_0.sch</a>,
+<a href="/download/testfiles/Test1_ntsc.sch">Test1_ntsc.sch</a>,
+<a href="/download/testfiles/Test1_pal.sch">Test1_pal.sch</a>,
+<a href="/download/testfiles/Test2.sch">Test2.sch</a><br />
+<a href="/download/testfiles/Test0.xml">Test0.xml</a>,
+<a href="/download/testfiles/Test1.xml">Test1.xml</a>,
+<a href="/download/testfiles/Test2.xml">Test2.xml</a>
+</p>
+<h5><a id="user-content-test-0-general-conformance" class="anchor" href="#test-0-general-conformance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test 0: General conformance</h5>
+
+<p>Files: 
+Test0.xml -- This is a normal file with associated passing Schematron.</p>
+
+<p>Create a file:
+<code>ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 Test0.xml</code></p>
+
+<p>Create associated XML:
+<code>mediaconch -ti -fx Test0.xml &gt; Test0.xml</code></p>
+
+<p><a href="/download/testfiles/Test0.sch">Schematron for file</a>
+This policy checks that the file follows general rules of file conformance, such as the extension being xml, the file including a video stream, and the file having a unique ID. It also checks for assertions specific to this file, such as the duration being 1 second, the frame rate being 25 frames per second, and the coder type being Golomb Rice.</p>
+
+<p>To gather technical metadata with mediaconch and test a policy in one line (using xmllint to apply the schematron) run:</p>
+
+<p><code>mediaconch -ti -fx Test0.xml | xmllint --noout --schematron Test0.sch -</code></p>
+
+<h5><a id="user-content-test-1-conflicting-tests" class="anchor" href="#test-1-conflicting-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test 1: Conflicting tests</h5>
+
+<p>Files:
+Test1.xml -- This file has a PAL framesize but an NTSC rate, so testing for one standard or another will both cause a failure.</p>
+
+<p>Create a file:
+<code>ffmpeg -f lavfi -i testsrc=s=720x576:r=30000/1001 -t 1 -c:v ffv1 -g 1 -level 3 Test1.xml</code></p>
+
+<p>Create associated XML:
+<code>mediaconch -ti -fx Test1.xml &gt; Test1.xml</code></p>
+
+<p><a href="/download/testfiles/Test1_pal.sch">Schematron for PAL</a>
+This policy checks all files for a framesize of 720 x 576 and a framerate of 25.</p>
+
+<p><a href="/download/testfiles/Test1_ntsc.sch">Schematron for NTSC</a>
+This policy checks all files for a framesize of 720 x 480 and a framerate of 29.970.</p>
+
+<p>As one line with mediaconch and xmllint:</p>
+
+<p><code>mediaconch -ti -fx Test1.xml | xmllint --noout --schematron Test1_ntsc.sch -</code></p>
+
+<p><code>mediaconch -ti -fx Test1.xml | xmllint --noout --schematron Test1_pal.sch -</code></p>
+
+<h5><a id="user-content-test-2-testing-multiple-files" class="anchor" href="#test-2-testing-multiple-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test 2: Testing multiple files</h5>
+
+<p>Files:
+Files are identical copies except Test2_2.xml has had two bytes (value of 0000) removed and Test2_3.xml is a copy of Test2_2.xml with the two bytes replaced after copying.</p>
+
+<p>Create files:
+(Files provided).</p>
+
+<p>Create associated XML:
+<code>mediaconch -ti -fx Test2_0.xml Test2_1.xml Test2_2.xml Test2_3.xml &gt; Test2.xml</code></p>
+
+<p><a href="/download/testfiles/Test2.sch">Schematron for multiple files</a>
+This policy checks all the files for conformance. Test2_2.xml and Test2_3.xml fail because they have been manipulated, but they fail in different ways.</p>
+
+<p>As one line with mediaconch and xmllint:</p>
+
+<p><code>mediaconch -ti -fx Test2_0.xml Test2_1.xml Test2_2.xml Test2_3.xml | xmllint --noout --schematron Test2.sch -</code></p>
+</article>
 
         <h3>
-        <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+        <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>The team</h3>
 
-        <p>Conch project leads are Jerome Martinez (<a href="https://github.com/JeromeMartinez" class="user-mention">@JeromeMartinez</a>) and Dave Rice (<a href="https://github.com/dericed" class="user-mention">@dericed</a>). Other core team members are Ashley Blewer (<a href="https://github.com/ablwr" class="user-mention">@ablwr</a>), Tessa Fallon (<a href="https://github.com/tessafallon" class="user-mention">@tessafallon</a>), Erik Piil (<a href="https://github.com/epiil" class="user-mention">@epiil</a>), and Guillaume Roques (<a href="https://github.com/GuillaumeRoques" class="user-mention">@GuillaumeRoques</a>).</p>
-
+        <table>
+        <tr>
+        <td colspan="2">
+        MediaConch project leads are:
+        </td>
+        </tr>
+        <tr>
+        <td>
         <ul>
-          <li>Jérôme Martinez (Digital Media Specialist): technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata</li>
-          <li>Guillaume Roques (Developer): database management, automation, performance optimization, shell</li>
-          <li>Name to be confirmed (Junior developer): GUI development, reporting</li>
-          <li>Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation</li>
-          <li>Ashley Blewer (Archivist): technical writing and documentation, design and user experience optimization</li>
-          <li>Tessa Fallon (Archivist): technical writing and documentation, community outreach, standards organization</li>
-          <li>Erik Piil (Archivist): technical writing and documentation, OAIS compliance support</li>
+          <li><span style="font-weight: bold">Jérôme Martinez</span> (Digital Media Specialist)<br/>
+          technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata</li>
         </ul>
+        </td>
+        <td style="width:25%;text-align:right;">
+        <a href=""><img src="public/images/Website16.png" alt="Website"></a><a href="mailto:info@mediaarea.net"><img src="public/images/Email16.png" alt="E-mail"></a><a href="https://fr.linkedin.com/in/jermartinez"><img src="public/images/LinkedIn16.png" alt="LinkedIn"></a><a href="https://twitter.com/MediaArea_Net"><img src="public/images/Twitter16.png" alt="Twitter"></a><br/><a href="https://plus.google.com/u/0/+MediaAreaNetOfficial"><img src="public/images/GooglePlus16.png" alt="Google Plus"></a><a href="https://github.com/JeromeMartinez"><img src="public/images/GitHub16.png" alt="GitHub"></a><a href="https://www.openhub.net/accounts/JeromeMartinez"><img src="public/images/OpenHub16.png" alt="Open Hub"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li><span style="font-weight: bold">Dave Rice</span> (Archivist):<br/>
+          communication with memory institutions, definition of tests, documentation</li>
+        </ul>
+        </td>
+        <td style="width:25%;text-align:right;">
+        <a href="https://twitter.com/dericed"><img src="public/images/Twitter16.png" alt="Twitter"><a href="https://github.com/dericed"><img src="public/images/GitHub16.png" alt="GitHub"></a>
+        </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+        Other team members are:
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li><span style="font-weight: bold">Guillaume Roques</span> (Developer)<br/>
+          database management, automation, performance optimization, shell</li>
+        </ul>
+        </td>
+        <td style="width:25%;text-align:right;">
+        <a href=""><img src="public/images/Website16.png" alt="Website"></a><a href="mailto:info@mediaarea.net"><img src="public/images/Email16.png" alt="E-mail"></a><a href="https://fr.linkedin.com/pub/guillaume-roques/99/628/3a9/en"><img src="public/images/LinkedIn16.png" alt="LinkedIn"></a><a href="https://github.com/GuillaumeRoques"><img src="public/images/GitHub16.png" alt="GitHub"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li>Name to be confirmed (Developer)<br/>
+          GUI development, reporting</li>
+        </ul>
+        </td>
+        <td>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li><span style="font-weight: bold">Ashley Blewer</span> (Archivist)<br/>
+          technical writing and documentation, design and user experience optimization</li>
+        </ul>
+        </td>
+        <td style="width:25%;text-align:right;">
+        <a href="http://www.ashleyblewer.com"><img src="public/images/Website16.png" alt="Website"></a><a href="mailto:ashley.blewer@gmail.com"><img src="public/images/Email16.png" alt="E-mail"></a><a href="https://www.linkedin.com/in/ashleyblewer"><img src="public/images/LinkedIn16.png" alt="LinkedIn"></a><a href="https://twitter.com/ablwr"><img src="public/images/Twitter16.png" alt="Twitter"></a><a href="https://github.com/ablwr"><img src="public/images/GitHub16.png" alt="GitHub"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li><span style="font-weight: bold">Tessa Fallon</span> (Archivist)<br/>
+          technical writing and documentation, community outreach, standards organization</li>
+        </ul>
+        </td>
+        <td style="width:25%;text-align:right;">
+        <a href="mailto:tessa.fallon@gmail.com"><img src="public/images/Email16.png" alt="E-mail"></a><a href="https://www.linkedin.com/pub/ashley-blewer/95/7a6/890"><img src="public/images/LinkedIn16.png" alt="LinkedIn"></a><a href="https://twitter.com/tessafallon"><img src="public/images/Twitter16.png" alt="Twitter"></a><a href="https://github.com/tessafallon"><img src="public/images/GitHub16.png" alt="GitHub"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li><span style="font-weight: bold">Erik Piil</span> (Archivist)<br/>
+          technical writing and documentation, OAIS compliance support</li>
+        </ul>
+        </td>
+        <td style="width:25%;text-align:right;">
+        <a href="https://twitter.com/e_piil"><img src="public/images/Twitter16.png" alt="Twitter"></a><a href="https://github.com/epiil"><img src="public/images/GitHub16.png" alt="GitHub"></a>
+        </td>
+        </tr>
+        </table>
 
         <h3><a id="outreach" class="anchor" href="#outreach" aria-hidden="true"><span class="octicon octicon-link"></span></a>Outreach</h3>
-        <p>The MediaArea team is active in the open source community and actively presents their work on PREFORMA.</p>
+        <table>
+        <tr>
+        <td colspan="3">
+        The MediaArea team is active in the open source community and actively presents their work on MediaConch.
+        </td>
+        </tr>
+        <tr>
+        <td>
         <ul>
-          <li>MediaArea presented on our work to PREFORMA on March 6th: <a href="http://mediaarea.github.io/PreFormaMediaInfo/Outreach/Slides">[slides]</a></li>
-          <li>Dave Rice presented our work on PREFORMA at FOSDEM on January 31st: <a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/">[conference page]</a></li>
-          <li>Ashley Blewer presented our work at Code4Lib on February 11th: <a href="http://wiki.code4lib.org/2015_Lightning_Talks">[conference page]</a></li>
+            <li>
+            March 2015<br />
+            Jérôme Martinez and Dave Rice<br />
+            Brussels, Belgium
+            </li>
         </ul>
+        </td>
+        <td style="width:33%; vertical-align: middle;">
+            <a href="http://www.preforma-project.eu"><img src="public/images/pfo_logo.png" width="80%" alt="PREFORMA logo"></a>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="http://www.preforma-project.eu/design-phase-1-final-workshop.html">Conference page</a><br /><a href="http://mediaarea.github.io/MediaConch/Outreach/Slides">Slides</a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+            <li>
+            February 2015<br />
+            Ashley Blewer<br />
+            Portland, OR, USA
+            </li>
+        </ul>
+        </td>
+        <td style="width:33%; vertical-align: middle;">
+        <a href="http://code4lib.org"><img src="public/images/Code4Lib.png" width="75%" alt="Code4Lib logo"></a>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="http://wiki.code4lib.org/2015_Lightning_Talks">Conference page</a><br /><a href="http://ablwr.github.io/c4l_preforma/#/">Slides</a><br /><a href="https://www.youtube.com/watch?v=G7kgcZh2zeY&t=2h20m48s">Video</a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+            <li>
+            January 2015<br />
+            Dave Rice<br />
+            Brussels, Belgium
+            </li>
+        </ul>
+        </td>
+        <td style="width:33%; vertical-align: middle;">
+            <a href="http://fosdem.org"><img src="public/images/Fosdem_2015.png" width="50%" alt="FOSDEM 2015 logo"></a>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/">Conference page</a><br /><a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/attachments/slides/746/export/events/attachments/enabling_video_preservation/slides/746/preservation.pdf">Slides</a><br /><a href="http://video.fosdem.org/2015/devroom-open_media/enabling_video_preservation.mp4">Video</a>
+        </td>
+        </tr>
+        </table>
+
+        <h3><a id="design-phase" class="anchor" href="#deliverables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deliverables</h3>
+        <table>
+        <tr>
+        <td>
+        November 2014 - March 2015<br />
+        the team participated to the Design Phase (phase 1)
+        </td>
+        <td style="width:33%; vertical-align: middle;">
+            <a href="http://www.preforma-project.eu"><img src="public/images/pfo_logo.png" width="80%" alt="PREFORMA logo"></a>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="https://github.com/MediaArea/MediaConch/releases/tag/2015.03.14">Design phase<br /> final report</a>
+        </td>
+        </tr>
+        </table>
 
         <h3><a id="project-advisors" class="anchor" href="#project-advisors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Advisors</h3>
-        <p>MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relavent to the project.</p>
+        <table>
+        <tr>
+        <td colspan="2">
+        MediaArea has approached several individual and institutional partners from varying types of organizations to provide expertise, testing, and feedback to the project as it develops. The intent of this aspect of our proposal is to facilitate an efficient and responsive mechanism for feedback with specialized areas of expertise relevant to the project.
+        </td>
+        </tr>
+        <tr>
+        <td>
         <ul>
-          <li>Moritz Bunkus (Matroska main developer): Validation of Matroska tests, Matroska specific technical support, review of standardization efforts
-            </li>
-          <li>Michael Niedermayer (FFmpeg maintainer and FFV1 primary author): Validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
-            </li>
-          <li>Luca Barbato (Libav maintainer): Validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts
-            </li>
-          <li>Ian Hendersohn (User of FFV1/mkv/lpcm in a national archive): Provide testing and feedback of project tools
-            </li>
-          <li>Artefactual Systems (consulting and development company): Provide testing and feedback of project tools, implement select conformance checker tools into Archivematica
-            </li>
-          <li>Richard Barnes (standardization strategist): Advisor on implementation and standardization efforts
-          </li>  
+          <li>Moritz Bunkus (<a href="http://www.matroska.org/">Matroska</a> main developer)<br/>
+          validation of Matroska tests, Matroska specific technical support, review of standardization efforts</li>
         </ul>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="http://matroska.org"><img src="public/images/Matroska.png" width="100%" alt="Matroska"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li>Michael Niedermayer (<a href="https://www.ffmpeg.org/">FFmpeg</a> maintainer and FFV1 primary author)<br/>
+          validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts</li>
+        </ul>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="https://www.ffmpeg.org"><img src="public/images/FFmpeg.png" width="100%" alt="FFmpeg"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li>Luca Barbato (<a href="https://libav.org/">Libav</a> maintainer)<br/>
+          validation of FFV1 tests, FFV1 specific technical support, review of standardization efforts</li>
+        </ul>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="http://libav.org"><img src="public/images/libav.png" width="100%" alt="Matroska"></a>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li>Ian Hendersohn (User of FFV1/xml/lpcm in a national archive)<br/>
+          provide testing and feedback of project tools</li>
+        </ul>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <ul>
+          <li><a href="http://www.artefactual.com/">Artefactual Systems</a> (consulting and development company)<br />
+          provide testing and feedback of project tools, implement select conformance checker tools into Archivematica</li>
+        </ul>
+        </td>
+        <td style="width:25%; vertical-align: middle;">
+        <a href="http://www.artefactual.com/"><img src="public/images/ArtefactualSystems.png" width="100%" alt="Artefactual Systems"></a>
+        </td>
+        </tr>
+        </table>
 
         <h3><a id="community-interviews" class="anchor" href="#community-interviews" aria-hidden="true"><span class="octicon octicon-link"></span></a>Community Interviews</h3>
         <p>In December 2014, MediaArea started conducting interviews with FFV1, Matroska, and LPCM stakeholders in order to collect feedback and insights from the archives community.  To date, interviews have been conducted with:</p>
@@ -87,7 +429,13 @@
           <li>George Blood; George Blood, L.P.
             </li>
         </ul>
-        <p>Notes and partial transcripts (in English) from the interviews are available in the <a href="https://github.com/MediaArea/PreFormaMediaInfo/tree/master/Interviews">MediaInfo PREFORMA GitHub repository</a>.</p>
+        <p>Notes and partial transcripts (in English) from the interviews are available in the <a href="https://github.com/MediaArea/MediaConch/tree/master/Interviews">Conch GitHub repository</a>.</p>
+
+        <h3>
+        <a id="overview" class="anchor" href="#funding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Funding</h3>
+
+        <p>This project has received funding from PREFORMA, co-funded by the European Commission under its FP7-ICT Programme<br/>
+        <img src="public/images/pfo_logo.png" alt="PREFORMA logo"> <img src="public/images/eu_logo.png" alt="European Commission logo"> <img src="public/images/ec_logo.png" alt="FP7-ICT Programme logo"></p>
       </section>
       <footer>
       </footer>
