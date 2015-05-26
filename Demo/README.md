@@ -2,7 +2,7 @@
 
 ## File information retrieval
 
-After installation, MediaConch can be run on the command line by using the `mediaconch` command. MediaConch is intended for Matroska, FFV1, and/or PCM files.
+After installation, MediaConch can be run on the command line by using the `mediaconch` command. Although MediaConch will result information about nearly any audiovisual file, it is specifically optimized for Matroska, FFV1, and/or PCM files.
 
 `mediaconch --Tool=Info FileName` will print to the screen the most recent MediaInfo output.
 
@@ -12,14 +12,16 @@ After installation, MediaConch can be run on the command line by using the `medi
 
 `mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output. This is in beta testing phase and not suitable for use in production.
 
-`mediaconch --Tool=Trace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This is in beta testing phase and not suitable for use in production.
+`mediaconch --Tool=Trace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This XML format is undergoing early development and not suitable for use in production.
+
+`mediaconch -tt -fx FileName` is shorthand for the above command.
 
 ## Policy Checker
 
 
 ## Schematron
 
-Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html) (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to create policy rules for checking file conformance according to desired specifications.
+Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html) (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to express policy rules for checking file conformance according to desired specifications.
 
 Schematron patterns are based on rules of assertions or reports. An assertion seeks to pair a file's XPath with the expected answer and passes if the statement is true. A report is the opposite: it checks for if the test statement is true and raises an error.
 
@@ -28,7 +30,6 @@ Schematron patterns are based on rules of assertions or reports. An assertion se
 The priority for this release is the development of a file parser and XML structure export for Matroska/FFV1/PCM files. Schematron validation can be tested using [Oxygen XML Editor](http://www.oxygenxml.com/) or [Probatron](http://www.probatron.org/). 
 
 Forthcoming releases of MediaConch CLI and MediaConch Online will allow for the creation of and uploading of Schematron documents to facilitate file conformance checking.
-
 
 ## Testing
 
