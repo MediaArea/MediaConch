@@ -3,7 +3,7 @@
     
     <sch:pattern name="File should have NTSC framesize">
         <sch:rule context="/Mediainfo/File">
-            <sch:assert test="track[@type='Video']/Width = 720 and track[@type='Video']/Height = 480">Framesize must be 720 × 576.</sch:assert>
+            <sch:assert test="track[@type='Video']/Width = 720 and track[@type='Video']/Height = 480">Framesize must be 720 × 480.</sch:assert>
         </sch:rule>
     </sch:pattern>
 
