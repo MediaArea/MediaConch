@@ -21,7 +21,7 @@
   
   <sch:pattern name="Duration must be 1 second">
     <sch:rule context="/Mediainfo/File">
-      <sch:assert test="track[@type='General']/Duration = 1000">Duration must be 1 second.</sch:assert>
+      <sch:assert test="(track[@type='General']/Duration &gt; 500 and track[@type='General']/Duration &lt; 5000)">Duration must be more than 500ms and less than 5 seconds.</sch:assert>
     </sch:rule>
   </sch:pattern>
   

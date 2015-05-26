@@ -54,6 +54,18 @@ Schematron sample:
 
 In the above example, the Schematron pattern checks one or multiple Mediainfo File XML for UniqueIDs in the General track. If the XML (and thus, the file being analysized) lacks a UniqueID, an assertion error will be raised: "Unique ID must exist."
 
+Schematron also allows for the testing of ranges. 
+
+```xml
+  <sch:pattern name="Duration must be 1 second">
+    <sch:rule context="/Mediainfo/File">
+      <sch:assert test="(track[@type='General']/Duration &gt; 500 and track[@type='General']/Duration &lt; 5000)">Duration must be more than 500ms and less than 5 seconds.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+```
+
+In the above example, the Schematron pattern checks that files fall within a specific range of compliance. In this example, the file must be longer than half a second but less than five seconds. Any file with a duration in this range will validate.
+
 Schematron validation can be tested using [xmllint](http://xmlsoft.org/xmllint.html) via the command line or [Oxygen XML Editor](http://www.oxygenxml.com/) via graphical user interface. Future releases of MediaConch will have schematron validation built in.
 
 ### Testing
@@ -92,10 +104,10 @@ Create associated XML:
 `mediaconch -ti -fx Test1.mkv > Test1.xml`
 
 [Schematron for PAL](Files/Test1_pal.sch)
-This policy checks all files for a framesize of 720 × 576 and a framerate of 25.
+This policy checks all files for a framesize of 720 x 576 and a framerate of 25.
 
 [Schematron for NTSC](Files/Test1_ntsc.sch)
-This policy checks all files for a framesize of 720 × 480 and a framerate of 29.970.
+This policy checks all files for a framesize of 720 x 480 and a framerate of 29.970.
 
 As one line with mediaconch and xmllint:
 
