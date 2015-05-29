@@ -3,20 +3,23 @@
 security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: 
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+#        in_memory:
+#            memory:
+#                users:
+#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
@@ -26,11 +29,30 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        default:
-            anonymous: ~
+#        default:
+#            anonymous: ~
+
+        main:
+            pattern: ^/MediaConchOnline/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager
+                default_target_path: /MediaConchOnline/
+                login_path: /MediaConchOnline/login
+                check_path: /MediaConchOnline/login_check
+            logout:
+                path:   /MediaConchOnline/logout
+                target: /MediaConchOnline/
+            anonymous:    true
 
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/MediaConchOnline/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/MediaConchOnline/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/MediaConchOnline/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/MediaConchOnline/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/MediaConchOnline/, role: ROLE_USER }
+        #- { path: ^/MediaConchOnline/admin/, role: ROLE_ADMIN }
