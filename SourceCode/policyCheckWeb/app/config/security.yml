@@ -33,16 +33,16 @@ security:
 #            anonymous: ~
 
         main:
-            pattern: ^/MediaConchOnline/
+            pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
-                default_target_path: /MediaConchOnline/
-                login_path: /MediaConchOnline/login
-                check_path: /MediaConchOnline/login_check
+                default_target_path: /
+                login_path: /login
+                check_path: /login_check
             logout:
-                path:   /MediaConchOnline/logout
-                target: /MediaConchOnline/
+                path:   /logout
+                target: /
             anonymous:    true
 
     # with these settings you can restrict or allow access for different parts
@@ -50,9 +50,9 @@ security:
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/MediaConchOnline/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/MediaConchOnline/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/MediaConchOnline/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/MediaConchOnline/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/MediaConchOnline/, role: ROLE_USER }
-        #- { path: ^/MediaConchOnline/admin/, role: ROLE_ADMIN }
+        - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: ROLE_USER }
+        #- { path: ^/admin/, role: ROLE_ADMIN }
