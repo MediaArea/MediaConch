@@ -15,10 +15,12 @@ class RegistrationFormType extends BaseType
         $builder->add('firstname')
             ->add('lastname')
             ->add('country', 'country', array('preferred_choices' => array('GB', 'FR', 'DE', 'IT', 'SE', 'NL', 'BE', 'CH', 'US'),
-                'empty_value' => 'Choose your country'))
+                'empty_value' => 'Choose your country',
+                'required' => false))
             ->add('language', 'language', array('preferred_choices' => array('en_GB', 'fr', 'de', 'it', 'sv', 'nl', 'en_US'),
-                'empty_value' => 'Choose your language'))
-            ->add('isProfessional')
+                'empty_value' => 'Choose your language',
+                'required' => false))
+            ->add('professional', 'choice', array('choices' => array('u' => 'Not specified', 'y' => 'Yes', 'n' => 'No')))
             ->add('companyName')
             ->add('newsletter');
     }

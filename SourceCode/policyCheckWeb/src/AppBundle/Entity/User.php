@@ -65,19 +65,19 @@ class User extends BaseUser
     protected $newsletter = true;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true, options={"unsigned":true, "default":1})
+     * @ORM\Column(type="string", length=1, nullable=false)
      *
      */
-    protected $isProfessional;
+    protected $professional;
 
     /**
-     * @ORM\Column(type="string", length=2, nullable=false)
+     * @ORM\Column(type="string", length=2, nullable=true)
      *
      */
     protected $country;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=false)
+     * @ORM\Column(type="string", length=10, nullable=true)
      *
      */
     protected $language;
@@ -140,14 +140,14 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getIsProfessional()
+    public function getProfessional()
     {
-        return $this->isProfessional;
+        return $this->professional;
     }
 
-    public function setIsProfessional($isProfessional)
+    public function setProfessional($professional)
     {
-        $this->isProfessional = $isProfessional;
+        $this->professional = $professional;
 
         return $this;
     }
