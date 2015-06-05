@@ -9,5 +9,11 @@
             <tag name="form.type" alias="mediaconch_user_registration" />
             <argument>%fos_user.model.user.class%</argument>
         </service>
+
+        <service id="mediaconch_user.profile.form.type" class="AppBundle\Form\Type\ProfileFormType">
+            <tag name="form.type" alias="mediaconch_user_profile" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
+
     </services>
 </container>
