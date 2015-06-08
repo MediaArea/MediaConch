@@ -1,0 +1,16 @@
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+    {% if user.firstname %}<p>Firstname: {{ user.firstname }}</p>{% endif %}
+    {% if user.lastname %}<p>Lastname: {{ user.lastname }}</p>{% endif %}
+    {% if user.country %}<p>Country: {{ user.country }}</p>{% endif %}
+    {% if user.language %}<p>Language: {{ user.language }}</p>{% endif %}
+    <p>Professional: {% if 'y' == user.professional %}Yes{% elseif 'n' == user.professional %}No{% else %}Not specified{% endif %}</p>
+    {% if user.companyName %}<p>Company name: {{ user.companyName }}</p>{% endif %}
+    <p>Newsletter: {% if user.newsletter %}Yes{% else %}No{% endif %}</p>
+</div>
+
+<div class="fos_user_user_actions">
+    <p><a href="{{ path('fos_user_profile_edit') }}">Edit your profile</a></p>
+    <p><a href="{{ path('fos_user_change_password') }}">Change your password</a></p>
+</div>

@@ -19,7 +19,7 @@ use AppBundle\Form\Type\PolicyType;
 use AppBundle\Form\Type\PolicyTestType;
 
 /**
- * @Route("/MediaConchOnline")
+ * @Route("/")
  */
 class DefaultController extends Controller
 {
