@@ -11,12 +11,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Finder\Finder;
 
+use AppBundle\Lib\MediaInfo\MediaInfo;
 use AppBundle\Lib\MediaInfo\MediaInfoOutput;
-use AppBundle\Lib\MediaInfo\MediaInfoChecker;
 use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
 use AppBundle\Entity\Policy;
 use AppBundle\Form\Type\PolicyType;
-use AppBundle\Form\Type\PolicyTestType;
 
 /**
  * @Route("/")
@@ -52,30 +51,24 @@ class DefaultController extends Controller
             $data = $form->getData();
 
             if ($data['file']->isValid()) {
-                $output = array();
-                $result = false;
-                $check = array('name' => $data['file']->getClientOriginalName(),
-                    'isValid' => 0,
-                    'errors' => array(),
-                    'xml' => '',
-                );
-
-                exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($data['file']->getRealPath()), $output, $result);
-
-                if (0 == $result) {
-                    $xml = '';
-                    foreach($output as $out) {
-                        $xml .= $out . "\n";
-                    }
-
-                    $check['xml'] = $output;
-                    $MediaInfo = new MediaInfoOutput($xml);
-
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $data['policy']);
+                $MediaInfo = new MediaInfo($data['file']->getRealPath());
+                $MediaInfo->analyse();
+                if ($MediaInfo->getSuccess()) {
+                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
                     $policyChecker->check();
-                    $check['isValid'] = $policyChecker->isValid();
-                    $check['errors'] = $policyChecker->getErrors();
+                    $check = array('isValid' => $policyChecker->isValid(),
+                        'errors' => $policyChecker->getErrors(),
+                        'xml' => $MediaInfo->getOutputXmlAsArray(),
+                        );
                 }
+                else {
+                    $check = array('isValid' => false,
+                        'errors' => array('Error during file parsing'),
+                        'xml' => '',
+                        );
+                }
+
+                $check['name'] = $data['file']->getClientOriginalName();
             }
         }
 
@@ -101,30 +94,24 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $data = $form->getData();
 
-            $output = array();
-            $result = false;
-            $check = array('name' => $data['file'],
-                'isValid' => 0,
-                'errors' => array(),
-                'xml' => '',
-            );
-
-            exec('/usr/bin/mediainfo -f --Language=raw --Output=XML --ParseSpeed=0 ' . escapeshellarg(str_replace(' ', '%20', $data['file'])), $output, $result);
-
-            if (0 == $result) {
-                $xml = '';
-                foreach($output as $out) {
-                    $xml .= $out . "\n";
-                }
-
-                $check['xml'] = $output;
-                $MediaInfo = new MediaInfoOutput($xml);
-
-                $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $data['policy']);
+            $MediaInfo = new MediaInfo(str_replace(' ', '%20', $data['file']));
+            $MediaInfo->analyse();
+            if ($MediaInfo->getSuccess()) {
+                $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
                 $policyChecker->check();
-                $check['isValid'] = $policyChecker->isValid();
-                $check['errors'] = $policyChecker->getErrors();
+                $check = array('isValid' => $policyChecker->isValid(),
+                    'errors' => $policyChecker->getErrors(),
+                    'xml' => $MediaInfo->getOutputXmlAsArray(),
+                    );
             }
+            else {
+                $check = array('isValid' => false,
+                    'errors' => array('Error during file parsing'),
+                    'xml' => '',
+                    );
+            }
+
+            $check['name'] = $data['file'];
         }
 
         return array('form' => $form->createView(), 'check' => $check);
@@ -250,23 +237,25 @@ class DefaultController extends Controller
             $finder = new Finder();
             $finder->files()->in($params['check_dir']);
             foreach($finder as $file) {
-                exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($file->getPathname()), $output, $result);
-                if (0 == $result) {
-                    $xml = '';
-                    foreach($output as $out) {
-                        $xml .= $out . "\n";
-                    }
-
-                    $MediaInfo = new MediaInfoOutput($xml);
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $policy);
+                $MediaInfo = new MediaInfo($file->getPathname());
+                $MediaInfo->analyse();
+                if ($MediaInfo->getSuccess()) {
+                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $policy);
                     $policyChecker->check();
-                    $checks[] = array('name' => $file->getRelativePathname(),
-                        'isValid' => $policyChecker->isValid(),
+                    $check = array('isValid' => $policyChecker->isValid(),
                         'errors' => $policyChecker->getErrors(),
-                        'xml' => $xml,
+                        'xml' => $MediaInfo->getOutputXmlAsArray(),
                         );
-                    unset($output);
                 }
+                else {
+                    $check = array('isValid' => false,
+                        'errors' => array('Error during file parsing'),
+                        'xml' => '',
+                        );
+                }
+
+                $check['name'] = $file->getRelativePathname();
+                $checks[] = $check;
             }
         }
 

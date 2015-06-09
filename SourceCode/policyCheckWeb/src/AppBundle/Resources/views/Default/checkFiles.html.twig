@@ -28,6 +28,9 @@ Checks :
             {% endfor %}
             </ul>
         {% endif %}
+            <ul>
+                <li>{% for xml in check.xml %}{{ xml }} <br /> {% endfor %}</li>
+            </ul>
         </li>
     {% endfor %}
     </ul>
