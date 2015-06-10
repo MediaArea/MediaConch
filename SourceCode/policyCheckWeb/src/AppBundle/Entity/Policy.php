@@ -6,6 +6,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use AppBundle\Entity\PolicyItem;
+use AppBundle\Entity\User;
+
 /**
  * @ORM\Entity
  */
@@ -29,6 +32,11 @@ class Policy
      * @Assert\Valid()
      */
     protected $items;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="policy", cascade={"persist"})
+     */
+    protected $user;
 
     /**
      * Constructor
@@ -111,4 +119,26 @@ class Policy
         return $this->getName();
     }
 
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Policy
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

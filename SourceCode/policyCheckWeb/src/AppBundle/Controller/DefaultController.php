@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Finder\Finder;
+use Doctrine\ORM\EntityRepository;
 
 use AppBundle\Lib\MediaInfo\MediaInfo;
 use AppBundle\Lib\MediaInfo\MediaInfoOutput;
@@ -40,7 +41,13 @@ class DefaultController extends Controller
         $check = false;
 
         $form = $this->createFormBuilder()
-            ->add('policy', 'entity', array('class' => 'AppBundle:Policy', 'placeholder' => 'Choose a policy'))
+            ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->where('p.user = :user')
+                        ->setParameter('user', $this->getUser());
+                },
+                'placeholder' => 'Choose a policy'))
             ->add('file', 'file')
             ->add('Check', 'submit')
             ->getForm();
@@ -84,7 +91,13 @@ class DefaultController extends Controller
         $check = false;
 
         $form = $this->createFormBuilder()
-            ->add('policy', 'entity', array('class' => 'AppBundle:Policy', 'placeholder' => 'Choose a policy'))
+            ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->where('p.user = :user')
+                        ->setParameter('user', $this->getUser());
+                },
+                'placeholder' => 'Choose a policy'))
             ->add('file', 'url', array('max_length' => 512))
             ->add('Check', 'submit')
             ->getForm();
@@ -125,7 +138,7 @@ class DefaultController extends Controller
     {
         $policyList = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
-            ->findAll();
+            ->findByUser($this->getUser());
 
         return array('policyList' => $policyList);
     }
@@ -166,13 +179,18 @@ class DefaultController extends Controller
                 }
             }
 
+            // Set user at the creation of the policy
+            if (null === $policy->getUser()) {
+                $policy->setUser($this->getUser());
+            }
+
             $em->persist($policy);
             $em->flush();
         }
 
         $policyList = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
-            ->findAll();
+            ->findByUser($this->getUser());
 
         return array('form' => $form->createView(), 'policyList' => $policyList);
     }
@@ -261,7 +279,7 @@ class DefaultController extends Controller
 
         $policyList = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
-            ->findAll();
+            ->findByUser($this->getUser());
 
         return array('checks' => $checks, 'policyList' => $policyList);
     }

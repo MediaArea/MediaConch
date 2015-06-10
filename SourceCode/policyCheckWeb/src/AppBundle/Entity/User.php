@@ -6,6 +6,8 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use AppBundle\Entity\Policy;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="MediaConch_user")
@@ -18,6 +20,12 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Policy", mappedBy="user")
+     * @Assert\Valid()
+     */
+    protected $policy;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -174,5 +182,48 @@ class User extends BaseUser
         $this->language = $language;
 
         return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add policy
+     *
+     * @param \AppBundle\Entity\Policy $policy
+     * @return User
+     */
+    public function addPolicy(\AppBundle\Entity\Policy $policy)
+    {
+        $this->policy[] = $policy;
+
+        return $this;
+    }
+
+    /**
+     * Remove policy
+     *
+     * @param \AppBundle\Entity\Policy $policy
+     */
+    public function removePolicy(\AppBundle\Entity\Policy $policy)
+    {
+        $this->policy->removeElement($policy);
+    }
+
+    /**
+     * Get policy
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPolicy()
+    {
+        return $this->policy;
     }
 }
