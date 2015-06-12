@@ -34,7 +34,6 @@ Policy list :
 {% endblock %}
 
 {% block javascripts %}
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
 function changeType(id) {
     var $type = $('#policy_items_' + id + '_type');
@@ -142,4 +141,13 @@ function addItemFormDeleteLink(itemFormLi) {
     });
 }
 </script>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+.form-control {
+    display: inline;
+    width: auto;
+}
+</style>
 {% endblock %}

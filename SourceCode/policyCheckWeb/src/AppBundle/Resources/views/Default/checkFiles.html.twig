@@ -15,25 +15,6 @@ Policy list :
     </ul>
 </div>
 
-{% if checks|length > 0 %}
-<div>
-Checks :
-    <ul>
-    {% for check in checks %}
-        <li>File : {{ check.name}} {{ check.isValid ? 'is <b>valid</b>' : 'is <b>not valid</b>' }}
-        {% if check.errors|length > 0 %}
-            <ul>
-            {% for error in check.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-            <ul>
-                <li>{% for xml in check.xml %}{{ xml }} <br /> {% endfor %}</li>
-            </ul>
-        </li>
-    {% endfor %}
-    </ul>
-</div>
-{% endif %}
+{{ include('AppBundle:Default:fileDetail.html.twig', { 'checks': checks }) }}
+
 {% endblock %}

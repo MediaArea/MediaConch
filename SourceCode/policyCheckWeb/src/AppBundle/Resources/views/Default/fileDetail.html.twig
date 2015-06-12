@@ -1,0 +1,79 @@
+{% if checks|length > 0 %}
+<div>
+Check result :
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Result</th>
+                <th>Tools</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for check in checks %}
+            <tr>
+                <td>{{ check.name}}</td>
+                <td>File {{ check.isValid ? 'is <b>valid</b>' : 'is <b>not valid</b>' }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}">Policy report</a>
+                            <!-- Modal HTML -->
+                            <div id="modalPolicy{{ loop.index }}" class="modal fade">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Policy report</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            {% if check.errors|length > 0 %}
+                                                <ul>
+                                                {% for error in check.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                No error!
+                                            {% endif %}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            /
+                            <s>Implementation report</s>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#modalMiXml{{ loop.index }}">MediaInfo XML</a>
+                            <!-- Modal HTML -->
+                            <div id="modalMiXml{{ loop.index }}" class="modal fade">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">MediaInfo XML</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>{{ check.xml|nl2br }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            /
+                            <s>MediaTrace</s>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+

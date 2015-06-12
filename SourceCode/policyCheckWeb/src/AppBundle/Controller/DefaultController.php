@@ -38,7 +38,7 @@ class DefaultController extends Controller
      */
     public function checkFullFileAction(Request $request)
     {
-        $check = false;
+        $checks = false;
 
         $form = $this->createFormBuilder()
             ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
@@ -48,7 +48,7 @@ class DefaultController extends Controller
                         ->setParameter('user', $this->getUser());
                 },
                 'placeholder' => 'Choose a policy'))
-            ->add('file', 'file')
+            ->add('file', 'file', array('label' => 'File (max ' . ini_get('upload_max_filesize') . ')'))
             ->add('Check', 'submit')
             ->getForm();
 
@@ -65,7 +65,7 @@ class DefaultController extends Controller
                     $policyChecker->check();
                     $check = array('isValid' => $policyChecker->isValid(),
                         'errors' => $policyChecker->getErrors(),
-                        'xml' => $MediaInfo->getOutputXmlAsArray(),
+                        'xml' => $MediaInfo->getOutputXml(),
                         );
                 }
                 else {
@@ -76,10 +76,12 @@ class DefaultController extends Controller
                 }
 
                 $check['name'] = $data['file']->getClientOriginalName();
+
+                $checks = array(0 => $check);
             }
         }
 
-        return array('form' => $form->createView(), 'check' => $check);
+        return array('form' => $form->createView(), 'checks' => $checks);
     }
 
     /**
@@ -88,7 +90,7 @@ class DefaultController extends Controller
      */
     public function checkOnlineFileAction(Request $request)
     {
-        $check = false;
+        $checks = false;
 
         $form = $this->createFormBuilder()
             ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
@@ -114,7 +116,7 @@ class DefaultController extends Controller
                 $policyChecker->check();
                 $check = array('isValid' => $policyChecker->isValid(),
                     'errors' => $policyChecker->getErrors(),
-                    'xml' => $MediaInfo->getOutputXmlAsArray(),
+                    'xml' => $MediaInfo->getOutputXml(),
                     );
             }
             else {
@@ -125,9 +127,11 @@ class DefaultController extends Controller
             }
 
             $check['name'] = $data['file'];
+
+            $checks = array(0 => $check);
         }
 
-        return array('form' => $form->createView(), 'check' => $check);
+        return array('form' => $form->createView(), 'checks' => $checks);
     }
 
     /**
@@ -262,7 +266,7 @@ class DefaultController extends Controller
                     $policyChecker->check();
                     $check = array('isValid' => $policyChecker->isValid(),
                         'errors' => $policyChecker->getErrors(),
-                        'xml' => $MediaInfo->getOutputXmlAsArray(),
+                        'xml' => $MediaInfo->getOutputXml(),
                         );
                 }
                 else {

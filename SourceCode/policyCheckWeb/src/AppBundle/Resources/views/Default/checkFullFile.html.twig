@@ -10,24 +10,9 @@ MediaConch Demo full file checker
 {{ form(form) }}
 </div>
 
-{% if check != false %}
-<br />
-<div>
-Check result :
-    <ul>
-        <li>File : {{ check.name}} {{ check.isValid ? 'is <b>valid</b>' : 'is <b>not valid</b>' }}
-        {% if check.errors|length > 0 %}
-            <ul>
-            {% for error in check.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-            <ul>
-                <li>{% for xml in check.xml %}{{ xml }} <br /> {% endfor %}</li>
-            </ul>
-        </li>
-    </ul>
-</div>
+{% if checks %}
+    <br />
+    {{ include('AppBundle:Default:fileDetail.html.twig', { 'checks': checks }) }}
 {% endif %}
+
 {% endblock %}
