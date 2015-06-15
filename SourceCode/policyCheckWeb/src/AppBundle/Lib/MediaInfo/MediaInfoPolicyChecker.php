@@ -21,7 +21,7 @@ class MediaInfoPolicyChecker
         foreach ($this->policy->getItems() as $item) {
             if ($this->MIOutput->isTrackExists($item->getType()->getName())) {
                 foreach ($this->MIOutput->getTrack($item->getType()->getName()) as $trackId => $track) {
-                    if (false === $this->valid($track->get($item->getField()->getName()), $item->getValidator()->getName(), $item->getValue())) {
+                    if (false === $this->valid($track->get($item->getField()->getName()), $item->getValidator()->getValue(), $item->getValue())) {
                         $this->errors[] = 'Error on ' . $item->getType()->getName() . ' track ' . $trackId . ' for field ' . $item->getField()->getName() . ', value is : ' . $track->get($item->getField()->getName());
                     }
                 }

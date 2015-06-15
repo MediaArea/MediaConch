@@ -24,6 +24,12 @@ class PolicyItemValidators
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=2)
+     * @Assert\NotBlank()
+     */
+    protected $value;
+
+    /**
      * @ORM\ManyToOne(targetEntity="PolicyItemFields")
      * @Assert\NotBlank()
      */
@@ -89,5 +95,28 @@ class PolicyItemValidators
     public function getField()
     {
         return $this->field;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return PolicyItemValidators
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }
