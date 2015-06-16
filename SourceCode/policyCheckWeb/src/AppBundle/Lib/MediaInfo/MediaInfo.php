@@ -8,9 +8,9 @@ class MediaInfo
     private $source;
     private $parseSpeed = 0;
     private $xml;
-    private $xmlAsArray = array();
     private $success = false;
     private $parsedOutput;
+    private $trace;
 
     public function __construct($source)
     {
@@ -29,14 +29,31 @@ class MediaInfo
         $opt = '-f  --Language=raw --Output=XML';
         $opt .= ' --parseSpeed=' . $this->parseSpeed;
 
-        exec($this->MediaInfo . ' ' . $opt . ' ' . escapeshellarg($this->source), $this->xmlAsArray, $result);
+        exec($this->MediaInfo . ' ' . $opt . ' ' . escapeshellarg($this->source), $xmlAsArray, $result);
         if (0 == $result) {
             $this->success = true;
             $this->xml = '';
-            foreach($this->xmlAsArray as $out) {
+            foreach($xmlAsArray as $out) {
                 $this->xml .= $out . "\n";
             }
         }
+
+        return $this;
+    }
+
+    public function trace()
+    {
+        $opt = '--Details=1';
+
+        exec($this->MediaInfo . ' ' . $opt . ' ' . escapeshellarg($this->source), $traceAsArray, $result);
+        if (0 == $result) {
+            $this->trace = '';
+            foreach($traceAsArray as $out) {
+                $this->trace .= $out . "\n";
+            }
+        }
+
+        return $this;
     }
 
     public function getSuccess()
@@ -49,9 +66,9 @@ class MediaInfo
         return $this->xml;
     }
 
-    public function getOutputXmlAsArray()
+    public function getTrace()
     {
-        return $this->xmlAsArray;
+        return $this->trace;
     }
 
     public function getParsedOutput()

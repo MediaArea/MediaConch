@@ -261,18 +261,21 @@ class DefaultController extends Controller
             foreach($finder as $file) {
                 $MediaInfo = new MediaInfo($file->getPathname());
                 $MediaInfo->analyse();
+                //$MediaInfo->trace();
                 if ($MediaInfo->getSuccess()) {
                     $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $policy);
                     $policyChecker->check();
                     $check = array('isValid' => $policyChecker->isValid(),
                         'errors' => $policyChecker->getErrors(),
                         'xml' => $MediaInfo->getOutputXml(),
+                        'trace' => '',
                         );
                 }
                 else {
                     $check = array('isValid' => false,
                         'errors' => array('Error during file parsing'),
                         'xml' => '',
+                        'trace' => '',
                         );
                 }
 
