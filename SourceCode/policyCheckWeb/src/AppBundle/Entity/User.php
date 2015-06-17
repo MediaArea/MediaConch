@@ -6,8 +6,6 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use AppBundle\Entity\Policy;
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="MediaConch_user")
@@ -22,7 +20,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Policy", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Policy", mappedBy="user", cascade={"persist"})
      * @Assert\Valid()
      */
     protected $policy;

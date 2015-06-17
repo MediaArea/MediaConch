@@ -6,8 +6,13 @@ MediaConch Demo full file checker
 
 {% block body %}
 <h1>MediaConch Demo full file checker</h1>
+
 <div>
-{{ form(form) }}
+{% if form %}
+    {{ form(form) }}
+{% else %}
+    Quota exceeded, please contact us to raise your quotas.
+{% endif %}
 </div>
 
 {% if checks %}

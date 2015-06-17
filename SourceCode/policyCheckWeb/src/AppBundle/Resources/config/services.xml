@@ -15,5 +15,9 @@
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
+        <service id="mediaconch_user.quotas" class="AppBundle\Lib\Quotas\Quotas">
+            <argument type="service" id="security.token_storage" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
     </services>
 </container>

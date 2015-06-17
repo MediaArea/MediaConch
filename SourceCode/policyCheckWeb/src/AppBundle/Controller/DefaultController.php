@@ -38,50 +38,57 @@ class DefaultController extends Controller
      */
     public function checkFullFileAction(Request $request)
     {
-        $checks = false;
+        if ($this->get('mediaconch_user.quotas')->hasUploadsRights()) {
+            $checks = false;
+            $form = $this->createFormBuilder()
+                ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('p')
+                            ->where('p.user = :user')
+                            ->setParameter('user', $this->getUser());
+                    },
+                    'placeholder' => 'Choose a policy'))
+                ->add('file', 'file', array('label' => 'File (max ' . ini_get('upload_max_filesize') . ')'))
+                ->add('Check', 'submit')
+                ->getForm();
 
-        $form = $this->createFormBuilder()
-            ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->createQueryBuilder('p')
-                        ->where('p.user = :user')
-                        ->setParameter('user', $this->getUser());
-                },
-                'placeholder' => 'Choose a policy'))
-            ->add('file', 'file', array('label' => 'File (max ' . ini_get('upload_max_filesize') . ')'))
-            ->add('Check', 'submit')
-            ->getForm();
+            $form->handleRequest($request);
 
-        $form->handleRequest($request);
+            if ($form->isValid()) {
+                $data = $form->getData();
 
-        if ($form->isValid()) {
-            $data = $form->getData();
+                if ($data['file']->isValid()) {
+                    $MediaInfo = new MediaInfo($data['file']->getRealPath());
+                    $MediaInfo->analyse();
+                    if ($MediaInfo->getSuccess()) {
+                        $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
+                        $policyChecker->check();
+                        $check = array('isValid' => $policyChecker->isValid(),
+                            'errors' => $policyChecker->getErrors(),
+                            'xml' => $MediaInfo->getOutputXml(),
+                            );
+                    }
+                    else {
+                        $check = array('isValid' => false,
+                            'errors' => array('Error during file parsing'),
+                            'xml' => '',
+                            );
+                    }
 
-            if ($data['file']->isValid()) {
-                $MediaInfo = new MediaInfo($data['file']->getRealPath());
-                $MediaInfo->analyse();
-                if ($MediaInfo->getSuccess()) {
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
-                    $policyChecker->check();
-                    $check = array('isValid' => $policyChecker->isValid(),
-                        'errors' => $policyChecker->getErrors(),
-                        'xml' => $MediaInfo->getOutputXml(),
-                        );
+                    $check['name'] = $data['file']->getClientOriginalName();
+
+                    $checks = array(0 => $check);
+
+                    $this->get('mediaconch_user.quotas')->hitUploads();
                 }
-                else {
-                    $check = array('isValid' => false,
-                        'errors' => array('Error during file parsing'),
-                        'xml' => '',
-                        );
-                }
-
-                $check['name'] = $data['file']->getClientOriginalName();
-
-                $checks = array(0 => $check);
             }
+
+            return array('form' => $form->createView(), 'checks' => $checks);
+        }
+        else {
+            return array('form' => false, 'checks' => false);
         }
 
-        return array('form' => $form->createView(), 'checks' => $checks);
     }
 
     /**
