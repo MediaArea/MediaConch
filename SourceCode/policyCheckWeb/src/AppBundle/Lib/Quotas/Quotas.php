@@ -12,20 +12,33 @@ class Quotas
 {
     protected $user;
     protected $em;
+    protected $defaultQuotas;
+    protected $date;
+    protected $datePeriod;
 
     public function __construct(TokenStorageInterface $tokenStorage, EntityManager $em)
     {
         $this->user = $this->getUser($tokenStorage);
         $this->em = $em;
+        $this->defaultQuotas = array('period' => 3600,
+            'policies' => 10,
+            'uploads' => 10,
+            'urls' => 10,
+            'policyChecks' => 100,
+        );
+        $this->date = new \DateTime();
+        // Clone DateTime object as add/sub method modify the object itself
+        $this->datePeriod = clone $this->date;
+        $this->datePeriod->sub(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
     }
 
     public function setQuotasForNewUser()
     {
         $userQuotas = new UserQuotas();
-        $userQuotas->setPolicies(10)
-            ->setUploads(10)
-            ->setUrls(10)
-            ->setPolicyChecks(100)
+        $userQuotas->setPolicies($this->defaultQuotas['policies'])
+            ->setUploads($this->defaultQuotas['uploads'])
+            ->setUrls($this->defaultQuotas['urls'])
+            ->setPolicyChecks($this->defaultQuotas['policyChecks'])
             ->setUser($this->user);
 
         $this->em->persist($userQuotas);
@@ -34,13 +47,24 @@ class Quotas
 
     public function hasUploadsRights()
     {
-        return 0 < $this->getQuotasByUser()->getUploads();
+        $userQuotas = $this->getQuotasByUser();
+        if ($userQuotas->getUploadsTimestamp() < $this->datePeriod) {
+            return true;
+        }
+        else {
+            return 0 < $userQuotas->getUploads();
+        }
     }
 
     public function hitUploads($uploads = 1)
     {
         $userQuotas = $this->getQuotasByUser();
-        $userQuotas->decreaseUploads($uploads);
+        if ($userQuotas->getUploadsTimestamp() < $this->datePeriod) {
+            $userQuotas->setUploads($this->defaultQuotas['uploads'] - $uploads)->setUploadsTimestamp($this->date);
+        }
+        else {
+            $userQuotas->decreaseUploads($uploads);
+        }
 
         $this->em->persist($userQuotas);
         $this->em->flush();
@@ -48,13 +72,24 @@ class Quotas
 
     public function hasUrlsRights()
     {
-        return 0 < $this->getQuotasByUser()->getUrls();
+        $userQuotas = $this->getQuotasByUser();
+        if ($userQuotas->getUrlsTimestamp() < $this->datePeriod) {
+            return true;
+        }
+        else {
+            return 0 < $userQuotas->getUrls();
+        }
     }
 
     public function hitUrls($urls = 1)
     {
         $userQuotas = $this->getQuotasByUser();
-        $userQuotas->decreaseUrls($urls);
+        if ($userQuotas->getUrlsTimestamp() < $this->datePeriod) {
+            $userQuotas->setUrls($this->defaultQuotas['urls'] - $urls)->setUrlsTimestamp($this->date);
+        }
+        else {
+            $userQuotas->decreaseUrls($urls);
+        }
 
         $this->em->persist($userQuotas);
         $this->em->flush();
@@ -62,13 +97,24 @@ class Quotas
 
     public function hasPolicyChecksRights()
     {
-        return 0 < $this->getQuotasByUser()->getPolicyChecks();
+        $userQuotas = $this->getQuotasByUser();
+        if ($userQuotas->getPolicyChecksTimestamp() < $this->datePeriod) {
+            return true;
+        }
+        else {
+            return 0 < $userQuotas->getPolicyChecks();
+        }
     }
 
     public function hitPolicyChecks($policyChecks = 1)
     {
         $userQuotas = $this->getQuotasByUser();
-        $userQuotas->decreasePolicyChecks($policyChecks);
+        if ($userQuotas->getPolicyChecksTimestamp() < $this->datePeriod) {
+            $userQuotas->setPolicyChecks($this->defaultQuotas['policyChecks'] - $policyChecks)->setPolicyChecksTimestamp($this->date);
+        }
+        else {
+            $userQuotas->decreasePolicyChecks($policyChecks);
+        }
 
         $this->em->persist($userQuotas);
         $this->em->flush();

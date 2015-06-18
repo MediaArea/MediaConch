@@ -27,14 +27,29 @@ class UserQuotas
     protected $uploads;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $uploadsTimestamp;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $urls;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $urlsTimestamp;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $policyChecks;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $policyChecksTimestamp;
 
     /**
      * Set policies
@@ -188,5 +203,74 @@ class UserQuotas
         $this->policyChecks -= $policyChecks;
 
         return $this;
+    }
+
+    /**
+     * Set policyChecksTimestamp
+     *
+     * @param \DateTime $policyChecksTimestamp
+     * @return UserQuotas
+     */
+    public function setPolicyChecksTimestamp(\DateTime $policyChecksTimestamp)
+    {
+        $this->policyChecksTimestamp = $policyChecksTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get policyChecksTimestamp
+     *
+     * @return \DateTime
+     */
+    public function getPolicyChecksTimestamp()
+    {
+        return $this->policyChecksTimestamp;
+    }
+
+    /**
+     * Set uploadsTimestamp
+     *
+     * @param \DateTime $uploadsTimestamp
+     * @return UserQuotas
+     */
+    public function setUploadsTimestamp($uploadsTimestamp)
+    {
+        $this->uploadsTimestamp = $uploadsTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadsTimestamp
+     *
+     * @return \DateTime
+     */
+    public function getUploadsTimestamp()
+    {
+        return $this->uploadsTimestamp;
+    }
+
+    /**
+     * Set urlsTimestamp
+     *
+     * @param \DateTime $urlsTimestamp
+     * @return UserQuotas
+     */
+    public function setUrlsTimestamp($urlsTimestamp)
+    {
+        $this->urlsTimestamp = $urlsTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get urlsTimestamp
+     *
+     * @return \DateTime
+     */
+    public function getUrlsTimestamp()
+    {
+        return $this->urlsTimestamp;
     }
 }
