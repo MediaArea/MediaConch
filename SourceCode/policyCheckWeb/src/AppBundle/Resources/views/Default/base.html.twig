@@ -10,6 +10,9 @@
         body {
             margin: 0.2em;
         }
+        .alert {
+            margin-top: 20px;
+        }
         </style>
         {% block stylesheets %}{% endblock %}
     </head>
@@ -30,8 +33,8 @@
 
         {% for type, messages in app.session.flashBag.all %}
             {% for message in messages %}
-                <div class="{{ type }}">
-                    {{ message|trans({}, 'FOSUserBundle') }}
+                <div class="alert alert-{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle')|raw }}
                 </div>
             {% endfor %}
         {% endfor %}

@@ -23,8 +23,9 @@ class Quotas
     {
         $userQuotas = new UserQuotas();
         $userQuotas->setPolicies(10)
-            ->setUploads(15)
-            ->setUrls(20)
+            ->setUploads(10)
+            ->setUrls(10)
+            ->setPolicyChecks(100)
             ->setUser($this->user);
 
         $this->em->persist($userQuotas);
@@ -36,10 +37,10 @@ class Quotas
         return 0 < $this->getQuotasByUser()->getUploads();
     }
 
-    public function hitUploads()
+    public function hitUploads($uploads = 1)
     {
         $userQuotas = $this->getQuotasByUser();
-        $userQuotas->setUploads($userQuotas->getUploads() - 1);
+        $userQuotas->decreaseUploads($uploads);
 
         $this->em->persist($userQuotas);
         $this->em->flush();
@@ -50,13 +51,43 @@ class Quotas
         return 0 < $this->getQuotasByUser()->getUrls();
     }
 
-    public function hitUrls()
+    public function hitUrls($urls = 1)
     {
         $userQuotas = $this->getQuotasByUser();
-        $userQuotas->setUrls($userQuotas->getUrls() - 1);
+        $userQuotas->decreaseUrls($urls);
 
         $this->em->persist($userQuotas);
         $this->em->flush();
+    }
+
+    public function hasPolicyChecksRights()
+    {
+        return 0 < $this->getQuotasByUser()->getPolicyChecks();
+    }
+
+    public function hitPolicyChecks($policyChecks = 1)
+    {
+        $userQuotas = $this->getQuotasByUser();
+        $userQuotas->decreasePolicyChecks($policyChecks);
+
+        $this->em->persist($userQuotas);
+        $this->em->flush();
+    }
+
+    public function hasPolicyCreationRights()
+    {
+        $userQuotas = $this->getQuotasByUser();
+
+        $policies = $this->em
+            ->getRepository('AppBundle:Policy')
+            ->createQueryBuilder('p')
+                ->select('COUNT(p)')
+                ->where('p.user = :user')
+                ->setParameter('user', $this->user)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $policies < $this->getQuotasByUser()->getPolicies();
     }
 
     private function getUser($tokenStorage)

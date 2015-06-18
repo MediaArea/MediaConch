@@ -32,6 +32,11 @@ class UserQuotas
     protected $urls;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $policyChecks;
+
+    /**
      * Set policies
      *
      * @param integer $policies
@@ -78,6 +83,19 @@ class UserQuotas
     }
 
     /**
+     * Decrease uploads
+     *
+     * @param integer $uploads
+     * @return QuotasUser
+     */
+    public function decreaseUploads($uploads)
+    {
+        $this->uploads -= $uploads;
+
+        return $this;
+    }
+
+    /**
      * Set urls
      *
      * @param integer $urls
@@ -101,6 +119,19 @@ class UserQuotas
     }
 
     /**
+     * Decrease urls
+     *
+     * @param integer $urls
+     * @return QuotasUser
+     */
+    public function decreaseUrls($urls)
+    {
+        $this->urls -= $urls;
+
+        return $this;
+    }
+
+    /**
      * Set user
      *
      * @param \AppBundle\Entity\User $user
@@ -121,5 +152,41 @@ class UserQuotas
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set policyChecks
+     *
+     * @param integer $policyChecks
+     * @return UserQuotas
+     */
+    public function setPolicyChecks($policyChecks)
+    {
+        $this->policyChecks = $policyChecks;
+
+        return $this;
+    }
+
+    /**
+     * Get policyChecks
+     *
+     * @return integer
+     */
+    public function getPolicyChecks()
+    {
+        return $this->policyChecks;
+    }
+
+    /**
+     * Decrease policyChecks
+     *
+     * @param integer $policyChecks
+     * @return UserQuotas
+     */
+    public function decreasePolicyChecks($policyChecks)
+    {
+        $this->policyChecks -= $policyChecks;
+
+        return $this;
     }
 }

@@ -6,8 +6,11 @@ MediaConch Demo online file checker
 
 {% block body %}
 <h1>MediaConch Demo online file checker</h1>
+
 <div>
-{{ form(form) }}
+{% if form %}
+    {{ form(form) }}
+{% endif %}
 </div>
 
 {% if checks %}

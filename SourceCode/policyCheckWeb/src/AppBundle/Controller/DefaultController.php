@@ -76,7 +76,6 @@ class DefaultController extends Controller
                     }
 
                     $check['name'] = $data['file']->getClientOriginalName();
-
                     $checks = array(0 => $check);
 
                     $this->get('mediaconch_user.quotas')->hitUploads();
@@ -86,6 +85,11 @@ class DefaultController extends Controller
             return array('form' => $form->createView(), 'checks' => $checks);
         }
         else {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->renderView('AppBundle:Default:quotaExceeded.html.twig')
+            );
+
             return array('form' => false, 'checks' => false);
         }
 
@@ -97,48 +101,59 @@ class DefaultController extends Controller
      */
     public function checkOnlineFileAction(Request $request)
     {
-        $checks = false;
+        if ($this->get('mediaconch_user.quotas')->hasUrlsRights()) {
+            $checks = false;
 
-        $form = $this->createFormBuilder()
-            ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->createQueryBuilder('p')
-                        ->where('p.user = :user')
-                        ->setParameter('user', $this->getUser());
-                },
-                'placeholder' => 'Choose a policy'))
-            ->add('file', 'url', array('max_length' => 512))
-            ->add('Check', 'submit')
-            ->getForm();
+            $form = $this->createFormBuilder()
+                ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('p')
+                            ->where('p.user = :user')
+                            ->setParameter('user', $this->getUser());
+                    },
+                    'placeholder' => 'Choose a policy'))
+                ->add('file', 'url', array('max_length' => 512))
+                ->add('Check', 'submit')
+                ->getForm();
 
-        $form->handleRequest($request);
+            $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $data = $form->getData();
+            if ($form->isValid()) {
+                $data = $form->getData();
 
-            $MediaInfo = new MediaInfo(str_replace(' ', '%20', $data['file']));
-            $MediaInfo->analyse();
-            if ($MediaInfo->getSuccess()) {
-                $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
-                $policyChecker->check();
-                $check = array('isValid' => $policyChecker->isValid(),
-                    'errors' => $policyChecker->getErrors(),
-                    'xml' => $MediaInfo->getOutputXml(),
-                    );
+                $MediaInfo = new MediaInfo(str_replace(' ', '%20', $data['file']));
+                $MediaInfo->analyse();
+                if ($MediaInfo->getSuccess()) {
+                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
+                    $policyChecker->check();
+                    $check = array('isValid' => $policyChecker->isValid(),
+                        'errors' => $policyChecker->getErrors(),
+                        'xml' => $MediaInfo->getOutputXml(),
+                        );
+                }
+                else {
+                    $check = array('isValid' => false,
+                        'errors' => array('Error during file parsing'),
+                        'xml' => '',
+                        );
+                }
+
+                $check['name'] = $data['file'];
+                $checks = array(0 => $check);
+
+                $this->get('mediaconch_user.quotas')->hitUrls();
             }
-            else {
-                $check = array('isValid' => false,
-                    'errors' => array('Error during file parsing'),
-                    'xml' => '',
-                    );
-            }
 
-            $check['name'] = $data['file'];
-
-            $checks = array(0 => $check);
+            return array('form' => $form->createView(), 'checks' => $checks);
         }
+        else {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->renderView('AppBundle:Default:quotaExceeded.html.twig')
+            );
 
-        return array('form' => $form->createView(), 'checks' => $checks);
+            return array('form' => false, 'checks' => false);
+        }
     }
 
     /**
@@ -160,9 +175,8 @@ class DefaultController extends Controller
      */
     public function policyAction($id, Request $request)
     {
-        $originalItems = new ArrayCollection();
-
         if ($id > 0) {
+            $originalItems = new ArrayCollection();
             $policy = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
             ->find($id);
@@ -176,34 +190,44 @@ class DefaultController extends Controller
             $policy = new Policy();
         }
 
-        $form = $this->createForm(new PolicyType(), $policy);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            // remove the relationship between the item and the policy
-            foreach ($originalItems as $item) {
-                if (false === $policy->getItems()->contains($item)) {
-                    $item->setPolicy(null);
-                    $em->remove($item);
-                }
-            }
-
-            // Set user at the creation of the policy
-            if (null === $policy->getUser()) {
-                $policy->setUser($this->getUser());
-            }
-
-            $em->persist($policy);
-            $em->flush();
-        }
-
         $policyList = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
             ->findByUser($this->getUser());
 
-        return array('form' => $form->createView(), 'policyList' => $policyList);
+        if ($id > 0 || $this->get('mediaconch_user.quotas')->hasPolicyCreationRights()) {
+            $form = $this->createForm(new PolicyType(), $policy);
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                // remove the relationship between the item and the policy
+                foreach ($originalItems as $item) {
+                    if (false === $policy->getItems()->contains($item)) {
+                        $item->setPolicy(null);
+                        $em->remove($item);
+                    }
+                }
+
+                // Set user at the creation of the policy
+                if (null === $policy->getUser()) {
+                    $policy->setUser($this->getUser());
+                }
+
+                $em->persist($policy);
+                $em->flush();
+            }
+
+            return array('form' => $form->createView(), 'policyList' => $policyList);
+        }
+        else {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->renderView('AppBundle:Default:quotaExceeded.html.twig')
+            );
+
+            return array('form' => false, 'policyList' => $policyList);
+        }
     }
 
     /**
@@ -256,44 +280,56 @@ class DefaultController extends Controller
      */
     public function checkFilesAction($id)
     {
-        $params = $this->container->getParameter('mediaconch');
-        $checks = array();
-        if ($id > 0) {
-            $policy = $this->getDoctrine()
-                ->getRepository('AppBundle:Policy')
-                ->find($id);
-
-            $finder = new Finder();
-            $finder->files()->in($params['check_dir']);
-            foreach($finder as $file) {
-                $MediaInfo = new MediaInfo($file->getPathname());
-                $MediaInfo->analyse();
-                //$MediaInfo->trace();
-                if ($MediaInfo->getSuccess()) {
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $policy);
-                    $policyChecker->check();
-                    $check = array('isValid' => $policyChecker->isValid(),
-                        'errors' => $policyChecker->getErrors(),
-                        'xml' => $MediaInfo->getOutputXml(),
-                        'trace' => '',
-                        );
-                }
-                else {
-                    $check = array('isValid' => false,
-                        'errors' => array('Error during file parsing'),
-                        'xml' => '',
-                        'trace' => '',
-                        );
-                }
-
-                $check['name'] = $file->getRelativePathname();
-                $checks[] = $check;
-            }
-        }
-
         $policyList = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
             ->findByUser($this->getUser());
+
+        $checks = false;
+
+        if ($this->get('mediaconch_user.quotas')->hasPolicyChecksRights()) {
+            $checks = array();
+            if ($id > 0) {
+                $params = $this->container->getParameter('mediaconch');
+                $policy = $this->getDoctrine()
+                    ->getRepository('AppBundle:Policy')
+                    ->find($id);
+
+                $finder = new Finder();
+                $finder->files()->in($params['check_dir']);
+                foreach($finder as $file) {
+                    $MediaInfo = new MediaInfo($file->getPathname());
+                    $MediaInfo->analyse();
+                    //$MediaInfo->trace();
+                    if ($MediaInfo->getSuccess()) {
+                        $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $policy);
+                        $policyChecker->check();
+                        $check = array('isValid' => $policyChecker->isValid(),
+                            'errors' => $policyChecker->getErrors(),
+                            'xml' => $MediaInfo->getOutputXml(),
+                            'trace' => '',
+                            );
+                    }
+                    else {
+                        $check = array('isValid' => false,
+                            'errors' => array('Error during file parsing'),
+                            'xml' => '',
+                            'trace' => '',
+                            );
+                    }
+
+                    $check['name'] = $file->getRelativePathname();
+                    $checks[] = $check;
+                }
+
+                $this->get('mediaconch_user.quotas')->hitPolicyChecks(count($finder));
+            }
+        }
+        else {
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                $this->renderView('AppBundle:Default:quotaExceeded.html.twig')
+            );
+        }
 
         return array('checks' => $checks, 'policyList' => $policyList);
     }

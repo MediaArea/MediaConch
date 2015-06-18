@@ -6,22 +6,25 @@ MediaConch Demo policy management
 
 {% block body %}
 <h1>MediaConch Demo policy management</h1>
-{% form_theme form 'AppBundle:form:PolicyItemRow.html.twig' %}
-{{ form_start(form) }}
-    {{ form_errors(form) }}
 
-    <div>
-        {{ form_row(form.name) }}
-    </div>
+{% if form %}
+    {% form_theme form 'AppBundle:form:PolicyItemRow.html.twig' %}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
 
-    <div>
-        <ul class="items" data-prototype="{{ form_widget(form.items.vars.prototype)|e }}">
-        {% for item in form.items %}
-            <li class="item"><div id="policy_items_0">{{ form_row(item.type) }} {{ form_row(item.field) }} {{ form_row(item.validator) }} {{ form_row(item.value) }}</div></li>
-        {% endfor %}
-        </ul>
-    </div>
-{{ form_end(form) }}
+        <div>
+            {{ form_row(form.name) }}
+        </div>
+
+        <div>
+            <ul class="items" data-prototype="{{ form_widget(form.items.vars.prototype)|e }}">
+            {% for item in form.items %}
+                <li class="item"><div id="policy_items_0">{{ form_row(item.type) }} {{ form_row(item.field) }} {{ form_row(item.validator) }} {{ form_row(item.value) }}</div></li>
+            {% endfor %}
+            </ul>
+        </div>
+    {{ form_end(form) }}
+{% endif %}
 <br /><br />
 <div>
 Policy list :
