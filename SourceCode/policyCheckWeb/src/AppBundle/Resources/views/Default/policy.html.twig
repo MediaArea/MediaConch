@@ -30,7 +30,7 @@ MediaConch Demo policy management
 Policy list :
     <ul>
     {% for item in policyList %}
-        <li><a href="{{ path('app_default_policy', {'id': item.id}) }}">{{ item.name }}</a></li>
+        <li><a href="{{ path('app_default_policy', {'id': item.id}) }}">{{ item.name }}</a> (<a href="{{ path('app_default_policydelete', {'id': item.id}) }}">Delete</a>)</li>
     {% endfor %}
     </ul>
 </div>

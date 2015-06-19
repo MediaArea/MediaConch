@@ -28,7 +28,7 @@ class Policy
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="PolicyItem", mappedBy="policy", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PolicyItem", mappedBy="policy", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     protected $items;

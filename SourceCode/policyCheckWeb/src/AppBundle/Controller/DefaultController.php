@@ -5,9 +5,11 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Finder\Finder;
 use Doctrine\ORM\EntityRepository;
@@ -170,16 +172,21 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/policy/{id}", defaults={"id" = 0})
+     * @Route("/policy/{id}", defaults={"id" = 0}, requirements={"id": "\d+"})
      * @Template()
      */
     public function policyAction($id, Request $request)
     {
+        $originalItems = new ArrayCollection();
+
         if ($id > 0) {
-            $originalItems = new ArrayCollection();
             $policy = $this->getDoctrine()
             ->getRepository('AppBundle:Policy')
-            ->find($id);
+            ->findOneBy(array('id' => $id, 'user' => $this->getUser()));
+
+            if (!$policy) {
+                throw new NotFoundHttpException();
+            }
 
             // Create an ArrayCollection of the current items objects in the database
             foreach ($policy->getItems() as $item) {
@@ -216,6 +223,12 @@ class DefaultController extends Controller
 
                 $em->persist($policy);
                 $em->flush();
+
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Policy successfully saved'
+                );
+                return $this->redirect($this->generateUrl('app_default_policy'));
             }
 
             return array('form' => $form->createView(), 'policyList' => $policyList);
@@ -274,6 +287,35 @@ class DefaultController extends Controller
         return new JsonResponse($result);
     }
 
+    /**
+     * @Route("/policy/delete/{id}", requirements={"id": "\d+"})
+     * @Method("GET")
+     */
+    public function policyDeleteAction($id)
+    {
+        $policy = $this->getDoctrine()
+        ->getRepository('AppBundle:Policy')
+        ->findOneBy(array('id' => $id, 'user' => $this->getUser()));
+
+        if (!$policy) {
+             $this->get('session')->getFlashBag()->add(
+                'danger',
+                'Policy not found'
+            );
+       }
+        else {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($policy);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Policy successfully removed'
+            );
+        }
+
+        return $this->redirect($this->generateUrl('app_default_policy'));
+    }
     /**
      * @Route("/checkFiles/{id}", defaults={"id" = 0})
      * @Template()
