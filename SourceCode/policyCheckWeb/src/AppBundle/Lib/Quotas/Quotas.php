@@ -48,6 +48,16 @@ class Quotas
         $this->em->flush();
     }
 
+    public function getQuotasWithExpireDate()
+    {
+        $userQuotas = $this->getQuotasByUser();
+        $userQuotas->getUploadsTimestamp()->add(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
+        $userQuotas->getUrlsTimestamp()->add(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
+        $userQuotas->getPolicyChecksTimestamp()->add(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
+
+        return $userQuotas;
+    }
+
     public function hasUploadsRights()
     {
         $userQuotas = $this->getQuotasByUser();

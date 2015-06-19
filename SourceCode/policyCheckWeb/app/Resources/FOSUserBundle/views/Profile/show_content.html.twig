@@ -10,6 +10,16 @@
     <p>Newsletter: {% if user.newsletter %}Yes{% else %}No{% endif %}</p>
 </div>
 
+<div>
+    <p>Quotas :</p>
+    <ul>
+        <li>Policies : {{ quotas.policies }}</li>
+        <li>Uploads : {{ quotas.uploads }} (valid until {{ quotas.uploadsTimestamp|date("Y-m-d H:i:s") }} UTC)</li>
+        <li>Urls : {{ quotas.urls }} (valid until {{ quotas.urlsTimestamp|date("Y-m-d H:i:s") }} UTC)</li>
+        <li>Policy checks : {{ quotas.policyChecks }} (valid until {{ quotas.policyChecksTimestamp|date("Y-m-d H:i:s") }} UTC)</li>
+    </ul>
+<div>
+
 <div class="fos_user_user_actions">
     <p><a href="{{ path('fos_user_profile_edit') }}">Edit your profile</a></p>
     <p><a href="{{ path('fos_user_change_password') }}">Change your password</a></p>
