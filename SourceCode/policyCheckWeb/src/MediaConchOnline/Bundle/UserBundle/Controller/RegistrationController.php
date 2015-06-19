@@ -5,8 +5,6 @@ namespace MediaConchOnline\Bundle\UserBundle\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
-use AppBundle\Entity\UserQuotas;
-
 class RegistrationController extends BaseController
 {
     public function registerAction()
@@ -18,18 +16,6 @@ class RegistrationController extends BaseController
         $process = $formHandler->process($confirmationEnabled);
         if ($process) {
             $user = $form->getData();
-
-            /*
-            $userQuotas = new UserQuotas();
-            $userQuotas->setPolicies(10)
-                ->setUploads(15)
-                ->setUrls(20)
-                ->setUser($user);
-
-            $em = $this->container->get('doctrine')->getManager();
-            $em->persist($userQuotas);
-            $em->flush();
-            */
 
             $authUser = false;
             if ($confirmationEnabled) {
@@ -49,7 +35,7 @@ class RegistrationController extends BaseController
             }
 
             $this->container->get('mediaconch_user.quotas')->setQuotasForNewUser();
-            
+
             return $response;
         }
 

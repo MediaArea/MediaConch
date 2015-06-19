@@ -37,8 +37,11 @@ class Quotas
         $userQuotas = new UserQuotas();
         $userQuotas->setPolicies($this->defaultQuotas['policies'])
             ->setUploads($this->defaultQuotas['uploads'])
+            ->setUploadsTimestamp($this->datePeriod)
             ->setUrls($this->defaultQuotas['urls'])
+            ->setUrlsTimestamp($this->datePeriod)
             ->setPolicyChecks($this->defaultQuotas['policyChecks'])
+            ->setPolicyChecksTimestamp($this->datePeriod)
             ->setUser($this->user);
 
         $this->em->persist($userQuotas);
