@@ -1,20 +1,26 @@
-# Demo for MediaConch version 15.05
+# Demo for MediaConch version 15.06
 
-## 15.05 Release Notes
+## 15.06 Release Notes
 
-This initial release of MediaConch CLI builds on the development of MediaInfo 0.7.74.
+This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and the previous MediaConch release. It includes a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.
 
-The priority for this release is the development of a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.
+New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are below.
 
-Forthcoming releases of MediaConch will allow for the creation of and uploading of Schematron documents to facilitate file conformance checking. Instructions and files for initially testing this phase of development are below.
+## MediaConch GUI
 
+No updates this month.
 
-## MediaConch GUI version 15.05
+## MediaConchOnline version 15.06
 
-Files can be dragged into the program for analysis. Multiple files can be loaded by adding files using the File>Open menu. Analysis can toggled between Info and Trace. Display of analysis can toggle between Text and XML.
+This initial release of [MediaConchOnline](https://mediaarea.net/MediaConchOnline) features:
 
+- user account registration
+- policy rules creation via UI
+- partial and full file upload
+- ability to apply policy rules to files on a server
+- ability to check online files against policy rules
 
-## MediaConch CLI version 15.05
+## MediaConch CLI version 15.06
 
 ### File information retrieval
 
@@ -24,7 +30,7 @@ After installation, MediaConch can be run on the command line by using the `medi
 
 `mediaconch --Tool=Info --Format=XML FileName` will print to the screen the most recent MediaInfo output in XML format.
 
-`mediaconch -ti -fx FileName` is shorthand for the above command and will print to the screen the associated XML with the file.
+`mediaconch -ti -fx FileName` is shorthand for the above command.
 
 `mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output.
 
@@ -35,6 +41,9 @@ After installation, MediaConch can be run on the command line by using the `medi
 ### Policy Checker
 
 In addition to checking files for conformance at a basic level, MediaConch is developing a policy checker that allows archives, museums, and other memory institutions to create their own policies to which files should comply. Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.
+
+To test a media file against an existing Schematron policy document, use the following syntax:
+`mediaconch -ti -fx FileName -s SchematronDocument`
 
 
 ### Schematron
@@ -82,15 +91,13 @@ Test0.mkv -- This is a normal file with associated passing Schematron.
 Create a file:
 `ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 Test0.mkv`
 
-Create associated XML:
-`mediaconch -ti -fx Test0.mkv > Test0.xml`
-
 [Schematron for file](Files/Test0.sch)
 This policy checks that the file follows general rules of file conformance, such as the extension being mkv, the file including a video stream, and the file having a unique ID. It also checks for assertions specific to this file, such as the duration being 1 second, the frame rate being 25 frames per second, and the coder type being Golomb Rice.
 
-To gather technical metadata with mediaconch and test a policy in one line (using xmllint to apply the schematron) run:
+To gather technical metadata with mediaconch run:
 
-`mediaconch -ti -fx Test0.mkv | xmllint --noout --schematron Test0.sch -`
+`mediaconch -ti -fx Test0.mkv -s Test0.sch`
+
 
 #### Test 1: Conflicting tests
 
@@ -109,11 +116,16 @@ This policy checks all files for a framesize of 720 x 576 and a framerate of 25.
 [Schematron for NTSC](Files/Test1_ntsc.sch)
 This policy checks all files for a framesize of 720 x 480 and a framerate of 29.970.
 
-As one line with mediaconch and xmllint:
+Testing each policy:
 
-`mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_ntsc.sch -`
+`mediaconch -ti -fx Test1.mkv -s Test1_ntsc.sch`
 
-`mediaconch -ti -fx Test1.mkv | xmllint --noout --schematron Test1_pal.sch -`
+`mediaconch -ti -fx Test1.mkv -s Test1_pal.sch`
+
+Testing one file against multiple policies:
+
+`mediaconch -ti -fx Test1.mkv -s Test1_ntsc.sch -s Test1_pal.sch`
+
 
 #### Test 2: Testing multiple files
 
@@ -123,12 +135,9 @@ Files are identical copies except Test2_2.mkv has had two bytes (value of 0000) 
 Create files:
 (Files provided).
 
-Create associated XML:
-`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv > Test2.xml`
-
 [Schematron for multiple files](Files/Test2.sch)
 This policy checks all the files for conformance. Test2_2.mkv and Test2_3.mkv fail because they have been manipulated, but they fail in different ways.
 
-As one line with mediaconch and xmllint:
+Testing many files against a policy document:
 
-`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv | xmllint --noout --schematron Test2.sch -`
+`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -s Test2.sch`
