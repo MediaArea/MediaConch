@@ -57,13 +57,13 @@ class Quotas
 
         $quotas = array('policiesUsed' => $this->countPolicies(),
             'policiesQuota' => $this->defaultQuotas['policies'],
-            'uploadsUsed' => ($userQuotas->getUploadsTimestamp() < $this->date) ? $this->defaultQuotas['uploads'] : $userQuotas->getUploads(),
+            'uploadsUsed' => ($userQuotas->getUploadsTimestamp() < $this->date) ? 0 : $this->defaultQuotas['uploads'] - $userQuotas->getUploads(),
             'uploadsQuota' => $this->defaultQuotas['uploads'],
             'uploadsLimit' => ($userQuotas->getUploadsTimestamp() < $this->date) ? false : $userQuotas->getUploadsTimestamp(),
-            'urlsUsed' => ($userQuotas->getUrlsTimestamp() < $this->date) ? $this->defaultQuotas['urls'] : $userQuotas->getUrls(),
+            'urlsUsed' => ($userQuotas->getUrlsTimestamp() < $this->date) ? 0 : $this->defaultQuotas['urls'] - $userQuotas->getUrls(),
             'urlsQuota' => $this->defaultQuotas['urls'],
             'urlsLimit' => ($userQuotas->getUrlsTimestamp() < $this->date) ? false : $userQuotas->getUrlsTimestamp(),
-            'policyChecksUsed' => ($userQuotas->getPolicyChecksTimestamp() < $this->date) ? $this->defaultQuotas['policyChecks'] : $userQuotas->getPolicyChecks(),
+            'policyChecksUsed' => ($userQuotas->getPolicyChecksTimestamp() < $this->date) ? 0 : $this->defaultQuotas['policyChecks'] - $userQuotas->getPolicyChecks(),
             'policyChecksQuota' => $this->defaultQuotas['policyChecks'],
             'policyChecksLimit' => ($userQuotas->getPolicyChecksTimestamp() < $this->date) ? false : $userQuotas->getPolicyChecksTimestamp(),
             );
