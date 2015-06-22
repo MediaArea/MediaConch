@@ -27,7 +27,7 @@ body {
 	background-color:#303030;
 	font-family: Tahoma, Geneva, sans-serif;
 	min-width:480px;
-	/*ez azért kell mert a min-height a csak így alkalmazható FF-ban a root-container-re*/
+	/*ez azÃ©rt kell mert a min-height a csak Ã­gy alkalmazhatÃ³ FF-ban a root-container-re*/
 
 }
 
@@ -45,7 +45,6 @@ p {
 	padding-top: 1em;
 	position: relative;
 	overflow: hidden;
-	background: #303030 url(bottom.gif) no-repeat center bottom;
 
 }
 
