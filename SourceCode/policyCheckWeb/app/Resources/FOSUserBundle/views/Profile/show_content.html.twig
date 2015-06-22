@@ -13,10 +13,10 @@
 <div>
     <p>Quotas :</p>
     <ul>
-        <li>Policies : {{ quotas.policies }}</li>
-        <li>Uploads : {{ quotas.uploads }} (valid until {{ quotas.uploadsTimestamp|date("Y-m-d H:i:s") }} UTC)</li>
-        <li>Urls : {{ quotas.urls }} (valid until {{ quotas.urlsTimestamp|date("Y-m-d H:i:s") }} UTC)</li>
-        <li>Policy checks : {{ quotas.policyChecks }} (valid until {{ quotas.policyChecksTimestamp|date("Y-m-d H:i:s") }} UTC)</li>
+        <li>Policies : {{ quotas.policiesUsed }} / {{ quotas.policiesQuota }}</li>
+        <li>Uploads : {{ quotas.uploadsUsed }} / {{ quotas.uploadsQuota }}{% if quotas.uploadsLimit %} (valid until {{ quotas.uploadsLimit|date("Y-m-d H:i:s") }} UTC){% endif %}</li>
+        <li>Urls : {{ quotas.urlsUsed }} / {{ quotas.urlsQuota }}{% if quotas.urlsLimit %} (valid until {{ quotas.urlsLimit|date("Y-m-d H:i:s") }} UTC){% endif %}</li>
+        <li>Policy checks : {{ quotas.policyChecksUsed }} / {{ quotas.policyChecksQuota }}{% if quotas.policyChecksLimit %} (valid until {{ quotas.policyChecksLimit|date("Y-m-d H:i:s") }} UTC){% endif %}</li>
     </ul>
 <div>
 

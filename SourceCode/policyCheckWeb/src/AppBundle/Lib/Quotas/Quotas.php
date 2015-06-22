@@ -48,14 +48,27 @@ class Quotas
         $this->em->flush();
     }
 
-    public function getQuotasWithExpireDate()
+    public function getQuotasForProfile()
     {
         $userQuotas = $this->getQuotasByUser();
         $userQuotas->getUploadsTimestamp()->add(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
         $userQuotas->getUrlsTimestamp()->add(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
         $userQuotas->getPolicyChecksTimestamp()->add(new \DateInterval('PT' . $this->defaultQuotas['period'] . 'S'));
 
-        return $userQuotas;
+        $quotas = array('policiesUsed' => $this->countPolicies(),
+            'policiesQuota' => $this->defaultQuotas['policies'],
+            'uploadsUsed' => ($userQuotas->getUploadsTimestamp() < $this->date) ? $this->defaultQuotas['uploads'] : $userQuotas->getUploads(),
+            'uploadsQuota' => $this->defaultQuotas['uploads'],
+            'uploadsLimit' => ($userQuotas->getUploadsTimestamp() < $this->date) ? false : $userQuotas->getUploadsTimestamp(),
+            'urlsUsed' => ($userQuotas->getUrlsTimestamp() < $this->date) ? $this->defaultQuotas['urls'] : $userQuotas->getUrls(),
+            'urlsQuota' => $this->defaultQuotas['urls'],
+            'urlsLimit' => ($userQuotas->getUrlsTimestamp() < $this->date) ? false : $userQuotas->getUrlsTimestamp(),
+            'policyChecksUsed' => ($userQuotas->getPolicyChecksTimestamp() < $this->date) ? $this->defaultQuotas['policyChecks'] : $userQuotas->getPolicyChecks(),
+            'policyChecksQuota' => $this->defaultQuotas['policyChecks'],
+            'policyChecksLimit' => ($userQuotas->getPolicyChecksTimestamp() < $this->date) ? false : $userQuotas->getPolicyChecksTimestamp(),
+            );
+
+        return $quotas;
     }
 
     public function hasUploadsRights()
@@ -135,9 +148,12 @@ class Quotas
 
     public function hasPolicyCreationRights()
     {
-        $userQuotas = $this->getQuotasByUser();
+        return $this->countPolicies() < $this->getQuotasByUser()->getPolicies();
+    }
 
-        $policies = $this->em
+    private function countPolicies()
+    {
+        return $this->em
             ->getRepository('AppBundle:Policy')
             ->createQueryBuilder('p')
                 ->select('COUNT(p)')
@@ -145,8 +161,6 @@ class Quotas
                 ->setParameter('user', $this->user)
             ->getQuery()
             ->getSingleScalarResult();
-
-        return $policies < $this->getQuotasByUser()->getPolicies();
     }
 
     private function getUser($tokenStorage)

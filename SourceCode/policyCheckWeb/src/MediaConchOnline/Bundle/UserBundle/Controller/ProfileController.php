@@ -19,7 +19,7 @@ class ProfileController extends BaseController
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        $quotas = $this->container->get('mediaconch_user.quotas')->getQuotasWithExpireDate();
+        $quotas = $this->container->get('mediaconch_user.quotas')->getQuotasForProfile();
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('user' => $user, 'quotas' => $quotas));
     }
