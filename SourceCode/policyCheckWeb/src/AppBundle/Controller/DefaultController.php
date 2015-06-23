@@ -228,7 +228,7 @@ class DefaultController extends Controller
                     'success',
                     'Policy successfully saved'
                 );
-                return $this->redirect($this->generateUrl('app_default_policy'));
+                return $this->redirect($this->generateUrl('app_default_policy', array('id' => $policy->getId())));
             }
 
             return array('form' => $form->createView(), 'policyList' => $policyList);
