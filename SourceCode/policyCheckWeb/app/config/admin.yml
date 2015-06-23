@@ -1,0 +1,42 @@
+easy_admin:
+    site_name: 'MediaConchOnline'
+    design:
+        brand_color: '#3472A1'
+        color_scheme: 'light'
+
+    list:
+        max_results: 20
+        actions:
+            - { name: 'show', icon: 'search' }
+            - { name: 'edit', icon: 'pencil' }
+
+    entities:
+        Users:
+            class: AppBundle\Entity\User
+            list:
+                fields: ['username', 'email', 'firstname', 'lastname', 'enabled', 'locked', 'lastLogin']
+            form:
+                fields:
+                    - 'username'
+                    - 'email'
+                    - 'firstname'
+                    - 'lastname'
+                    - 'companyName'
+                    - 'newsletter'
+#                    - 'professional'
+#                    - { property: 'country', type: 'country' }
+#                    - { property: 'language', type: 'language', placeholder: 'Choose your country' }
+                    - 'enabled'
+                    - 'locked'
+                    - 'roles'
+            show:
+                fields: ['username', 'email', 'firstname', 'lastname', 'companyName', 'newsletter', 'professional', 'country', 'language', 'enabled', 'locked', 'lastLogin', 'roles']
+            search:
+                fields: ['username', 'email', 'firstname', 'lastname']
+            disabled_actions: ['new']
+
+        UserQuotas:
+            class: AppBundle\Entity\UserQuotas
+            list:
+                fields: ['user', 'policies', 'uploads', 'uploadsTimestamp', 'urls', 'urlsTimestamp', 'policyChecks', 'policyChecksTimestamp']
+            disabled_actions: ['new', 'edit', 'delete', 'show']
