@@ -40,3 +40,12 @@ easy_admin:
             list:
                 fields: ['user', 'policies', 'uploads', 'uploadsTimestamp', 'urls', 'urlsTimestamp', 'policyChecks', 'policyChecksTimestamp']
             disabled_actions: ['new', 'edit', 'delete', 'show']
+
+        UserQuotasDefault:
+            class: AppBundle\Entity\UserQuotasDefault
+            list:
+                fields: ['user', 'policies', 'uploads', 'urls', 'policyChecks']
+            form:
+                fields: ['user', 'policies', 'uploads', 'urls', 'policyChecks']
+            show:
+                fields: ['user', 'policies', 'uploads', 'urls', 'policyChecks']

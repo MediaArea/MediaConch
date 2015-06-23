@@ -20,10 +20,22 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Policy", mappedBy="user", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Policy", mappedBy="user", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     protected $policy;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\UserQuotas", mappedBy="user", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    protected $quotas;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\UserQuotasDefault", mappedBy="user", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    protected $quotasDefault;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -223,5 +235,51 @@ class User extends BaseUser
     public function getPolicy()
     {
         return $this->policy;
+    }
+
+    /**
+     * Set quotasDefault
+     *
+     * @param \AppBundle\Entity\UserQuotasDefault $quotasDefault
+     * @return User
+     */
+    public function setQuotasDefault(\AppBundle\Entity\UserQuotasDefault $quotasDefault = null)
+    {
+        $this->quotasDefault = $quotasDefault;
+
+        return $this;
+    }
+
+    /**
+     * Get quotasDefault
+     *
+     * @return \AppBundle\Entity\UserQuotasDefault
+     */
+    public function getQuotasDefault()
+    {
+        return $this->quotasDefault;
+    }
+
+    /**
+     * Set quotas
+     *
+     * @param \AppBundle\Entity\UserQuotas $quotas
+     * @return User
+     */
+    public function setQuotas(\AppBundle\Entity\UserQuotas $quotas = null)
+    {
+        $this->quotas = $quotas;
+
+        return $this;
+    }
+
+    /**
+     * Get quotas
+     *
+     * @return \AppBundle\Entity\UserQuotas
+     */
+    public function getQuotas()
+    {
+        return $this->quotas;
     }
 }

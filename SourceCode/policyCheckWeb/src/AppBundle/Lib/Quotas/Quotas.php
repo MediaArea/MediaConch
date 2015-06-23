@@ -20,12 +20,7 @@ class Quotas
     {
         $this->user = $this->getUser($tokenStorage);
         $this->em = $em;
-        $this->defaultQuotas = array('period' => 3600,
-            'policies' => 10,
-            'uploads' => 10,
-            'urls' => 10,
-            'policyChecks' => 100,
-        );
+        $this->defaultQuotas = $this->getDefaultQuotas();
         $this->date = new \DateTime();
         // Clone DateTime object as add/sub method modify the object itself
         $this->datePeriod = clone $this->date;
@@ -180,5 +175,31 @@ class Quotas
         return $this->em
             ->getRepository('AppBundle:UserQuotas')
             ->findOneByUser($this->user);
+    }
+
+    private function getDefaultQuotas()
+    {
+        $defaultQuotas = array('period' => 3600,
+            'policies' => 10,
+            'uploads' => 10,
+            'urls' => 10,
+            'policyChecks' => 100,
+        );
+
+        if ($this->user instanceof User) {
+            $defaultUserQuotas = $this->em
+            ->getRepository('AppBundle:UserQuotasDefault')
+            ->findOneByUser($this->user);
+            if ($defaultUserQuotas) {
+                $defaultQuotas = array('period' => 3600,
+                    'policies' => $defaultUserQuotas->getPolicies(),
+                    'uploads' => $defaultUserQuotas->getUploads(),
+                    'urls' => $defaultUserQuotas->getUrls(),
+                    'policyChecks' => $defaultUserQuotas->getPolicyChecks(),
+                );
+            }
+        }
+
+        return $defaultQuotas;
     }
 }
