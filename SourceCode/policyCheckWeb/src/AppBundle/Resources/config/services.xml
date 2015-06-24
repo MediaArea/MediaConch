@@ -19,5 +19,21 @@
             <argument type="service" id="security.token_storage" />
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
+
+        <service id="app.form.type.professional" class="AppBundle\Form\Type\ProfessionalType">
+            <tag name="form.type" alias="professional" />
+        </service>
+
+        <service id="app.form.type.entity.disables" class="AppBundle\Form\Type\EntityDisabledType">
+            <tag name="form.type" alias="entity_disabled" />
+        </service>
+
+        <service id="app.form.type.country.custom" class="AppBundle\Form\Type\CountryCustomType">
+            <tag name="form.type" alias="country_custom" />
+        </service>
+
+        <service id="app.form.type.language.custom" class="AppBundle\Form\Type\LanguageCustomType">
+            <tag name="form.type" alias="language_custom" />
+        </service>
     </services>
 </container>

@@ -12,7 +12,7 @@ class UserQuotas
 {
     /**
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="quotas")
      */
     protected $user;
 

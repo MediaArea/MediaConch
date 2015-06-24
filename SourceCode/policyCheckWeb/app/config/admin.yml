@@ -23,9 +23,9 @@ easy_admin:
                     - 'lastname'
                     - 'companyName'
                     - 'newsletter'
-#                    - 'professional'
-#                    - { property: 'country', type: 'country' }
-#                    - { property: 'language', type: 'language', placeholder: 'Choose your country' }
+                    - { property: 'professional', type: 'professional'}
+                    - { property: 'country', type: 'country_custom' }
+                    - { property: 'language', type: 'language_custom' }
                     - 'enabled'
                     - 'locked'
                     - 'roles'
@@ -45,7 +45,9 @@ easy_admin:
             class: AppBundle\Entity\UserQuotasDefault
             list:
                 fields: ['user', 'policies', 'uploads', 'urls', 'policyChecks']
-            form:
+            new:
                 fields: ['user', 'policies', 'uploads', 'urls', 'policyChecks']
+            edit:
+                fields: [{ property: 'user', type: 'entity_disabled'}, 'policies', 'uploads', 'urls', 'policyChecks']
             show:
                 fields: ['user', 'policies', 'uploads', 'urls', 'policyChecks']
