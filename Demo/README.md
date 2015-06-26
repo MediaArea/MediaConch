@@ -6,19 +6,6 @@ This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and
 
 New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are below.
 
-## MediaConch GUI
-
-No updates this month.
-
-## MediaConchOnline version 15.06
-
-This initial release of [MediaConchOnline](https://mediaarea.net/MediaConchOnline) features:
-
-- user account registration
-- policy rules creation via UI
-- partial and full file upload
-- ability to apply policy rules to files on a server
-- ability to check online files against policy rules
 
 ## MediaConch CLI version 15.06
 
