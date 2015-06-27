@@ -1,0 +1,113 @@
+ffmpeg started on 2015-06-27 at 18:03:37
+Report written to "ffv1_test_pixfmt-yuva444p_coder-0_level-1.txt"
+Command line:
+ffmpeg -y -f lavfi -i mandelbrot -c:v ffv1 -pix_fmt yuva444p -level 1 -coder 0 -t 1 ffv1_test_pixfmt-yuva444p_coder-0_level-1.mkv
+ffmpeg version 2.6.3 Copyright (c) 2000-2015 the FFmpeg developers
+  built with Apple LLVM version 6.1.0 (clang-602.0.49) (based on LLVM 3.6.0svn)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/2.6.3 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-libx264 --enable-libmp3lame --enable-libvo-aacenc --enable-libxvid --enable-libfaac --enable-ffplay --enable-nonfree --enable-vda
+  libavutil      54. 20.100 / 54. 20.100
+  libavcodec     56. 26.100 / 56. 26.100
+  libavformat    56. 25.101 / 56. 25.101
+  libavdevice    56.  4.100 / 56.  4.100
+  libavfilter     5. 11.102 /  5. 11.102
+  libavresample   2.  1.  0 /  2.  1.  0
+  libswscale      3.  1.101 /  3.  1.101
+  libswresample   1.  1.100 /  1.  1.100
+  libpostproc    53.  3.100 / 53.  3.100
+Splitting the commandline.
+Reading option '-y' ... matched as option 'y' (overwrite output files) with argument '1'.
+Reading option '-f' ... matched as option 'f' (force format) with argument 'lavfi'.
+Reading option '-i' ... matched as input file with argument 'mandelbrot'.
+Reading option '-c:v' ... matched as option 'c' (codec name) with argument 'ffv1'.
+Reading option '-pix_fmt' ... matched as option 'pix_fmt' (set pixel format) with argument 'yuva444p'.
+Reading option '-level' ... matched as AVOption 'level' with argument '1'.
+Reading option '-coder' ... matched as AVOption 'coder' with argument '0'.
+Reading option '-t' ... matched as option 't' (record or transcode "duration" seconds of audio/video) with argument '1'.
+Reading option 'ffv1_test_pixfmt-yuva444p_coder-0_level-1.mkv' ... matched as output file.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option y (overwrite output files) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input file mandelbrot.
+Applying option f (force format) with argument lavfi.
+Successfully parsed a group of options.
+Opening an input file: mandelbrot.
+detected 4 logical cores
+[AVFilterGraph @ 0x7ffb13400ba0] query_formats: 2 queried, 1 merged, 0 already done, 0 delayed
+[lavfi @ 0x7ffb14809400] All info found
+Input #0, lavfi, from 'mandelbrot':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+    Stream #0:0, 1, 1/25: Video: rawvideo (RGBA / 0x41424752), rgba, 640x480 [SAR 1:1 DAR 4:3], 25 tbr, 25 tbn, 25 tbc
+Successfully opened the file.
+Parsing a group of options: output file ffv1_test_pixfmt-yuva444p_coder-0_level-1.mkv.
+Applying option c:v (codec name) with argument ffv1.
+Applying option pix_fmt (set pixel format) with argument yuva444p.
+Applying option t (record or transcode "duration" seconds of audio/video) with argument 1.
+Successfully parsed a group of options.
+Opening an output file: ffv1_test_pixfmt-yuva444p_coder-0_level-1.mkv.
+Successfully opened the file.
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] Setting 'video_size' to value '640x480'
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] Setting 'pix_fmt' to value '28'
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] Setting 'time_base' to value '1/25'
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] Setting 'pixel_aspect' to value '1/1'
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] Setting 'sws_param' to value 'flags=2'
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] Setting 'frame_rate' to value '25/1'
+[graph 0 input from stream 0:0 @ 0x7ffb135221e0] w:640 h:480 pixfmt:rgba tb:1/25 fr:25/1 sar:1/1 sws_param:flags=2
+[format @ 0x7ffb13523b00] compat: called with args=[yuva444p]
+[format @ 0x7ffb13523b00] Setting 'pix_fmts' to value 'yuva444p'
+[auto-inserted scaler 0 @ 0x7ffb135246a0] Setting 'flags' to value '0x4'
+[auto-inserted scaler 0 @ 0x7ffb135246a0] w:iw h:ih flags:'0x4' interl:0
+[format @ 0x7ffb13523b00] auto-inserting filter 'auto-inserted scaler 0' between the filter 'Parsed_null_0' and the filter 'format'
+[AVFilterGraph @ 0x7ffb13522480] query_formats: 5 queried, 3 merged, 1 already done, 0 delayed
+[auto-inserted scaler 0 @ 0x7ffb135246a0] w:640 h:480 fmt:rgba sar:1/1 -> w:640 h:480 fmt:yuva444p sar:1/1 flags:0x4
+[ffv1 @ 0x7ffb14809a00] Storing alpha plane, this will require a recent FFV1 decoder to playback!
+Output #0, matroska, to 'ffv1_test_pixfmt-yuva444p_coder-0_level-1.mkv':
+  Metadata:
+    encoder         : Lavf56.25.101
+    Stream #0:0, 0, 1/1000: Video: ffv1 (FFV1 / 0x31564646), yuva444p, 640x480 [SAR 1:1 DAR 4:3], q=2-31, 200 kb/s, 25 fps, 1k tbn, 25 tbc
+    Metadata:
+      encoder         : Lavc56.26.100 ffv1
+Stream mapping:
+  Stream #0:0 -> #0:0 (rawvideo (native) -> ffv1 (native))
+Press [q] to stop, [?] for help
+Cliping frame in rate conversion by 0.000008
+[matroska @ 0x7ffb1383a400] Writing block at offset 647, size 173134, pts 0, dts 0, duration 40, flags 128
+[matroska @ 0x7ffb1383a400] Writing block at offset 173789, size 172649, pts 40, dts 40, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 346446, size 173175, pts 80, dts 80, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 519629, size 174732, pts 120, dts 120, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 694369, size 176284, pts 160, dts 160, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 870661, size 177867, pts 200, dts 200, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 1048536, size 179254, pts 240, dts 240, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 1227798, size 181237, pts 280, dts 280, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 1409043, size 183422, pts 320, dts 320, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 1592473, size 185733, pts 360, dts 360, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 1778214, size 187893, pts 400, dts 400, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 1966115, size 190140, pts 440, dts 440, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Starting new cluster at offset 2156263 bytes, pts 480dts 480
+[matroska @ 0x7ffb1383a400] Writing block at offset 2156279, size 193177, pts 480, dts 480, duration 40, flags 128
+frame=   13 fps=0.0 q=0.0 size=    2294kB time=00:00:00.52 bitrate=36145.6kbits/s    [matroska @ 0x7ffb1383a400] Writing block at offset 2349464, size 194589, pts 520, dts 520, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 2544061, size 196727, pts 560, dts 560, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 2740796, size 198710, pts 600, dts 600, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 2939514, size 200185, pts 640, dts 640, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 3139707, size 201988, pts 680, dts 680, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 3341703, size 203368, pts 720, dts 720, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 3545079, size 205150, pts 760, dts 760, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 3750237, size 206203, pts 800, dts 800, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 3956448, size 208028, pts 840, dts 840, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 4164484, size 208801, pts 880, dts 880, duration 40, flags 0
+[matroska @ 0x7ffb1383a400] Writing block at offset 4373293, size 210273, pts 920, dts 920, duration 40, flags 0
+frame=   24 fps= 24 q=0.0 size=    4476kB time=00:00:00.96 bitrate=38196.4kbits/s    [matroska @ 0x7ffb1383a400] Starting new cluster at offset 4583574 bytes, pts 960dts 960
+[matroska @ 0x7ffb1383a400] Writing block at offset 4583590, size 213612, pts 960, dts 960, duration 40, flags 128
+[output stream 0:0 @ 0x7ffb13523960] EOF on sink link output stream 0:0:default.
+No more output streams to write to, finishing.
+[matroska @ 0x7ffb1383a400] end duration = 1000
+frame=   25 fps= 22 q=0.0 Lsize=    4685kB time=00:00:01.00 bitrate=38378.2kbits/s    
+video:4684kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.019723%
+Input file #0 (mandelbrot):
+  Input stream #0:0 (video): 26 packets read (31948800 bytes); 26 frames decoded; 
+  Total: 26 packets (31948800 bytes) demuxed
+Output file #0 (ffv1_test_pixfmt-yuva444p_coder-0_level-1.mkv):
+  Output stream #0:0 (video): 25 frames encoded; 25 packets muxed (4796331 bytes); 
+  Total: 25 packets (4796331 bytes) muxed
+26 frames successfully decoded, 0 decoding errors
+[AVIOContext @ 0x7ffb13400fe0] Statistics: 36 seeks, 187 writeouts
