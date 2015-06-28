@@ -11,7 +11,24 @@ title: "About MediaConch"
 <abbr title="Media CONformance CHecker">MediaConch</abbr> is an extensible, open source software project consisting of an implementation checker, policy checker, reporter, and fixer that targets preservation-level audiovisual files (specifically Matroska, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1)) for use in memory institutions, providing detailed and batch-level conformance checking via an adaptable and flexible application program interface accessible by the command line, a graphical user interface, or a web-based shell. Conch is currently being developed by the MediaArea team, notable for the creation of open source media checker software, MediaInfo. Furthermore, the MediaArea team is dedicated to the further development of the standardization of the Matroska and FFV1 formats to ensure their longevity as a recommended digital preservation file format.
 
 
-## The team
+## Deliverables
+
+<table>
+<tr>
+<td>
+November 2014 - March 2015<br />
+the team participated to the Design Phase (phase 1)
+</td>
+<td style="width:33%; vertical-align: middle;">
+    <a href="http://www.preforma-project.eu"><img src="images/pfo_logo.png" width="80%" alt="PREFORMA logo"></a>
+</td>
+<td style="width:25%; vertical-align: middle;">
+<a href="https://github.com/MediaArea/MediaConch/releases/tag/2015.03.14">Design phase<br /> final report</a>
+</td>
+</tr>
+</table>
+
+## The Team
 
 <table>
   <tr>
@@ -56,13 +73,13 @@ title: "About MediaConch"
     </ul>
   </td>
   <td style="width:25%;text-align:right;">
-    <a href=""><img src="images/Website16.png" alt="Website"></a><a href="mailto:info@mediaarea.net"><img src="images/Email16.png" alt="E-mail"></a><a href="https://fr.linkedin.com/pub/guillaume-roques/99/628/3a9/en"><img src="images/LinkedIn16.png" alt="LinkedIn"></a><a href="https://github.com/GuillaumeRoques"><img src="images/GitHub16.png" alt="GitHub"></a>
+    <a href="mailto:info@mediaarea.net"><img src="images/Email16.png" alt="E-mail"></a><a href="https://fr.linkedin.com/pub/guillaume-roques/99/628/3a9/en"><img src="images/LinkedIn16.png" alt="LinkedIn"></a><a href="https://github.com/GuillaumeRoques"><img src="images/GitHub16.png" alt="GitHub"></a>
   </td>
 </tr>
 <tr>
   <td>
   <ul>
-    <li>Florent Tribouilloy<br/>
+    <li>Name TBD (Developer)<br/>
     GUI development, reporting</li>
   </ul>
   </td>
@@ -85,7 +102,7 @@ title: "About MediaConch"
   <td>
     <ul>
       <li><strong>Tessa Fallon</strong> (Archivist)<br/>
-      technical writing and documentation, community outreach, standards organization</li>
+      community outreach and standards organization</li>
     </ul>
   </td>
 <td style="width:25%;text-align:right;">
@@ -105,86 +122,6 @@ title: "About MediaConch"
 </tr>
 </table>
 
-
-## Outreach 
-
-<table>
-<tr>
-  <td colspan="3">
-    The MediaArea team is active in the open source community and actively presents their work on MediaConch.
-  </td>
-</tr>
-<tr>
-  <td>
-    <ul>
-      <li>
-      March 2015<br />
-      Jérôme Martinez and Dave Rice<br />
-      Brussels, Belgium
-      </li>
-    </ul>
-  </td>
-  <td style="width:33%; vertical-align: middle;">
-    <a href="http://www.preforma-project.eu"><img src="images/pfo_logo.png" width="80%" alt="PREFORMA logo"></a>
-  </td>
-  <td style="width:25%; vertical-align: middle;">
-    <a href="http://www.preforma-project.eu/design-phase-1-final-workshop.html">Conference page</a><br /><a href="http://mediaarea.github.io/MediaConch/Outreach/Slides">Slides</a>
-  </td>
-</tr>
-<tr>
-  <td>
-    <ul>
-        <li>
-        February 2015<br />
-        Ashley Blewer<br />
-        Portland, OR, USA
-        </li>
-    </ul>
-  </td>
-  <td style="width:33%; vertical-align: middle;">
-    <a href="http://code4lib.org"><img src="images/Code4Lib.png" width="75%" alt="Code4Lib logo"></a>
-  </td>
-  <td style="width:25%; vertical-align: middle;">
-    <a href="http://wiki.code4lib.org/2015_Lightning_Talks">Conference page</a><br /><a href="http://ablwr.github.io/c4l_preforma/#/">Slides</a><br /><a href="https://www.youtube.com/watch?v=G7kgcZh2zeY&t=2h20m48s">Video</a>
-  </td>
-</tr>
-<tr>
-  <td>
-  <ul>
-      <li>
-      January 2015<br />
-      Dave Rice<br />
-      Brussels, Belgium
-      </li>
-  </ul>
-  </td>
-  <td style="width:33%; vertical-align: middle;">
-      <a href="http://fosdem.org"><img src="images/Fosdem_2015.png" width="50%" alt="FOSDEM 2015 logo"></a>
-  </td>
-  <td style="width:25%; vertical-align: middle;">
-  <a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/">Conference page</a><br /><a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/attachments/slides/746/export/events/attachments/enabling_video_preservation/slides/746/preservation.pdf">Slides</a><br /><a href="http://video.fosdem.org/2015/devroom-open_media/enabling_video_preservation.mp4">Video</a>
-  </td>
-</tr>
-</table>
-
-
-
-## Deliverables
-
-<table>
-<tr>
-<td>
-November 2014 - March 2015<br />
-the team participated to the Design Phase (phase 1)
-</td>
-<td style="width:33%; vertical-align: middle;">
-    <a href="http://www.preforma-project.eu"><img src="images/pfo_logo.png" width="80%" alt="PREFORMA logo"></a>
-</td>
-<td style="width:25%; vertical-align: middle;">
-<a href="https://github.com/MediaArea/MediaConch/releases/tag/2015.03.14">Design phase<br /> final report</a>
-</td>
-</tr>
-</table>
 
 ## Project Advisors
 
@@ -250,20 +187,6 @@ MediaArea has approached several individual and institutional partners from vary
 </tr>
 </table>
 
-## Community Interviews
-
-<p>In December 2014, MediaArea started conducting interviews with FFV1, Matroska, and LPCM stakeholders in order to collect feedback and insights from the archives community.  To date, interviews have been conducted with:</p>
-<ul>
-  <li>Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek
-    </li>
-  <li>Ian Henderson; UK National Archives
-    </li>
-  <li>Christophe Kummer; NOA
-    </li>
-  <li>George Blood; George Blood, L.P.
-    </li>
-</ul>
-<p>Notes and partial transcripts (in English) from the interviews are available in the <a href="https://github.com/MediaArea/MediaConch/tree/master/Interviews">Conch GitHub repository</a>.</p>
 
 ## Funding 
 

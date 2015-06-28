@@ -1,18 +1,39 @@
 ---
 layout: default
-permalink: /download.html
+permalink: download.html
 title: "Download MediaConch"
 ---
 
-# Download
+# Downloads
 
-<a href="/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">Graphical User Interface version 15.05 for Windows</a><br />
-<a href="/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows.zip">Command Line Interface version 15.05 for Windows</a><br />
-<a href="/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Mac.dmg">Graphical User Interface version 15.05 for Mac</a><br />
-<a href="/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Mac.dmg">Command Line Interface version 15.05 for Mac</a><br />
-<a href="Ubuntu">Graphical User Interface version 15.05 for Ubuntu</a><br />
-<a href="Ubuntu">Command Line Interface version 15.05 for Ubuntu</a><br />
-<a href="Download">Other downloads... (Debian, RHEL, CentOS, Fedora...)</a><br />
+MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
+
+Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project.
+
+New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.
+
+Downloads will be made available through a public repository with a functioning issue tracker (GitHub). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.
+
+All source codes and updates will be made accessible on the following platforms:
+
+MS Windows
+Mac OSX
+Linux (Ubuntu, Fedora, Debian, and Suse)
+
+The target release date will be the 15th of each month.
+
+## Quicklinks
+
+<a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">Graphical User Interface version 15.05 for Windows</a><br />
+<a href="http://mediaarea.net/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows.zip">Command Line Interface version 15.05 for Windows</a><br />
+<a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Mac.dmg">Graphical User Interface version 15.05 for Mac</a><br />
+<a href="http://mediaarea.net/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Mac.dmg">Command Line Interface version 15.05 for Mac</a><br />
+<a href="#Ubuntu">Graphical User Interface version 15.05 for Ubuntu</a><br />
+<a href="#Ubuntu">Command Line Interface version 15.05 for Ubuntu</a><br />
+<a href="#Download">Other downloads... (Debian, RHEL, CentOS, Fedora...)</a><br />
+
+
+## All downloads
 
 <table border="1">
 <tr class="table-header">
@@ -20,36 +41,36 @@ title: "Download MediaConch"
     <td>Link</td>
 </tr>
 <tr>
-    <th><a href="Windows"><img src="/_/img/OS/Windows.png" width="288" height="76" alt="Microsoft Windows" title="Microsoft Windows"></a></th>
-    <td><a href="Windows">Official releases</a></td>
+    <th><a href="Windows.html"><img src="images/Windows.png" width="288" height="76" alt="Microsoft Windows" title="Microsoft Windows"></a></th>
+    <td><a href="Windows.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Mac_OS"><img src="/_/img/OS/Mac_OS.png" width="250" height="100" alt="Mac OS" title="Mac OS"></a></th>
-    <td><a href="Mac_OS">Official releases</a></td>
+    <th><a href="Mac_OS.html"><img src="images/Mac_OS.png" width="250" height="100" alt="Mac OS" title="Mac OS"></a></th>
+    <td><a href="Mac_OS.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Debian"><img src="/_/img/OS/Debian.png" width="229" height="61" alt="Debian" title="Debian"></a></th>
-    <td><a href="Debian">Official releases</a></td>
+    <th><a href="Debian.html"><img src="images/Debian.png" width="229" height="61" alt="Debian" title="Debian"></a></th>
+    <td><a href="Debian.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Ubuntu"><img src="/_/img/OS/Ubuntu.png" width="304" height="79" alt="Ubuntu" title="Ubuntu"></a></th>
-    <td><a href="Ubuntu">Official releases</a></td>
+    <th><a href="Ubuntu.html"><img src="images/Ubuntu.png" width="304" height="79" alt="Ubuntu" title="Ubuntu"></a></th>
+    <td><a href="Ubuntu.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Ubuntu"><img src="/_/img/OS/Linux_Mint.png" width="256" height="75" alt="Linux Mint" title="Linux Mint"></a></th>
-    <td><a href="Ubuntu">Official releases</a></td>
+    <th><a href="Ubuntu.html"><img src="images/Linux_Mint.png" width="256" height="75" alt="Linux Mint" title="Linux Mint"></a></th>
+    <td><a href="Ubuntu.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="RHEL"><img src="/_/img/OS/RedHat.png" width="200" height="61" alt="RedHat Entreprise Linux" title="RedHat Entreprise Linux"></a></th>
-    <td><a href="RHEL">Official releases</a></td>
+    <th><a href="RHEL.html"><img src="images/RedHat.png" width="200" height="61" alt="RedHat Entreprise Linux" title="RedHat Entreprise Linux"></a></th>
+    <td><a href="RHEL.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="CentOS"><img src="/_/img/OS/CentOS.png" width="271" height="60" alt="CentOS" title="CentOS"></a></th>
-    <td><a href="CentOS">Official releases</a></td>
+    <th><a href="CentOS.html"><img src="images/CentOS.png" width="271" height="60" alt="CentOS" title="CentOS"></a></th>
+    <td><a href="CentOS.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Fedora"><img src="/_/img/OS/Fedora.png" width="250" height="89" alt="Fedora" title="Fedora"></a></th>
-    <td><a href="Fedora">Official releases</a></td>
+    <th><a href="Fedora.html"><img src="images/Fedora.png" width="250" height="89" alt="Fedora" title="Fedora"></a></th>
+    <td><a href="Fedora.html">Official releases</a></td>
 </tr>
 <tr>
     <th>&nbsp;</th>
@@ -63,11 +84,11 @@ title: "Download MediaConch"
     <td>&nbsp;</td>
 </tr>
 <tr>
-    <th><a xhref="openSUSE"><img src="/_/img/OS/openSUSE.png" width="155" height="100" alt="openSUSE" title="openSUSE"></a></th>
+    <th><a xhref="openSUSE"><img src="images/openSUSE.png" width="155" height="100" alt="openSUSE" title="openSUSE"></a></th>
     <td><a xhref="openSUSE">Official releases</a></td>
 </tr>
 <tr>
-    <th><a xhref="SLE"><img src="/_/img/OS/Suse.png" width="165" height="100" alt="SLE" title="SUSE Linux Enterprise"></a></th>
+    <th><a xhref="SLE"><img src="images/Suse.png" width="165" height="100" alt="SLE" title="SUSE Linux Enterprise"></a></th>
     <td><a xhref="SLE">Official releases</a></td>
 </tr>
 <tr>
@@ -75,213 +96,4 @@ title: "Download MediaConch"
     <td><a xhref="Source">Official releases</a></td>
 </tr>
 </table>
-
-
-<h1>Download - Ubuntu (Ubuntu, Kubuntu, Xbuntu...), Linux Mint</h1>
-<img src="/_/img/OS/Ubuntu.png" width="304" height="79" alt="Ubuntu"><img src="/_/img/OS/Linux_Mint.png" width="256" height="75" alt="Linux Mint"><br/>
-
-<table border="1">
-<tr class="table-header">
-    <th>Version</th>
-    <th>CPU</th>
-    <th>Interface</th>
-    <td>Version</td>
-    <td>Comment</td>
-</tr>
-<tr>
-    <th rowspan="10">Ubuntu 15.04<br/>(Vivid Vervet)</th>
-    <th rowspan="5">i686</th>
-    <td class="table-OS" colspan="3" id="15.04.i386">Ubuntu 15.04 (Vivid Vervet), i386</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_i386.xUbuntu_15.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_i386.xUbuntu_15.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_i386.xUbuntu_15.04.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_i386.xUbuntu_15.04.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_15.04.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_15.04.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="5">amd64</th>
-    <td class="table-OS" colspan="3" id="15.04.amd64">Ubuntu 15.04 (Vivid Vervet), amd64</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_amd64.xUbuntu_15.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_amd64.xUbuntu_15.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_amd64.xUbuntu_15.04.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_amd64.xUbuntu_15.04.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_15.04.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_15.04.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="10">Ubuntu 14.10<br/>(Utopic Unicorn)</th>
-    <th rowspan="5">i686</th>
-    <td class="table-OS" colspan="3" id="14.10.i386">Ubuntu 14.10 (Utopic Unicorn), i386</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_i386.xUbuntu_14.10.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_i386.xUbuntu_14.10.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_i386.xUbuntu_14.10.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_i386.xUbuntu_14.10.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_14.10.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_14.10.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="5">amd64</th>
-    <td class="table-OS" colspan="3" id="14.10.amd64">Ubuntu 14.10 (Utopic Unicorn), amd64</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_amd64.xUbuntu_14.10.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_amd64.xUbuntu_14.10.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_amd64.xUbuntu_14.10.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_amd64.xUbuntu_14.10.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_14.10.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_14.10.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="10">Ubuntu 14.04<br/>(Trusty Tahr)<br/><br/>Linux Mint 17<br/>(Qiana)</th>
-    <th rowspan="5">i686</th>
-    <td class="table-OS" colspan="3" id="14.04.i386">Ubuntu 14.04 (Trusty Tahr), i386</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_i386.Debian_7.0.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_i386.Debian_7.0.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_i386.xUbuntu_14.04.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_i386.xUbuntu_14.04.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_14.04.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_14.04.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="5">amd64</th>
-    <td class="table-OS" colspan="3" id="14.04.amd64">Ubuntu 14.04 (Trusty Tahr), amd64</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_amd64.Debian_7.0.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_amd64.Debian_7.0.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_amd64.xUbuntu_14.04.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_amd64.xUbuntu_14.04.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_14.04.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_14.04.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="10">Ubuntu 12.04<br/>(Precise Pangolin)<br/><br/>Linux Mint 13<br/>(Maya)</th>
-    <th rowspan="5">i686</th>
-    <td class="table-OS" colspan="3" id="12.04.i386">Ubuntu 12.04 (Precise Pangolin), i386</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_i386.xUbuntu_12.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_i386.xUbuntu_12.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_i386.xUbuntu_12.04.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_i386.xUbuntu_12.04.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_12.04.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_12.04.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
-<tr>
-    <th rowspan="5">amd64</th>
-    <td class="table-OS" colspan="3" id="12.04.amd64">Ubuntu 12.04 (Precise Pangolin), amd64</td>
-</tr>
-<tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="/download/binary/mediaconch-gui/15.05.0/mediaconch-gui_15.05.0-1_amd64.xUbuntu_12.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="/download/binary/mediaconch/15.05.0/mediaconch_15.05.0-1_amd64.xUbuntu_12.04.deb">v15.05</a></td>
-    <td>requires libmediainfo0</td>
-</tr>
-<tr>
-    <th>libmediainfo0</th>
-    <td><a href="/download/binary/libmediainfo0/0.7.74/libmediainfo0_0.7.74-1_amd64.xUbuntu_12.04.deb">v0.7.74</a><small> (<a href="/download/binary/libmediainfo0/0.7.74/libmediainfo-dev_0.7.74-1_amd64.xUbuntu_12.04.deb">devel</a>)</small></td>
-    <td>requires libzen0</td>
-</tr>
-<tr>
-    <th>libzen0</th>
-    <td><a href="/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_12.04.deb">v0.4.31</a><small> (<a href="/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_12.04.deb">devel</a>)</small></td>
-    <td>&nbsp;</td>
-</tr>
 
