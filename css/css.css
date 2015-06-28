@@ -1,0 +1,11 @@
+body {
+  padding-top: 60px;
+}
+
+.navbar {
+  background-color: #64A8DD;
+}
+
+.navbar a {
+    color: black;
+}
