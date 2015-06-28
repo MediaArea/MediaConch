@@ -14,3 +14,21 @@ body {
 .serif {
   font-family: Merriweather;
 }
+
+.headline {
+  font-family: Merriweather;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 100px;
+  padding-top: 180px;
+}
+
+.tagline {
+  font-size: 30px;
+  line-height: 1.4;
+  padding-bottom: 40px;
+}
+
+.button-padding {
+  padding-bottom: 160px;
+}
