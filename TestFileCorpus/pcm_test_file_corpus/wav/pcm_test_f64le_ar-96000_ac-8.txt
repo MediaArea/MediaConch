@@ -1,0 +1,88 @@
+ffmpeg started on 2015-06-28 at 08:14:53
+Report written to "pcm_test_f64le_ar-96000_ac-8.txt"
+Command line:
+ffmpeg -y -f lavfi -i sine -c:a pcm_f64le -ar 96000 -ac 8 -t 1 pcm_test_f64le_ar-96000_ac-8.wav
+ffmpeg version 2.6.3 Copyright (c) 2000-2015 the FFmpeg developers
+  built with Apple LLVM version 6.1.0 (clang-602.0.49) (based on LLVM 3.6.0svn)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/2.6.3 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-libx264 --enable-libmp3lame --enable-libvo-aacenc --enable-libxvid --enable-libfaac --enable-ffplay --enable-nonfree --enable-vda
+  libavutil      54. 20.100 / 54. 20.100
+  libavcodec     56. 26.100 / 56. 26.100
+  libavformat    56. 25.101 / 56. 25.101
+  libavdevice    56.  4.100 / 56.  4.100
+  libavfilter     5. 11.102 /  5. 11.102
+  libavresample   2.  1.  0 /  2.  1.  0
+  libswscale      3.  1.101 /  3.  1.101
+  libswresample   1.  1.100 /  1.  1.100
+  libpostproc    53.  3.100 / 53.  3.100
+Splitting the commandline.
+Reading option '-y' ... matched as option 'y' (overwrite output files) with argument '1'.
+Reading option '-f' ... matched as option 'f' (force format) with argument 'lavfi'.
+Reading option '-i' ... matched as input file with argument 'sine'.
+Reading option '-c:a' ... matched as option 'c' (codec name) with argument 'pcm_f64le'.
+Reading option '-ar' ... matched as option 'ar' (set audio sampling rate (in Hz)) with argument '96000'.
+Reading option '-ac' ... matched as option 'ac' (set number of audio channels) with argument '8'.
+Reading option '-t' ... matched as option 't' (record or transcode "duration" seconds of audio/video) with argument '1'.
+Reading option 'pcm_test_f64le_ar-96000_ac-8.wav' ... matched as output file.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option y (overwrite output files) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input file sine.
+Applying option f (force format) with argument lavfi.
+Successfully parsed a group of options.
+Opening an input file: sine.
+detected 4 logical cores
+[AVFilterGraph @ 0x7fbbba701be0] query_formats: 2 queried, 3 merged, 0 already done, 0 delayed
+[lavfi @ 0x7fbbbc01cc00] All info found
+Input #0, lavfi, from 'sine':
+  Duration: N/A, start: 0.000000, bitrate: 705 kb/s
+    Stream #0:0, 1, 1/44100: Audio: pcm_s16le, 44100 Hz, mono, s16, 705 kb/s
+Successfully opened the file.
+Parsing a group of options: output file pcm_test_f64le_ar-96000_ac-8.wav.
+Applying option c:a (codec name) with argument pcm_f64le.
+Applying option ar (set audio sampling rate (in Hz)) with argument 96000.
+Applying option ac (set number of audio channels) with argument 8.
+Applying option t (record or transcode "duration" seconds of audio/video) with argument 1.
+Successfully parsed a group of options.
+Opening an output file: pcm_test_f64le_ar-96000_ac-8.wav.
+Successfully opened the file.
+[graph 0 input from stream 0:0 @ 0x7fbbba701060] Setting 'time_base' to value '1/44100'
+[graph 0 input from stream 0:0 @ 0x7fbbba701060] Setting 'sample_rate' to value '44100'
+[graph 0 input from stream 0:0 @ 0x7fbbba701060] Setting 'sample_fmt' to value 's16'
+[graph 0 input from stream 0:0 @ 0x7fbbba701060] Setting 'channel_layout' to value '0x4'
+[graph 0 input from stream 0:0 @ 0x7fbbba701060] tb:1/44100 samplefmt:s16 samplerate:44100 chlayout:0x4
+[audio format for output stream 0:0 @ 0x7fbbba7001c0] Setting 'sample_fmts' to value 'dbl'
+[audio format for output stream 0:0 @ 0x7fbbba7001c0] Setting 'sample_rates' to value '96000'
+[audio format for output stream 0:0 @ 0x7fbbba7001c0] Setting 'channel_layouts' to value '0x63f'
+[audio format for output stream 0:0 @ 0x7fbbba7001c0] auto-inserting filter 'auto-inserted resampler 0' between the filter 'Parsed_anull_0' and the filter 'audio format for output stream 0:0'
+[AVFilterGraph @ 0x7fbbba7015e0] query_formats: 5 queried, 9 merged, 3 already done, 0 delayed
+0.000000 
+0.000000 
+1.000000 
+0.000000 
+0.000000 
+0.000000 
+0.000000 
+0.000000 
+[auto-inserted resampler 0 @ 0x7fbbba700ec0] ch:1 chl:mono fmt:s16 r:44100Hz -> ch:8 chl:7.1 fmt:dbl r:96000Hz
+Output #0, wav, to 'pcm_test_f64le_ar-96000_ac-8.wav':
+  Metadata:
+    ISFT            : Lavf56.25.101
+    Stream #0:0, 0, 1/96000: Audio: pcm_f64le ([3][0][0][0] / 0x0003), 96000 Hz, 7.1, dbl, 49152 kb/s
+    Metadata:
+      encoder         : Lavc56.26.100 pcm_f64le
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_f64le (native))
+Press [q] to stop, [?] for help
+[output stream 0:0 @ 0x7fbbba701360] EOF on sink link output stream 0:0:default.
+No more output streams to write to, finishing.
+size=    6000kB time=00:00:01.00 bitrate=49152.9kbits/s    
+video:0kB audio:6000kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.001855%
+Input file #0 (sine):
+  Input stream #0:0 (audio): 45 packets read (92160 bytes); 45 frames decoded (46080 samples); 
+  Total: 45 packets (92160 bytes) demuxed
+Output file #0 (pcm_test_f64le_ar-96000_ac-8.wav):
+  Output stream #0:0 (audio): 44 frames encoded (96000 samples); 44 packets muxed (6144000 bytes); 
+  Total: 44 packets (6144000 bytes) muxed
+45 frames successfully decoded, 0 decoding errors
+[AVIOContext @ 0x7fbbba701ea0] Statistics: 6 seeks, 220 writeouts
