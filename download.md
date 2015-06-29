@@ -6,31 +6,18 @@ title: "Download MediaConch"
 
 # Downloads
 
-MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
+## 15.06 Release Notes
 
-Certain deployed (LTS) versions, upholding the build of the stable versions, will be provided and released during the required delivery stages of the PREFORMA project and will be developed as sustainable for a long period of time within the open source project.
+This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and the previous MediaConch release. It includes a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.
 
-New nightly builds and updates of the source code will also be made available to download during all stages. This ensures that all users and organizations will have access to downloading the most up-to-date version of code that exists throughout the project.
+#### CLI
 
-Downloads will be made available through a public repository with a functioning issue tracker (GitHub). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.
+New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are available on the [Demo page](/demo.html).
 
-All source codes and updates will be made accessible on the following platforms:
+#### GUI
 
-MS Windows
-Mac OSX
-Linux (Ubuntu, Fedora, Debian, and Suse)
+The MediaConch GUI also includes updates to the ability to check files against Schematron documents and initial support for policy set and policy rule creation. Schematron files can be imported and exported into MediaConch.
 
-The target release date will be the 15th of each month.
+### Online
 
-## Quicklinks
-
-<a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">Graphical User Interface version 15.05 for Windows</a><br />
-<a href="http://mediaarea.net/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows.zip">Command Line Interface version 15.05 for Windows</a><br />
-<a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Mac.dmg">Graphical User Interface version 15.05 for Mac</a><br />
-<a href="http://mediaarea.net/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Mac.dmg">Command Line Interface version 15.05 for Mac</a><br />
-<a href="#Ubuntu">Graphical User Interface version 15.05 for Ubuntu</a><br />
-<a href="#Ubuntu">Command Line Interface version 15.05 for Ubuntu</a><br />
-<a href="#Download">Other downloads... (Debian, RHEL, CentOS, Fedora...)</a><br />
-
-
-
+No release this month.
