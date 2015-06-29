@@ -1,12 +1,12 @@
 ---
 layout: default
-permalink: windows.html
+permalink: downloads/windows.html
 title: "Download MediaConch"
 ---
 
 # Download - Microsoft Windows
 
-<img src="images/Windows.png" alt="Windows logo" width="288" height="76"><br/>
+<img src="/images/Windows.png" alt="Windows logo" width="288" height="76"><br/>
 
 <table border="1">
 <thead>

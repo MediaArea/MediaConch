@@ -1,12 +1,12 @@
 ---
 layout: default
-permalink: ubuntu.html
+permalink: downloads/ubuntu.html
 title: "Download MediaConch"
 ---
 
 # Download - Ubuntu (Ubuntu, Kubuntu, Xbuntu...), Linux Mint
 
-<img src="images/Ubuntu.png" width="304" height="79" alt="Ubuntu"><img src="images/Linux_Mint.png" width="256" height="75" alt="Linux Mint"><br/>
+<img src="/images/Ubuntu.png" width="304" height="79" alt="Ubuntu"><img src="/images/Linux_Mint.png" width="256" height="75" alt="Linux Mint"><br/>
  
 <table border="1">
 <tr class="table-header">

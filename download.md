@@ -41,36 +41,36 @@ The target release date will be the 15th of each month.
     <td>Link</td>
 </tr>
 <tr>
-    <th><a href="Windows.html"><img src="images/Windows.png" width="288" height="76" alt="Microsoft Windows" title="Microsoft Windows"></a></th>
-    <td><a href="Windows.html">Official releases</a></td>
+    <th><a href="downloads/Windows.html"><img src="images/Windows.png" width="288" height="76" alt="Microsoft Windows" title="Microsoft Windows"></a></th>
+    <td><a href="downloads/Windows.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Mac_OS.html"><img src="images/Mac_OS.png" width="250" height="100" alt="Mac OS" title="Mac OS"></a></th>
-    <td><a href="Mac_OS.html">Official releases</a></td>
+    <th><a href="downloads/Mac_OS.html"><img src="images/Mac_OS.png" width="250" height="100" alt="Mac OS" title="Mac OS"></a></th>
+    <td><a href="downloads/Mac_OS.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Debian.html"><img src="images/Debian.png" width="229" height="61" alt="Debian" title="Debian"></a></th>
-    <td><a href="Debian.html">Official releases</a></td>
+    <th><a href="downloads/Debian.html"><img src="images/Debian.png" width="229" height="61" alt="Debian" title="Debian"></a></th>
+    <td><a href="downloads/Debian.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Ubuntu.html"><img src="images/Ubuntu.png" width="304" height="79" alt="Ubuntu" title="Ubuntu"></a></th>
-    <td><a href="Ubuntu.html">Official releases</a></td>
+    <th><a href="downloads/Ubuntu.html"><img src="images/Ubuntu.png" width="304" height="79" alt="Ubuntu" title="Ubuntu"></a></th>
+    <td><a href="downloads/Ubuntu.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Ubuntu.html"><img src="images/Linux_Mint.png" width="256" height="75" alt="Linux Mint" title="Linux Mint"></a></th>
-    <td><a href="Ubuntu.html">Official releases</a></td>
+    <th><a href="downloads/Ubuntu.html"><img src="images/Linux_Mint.png" width="256" height="75" alt="Linux Mint" title="Linux Mint"></a></th>
+    <td><a href="downloads/Ubuntu.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="RHEL.html"><img src="images/RedHat.png" width="200" height="61" alt="RedHat Entreprise Linux" title="RedHat Entreprise Linux"></a></th>
-    <td><a href="RHEL.html">Official releases</a></td>
+    <th><a href="downloads/RHEL.html"><img src="images/RedHat.png" width="200" height="61" alt="RedHat Entreprise Linux" title="RedHat Entreprise Linux"></a></th>
+    <td><a href="downloads/RHEL.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="CentOS.html"><img src="images/CentOS.png" width="271" height="60" alt="CentOS" title="CentOS"></a></th>
-    <td><a href="CentOS.html">Official releases</a></td>
+    <th><a href="downloads/CentOS.html"><img src="images/CentOS.png" width="271" height="60" alt="CentOS" title="CentOS"></a></th>
+    <td><a href="downloads/CentOS.html">Official releases</a></td>
 </tr>
 <tr>
-    <th><a href="Fedora.html"><img src="images/Fedora.png" width="250" height="89" alt="Fedora" title="Fedora"></a></th>
-    <td><a href="Fedora.html">Official releases</a></td>
+    <th><a href="downloads/Fedora.html"><img src="images/Fedora.png" width="250" height="89" alt="Fedora" title="Fedora"></a></th>
+    <td><a href="downloads/Fedora.html">Official releases</a></td>
 </tr>
 <tr>
     <th>&nbsp;</th>
