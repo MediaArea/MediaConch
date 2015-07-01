@@ -1,0 +1,124 @@
+ffmpeg started on 2015-06-30 at 23:28:32
+Report written to "pcm_u16le_u8-48000_ac-16.txt"
+Command line:
+ffmpeg -y -f lavfi -i sine -c:a pcm_u8 -ar 48000 -ac 16 -t 1 pcm_u16le_u8-48000_ac-16.mka
+ffmpeg version 2.6.3 Copyright (c) 2000-2015 the FFmpeg developers
+  built with Apple LLVM version 6.1.0 (clang-602.0.49) (based on LLVM 3.6.0svn)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/2.6.3 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-libx264 --enable-libmp3lame --enable-libvo-aacenc --enable-libxvid --enable-libfaac --enable-ffplay --enable-nonfree --enable-vda
+  libavutil      54. 20.100 / 54. 20.100
+  libavcodec     56. 26.100 / 56. 26.100
+  libavformat    56. 25.101 / 56. 25.101
+  libavdevice    56.  4.100 / 56.  4.100
+  libavfilter     5. 11.102 /  5. 11.102
+  libavresample   2.  1.  0 /  2.  1.  0
+  libswscale      3.  1.101 /  3.  1.101
+  libswresample   1.  1.100 /  1.  1.100
+  libpostproc    53.  3.100 / 53.  3.100
+Splitting the commandline.
+Reading option '-y' ... matched as option 'y' (overwrite output files) with argument '1'.
+Reading option '-f' ... matched as option 'f' (force format) with argument 'lavfi'.
+Reading option '-i' ... matched as input file with argument 'sine'.
+Reading option '-c:a' ... matched as option 'c' (codec name) with argument 'pcm_u8'.
+Reading option '-ar' ... matched as option 'ar' (set audio sampling rate (in Hz)) with argument '48000'.
+Reading option '-ac' ... matched as option 'ac' (set number of audio channels) with argument '16'.
+Reading option '-t' ... matched as option 't' (record or transcode "duration" seconds of audio/video) with argument '1'.
+Reading option 'pcm_u16le_u8-48000_ac-16.mka' ... matched as output file.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option y (overwrite output files) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input file sine.
+Applying option f (force format) with argument lavfi.
+Successfully parsed a group of options.
+Opening an input file: sine.
+detected 4 logical cores
+[AVFilterGraph @ 0x7fb6125089a0] query_formats: 2 queried, 3 merged, 0 already done, 0 delayed
+[lavfi @ 0x7fb61401dc00] All info found
+Input #0, lavfi, from 'sine':
+  Duration: N/A, start: 0.000000, bitrate: 705 kb/s
+    Stream #0:0, 1, 1/44100: Audio: pcm_s16le, 44100 Hz, mono, s16, 705 kb/s
+Successfully opened the file.
+Parsing a group of options: output file pcm_u16le_u8-48000_ac-16.mka.
+Applying option c:a (codec name) with argument pcm_u8.
+Applying option ar (set audio sampling rate (in Hz)) with argument 48000.
+Applying option ac (set number of audio channels) with argument 16.
+Applying option t (record or transcode "duration" seconds of audio/video) with argument 1.
+Successfully parsed a group of options.
+Opening an output file: pcm_u16le_u8-48000_ac-16.mka.
+Successfully opened the file.
+[graph 0 input from stream 0:0 @ 0x7fb612508380] Setting 'time_base' to value '1/44100'
+[graph 0 input from stream 0:0 @ 0x7fb612508380] Setting 'sample_rate' to value '44100'
+[graph 0 input from stream 0:0 @ 0x7fb612508380] Setting 'sample_fmt' to value 's16'
+[graph 0 input from stream 0:0 @ 0x7fb612508380] Setting 'channel_layout' to value '0x4'
+[graph 0 input from stream 0:0 @ 0x7fb612508380] tb:1/44100 samplefmt:s16 samplerate:44100 chlayout:0x4
+[audio format for output stream 0:0 @ 0x7fb612507e20] Setting 'sample_fmts' to value 'u8'
+[audio format for output stream 0:0 @ 0x7fb612507e20] Setting 'sample_rates' to value '48000'
+[audio format for output stream 0:0 @ 0x7fb612507e20] auto-inserting filter 'auto-inserted resampler 0' between the filter 'Parsed_anull_0' and the filter 'audio format for output stream 0:0'
+[AVFilterGraph @ 0x7fb612417660] query_formats: 5 queried, 9 merged, 3 already done, 0 delayed
+[auto-inserted resampler 0 @ 0x7fb612507980] ch:1 chl:mono fmt:s16 r:44100Hz -> ch:1 chl:mono fmt:u8 r:48000Hz
+Output #0, matroska, to 'pcm_u16le_u8-48000_ac-16.mka':
+  Metadata:
+    encoder         : Lavf56.25.101
+    Stream #0:0, 0, 1/1000: Audio: pcm_u8 ([1][0][0][0] / 0x0001), 48000 Hz, mono, u8, 384 kb/s
+    Metadata:
+      encoder         : Lavc56.26.100 pcm_u8
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_u8 (native))
+Press [q] to stop, [?] for help
+[matroska @ 0x7fb61401e800] Writing block at offset 595, size 1098, pts 0, dts 0, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 1700, size 1114, pts 23, dts 23, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 2821, size 1115, pts 46, dts 46, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 3943, size 1114, pts 69, dts 69, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 5064, size 1115, pts 93, dts 93, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 6186, size 1114, pts 116, dts 116, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 7307, size 1115, pts 139, dts 139, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 8429, size 1115, pts 162, dts 162, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 9551, size 1114, pts 185, dts 185, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 10672, size 1115, pts 209, dts 209, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 11794, size 1114, pts 232, dts 232, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 12915, size 1115, pts 255, dts 255, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 14037, size 1114, pts 278, dts 278, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 15158, size 1115, pts 302, dts 302, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 16280, size 1114, pts 325, dts 325, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 17401, size 1115, pts 348, dts 348, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 18523, size 1115, pts 371, dts 371, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 19645, size 1114, pts 394, dts 394, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 20766, size 1115, pts 418, dts 418, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 21888, size 1114, pts 441, dts 441, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 23009, size 1115, pts 464, dts 464, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 24131, size 1114, pts 487, dts 487, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 25252, size 1115, pts 510, dts 510, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 26374, size 1114, pts 534, dts 534, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 27495, size 1115, pts 557, dts 557, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 28617, size 1115, pts 580, dts 580, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 29739, size 1114, pts 603, dts 603, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 30860, size 1115, pts 627, dts 627, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 31982, size 1114, pts 650, dts 650, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 33103, size 1115, pts 673, dts 673, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 34225, size 1114, pts 696, dts 696, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 35346, size 1115, pts 719, dts 719, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 36468, size 1114, pts 743, dts 743, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 37589, size 1115, pts 766, dts 766, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 38711, size 1115, pts 789, dts 789, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 39833, size 1114, pts 812, dts 812, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 40954, size 1115, pts 836, dts 836, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 42076, size 1114, pts 859, dts 859, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 43197, size 1115, pts 882, dts 882, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 44319, size 1114, pts 905, dts 905, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 45440, size 1115, pts 928, dts 928, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 46562, size 1115, pts 952, dts 952, duration 23, flags 128
+[matroska @ 0x7fb61401e800] Writing block at offset 47684, size 1114, pts 975, dts 975, duration 23, flags 128
+[output stream 0:0 @ 0x7fb612508760] EOF on sink link output stream 0:0:default.
+No more output streams to write to, finishing.
+[matroska @ 0x7fb61401e800] Writing block at offset 48805, size 91, pts 998, dts 998, duration 2, flags 128
+[matroska @ 0x7fb61401e800] end duration = 1000
+size=      48kB time=00:00:01.00 bitrate= 391.2kbits/s    
+video:0kB audio:47kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.879167%
+Input file #0 (sine):
+  Input stream #0:0 (audio): 45 packets read (92160 bytes); 45 frames decoded (46080 samples); 
+  Total: 45 packets (92160 bytes) demuxed
+Output file #0 (pcm_u16le_u8-48000_ac-16.mka):
+  Output stream #0:0 (audio): 44 frames encoded (48000 samples); 44 packets muxed (48000 bytes); 
+  Total: 44 packets (48000 bytes) muxed
+45 frames successfully decoded, 0 decoding errors
+[AVIOContext @ 0x7fb612400200] Statistics: 16 seeks, 56 writeouts
