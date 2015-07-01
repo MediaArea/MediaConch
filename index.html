@@ -36,28 +36,28 @@
 
         <p><abbr title="Media CONformance CHecker">MediaConch</abbr> is an extensible, open source software project consisting of an implementation checker, policy checker, reporter, and fixer that targets preservation-level audiovisual files (specifically Matroska, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1)) for use in memory institutions, providing detailed and batch-level conformance checking via an adaptable and flexible application program interface accessible by the command line, a graphical user interface, or a web-based shell. Conch is currently being developed by the MediaArea team, notable for the creation of open source media checker software, MediaInfo. Furthermore, the MediaArea team is dedicated to the further development of the standardization of the Matroska and FFV1 formats to ensure their longevity as a recommended digital preservation file format.</p>
 
-<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h2><a id="user-content-demo-for-mediaconch-version-1505" class="anchor" href="#demo-for-mediaconch-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo for MediaConch version 15.05</h2>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h2><a id="user-content-demo-for-mediaconch-version-1505" class="anchor" href="#demo-for-mediaconch-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo for MediaConch version 15.06</h2>
 <p>
-<a href="/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">Graphical User Interface version 15.05 for Windows</a><br />
-<a href="/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows.zip">Command Line Interface version 15.05 for Windows</a><br />
-<a href="/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Mac.dmg">Graphical User Interface version 15.05 for Mac</a><br />
-<a href="/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Mac.dmg">Command Line Interface version 15.05 for Mac</a><br />
-<a href="Ubuntu">Graphical User Interface version 15.05 for Ubuntu</a><br />
-<a href="Ubuntu">Command Line Interface version 15.05 for Ubuntu</a><br />
+<a href="/download/binary/mediaconch-gui/15.06/MediaConch_GUI_15.06_Windows.exe">Graphical User Interface version 15.06 for Windows</a><br />
+<a href="/download/binary/mediaconch/15.06/MediaConch_CLI_15.06_Windows.zip">Command Line Interface version 15.06 for Windows</a><br />
+<a href="/download/binary/mediaconch-gui/15.06/MediaConch_GUI_15.06_Mac.dmg">Graphical User Interface version 15.06 for Mac</a><br />
+<a href="/download/binary/mediaconch/15.06/MediaConch_CLI_15.06_Mac.dmg">Command Line Interface version 15.06 for Mac</a><br />
+<a href="Ubuntu">Graphical User Interface version 15.06 for Ubuntu</a><br />
+<a href="Ubuntu">Command Line Interface version 15.06 for Ubuntu</a><br />
 <a href="Download">Other downloads... (Debian, RHEL, CentOS, Fedora...)</a><br />
-<h3>15.05 Release Notes</h3>
+<h3>15.06 Release Notes</h3>
 
-<p>This initial release of MediaConch CLI builds on the development of MediaInfo 0.7.74.</p>
+<p>This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and the previous MediaConch release. It includes a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.</p>
 
-<p>The priority for this release is the development of a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.</p>
+<p>New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are below.</p>
 
-<p>Forthcoming releases of MediaConch will allow for the creation of and uploading of Schematron documents to facilitate file conformance checking. Instructions and files for initially testing this phase of development are below.</p>
-
-<h3><a id="user-content-mediaconch-gui-version-1505" class="anchor" href="#mediaconch-gui-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>MediaConch GUI version 15.05</h3>
+<h3><a id="user-content-mediaconch-gui-version-1505" class="anchor" href="#mediaconch-gui-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>MediaConch GUI version 15.06</h3>
 
 <p>Files can be dragged into the program for analysis. Multiple files can be loaded by adding files using the File&gt;Open menu. Analysis can toggled between Info and Trace. Display of analysis can toggle between Text and XML.</p>
 
-<h3><a id="user-content-mediaconch-cli-version-1505" class="anchor" href="#mediaconch-cli-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>MediaConch CLI version 15.05</h3>
+<p>The MediaConch GUI also includes updates to the ability to check files against Schematron documents and initial support for policy set and policy rule creation. Schematron files can be imported and exported into MediaConch.</p>
+
+<h3><a id="user-content-mediaconch-cli-version-1505" class="anchor" href="#mediaconch-cli-version-1505" aria-hidden="true"><span class="octicon octicon-link"></span></a>MediaConch CLI version 15.06</h3>
 
 <h4><a id="user-content-file-information-retrieval" class="anchor" href="#file-information-retrieval" aria-hidden="true"><span class="octicon octicon-link"></span></a>File information retrieval</h4>
 
@@ -67,13 +67,16 @@
 
 <p><code>mediaconch --Tool=Info --Format=XML FileName</code> will print to the screen the most recent MediaInfo output in XML format.</p>
 
-<p><code>mediaconch -ti -fx FileName</code> is shorthand for the above command and will print to the screen the associated XML with the file.</p>
+<p><code>mediaconch -ti -fx FileName</code> is shorthand for the above command.</p>
 
 <p><code>mediaconch --Tool=Trace FileName</code> will print to the screen the most recent MediaInfo trace output.</p>
 
 <p><code>mediaconch --Tool=Trace --Format=XML FileName</code> will print to the screen the most recent MediaInfo trace output in XML. This XML format is undergoing early development and not suitable for use in production.</p>
 
 <p><code>mediaconch -tt -fx FileName</code> is shorthand for the above command.</p>
+
+<p>To test a media file against an existing Schematron policy document, use the following syntax:
+<code>`mediaconch -ti -fx FileName -p SchematronDocument`</code></p>
 
 <h4><a id="user-content-policy-checker" class="anchor" href="#policy-checker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Policy Checker</h4>
 
@@ -105,8 +108,6 @@
 
 <p>In the above example, the Schematron pattern checks that files fall within a specific range of compliance. In this example, the file must be longer than half a second but less than five seconds. Any file with a duration in this range will validate.</p>
 
-<p>Schematron validation can be tested using <a href="http://xmlsoft.org/xmllint.html">xmllint</a> via the command line or <a href="http://www.oxygenxml.com/">Oxygen XML Editor</a> via graphical user interface. Future releases of MediaConch will have schematron validation built in.</p>
-
 <h4><a id="user-content-testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h4>
 
 <p>For all tests, sample video files have been provided. For the first two tests, the FFmpeg command to create the files are provided as well.</p>
@@ -136,15 +137,12 @@ Test0.xml -- This is a normal file with associated passing Schematron.</p>
 <p>Create a file:
 <code>ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 Test0.xml</code></p>
 
-<p>Create associated XML:
-<code>mediaconch -ti -fx Test0.xml &gt; Test0.xml</code></p>
-
 <p><a href="/download/testfiles/Test0.sch">Schematron for file</a>
 This policy checks that the file follows general rules of file conformance, such as the extension being xml, the file including a video stream, and the file having a unique ID. It also checks for assertions specific to this file, such as the duration being 1 second, the frame rate being 25 frames per second, and the coder type being Golomb Rice.</p>
 
-<p>To gather technical metadata with mediaconch and test a policy in one line (using xmllint to apply the schematron) run:</p>
+<p>To gather technical metadata with mediaconch run:</p>
 
-<p><code>mediaconch -ti -fx Test0.xml | xmllint --noout --schematron Test0.sch -</code></p>
+<p><code>mediaconch -ti -fx Test0.mkv -s Test0.sch</code></p>
 
 <h5><a id="user-content-test-1-conflicting-tests" class="anchor" href="#test-1-conflicting-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test 1: Conflicting tests</h5>
 
@@ -154,20 +152,21 @@ Test1.xml -- This file has a PAL framesize but an NTSC rate, so testing for one 
 <p>Create a file:
 <code>ffmpeg -f lavfi -i testsrc=s=720x576:r=30000/1001 -t 1 -c:v ffv1 -g 1 -level 3 Test1.xml</code></p>
 
-<p>Create associated XML:
-<code>mediaconch -ti -fx Test1.xml &gt; Test1.xml</code></p>
-
 <p><a href="/download/testfiles/Test1_pal.sch">Schematron for PAL</a>
 This policy checks all files for a framesize of 720 x 576 and a framerate of 25.</p>
 
 <p><a href="/download/testfiles/Test1_ntsc.sch">Schematron for NTSC</a>
 This policy checks all files for a framesize of 720 x 480 and a framerate of 29.970.</p>
 
-<p>As one line with mediaconch and xmllint:</p>
+<p>Testing each policy:</p>
 
-<p><code>mediaconch -ti -fx Test1.xml | xmllint --noout --schematron Test1_ntsc.sch -</code></p>
+<p><code>mediaconch -ti -fx Test1.mkv -p Test1_ntsc.sch</code></p>
 
-<p><code>mediaconch -ti -fx Test1.xml | xmllint --noout --schematron Test1_pal.sch -</code></p>
+<p><code>mediaconch -ti -fx Test1.mkv -p Test1_pal.sch</code></p>
+
+<p>Testing one file against multiple policies:</p>
+
+<p><code>mediaconch -ti -fx Test1.mkv -p Test1_ntsc.sch -p Test1_pal.sch</code></p>
 
 <h5><a id="user-content-test-2-testing-multiple-files" class="anchor" href="#test-2-testing-multiple-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test 2: Testing multiple files</h5>
 
@@ -177,15 +176,12 @@ Files are identical copies except Test2_2.xml has had two bytes (value of 0000) 
 <p>Create files:
 (Files provided).</p>
 
-<p>Create associated XML:
-<code>mediaconch -ti -fx Test2_0.xml Test2_1.xml Test2_2.xml Test2_3.xml &gt; Test2.xml</code></p>
-
 <p><a href="/download/testfiles/Test2.sch">Schematron for multiple files</a>
 This policy checks all the files for conformance. Test2_2.xml and Test2_3.xml fail because they have been manipulated, but they fail in different ways.</p>
 
-<p>As one line with mediaconch and xmllint:</p>
+<p>Testing many files against a policy document:</p>
 
-<p><code>mediaconch -ti -fx Test2_0.xml Test2_1.xml Test2_2.xml Test2_3.xml | xmllint --noout --schematron Test2.sch -</code></p>
+<p><code>mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -p Test2.sch</code></p>
 </article>
 
         <h3>
