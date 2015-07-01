@@ -9,6 +9,12 @@ New to this release is the ability to check files against Schematron documents f
 
 ## MediaConch CLI version 15.06
 
+Files can be dragged into the program for analysis. Multiple files can be loaded by adding files using the File&gt;Open menu. Analysis can toggled between Info and Trace. Display of analysis can toggle between Text and XML.
+
+The MediaConch GUI also includes updates to the ability to check files against Schematron documents and initial support for policy set and policy rule creation. Schematron files can be imported and exported into MediaConch.
+
+## MediaConch CLI version 15.06
+
 ### File information retrieval
 
 After installation, MediaConch can be run on the command line by using the `mediaconch` command. Although MediaConch will result information about nearly any audiovisual file, it is specifically optimized for Matroska, FFV1, and/or PCM files.
@@ -94,9 +100,6 @@ Test1.mkv -- This file has a PAL framesize but an NTSC rate, so testing for one 
 Create a file:
 `ffmpeg -f lavfi -i testsrc=s=720x576:r=30000/1001 -t 1 -c:v ffv1 -g 1 -level 3 Test1.mkv`
 
-Create associated XML:
-`mediaconch -ti -fx Test1.mkv > Test1.xml`
-
 [Schematron for PAL](Files/Test1_pal.sch)
 This policy checks all files for a framesize of 720 x 576 and a framerate of 25.
 
@@ -105,13 +108,13 @@ This policy checks all files for a framesize of 720 x 480 and a framerate of 29.
 
 Testing each policy:
 
-`mediaconch -ti -fx Test1.mkv -s Test1_ntsc.sch`
+`mediaconch -ti -fx Test1.mkv -p Test1_ntsc.sch`
 
-`mediaconch -ti -fx Test1.mkv -s Test1_pal.sch`
+`mediaconch -ti -fx Test1.mkv -p Test1_pal.sch`
 
 Testing one file against multiple policies:
 
-`mediaconch -ti -fx Test1.mkv -s Test1_ntsc.sch -s Test1_pal.sch`
+`mediaconch -ti -fx Test1.mkv -p Test1_ntsc.sch -p Test1_pal.sch`
 
 
 #### Test 2: Testing multiple files
@@ -127,4 +130,4 @@ This policy checks all the files for conformance. Test2_2.mkv and Test2_3.mkv fa
 
 Testing many files against a policy document:
 
-`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -s Test2.sch`
+`mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -p Test2.sch`
