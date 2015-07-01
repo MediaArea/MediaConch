@@ -1,10 +1,10 @@
 ---
 layout: default
-permalink: /software.html
-title: "Software"
+permalink: /documentation.html
+title: "Documentation"
 ---
 
-# MediaConch Software
+# MediaConch Documentation
 
 MediaArea's MediaConch strives to offer access and ease to users with a structure that operates similarly and efficiently cross-platform and functions in both an online and offline capacity within different interfaces.
 
