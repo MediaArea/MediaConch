@@ -6,13 +6,6 @@ title: "MediaConch Demo"
 
 # Demo for MediaConch version 15.06
 
-## 15.06 Release Notes
-
-This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and the previous MediaConch release. It includes a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.
-
-New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are below.
-
-
 ## MediaConch CLI version 15.06
 
 ### File information retrieval
