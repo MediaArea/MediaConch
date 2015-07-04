@@ -79,12 +79,12 @@ the team participated to the Design Phase (phase 1)
 <tr>
   <td>
   <ul>
-    <li>Name TBD (Developer)<br/>
+    <li>Florent Tribouilloy<br/>
     GUI development, reporting</li>
   </ul>
   </td>
   <td>
-    <!-- links to go here when provided -->
+    <a href="mailto:info@mediaarea.net"><img src="images/Email16.png" alt="E-mail"></a><a href="https://github.com/tribouille"><img src="images/GitHub16.png" alt="GitHub"></a>
   </td>
 </tr>
 <tr>
