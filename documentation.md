@@ -78,6 +78,16 @@ To test a media file against an existing Schematron policy document, use the fol
 
 A Graphical user interface (GUI) is available for both expert and non-expert users. The GUI, being based on Qt, has the strength of being versatile between operating systems and does not require additional development time to provide support for multiple platforms. The GUI can function similarly across all deployment platforms.
 
+After installing the GUI, it should look like this when opened:
+
+![Opening MediaConch GUI](/images/MediaConchGUI.png){: .center-image }
+
+Media files can be dragged-and-dropped into the program or can be selected via File > Open and opening a video that way.
+
+Schematron files can be imported into MediaConch as well, either through clicking on the Schematron tab or by importing a Schematron under the Policies tab. Schematron-based policies can also be created under the Policies tab and used on media files or exported for later use.
+
+![MediaConch GUI Schematron](/images/MediaConchGUI2.png){: .center-image }
+
 ## MediaConchOnline
 
 A web-based user interface (UI) is available for both expert and non-expert users. The web interface will provide access to conformance checks without having to directly download and install the software.
