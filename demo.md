@@ -6,63 +6,6 @@ title: "MediaConch Demo"
 
 # Demo for MediaConch version 15.06
 
-## MediaConch CLI version 15.06
-
-### File information retrieval
-
-After installation, MediaConch can be run on the command line by using the `mediaconch` command. Although MediaConch will result information about nearly any audiovisual file, it is specifically optimized for Matroska, FFV1, and/or PCM files.
-
-`mediaconch --Tool=Info FileName` will print to the screen the most recent MediaInfo output.
-
-`mediaconch --Tool=Info --Format=XML FileName` will print to the screen the most recent MediaInfo output in XML format.
-
-`mediaconch -ti -fx FileName` is shorthand for the above command.
-
-`mediaconch --Tool=Trace FileName` will print to the screen the most recent MediaInfo trace output.
-
-`mediaconch --Tool=Trace --Format=XML FileName` will print to the screen the most recent MediaInfo trace output in XML. This XML format is undergoing early development and not suitable for use in production.
-
-`mediaconch -tt -fx FileName` is shorthand for the above command.
-
-### Policy Checker
-
-In addition to checking files for conformance at a basic level, MediaConch is developing a policy checker that allows archives, museums, and other memory institutions to create their own policies to which files should comply. Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.
-
-To test a media file against an existing Schematron policy document, use the following syntax:
-`mediaconch -ti -fx FileName -s SchematronDocument`
-
-
-### Schematron
-
-Schematron is an [ISO/IEC Standard](http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html) (ISO/IEC 19757-3:2006) for rule-based validation. Schematron can be thought of as a series of tests for structured XML. MediaConch and other PREFORMA projects use Schematron files to express policy rules for checking file conformance according to desired specifications.
-
-Schematron patterns are based on rules of assertions or reports. An assertion seeks to pair a file's XPath with the expected answer and passes if the statement is true. A report is the opposite: it checks for if the test statement is true and raises an error.
-
-Schematron sample:
-```xml
-    <sch:pattern name="Each file has unique ID">
-        <sch:rule context="/Mediainfo/File">
-            <sch:assert test="track[@type='General']/UniqueID">Unique ID must exist.</sch:assert>
-        </sch:rule>
-    </sch:pattern>
-```
-
-In the above example, the Schematron pattern checks one or multiple Mediainfo File XML for UniqueIDs in the General track. If the XML (and thus, the file being analysized) lacks a UniqueID, an assertion error will be raised: "Unique ID must exist."
-
-Schematron also allows for the testing of ranges. 
-
-```xml
-  <sch:pattern name="Duration must be 1 second">
-    <sch:rule context="/Mediainfo/File">
-      <sch:assert test="(track[@type='General']/Duration &gt; 500 and track[@type='General']/Duration &lt; 5000)">Duration must be more than 500ms and less than 5 seconds.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-```
-
-In the above example, the Schematron pattern checks that files fall within a specific range of compliance. In this example, the file must be longer than half a second but less than five seconds. Any file with a duration in this range will validate.
-
-Schematron validation can be tested using [xmllint](http://xmlsoft.org/xmllint.html) via the command line or [Oxygen XML Editor](http://www.oxygenxml.com/) via graphical user interface. Future releases of MediaConch will have schematron validation built in.
-
 ### Testing
 
 For all tests, sample video files have been provided. For the first two tests, the FFmpeg command to create the files are provided as well.
