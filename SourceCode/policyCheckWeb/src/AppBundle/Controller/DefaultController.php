@@ -257,7 +257,7 @@ class DefaultController extends Controller
         ->getRepository('AppBundle:PolicyItemFields')
         ->findAllFieldsByType($type);
 
-        $result = array('' => 'Choose a field');
+        $result = array(0 => 'Choose a field');
         foreach($itemFields as $field) {
             $result[$field->getId()] = $field->getName();
         }
@@ -279,7 +279,7 @@ class DefaultController extends Controller
         ->getRepository('AppBundle:PolicyItemValidators')
         ->findAllValidatorsByField($field);
 
-        $result = array('' => 'Choose a validator');
+        $result = array(0 => 'Choose a validator');
         foreach($itemValidators as $validator) {
             $result[$validator->getId()] = $validator->getName();
         }
