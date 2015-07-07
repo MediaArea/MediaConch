@@ -1,0 +1,20 @@
+{% extends 'AppBundle:Default:base.html.twig' %}
+
+{% block title %}
+MediaConch Demo multi files schematron checker
+{% endblock %}
+
+{% block body %}
+<h1>MediaConch Demo multi files schematron checker</h1>
+<div>
+{% if form %}
+    {{ form(form) }}
+{% endif %}
+
+</div>
+
+{% if checks is iterable %}
+    {{ include('AppBundle:Default:fileDetail.html.twig', { 'checks': checks }) }}
+{% endif %}
+
+{% endblock %}
