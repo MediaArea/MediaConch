@@ -135,7 +135,7 @@
 Test0.xml -- This is a normal file with associated passing Schematron.</p>
 
 <p>Create a file:
-<code>ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 Test0.xml</code></p>
+<code>ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 Test0.mkv</code></p>
 
 <p><a href="/download/testfiles/Test0.sch">Schematron for file</a>
 This policy checks that the file follows general rules of file conformance, such as the extension being xml, the file including a video stream, and the file having a unique ID. It also checks for assertions specific to this file, such as the duration being 1 second, the frame rate being 25 frames per second, and the coder type being Golomb Rice.</p>
@@ -150,7 +150,7 @@ This policy checks that the file follows general rules of file conformance, such
 Test1.xml -- This file has a PAL framesize but an NTSC rate, so testing for one standard or another will both cause a failure.</p>
 
 <p>Create a file:
-<code>ffmpeg -f lavfi -i testsrc=s=720x576:r=30000/1001 -t 1 -c:v ffv1 -g 1 -level 3 Test1.xml</code></p>
+<code>ffmpeg -f lavfi -i testsrc=s=720x576:r=30000/1001 -t 1 -c:v ffv1 -g 1 -level 3 Test1.mkv</code></p>
 
 <p><a href="/download/testfiles/Test1_pal.sch">Schematron for PAL</a>
 This policy checks all files for a framesize of 720 x 576 and a framerate of 25.</p>
