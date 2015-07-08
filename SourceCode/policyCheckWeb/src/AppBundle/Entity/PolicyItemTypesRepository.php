@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class PolicyItemTypesRepository extends EntityRepository
 {
+    public function queryAll()
+    {
+        return $this->createQueryBuilder('t');
+    }
 }

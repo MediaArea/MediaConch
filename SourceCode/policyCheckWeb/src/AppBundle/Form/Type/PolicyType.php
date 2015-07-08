@@ -32,4 +32,3 @@ class PolicyType extends AbstractType
         return 'policy';
     }
 }
-

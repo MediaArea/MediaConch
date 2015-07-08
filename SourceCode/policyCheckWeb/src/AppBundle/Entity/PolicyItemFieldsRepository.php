@@ -14,11 +14,15 @@ class PolicyItemFieldsRepository extends EntityRepository
 {
     public function findAllFieldsByType($type)
     {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT f FROM AppBundle:PolicyItemFields f WHERE f.type = :type'
-            )
-            ->setParameter('type', $type)
+        return $this->queryAllFieldsByType($type)
+            ->getQuery()
             ->getResult();
+    }
+
+    public function queryAllFieldsByType($type)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.type = :type')
+            ->setParameter('type', $type);
     }
 }
