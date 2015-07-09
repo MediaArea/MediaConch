@@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Finder\Finder;
 use Doctrine\ORM\EntityRepository;
 
+use AppBundle\Lib\Checker\Checker;
 use AppBundle\Lib\MediaInfo\MediaInfo;
 use AppBundle\Lib\MediaInfo\MediaInfoOutput;
 use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
@@ -241,7 +242,6 @@ class DefaultController extends Controller
 
         if ($this->get('mediaconch_user.quotas')->hasPolicyChecksRights()) {
             $form = $this->createFormBuilder()
-/* Temporary remove of policy select list
                 ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
                     'query_builder' => function(EntityRepository $er) {
                         return $er->createQueryBuilder('p')
@@ -251,8 +251,9 @@ class DefaultController extends Controller
                     'placeholder' => 'Choose a policy',
                     'required' => false)
                     )
-*/
-                ->add('file', 'file', array('label' => 'Schematron'))
+                ->add('file', 'file', array('label' => 'Schematron',
+                    'required' => false)
+                    )
                 ->add('Check', 'submit')
                 ->getForm();
 
@@ -261,44 +262,32 @@ class DefaultController extends Controller
             if ($form->isValid()) {
                 $data = $form->getData();
 
-                if ($data['file']->isValid()) {
-                    $schematron = $data['file']->getRealPath();
+                if (($data['file'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['file']->isValid()) || $data['policy'] instanceof Policy) {
                     $checks = array();
                     $params = $this->container->getParameter('mediaconch');
 
                     $finder = new Finder();
                     $finder->files()->in($params['check_dir']);
                     foreach($finder as $file) {
-                        $check = array('name' => $file->getRelativePathname(),
-                            'trace' => '');
-
-                        $MediaInfo = new MediaInfo($file->getPathname());
-                        $MediaInfo->analyse();
-                        $check['xml'] = $MediaInfo->getSuccess() ? $MediaInfo->getOutputXml() : false;
-                        unset($MediaInfo);
-
-                        $MediaConch = new MediaConchConformance($file->getPathname());
-                        $MediaConch->run();
-                        $check['conformance'] = $MediaConch->getSuccess() ? $MediaConch->getOutput() : false;
-                        unset($MediaConch);
-
-                        $MediaConchPolicy = new MediaConchPolicy($file->getPathname());
-                        $MediaConchPolicy->run($schematron, $data['file']->getClientOriginalName());
-                        if ($MediaConchPolicy->getSuccess()) {
-                            $check['isValid'] = $MediaConchPolicy->isValid();
-                            $check['policy'] = array($MediaConchPolicy->getOutput());
+                        if ($data['file'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
+                            $checker = new Checker($file->getPathname(), $data['file']);
                         }
                         else {
-                            $check['isValid'] = false;
-                            $check['policy'] = array('Error during file parsing');
+                            $checker = new Checker($file->getPathname(), $data['policy']);
                         }
-                        unset($MediaConchPolicy);
 
-                        $checks[] = $check;
+                        $checker->run();
+                        $checks[] = $checker;
                     }
 
                     $this->get('mediaconch_user.quotas')->hitPolicyChecks(count($finder));
                 }
+                else {
+                    $this->get('session')->getFlashBag()->add(
+                        'warning',
+                        'You need to select a policy or a schematron file');
+                }
+
             }
 
             return array('form' => $form->createView(), 'checks' => $checks);
