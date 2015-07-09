@@ -61,25 +61,10 @@ class DefaultController extends Controller
                 $data = $form->getData();
 
                 if ($data['file']->isValid()) {
-                    $MediaInfo = new MediaInfo($data['file']->getRealPath());
-                    $MediaInfo->analyse();
-                    if ($MediaInfo->getSuccess()) {
-                        $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
-                        $policyChecker->check();
-                        $check = array('isValid' => $policyChecker->isValid(),
-                            'policy' => $policyChecker->getErrors(),
-                            'xml' => $MediaInfo->getOutputXml(),
-                            );
-                    }
-                    else {
-                        $check = array('isValid' => false,
-                            'policy' => array('Error during file parsing'),
-                            'xml' => '',
-                            );
-                    }
+                    $checker = new Checker($data['file'], $data['policy']);
+                    $checker->run();
 
-                    $check['name'] = $data['file']->getClientOriginalName();
-                    $checks = array(0 => $check);
+                    $checks = array(0 => $checker);
 
                     $this->get('mediaconch_user.quotas')->hitUploads();
                 }
@@ -124,25 +109,9 @@ class DefaultController extends Controller
             if ($form->isValid()) {
                 $data = $form->getData();
 
-                $MediaInfo = new MediaInfo(str_replace(' ', '%20', $data['file']));
-                $MediaInfo->analyse();
-                if ($MediaInfo->getSuccess()) {
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $data['policy']);
-                    $policyChecker->check();
-                    $check = array('isValid' => $policyChecker->isValid(),
-                        'policy' => $policyChecker->getErrors(),
-                        'xml' => $MediaInfo->getOutputXml(),
-                        );
-                }
-                else {
-                    $check = array('isValid' => false,
-                        'policy' => array('Error during file parsing'),
-                        'xml' => '',
-                        );
-                }
-
-                $check['name'] = $data['file'];
-                $checks = array(0 => $check);
+                $checker = new Checker(str_replace(' ', '%20', $data['file']), $data['policy']);
+                $checker->run();
+                $checks[] = $checker;
 
                 $this->get('mediaconch_user.quotas')->hitUrls();
             }
@@ -173,70 +142,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/checkFiles/{id}", defaults={"id" = 0})
+     * @Route("/checkFiles")
      * @Template()
      */
-    public function checkFilesAction($id)
-    {
-        $policyList = $this->getDoctrine()
-            ->getRepository('AppBundle:Policy')
-            ->findByUser($this->getUser());
-
-        $checks = false;
-
-        if ($this->get('mediaconch_user.quotas')->hasPolicyChecksRights()) {
-            $checks = array();
-            if ($id > 0) {
-                $params = $this->container->getParameter('mediaconch');
-                $policy = $this->getDoctrine()
-                    ->getRepository('AppBundle:Policy')
-                    ->find($id);
-
-                $finder = new Finder();
-                $finder->files()->in($params['check_dir']);
-                foreach($finder as $file) {
-                    $MediaInfo = new MediaInfo($file->getPathname());
-                    $MediaInfo->analyse();
-                    //$MediaInfo->trace();
-                    if ($MediaInfo->getSuccess()) {
-                        $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $policy);
-                        $policyChecker->check();
-                        $check = array('isValid' => $policyChecker->isValid(),
-                            'policy' => $policyChecker->getErrors(),
-                            'xml' => $MediaInfo->getOutputXml(),
-                            'trace' => '',
-                            );
-                    }
-                    else {
-                        $check = array('isValid' => false,
-                            'policy' => array('Error during file parsing'),
-                            'xml' => '',
-                            'trace' => '',
-                            );
-                    }
-
-                    $check['name'] = $file->getRelativePathname();
-                    $checks[] = $check;
-                }
-
-                $this->get('mediaconch_user.quotas')->hitPolicyChecks(count($finder));
-            }
-        }
-        else {
-            $this->get('session')->getFlashBag()->add(
-                'danger',
-                $this->renderView('AppBundle:Default:quotaExceeded.html.twig')
-            );
-        }
-
-        return array('checks' => $checks, 'policyList' => $policyList);
-    }
-
-    /**
-     * @Route("/checkFilesSchematron")
-     * @Template()
-     */
-    public function checkFilesSchematronAction(Request $request)
+    public function checkFilesAction(Request $request)
     {
         $checks = false;
 

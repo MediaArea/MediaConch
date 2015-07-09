@@ -6,7 +6,7 @@ use Symfony\Component\Process\ProcessBuilder;
 
 class MediaConchPolicy extends MediaConch
 {
-    public function run($policy, $realPolicyName = false)
+    public function run($policy)
     {
         $builder = new ProcessBuilder();
         $process = $builder->setPrefix($this->MediaConch)
@@ -18,7 +18,6 @@ class MediaConchPolicy extends MediaConch
         if ($process->isSuccessful()) {
             $this->success = true;
             $this->output = $process->getOutput();
-            $this->replacePolicyNameInOuput($policy, $realPolicyName);
         }
 
         return $this;
@@ -27,12 +26,5 @@ class MediaConchPolicy extends MediaConch
     public function isValid()
     {
         return !preg_match('/NOT VALID/', $this->output);
-    }
-
-    private function replacePolicyNameInOuput($policy, $realPolicyName)
-    {
-        if ($realPolicyName) {
-            $this->output = str_replace($policy, $realPolicyName, $this->output);
-        }
     }
 }

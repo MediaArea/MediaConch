@@ -12,6 +12,7 @@ use AppBundle\Entity\Policy;
 class Checker
 {
     private $source;
+    private $clientSourceName;
     private $xmlEnable = true;
     private $xml;
     private $conformanceEnable = true;
@@ -25,7 +26,7 @@ class Checker
 
     public function __construct($source, $policyItem = false)
     {
-        $this->source = $source;
+        $this->setSource($source);
         $this->policyItem = $policyItem;
     }
 
@@ -85,7 +86,7 @@ class Checker
             }
             elseif ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                 $MediaConchPolicy = new MediaConchPolicy($this->source);
-                $MediaConchPolicy->run($this->policyItem->getRealPath(), $this->policyItem->getClientOriginalName());
+                $MediaConchPolicy->run($this->policyItem->getRealPath());
                 if ($MediaConchPolicy->getSuccess()) {
                     $this->setStatus($MediaConchPolicy->isValid());
                     $this->policy = array($MediaConchPolicy->getOutput());
@@ -113,9 +114,26 @@ class Checker
         return $this->status;
     }
 
+    private function setSource($source)
+    {
+        if ($source instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
+            $this->source = $source->getRealPath();
+            $this->clientSourceName = $source->getClientOriginalName();
+            dump($source);
+        }
+        else {
+            $this->source = $source;
+        }
+    }
+
     public function getSource()
     {
-        return pathinfo($this->source, PATHINFO_BASENAME);
+        if ($this->clientSourceName) {
+            return pathinfo($this->clientSourceName, PATHINFO_BASENAME);
+        }
+        else {
+            return pathinfo($this->source, PATHINFO_BASENAME);
+        }
     }
 
     public function enableXml()
@@ -134,7 +152,15 @@ class Checker
 
     public function getXml()
     {
-        return $this->xml;
+        $xml = $this->xml;
+        $xml = preg_replace('|<FolderName>(.*)</FolderName>\n|', '', $xml);
+        $xml = preg_replace('|<CompleteName>(.*)</CompleteName>\n|', '', $xml);
+
+        if ($this->clientSourceName) {
+            return str_replace(pathinfo($this->source, PATHINFO_BASENAME), pathinfo($this->clientSourceName, PATHINFO_BASENAME), $xml);
+        }
+
+        return $xml;
     }
 
     public function enableConformance()
@@ -153,7 +179,12 @@ class Checker
 
     public function getConformance()
     {
-        return $this->conformance;
+        if ($this->clientSourceName) {
+            return str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $this->conformance);
+        }
+        else {
+            return str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $this->conformance);
+        }
     }
 
     public function enablePolicy()
@@ -172,7 +203,12 @@ class Checker
 
     public function getPolicy()
     {
-        return $this->policy;
+        if ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
+            return str_replace($this->policyItem->getRealPath(), $this->policyItem->getClientOriginalName(), $this->policy);
+        }
+        else {
+            return $this->policy;
+        }
     }
 
     public function enableTrace()
