@@ -119,7 +119,6 @@ class Checker
         if ($source instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
             $this->source = $source->getRealPath();
             $this->clientSourceName = $source->getClientOriginalName();
-            dump($source);
         }
         else {
             $this->source = $source;
