@@ -5,7 +5,7 @@ description:
 logo: # 120x120 px default image used for Twitter summary card
 teaser: # 400x250 px default teaser image used in image archive grid
 locale:
-url:
+baseurl: /MediaConch
 
 # Jekyll configuration
 
@@ -17,7 +17,7 @@ kramdown:
   toc_levels: 1..2
 highlighter: pygments
 gems:
-  - jekyll-sitemap
+  - github-pages
 
 
 # Site owner
