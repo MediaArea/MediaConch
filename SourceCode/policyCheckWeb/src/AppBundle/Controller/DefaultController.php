@@ -14,11 +14,6 @@ use Symfony\Component\Finder\Finder;
 use Doctrine\ORM\EntityRepository;
 
 use AppBundle\Lib\Checker\Checker;
-use AppBundle\Lib\MediaInfo\MediaInfo;
-use AppBundle\Lib\MediaInfo\MediaInfoOutput;
-use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
-use AppBundle\Lib\MediaConch\MediaConchPolicy;
-use AppBundle\Lib\MediaConch\MediaConchConformance;
 use AppBundle\Entity\Policy;
 
 /**
@@ -226,29 +221,18 @@ class DefaultController extends Controller
             'xml' => '',
         );
 
-        if ($request->request->get('file', false) && file_exists($request->request->get('file'))) {
-            $uploadOk = 1;
-            exec('/usr/bin/mediainfo -f --Language=raw --Output=XML ' . escapeshellarg($request->request->get('file')), $output, $result);
-        }
+        $file = $request->request->get('file', false);
+        if ($file && file_exists($file) && $request->request->get('policy', false)) {
+            $policy = $this->getDoctrine()
+                ->getRepository('AppBundle:Policy')
+                ->find($request->request->get('policy'));
 
-        if (1 == $uploadOk && 0 == $result) {
-            $xml = '';
-            foreach($output as $out) {
-                $xml .= $out . "\n";
-            }
-
-            $check['xml'] = htmlentities($xml, ENT_COMPAT, 'UTF-8');
-            $MediaInfo = new MediaInfoOutput($xml);
-
-            if ($request->request->get('policy', false)) {
-                $policy = $this->getDoctrine()
-                    ->getRepository('AppBundle:Policy')
-                    ->find($request->request->get('policy'));
-                $policyChecker = new MediaInfoPolicyChecker($MediaInfo, $policy);
-                $policyChecker->check();
-                $check['isValid'] = $policyChecker->isValid();
-                $check['errors'] = $policyChecker->getErrors();
-            }
+            $checker = new Checker($file, $policy);
+            $checker->disableConformance();
+            $checker->run();
+            $check['xml'] = htmlentities($checker->getXml(), ENT_COMPAT, 'UTF-8');
+            $check['isValid'] = $checker->getStatus();
+            $check['errors'] = $checker->getPolicy();
         }
 
         return new JsonResponse($check);
