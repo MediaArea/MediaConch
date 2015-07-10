@@ -35,5 +35,18 @@
         <service id="app.form.type.language.custom" class="AppBundle\Form\Type\LanguageCustomType">
             <tag name="form.type" alias="language_custom" />
         </service>
+
+        <service id="app.form.type.checker.upload" class="AppBundle\Form\Type\CheckerUploadFormType">
+            <tag name="form.type" alias="checkerUpload" />
+        </service>
+
+        <service id="app.form.type.checker.online" class="AppBundle\Form\Type\CheckerOnlineFormType">
+            <tag name="form.type" alias="checkerOnline" />
+        </service>
+
+        <service id="app.form.type.checker.repository" class="AppBundle\Form\Type\CheckerRepositoryFormType">
+            <tag name="form.type" alias="checkerRepository" />
+            <argument type="service" id="security.token_storage" />
+        </service>
     </services>
 </container>

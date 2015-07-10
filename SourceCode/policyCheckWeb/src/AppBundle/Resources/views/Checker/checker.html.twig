@@ -6,4 +6,23 @@ MediaConch checker
 
 {% block body %}
 <h1>Check files</h1>
+
+{% if formUpload is defined %}
+    {{ form(formUpload) }}
+{% endif %}
+
+{% if formOnline is defined %}
+    {{ form(formOnline) }}
+{% endif %}
+
+{% if formRepository is defined and formRepository %}
+    {{ form(formRepository) }}
+{% else %}
+    {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
+{% endif %}
+
+{% if checks is iterable %}
+    {{ include('AppBundle:Default:fileDetailChecker.html.twig', { 'checks': checks }) }}
+{% endif %}
+
 {% endblock %}
