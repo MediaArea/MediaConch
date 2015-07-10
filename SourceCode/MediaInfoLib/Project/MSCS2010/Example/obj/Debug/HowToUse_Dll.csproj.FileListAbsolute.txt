@@ -1,5 +1,0 @@
-D:\Programmation\MediaInfoLib\Project\MSCS2010\Example\bin\Debug\HowToUse_Dll.exe
-D:\Programmation\MediaInfoLib\Project\MSCS2010\Example\bin\Debug\HowToUse_Dll.pdb
-D:\Programmation\MediaInfoLib\Project\MSCS2010\Example\obj\Debug\HowToUse_Dll.exe
-D:\Programmation\MediaInfoLib\Project\MSCS2010\Example\obj\Debug\HowToUse_Dll.pdb
-D:\Programmation\MediaInfoLib\Project\MSCS2010\Example\obj\Debug\HowToUse_Dll.csprojResolveAssemblyReference.cache
