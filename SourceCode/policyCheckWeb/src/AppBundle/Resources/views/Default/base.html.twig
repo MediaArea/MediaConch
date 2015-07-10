@@ -20,7 +20,7 @@
         <div>
             <a href="{{ path('app_default_homepage') }}">Home</a> |
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a href="{{ path('app_default_checkfiles') }}">Checker</a> |
+                <a href="{{ path('app_checker_checker') }}">Checker</a> |
                 <a href="{{ path('app_policy_policy') }}">Policies</a> |
                 <a href="{{ path('fos_user_profile_show') }}">Profile</a> |
                 {% if is_granted('ROLE_ADMIN') %}
