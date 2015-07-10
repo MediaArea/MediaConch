@@ -20,14 +20,16 @@
         <div>
             <a href="{{ path('app_default_homepage') }}">Home</a> |
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('app_default_checkfiles') }}">Checker</a> |
+                <a href="{{ path('app_policy_policy') }}">Policies</a> |
                 <a href="{{ path('fos_user_profile_show') }}">Profile</a> |
                 {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('admin') }}">Admin</a> |
                 {% endif %}
                 <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
+                </a> |
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
             {% else %}
                 <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> |
                 <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
