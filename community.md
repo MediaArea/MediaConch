@@ -54,7 +54,7 @@ Because PCM streams contain only audio samples without any codec structure or me
 
 In December 2014, MediaArea started conducting interviews with FFV1, Matroska, and LPCM stakeholders in order to collect feedback and insights from the archives community. To date, interviews have been conducted with:
 
-  * [Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek](/interviews/InterviewLewetzBubestinger.html)
-  * [Ian Henderson; UK National Archives](/interviews/InterviewHenderson.html)
-  * [Christophe Kummer; NOA](/interviews/InterviewKummer.html)
-  * [George Blood; George Blood, L.P.](/interviews/InterviewBlood.html)
+  * [Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek](interviews/InterviewLewetzBubestinger.html)
+  * [Ian Henderson; UK National Archives](interviews/InterviewHenderson.html)
+  * [Christophe Kummer; NOA](interviews/InterviewKummer.html)
+  * [George Blood; George Blood, L.P.](interviews/InterviewBlood.html)
