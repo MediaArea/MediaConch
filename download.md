@@ -12,7 +12,7 @@ This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and
 
 #### CLI
 
-New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are available on the [Demo page]({{ site.baseurl }}/demo.html).
+New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are available on the [Demo page](demo.html).
 
 #### GUI
 
