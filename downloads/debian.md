@@ -6,7 +6,7 @@ title: "Download MediaConch"
 
 # Download - Debian
 
-<img src="/images/Debian.png" width="229" height="61"><br/>
+<img src="images/Debian.png" width="229" height="61"><br/>
 
 <table border="1">
 <tr class="table-header">

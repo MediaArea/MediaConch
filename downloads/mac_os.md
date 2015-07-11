@@ -6,7 +6,7 @@ title: "Download MediaConch"
 
 # Download - Apple Mac OS
 
-<img src="/images/Mac_OS.png" alt="Mac OS" width="250" height="100">
+<img src="images/Mac_OS.png" alt="Mac OS" width="250" height="100">
 
 <table border="1">
   <tr>
