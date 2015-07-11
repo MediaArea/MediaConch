@@ -6,7 +6,7 @@ title: "Download MediaConch"
 
 # Download - RedHat Entreprise Linux
 
-<img src="images/RedHat.png" width="200" height="61"><br/>
+<img src="/MediaConch/images/RedHat.png" width="200" height="61"><br/>
 
 <table border="1">
 <tr class="table-header">

@@ -5,7 +5,7 @@ title: "Download MediaConch"
 ---
 # Download - Fedora
 
-<img src="images/Fedora.png" width="250" height="89"><br/>
+<img src="/MediaConch/images/Fedora.png" width="250" height="89"><br/>
 
 <table border="1">
 <tr class="table-header">
