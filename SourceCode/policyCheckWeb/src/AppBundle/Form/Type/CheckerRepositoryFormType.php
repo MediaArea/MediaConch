@@ -34,7 +34,7 @@ class CheckerRepositoryFormType extends AbstractType
                 'placeholder' => 'Choose a policy',
                 'required' => false)
                 )
-            ->add('file', 'file', array('label' => 'Schematron',
+            ->add('schematron', 'file', array('label' => 'Schematron',
                 'required' => false)
                 )
             ->add('Check file', 'submit');
