@@ -127,3 +127,26 @@ Checker result :
 </div>
 {% endif %}
 
+{% block javascripts %}
+    <script src="/static/FileSaver.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('div.modal').each(function() {
+                addDldButton($(this).find('div.modal-footer'), $(this).find('div.modal-body'));
+            });
+        });
+
+        function addDldButton(item, report) {
+            var dldButton = $('<button type="button" class="btn btn-primary">Download</button>');
+            item.append(dldButton);
+
+            dldButton.on('click', function(e) {
+                // Don't put a « # » in URL
+                e.preventDefault();
+
+                var blob = new Blob([report.text().trim()], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, "report.txt");
+            });
+        }
+    </script>
+{% endblock %}
