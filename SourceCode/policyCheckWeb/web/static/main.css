@@ -4,24 +4,23 @@ html, body {
 
 body {
   font-family: OpenSans;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 footer {
 	border-top: 6px solid #3472A1;
-  margin-top: 40px;
-  border-bottom: 1px solid #3472A1;
+  border-bottom: 2px solid #3472A1;
 }
 
 .navbar {
   margin-bottom: 0px;
+  border: 0px;
+  padding-right: 40px;
 }
 
 .navbar-collapse {
 	border-top: 6px solid #3472A1;
   margin-bottom: 0px;
-  border-bottom: 1px solid #3472A1;
+  border-bottom: 2px solid #3472A1;
 }
 
 .navbar a {
@@ -29,7 +28,8 @@ footer {
 }
 
 .navbar li {
-	border: 1px solid black; 
+	border-left: 1px solid black; 
+	border-right: 1px solid black;
 	padding: 5px;
   color: black;
   padding-top: 6px;
@@ -42,14 +42,16 @@ footer {
 
 .serif {
   font-family: Merriweather;
+  font-size: 24px;
+  line-height: 48px;
+  color: black;
 }
 
 .headline {
   font-family: Merriweather;
   font-weight: 700;
   line-height: 1;
-  font-size: 100px;
-  padding-top: 180px;
+  font-size: 60px;
 }
 
 .tagline {
@@ -60,3 +62,10 @@ footer {
 
 .button-padding {
   padding-bottom: 160px;
+}
+
+.content {
+	padding-top: 40px;
+	background-color: #F2F5F8;
+	padding-bottom: 80px;
+}
