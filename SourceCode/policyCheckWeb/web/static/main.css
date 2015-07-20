@@ -4,20 +4,39 @@ html, body {
 
 body {
   font-family: OpenSans;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-#footer {
+footer {
+	border-top: 6px solid #3472A1;
   margin-top: 40px;
+  border-bottom: 1px solid #3472A1;
 }
 
 .navbar {
-  background-color: #64A8DD;
   margin-bottom: 0px;
 }
 
+.navbar-collapse {
+	border-top: 6px solid #3472A1;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #3472A1;
+}
+
 .navbar a {
+    color: black;
+}
+
+.navbar li {
+	border: 1px solid black; 
+	padding: 5px;
+  color: black;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.navbar li:hover {
     color: black;
 }
 
