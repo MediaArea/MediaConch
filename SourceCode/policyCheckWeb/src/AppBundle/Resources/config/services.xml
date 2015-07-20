@@ -38,10 +38,12 @@
 
         <service id="app.form.type.checker.upload" class="AppBundle\Form\Type\CheckerUploadFormType">
             <tag name="form.type" alias="checkerUpload" />
+            <argument type="service" id="security.token_storage" />
         </service>
 
         <service id="app.form.type.checker.online" class="AppBundle\Form\Type\CheckerOnlineFormType">
             <tag name="form.type" alias="checkerOnline" />
+            <argument type="service" id="security.token_storage" />
         </service>
 
         <service id="app.form.type.checker.repository" class="AppBundle\Form\Type\CheckerRepositoryFormType">
