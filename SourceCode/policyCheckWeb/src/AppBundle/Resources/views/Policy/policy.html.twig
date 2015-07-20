@@ -1,39 +1,66 @@
 {% extends 'AppBundle:Default:base.html.twig' %}
 
 {% block title %}
-MediaConch Demo policy management
+MediaConchOnline Policy Management
 {% endblock %}
 
 {% block body %}
-<h1>MediaConch Demo policy management</h1>
 
-{% if form %}
-    {% form_theme form 'AppBundle:form:PolicyItemRow.html.twig' %}
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
+<div class="col-md-6">
+    <h1 class="headline">Policies</h1>
+    <p>Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.</p>
 
-        <div>
-            {{ form_row(form.name) }}
-        </div>
+        <button class="btn-lg btn-warning">Add new policy set</button>
+        <br><br>
+        <button class="btn-lg btn-warning">Import Schematron</button>
+        <br><br>
 
-        <div>
-            <ul class="items" data-prototype="{{ form_widget(form.items.vars.prototype)|e }}">
-            {% for item in form.items %}
-                <li class="item"><div id="policy_items_0">{{ form_row(item.type) }} {{ form_row(item.field) }} {{ form_row(item.validator) }} {{ form_row(item.value) }}</div></li>
-            {% endfor %}
-            </ul>
-        </div>
-    {{ form_end(form) }}
-{% endif %}
-<br /><br />
-<div>
-Policy list :
-    <ul>
-    {% for item in policyList %}
-        <li><a href="{{ path('app_policy_policy', {'id': item.id}) }}">{{ item.name }}</a> (<a href="{{ path('app_policy_policydelete', {'id': item.id}) }}">Delete</a>)</li>
-    {% endfor %}
-    </ul>
+        {% if form %}
+        {% form_theme form 'AppBundle:form:PolicyItemRow.html.twig' %}
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <div>
+                {{ form_row(form.name) }}
+            </div>
+
+            <div>
+                <ul class="items" data-prototype="{{ form_widget(form.items.vars.prototype)|e }}">
+                {% for item in form.items %}
+                    <li class="item"><div id="policy_items_0">{{ form_row(item.type) }} {{ form_row(item.field) }} {{ form_row(item.validator) }} {{ form_row(item.value) }}</div></li>
+                {% endfor %}
+                </ul>
+            </div>
+        {{ form_end(form) }}
+        {% endif %}
 </div>
+
+<div class="col-md-6">
+    <h4>Policy list:</h4>
+
+    <!-- {% for item in policyList %} -->
+    <!-- {% endfor %} -->
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading{{ item.id }}">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ item.id }}" aria-expanded="true" aria-controls="collapse{{ item.id }}">
+              Policy {{ item.name }}
+            </a>
+          </h4>
+        </div>
+        <div id="collapse{{ item.id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ item.id }}">
+          <div class="panel-body">
+            <a href="{{ path('app_policy_policy', {'id': item.id}) }}"><button class="btn-success pull-right">Edit</button></a>
+            <a href="{{ path('app_policy_policydelete', {'id': item.id}) }}"><button class="btn-danger pull-right">Delete</button></a>
+            <a href="{{ path('app_policy_policy', {'id': item.id}) }}"><button class="btn-warning pull-right">Import</button></a>
+          </div>
+        </div>
+      </div>
+</div>
+
+
 {% endblock %}
 
 {% block javascripts %}
