@@ -5,9 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}MediaConchOnline{% endblock %}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/static/main.css" media="screen"/>
-
         {% block stylesheets %}{% endblock %}
     </head>
     <body id="body">
@@ -20,25 +19,19 @@
               <ul class="nav navbar navbar-nav navbar-right">
                 <li><a href="{{ path('app_default_homepage') }}">Home</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="{{ path('app_default_checkfiles') }}">Checker</a></li>
-                <li><a href="{{ path('app_policy_policy') }}">Policies</a></li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ path('admin') }}">Admin</a></li>
-                {% endif %}
-                <li><a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a></li>
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                    <li><a href="{{ path('app_checker_checker') }}">Checker</a></li>
+                    <li><a href="{{ path('app_policy_policy') }}">Policies</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('admin') }}">Admin</a></li>
+                    {% endif %}
+                    <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                    <li><span>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span></li>
                 {% else %}
                     <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                     <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
                 {% endif %}
-            <!--     <li><a href="{{ path('app_default_checkfiles') }}">Apply a set of policy rules to files on a server</a></li>
-                <li><a href="{{ path('app_default_check') }}">Upload file (first megabyte) and check against policy rules</a></li>
-                <li><a href="{{ path('app_default_checkfullfile') }}">Upload file (full) and check against policy rules</a></li>
-                <li><a href="{{ path('app_default_checkonlinefile') }}">Check online files (cURL) against policy rules</a></li> -->
                 </ul>
             </div>
 
@@ -69,7 +62,7 @@
     </div> <!-- ends container -->
 
         <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         {% block javascripts %}{% endblock %}
         {# PREFORMA Googla Analytics tracker #}
         {% if app.environment == 'prod' %}

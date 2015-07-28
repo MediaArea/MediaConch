@@ -18,7 +18,7 @@
         <li>Urls : {{ quotas.urlsUsed }} / {{ quotas.urlsQuota }}{% if quotas.urlsLimit %} (valid until {{ quotas.urlsLimit|date("Y-m-d H:i:s") }} UTC){% endif %}</li>
         <li>Policy checks : {{ quotas.policyChecksUsed }} / {{ quotas.policyChecksQuota }}{% if quotas.policyChecksLimit %} (valid until {{ quotas.policyChecksLimit|date("Y-m-d H:i:s") }} UTC){% endif %}</li>
     </ul>
-<div>
+</div>
 
 <div class="fos_user_user_actions">
     <p><a href="{{ path('fos_user_profile_edit') }}">Edit your profile</a></p>
