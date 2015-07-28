@@ -38,9 +38,7 @@ MediaConchOnline Policy Management
 <div class="col-md-6">
     <h4>Policy list:</h4>
 
-    <!-- {% for item in policyList %} -->
-    <!-- {% endfor %} -->
-
+    {% for item in policyList %}
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading{{ item.id }}">
@@ -54,10 +52,12 @@ MediaConchOnline Policy Management
           <div class="panel-body">
             <a href="{{ path('app_policy_policy', {'id': item.id}) }}"><button class="btn-success pull-right">Edit</button></a>
             <a href="{{ path('app_policy_policydelete', {'id': item.id}) }}"><button class="btn-danger pull-right">Delete</button></a>
-            <a href="{{ path('app_policy_policy', {'id': item.id}) }}"><button class="btn-warning pull-right">Import</button></a>
+            <a href="{{ path('app_policy_policy', {'id': item.id}) }}"><button class="btn-warning pull-right">Export</button></a>
           </div>
         </div>
       </div>
+    </div>
+    {% endfor %}
 </div>
 
 
