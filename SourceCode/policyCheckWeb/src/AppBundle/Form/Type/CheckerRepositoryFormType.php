@@ -24,7 +24,7 @@ class CheckerRepositoryFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $builder->add($builder->create('step1', 'form', array('virtual' => true, 'label' => 'Policy or Schematron'))
             ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
@@ -32,12 +32,14 @@ class CheckerRepositoryFormType extends AbstractType
                         ->setParameter('user', $this->user);
                 },
                 'placeholder' => 'Choose a policy',
+                'required' => false,
+                'label' => 'Chosse a policy')
+                )
+            ->add('schematron', 'file', array('label' => 'Or upload a Schematron file',
                 'required' => false)
                 )
-            ->add('schematron', 'file', array('label' => 'Schematron',
-                'required' => false)
-                )
-            ->add('Check file', 'submit');
+            )
+            ->add('Check files', 'submit', array('attr' => array('class' => 'btn-warning')));
     }
 
     public function configureOptions(OptionsResolver $resolver)

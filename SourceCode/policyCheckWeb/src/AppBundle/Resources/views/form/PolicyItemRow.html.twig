@@ -1,8 +1,9 @@
 {% block form_row %}
 {% spaceless %}
+    <p>
     {{ form_label(form) }}
     {{ form_errors(form) }}
     {{ form_widget(form) }}
-    <br />
+    </p>
 {% endspaceless %}
 {% endblock form_row %}

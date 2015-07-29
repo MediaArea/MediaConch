@@ -5,9 +5,10 @@ MediaConchOnline Policy Management
 {% endblock %}
 
 {% block body %}
-
-<div class="col-md-6">
+<div class="col-md-12">
     <h1 class="headline">Policies</h1>
+</div>
+<div class="col-md-6">
     <p>Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.</p>
 
         <button class="btn-lg btn-warning">Add new policy set</button>
@@ -159,7 +160,7 @@ function addItemForm(collectionHolder, newLinkLi) {
 }
 
 function addItemFormDeleteLink(itemFormLi) {
-    var removeFormA = $('<a href="#">Delete this policy item</a>');
+    var removeFormA = $('<p><a href="#">Delete this policy item</a></p>');
     itemFormLi.append(removeFormA);
 
     removeFormA.on('click', function(e) {

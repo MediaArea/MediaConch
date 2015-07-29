@@ -5,28 +5,103 @@ MediaConch checker
 {% endblock %}
 
 {% block body %}
-<h1>Check files</h1>
+<div class="col-md-12">
+    <h1>Check files</h1>
+</div>
 
-{% if formUpload is defined and formUpload %}
-    {{ form(formUpload) }}
-{% else %}
-    {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
-{% endif %}
+<div class="col-md-6">
+    <div class="panel-group" id="accordion">
+    {% if formUpload is defined and formUpload %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingUpload">
+            <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseUpload" aria-expanded="true" aria-controls="collapseUpload">
+                Check by file upload
+                </a>
+            </h4>
+            </div>
+            <div id="collapseUpload" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingUpload">
+                {{ form(formUpload) }}
+            </div>
+        </div>
+    {% else %}
+        {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
+    {% endif %}
 
-{% if formOnline is defined and formOnline %}
-    {{ form(formOnline) }}
-{% else %}
-    {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
-{% endif %}
+    {% if formOnline is defined and formOnline %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOnline">
+            <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOnline" aria-expanded="true" aria-controls="collapseOnline">
+                Check online files
+            </h4>
+            </div>
+            <div id="collapseOnline" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOnline">
+                {{ form(formOnline) }}
+            </div>
+        </div>
+    {% else %}
+        {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
+    {% endif %}
 
-{% if formRepository is defined and formRepository %}
-    {{ form(formRepository) }}
-{% else %}
-    {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
-{% endif %}
-
+    {% if formRepository is defined and formRepository %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingRepository">
+            <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseRepository" aria-expanded="true" aria-controls="collapseRepository">
+                Check server files
+            </h4>
+            </div>
+            <div id="collapseRepository" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingRepository">
+                {{ form(formRepository) }}
+            </div>
+        </div>
+    {% else %}
+        {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
+    {% endif %}
+    </div>
+</div>
+<div class="col-md-6">
 {% if checks is iterable %}
     {{ include('AppBundle:Default:fileDetailChecker.html.twig', { 'checks': checks }) }}
 {% endif %}
+</div>
+{% endblock %}
 
+{% block javascripts %}
+    {% if checks is iterable %}
+        <script src="/static/FileSaver.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.checker-results li.report p a').each(function() {
+                    addDldButton($(this));
+                });
+
+                $('.checker-results li.report').each(function() {
+                    $(this).hover(
+                        function() {
+                            $(this).addClass('report-blue');
+                            $(this).find('p').removeClass('hidden');
+                        },
+                        function() {
+                        $(this).removeClass('report-blue');
+                            $(this).find('p').addClass('hidden');
+                        }
+                    );
+                });
+            });
+
+            function addDldButton(item) {
+                var dldButton = $('<a href="#" class="results-dld"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>');
+                item.after(dldButton);
+
+                dldButton.on('click', function(e) {
+                    // Don't put a « # » in URL
+                    e.preventDefault();
+
+                    report = $(item.data('target')).find('div.modal-body').text().trim();
+                    reportName = $(item).data('target').replace(/#modal(\w+)(\d)/, "$1");
+                    var blob = new Blob([report], {type: "text/plain;charset=utf-8"});
+                    saveAs(blob, reportName + "Report.txt");
+                });
+            }
+        </script>
+    {% endif %}
 {% endblock %}
