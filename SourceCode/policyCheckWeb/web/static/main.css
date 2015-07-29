@@ -74,3 +74,68 @@ footer {
     background-color: #F2F5F8;
     padding-bottom: 80px;
 }
+
+
+.panel {
+    background-color: #F5F5F5;
+}
+
+.panel-default > .panel-heading {
+    background-color: #64A8DD;
+}
+
+.panel-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.panel-collapse {
+    padding: 10px;
+}
+
+.btn {
+    color: black;
+    font-size: 16px;
+}
+
+.checker-results .list-group {
+    margin-bottom: 0;
+}
+
+.report-blue {
+    color: #4383BD;
+}
+
+.checker-results.panel {
+    margin-bottom: 5px;
+}
+
+.checker-results ul li p {
+    float: right;
+}
+
+.results-dld {
+    margin-left: 10px;
+}
+
+.modal-body p {
+    font-family: monospace;
+}
+
+#checkerUpload > div:nth-child(1) {
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+#checkerOnline > div:nth-child(1) {
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+#checkerRepository > div:nth-child(1) {
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    padding: 2px;
+}
