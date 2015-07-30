@@ -15,7 +15,7 @@ class PolicyType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
                 ))
-            ->add('save', 'submit', array('label' => 'Save policy'));
+            ->add('save', 'submit', array('label' => 'Save policy', 'attr' => array('class' => 'btn-warning')));
     }
 
     public function configureOptions(OptionsResolver $resolver)
