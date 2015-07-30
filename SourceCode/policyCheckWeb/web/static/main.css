@@ -139,3 +139,11 @@ footer {
     border-radius: 4px;
     padding: 2px;
 }
+
+#fos_user_registration_form .required:after {
+    content: " *";
+}
+
+p.registration {
+    margin-top: 12px;
+}

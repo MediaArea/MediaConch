@@ -16,10 +16,9 @@ MediaConch checker
             <div class="panel-heading" role="tab" id="headingUpload">
             <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseUpload" aria-expanded="true" aria-controls="collapseUpload">
                 Check by file upload
-                </a>
             </h4>
             </div>
-            <div id="collapseUpload" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingUpload">
+            <div id="collapseUpload" class="panel-collapse collapse{% if selectForm == 'upload' %} in{% endif %}" role="tabpanel" aria-labelledby="headingUpload">
                 {{ form(formUpload) }}
             </div>
         </div>
@@ -34,7 +33,7 @@ MediaConch checker
                 Check online files
             </h4>
             </div>
-            <div id="collapseOnline" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOnline">
+            <div id="collapseOnline" class="panel-collapse collapse{% if selectForm == 'online' %} in{% endif %}" role="tabpanel" aria-labelledby="headingOnline">
                 {{ form(formOnline) }}
             </div>
         </div>
@@ -49,7 +48,7 @@ MediaConch checker
                 Check server files
             </h4>
             </div>
-            <div id="collapseRepository" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingRepository">
+            <div id="collapseRepository" class="panel-collapse collapse{% if selectForm == 'repository' or not selectForm %} in{% endif %}" role="tabpanel" aria-labelledby="headingRepository">
                 {{ form(formRepository) }}
             </div>
         </div>

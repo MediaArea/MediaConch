@@ -81,7 +81,7 @@ class PolicyController extends Controller
                 return $this->redirect($this->generateUrl('app_policy_policy', array('id' => $policy->getId())));
             }
 
-            return array('form' => $form->createView(), 'policyList' => $policyList);
+            return array('form' => $form->createView(), 'policyList' => $policyList, 'selectedPolicy' => $id);
         }
         else {
             $this->get('session')->getFlashBag()->add(
@@ -89,7 +89,7 @@ class PolicyController extends Controller
                 $this->renderView('AppBundle:Default:quotaExceeded.html.twig')
             );
 
-            return array('form' => false, 'policyList' => $policyList);
+            return array('form' => false, 'policyList' => $policyList, 'selectedPolicy' => $id);
         }
     }
 

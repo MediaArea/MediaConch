@@ -25,12 +25,14 @@ class CheckerController extends Controller
     public function checkerAction(Request $request)
     {
         $checks = false;
+        $selectForm = false;
 
         if ($this->get('mediaconch_user.quotas')->hasUploadsRights()) {
             $formUpload = $this->createForm('checkerUpload');
             $formUpload->handleRequest($request);
 
             if ($formUpload->isValid()) {
+                $selectForm = 'upload';
                 $data = $formUpload->getData();
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\Policy) {
                     if ($data['file']->isValid()) {
@@ -60,6 +62,7 @@ class CheckerController extends Controller
             $formOnline->handleRequest($request);
 
             if ($formOnline->isValid()) {
+                $selectForm = 'online';
                 $data = $formOnline->getData();
 
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\Policy) {
@@ -88,6 +91,7 @@ class CheckerController extends Controller
             $formRepository->handleRequest($request);
 
             if ($formRepository->isValid()) {
+                $selectForm = 'repository';
                 $data = $formRepository->getData();
 
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\Policy) {
@@ -118,9 +122,10 @@ class CheckerController extends Controller
             }
         }
 
-        return array('formUpload' => $formUpload->createView(),
-            'formOnline' => $formOnline->createView(),
+        return array('formUpload' => isset($formUpload) ? $formUpload->createView() : false,
+            'formOnline' => isset($formOnline) ? $formOnline->createView() : false,
             'formRepository' => isset($formRepository) ? $formRepository->createView() : false,
-            'checks' => $checks);
+            'checks' => $checks,
+            'selectForm' => $selectForm);
     }
 }
