@@ -69,12 +69,9 @@ MediaConchOnline Policy Management
 <script>
 function changeType(id) {
     var $type = $('#policy_items_' + id + '_type');
-    // When sport gets selected ...
     $type.change(function() {
-        // Simulate form data, but only include the selected sport value.
         var data = {};
         data['type'] = $type.val();
-        // Submit data via AJAX to the form's action path.
         $.ajax({
             url : "{{ path('app_policy_policyajaxfields') }}",
             type: "POST",
@@ -91,12 +88,9 @@ function changeType(id) {
 
 function changeField(id) {
     var $field = $('#policy_items_' + id + '_field');
-    // When sport gets selected ...
     $field.change(function() {
-        // Simulate form data, but only include the selected sport value.
         var data = {};
         data['field'] = $field.val();
-        // Submit data via AJAX to the form's action path.
         $.ajax({
             url : "{{ path('app_policy_policyajaxvalidators') }}",
             type: "POST",
