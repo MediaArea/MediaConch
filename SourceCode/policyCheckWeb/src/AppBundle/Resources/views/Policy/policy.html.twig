@@ -9,7 +9,10 @@ MediaConchOnline Policy Management
     <h1 class="headline">Policies</h1>
 </div>
 <div class="col-md-6">
-    <p>Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a range, require that files have video and audio streams, or conform to a broadcast standard like PAL.</p>
+    <p>Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a fixed range, require that files have both video and audio streams, or conform to a broadcast specification.
+    </p>
+    <p>To create policies, users may select fields from MediaInfo's stream types (General, Video, Audio, etc.) and apply validators (Equal, Not Equal, Greater Than, etc.) to the associated field values. For example, a policy item may state that the "Width" field from the file's Video stream equal 640 pixels. When adding the field's value, however, be sure to leave off any associated strings, such as "pixels" "Kbps" "fps", etc.</p>
+
 {#
         <button class="btn-lg btn-warning">Add new policy set</button>
         <br><br>
