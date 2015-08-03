@@ -26,7 +26,7 @@ class ProfileFormType extends BaseType
             ->add('lastname')
             ->add('country', 'country_custom')
             ->add('language', 'language_custom')
-            ->add('professional', 'professional')
+            ->add('professional', 'professional', array('required' => false))
             ->add('companyName')
             ->add('newsletter');
     }

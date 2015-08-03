@@ -1,0 +1,7 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+
+<p class="registration">Fields marked by asterisks (*) are required</p>
+{% endblock fos_user_content %}

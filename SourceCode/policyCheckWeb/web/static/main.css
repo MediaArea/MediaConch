@@ -140,10 +140,14 @@ footer {
     padding: 2px;
 }
 
-#fos_user_registration_form .required:after {
+#fos_user_registration_form .required:after, #fos_user_profile_form .required:after {
     content: " *";
 }
 
 p.registration {
     margin-top: 12px;
+}
+
+.alert {
+    margin-top: 20px;
 }
