@@ -6,18 +6,18 @@ title: "Download MediaConch"
 
 # Downloads
 
-## 15.06 Release Notes
+## 15.07 Release Notes
 
-This release of MediaConch CLI builds on the development of MediaInfo 0.7.74 and the previous MediaConch release. It includes a file parser, conformance checker, and XML structure export. MediaConch is intended for use on Matroska, FFV1, and/or PCM files.
+This release of MediaConch CLI focuses on the online shell, [MediaConchOnline](https://mediaarea.net/MediaConchOnline/).
 
 #### CLI
 
-New to this release is the ability to check files against Schematron documents for policy-based file conformance checking. Instructions and files for initially testing this phase of development are available on the [Demo page](demo.html).
+No updates this month.
 
 #### GUI
 
-The MediaConch GUI also includes updates to the ability to check files against Schematron documents and initial support for policy set and policy rule creation. Schematron files can be imported and exported into MediaConch.
+No updates this month.
 
 ### Online
 
-No release this month.
+Initial release of [MediaConchOnline](https://mediaarea.net/MediaConchOnline/). MediaConchOnline features the ability to create an account; to create, import, and develop checker policies; and to validate files.
