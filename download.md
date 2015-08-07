@@ -10,14 +10,20 @@ title: "Download MediaConch"
 
 This release of MediaConch CLI focuses on the online shell, [MediaConchOnline](https://mediaarea.net/MediaConchOnline/).
 
-#### CLI
+### CLI
 
 No updates this month.
 
-#### GUI
+### GUI
 
 No updates this month.
 
 ### Online
 
 Initial release of [MediaConchOnline](https://mediaarea.net/MediaConchOnline/). MediaConchOnline features the ability to create an account; to create, import, and develop checker policies; and to validate files.
+
+### Historical Release Notes
+
+{% for post in site.releasenotes %}
+[{{ post.date }}]({{ post.url }})
+{% endfor %}
