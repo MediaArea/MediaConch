@@ -24,6 +24,6 @@ Initial release of [MediaConchOnline](https://mediaarea.net/MediaConchOnline/). 
 
 ### Historical Release Notes
 
-{% for post in site.releasenotes %}
-[{{ post.date }}]({{ post.url }})
+{% for post in site.releasenotes reversed %}
+  [{{ post.date }}]({{ post.url }})
 {% endfor %}
