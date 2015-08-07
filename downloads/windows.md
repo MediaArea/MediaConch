@@ -26,7 +26,7 @@ title: "Download MediaConch"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">v15.05</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/MediaConch_GUI_15.07_Windows.exe">v15.07</a></td>
     <td>If you don't know which one to download, download this one<?php echo $AdSupported; ?></td>
 </tr>
 <tr>
@@ -35,17 +35,17 @@ title: "Download MediaConch"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">v15.05 Universal (32/64 bit)</a> <small> (<a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows_i386_WithoutInstaller.7z">32 bit only without installer</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/MediaConch_GUI_15.07_Windows.exe">v15.07 Universal (32/64 bit)</a> <small> (<a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/MediaConch_GUI_15.07_Windows_i386_WithoutInstaller.7z">32 bit only without installer</a>)</small></td>
     <td><?php echo $AdSupported; ?></td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows_i386.zip">v15.05</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.07/MediaConch_CLI_15.07_Windows_i386.zip">v15.07</a></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th><abbr title="Dynamic Link Library">DLL</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/libmediainfo0/0.7.74/MediaInfo_DLL_0.7.74_Windows_i386.exe">v0.7.74</a><small> (<a href="http://mediaarea.net/download/binary/libmediainfo0/0.7.74/MediaInfo_DLL_0.7.74_Windows_i386_WithoutInstaller.7z">without installer</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/MediaInfo_DLL_0.7.76_Windows_i386.exe">v0.7.76</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/MediaInfo_DLL_0.7.76_Windows_i386_WithoutInstaller.7z">without installer</a>)</small></td>
     <td>Currently with the same API as libmediainfo</td>
 </tr>
 <tr>
@@ -54,17 +54,17 @@ title: "Download MediaConch"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows.exe">v15.05 Universal (32/64 bit)</a> <small>(<a href="http://mediaarea.net/download/binary/mediaconch-gui/15.05/MediaConch_GUI_15.05_Windows_x64_WithoutInstaller.7z">64 bit only without installer</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/MediaConch_GUI_15.07_Windows.exe">v15.07 Universal (32/64 bit)</a> <small>(<a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/MediaConch_GUI_15.07_Windows_x64_WithoutInstaller.7z">64 bit only without installer</a>)</small></td>
     <td><?php echo $AdSupported; ?></td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/mediaconch/15.05/MediaConch_CLI_15.05_Windows_x64.zip">v15.05</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.07/MediaConch_CLI_15.07_Windows_x64.zip">v15.07</a></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th><abbr title="Dynamic Link Library">DLL</abbr></th>
-    <td><a href="http://mediaarea.net/download/binary/libmediainfo0/0.7.74/MediaInfo_DLL_0.7.74_Windows_x64.exe">v0.7.74</a><small> (<a href="http://mediaarea.net/download/binary/libmediainfo0/0.7.74/MediaInfo_DLL_0.7.74_Windows_x64_WithoutInstaller.7z">without installer</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/MediaInfo_DLL_0.7.76_Windows_x64.exe">v0.7.76</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/MediaInfo_DLL_0.7.76_Windows_x64_WithoutInstaller.7z">without installer</a>)</small></td>
     <td>Currently with the same API as libmediainfo</td>
 </tr>
 </tbody>
