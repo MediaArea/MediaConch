@@ -80,7 +80,7 @@ the team participated to the Design Phase (phase 1)
   <td>
   <ul>
     <li><span style="font-weight: bold">Florent Tribouilloy</span><br/>
-    GUI development, reporting</li>
+    implementation of the bytestream/bitstream analyzer, extraction of metadata, GUI development, reporting</li>
   </ul>
   </td>
   <td style="width:25%;text-align:right;">
