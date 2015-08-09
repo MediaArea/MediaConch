@@ -1,0 +1,13 @@
+Debian 8
+--------
+apt-get install ruby ruby-dev nodejs git gcc make zlib1g-dev
+gem install github-pages
+jekyll build
+
+Windows
+-------
+http://rubyinstaller.org/downloads/
+rubyinstaller
+DevKit
+gem install github-pages
+
