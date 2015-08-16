@@ -13,6 +13,7 @@ body {
 }
 
 .navbar {
+  color: black;
   background-color: #64A8DD;
   margin-bottom: 0px;
 }
@@ -22,6 +23,7 @@ body {
 }
 
 .serif {
+  color: black;
   font-family: Merriweather;
 }
 
