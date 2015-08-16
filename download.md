@@ -12,11 +12,12 @@ This release of MediaConch CLI focuses on the online shell, [MediaConchOnline](h
 
 ### CLI
 
-No updates this month.
+Improved FFV1 slice analysis (currently activated only for 1st frame)
 
 ### GUI
 
-No updates this month.
+Improved FFV1 slice analysis (currently activated only for 1st frame)
+Improved Schematron file editor
 
 ### Online
 
