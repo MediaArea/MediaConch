@@ -19,11 +19,10 @@ body {
 }
 
 .navbar a {
-    color: black;
+    color: black !important;
 }
 
 .serif {
-  color: black;
   font-family: Merriweather;
 }
 
