@@ -1,0 +1,44 @@
+<mkv2xml>
+    <EBML>
+      <EBMLVersion>1</EBMLVersion>
+      <EBMLReadVersion>1</EBMLReadVersion>
+      <EBMLMaxIDLength>4</EBMLMaxIDLength>
+      <EBMLMaxSizeLength>8</EBMLMaxSizeLength>
+      <DocType>matroska</DocType>
+      <DocTypeVersion>4</DocTypeVersion>
+      <DocTypeReadVersion>2</DocTypeReadVersion>
+    </EBML>
+<Segment>
+<Info>
+  <MuxingApp>xml2mkv</MuxingApp>
+  <WritingApp>xml2mkv</WritingApp>
+</Info>
+<Tracks>
+  <TrackEntry>
+      <TrackNumber>1</TrackNumber>
+    <PiilNumber>1</PiilNumber>
+    <TrackUID>1</TrackUID>
+    <CodecID>V_UNCOMPRESSED</CodecID>
+    <TrackType>1</TrackType>
+    <Video>
+      <PixelWidth>2</PixelWidth>
+      <PixelHeight>2</PixelHeight>
+      <DisplayWidth>2</DisplayWidth>
+      <DisplayHeight>2</DisplayHeight>
+      <ColourSpace>59383030</ColourSpace>
+    </Video>
+  </TrackEntry>
+</Tracks>
+<Cluster>
+  <Timecode>0</Timecode>
+  <SimpleBlock>
+    <track>1</track>
+    <timecode>0.0</timecode>
+    <keyframe/>
+    <data>
+      80808080
+    </data>
+  </SimpleBlock>
+</Cluster>
+</Segment>
+</mkv2xml>
