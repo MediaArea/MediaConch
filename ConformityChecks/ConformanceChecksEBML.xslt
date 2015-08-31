@@ -65,11 +65,21 @@
                             <xsl:otherwise>
                                 <outcome>
                                     <xsl:attribute name="outcome">fail</xsl:attribute>
-                                    <xsl:text>DocTypeVersion is </xsl:text>
-                                    <xsl:value-of select="$DocTypeVersion"/>
-                                    <xsl:text> and DocTypeReadVersion is </xsl:text>
-                                    <xsl:value-of select="$DocTypeReadVersion"/>
-                                    <xsl:text>.</xsl:text>
+                                    <xsl:attribute name="reason">illogical mismatch</xsl:attribute>
+                                    <value>
+                                        <xsl:attribute name="offset">
+                                            <xsl:value-of select="mc:block[@name='Ebml']/mc:block[@name='DocTypeVersion']/@offset"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="name">DocTypeVersion</xsl:attribute>
+                                        <xsl:value-of select="$DocTypeVersion"/>
+                                    </value>
+                                    <value>
+                                        <xsl:attribute name="offset">
+                                            <xsl:value-of select="mc:block[@name='Ebml']/mc:block[@name='DocTypeReadVersion']/@offset"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="name">DocTypeReadVersion</xsl:attribute>
+                                        <xsl:value-of select="$DocTypeReadVersion"/>
+                                    </value>
                                 </outcome>
                             </xsl:otherwise>
                         </xsl:choose>
