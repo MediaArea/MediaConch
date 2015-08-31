@@ -1,8 +1,35 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
+
     <xsl:template match="mc:MediaTrace">
         <MediaConch>
+
+            <!-- start ebml variables -->
+            <xsl:variable name="DocTypeVersion">
+                <xsl:choose>
+                    <xsl:when test="mc:block[@name='Ebml']/mc:block[@name='DocTypeVersion']/mc:data[@name='Data']">
+                        <xsl:value-of select="mc:block[@name='Ebml']/mc:block[@name='DocTypeVersion']/mc:data[@name='Data']"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <!-- default value if there is no element -->
+                        <xsl:text>1</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="DocTypeReadVersion">
+                <xsl:choose>
+                    <xsl:when test="mc:block[@name='Ebml']/mc:block[@name='DocTypeReadVersion']/mc:data[@name='Data']">
+                        <xsl:value-of select="mc:block[@name='Ebml']/mc:block[@name='DocTypeReadVersion']/mc:data[@name='Data']"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <!-- default value if there is no element -->
+                        <xsl:text>1</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <!-- end ebml variables -->
+
             <conformanceChecks>
                 <xsl:attribute name="version">
                     <xsl:text>0.1a1</xsl:text>
