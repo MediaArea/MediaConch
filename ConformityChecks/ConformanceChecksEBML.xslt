@@ -46,9 +46,15 @@
                             <xsl:otherwise>
                                 <outcome>
                                     <xsl:attribute name="outcome">fail</xsl:attribute>
-                                    <xsl:text>Expecting the first element to be 172351395 but found </xsl:text>
-                                    <xsl:value-of select="//mc:data[1]"/>
-                                    <xsl:text>.</xsl:text>
+                                    <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                                    <value>
+                                        <xsl:attribute name="offset">
+                                            <xsl:value-of select="//mc:data[1]/@offset"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="expected">172351395</xsl:attribute>
+                                        <xsl:attribute name="name">FirstBlock</xsl:attribute>
+                                        <xsl:value-of select="//mc:data[1]"/>
+                                    </value>
                                 </outcome>
                             </xsl:otherwise>
                         </xsl:choose>
