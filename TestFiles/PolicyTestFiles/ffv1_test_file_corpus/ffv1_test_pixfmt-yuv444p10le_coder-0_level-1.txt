@@ -1,0 +1,71 @@
+ffmpeg started on 2015-06-27 at 18:08:06
+Report written to "ffv1_test_pixfmt-yuv444p10le_coder-0_level-1.txt"
+Command line:
+ffmpeg -y -f lavfi -i mandelbrot -c:v ffv1 -pix_fmt yuv444p10le -level 1 -coder 0 -t 1 ffv1_test_pixfmt-yuv444p10le_coder-0_level-1.mkv
+ffmpeg version 2.6.3 Copyright (c) 2000-2015 the FFmpeg developers
+  built with Apple LLVM version 6.1.0 (clang-602.0.49) (based on LLVM 3.6.0svn)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/2.6.3 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-hardcoded-tables --enable-avresample --cc=clang --host-cflags= --host-ldflags= --enable-libx264 --enable-libmp3lame --enable-libvo-aacenc --enable-libxvid --enable-libfaac --enable-ffplay --enable-nonfree --enable-vda
+  libavutil      54. 20.100 / 54. 20.100
+  libavcodec     56. 26.100 / 56. 26.100
+  libavformat    56. 25.101 / 56. 25.101
+  libavdevice    56.  4.100 / 56.  4.100
+  libavfilter     5. 11.102 /  5. 11.102
+  libavresample   2.  1.  0 /  2.  1.  0
+  libswscale      3.  1.101 /  3.  1.101
+  libswresample   1.  1.100 /  1.  1.100
+  libpostproc    53.  3.100 / 53.  3.100
+Splitting the commandline.
+Reading option '-y' ... matched as option 'y' (overwrite output files) with argument '1'.
+Reading option '-f' ... matched as option 'f' (force format) with argument 'lavfi'.
+Reading option '-i' ... matched as input file with argument 'mandelbrot'.
+Reading option '-c:v' ... matched as option 'c' (codec name) with argument 'ffv1'.
+Reading option '-pix_fmt' ... matched as option 'pix_fmt' (set pixel format) with argument 'yuv444p10le'.
+Reading option '-level' ... matched as AVOption 'level' with argument '1'.
+Reading option '-coder' ... matched as AVOption 'coder' with argument '0'.
+Reading option '-t' ... matched as option 't' (record or transcode "duration" seconds of audio/video) with argument '1'.
+Reading option 'ffv1_test_pixfmt-yuv444p10le_coder-0_level-1.mkv' ... matched as output file.
+Finished splitting the commandline.
+Parsing a group of options: global .
+Applying option y (overwrite output files) with argument 1.
+Successfully parsed a group of options.
+Parsing a group of options: input file mandelbrot.
+Applying option f (force format) with argument lavfi.
+Successfully parsed a group of options.
+Opening an input file: mandelbrot.
+detected 4 logical cores
+[AVFilterGraph @ 0x7fea88601a80] query_formats: 2 queried, 1 merged, 0 already done, 0 delayed
+[lavfi @ 0x7fea8901bc00] All info found
+Input #0, lavfi, from 'mandelbrot':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+    Stream #0:0, 1, 1/25: Video: rawvideo (RGBA / 0x41424752), rgba, 640x480 [SAR 1:1 DAR 4:3], 25 tbr, 25 tbn, 25 tbc
+Successfully opened the file.
+Parsing a group of options: output file ffv1_test_pixfmt-yuv444p10le_coder-0_level-1.mkv.
+Applying option c:v (codec name) with argument ffv1.
+Applying option pix_fmt (set pixel format) with argument yuv444p10le.
+Applying option t (record or transcode "duration" seconds of audio/video) with argument 1.
+Successfully parsed a group of options.
+Opening an output file: ffv1_test_pixfmt-yuv444p10le_coder-0_level-1.mkv.
+Successfully opened the file.
+[graph 0 input from stream 0:0 @ 0x7fea88600160] Setting 'video_size' to value '640x480'
+[graph 0 input from stream 0:0 @ 0x7fea88600160] Setting 'pix_fmt' to value '28'
+[graph 0 input from stream 0:0 @ 0x7fea88600160] Setting 'time_base' to value '1/25'
+[graph 0 input from stream 0:0 @ 0x7fea88600160] Setting 'pixel_aspect' to value '1/1'
+[graph 0 input from stream 0:0 @ 0x7fea88600160] Setting 'sws_param' to value 'flags=2'
+[graph 0 input from stream 0:0 @ 0x7fea88600160] Setting 'frame_rate' to value '25/1'
+[graph 0 input from stream 0:0 @ 0x7fea88600160] w:640 h:480 pixfmt:rgba tb:1/25 fr:25/1 sar:1/1 sws_param:flags=2
+[format @ 0x7fea88600740] compat: called with args=[yuv444p10le]
+[format @ 0x7fea88600740] Setting 'pix_fmts' to value 'yuv444p10le'
+[auto-inserted scaler 0 @ 0x7fea88601320] Setting 'flags' to value '0x4'
+[auto-inserted scaler 0 @ 0x7fea88601320] w:iw h:ih flags:'0x4' interl:0
+[format @ 0x7fea88600740] auto-inserting filter 'auto-inserted scaler 0' between the filter 'Parsed_null_0' and the filter 'format'
+[AVFilterGraph @ 0x7fea886014a0] query_formats: 5 queried, 3 merged, 1 already done, 0 delayed
+[auto-inserted scaler 0 @ 0x7fea88601320] w:640 h:480 fmt:rgba sar:1/1 -> w:640 h:480 fmt:yuv444p10le sar:1/1 flags:0x4
+[ffv1 @ 0x7fea8901d400] bits_per_raw_sample of more than 8 needs -coder 1 currently
+Output #0, matroska, to 'ffv1_test_pixfmt-yuv444p10le_coder-0_level-1.mkv':
+    Stream #0:0, 0, 0/0: Video: ffv1, none, q=2-31, 128 kb/s, SAR 1:1 DAR 0:0, 25 fps
+    Metadata:
+      encoder         : Lavc56.26.100 ffv1
+Stream mapping:
+  Stream #0:0 -> #0:0 (rawvideo (native) -> ffv1 (native))
+Error while opening encoder for output stream #0:0 - maybe incorrect parameters such as bit_rate, rate, width or height
+[AVIOContext @ 0x7fea886028e0] Statistics: 0 seeks, 0 writeouts
