@@ -53,6 +53,27 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </check>
+                    <check>
+                        <xsl:attribute name="id">EBML-VER-COH</xsl:attribute>
+                        <xsl:attribute name="version">0</xsl:attribute>
+                        <xsl:choose>
+                            <xsl:when test="$DocTypeVersion >= $DocTypeReadVersion">
+                                <outcome>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                </outcome>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <outcome>
+                                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                                    <xsl:text>DocTypeVersion is </xsl:text>
+                                    <xsl:value-of select="$DocTypeVersion"/>
+                                    <xsl:text> and DocTypeReadVersion is </xsl:text>
+                                    <xsl:value-of select="$DocTypeReadVersion"/>
+                                    <xsl:text>.</xsl:text>
+                                </outcome>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </check>
             </conformanceChecks>
         </MediaConch>
     </xsl:template>
