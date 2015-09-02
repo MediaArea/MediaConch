@@ -4,7 +4,7 @@ permalink: /demo.html
 title: "MediaConch Demo"
 ---
 
-# Demo for MediaConch version 15.07
+# Demo for MediaConch
 
 ### Testing
 

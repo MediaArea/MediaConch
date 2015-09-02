@@ -6,22 +6,16 @@ title: "Download MediaConch"
 
 # Downloads
 
-## 15.07 Release Notes
+## 15.08 Release Notes
 
-This release of MediaConch CLI focuses on the online shell, [MediaConchOnline](https://mediaarea.net/MediaConchOnline/).
+### CLI and GUI
 
-### CLI
-
-Improved FFV1 slice analysis (currently activated only for 1st frame)
-
-### GUI
-
-Improved FFV1 slice analysis (currently activated only for 1st frame)
-Improved Schematron file editor
+This release of MediaConch is a bug fixes release. 
+Focused on the trace feature.
 
 ### Online
 
-Initial release of [MediaConchOnline](https://mediaarea.net/MediaConchOnline/). MediaConchOnline features the ability to create an account; to create, import, and develop checker policies; and to validate files.
+[MediaConchOnline](https://mediaarea.net/MediaConchOnline/) features the ability to create an account; to create, import, and develop checker policies; and to validate files.
 
 ### Historical Release Notes
 
