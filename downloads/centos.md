@@ -24,17 +24,17 @@ title: "Download MediaConch"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/mediaconch-gui-15.07-1.x86_64.CentOS_7.rpm">v15.07</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.08/mediaconch-gui-15.08-1.x86_64.CentOS_7.rpm">v15.08</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.07/mediaconch-15.07-1.x86_64.CentOS_7.rpm">v15.07</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.08/mediaconch-15.08-1.x86_64.CentOS_7.rpm">v15.08</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/libmediainfo0-0.7.76-1.x86_64.CentOS_7.rpm">v0.7.76</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/libmediainfo-devel-0.7.76-1.x86_64.CentOS_7.rpm">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.77/libmediainfo0-0.7.77-1.x86_64.CentOS_7.rpm">v0.7.77</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.77/libmediainfo-devel-0.7.77-1.x86_64.CentOS_7.rpm">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -56,17 +56,17 @@ title: "Download MediaConch"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/mediaconch-gui-15.07-1.i686.CentOS_6.rpm">v15.07</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.08/mediaconch-gui-15.08-1.i686.CentOS_6.rpm">v15.08</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.07/mediaconch-15.07-1.i686.CentOS_6.rpm">v15.07</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.08/mediaconch-15.08-1.i686.CentOS_6.rpm">v15.08</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/libmediainfo0-0.7.76-1.i686.CentOS_6.rpm">v0.7.76</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/libmediainfo-devel-0.7.76-1.i686.CentOS_6.rpm">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.77/libmediainfo0-0.7.77-1.i686.CentOS_6.rpm">v0.7.77</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.77/libmediainfo-devel-0.7.77-1.i686.CentOS_6.rpm">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -80,17 +80,17 @@ title: "Download MediaConch"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.07/mediaconch-gui-15.07-1.x86_64.CentOS_6.rpm">v15.07</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.08/mediaconch-gui-15.08-1.x86_64.CentOS_6.rpm">v15.08</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.07/mediaconch-15.07-1.x86_64.CentOS_6.rpm">v15.07</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.08/mediaconch-15.08-1.x86_64.CentOS_6.rpm">v15.08</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/libmediainfo0-0.7.76-1.x86_64.CentOS_6.rpm">v0.7.76</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.76/libmediainfo-devel-0.7.76-1.x86_64.CentOS_6.rpm">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.77/libmediainfo0-0.7.77-1.x86_64.CentOS_6.rpm">v0.7.77</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.77/libmediainfo-devel-0.7.77-1.x86_64.CentOS_6.rpm">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
