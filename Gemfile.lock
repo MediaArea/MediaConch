@@ -144,7 +144,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  github-pages (= 37)
-  jekyll (~> 2.4.0)
+  github-pages
+  jekyll
   json
-  octopress (~> 3.0.0.rc.12)
+  octopress
