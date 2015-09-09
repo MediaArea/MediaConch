@@ -5,10 +5,7 @@ date:   2015-09-08 21:27:48
 categories: mediatrace
 ---
 
-# Announcing MediaTrace
-### A Comprehensive Architecture Report for AudioVisual Data
-
-## What is MediaTrace?
+# Announcing MediaTrace: A Comprehensive Architecture Report for AudioVisual Data
 
 MediaInfo is pleased to announce the first public release of MediaTrace, a new reporting feature for documenting the structure and contents of digital files with a particular concentration on audiovisual data. A complementary tool of MediaInfo that summarizes a file's significant characteristics, MediaTrace offers comprehensive documentation of file information in a powerful XML format for precision identification and conformance checking.
 
@@ -37,6 +34,14 @@ Here's another MediaTrace example highlighting QuickTime's Pixel Aspect Ratio at
     <data offset="2481264014" name="hSpacing">10</data>
     <data offset="2481264018" name="vSpacing">11</data>
 </block>
+```
+
+MediaTrace can also be used to identify embedded fixity features in files, such as cyclic redundancy checks (CRCs) found in the FFV1 video codec. Here the information includes the size of the associated frame region or "slice", the computed CRC, and an error status of "0" (no error).
+
+```xml
+<data offset="1128" name="slice_size">370</data>
+<data offset="1131" name="error_status">0</data>
+<data offset="1132" name="crc_parity" moreinfo="OK">1326302792</data>
 ```
 
 Instructions for the creation of MediaTrace reports may be found at the [MediaTrace namespace](https://mediaarea.net/mediatrace/). The development history and issue tracker are at [GitHub](https://github.com/MediaArea/MediaTrace). The MediaTrace format is documented by both an [XML Schema](https://mediaarea.net/mediatrace/mediatrace.xsd) and a [Data Dictionary](https://github.com/MediaArea/MediaTrace/blob/master/DataDictionary.md).
