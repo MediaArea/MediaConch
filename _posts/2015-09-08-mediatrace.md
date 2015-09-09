@@ -26,7 +26,7 @@ In MediaTrace, the same information is expressed with an associated data offset 
 <data offset="801" name="Transfer characteristic" info="Linear">2</data>
 ```
 
-Here's another MediaTrace example using Quicktime's Pixel Aspect Ratio atom. This trace includes the atom's four-character code ("pasp"), as well as values related to the horizontal and vertical spacing of pixels (10 and 11, respecively). The ratio of hSpacing to vSpacing corresponds to a 4:3, non-squre 525 (NTSC) pixel aspect ratio as defined by Quicktime's file format specifications. 
+Here's another MediaTrace example highlighting QuickTime's Pixel Aspect Ratio atom. This trace includes the atom's four-character code ("pasp"), as well as values related to the horizontal and vertical spacing of pixels (10 and 11, respectively). The ratio of hSpacing to vSpacing corresponds to a 4:3, non-square 525 (NTSC) pixel aspect ratio as defined by QuickTime's file format specifications. 
 
 ```xml
 <block offset="2481264006" name="Pixel Aspect Ratio" size="16">
