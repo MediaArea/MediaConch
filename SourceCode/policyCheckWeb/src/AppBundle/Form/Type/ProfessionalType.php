@@ -13,7 +13,8 @@ class ProfessionalType extends AbstractType
                 'u' => 'Not specified',
                 'y' => 'Yes',
                 'n' => 'No',
-            )
+            ),
+            'empty_value' => false,
         ));
     }
 

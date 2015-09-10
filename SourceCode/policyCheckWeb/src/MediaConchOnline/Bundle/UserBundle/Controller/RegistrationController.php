@@ -3,6 +3,7 @@
 namespace MediaConchOnline\Bundle\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
 class RegistrationController extends BaseController
@@ -36,7 +37,6 @@ class RegistrationController extends BaseController
                 // Set quotas for new user with mail activation disabled
                 $this->container->get('mediaconch_user.quotas')->setQuotasForNewUser();
             }
-
 
             return $response;
         }
