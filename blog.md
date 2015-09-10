@@ -4,11 +4,9 @@ permalink: /blog.html
 title: "Blog MediaConch"
 ---
 
+# Recent posts
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% for post in site.posts %}
+## [{{ post.title }}]({{ post.url }})
+{{ post.content | strip_html | truncatewords: 60 }} [[continue]]( {{post.url}} )
+{% endfor %}
