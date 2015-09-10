@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Announcing MediaTrace!"
-date:   2015-09-08 21:27:48
+date:   2015-09-10 16:00:00 CET
 categories: mediatrace
 ---
 
