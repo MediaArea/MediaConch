@@ -13,19 +13,19 @@ Most audiovisual formats are based on a hierarchical series of blocks of data, s
 	
 Here's an example of MediaTrace using transfer characteristic information found in a Digital Moving Picture Exchange (DPX) file. In MediaInfo's general XML readout, a user is able to discern that the image encoding of this specific file is "Linear":
 
-```xml
+{% highlight xml %}
 <colour_primaries>Linear</colour_primaries>
-```
+{% endhighlight %}
 
 In MediaTrace, the same information is expressed with an associated data offset (801, placing it squarely in DPX's Image Information Header), name ("Transfer characteristic"), and data value ("2", the code value for "Linear"), as referenced in SMPTE's S268M-2003 specification for DPX v2.0.
 
-```xml
+{% highlight xml %}
 <data offset="801" name="Transfer characteristic" info="Linear">2</data>
-```
+{% endhighlight %}
 
 Here's another MediaTrace example highlighting QuickTime's Pixel Aspect Ratio atom. This trace includes the atom's four-character code ("pasp"), as well as values related to the horizontal and vertical spacing of pixels (10 and 11, respectively). The ratio of hSpacing to vSpacing corresponds to a 4:3, non-square 525 (NTSC) pixel aspect ratio as defined by QuickTime's file format specifications. 
 
-```xml
+{% highlight xml %}
 <block offset="2481264006" name="Pixel Aspect Ratio" size="16">
     <block offset="2481264006" name="Header" size="8">
         <data offset="2481264006" name="Size">16</data>
@@ -34,15 +34,15 @@ Here's another MediaTrace example highlighting QuickTime's Pixel Aspect Ratio at
     <data offset="2481264014" name="hSpacing">10</data>
     <data offset="2481264018" name="vSpacing">11</data>
 </block>
-```
+{% endhighlight %}
 
 MediaTrace can also be used to identify embedded fixity features in files, such as cyclic redundancy checks (CRCs) found in the FFV1 video codec. Here the information includes the size of the associated frame region or "slice", the computed CRC, and an error status of "0" (no error).
 
-```xml
+{% highlight ruby %}
 <data offset="1128" name="slice_size">370</data>
 <data offset="1131" name="error_status">0</data>
 <data offset="1132" name="crc_parity" moreinfo="OK">1326302792</data>
-```
+{% endhighlight %}
 
 Instructions for the creation of MediaTrace reports may be found at the [MediaTrace namespace](https://mediaarea.net/mediatrace/). The development history and issue tracker are at [GitHub](https://github.com/MediaArea/MediaTrace). The MediaTrace format is documented by both an [XML Schema](https://mediaarea.net/mediatrace/mediatrace.xsd) and a [Data Dictionary](https://github.com/MediaArea/MediaTrace/blob/master/DataDictionary.md).
 
