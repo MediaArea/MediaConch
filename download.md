@@ -22,3 +22,7 @@ Focused on the trace feature.
 {% for post in site.releasenotes reversed %}
   [{{ post.date }}]({{ post.url }})
 {% endfor %}
+
+### Snapshots
+
+You can test ongoing developments for MediaConch by downloading our [daily builds](/MediaConch/downloads/snapshots.html).
