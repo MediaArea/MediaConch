@@ -20,7 +20,7 @@ Focused on the trace feature.
 ### Historical Release Notes
 
 {% for post in site.releasenotes reversed %}
-  [{{ post.date }}]({{ post.url }})
+  [{{ post.date }}]({{ post.url | remove_first:'/'}})
 {% endfor %}
 
 ### Snapshots
