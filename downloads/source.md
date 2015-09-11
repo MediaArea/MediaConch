@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: downloads/source.html
-title: "Download MediaConch"
+title: "Download MediaConch source code"
 ---
 
 # Download - Sources

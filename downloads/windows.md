@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: downloads/windows.html
-title: "Download MediaConch"
+title: "Download MediaConch for Microsoft Windows"
 ---
 
 # Download - Microsoft Windows

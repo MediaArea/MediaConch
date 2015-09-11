@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: downloads/debian.html
-title: "Download MediaConch"
+title: "Download MediaConch for Debian"
 ---
 
 # Download - Debian

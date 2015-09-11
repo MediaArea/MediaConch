@@ -1,8 +1,9 @@
 ---
 layout: default
 permalink: downloads/sle.html
-title: "Download MediaConch"
+title: "Download MediaConch for SUSE Linux Enterprise"
 ---
+
 # Download - SUSE Linux Enterprise
 
 <img src="/MediaConch/images/Suse.png" width="165" height="100"><br/>

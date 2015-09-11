@@ -1,8 +1,9 @@
 ---
 layout: default
 permalink: downloads/fedora.html
-title: "Download MediaConch"
+title: "Download MediaConch for Fedora"
 ---
+
 # Download - Fedora
 
 <img src="/MediaConch/images/Fedora.png" width="250" height="89"><br/>

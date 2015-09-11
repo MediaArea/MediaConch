@@ -1,8 +1,9 @@
 ---
 layout: default
 permalink: downloads/opensuse.html
-title: "Download MediaConch"
+title: "Download MediaConch for openSUSE"
 ---
+
 # Download - openSUSE
 
 <img src="/MediaConch/images/openSUSE.png" width="155" height="100"><br/>

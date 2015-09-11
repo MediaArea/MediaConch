@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: downloads/rhel.html
-title: "Download MediaConch"
+title: "Download MediaConch for RedHat Entreprise Linux"
 ---
 
 # Download - RedHat Entreprise Linux

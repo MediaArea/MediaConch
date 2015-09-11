@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: downloads/ubuntu.html
-title: "Download MediaConch"
+title: "Download MediaConch for Ubuntu"
 ---
 
 # Download - Ubuntu (Ubuntu, Kubuntu, Xbuntu...), Linux Mint

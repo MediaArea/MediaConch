@@ -1,13 +1,13 @@
 ---
 layout: default
 permalink: downloads/centos.html
-title: "Download MediaConch"
+title: "Download MediaConch for CentOS"
 ---
 
 # Download - CentOS
 
 <section id="CentOS"></section>
-<img src="images/CentOS.png" width="271" height="60"><br/>
+<img src="/MediaConch/images/CentOS.png" width="271" height="60"><br/>
 
 <table border="1">
 <tr class="table-header">

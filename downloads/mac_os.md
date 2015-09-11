@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: downloads/mac_os.html
-title: "Download MediaConch"
+title: "Download MediaConch for Apple Mac OS"
 ---
 
 # Download - Apple Mac OS
