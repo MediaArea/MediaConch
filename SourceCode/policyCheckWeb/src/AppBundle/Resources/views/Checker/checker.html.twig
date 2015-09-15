@@ -71,12 +71,10 @@ MediaConch checker
         <script>
             $(document).ready(function() {
                 // Add download button to result list
-                $('.checker-results li.report p a').each(function() {
+                $('.checker-results li.report p a.results-dld').each(function() {
                     var item = $(this);
-                    dldButton = $('<a href="#" class="results-dld"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>');
-                    item.after(dldButton);
 
-                    dldButton.on('click', function(e) {
+                    item.on('click', function(e) {
                         // Don't put a « # » in URL
                         e.preventDefault();
 

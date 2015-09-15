@@ -3,7 +3,7 @@
         <div class="panel panel-default checker-results">
             <div class="panel-heading" role="tab">
                 <h4 class="panel-title">Result for {{ check.getSource }}</h4>
-                <button type="button" class="close">&times;</button>
+                <button type="button" class="close" title="Close result">&times;</button>
             </div>
             <div>
                 <ul class="list-group">
@@ -11,28 +11,28 @@
                         <li class="list-group-item">This file is: <span class="text-uppercase text-{{ check.getStatus ? 'success' : 'danger' }}"><b>{{ check.getStatus ? '' : 'not ' }}valid</b></span></li>
                         <li class="list-group-item report">Policy report
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalPolicy{{ loop.index }}" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
                     {% if check.getConformance %}
                         <li class="list-group-item report">Implementation report
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalConformance{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalConformance{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalConformance{{ loop.index }}" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
                     {% if check.getXml %}
                         <li class="list-group-item report">MediaInfo XML
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalXml{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalXml{{ loop.index }}" title="View XML"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalXml{{ loop.index }}" title="Download XML"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
                     {% if check.getTrace %}
                         <li class="list-group-item report">MediaInfo Trace
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}" title="View trace"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalTrace{{ loop.index }}" title="Download trace"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
