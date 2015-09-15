@@ -5,8 +5,9 @@ MediaConch checker
 {% endblock %}
 
 {% block body %}
-<div class="col-md-12">
+<div class="col-md-12" id="checkerResultTitle">
     <h1>Check files</h1>
+    <button type="button" class="close">&times; Close all results</button>
 </div>
 
 <div class="col-md-6">
@@ -69,10 +70,24 @@ MediaConch checker
         <script src="/static/FileSaver.min.js"></script>
         <script>
             $(document).ready(function() {
+                // Add download button to result list
                 $('.checker-results li.report p a').each(function() {
-                    addDldButton($(this));
+                    var item = $(this);
+                    dldButton = $('<a href="#" class="results-dld"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>');
+                    item.after(dldButton);
+
+                    dldButton.on('click', function(e) {
+                        // Don't put a « # » in URL
+                        e.preventDefault();
+
+                        report = $(item.data('target')).find('div.modal-body').text().trim();
+                        reportName = $(item).data('target').replace(/#modal(\w+)(\d)/, "$1");
+                        var blob = new Blob([report], {type: "text/plain;charset=utf-8"});
+                        saveAs(blob, reportName + "Report.txt");
+                    });
                 });
 
+                // Button over for result list
                 $('.checker-results li.report').each(function() {
                     $(this).hover(
                         function() {
@@ -85,22 +100,35 @@ MediaConch checker
                         }
                     );
                 });
-            });
 
-            function addDldButton(item) {
-                var dldButton = $('<a href="#" class="results-dld"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>');
-                item.after(dldButton);
-
-                dldButton.on('click', function(e) {
-                    // Don't put a « # » in URL
-                    e.preventDefault();
-
-                    report = $(item.data('target')).find('div.modal-body').text().trim();
-                    reportName = $(item).data('target').replace(/#modal(\w+)(\d)/, "$1");
-                    var blob = new Blob([report], {type: "text/plain;charset=utf-8"});
-                    saveAs(blob, reportName + "Report.txt");
+                // Remove result block
+                $('.checker-results .panel-heading .close').each(function() {
+                    $(this).click(function () {
+                        $(this).parent().parent().remove();
+                    });
                 });
-            }
+
+                // Remove all results blocks
+                $('#checkerResultTitle .close').click(function () {
+                    $('div.checker-results').each(function () {
+                        $(this).remove();
+                    });
+                });
+
+                // Download button binding on modal
+                $('.modal-footer .btn-primary').each(function () {
+                    $(this).on('click', function(e) {
+                        // Don't put a « # » in URL
+                        e.preventDefault();
+
+                        item = $(this);
+                        report = $(item.data('target')).find('div.modal-body').text().trim();
+                        reportName = $(item).data('target').replace(/#modal(\w+)(\d)/, "$1");
+                        var blob = new Blob([report], {type: "text/plain;charset=utf-8"});
+                        saveAs(blob, reportName + "Report.txt");
+                    });
+                });
+            });
         </script>
     {% endif %}
 {% endblock %}
