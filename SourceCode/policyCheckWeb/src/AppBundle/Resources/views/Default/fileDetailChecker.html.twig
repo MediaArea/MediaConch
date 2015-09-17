@@ -29,10 +29,10 @@
                             </p>
                         </li>
                     {% endif %}
-                    {% if check.getTrace %}
+                    {% if check.getTrace or selectForm == 'repository' %}
                         <li class="list-group-item report">MediaInfo Trace
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}" title="View trace"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalTrace{{ loop.index }}" title="Download trace"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}" title="View trace"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld-trace{% if not check.getTrace %}-ajax{% endif %}" data-target="#traceXml{{ loop.index }}" data-report-name="MediaTrace.xml" title="Download trace"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
@@ -107,7 +107,7 @@
                 </div>
             {% endif %}
 
-            {% if check.getTrace %}
+            {% if check.getTrace or selectForm == 'repository' %}
                 <div id="modalTrace{{ loop.index }}" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -116,7 +116,13 @@
                                 <h4 class="modal-title">MediaTrace</h4>
                             </div>
                             <div class="modal-body">
-                                <p>{{ check.getTrace|nl2br }}</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-8 col-xs-8">
+                                        <i class="glyphicon glyphicon-search"></i><input type="text" value="" style="box-shadow:inset 0 0 4px #eee; width:110px; margin:0 2px; padding:6px; border-radius:4px; border:1px solid silver; font-size:1.1em;" id="traceSearch{{ loop.index }}" placeholder="Search" />
+                                    </div>
+                                    <div id="trace{{ loop.index }}" class="col-md-8"></div>
+                                    <div id="traceInfo{{ loop.index }}" class="col-md-4"></div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -124,6 +130,11 @@
                         </div>
                     </div>
                 </div>
+                {% if check.getTrace %}
+                    <div id="traceXml{{ loop.index }}" class="hidden">
+                        {{ check.getTrace.xml|nl2br }}
+                    </div>
+                {% endif %}
             {% endif %}
 
         </div>
