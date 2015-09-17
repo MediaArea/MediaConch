@@ -164,3 +164,13 @@ p.registration {
 .alert {
     margin-top: 20px;
 }
+
+.traceSearch {
+    box-shadow: inset 0 0 4px #eee;
+    width: 110px;
+    margin: 0 2px;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid silver;
+    font-size: 1.1em;
+}

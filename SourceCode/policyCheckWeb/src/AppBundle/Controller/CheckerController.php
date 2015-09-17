@@ -132,21 +132,26 @@ class CheckerController extends Controller
     /**
      * @Route("/checkerAjaxTraceFolder/{id}.{format}", requirements={"id": "\d+", "format"})
      */
-    public function checkerAjaxTraceFolderAction($id, $format)
+    public function checkerAjaxTraceFolderAction($id, $format, Request $request)
     {
-        $params = $this->container->getParameter('mediaconch');
+        if ($request->isXmlHttpRequest()) {
+            $params = $this->container->getParameter('mediaconch');
 
-        $finder = new Finder();
-        $finder->files()->in($params['check_dir']);
-        $i = 1;
-        foreach ($finder as $file) {
-            if ($i++ == $id) {
-                $checker = new Checker($file->getPathname());
-                $checker->disablePolicy()->disableXml()->disableConformance()->enableTrace()->setTraceFormat(array($format));
-                $checker->run();
+            $finder = new Finder();
+            $finder->files()->in($params['check_dir']);
+            $i = 1;
+            foreach ($finder as $file) {
+                if ($i++ == $id) {
+                    $checker = new Checker($file->getPathname());
+                    $checker->disablePolicy()->disableXml()->disableConformance()->enableTrace()->setTraceFormat(array($format));
+                    $checker->run();
+                }
             }
-        }
 
-        return new Response(isset($checker) ? $checker->getTrace($format) : '');
+            return new Response(isset($checker) ? $checker->getTrace($format) : '');
+        }
+        else {
+            throw new NotFoundHttpException();
+        }
     }
 }

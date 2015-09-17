@@ -79,9 +79,20 @@ MediaConch checker
                         e.preventDefault();
 
                         report = $(item.data('target')).find('div.modal-body').text().trim();
-                        reportName = $(item).data('target').replace(/#modal(\w+)(\d)/, "$1");
-                        var blob = new Blob([report], {type: "text/plain;charset=utf-8"});
-                        saveAs(blob, reportName + "Report.txt");
+                        reportName = $(item).data('report-name');
+                        reportExt = reportName.replace(/(.*)\.([a-z]{3})$/, "$2");
+                        switch(reportExt) {
+                            case 'xml':
+                                reportType = 'text/xml';
+                                break;
+                            case 'txt':
+                                reportType = 'text/plain';
+                                break;
+                            default:
+                                reportType = 'text/plain';
+                        }
+                        var blob = new Blob([report], {type: reportType + ';charset=utf-8'});
+                        saveAs(blob, reportName);
                     });
                 });
 
@@ -95,7 +106,7 @@ MediaConch checker
 
                         report = $(item.data('target')).text().trim();
                         reportName = $(item).data('report-name');
-                        var blob = new Blob([report], {type: "text/xml;charset=utf-8"});
+                        var blob = new Blob([report], {type: 'text/xml;charset=utf-8'});
                         saveAs(blob, reportName);
                     });
                 });
@@ -115,7 +126,7 @@ MediaConch checker
                         $.get(url)
                             .done(function (d) {
                                 reportName = $(item).data('report-name');
-                                var blob = new Blob([d], {type: "text/xml;charset=utf-8"});
+                                var blob = new Blob([d], {type: 'text/xml;charset=utf-8'});
                                 saveAs(blob, reportName);
                             })
                             .fail(function () {
