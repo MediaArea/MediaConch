@@ -59,7 +59,7 @@
                                 {% endif %}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#modalPolicy{{ loop.index }}">Download report</button>
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalPolicy{{ loop.index }}" data-report-name="PolicyReport.txt">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 <p>{{ check.getConformance|replace({' ': '&nbsp;'})|raw|nl2br }}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#modalConformance{{ loop.index }}">Download report</button>
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalConformance{{ loop.index }}" data-report-name="ConformanceReport.txt">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                 <p>{{ check.getXml|nl2br }}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#modalXml{{ loop.index }}">Download XML</button>
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalXml{{ loop.index }}"" data-report-name="MediaInfo.xml">Download XML</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -125,6 +125,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary report-dld-trace{% if not check.getTrace %}-ajax{% endif %}" data-target="#traceXml{{ loop.index }}" data-report-name="MediaTrace.xml">Download trace</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>

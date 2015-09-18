@@ -72,69 +72,88 @@ MediaConch checker
             $(document).ready(function() {
                 // Add download button to result list
                 $('.checker-results li.report p a.results-dld').each(function() {
-                    var item = $(this);
-
-                    item.on('click', function(e) {
-                        // Don't put a « # » in URL
-                        e.preventDefault();
-
-                        report = $(item.data('target')).find('div.modal-body').text().trim();
-                        reportName = $(item).data('report-name');
-                        reportExt = reportName.replace(/(.*)\.([a-z]{3})$/, "$2");
-                        switch(reportExt) {
-                            case 'xml':
-                                reportType = 'text/xml';
-                                break;
-                            case 'txt':
-                                reportType = 'text/plain';
-                                break;
-                            default:
-                                reportType = 'text/plain';
-                        }
-                        var blob = new Blob([report], {type: reportType + ';charset=utf-8'});
-                        saveAs(blob, reportName);
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadReport($(this));
                     });
                 });
+
+                // Add download button binding on modal
+                $('.modal-footer .report-dld').each(function () {
+                    $(this).on('click', function(e) {
+                        downloadReport($(this));
+                    });
+                });
+
+                function downloadReport(item) {
+                    report = $(item.data('target')).find('div.modal-body').text().trim();
+                    reportName = $(item).data('report-name');
+                    reportExt = reportName.replace(/(.*)\.([a-z]{3})$/, "$2");
+                    switch(reportExt) {
+                        case 'xml':
+                            reportType = 'text/xml';
+                            break;
+                        case 'txt':
+                            reportType = 'text/plain';
+                            break;
+                        default:
+                            reportType = 'text/plain';
+                    }
+                    var blob = new Blob([report], {type: reportType + ';charset=utf-8'});
+                    saveAs(blob, reportName);
+                };
 
                 // Add download trace button to result list
                 $('.checker-results li.report p a.results-dld-trace').each(function() {
-                    var item = $(this);
-
-                    item.on('click', function(e) {
-                        // Don't put a « # » in URL
-                        e.preventDefault();
-
-                        report = $(item.data('target')).text().trim();
-                        reportName = $(item).data('report-name');
-                        var blob = new Blob([report], {type: 'text/xml;charset=utf-8'});
-                        saveAs(blob, reportName);
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadTrace($(this));
                     });
                 });
+
+                // Add download trace button binding on modal
+                $('.modal-footer .report-dld-trace').each(function() {
+                    $(this).on('click', function(e) {
+                        downloadTrace($(this));
+                    });
+                });
+
+                function downloadTrace(item) {
+                    report = $(item.data('target')).text().trim();
+                    reportName = $(item).data('report-name');
+                    var blob = new Blob([report], {type: 'text/xml;charset=utf-8'});
+                    saveAs(blob, reportName);
+                };
 
                 // Add download trace ajax button to result list
                 $('.checker-results li.report p a.results-dld-trace-ajax').each(function() {
-                    var item = $(this);
-
-                    item.on('click', function(e) {
-                        // Don't put a « # » in URL
-                        e.preventDefault();
-
-                        id = $(item).data('target').replace(/#traceXml(\d)/, "$1");
-                        url = '{{ path('app_checker_checkerajaxtracefolder', {'id': 0, 'format': 'xml'}) }}';
-                        url = url.replace(/(.*)\/(0)/, "$1/" + id);
-                        console.log(url);
-                        $.get(url)
-                            .done(function (d) {
-                                reportName = $(item).data('report-name');
-                                var blob = new Blob([d], {type: 'text/xml;charset=utf-8'});
-                                saveAs(blob, reportName);
-                            })
-                            .fail(function () {
-                                console.log('Fail to get trace XML');
-                            });
-
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadTraceAjax($(this));
                     });
                 });
+
+                // Add download trace ajax button binding on modal
+                $('.modal-footer .report-dld-trace-ajax').each(function() {
+                    $(this).on('click', function(e) {
+                        downloadTraceAjax($(this));
+                    });
+                });
+
+                function downloadTraceAjax(item) {
+                    id = $(item).data('target').replace(/#traceXml(\d)/, "$1");
+                    url = '{{ path('app_checker_checkerajaxtracefolder', {'id': 0, 'format': 'xml'}) }}';
+                    url = url.replace(/(.*)\/(0)/, "$1/" + id);
+                    $.get(url)
+                        .done(function (d) {
+                            reportName = $(item).data('report-name');
+                            var blob = new Blob([d], {type: 'text/xml;charset=utf-8'});
+                            saveAs(blob, reportName);
+                        })
+                        .fail(function () {
+                            console.log('Fail to get trace XML');
+                        });
+                };
 
                 // Button over for result list
                 $('.checker-results li.report').each(function() {
@@ -163,20 +182,6 @@ MediaConch checker
                         $(this).remove();
                     });
                     $(this).addClass('hidden');
-                });
-
-                // Download button binding on modal
-                $('.modal-footer .btn-primary').each(function () {
-                    $(this).on('click', function(e) {
-                        // Don't put a « # » in URL
-                        e.preventDefault();
-
-                        item = $(this);
-                        report = $(item.data('target')).find('div.modal-body').text().trim();
-                        reportName = $(item).data('target').replace(/#modal(\w+)(\d)/, "$1");
-                        var blob = new Blob([report], {type: "text/plain;charset=utf-8"});
-                        saveAs(blob, reportName + "Report.txt");
-                    });
                 });
             });
         </script>
