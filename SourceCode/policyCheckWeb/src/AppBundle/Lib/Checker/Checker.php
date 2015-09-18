@@ -95,7 +95,7 @@ class Checker
             }
             elseif ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                 $MediaConchPolicy = new MediaConchPolicy($this->source);
-                $MediaConchPolicy->run($this->policyItem->getRealPath());
+                $MediaConchPolicy->setPolicyType($this->policyItem->getClientOriginalExtension())->run($this->policyItem->getRealPath());
                 if ($MediaConchPolicy->getSuccess()) {
                     $this->setStatus($MediaConchPolicy->isValid());
                     $this->policy = array($MediaConchPolicy->getOutput());
