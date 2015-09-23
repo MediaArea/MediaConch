@@ -87,7 +87,7 @@ MediaConch checker
 
                 function downloadReport(item) {
                     report = $(item.data('target')).find('div.modal-body').text().trim();
-                    reportName = $(item).data('report-name');
+                    reportName = $(item).data('save-name');
                     reportExt = reportName.replace(/(.*)\.([a-z]{3})$/, "$2");
                     switch(reportExt) {
                         case 'xml':
@@ -120,7 +120,7 @@ MediaConch checker
 
                 function downloadTrace(item) {
                     report = $(item.data('target')).text().trim();
-                    reportName = $(item).data('report-name');
+                    reportName = $(item).data('save-name');
                     var blob = new Blob([report], {type: 'text/xml;charset=utf-8'});
                     saveAs(blob, reportName);
                 };
@@ -146,7 +146,7 @@ MediaConch checker
                     url = url.replace(/(.*)\/(0)/, "$1/" + id);
                     $.get(url)
                         .done(function (d) {
-                            reportName = $(item).data('report-name');
+                            reportName = $(item).data('save-name');
                             var blob = new Blob([d], {type: 'text/xml;charset=utf-8'});
                             saveAs(blob, reportName);
                         })
