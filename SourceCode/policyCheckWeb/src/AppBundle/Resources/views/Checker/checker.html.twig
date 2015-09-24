@@ -173,6 +173,11 @@ MediaConch checker
                 $('.checker-results .panel-heading .close').each(function() {
                     $(this).click(function () {
                         $(this).parent().parent().remove();
+
+                        // Remove close all button
+                        if (0 == $('div.checker-results').length) {
+                            $('#checkerResultTitle .close').addClass('hidden');
+                        };
                     });
                 });
 
@@ -181,6 +186,8 @@ MediaConch checker
                     $('div.checker-results').each(function () {
                         $(this).remove();
                     });
+
+                    // Remove close all button
                     $(this).addClass('hidden');
                 });
             });
