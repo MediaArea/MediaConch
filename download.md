@@ -6,16 +6,26 @@ title: "Download MediaConch"
 
 # Downloads
 
-## 15.08 Release Notes
+## 15.09 Release Notes
+
+### CLI
+
+Support of XSLT policies.  
+Support of HTTP/HTTPS/FTP/FTPS URLs in input.  
 
 ### CLI and GUI
 
-This release of MediaConch is a bug fixes release. 
-Focused on the trace feature.
+Design of the report is changed (similar to MediaConchOnline).  
+Examples of policies provided by default.  
+Support of XSLT policies.  
+Drag and drop of several files.  
+MediaTrace UI.  
+Save of MediaTrace output in XML format.  
+Support of HTTP/HTTPS/FTP/FTPS URLs in input.  
 
 ### Online
 
-[MediaConchOnline](https://mediaarea.net/MediaConchOnline/) features the ability to create an account; to create, import, and develop checker policies; and to validate files.
+[MediaConchOnline](https://mediaarea.net/MediaConchOnline/) features MediaTrace user interface and XSLT support.
 
 ### Historical Release Notes
 
