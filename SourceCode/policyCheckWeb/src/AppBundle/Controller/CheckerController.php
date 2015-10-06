@@ -96,10 +96,9 @@ class CheckerController extends Controller
 
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\Policy) {
                     $checks = array();
-                    $params = $this->container->getParameter('mediaconch');
 
                     $finder = new Finder();
-                    $finder->files()->in($params['check_dir']);
+                    $finder->files()->in($this->container->getParameter('mco_check_folder'));
                     foreach($finder as $file) {
                         if ($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                             $checker = new Checker($file->getPathname(), $data['schematron']);
@@ -135,10 +134,9 @@ class CheckerController extends Controller
     public function checkerAjaxTraceFolderAction($id, $format, Request $request)
     {
         if ($request->isXmlHttpRequest()) {
-            $params = $this->container->getParameter('mediaconch');
 
             $finder = new Finder();
-            $finder->files()->in($params['check_dir']);
+            $finder->files()->in($this->container->getParameter('mco_check_folder'));
             $i = 1;
             foreach ($finder as $file) {
                 if ($i++ == $id) {

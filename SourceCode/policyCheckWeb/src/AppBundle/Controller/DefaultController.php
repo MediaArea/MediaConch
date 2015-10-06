@@ -168,10 +168,9 @@ class DefaultController extends Controller
 
                 if (($data['file'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['file']->isValid()) || $data['policy'] instanceof Policy) {
                     $checks = array();
-                    $params = $this->container->getParameter('mediaconch');
 
                     $finder = new Finder();
-                    $finder->files()->in($params['check_dir']);
+                    $finder->files()->in($this->container->getParameter('mco_check_folder'));
                     foreach($finder as $file) {
                         if ($data['file'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                             $checker = new Checker($file->getPathname(), $data['file']);
