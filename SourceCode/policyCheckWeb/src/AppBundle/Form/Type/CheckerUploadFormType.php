@@ -24,7 +24,7 @@ class CheckerUploadFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add($builder->create('step1', 'form', array('virtual' => true, 'label' => 'Policy, Schematron or XSL'))
+        $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy, Schematron or XSL'))
             ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
