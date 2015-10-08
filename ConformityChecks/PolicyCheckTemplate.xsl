@@ -80,7 +80,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                <xsl:attribute name="reason">is not equal</xsl:attribute>
                 <value>
                     <xsl:value-of select="$key"/>
                 </value>
@@ -98,7 +98,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                <xsl:attribute name="reason">is less than</xsl:attribute>
                 <value>
                     <xsl:value-of select="$key"/>
                 </value>
@@ -116,7 +116,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                <xsl:attribute name="reason">is greater than</xsl:attribute>
                 <value>
                     <xsl:value-of select="$key"/>
                 </value>
@@ -134,7 +134,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                <xsl:attribute name="reason">is less or equal than</xsl:attribute>
                 <value>
                     <xsl:value-of select="$key"/>
                 </value>
@@ -152,7 +152,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                <xsl:attribute name="reason">is greater or equal than</xsl:attribute>
                 <value>
                     <xsl:value-of select="$key"/>
                 </value>
@@ -170,7 +170,7 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">unexpected value</xsl:attribute>
+                <xsl:attribute name="reason">is equal</xsl:attribute>
                 <value>
                     <xsl:value-of select="$key"/>
                 </value>
