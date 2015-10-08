@@ -11,7 +11,7 @@
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
                         <policy>
-                            <xsl:call-template name="are_equal">
+                            <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Is Matroska"</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
                                 <xsl:with-param name="value">Matroska</xsl:with-param>
@@ -21,7 +21,7 @@
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <xsl:call-template name="are_equal">
+                            <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Is FFV1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="value">FFV1</xsl:with-param>
@@ -31,7 +31,7 @@
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <xsl:call-template name="are_equal">
+                            <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Format version is Version 3.1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
                                 <xsl:with-param name="value">Version 3.1</xsl:with-param>
@@ -94,7 +94,7 @@
         </MediaConch>
     </xsl:template>
     
-    <xsl:template name="are_equal">
+    <xsl:template name="is_equal">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
