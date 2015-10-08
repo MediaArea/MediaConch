@@ -65,21 +65,19 @@
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <xsl:call-template name="matches_regex">
+                            <xsl:call-template name="exists">
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
-                                <xsl:with-param name="value">Matroska</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <xsl:call-template name="matches_regex">
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
-                                <xsl:with-param name="value">z</xsl:with-param>
+                            <xsl:call-template name="does_not_exist">
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz"/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
-                                <xsl:with-param name="field">Format</xsl:with-param>
+                                <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
                             </xsl:call-template>
                         </policy>
                     </media>
@@ -161,45 +159,45 @@
     </xsl:template>
 
     <xsl:template name="is_less_or_equal_than">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$key &lt;= $value">
+            <xsl:when test="$xpath &lt;= $value">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">is greater than</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template name="is_not_equal">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$key != $value">
+            <xsl:when test="$xpath != $value">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">is equal</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template name="exists">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:choose>
-            <xsl:when test="string-length($key) != 0">
+            <xsl:when test="string-length($xpath) != 0">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
@@ -210,23 +208,23 @@
     </xsl:template>
 
     <xsl:template name="does_not_exist">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:choose>
-            <xsl:when test="string-length($key) = '0'">
+            <xsl:when test="string-length($xpath) = '0'">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">exists</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template name="matches_regex">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
