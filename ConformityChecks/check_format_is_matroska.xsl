@@ -10,91 +10,60 @@
                 <xsl:for-each select="mc:media">
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
-                        <!--- this is the start of a policy test -->
                         <policy>
-                            <!-- set variable named key to the xpath of MediaInfo to check -->
-                            <!--                                                                        set track type -->
-                            <!--                                                                                     set metadata value -->
-                            
-                            <xsl:variable name="key"><xsl:value-of select="mc:MediaInfo/mc:track[@type='General']/mc:Format"/></xsl:variable>
-                            <!--                       set expected value -->
-                            <xsl:variable name="value">Matroska</xsl:variable>
-                            <!-- leave the rest alone, just adjust the key and value -->
                             <xsl:call-template name="are_equal">
-                                <xsl:with-param name="key" select="$key"/>
-                                <xsl:with-param name="value" select="$value"/>
+                                <xsl:with-param name="title">Is Matroska"</xsl:with-param>
+                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
+                                <xsl:with-param name="value">Matroska</xsl:with-param>
+                                <xsl:with-param name="tracktype">General</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                        <!--- this is the end of a policy test -->
-                        <!--- this is the start of another policy test -->
                         <policy>
-                            <!-- set variable named key to the xpath of MediaInfo to check -->
-                            <!--                                                                        set track type -->
-                            <!--                                                                                     set metadata value -->
-                            <xsl:variable name="name" select="mc:Format" as="string"/>
-                            
-
-                            
-                            <xsl:variable name="key"><xsl:value-of select="mc:MediaInfo/mc:track[@type='Video']/mc:Format"/></xsl:variable>
-                            <!--                       set expected value -->
-                            <xsl:variable name="value">FFV1</xsl:variable>
-                            <!-- leave the rest alone, just adjust the key and value -->
                             <xsl:call-template name="are_equal">
-                                <xsl:with-param name="key" select="$key"/>
-                                <xsl:with-param name="value" select="$value"/>
+                                <xsl:with-param name="title">Is FFV1</xsl:with-param>
+                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="value">FFV1</xsl:with-param>
+                                <xsl:with-param name="tracktype">Video</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                        <!--- this is the end of another policy test -->
-                        <!--- this is the start of 3rd policy test -->
                         <policy>
-                            <!-- set variable named key to the xpath of MediaInfo to check -->
-                            <!--                                                                        set track type -->
-                            <!--                                                                                     set metadata value -->
-                            <xsl:variable name="key"><xsl:value-of select="mc:MediaInfo/mc:track[@type='Video']/mc:Format_Version"/></xsl:variable>
-                            <!--                       set expected value -->
-                            <xsl:variable name="value">Version 3.1</xsl:variable>
-                            <!-- leave the rest alone, just adjust the key and value -->
                             <xsl:call-template name="are_equal">
-                                <xsl:with-param name="key" select="$key"/>
-                                <xsl:with-param name="value" select="$value"/>
+                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
+                                <xsl:with-param name="value">Version 3.1</xsl:with-param>
+                                <xsl:with-param name="tracktype">Video</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Format_Version</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                        <!--- this is the end of 3rd policy test -->
-                        <!--- this is the start of 4th policy test -->
                         <policy>
-                            <!-- set variable named key to the xpath of MediaInfo to check -->
-                            <!--                                                                        set track type -->
-                            <!--                                                                                     set metadata value -->
-                            <xsl:variable name="key"><xsl:value-of select="mc:MediaInfo/mc:track[@type='General']/mc:FileSize"/></xsl:variable>
-                            <!--                       set expected value -->
-                            <xsl:variable name="value">0</xsl:variable>
-                            <!-- leave the rest alone, just adjust the key and value -->
                             <xsl:call-template name="is_greater_than">
-                                <xsl:with-param name="key" select="$key"/>
-                                <xsl:with-param name="value" select="$value"/>
+                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize"/>
+                                <xsl:with-param name="value">0</xsl:with-param>
+                                <xsl:with-param name="tracktype">General</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">FileSize</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                        <!--- this is the end of 4th policy test -->
-                        <!--- this is the start of 5th policy test -->
                         <policy>
-                            <!-- set variable named key to the xpath of MediaInfo to check -->
-                            <!--                                                                        set track type -->
-                            <!--                                                                                     set metadata value -->
-                            <xsl:variable name="key"><xsl:value-of select="mc:MediaInfo/mc:track[@type='Video']/mc:Format"/></xsl:variable>
                             <xsl:call-template name="exists">
-                                <xsl:with-param name="key" select="$key"/>
+                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="tracktype">Video</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <!-- set variable named key to the xpath of MediaInfo to check -->
-                            <!--                                                                        set track type -->
-                            <!--                                                                                     set metadata value -->
-                            <xsl:variable name="key"><xsl:value-of select="mc:MediaInfo/mc:track[@type='Video']/mc:Formatzzzzz"/></xsl:variable>
                             <xsl:call-template name="does_not_exist">
-                                <xsl:with-param name="key" select="$key"/>
+                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz"/>
+                                <xsl:with-param name="tracktype">Video</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                        <!--- this is the end of 5th policy test -->
                     </media>
                 </xsl:for-each>
             </policyChecks>
