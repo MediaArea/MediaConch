@@ -12,7 +12,7 @@
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
                         <policy>
                             <xsl:call-template name="is_equal">
-                                <xsl:with-param name="title">Is Matroska"</xsl:with-param>
+                                <xsl:with-param name="title">Is Matroska</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
                                 <xsl:with-param name="value">Matroska</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
@@ -95,8 +95,10 @@
     </xsl:template>
     
     <xsl:template name="is_equal">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath = $value">
@@ -112,9 +114,31 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template name="is_greater_than">
+    <xsl:template name="is_not_equal">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
+        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:choose>
+            <xsl:when test="$xpath != $value">
+                <xsl:attribute name="outcome">pass</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:attribute name="reason">is equal</xsl:attribute>
+                <value>
+                    <xsl:value-of select="$xpath"/>
+                </value>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="is_greater_than">
+        <xsl:param name="title"/>
+        <xsl:param name="xpath"/>
+        <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &gt; $value">
@@ -131,8 +155,10 @@
     </xsl:template>
 
     <xsl:template name="is_less_than">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &lt; $value">
@@ -149,8 +175,10 @@
     </xsl:template>
 
     <xsl:template name="is_greater_or_equal_than">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &gt;= $value">
@@ -167,8 +195,10 @@
     </xsl:template>
 
     <xsl:template name="is_less_or_equal_than">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &lt;= $value">
@@ -184,26 +214,10 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template name="is_not_equal">
-        <xsl:param name="xpath"/>
-        <xsl:param name="value"/>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-        <xsl:choose>
-            <xsl:when test="$xpath != $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is equal</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-
     <xsl:template name="exists">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length($xpath) != 0">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
@@ -216,7 +230,9 @@
     </xsl:template>
 
     <xsl:template name="does_not_exist">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length($xpath) = '0'">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
@@ -232,8 +248,10 @@
     </xsl:template>
 
     <xsl:template name="matches_regex">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="contains($xpath, $value)">
