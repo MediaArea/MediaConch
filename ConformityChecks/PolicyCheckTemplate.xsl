@@ -11,6 +11,16 @@
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
                         <policy>
+                            <xsl:call-template name="is_true">
+                                <xsl:with-param name="title">Is Matroska or QuickTime"</xsl:with-param>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'"/>
+                                <xsl:with-param name="value">mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'</xsl:with-param>
+                                <xsl:with-param name="tracktype">General</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Format</xsl:with-param>
+                            </xsl:call-template>
+                        </policy>
+                        <policy>
                             <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Is Matroska"</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
@@ -94,6 +104,21 @@
         </MediaConch>
     </xsl:template>
     
+    <xsl:template name="is_true">
+        <xsl:param name="xpath"/>
+        <xsl:param name="value"/>
+        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:choose>
+            <xsl:when test="$xpath">
+                <xsl:attribute name="outcome">pass</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:attribute name="reason">is not true</xsl:attribute>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
     <xsl:template name="is_equal">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
