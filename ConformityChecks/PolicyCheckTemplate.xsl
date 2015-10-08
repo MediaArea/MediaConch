@@ -79,7 +79,7 @@
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <xsl:call-template name="matches_regex">
+                            <xsl:call-template name="contains_string">
                                 <xsl:with-param name="title">Format contains 1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="value">1</xsl:with-param>
@@ -89,7 +89,7 @@
                             </xsl:call-template>
                         </policy>
                         <policy>
-                            <xsl:call-template name="matches_regex">
+                            <xsl:call-template name="contains_string">
                                 <xsl:with-param name="title">Format version does not contain 1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
                                 <xsl:with-param name="value">1</xsl:with-param>
@@ -272,7 +272,7 @@
         </xsl:choose>
     </xsl:template>
 
-    <xsl:template name="matches_regex">
+    <xsl:template name="contains_string">
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
