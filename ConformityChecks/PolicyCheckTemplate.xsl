@@ -32,6 +32,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="are_equal">
+                                <xsl:with-param name="title">Format version is Version 3.1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
                                 <xsl:with-param name="value">Version 3.1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
@@ -41,6 +42,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="is_greater_than">
+                                <xsl:with-param name="title">FileSize is greater than 0</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize"/>
                                 <xsl:with-param name="value">0</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
@@ -50,6 +52,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="exists">
+                                <xsl:with-param name="title">Video track exists</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -58,6 +61,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="does_not_exist">
+                                <xsl:with-param name="title">Fake video track does not exist</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz"/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -66,6 +70,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="matches_regex">
+                                <xsl:with-param name="title">Format matches regular expression of FFV1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="value">FFV1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
@@ -75,6 +80,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="matches_regex">
+                                <xsl:with-param name="title">Intentional failure of regular expression matching</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="value">z</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
