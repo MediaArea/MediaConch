@@ -228,7 +228,7 @@
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$xpath matches($value)">
+            <xsl:when test="contains($value)">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
