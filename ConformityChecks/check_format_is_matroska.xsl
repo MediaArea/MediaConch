@@ -180,13 +180,31 @@
 
     <xsl:template name="exists">
         <xsl:param name="key"/>
-        <xsl:if test="count($key) > 0">exists</xsl:if>
+        <xsl:choose>
+            <xsl:when test="string-length($key) != 0">
+                <xsl:attribute name="outcome">pass</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:attribute name="reason">does not exist</xsl:attribute>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template name="does_not_exist">
         <xsl:param name="key"/>
-        <xsl:if test="count($key) = 0">does not exist</xsl:if>
+        <xsl:choose>
+            <xsl:when test="string-length($key) = '0'">
+                <xsl:attribute name="outcome">pass</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:attribute name="reason">exists</xsl:attribute>
+                <value>
+                    <xsl:value-of select="$key"/>
+                </value>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
-
 
 </xsl:stylesheet>
