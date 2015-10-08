@@ -211,12 +211,12 @@
 
     <xsl:template name="exists">
         <xsl:param name="key"/>
-        <xsl:if test="boolean($key)">exists</xsl:if>
+        <xsl:if test="count($key) > 0">exists</xsl:if>
     </xsl:template>
 
     <xsl:template name="does_not_exist">
         <xsl:param name="key"/>
-        <xsl:if test="boolean($key)">does not exist</xsl:if>
+        <xsl:if test="count($key) = 0">does not exist</xsl:if>
     </xsl:template>
 
 
