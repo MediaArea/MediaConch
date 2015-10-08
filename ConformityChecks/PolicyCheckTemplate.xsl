@@ -80,9 +80,9 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="matches_regex">
-                                <xsl:with-param name="title">Format matches regular expression of FFV1</xsl:with-param>
+                                <xsl:with-param name="title">Format contains 1</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
-                                <xsl:with-param name="value">FFV1</xsl:with-param>
+                                <xsl:with-param name="value">1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
@@ -90,9 +90,9 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="matches_regex">
-                                <xsl:with-param name="title">Intentional failure of regular expression matching</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
-                                <xsl:with-param name="value">z</xsl:with-param>
+                                <xsl:with-param name="title">Format version does not contain 1</xsl:with-param>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
+                                <xsl:with-param name="value">1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
@@ -281,6 +281,7 @@
         <xsl:choose>
             <xsl:when test="contains($xpath, $value)">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:value-of select="$xpath"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
