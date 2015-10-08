@@ -13,7 +13,7 @@
                         <policy>
                             <xsl:call-template name="are_equal">
                                 <xsl:with-param name="title">Is Matroska"</xsl:with-param>
-                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
                                 <xsl:with-param name="value">Matroska</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -23,7 +23,7 @@
                         <policy>
                             <xsl:call-template name="are_equal">
                                 <xsl:with-param name="title">Is FFV1</xsl:with-param>
-                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="value">FFV1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -32,7 +32,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="are_equal">
-                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
                                 <xsl:with-param name="value">Version 3.1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -41,7 +41,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="is_greater_than">
-                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize"/>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize"/>
                                 <xsl:with-param name="value">0</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -50,7 +50,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="exists">
-                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
@@ -58,7 +58,7 @@
                         </policy>
                         <policy>
                             <xsl:call-template name="does_not_exist">
-                                <xsl:with-param name="key" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz"/>
+                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz"/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
@@ -71,72 +71,72 @@
     </xsl:template>
     
     <xsl:template name="are_equal">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$key = $value">
+            <xsl:when test="$xpath = $value">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">is not equal</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template name="is_greater_than">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$key &gt; $value">
+            <xsl:when test="$xpath &gt; $value">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">is less or equal than</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template name="is_less_than">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$key &lt; $value">
+            <xsl:when test="$xpath &lt; $value">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">is greater or equal than</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
     <xsl:template name="is_greater_or_equal_than">
-        <xsl:param name="key"/>
+        <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
         <xsl:choose>
-            <xsl:when test="$key &gt;= $value">
+            <xsl:when test="$xpath &gt;= $value">
                 <xsl:attribute name="outcome">pass</xsl:attribute>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:attribute name="reason">is less than</xsl:attribute>
                 <value>
-                    <xsl:value-of select="$key"/>
+                    <xsl:value-of select="$xpath"/>
                 </value>
             </xsl:otherwise>
         </xsl:choose>
