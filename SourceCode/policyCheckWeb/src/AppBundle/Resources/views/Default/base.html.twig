@@ -10,12 +10,17 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body id="body">
-        <div class="container">
-            <div class="navbar navbar-default navbar-fixed-top">
+        
+            <nav class="navbar-default navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
                 <a class="navbar-brand serif" href="{{ path('app_default_homepage') }}">🐚 <strong>MediaConch</strong></a>
-            </div>
+            </nav>
 
-            <div class="collapse navbar-collapse">
+            <nav class="collapse navbar-collapse" id="collapse-1">
               <ul class="nav navbar navbar-nav navbar-right">
                 <li><a href="{{ path('app_default_homepage') }}">Home</a></li>
                 {# <li><a href="">About</a></li> #}
@@ -33,8 +38,9 @@
                     <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
                 {% endif %}
                 </ul>
-            </div>
-
+            </nav>
+            
+        <div class="container">
         {% for type, messages in app.session.flashBag.all %}
             {% for message in messages %}
                 <div class="alert alert-{{ type }}">
