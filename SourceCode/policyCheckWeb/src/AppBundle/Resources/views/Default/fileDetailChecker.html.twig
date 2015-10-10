@@ -3,35 +3,38 @@
         <div class="panel panel-default checker-results">
             <div class="panel-heading" role="tab">
                 <h4 class="panel-title">Result for {{ check.getSource }}</h4>
+                <button type="button" class="close" title="Close result">&times;</button>
             </div>
             <div>
                 <ul class="list-group">
                     {% if check.getPolicy is iterable %}
-                        <li class="list-group-item">This file is: <span class="text-uppercase text-{{ check.getStatus ? 'success' : 'danger' }}"><b>{{ check.getStatus ? '' : 'not ' }}valid</b></span></li>
+                        {% if check.getStatus is not same as(null) %}
+                            <li class="list-group-item">This file is: <span class="text-uppercase text-{{ check.getStatus ? 'success' : 'danger' }}"><b>{{ check.getStatus ? '' : 'not ' }}valid</b></span></li>
+                        {% endif %}
                         <li class="list-group-item report">Policy report
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalPolicy{{ loop.index }}" data-save-name="PolicyReport.txt" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
                     {% if check.getConformance %}
                         <li class="list-group-item report">Implementation report
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalConformance{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalConformance{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalConformance{{ loop.index }}" data-save-name="ConformanceReport.txt" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
                     {% if check.getXml %}
                         <li class="list-group-item report">MediaInfo XML
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalXml{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalXml{{ loop.index }}" title="View XML"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalXml{{ loop.index }}" data-save-name="MediaInfo.xml" title="Download XML"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
-                    {% if check.getTrace %}
+                    {% if check.getTrace or selectForm == 'repository' %}
                         <li class="list-group-item report">MediaInfo Trace
                             <p class="text-right hidden">
-                                <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}" title="View trace"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld-trace{% if not check.getTrace %}-ajax{% endif %}" data-target="#traceXml{{ loop.index }}" data-save-name="MediaTrace.xml" title="Download trace"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
@@ -58,6 +61,7 @@
                                 {% endif %}
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalPolicy{{ loop.index }}" data-save-name="PolicyReport.txt">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -77,6 +81,7 @@
                                 <p>{{ check.getConformance|replace({' ': '&nbsp;'})|raw|nl2br }}</p>
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalConformance{{ loop.index }}" data-save-name="ConformanceReport.txt">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -96,6 +101,7 @@
                                 <p>{{ check.getXml|nl2br }}</p>
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalXml{{ loop.index }}"" data-save-name="MediaInfo.xml">Download XML</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -103,7 +109,7 @@
                 </div>
             {% endif %}
 
-            {% if check.getTrace %}
+            {% if check.getTrace or selectForm == 'repository' %}
                 <div id="modalTrace{{ loop.index }}" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -112,14 +118,26 @@
                                 <h4 class="modal-title">MediaTrace</h4>
                             </div>
                             <div class="modal-body">
-                                <p>{{ check.getTrace|nl2br }}</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-8 col-xs-8">
+                                        <i class="glyphicon glyphicon-search"></i><input type="text" value="" class="traceSearch" id="traceSearch{{ loop.index }}" placeholder="Search" />
+                                    </div>
+                                    <div id="trace{{ loop.index }}" class="col-md-8"></div>
+                                    <div id="traceInfo{{ loop.index }}" class="col-md-4"></div>
+                                </div>
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary report-dld-trace{% if not check.getTrace %}-ajax{% endif %}" data-target="#traceXml{{ loop.index }}" data-save-name="MediaTrace.xml">Download trace</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% if check.getTrace %}
+                    <div id="traceXml{{ loop.index }}" class="hidden">
+                        {{ check.getTrace.xml|nl2br }}
+                    </div>
+                {% endif %}
             {% endif %}
 
         </div>

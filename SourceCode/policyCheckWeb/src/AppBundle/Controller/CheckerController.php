@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Finder\Finder;
 
@@ -43,7 +43,7 @@ class CheckerController extends Controller
                             $checker = new Checker($data['file'], $data['policy']);
                         }
 
-                        $checker->run();
+                        $checker->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
                         $checks = array(0 => $checker);
 
                         $this->get('mediaconch_user.quotas')->hitUrls();
@@ -73,7 +73,7 @@ class CheckerController extends Controller
                         $checker = new Checker(str_replace(' ', '%20', $data['file']), $data['policy']);
                     }
 
-                    $checker->run();
+                    $checker->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
                     $checks = array(0 => $checker);
 
                     $this->get('mediaconch_user.quotas')->hitUrls();
@@ -96,10 +96,9 @@ class CheckerController extends Controller
 
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\Policy) {
                     $checks = array();
-                    $params = $this->container->getParameter('mediaconch');
 
                     $finder = new Finder();
-                    $finder->files()->in($params['check_dir']);
+                    $finder->files()->in($this->container->getParameter('mco_check_folder'));
                     foreach($finder as $file) {
                         if ($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                             $checker = new Checker($file->getPathname(), $data['schematron']);
@@ -127,5 +126,30 @@ class CheckerController extends Controller
             'formRepository' => isset($formRepository) ? $formRepository->createView() : false,
             'checks' => $checks,
             'selectForm' => $selectForm);
+    }
+
+    /**
+     * @Route("/checkerAjaxTraceFolder/{id}.{format}", requirements={"id": "\d+", "format"})
+     */
+    public function checkerAjaxTraceFolderAction($id, $format, Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+
+            $finder = new Finder();
+            $finder->files()->in($this->container->getParameter('mco_check_folder'));
+            $i = 1;
+            foreach ($finder as $file) {
+                if ($i++ == $id) {
+                    $checker = new Checker($file->getPathname());
+                    $checker->disablePolicy()->disableXml()->disableConformance()->enableTrace()->setTraceFormat(array($format));
+                    $checker->run();
+                }
+            }
+
+            return new Response(isset($checker) ? $checker->getTrace($format) : '');
+        }
+        else {
+            throw new NotFoundHttpException();
+        }
     }
 }

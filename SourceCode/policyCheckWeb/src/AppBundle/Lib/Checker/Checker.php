@@ -7,6 +7,7 @@ use AppBundle\Lib\MediaInfo\MediaInfoOutput;
 use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
 use AppBundle\Lib\MediaConch\MediaConchPolicy;
 use AppBundle\Lib\MediaConch\MediaConchConformance;
+use AppBundle\Lib\MediaConch\MediaConchTrace;
 use AppBundle\Entity\Policy;
 
 class Checker
@@ -22,12 +23,18 @@ class Checker
     private $policyItem;
     private $traceEnable = false;
     private $trace;
+    private $traceFormat = array();
     private $status;
 
     public function __construct($source, $policyItem = false)
     {
         $this->setSource($source);
-        $this->policyItem = $policyItem;
+        if ($policyItem) {
+            $this->policyItem = $policyItem;
+        }
+        else {
+            $this->disablePolicy();
+        }
     }
 
     public function run()
@@ -51,10 +58,12 @@ class Checker
 
     private function runTrace()
     {
-        if ($this->traceEnable) {
-            $MediaInfo = new MediaInfo($this->source);
-            $MediaInfo->trace();
-            $this->trace = $MediaInfo->getTrace();
+        if ($this->traceEnable && count($this->traceFormat) > 0) {
+            foreach ($this->traceFormat as $format) {
+                $MediaConch = new MediaConchTrace($this->source);
+                $MediaConch->run($format);
+                $this->trace[$format] = $MediaConch->getSuccess() ? $MediaConch->getOutput() : false;
+            }
         }
 
         return $this;
@@ -86,7 +95,7 @@ class Checker
             }
             elseif ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                 $MediaConchPolicy = new MediaConchPolicy($this->source);
-                $MediaConchPolicy->run($this->policyItem->getRealPath());
+                $MediaConchPolicy->setPolicyType($this->policyItem->getClientOriginalExtension())->run($this->policyItem->getRealPath());
                 if ($MediaConchPolicy->getSuccess()) {
                     $this->setStatus($MediaConchPolicy->isValid());
                     $this->policy = array($MediaConchPolicy->getOutput());
@@ -156,7 +165,10 @@ class Checker
         $xml = preg_replace('|<CompleteName>(.*)</CompleteName>\n|', '', $xml);
 
         if ($this->clientSourceName) {
-            return str_replace(pathinfo($this->source, PATHINFO_BASENAME), pathinfo($this->clientSourceName, PATHINFO_BASENAME), $xml);
+            return str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $xml);
+        }
+        else {
+            return str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $xml);
         }
 
         return $xml;
@@ -224,8 +236,43 @@ class Checker
         return $this;
     }
 
-    public function getTrace()
+    public function setTraceFormat(array $format)
     {
-        return $this->trace;
+        $this->traceFormat = $format;
+
+        return $this;
+    }
+
+    public function addTraceFormat($format)
+    {
+        if (!in_array($format, $this->traceFormat)) {
+            $this->traceFormat[] = $format;
+        }
+
+        return $this;
+    }
+
+    public function getTrace($format = null)
+    {
+        if (isset($this->trace['xml'])) {
+            if ($this->clientSourceName) {
+                $this->trace['xml'] = str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $this->trace['xml']);
+            }
+            else {
+                $this->trace['xml'] = str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $this->trace['xml']);
+            }
+        }
+
+        if (null == $format) {
+            return $this->trace;
+        }
+        else {
+            if (isset($this->trace[$format])) {
+                return $this->trace[$format];
+            }
+            else {
+                return false;
+            }
+        }
     }
 }

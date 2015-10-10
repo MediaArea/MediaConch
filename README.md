@@ -142,7 +142,7 @@ For a detailed account of specific rules, examples and guidelines for each secti
 
 # Test Files
 
-MediaArea’s test files exist in the [SampleTestFiles folder](https://github.com/MediaArea/MediaConch/tree/master/SampleTestFiles). This designated sample folder is broken down into separate folders for each relevant file format and the separate specification parameters set for testing.
+MediaArea’s test files exist in the [SampleTestFiles repository](https://github.com/MediaArea/MediaConch_SampleFiles).
 
 It is anticipated that a large library of reference media and test files will be created to highlight the different outcomes associated with issues and errors that may arise in regards to certain files and specifications push through the software. The test files will either be self-created, solicited, or pulled from a variety of online reference libraries.
 

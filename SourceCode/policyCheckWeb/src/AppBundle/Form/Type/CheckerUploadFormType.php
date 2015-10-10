@@ -24,7 +24,7 @@ class CheckerUploadFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add($builder->create('step1', 'form', array('virtual' => true, 'label' => 'Policy or Schematron'))
+        $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy, Schematron or XSL'))
             ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
@@ -35,8 +35,9 @@ class CheckerUploadFormType extends AbstractType
                 'required' => false,
                 'label' => 'Choose a policy')
                 )
-            ->add('schematron', 'file', array('label' => 'Or upload a Schematron file',
-                'required' => false)
+            ->add('schematron', 'file', array('label' => 'Or upload a Schematron (.sch) or a XSL (.xsl) file',
+                'required' => false,
+                'attr' => array('accept' => '.sch, .xsl'))
                 )
             )
             ->add('file', 'file', array('label' => 'File (max ' . ini_get('upload_max_filesize') . ')'))

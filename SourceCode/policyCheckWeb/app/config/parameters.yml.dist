@@ -20,6 +20,6 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     # MediaConch config
-    mediaconch:
-        check_dir: /some/dir/
+    mco_check_folder: /some/folder/
+    mco_ga_tracking: ~
 
