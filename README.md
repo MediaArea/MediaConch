@@ -4,13 +4,6 @@ MediaConch is an open source software project consisting of a toolset that aims 
 
 Website: <a href="https://mediaarea.net/MediaConch/">:shell: MediaConch project</a>.
 
-# Deliverables
-
-November 2014 - March 2015: the team participated to the Design Phase (phase 1). Documentation available [here](https://github.com/MediaArea/MediaConch/releases/tag/2015.03.14)
-
-# Release and Demo
-
-Initial release of MediaConch CLI and MediaConch GUI are available [here](https://mediaarea.net/MediaConch/), along with demo files and instructions for use.
 
 # Release Schedule
 
