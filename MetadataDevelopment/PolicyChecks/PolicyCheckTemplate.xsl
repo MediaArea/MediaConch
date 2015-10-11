@@ -12,7 +12,7 @@
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
                         <policy>
                             <xsl:call-template name="is_true">
-                                <xsl:with-param name="title">Is Matroska or QuickTime"</xsl:with-param>
+                                <xsl:with-param name="title">Is Matroska or QuickTime</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'"/>
                                 <xsl:with-param name="value">mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
@@ -105,16 +105,22 @@
     </xsl:template>
     
     <xsl:template name="is_true">
+        <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">pass</xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is not true</xsl:attribute>
+                <xsl:element name="results">fail</xsl:element>
+                <xsl:element name="reason">is not true</xsl:element>
+                <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -123,18 +129,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath = $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is not equal</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">is not equal</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -143,18 +157,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath != $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is equal</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">is equal</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -163,18 +185,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt; $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is less or equal than</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">is less than or equal</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -183,18 +213,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt; $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is greater or equal than</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">is greater than or equal</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -203,18 +241,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt;= $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+<xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is less than</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">is less than</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -223,18 +269,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt;= $value">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">is greater than</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">is greater than</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -242,14 +296,24 @@
     <xsl:template name="exists">
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length($xpath) != 0">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">does not exist</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">does not exist</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -257,17 +321,24 @@
     <xsl:template name="does_not_exist">
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length($xpath) = '0'">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">exists</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">exists</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -276,19 +347,26 @@
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
         <xsl:choose>
             <xsl:when test="contains($xpath, $value)">
-                <xsl:attribute name="outcome">pass</xsl:attribute>
-                <xsl:value-of select="$xpath"/>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">pass</xsl:element>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">does not match regex</xsl:attribute>
-                <value>
-                    <xsl:value-of select="$xpath"/>
-                </value>
+                <xsl:element name="results">
+                    <xsl:element name="outcome">fail</xsl:element>
+                    <xsl:element name="reason">does not contain</xsl:element>
+                    <xsl:element name="context">
+                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                    </xsl:element>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
