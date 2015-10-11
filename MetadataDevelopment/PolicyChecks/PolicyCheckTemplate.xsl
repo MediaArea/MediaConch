@@ -111,7 +111,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath">
                 <xsl:element name="results">
@@ -134,8 +139,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
-        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath = $value">
                 <xsl:element name="results">
@@ -158,8 +167,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
-        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath != $value">
                 <xsl:element name="results">
@@ -182,8 +195,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
-        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt; $value">
                 <xsl:element name="results">
@@ -206,8 +223,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
-        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt; $value">
                 <xsl:element name="results">
@@ -230,8 +251,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
-        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt;= $value">
                 <xsl:element name="results">
@@ -254,8 +279,12 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
-        <xsl:element name="expected"><xsl:value-of select="$value"/></xsl:element>
-        <xsl:element name="value"><xsl:value-of select="$xpath"/></xsl:element>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt;= $value">
                 <xsl:element name="results">
@@ -277,6 +306,11 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length($xpath) != 0">
                 <xsl:element name="results">
@@ -298,6 +332,11 @@
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length($xpath) = '0'">
                 <xsl:element name="results">
