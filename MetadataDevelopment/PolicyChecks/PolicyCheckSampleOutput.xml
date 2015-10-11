@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MediaConch xmlns:mc="https://mediaarea.net/mediaarea">
+  <policyChecks version="0.1">
+    <media ref="D:\Programmation\PreFormaMediaInfo\SampleTestFiles\FFV1\ffv1_3.mkv">
+      <policy title="Is Matroska or QuickTime">
+        <context tracktype="General" field="Format" expected="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'" value="true"/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Is Matroska">
+        <context tracktype="General" field="Format" expected="Matroska" value="Matroska"/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Is FFV1">
+        <context tracktype="Video" field="Format" expected="FFV1" value="FFV1"/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Format version is Version 3.1">
+        <context tracktype="Video" field="Format_Version" expected="Version 3.1" value="Version 3.4"/>
+        <results outcome="fail" reason="is not equal"/>
+      </policy>
+      <policy title="FileSize is greater than 0">
+        <context tracktype="General" field="FileSize" expected="0" value="126167"/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Video track exists">
+        <context tracktype="Video" field="Format" value="FFV1"/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Fake video track does not exist">
+        <context tracktype="Video" field="Formatzzzzz" value=""/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Format contains 1">
+        <context tracktype="Video" field="Format" expected="1" value="FFV1"/>
+        <results outcome="pass"/>
+      </policy>
+      <policy title="Format version does not contain 1">
+        <context tracktype="Video" field="Format" expected="1" value="Version 3.4"/>
+        <results outcome="fail" reason="does not contain"/>
+      </policy>
+    </media>
+  </policyChecks>
+</MediaConch>
