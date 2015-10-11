@@ -119,8 +119,10 @@
             <xsl:otherwise>
                 <xsl:element name="results">fail</xsl:element>
                 <xsl:element name="reason">is not true</xsl:element>
-                <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
-                <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
+                    <xsl:element name="context">
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
+                    </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -145,8 +147,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">is not equal</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -173,8 +175,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">is equal</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -201,8 +203,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">is less than or equal</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -229,8 +231,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">is greater than or equal</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -257,8 +259,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">is less than</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -285,8 +287,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">is greater than</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -310,8 +312,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">does not exist</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -335,8 +337,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">exists</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
@@ -363,8 +365,8 @@
                     <xsl:element name="outcome">fail</xsl:element>
                     <xsl:element name="reason">does not contain</xsl:element>
                     <xsl:element name="context">
-                        <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-                        <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+                        <xsl:element name="tracktype"><xsl:value-of select="$tracktype"/></xsl:element>
+                        <xsl:element name="field"><xsl:value-of select="$field"/></xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:otherwise>
