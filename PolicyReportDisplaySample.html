@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<table>
+<th>Is Matroska or QuickTime</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: General
+                        Field: Format</td>
+<td>
+                        Expected value: mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'
+                        Found value: true</td>
+</tr>
+</table><table>
+<th>Is Matroska</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: General
+                        Field: Format</td>
+<td>
+                        Expected value: Matroska
+                        Found value: Matroska</td>
+</tr>
+</table><table>
+<th>Is FFV1</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: Video
+                        Field: Format</td>
+<td>
+                        Expected value: FFV1
+                        Found value: FFV1</td>
+</tr>
+</table><table>
+<th>Format version is Version 3.1</th>
+<tr>
+<td>fail</td>
+<td>is not equal</td>
+</tr>
+<tr>
+<td>
+                        Track type: Video
+                        Field: Format_Version</td>
+<td>
+                        Expected value: Version 3.1
+                        Found value: Version 3.4</td>
+</tr>
+</table><table>
+<th>FileSize is greater than 0</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: General
+                        Field: FileSize</td>
+<td>
+                        Expected value: 0
+                        Found value: 126167</td>
+</tr>
+</table><table>
+<th>Video track exists</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: Video
+                        Field: Format</td>
+<td>
+                        Expected value: 
+                        Found value: FFV1</td>
+</tr>
+</table><table>
+<th>Fake video track does not exist</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: Video
+                        Field: Formatzzzzz</td>
+<td>
+                        Expected value: 
+                        Found value: </td>
+</tr>
+</table><table>
+<th>Format contains 1</th>
+<tr>
+<td>pass</td>
+<td></td>
+</tr>
+<tr>
+<td>
+                        Track type: Video
+                        Field: Format</td>
+<td>
+                        Expected value: 1
+                        Found value: FFV1</td>
+</tr>
+</table><table>
+<th>Format version does not contain 1</th>
+<tr>
+<td>fail</td>
+<td>does not contain</td>
+</tr>
+<tr>
+<td>
+                        Track type: Video
+                        Field: Format</td>
+<td>
+                        Expected value: 1
+                        Found value: Version 3.4</td>
+</tr>
+</table>
