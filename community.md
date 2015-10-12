@@ -4,6 +4,76 @@ permalink: /community.html
 title: "MediaConch Community"
 ---
 
+## Outreach 
+
+<table>
+<tr>
+  <td colspan="3">
+    The MediaArea team is active in the open source community and actively presents their work on MediaConch.
+  </td>
+</tr>
+<tr>
+  <td>
+    <ul>
+      <li>
+      March 2015<br />
+      Jérôme Martinez and Dave Rice<br />
+      Brussels, Belgium
+      </li>
+    </ul>
+  </td>
+  <td style="width:33%; vertical-align: middle;">
+    <a href="http://www.preforma-project.eu"><img src="images/pfo_logo.png" width="80%" alt="PREFORMA logo"></a>
+  </td>
+  <td style="width:25%; vertical-align: middle;">
+    <a href="http://www.preforma-project.eu/design-phase-1-final-workshop.html">Conference page</a><br /><a href="http://mediaarea.github.io/MediaConch/Outreach/Slides">Slides</a>
+  </td>
+</tr>
+<tr>
+  <td>
+    <ul>
+        <li>
+        February 2015<br />
+        Ashley Blewer<br />
+        Portland, OR, USA
+        </li>
+    </ul>
+  </td>
+  <td style="width:33%; vertical-align: middle;">
+    <a href="http://code4lib.org"><img src="images/Code4Lib.png" width="75%" alt="Code4Lib logo"></a>
+  </td>
+  <td style="width:25%; vertical-align: middle;">
+    <a href="http://wiki.code4lib.org/2015_Lightning_Talks">Conference page</a><br /><a href="http://ablwr.github.io/c4l_preforma/#/">Slides</a><br /><a href="https://www.youtube.com/watch?v=G7kgcZh2zeY&t=2h20m48s">Video</a>
+  </td>
+</tr>
+<tr>
+  <td>
+  <ul>
+      <li>
+      January 2015<br />
+      Dave Rice<br />
+      Brussels, Belgium
+      </li>
+  </ul>
+  </td>
+  <td style="width:33%; vertical-align: middle;">
+      <a href="http://fosdem.org"><img src="images/Fosdem_2015.png" width="50%" alt="FOSDEM 2015 logo"></a>
+  </td>
+  <td style="width:25%; vertical-align: middle;">
+  <a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/">Conference page</a><br /><a href="https://fosdem.org/2015/schedule/event/enabling_video_preservation/attachments/slides/746/export/events/attachments/enabling_video_preservation/slides/746/preservation.pdf">Slides</a><br /><a href="http://video.fosdem.org/2015/devroom-open_media/enabling_video_preservation.mp4">Video</a>
+  </td>
+</tr>
+</table>
+
+## Community Interviews
+
+In December 2014, MediaArea started conducting interviews with FFV1, Matroska, and LPCM stakeholders in order to collect feedback and insights from the archives community. To date, interviews have been conducted with:
+
+  * [Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek](interviews/InterviewLewetzBubestinger.html)
+  * [Ian Henderson; UK National Archives](interviews/InterviewHenderson.html)
+  * [Christophe Kummer; NOA](interviews/InterviewKummer.html)
+  * [George Blood; George Blood, L.P.](interviews/InterviewBlood.html)
+  
 ## Standardization of Formats
 
 MediaArea proposes that the PREFORMA project may facilitate the standardization of featured file formats that face a documentation or standardization gap. A standardization effort will result in the development of conformance checkers that are more authoritative, stable, and credible. This plan is based upon MediaArea's research drawn from past audiovisual standardization efforts, related open source communiites, and standards organization.
@@ -50,11 +120,4 @@ Linear Pulse Code Modulation (LPCM) is a ubiquitous and simple audio stream. PCM
 
 Because PCM streams contain only audio samples without any codec structure or metadata within the stream, any data by itself could be considered valid PCM and decoded as audio. Determining the conformity or technical health of PCM data requires the context of information provided by its container format. 
 
-## Community Interviews
 
-In December 2014, MediaArea started conducting interviews with FFV1, Matroska, and LPCM stakeholders in order to collect feedback and insights from the archives community. To date, interviews have been conducted with:
-
-  * [Hermann Lewetz, Peter Bubestinger; Österreichische Mediathek](interviews/InterviewLewetzBubestinger.html)
-  * [Ian Henderson; UK National Archives](interviews/InterviewHenderson.html)
-  * [Christophe Kummer; NOA](interviews/InterviewKummer.html)
-  * [George Blood; George Blood, L.P.](interviews/InterviewBlood.html)
