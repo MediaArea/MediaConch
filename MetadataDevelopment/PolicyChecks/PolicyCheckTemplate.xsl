@@ -15,9 +15,6 @@
                                 <xsl:with-param name="title">Is Matroska or QuickTime</xsl:with-param>
                                 <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'"/>
                                 <xsl:with-param name="value">mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'</xsl:with-param>
-                                <xsl:with-param name="tracktype">General</xsl:with-param>
-                                <xsl:with-param name="occurrence">1</xsl:with-param>
-                                <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
                         <policy>
