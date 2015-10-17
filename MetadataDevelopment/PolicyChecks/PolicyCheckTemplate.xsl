@@ -107,12 +107,27 @@
                             </xsl:call-template>
                         </policy>
                         -->
+                        <xsl:for-each select="//mc:block[@name='SimpleTag'][mc:block[@name='TagName'][@info='TOTAL_PARTS']]/mc:block[@name='TagString']/mc:data">
+                        <policy>
+                            <xsl:call-template name="is_number">
+                                <xsl:with-param name="title">TOTAL_PARTS is number</xsl:with-param>
+                                <xsl:with-param name="xpath" select="."/>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">TOTAL_PARTS</xsl:with-param>
+                            </xsl:call-template>
+                        </policy>
+                        </xsl:for-each>
                     </media>
                 </xsl:for-each>
             </policyChecks>
         </MediaConch>
     </xsl:template>
-    
+
+    <xsl:variable name="digit" select="'0123456789'"/>
+    <xsl:variable name="period" select="'.'"/>
+    <xsl:variable name="comma" select="','"/>
+    <xsl:variable name="decimal" select="concat($digit, $period, $comma)"/>
+
     <xsl:template name="is_true">
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
@@ -418,5 +433,31 @@
         </xsl:choose>
     </xsl:template>
     -->
+
+    <xsl:template name="is_number">
+        <xsl:param name="title"/>
+        <xsl:param name="xpath"/>
+        <xsl:param name="tracktype"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
+        <xsl:element name="context">
+            <xsl:if test="$tracktype">
+                <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            </xsl:if>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
+        <xsl:choose>
+            <xsl:when test="string-length(translate($xpath,$decimal,'')) = 0">
+                <xsl:element name="results">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="results">
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">contains non-numeric values</xsl:attribute>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
 
 </xsl:stylesheet>
