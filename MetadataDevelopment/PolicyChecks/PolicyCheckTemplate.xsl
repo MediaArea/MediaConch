@@ -95,6 +95,7 @@
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        <!-- sadly matches_regex isn't working with xslt 1.0
                         <policy>
                             <xsl:call-template name="matches_regex">
                                 <xsl:with-param name="title">Muxing app starts with Lavf</xsl:with-param>
@@ -105,6 +106,7 @@
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        -->
                     </media>
                 </xsl:for-each>
             </policyChecks>
@@ -387,6 +389,7 @@
         </xsl:choose>
     </xsl:template>
 
+    <!-- sadly this doesn't work in xslt 1.0
     <xsl:template name="matches_regex">
         <xsl:param name="title"/>
         <xsl:param name="xpath"/>
@@ -414,5 +417,6 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+    -->
 
 </xsl:stylesheet>
