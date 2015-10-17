@@ -95,6 +95,16 @@
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        <policy>
+                            <xsl:call-template name="matches_regex">
+                                <xsl:with-param name="title">Muxing app starts with Lavf</xsl:with-param>
+                                <xsl:with-param name="xpath" select="mc:MediaTrace/mc:block[@name='Segment']/mc:block[@name='Info']/mc:block[@name='MuxingApp']/mc:data"/>
+                                <xsl:with-param name="value">^Lavf</xsl:with-param>
+                                <xsl:with-param name="tracktype">Video</xsl:with-param>
+                                <xsl:with-param name="occurrence">1</xsl:with-param>
+                                <xsl:with-param name="field">Format</xsl:with-param>
+                            </xsl:call-template>
+                        </policy>
                     </media>
                 </xsl:for-each>
             </policyChecks>
@@ -372,6 +382,34 @@
                 <xsl:element name="results">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">does not contain</xsl:attribute>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="matches_regex">
+        <xsl:param name="title"/>
+        <xsl:param name="xpath"/>
+        <xsl:param name="value"/>
+        <xsl:param name="tracktype"/>
+        <xsl:param name="field"/>
+        <xsl:attribute name="title"><xsl:value-of select="$title"/></xsl:attribute>
+        <xsl:element name="context">
+            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
+            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
+            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+        </xsl:element>
+        <xsl:choose>
+            <xsl:when test="matches($xpath, $value)">
+                <xsl:element name="results">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:element name="results">
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">does not match regex</xsl:attribute>
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
