@@ -123,6 +123,8 @@
         </MediaConch>
     </xsl:template>
 
+    <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
+    <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
     <xsl:variable name="digit" select="'0123456789'"/>
     <xsl:variable name="period" select="'.'"/>
     <xsl:variable name="comma" select="','"/>
