@@ -10,6 +10,7 @@
                 <xsl:for-each select="mc:media">
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
+                        <!-- the for-each loop doesn't apply to is_true functions where the xpath is passed as a user-construction -->
                         <policy>
                             <xsl:call-template name="is_true">
                                 <xsl:with-param name="title">Is Matroska or QuickTime</xsl:with-param>
@@ -17,84 +18,100 @@
                                 <xsl:with-param name="value">mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format">
                         <policy>
                             <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Is Matroska</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="value">Matroska</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format">
                         <policy>
                             <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Is FFV1</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="value">FFV1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version">
                         <policy>
                             <xsl:call-template name="is_equal">
                                 <xsl:with-param name="title">Format version is Version 3.1</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="value">Version 3.1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format_Version</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize">
                         <policy>
                             <xsl:call-template name="is_greater_than">
                                 <xsl:with-param name="title">FileSize is greater than 0</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="value">0</xsl:with-param>
                                 <xsl:with-param name="tracktype">General</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">FileSize</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format">
                         <policy>
                             <xsl:call-template name="exists">
                                 <xsl:with-param name="title">Video track exists</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz">
                         <policy>
                             <xsl:call-template name="does_not_exist">
                                 <xsl:with-param name="title">Fake video track does not exist</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format">
                         <policy>
                             <xsl:call-template name="contains_string">
                                 <xsl:with-param name="title">Format contains 1</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="value">1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
+                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version">
                         <policy>
                             <xsl:call-template name="contains_string">
                                 <xsl:with-param name="title">Format version does not contain 1</xsl:with-param>
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version"/>
+                                <xsl:with-param name="xpath" select="."/>
                                 <xsl:with-param name="value">1</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
                                 <xsl:with-param name="field">Format</xsl:with-param>
                             </xsl:call-template>
                         </policy>
+                        </xsl:for-each>
                         <!-- sadly matches_regex isn't working with xslt 1.0
                         <policy>
                             <xsl:call-template name="matches_regex">
