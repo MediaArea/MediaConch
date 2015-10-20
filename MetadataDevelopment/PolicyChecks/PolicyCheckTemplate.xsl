@@ -29,8 +29,6 @@
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">Matroska</xsl:with-param>
-                                    <xsl:with-param name="tracktype">General</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -41,8 +39,6 @@
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">FFV1</xsl:with-param>
-                                    <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -53,8 +49,6 @@
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">PCM</xsl:with-param>
-                                    <xsl:with-param name="tracktype">Audio</xsl:with-param>
-                                    <xsl:with-param name="occurrence">*</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -65,8 +59,6 @@
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">Version 3.1</xsl:with-param>
-                                    <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format_Version</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -77,8 +69,6 @@
                                 <xsl:call-template name="is_greater_than">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">0</xsl:with-param>
-                                    <xsl:with-param name="tracktype">General</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">FileSize</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -88,8 +78,6 @@
                             <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                                 <xsl:call-template name="exists">
                                     <xsl:with-param name="xpath" select="."/>
-                                    <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -99,8 +87,6 @@
                             <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Formatzzzzz">
                                 <xsl:call-template name="does_not_exist">
                                     <xsl:with-param name="xpath" select="."/>
-                                    <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -111,8 +97,6 @@
                                 <xsl:call-template name="contains_string">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">1</xsl:with-param>
-                                    <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -123,8 +107,6 @@
                                 <xsl:call-template name="contains_string">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">1</xsl:with-param>
-                                    <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -146,7 +128,6 @@
                             <xsl:for-each select="//ma:block[@name='SimpleTag'][ma:block[@name='TagName'][@info='TOTAL_PARTS']]/ma:block[@name='TagString']/ma:data">
                                 <xsl:call-template name="is_number">
                                     <xsl:with-param name="xpath" select="."/>
-                                    <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">TOTAL_PARTS</xsl:with-param>
                                 </xsl:call-template>
                             </xsl:for-each>
@@ -165,12 +146,18 @@
     <xsl:template name="is_true">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -198,12 +185,18 @@
     <xsl:template name="is_equal">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -231,12 +224,18 @@
     <xsl:template name="is_not_equal">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -264,12 +263,18 @@
     <xsl:template name="is_greater_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -297,12 +302,18 @@
     <xsl:template name="is_less_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -330,12 +341,18 @@
     <xsl:template name="is_greater_or_equal_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -363,12 +380,18 @@
     <xsl:template name="is_less_or_equal_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -395,12 +418,18 @@
     </xsl:template>
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -424,12 +453,18 @@
     </xsl:template>
     <xsl:template name="does_not_exist">
         <xsl:param name="xpath"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -454,12 +489,18 @@
     <xsl:template name="contains_string">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype">
-                <xsl:value-of select="$tracktype"/>
-            </xsl:attribute>
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
@@ -488,10 +529,8 @@
     <xsl:template name="matches_regex">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
-        <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
             <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
             <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
             <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
@@ -513,11 +552,15 @@
     -->
     <xsl:template name="is_number">
         <xsl:param name="xpath"/>
-        <xsl:param name="tracktype"/>
         <xsl:element name="context">
-            <xsl:if test="$tracktype">
+            <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
-                    <xsl:value-of select="$tracktype"/>
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@streamid">
+                <xsl:attribute name="streamid">
+                    <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="value">
