@@ -23,9 +23,9 @@
                                 <xsl:with-param name="value">ma:MediaInfo/ma:track[@type='General'][1]/ma:Format = 'Matroska' or ma:MediaInfo/ma:track[@type='General'][1]/ma:Format = 'AVI'</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                            <policy>
-                                <xsl:attribute name="title">Is Matroska</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format">
+                        <policy>
+                            <xsl:attribute name="title">Is Matroska</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format">
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">Matroska</xsl:with-param>
@@ -33,11 +33,11 @@
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">Is FFV1</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">Is FFV1</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">FFV1</xsl:with-param>
@@ -45,11 +45,11 @@
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">Format version is Version 3.1</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">Format version is Version 3.1</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
                                 <xsl:call-template name="is_equal">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">Version 3.1</xsl:with-param>
@@ -57,11 +57,11 @@
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format_Version</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">FileSize is greater than 0</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:FileSize">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">FileSize is greater than 0</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:FileSize">
                                 <xsl:call-template name="is_greater_than">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">0</xsl:with-param>
@@ -69,33 +69,33 @@
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">FileSize</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">Video track exists</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">Video track exists</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                                 <xsl:call-template name="exists">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="tracktype">Video</xsl:with-param>
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">Fake video track does not exist</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Formatzzzzz">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">Fake video track does not exist</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Formatzzzzz">
                                 <xsl:call-template name="does_not_exist">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="tracktype">Video</xsl:with-param>
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">Format contains 1</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">Format contains 1</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                                 <xsl:call-template name="contains_string">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">1</xsl:with-param>
@@ -103,11 +103,11 @@
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
-                            <policy>
-                                <xsl:attribute name="title">Format version does not contain 1</xsl:attribute>
-                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
+                            <xsl:attribute name="title">Format version does not contain 1</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
                                 <xsl:call-template name="contains_string">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="value">1</xsl:with-param>
@@ -115,8 +115,8 @@
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">Format</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
+                            </xsl:for-each>
+                        </policy>
                         <!-- sadly matches_regex isn't working with xslt 1.0
                         <policy>
                             <xsl:attribute name="title">Muxing app starts with Lavf</xsl:attribute>
@@ -129,39 +129,45 @@
                             </xsl:call-template>
                         </policy>
                         -->
-                            <policy>
-                                <xsl:attribute name="title">TOTAL_PARTS is number</xsl:attribute>
-                        <xsl:for-each select="//ma:block[@name='SimpleTag'][ma:block[@name='TagName'][@info='TOTAL_PARTS']]/ma:block[@name='TagString']/ma:data">
+                        <policy>
+                            <xsl:attribute name="title">TOTAL_PARTS is number</xsl:attribute>
+                            <xsl:for-each select="//ma:block[@name='SimpleTag'][ma:block[@name='TagName'][@info='TOTAL_PARTS']]/ma:block[@name='TagString']/ma:data">
                                 <xsl:call-template name="is_number">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="occurrence">1</xsl:with-param>
                                     <xsl:with-param name="field">TOTAL_PARTS</xsl:with-param>
                                 </xsl:call-template>
-                        </xsl:for-each>
-                            </policy>
+                            </xsl:for-each>
+                        </policy>
                     </media>
                 </xsl:for-each>
             </policyChecks>
         </MediaConch>
     </xsl:template>
-
     <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
     <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
     <xsl:variable name="digit" select="'0123456789'"/>
     <xsl:variable name="period" select="'.'"/>
     <xsl:variable name="comma" select="','"/>
     <xsl:variable name="decimal" select="concat($digit, $period, $comma)"/>
-
     <xsl:template name="is_true">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath">
@@ -177,17 +183,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="is_equal">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath = $value">
@@ -203,17 +216,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="is_not_equal">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath != $value">
@@ -229,17 +249,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="is_greater_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt; $value">
@@ -255,17 +282,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="is_less_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt; $value">
@@ -281,17 +315,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="is_greater_or_equal_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt;= $value">
@@ -307,17 +348,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="is_less_or_equal_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt;= $value">
@@ -333,15 +381,20 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length($xpath) != 0">
@@ -357,15 +410,20 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="does_not_exist">
         <xsl:param name="xpath"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length($xpath) = '0'">
@@ -381,17 +439,24 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <xsl:template name="contains_string">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="tracktype"/>
         <xsl:param name="field"/>
         <xsl:element name="context">
-            <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="tracktype">
+                <xsl:value-of select="$tracktype"/>
+            </xsl:attribute>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="contains($xpath, $value)">
@@ -407,7 +472,6 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
     <!-- sadly this doesn't work in xslt 1.0
     <xsl:template name="matches_regex">
         <xsl:param name="xpath"/>
@@ -435,15 +499,18 @@
         </xsl:choose>
     </xsl:template>
     -->
-
     <xsl:template name="is_number">
         <xsl:param name="xpath"/>
         <xsl:param name="tracktype"/>
         <xsl:element name="context">
             <xsl:if test="$tracktype">
-                <xsl:attribute name="tracktype"><xsl:value-of select="$tracktype"/></xsl:attribute>
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="$tracktype"/>
+                </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
         </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length(translate($xpath,$decimal,'')) = 0">
@@ -459,5 +526,4 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
 </xsl:stylesheet>
