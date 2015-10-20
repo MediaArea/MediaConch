@@ -169,12 +169,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is not true</xsl:attribute>
                 </xsl:element>
@@ -208,12 +208,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath = $value">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is not equal</xsl:attribute>
                 </xsl:element>
@@ -247,12 +247,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath != $value">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is equal</xsl:attribute>
                 </xsl:element>
@@ -286,12 +286,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &gt; $value">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is less than or equal</xsl:attribute>
                 </xsl:element>
@@ -325,12 +325,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &lt; $value">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is greater than or equal</xsl:attribute>
                 </xsl:element>
@@ -364,12 +364,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &gt;= $value">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is less than</xsl:attribute>
                 </xsl:element>
@@ -403,12 +403,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="$xpath &lt;= $value">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">is greater than</xsl:attribute>
                 </xsl:element>
@@ -438,12 +438,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length($xpath) != 0">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">does not exist</xsl:attribute>
                 </xsl:element>
@@ -473,12 +473,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length($xpath) = '0'">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">exists</xsl:attribute>
                 </xsl:element>
@@ -512,12 +512,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="contains($xpath, $value)">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">does not contain</xsl:attribute>
                 </xsl:element>
@@ -536,12 +536,12 @@
             <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
         <xsl:choose>
             <xsl:when test="matches($xpath, $value)">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">does not match regex</xsl:attribute>
                 </xsl:element>
@@ -568,12 +568,12 @@
             </xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length(translate($xpath,$decimal,'')) = 0">
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="results">
+                <xsl:element name="result">
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">contains non-numeric values</xsl:attribute>
                 </xsl:element>
