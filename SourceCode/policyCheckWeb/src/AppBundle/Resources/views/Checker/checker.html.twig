@@ -155,20 +155,6 @@ MediaConch checker
                         });
                 };
 
-                // Button over for result list
-                $('.checker-results li.report').each(function() {
-                    $(this).hover(
-                        function() {
-                            $(this).addClass('report-blue');
-                            $(this).find('p').removeClass('hidden');
-                        },
-                        function() {
-                        $(this).removeClass('report-blue');
-                            $(this).find('p').addClass('hidden');
-                        }
-                    );
-                });
-
                 // Remove result block
                 $('.checker-results .panel-heading .close').each(function() {
                     $(this).click(function () {
@@ -209,6 +195,7 @@ MediaConch checker
                             }
                         },
                         'multiple' : false,
+                        'dblclick_toggle' : false,
                         {% if selectForm == 'repository' %}
                             'data' : {'url' : '{{ path('app_checker_checkerajaxtracefolder', {'id': loop.index, 'format': 'jstree'}) }}', 'dataType' : 'json'}
                         {% else %}
@@ -221,6 +208,9 @@ MediaConch checker
                         'block' : {'icon' : 'glyphicon glyphicon-folder-open'},
                         'data' : {'icon' : 'glyphicon glyphicon-file'},
                     },
+                })
+                .on('select_node.jstree', function (e, data) {
+                    data.instance.toggle_node(data.node);
                 })
             });
 
