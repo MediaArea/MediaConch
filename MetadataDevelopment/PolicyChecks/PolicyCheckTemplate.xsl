@@ -111,27 +111,6 @@
                                 </xsl:call-template>
                             </xsl:for-each>
                         </policy>
-                        <!-- sadly matches_regex isn't working with xslt 1.0
-                        <policy>
-                            <xsl:attribute name="title">Muxing app starts with Lavf</xsl:attribute>
-                            <xsl:call-template name="matches_regex">
-                                <xsl:with-param name="xpath" select="ma:MediaTrace/ma:block[@name='Segment']/ma:block[@name='Info']/ma:block[@name='MuxingApp']/ma:data"/>
-                                <xsl:with-param name="value">^Lavf</xsl:with-param>
-                                <xsl:with-param name="tracktype">Video</xsl:with-param>
-                                <xsl:with-param name="occurrence">1</xsl:with-param>
-                                <xsl:with-param name="field">Format</xsl:with-param>
-                            </xsl:call-template>
-                        </policy>
-                        -->
-                        <policy>
-                            <xsl:attribute name="title">TOTAL_PARTS is number</xsl:attribute>
-                            <xsl:for-each select="//ma:block[@name='SimpleTag'][ma:block[@name='TagName'][@info='TOTAL_PARTS']]/ma:block[@name='TagString']/ma:data">
-                                <xsl:call-template name="is_number">
-                                    <xsl:with-param name="xpath" select="."/>
-                                    <xsl:with-param name="field">TOTAL_PARTS</xsl:with-param>
-                                </xsl:call-template>
-                            </xsl:for-each>
-                        </policy>
                     </media>
                 </xsl:for-each>
             </policyChecks>
@@ -164,7 +143,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -203,7 +182,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -242,7 +221,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -281,7 +260,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -320,7 +299,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -359,7 +338,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -398,7 +377,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -433,7 +412,7 @@
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -468,7 +447,7 @@
             <xsl:attribute name="field">
                 <xsl:value-of select="$field"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -507,7 +486,7 @@
             <xsl:attribute name="expected">
                 <xsl:value-of select="$value"/>
             </xsl:attribute>
-            <xsl:attribute name="value">
+            <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
             <xsl:choose>
@@ -520,62 +499,6 @@
                     <xsl:element name="result">
                         <xsl:attribute name="outcome">fail</xsl:attribute>
                         <xsl:attribute name="reason">does not contain</xsl:attribute>
-                    </xsl:element>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:element>
-    </xsl:template>
-    <!-- sadly this doesn't work in xslt 1.0
-    <xsl:template name="matches_regex">
-        <xsl:param name="xpath"/>
-        <xsl:param name="value"/>
-        <xsl:param name="field"/>
-        <xsl:element name="test">
-            <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
-            <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
-            <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
-        <xsl:choose>
-            <xsl:when test="matches($xpath, $value)">
-                <xsl:element name="result">
-                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                </xsl:element>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:element name="result">
-                    <xsl:attribute name="outcome">fail</xsl:attribute>
-                    <xsl:attribute name="reason">does not match regex</xsl:attribute>
-                </xsl:element>
-            </xsl:otherwise>
-        </xsl:choose>
-        </xsl:element>
-    </xsl:template>
-    -->
-    <xsl:template name="is_number">
-        <xsl:param name="xpath"/>
-        <xsl:element name="test">
-            <xsl:if test="../@type">
-                <xsl:attribute name="tracktype">
-                    <xsl:value-of select="../@type"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:attribute name="value">
-                <xsl:value-of select="$xpath"/>
-            </xsl:attribute>
-            <xsl:choose>
-                <xsl:when test="string-length(translate($xpath,$decimal,'')) = 0">
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                    </xsl:element>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">fail</xsl:attribute>
-                        <xsl:attribute name="reason">contains non-numeric values</xsl:attribute>
                     </xsl:element>
                 </xsl:otherwise>
             </xsl:choose>
