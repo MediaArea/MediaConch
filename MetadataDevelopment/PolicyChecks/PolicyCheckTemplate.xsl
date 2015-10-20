@@ -147,7 +147,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -186,7 +186,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -225,7 +225,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -264,7 +264,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -303,7 +303,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -342,7 +342,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -381,7 +381,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -419,7 +419,7 @@
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -454,7 +454,7 @@
     <xsl:template name="does_not_exist">
         <xsl:param name="xpath"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -490,7 +490,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
@@ -530,7 +530,7 @@
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
         <xsl:param name="field"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
             <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
             <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
@@ -552,7 +552,7 @@
     -->
     <xsl:template name="is_number">
         <xsl:param name="xpath"/>
-        <xsl:element name="context">
+        <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
                     <xsl:value-of select="../@type"/>
