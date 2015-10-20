@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaarea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaarea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi mc">
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
     <xsl:template match="mc:MediaArea">
-        <MediaConch>
+        <MediaConch xmlns="https://mediaarea.net/mediaarea">
+            <xsl:attribute name="version">
+                <xsl:text>0.1</xsl:text>
+            </xsl:attribute>
             <policyChecks>
-                <xsl:attribute name="version">
-                    <xsl:text>0.1</xsl:text>
-                </xsl:attribute>
                 <xsl:for-each select="mc:media">
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
