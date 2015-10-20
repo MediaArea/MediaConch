@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaarea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi mc">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma">
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
-    <xsl:template match="mc:MediaArea">
-        <MediaConch xmlns="https://mediaarea.net/mediaarea">
+    <xsl:template match="ma:MediaArea">
+        <MediaConch>
             <xsl:attribute name="version">
                 <xsl:text>0.1</xsl:text>
             </xsl:attribute>
             <policyChecks>
-                <xsl:for-each select="mc:media">
+                <xsl:for-each select="ma:media">
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
                         <!-- the for-each loop doesn't apply to is_true functions where the xpath is passed as a user-construction -->
                         <policy>
                             <xsl:attribute name="title">Is Matroska or QuickTime</xsl:attribute>
                             <xsl:call-template name="is_true">
-                                <xsl:with-param name="xpath" select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'"/>
-                                <xsl:with-param name="value">mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'Matroska' or mc:MediaInfo/mc:track[@type='General'][1]/mc:Format = 'AVI'</xsl:with-param>
+                                <xsl:with-param name="xpath" select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format = 'Matroska' or ma:MediaInfo/ma:track[@type='General'][1]/ma:Format = 'AVI'"/>
+                                <xsl:with-param name="value">ma:MediaInfo/ma:track[@type='General'][1]/ma:Format = 'Matroska' or ma:MediaInfo/ma:track[@type='General'][1]/ma:Format = 'AVI'</xsl:with-param>
                             </xsl:call-template>
                         </policy>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='General'][1]/mc:Format">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format">
                             <policy>
                                 <xsl:attribute name="title">Is Matroska</xsl:attribute>
                                 <xsl:call-template name="is_equal">
@@ -30,7 +30,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                             <policy>
                                 <xsl:attribute name="title">Is FFV1</xsl:attribute>
                                 <xsl:call-template name="is_equal">
@@ -42,7 +42,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
                             <policy>
                                 <xsl:attribute name="title">Format version is Version 3.1</xsl:attribute>
                                 <xsl:call-template name="is_equal">
@@ -54,7 +54,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='General'][1]/mc:FileSize">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:FileSize">
                             <policy>
                                 <xsl:attribute name="title">FileSize is greater than 0</xsl:attribute>
                                 <xsl:call-template name="is_greater_than">
@@ -66,7 +66,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                             <policy>
                                 <xsl:attribute name="title">Video track exists</xsl:attribute>
                                 <xsl:call-template name="exists">
@@ -77,7 +77,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Formatzzzzz">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Formatzzzzz">
                             <policy>
                                 <xsl:attribute name="title">Fake video track does not exist</xsl:attribute>
                                 <xsl:call-template name="does_not_exist">
@@ -88,7 +88,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                             <policy>
                                 <xsl:attribute name="title">Format contains 1</xsl:attribute>
                                 <xsl:call-template name="contains_string">
@@ -100,7 +100,7 @@
                                 </xsl:call-template>
                             </policy>
                         </xsl:for-each>
-                        <xsl:for-each select="mc:MediaInfo/mc:track[@type='Video'][1]/mc:Format_Version">
+                        <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
                             <policy>
                                 <xsl:attribute name="title">Format version does not contain 1</xsl:attribute>
                                 <xsl:call-template name="contains_string">
@@ -116,7 +116,7 @@
                         <policy>
                             <xsl:attribute name="title">Muxing app starts with Lavf</xsl:attribute>
                             <xsl:call-template name="matches_regex">
-                                <xsl:with-param name="xpath" select="mc:MediaTrace/mc:block[@name='Segment']/mc:block[@name='Info']/mc:block[@name='MuxingApp']/mc:data"/>
+                                <xsl:with-param name="xpath" select="ma:MediaTrace/ma:block[@name='Segment']/ma:block[@name='Info']/ma:block[@name='MuxingApp']/ma:data"/>
                                 <xsl:with-param name="value">^Lavf</xsl:with-param>
                                 <xsl:with-param name="tracktype">Video</xsl:with-param>
                                 <xsl:with-param name="occurrence">1</xsl:with-param>
@@ -124,7 +124,7 @@
                             </xsl:call-template>
                         </policy>
                         -->
-                        <xsl:for-each select="//mc:block[@name='SimpleTag'][mc:block[@name='TagName'][@info='TOTAL_PARTS']]/mc:block[@name='TagString']/mc:data">
+                        <xsl:for-each select="//ma:block[@name='SimpleTag'][ma:block[@name='TagName'][@info='TOTAL_PARTS']]/ma:block[@name='TagString']/ma:data">
                             <policy>
                                 <xsl:attribute name="title">TOTAL_PARTS is number</xsl:attribute>
                                 <xsl:call-template name="is_number">
