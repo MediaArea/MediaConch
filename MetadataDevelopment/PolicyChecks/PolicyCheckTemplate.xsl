@@ -48,6 +48,18 @@
                             </xsl:for-each>
                         </policy>
                         <policy>
+                            <xsl:attribute name="title">Audio is PCM</xsl:attribute>
+                            <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][*]/ma:Format">
+                                <xsl:call-template name="is_equal">
+                                    <xsl:with-param name="xpath" select="."/>
+                                    <xsl:with-param name="value">PCM</xsl:with-param>
+                                    <xsl:with-param name="tracktype">Audio</xsl:with-param>
+                                    <xsl:with-param name="occurrence">*</xsl:with-param>
+                                    <xsl:with-param name="field">Format</xsl:with-param>
+                                </xsl:call-template>
+                            </xsl:for-each>
+                        </policy>
+                        <policy>
                             <xsl:attribute name="title">Format version is Version 3.1</xsl:attribute>
                             <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
                                 <xsl:call-template name="is_equal">
