@@ -7,6 +7,8 @@
                 <xsl:text>0.1</xsl:text>
             </xsl:attribute>
             <policyChecks>
+                <title>This is the policy set title</title>
+                <description>This is the policy set title</description>
                 <xsl:for-each select="ma:media">
                     <media>
                         <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
