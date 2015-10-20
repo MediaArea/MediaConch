@@ -167,7 +167,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath">
                 <xsl:element name="results">
@@ -181,6 +180,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="is_equal">
         <xsl:param name="xpath"/>
@@ -206,7 +206,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath = $value">
                 <xsl:element name="results">
@@ -220,6 +219,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="is_not_equal">
         <xsl:param name="xpath"/>
@@ -245,7 +245,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath != $value">
                 <xsl:element name="results">
@@ -259,6 +258,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="is_greater_than">
         <xsl:param name="xpath"/>
@@ -284,7 +284,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt; $value">
                 <xsl:element name="results">
@@ -298,6 +297,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="is_less_than">
         <xsl:param name="xpath"/>
@@ -323,7 +323,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt; $value">
                 <xsl:element name="results">
@@ -337,6 +336,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="is_greater_or_equal_than">
         <xsl:param name="xpath"/>
@@ -362,7 +362,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &gt;= $value">
                 <xsl:element name="results">
@@ -376,6 +375,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="is_less_or_equal_than">
         <xsl:param name="xpath"/>
@@ -401,7 +401,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="$xpath &lt;= $value">
                 <xsl:element name="results">
@@ -415,6 +414,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
@@ -436,7 +436,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length($xpath) != 0">
                 <xsl:element name="results">
@@ -450,6 +449,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="does_not_exist">
         <xsl:param name="xpath"/>
@@ -471,7 +471,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length($xpath) = '0'">
                 <xsl:element name="results">
@@ -485,6 +484,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="contains_string">
         <xsl:param name="xpath"/>
@@ -510,7 +510,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="contains($xpath, $value)">
                 <xsl:element name="results">
@@ -524,6 +523,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     <!-- sadly this doesn't work in xslt 1.0
     <xsl:template name="matches_regex">
@@ -534,7 +534,6 @@
             <xsl:attribute name="field"><xsl:value-of select="$field"/></xsl:attribute>
             <xsl:attribute name="expected"><xsl:value-of select="$value"/></xsl:attribute>
             <xsl:attribute name="value"><xsl:value-of select="$xpath"/></xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="matches($xpath, $value)">
                 <xsl:element name="results">
@@ -548,6 +547,7 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
     -->
     <xsl:template name="is_number">
@@ -566,7 +566,6 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
-        </xsl:element>
         <xsl:choose>
             <xsl:when test="string-length(translate($xpath,$decimal,'')) = 0">
                 <xsl:element name="results">
@@ -580,5 +579,6 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
+        </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
