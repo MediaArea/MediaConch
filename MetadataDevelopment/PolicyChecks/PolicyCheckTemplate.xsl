@@ -15,6 +15,7 @@
                             <xsl:value-of select="./@ref"/>
                         </xsl:attribute>
                         <!-- the for-each loop doesn't apply to is_true functions where the xpath is passed as a user-construction -->
+                        <!-- the is_true function and example here is for the special case when the free text entry is used, thus only title and xpath are available -->
                         <policy>
                             <xsl:attribute name="title">Is Matroska or QuickTime</xsl:attribute>
                             <xsl:call-template name="is_true">
