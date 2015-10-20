@@ -11,7 +11,9 @@
                 <description>This is the policy set title</description>
                 <xsl:for-each select="ma:media">
                     <media>
-                        <xsl:attribute name="ref"><xsl:value-of select="./@ref"/></xsl:attribute>
+                        <xsl:attribute name="ref">
+                            <xsl:value-of select="./@ref"/>
+                        </xsl:attribute>
                         <!-- the for-each loop doesn't apply to is_true functions where the xpath is passed as a user-construction -->
                         <policy>
                             <xsl:attribute name="title">Is Matroska or QuickTime</xsl:attribute>
