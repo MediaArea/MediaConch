@@ -11,6 +11,6 @@
             <xsl:value-of select="."/>
             <xsl:text>&#xa;</xsl:text>
         </xsl:for-each>
-        <xsl:text>&#xa;* * * * * * * * * *</xsl:text>
+        <xsl:text>&#xa;🐚  🐚  🐚  🐚  🐚</xsl:text>
     </xsl:template>
 </xsl:stylesheet>
