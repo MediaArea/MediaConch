@@ -13,13 +13,13 @@ class XslPolicyRuleFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')
+        $builder->add('title', 'text', array('data' => ('' == $options['data']->getTitle()) ? 'New rule' : $options['data']->getTitle(), 'label' => 'Rule name'))
             ->add('trackType', 'choice', array('placeholder' => 'Choose a track type', 'choices' => XslPolicyFormFields::getTrackTypes()))
             ->add('field', 'choice', array('placeholder' => 'Choose a field', 'choices' => XslPolicyFormFields::getFields($options['data']->getTrackType(), $options['data']->getField())))
             ->add('occurrence', 'text')
             ->add('validator', 'choice', array('placeholder' => 'Choose a validator', 'choices' => XslPolicyFormFields::getValidators()))
             ->add('value')
-            ->add('Save rule', 'submit', array('attr' => array('class' => 'btn-warning')));
+            ->add('Save rule', 'submit', array('label' => ('' == $options['data']->getTitle()) ? 'Add rule' : 'Save rule', 'attr' => array('class' => 'btn-warning')));
 
         $builder->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
             $item = $event->getData();

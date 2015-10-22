@@ -182,7 +182,7 @@ MediaConch checker
                     $(this).click(function (e) {
                         // Check if there is close all button
                         if (0 < $('div.checker-results').length) {
-                            choice = confirm('All analysis results will be discarded ?');
+                            choice = confirm('Are you sure ?\nAll analysis results will be discarded!');
                             if (choice == false) {
                                 e.preventDefault();
                             }

@@ -11,7 +11,7 @@ class MediaConchTrace extends MediaConch
         $builder = new ProcessBuilder();
         $builder->setPrefix($this->MediaConch)
             ->add($this->source)
-            ->add('"--Trace_Level=Container1;1"')
+            ->add('--Trace_Level=Container1;1')
             ->add('--Details=1')
             ->add('-tt')
             ->add('--parseSpeed=0');
