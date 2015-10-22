@@ -176,6 +176,19 @@ MediaConch checker
                     // Remove close all button
                     $(this).addClass('hidden');
                 });
+
+                // Alert user when they leave checker page with results
+                $('.nav a').each(function() {
+                    $(this).click(function (e) {
+                        // Check if there is close all button
+                        if (0 < $('div.checker-results').length) {
+                            choice = confirm('All analysis results will be discarded ?');
+                            if (choice == false) {
+                                e.preventDefault();
+                            }
+                        };
+                    });
+                });
             });
         </script>
 
