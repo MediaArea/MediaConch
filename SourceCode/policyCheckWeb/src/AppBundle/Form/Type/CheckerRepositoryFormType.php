@@ -25,7 +25,7 @@ class CheckerRepositoryFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy, Schematron or XSL'))
-            ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
+            ->add('policy', 'entity', array('class' => 'AppBundle:XslPolicyFile',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
                         ->where('p.user = :user')

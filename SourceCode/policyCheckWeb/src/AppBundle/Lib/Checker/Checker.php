@@ -8,7 +8,7 @@ use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
 use AppBundle\Lib\MediaConch\MediaConchPolicy;
 use AppBundle\Lib\MediaConch\MediaConchConformance;
 use AppBundle\Lib\MediaConch\MediaConchTrace;
-use AppBundle\Entity\Policy;
+use AppBundle\Entity\XslPolicyFile;
 
 class Checker
 {
@@ -26,15 +26,9 @@ class Checker
     private $traceFormat = array();
     private $status;
 
-    public function __construct($source, $policyItem = false)
+    public function __construct($source)
     {
         $this->setSource($source);
-        if ($policyItem) {
-            $this->policyItem = $policyItem;
-        }
-        else {
-            $this->disablePolicy();
-        }
     }
 
     public function run()
@@ -83,14 +77,12 @@ class Checker
     private function runPolicy()
     {
         if ($this->policyEnable) {
-            if ($this->policyItem instanceof Policy) {
-                $MediaInfo = new MediaInfo($this->source);
-                $MediaInfo->analyse();
-                if ($MediaInfo->getSuccess()) {
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $this->policyItem);
-                    $policyChecker->check();
-                    $this->setStatus($policyChecker->isValid());
-                    $this->policy = $policyChecker->getErrors();
+            if (is_string($this->policyItem) && file_exists($this->policyItem)) {
+                $MediaConchPolicy = new MediaConchPolicy($this->source);
+                $MediaConchPolicy->setPolicyType(pathinfo($this->policyItem, PATHINFO_EXTENSION))->run($this->policyItem);
+                if ($MediaConchPolicy->getSuccess()) {
+                    $this->setStatus($MediaConchPolicy->isValid());
+                    $this->policy = array($MediaConchPolicy->getOutput());
                 }
             }
             elseif ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
@@ -190,12 +182,7 @@ class Checker
 
     public function getConformance()
     {
-        if ($this->clientSourceName) {
-            return str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $this->conformance);
-        }
-        else {
-            return str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $this->conformance);
-        }
+        return str_replace($this->source, $this->getBasename(), $this->conformance);
     }
 
     public function enablePolicy()
@@ -214,12 +201,13 @@ class Checker
 
     public function getPolicy()
     {
+        $this->policy = str_replace($this->source, $this->getBasename(), $this->policy);
+
         if ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
-            return str_replace($this->policyItem->getRealPath(), $this->policyItem->getClientOriginalName(), $this->policy);
+            $this->policy = str_replace($this->policyItem->getRealPath(), $this->policyItem->getClientOriginalName(), $this->policy);
         }
-        else {
-            return $this->policy;
-        }
+
+        return $this->policy;
     }
 
     public function enableTrace()
@@ -255,12 +243,7 @@ class Checker
     public function getTrace($format = null)
     {
         if (isset($this->trace['xml'])) {
-            if ($this->clientSourceName) {
-                $this->trace['xml'] = str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $this->trace['xml']);
-            }
-            else {
-                $this->trace['xml'] = str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $this->trace['xml']);
-            }
+            $this->trace['xml'] = str_replace($this->source, $this->getBasename(), $this->trace['xml']);
         }
 
         if (null == $format) {
@@ -273,6 +256,33 @@ class Checker
             else {
                 return false;
             }
+        }
+    }
+
+    public function setPolicyItem($policyItem)
+    {
+        $this->policyItem = $policyItem;
+
+        return $this;
+    }
+
+    public function getFilename()
+    {
+        if ($this->clientSourceName) {
+            return pathinfo($this->clientSourceName, PATHINFO_FILENAME);
+        }
+        else {
+            return pathinfo($this->source, PATHINFO_FILENAME);
+        }
+    }
+
+    protected function getBasename()
+    {
+        if ($this->clientSourceName) {
+            return pathinfo($this->clientSourceName, PATHINFO_BASENAME);
+        }
+        else {
+            return pathinfo($this->source, PATHINFO_BASENAME);
         }
     }
 }

@@ -14,21 +14,9 @@ class MediaConchPolicy extends MediaConch
     {
         $builder = new ProcessBuilder();
         $process = $builder->setPrefix($this->MediaConch)
-            ->add($this->source);
-
-        switch ($this->policyType) {
-            case SELF::$TYPE_XSLT :
-                $builder->add('--XSLT=' . $policy);
-                break;
-            case SELF::$TYPE_SCHEMATRON :
-                $builder->add('--policy=' . $policy);
-                break;
-            default :
-                $builder->add('--policy=' . $policy);
-                break;
-        }
-
-        $process = $builder->getProcess();
+            ->add($this->source)
+            ->add('--policy=' . $policy)
+            ->getProcess();
         $process->run();
 
         if ($process->isSuccessful()) {
@@ -61,7 +49,7 @@ class MediaConchPolicy extends MediaConch
     {
         switch ($this->policyType) {
             case SELF::$TYPE_XSLT :
-                return null; /** @TODO not possible to check status for now */
+                return !preg_match('/<td>(fail|invalid)<\/td>/', $this->output);
                 break;
             case SELF::$TYPE_SCHEMATRON :
                 return !preg_match('/NOT VALID/', $this->output);

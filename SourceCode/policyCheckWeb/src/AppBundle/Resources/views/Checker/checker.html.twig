@@ -212,6 +212,11 @@ MediaConch checker
                 .on('select_node.jstree', function (e, data) {
                     data.instance.toggle_node(data.node);
                 })
+                .on('loaded.jstree', function (e, data) {
+                    data.instance.get_container().find('li').each(function () {
+                        data.instance.open_node($(this));
+                    })
+                })
             });
 
             $('#trace{{ loop.index }}').on('ready.jstree', function () {
