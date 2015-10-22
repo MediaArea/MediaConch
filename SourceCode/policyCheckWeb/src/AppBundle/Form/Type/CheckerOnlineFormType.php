@@ -24,7 +24,7 @@ class CheckerOnlineFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy, Schematron or XSL'))
+        $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy'))
             ->add('policy', 'entity', array('class' => 'AppBundle:XslPolicyFile',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
@@ -33,7 +33,7 @@ class CheckerOnlineFormType extends AbstractType
                 },
                 'placeholder' => 'Choose a policy',
                 'required' => false,
-                'label' => 'Choose a policy')
+                'label' => 'Select policy from list')
                 )
             ->add('schematron', 'file', array('label' => 'Or upload a Schematron (.sch) or a XSL (.xsl) file',
                 'required' => false,
