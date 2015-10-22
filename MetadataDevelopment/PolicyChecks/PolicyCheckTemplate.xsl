@@ -117,7 +117,6 @@
                                         <xsl:call-template name="is_greater_than">
                                             <xsl:with-param name="xpath" select="."/>
                                             <xsl:with-param name="value">0</xsl:with-param>
-                                            <xsl:with-param name="field">FileSize</xsl:with-param>
                                         </xsl:call-template>
                                     </xsl:for-each>
                                 </xsl:when>
@@ -136,7 +135,6 @@
                                     <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
                                         <xsl:call-template name="exists">
                                             <xsl:with-param name="xpath" select="."/>
-                                            <xsl:with-param name="field">Format</xsl:with-param>
                                         </xsl:call-template>
                                     </xsl:for-each>
                                 </xsl:when>
@@ -155,7 +153,6 @@
                                     <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Formatzzzzz">
                                         <xsl:call-template name="does_not_exist">
                                             <xsl:with-param name="xpath" select="."/>
-                                            <xsl:with-param name="field">Formatzzzzz</xsl:with-param>
                                         </xsl:call-template>
                                     </xsl:for-each>
                                 </xsl:when>
@@ -275,9 +272,6 @@
                     <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
             <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
@@ -306,9 +300,6 @@
                     <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
             <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
@@ -337,9 +328,6 @@
                     <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
             <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
@@ -368,9 +356,6 @@
                     <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
             <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
@@ -399,9 +384,6 @@
                     <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
             <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
@@ -484,9 +466,6 @@
                     <xsl:value-of select="../@streamid"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
             <xsl:attribute name="actual">
                 <xsl:value-of select="$xpath"/>
             </xsl:attribute>
