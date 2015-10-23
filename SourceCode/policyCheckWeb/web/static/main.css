@@ -175,6 +175,10 @@ p.registration {
     font-size: 1.1em;
 }
 
+.jstree-grid-wrapper {
+    margin-top: 10px;
+}
+
 #xslPolicyRule_editor .radio {
     display: inline-block;
     margin: 0 10px 0 0;

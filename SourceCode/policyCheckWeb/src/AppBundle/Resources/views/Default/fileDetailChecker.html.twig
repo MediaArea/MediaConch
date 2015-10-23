@@ -120,8 +120,10 @@
                                     <div class="col-md-6 col-sm-8 col-xs-8">
                                         <i class="glyphicon glyphicon-search"></i><input type="text" value="" class="traceSearch" id="traceSearch{{ loop.index }}" placeholder="Search" />
                                     </div>
-                                    <div id="trace{{ loop.index }}" class="col-md-8"></div>
-                                    <div id="traceInfo{{ loop.index }}" class="col-md-4"></div>
+                                    <div class="col-md-12">
+                                        <div id="trace{{ loop.index }}"></div>
+                                    </div>
+                                    {# <div id="traceInfo{{ loop.index }}" class="col-md-4"></div> #}
                                 </div>
                             </div>
                             <div class="modal-footer">

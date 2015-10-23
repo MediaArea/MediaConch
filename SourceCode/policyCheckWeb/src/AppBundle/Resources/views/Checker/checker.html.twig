@@ -193,6 +193,7 @@ MediaConch checker
         </script>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+        <script src="/static/jstreegrid.js"></script>
         <script>
         {% for check in checks %}
         $('#modalTrace{{ loop.index }}').on('show.bs.modal',
@@ -215,11 +216,19 @@ MediaConch checker
                             'data' : {{ check.getTrace.jstree|raw }}
                         {% endif %}
                     },
-                    "plugins" : ['search', 'types'],
+                    "plugins" : ['search', 'types', 'grid'],
                     'types' : {
                         'default' : {'icon' : 'glyphicon glyphicon-folder-open'},
                         'block' : {'icon' : 'glyphicon glyphicon-folder-open'},
                         'data' : {'icon' : 'glyphicon glyphicon-file'},
+                    },
+                    grid: {
+                        columns: [
+                            {width: 100, header: "Offset", value: "offset"},
+                            {width: 500, header: "Key", tree: true},
+                            {width: 250, header: "Value", value: "dataValue"},
+                        ],
+                        resizable: true,
                     },
                 })
                 .on('select_node.jstree', function (e, data) {
