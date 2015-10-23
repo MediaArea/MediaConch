@@ -24,10 +24,10 @@
                             </p>
                         </li>
                     {% endif %}
-                    {% if check.getXml %}
+                    {% if check.getInfo or selectForm == 'repository' %}
                         <li class="list-group-item report">MediaInfo
                             <p class="text-right">
-                                <a href="#" data-toggle="modal" data-target="#modalXml{{ loop.index }}" title="View XML"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalXml{{ loop.index }}" data-save-name="{{ check.filename }}_MediaInfo.xml" title="Download XML"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalInfo{{ loop.index }}" title="View MediaInfo"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld-info{% if not check.getInfo %}-ajax{% endif %}" data-target="#infoXml{{ loop.index }}" data-save-name="{{ check.filename }}_MediaInfo.xml" title="Download MediaInfo"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
@@ -87,8 +87,8 @@
                 </div>
             {% endif %}
 
-            {% if check.getXml %}
-                <div id="modalXml{{ loop.index }}" class="modal fade">
+            {% if check.getInfo or selectForm == 'repository' %}
+                <div id="modalInfo{{ loop.index }}" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -96,15 +96,27 @@
                                 <h4 class="modal-title">MediaInfo</h4>
                             </div>
                             <div class="modal-body">
-                                <p>{{ check.getXml|nl2br }}</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-8 col-xs-8">
+                                        <i class="glyphicon glyphicon-search"></i><input type="text" value="" class="jstreeSearch" id="infoSearch{{ loop.index }}" placeholder="Search" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div id="info{{ loop.index }}"></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#modalXml{{ loop.index }}"" data-save-name="{{ check.filename }}_MediaInfo.xml">Download XML</button>
+                                <button type="button" class="btn btn-primary report-dld-info{% if not check.getInfo %}-ajax{% endif %}" data-target="#infoXml{{ loop.index }}" data-save-name="{{ check.filename }}_MediaInfo.xml">Download MediaInfo</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% if check.getInfo %}
+                    <div id="infoXml{{ loop.index }}" class="hidden">
+                        {{ check.getInfo.xml|nl2br }}
+                    </div>
+                {% endif %}
             {% endif %}
 
             {% if check.getTrace or selectForm == 'repository' %}
@@ -118,7 +130,7 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-8 col-xs-8">
-                                        <i class="glyphicon glyphicon-search"></i><input type="text" value="" class="traceSearch" id="traceSearch{{ loop.index }}" placeholder="Search" />
+                                        <i class="glyphicon glyphicon-search"></i><input type="text" value="" class="jstreeSearch" id="traceSearch{{ loop.index }}" placeholder="Search" />
                                     </div>
                                     <div class="col-md-12">
                                         <div id="trace{{ loop.index }}"></div>

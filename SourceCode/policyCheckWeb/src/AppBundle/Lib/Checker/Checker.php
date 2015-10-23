@@ -8,14 +8,16 @@ use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
 use AppBundle\Lib\MediaConch\MediaConchPolicy;
 use AppBundle\Lib\MediaConch\MediaConchConformance;
 use AppBundle\Lib\MediaConch\MediaConchTrace;
+use AppBundle\Lib\MediaConch\MediaConchInfo;
 use AppBundle\Entity\XslPolicyFile;
 
 class Checker
 {
     private $source;
     private $clientSourceName;
-    private $xmlEnable = true;
-    private $xml;
+    private $infoEnable = true;
+    private $info;
+    private $infoFormat = array();
     private $conformanceEnable = true;
     private $conformance;
     private $policyEnable = true;
@@ -33,18 +35,20 @@ class Checker
 
     public function run()
     {
-        $this->runXml()
+        $this->runInfo()
             ->runTrace()
             ->runConformance()
             ->runPolicy();
     }
 
-    private function runXml()
+    private function runInfo()
     {
-        if ($this->xmlEnable) {
-            $MediaInfo = new MediaInfo($this->source);
-            $MediaInfo->analyse();
-            $this->xml = $MediaInfo->getSuccess() ? $MediaInfo->getOutputXml() : false;
+        if ($this->infoEnable && count($this->infoFormat) > 0) {
+            foreach ($this->infoFormat as $format) {
+                $MediaConch = new MediaConchInfo($this->source);
+                $MediaConch->run($format);
+                $this->info[$format] = $MediaConch->getSuccess() ? $MediaConch->getOutput() : false;
+            }
         }
 
         return $this;
@@ -136,34 +140,56 @@ class Checker
         }
     }
 
-    public function enableXml()
+    public function enableInfo()
     {
-        $this->xmlEnable = true;
+        $this->infoEnable = true;
 
         return $this;
     }
 
-    public function disableXml()
+    public function disableInfo()
     {
-        $this->xmlEnable = false;
+        $this->infoEnable = false;
 
         return $this;
     }
 
-    public function getXml()
+    public function setInfoFormat(array $format)
     {
-        $xml = $this->xml;
-        $xml = preg_replace('|<FolderName>(.*)</FolderName>\n|', '', $xml);
-        $xml = preg_replace('|<CompleteName>(.*)</CompleteName>\n|', '', $xml);
+        $this->infoFormat = $format;
 
-        if ($this->clientSourceName) {
-            return str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $xml);
+        return $this;
+    }
+
+    public function addInfoFormat($format)
+    {
+        if (!in_array($format, $this->infoFormat)) {
+            $this->infoFormat[] = $format;
+        }
+
+        return $this;
+    }
+
+    public function getInfo($format = null)
+    {
+        if (isset($this->info['xml'])) {
+            $this->info['xml'] = str_replace($this->source, $this->getBasename(), $this->info['xml']);
+        }
+        if (isset($this->info['jstree'])) {
+            $this->info['jstree'] = str_replace($this->source, $this->getBasename(), $this->info['jstree']);
+        }
+
+        if (null == $format) {
+            return $this->info;
         }
         else {
-            return str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $xml);
+            if (isset($this->info[$format])) {
+                return $this->info[$format];
+            }
+            else {
+                return false;
+            }
         }
-
-        return $xml;
     }
 
     public function enableConformance()

@@ -155,6 +155,58 @@ MediaConch checker
                         });
                 };
 
+                // Add download MediaInfo button to result list
+                $('.checker-results li.report p a.results-dld-info').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadInfo($(this));
+                    });
+                });
+
+                // Add download MediaInfo button binding on modal
+                $('.modal-footer .report-dld-info').each(function() {
+                    $(this).on('click', function(e) {
+                        downloadInfo($(this));
+                    });
+                });
+
+                function downloadInfo(item) {
+                    report = $(item.data('target')).text().trim();
+                    reportName = $(item).data('save-name');
+                    var blob = new Blob([report], {type: 'text/xml;charset=utf-8'});
+                    saveAs(blob, reportName);
+                };
+
+                // Add download MediaInfo ajax button to result list
+                $('.checker-results li.report p a.results-dld-info-ajax').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadInfoAjax($(this));
+                    });
+                });
+
+                // Add download MediaInfo ajax button binding on modal
+                $('.modal-footer .report-dld-info-ajax').each(function() {
+                    $(this).on('click', function(e) {
+                        downloadInfoAjax($(this));
+                    });
+                });
+
+                function downloadInfoAjax(item) {
+                    id = $(item).data('target').replace(/#infoXml(\d)/, "$1");
+                    url = '{{ path('app_checker_checkerajaxinfofolder', {'id': 0, 'format': 'xml'}) }}';
+                    url = url.replace(/(.*)\/(0)/, "$1/" + id);
+                    $.get(url)
+                        .done(function (d) {
+                            reportName = $(item).data('save-name');
+                            var blob = new Blob([d], {type: 'text/xml;charset=utf-8'});
+                            saveAs(blob, reportName);
+                        })
+                        .fail(function () {
+                            console.log('Fail to get MediaInfo XML');
+                        });
+                };
+
                 // Remove result block
                 $('.checker-results .panel-heading .close').each(function() {
                     $(this).click(function () {
@@ -226,7 +278,7 @@ MediaConch checker
                         columns: [
                             {width: 100, header: "Offset", value: "offset"},
                             {width: 500, header: "Key", tree: true},
-                            {width: 250, header: "Value", value: "dataValue"},
+                            {header: "Value", value: "dataValue"},
                         ],
                         resizable: true,
                     },
@@ -253,6 +305,65 @@ MediaConch checker
             });
 
             $('#trace{{ loop.index }}').on('select_node.jstree', function (e, data) {
+                data.instance.toggle_node(data.node);
+            });
+
+        $('#modalInfo{{ loop.index }}').on('show.bs.modal',
+            function() {
+                $('#info{{ loop.index }}').jstree({
+                    'core' : {
+                        'check_callback' : function (operation, node, parent, position, more) {
+                            if (operation === 'copy_node' || operation === 'move_node') {
+                                return false; // disable copy and move
+                            }
+                            else {
+                                return true;
+                            }
+                        },
+                        'multiple' : false,
+                        'dblclick_toggle' : false,
+                        {% if selectForm == 'repository' %}
+                            'data' : {'url' : '{{ path('app_checker_checkerajaxinfofolder', {'id': loop.index, 'format': 'jstree'}) }}', 'dataType' : 'json'}
+                        {% else %}
+                            'data' : {{ check.getInfo.jstree|raw }}
+                        {% endif %}
+                    },
+                    "plugins" : ['search', 'types', 'grid'],
+                    'types' : {
+                        'default' : {'icon' : 'glyphicon glyphicon-folder-open'},
+                        'block' : {'icon' : 'glyphicon glyphicon-folder-open'},
+                        'data' : {'icon' : 'glyphicon glyphicon-file'},
+                    },
+                    grid: {
+                        columns: [
+                            {width: 300, header: "Key", tree: true},
+                            {header: "Value", value: "dataValue"},
+                        ],
+                        resizable: true,
+                    },
+                })
+            });
+
+            $('#info{{ loop.index }}').on('ready.jstree', function () {
+                $(function () {
+                    var to = false;
+                    $('#infoSearch{{ loop.index }}').keyup(function () {
+                        if(to) { clearTimeout(to); }
+                        to = setTimeout(function () {
+                            var v = $('#infoSearch{{ loop.index }}').val();
+                            $('#info{{ loop.index }}').jstree(true).search(v);
+                        }, 250);
+                    });
+                });
+            });
+
+            $('#info{{ loop.index }}').on('loaded.jstree', function (e, data) {
+                data.instance.get_container().find('li').each(function () {
+                    data.instance.open_node($(this));
+                })
+            });
+
+            $('#info{{ loop.index }}').on('select_node.jstree', function (e, data) {
                 data.instance.toggle_node(data.node);
             });
         {% endfor %}

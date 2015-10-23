@@ -4,16 +4,14 @@ namespace AppBundle\Lib\MediaConch;
 
 use Symfony\Component\Process\ProcessBuilder;
 
-class MediaConchTrace extends MediaConch
+class MediaConchInfo extends MediaConch
 {
     public function run($format)
     {
         $builder = new ProcessBuilder();
         $builder->setPrefix($this->MediaConch)
             ->add($this->source)
-            ->add('--Trace_Level=Container1;1')
-            ->add('--Details=1')
-            ->add('-tt')
+            ->add('-ti')
             ->add('--parseSpeed=0');
 
         switch ($format) {
@@ -39,3 +37,4 @@ class MediaConchTrace extends MediaConch
         return $this;
     }
 }
+

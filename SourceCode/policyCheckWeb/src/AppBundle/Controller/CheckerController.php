@@ -46,7 +46,7 @@ class CheckerController extends Controller
                             $checker->setPolicyItem($policyFile);
                         }
 
-                        $checker->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
+                        $checker->setInfoFormat(array('xml', 'jstree'))->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
                         $checks = array(0 => $checker);
 
                         $this->get('mediaconch_user.quotas')->hitUrls();
@@ -79,7 +79,7 @@ class CheckerController extends Controller
                         $checker->setPolicyItem($policyFile);
                     }
 
-                    $checker->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
+                    $checker->setInfoFormat(array('xml', 'jstree'))->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
                     $checks = array(0 => $checker);
 
                     $this->get('mediaconch_user.quotas')->hitUrls();
@@ -116,7 +116,7 @@ class CheckerController extends Controller
                             $checker->setPolicyItem($policyFile);
                         }
 
-                        $checker->run();
+                        $checker->disableInfo()->run();
                         $checks[] = $checker;
                     }
 
@@ -150,12 +150,37 @@ class CheckerController extends Controller
             foreach ($finder as $file) {
                 if ($i++ == $id) {
                     $checker = new Checker($file->getPathname());
-                    $checker->disablePolicy()->disableXml()->disableConformance()->enableTrace()->setTraceFormat(array($format));
+                    $checker->disablePolicy()->disableInfo()->disableConformance()->enableTrace()->setTraceFormat(array($format));
                     $checker->run();
                 }
             }
 
             return new Response(isset($checker) ? $checker->getTrace($format) : '');
+        }
+        else {
+            throw new NotFoundHttpException();
+        }
+    }
+
+    /**
+     * @Route("/checkerAjaxInfoFolder/{id}.{format}", requirements={"id": "\d+", "format"})
+     */
+    public function checkerAjaxInfoFolderAction($id, $format, Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+
+            $finder = new Finder();
+            $finder->files()->in($this->container->getParameter('mco_check_folder'));
+            $i = 1;
+            foreach ($finder as $file) {
+                if ($i++ == $id) {
+                    $checker = new Checker($file->getPathname());
+                    $checker->disablePolicy()->enableInfo()->disableConformance()->disableTrace()->setInfoFormat(array($format));
+                    $checker->run();
+                }
+            }
+
+            return new Response(isset($checker) ? $checker->getInfo($format) : '');
         }
         else {
             throw new NotFoundHttpException();
