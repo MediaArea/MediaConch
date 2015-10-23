@@ -24,7 +24,7 @@ class XslPolicyRuleFormType extends AbstractType
             ->add('value')
 
             // Free text editor
-            ->add('valueFreeText', 'textarea', array('mapped' => false, 'data' => ('' == $options['data']->getValue()) ? 'ma:MediaInfo/ma:track[@type=\'General\'][1]/ma:Format = \'Matroska\' or ma:MediaInfo/ma:track[@type=\'General\'][1]/ma:Format = \'AVI\'' : $options['data']->getValue(), 'label' => 'Xpath expression'))
+            ->add('valueFreeText', 'textarea', array('mapped' => false, 'data' => ('' == $options['data']->getValue()) ? 'mi:MediaInfo/mi:track[@type=\'General\'][1]/mi:Format = \'Matroska\' or mi:MediaInfo/mi:track[@type=\'General\'][1]/mi:Format = \'AVI\'' : $options['data']->getValue(), 'label' => 'Xpath expression'))
 
             ->add('Save rule', 'submit', array('label' => ('' == $options['data']->getTitle()) ? 'Add rule' : 'Save rule', 'attr' => array('class' => 'btn-warning')));
 

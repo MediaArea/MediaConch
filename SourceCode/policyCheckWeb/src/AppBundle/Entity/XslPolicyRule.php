@@ -48,7 +48,7 @@ class XslPolicyRule
 
     public function makeXpath()
     {
-        $this->xpath = 'ma:MediaInfo/ma:track[@type=\'' . $this->getTrackType() . '\'][' . $this->getOccurrence() . ']/ma:' . $this->getField();
+        $this->xpath = 'mi:MediaInfo/mi:track[@type=\'' . $this->getTrackType() . '\'][' . $this->getOccurrence() . ']/mi:' . $this->getField();
     }
 
     public function getValue()
