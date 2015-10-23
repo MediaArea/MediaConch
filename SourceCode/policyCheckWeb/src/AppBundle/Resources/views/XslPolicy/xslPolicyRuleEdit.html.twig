@@ -12,6 +12,7 @@ MediaConchOnline Policy Rules Management
 <div class="col-md-6">
     <p>To create policies, users may select fields from MediaInfo's stream types (General, Video, Audio, etc.) and apply validators (Equal, Not Equal, Greater Than, etc.) to the associated field values. For example, a policy item may state that the "Width" field from the file's Video stream equal 640 pixels. When adding the field's value, however, be sure to leave off any associated strings, such as "pixels" "Kbps" "fps", etc.</p>
 {{ form(policyRuleForm) }}
+    <p>Fields marked by asterisks (*) are required</p>
 </div>
 <div class="col-md-6">
     <div class="panel panel-default checker-results">
@@ -53,6 +54,63 @@ $(document).ready(function() {
             }
         });
     });
+
+    editor = $('#xslPolicyRule_editor input[type=\'radio\']:checked').val();
+    $('#xslPolicyRule_editor input[type=\'radio\']').parent().removeClass('required');
+    //$('#xslPolicyRule_editor').prev().removeClass('required');
+
+    if (0 == editor) {
+        hideFreetext();
+    }
+    else if (1 == editor) {
+        hideEditor();
+    }
+
+    $('#xslPolicyRule_editor input[type=\'radio\']').change(function() {
+        editor = $('#xslPolicyRule_editor input[type=\'radio\']:checked').val();
+        if (0 == editor) {
+            hideFreetext();
+            showEditor();
+        }
+        else if (1 == editor) {
+            hideEditor();
+            showFreetext();
+        }
+    });
+
+    function hideFreetext() {
+        $('#xslPolicyRule_valueFreeText').parent().addClass('hidden');
+        $('#xslPolicyRule_valueFreeText').removeClass('required');
+    }
+
+    function showFreetext() {
+        $('#xslPolicyRule_valueFreeText').parent().removeClass('hidden');
+        $('#xslPolicyRule_valueFreeText').attr('required', true);
+    }
+
+    function hideEditor() {
+        $('#xslPolicyRule_trackType').parent().addClass('hidden');
+        $('#xslPolicyRule_field').parent().addClass('hidden');
+        $('#xslPolicyRule_occurrence').parent().addClass('hidden');
+        $('#xslPolicyRule_validator').parent().addClass('hidden');
+        $('#xslPolicyRule_value').parent().addClass('hidden');
+        $('#xslPolicyRule_trackType').attr('required', false);
+        $('#xslPolicyRule_field').attr('required', false);
+        $('#xslPolicyRule_occurrence').attr('required', false);
+        $('#xslPolicyRule_validator').attr('required', false);
+    }
+
+    function showEditor() {
+        $('#xslPolicyRule_trackType').parent().removeClass('hidden');
+        $('#xslPolicyRule_field').parent().removeClass('hidden');
+        $('#xslPolicyRule_occurrence').parent().removeClass('hidden');
+        $('#xslPolicyRule_validator').parent().removeClass('hidden');
+        $('#xslPolicyRule_value').parent().removeClass('hidden');
+        $('#xslPolicyRule_trackType').attr('required', true);
+        $('#xslPolicyRule_field').attr('required', true);
+        $('#xslPolicyRule_occurrence').attr('required', true);
+        $('#xslPolicyRule_validator').attr('required', true);
+    }
 });
 </script>
 {% endblock %}

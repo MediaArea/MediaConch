@@ -26,8 +26,7 @@ class XslPolicyFormFields
     {
         $mcTrackTypes = new MediaConchTrackTypes();
         $mcTrackTypes->run();
-        $mcTrackTypes = $mcTrackTypes->getOutput();
-        $mcTrackTypes = explode(',', $mcTrackTypes);
+        $mcTrackTypes = explode(',', $mcTrackTypes->getOutput());
         $trackTypes = array();
 
         foreach ($mcTrackTypes as $type) {
@@ -44,8 +43,7 @@ class XslPolicyFormFields
         if ('' != $trackType) {
             $mcFields = new MediaConchTrackTypeFields();
             $mcFields->run($trackType);
-            $mcFields = $mcFields->getOutput();
-            $mcFields = explode(',', $mcFields);
+            $mcFields = explode(',', $mcFields->getOutput());
 
             foreach ($mcFields as $field) {
                 $fields[$field] = $field;

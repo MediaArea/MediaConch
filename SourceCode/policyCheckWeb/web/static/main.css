@@ -153,7 +153,7 @@ footer {
     padding: 2px;
 }
 
-#fos_user_registration_form .required:after, #fos_user_profile_form .required:after {
+#fos_user_registration_form .required:after, #fos_user_profile_form .required:after, #xslPolicyRule .required:after {
     content: " *";
 }
 
@@ -173,4 +173,9 @@ p.registration {
     border-radius: 4px;
     border: 1px solid silver;
     font-size: 1.1em;
+}
+
+#xslPolicyRule_editor .radio {
+    display: inline-block;
+    margin: 0 10px 0 0;
 }
