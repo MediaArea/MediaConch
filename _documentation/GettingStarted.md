@@ -6,10 +6,10 @@ title: "Documentation: Getting Started"
 
 # Getting Started
 
-- [What is MediaConch?](#what-is-mediaConch)
-- [What file formats can I use with MediaConch?](#what-file-formats-can-i-use-with-MediaConch)
+- [What is MediaConch?](#what-is-mediaconch)
+- [What file formats can I use with MediaConch?](#what-file-formats-can-i-use-with-mediaconch)
 - [What are the benefits of file conformance checking?](#what-are-the-benefits-of-file-conformance-checking)
-- [How can I provide feedback?](#how-can-I-provide-feedback)
+- [How can I provide feedback?](#how-can-i-provide-feedback)
 
 ## What is MediaConch?
 
