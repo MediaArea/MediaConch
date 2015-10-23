@@ -33,15 +33,15 @@ The software relies on third party libraries. Such libraries have their own lice
 
 MediaConch project leads are: 
 
-- Jérôme Martinez (Digital Media Specialist) technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata 
-- Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation 
+- Jérôme Martinez (Digital Media Specialist): technical design, implementation of the bytestream/bitstream analyzer, extraction of metadata 
+- Dave Rice (Archivist): communication with memory institutions, definition of tests, documentation 
  
 Other team members are: 
 
-- Guillaume Roques (Developer) database management, automation, performance optimization, shell 
-- Florent Tribouilloy implementation of the bytestream/bitstream analyzer, extraction of metadata, GUI development, reporting 
-- Ashley Blewer (Archivist) technical writing and documentation, design and user experience optimization 
-- Tessa Fallon (Archivist) community outreach and standards organization 
-- Erik Piil (Archivist) technical writing and documentation, OAIS compliance support 
+- Guillaume Roques (Developer): database management, automation, performance optimization, shell 
+- Florent Tribouilloy (Developer): implementation of the bytestream/bitstream analyzer, extraction of metadata, GUI development, reporting 
+- Ashley Blewer (Archivist): technical writing and documentation, design and user experience optimization 
+- Tessa Fallon (Archivist): community outreach and standards organization 
+- Erik Piil (Archivist): technical writing and documentation, OAIS compliance support 
  
 This project has received funding from PREFORMA, co-funded by the European Commission under its FP7-ICT Programme 
