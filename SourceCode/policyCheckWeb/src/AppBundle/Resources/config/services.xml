@@ -51,8 +51,12 @@
             <argument type="service" id="security.token_storage" />
         </service>
 
-        <service id="app.form.type.policy" class="AppBundle\Form\Type\XslPolicyFormType">
-            <tag name="form.type" alias="xslPolicy" />
+        <service id="app.form.type.policy.create" class="AppBundle\Form\Type\XslPolicyCreateFormType">
+            <tag name="form.type" alias="xslPolicyCreate" />
+        </service>
+
+        <service id="app.form.type.policy.import" class="AppBundle\Form\Type\XslPolicyImportFormType">
+            <tag name="form.type" alias="xslPolicyImport" />
         </service>
 
         <service id="app.form.type.policy.rule" class="AppBundle\Form\Type\XslPolicyRuleFormType">

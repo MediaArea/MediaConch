@@ -23,10 +23,15 @@ class XslPolicyFile
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank()
      */
     protected $policyName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $policyDescription;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -88,6 +93,29 @@ class XslPolicyFile
     public function getPolicyName()
     {
         return $this->policyName;
+    }
+
+    /**
+     * Set policyDescription
+     *
+     * @param string $policyDescription
+     * @return XslPolicyFile
+     */
+    public function setPolicyDescription($policyDescription)
+    {
+        $this->policyDescription = $policyDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get policyDescription
+     *
+     * @return string
+     */
+    public function getPolicyDescription()
+    {
+        return $this->policyDescription;
     }
 
     /**

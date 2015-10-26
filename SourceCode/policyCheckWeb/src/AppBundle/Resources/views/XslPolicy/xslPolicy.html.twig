@@ -12,12 +12,19 @@ MediaConchOnline Policy Management
 <div class="col-md-6">
     <p>Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a fixed range, require that files have both video and audio streams, or conform to a broadcast specification.
     </p>
+    {% if importPolicyForm is defined and importPolicyForm %}
     <p>
         <h2>Import a policy</h2>
-        {% if addPolicyForm is defined and addPolicyForm %}
-            {{ form(addPolicyForm) }}
-        {% endif %}
+        {{ form(importPolicyForm) }}
     </p>
+    {% endif %}
+
+    {% if createPolicyForm is defined and createPolicyForm %}
+    <p>
+        <h2>Create a policy</h2>
+        {{ form(createPolicyForm) }}
+    </p>
+    {% endif %}
 </div>
 <div class="col-md-6">
     <h4>Policy list:</h4>

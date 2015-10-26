@@ -5,13 +5,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class XslPolicyImportFormType extends AbstractType
+class XslPolicyCreateFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('policyName')
-            ->add('policyFile', 'file', array('attr' => array('accept' => '.xsl,.xml')))
-            ->add('Import policy', 'submit', array('attr' => array('class' => 'btn-warning')));
+            ->add('policyDescription', 'textarea', array('required' => false))
+            ->add('Create policy', 'submit', array('attr' => array('class' => 'btn-warning')));
 
     }
 
@@ -21,6 +21,6 @@ class XslPolicyImportFormType extends AbstractType
 
     public function getName()
     {
-        return 'xslPolicyImport';
+        return 'xslPolicyCreate';
     }
 }

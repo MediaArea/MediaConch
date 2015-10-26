@@ -32,6 +32,8 @@ class XslPolicy
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     public function getDescription()
@@ -42,6 +44,8 @@ class XslPolicy
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     public function getRules()

@@ -34,6 +34,8 @@ class XslPolicyRule
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     public function getXpath()
@@ -44,11 +46,15 @@ class XslPolicyRule
     public function setXpath($xpath)
     {
         $this->xpath = $xpath;
+
+        return $this;
     }
 
     public function makeXpath()
     {
         $this->xpath = 'mi:MediaInfo/mi:track[@type=\'' . $this->getTrackType() . '\'][' . $this->getOccurrence() . ']/mi:' . $this->getField();
+
+        return $this;
     }
 
     public function getValue()
@@ -59,6 +65,8 @@ class XslPolicyRule
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     public function getTrackType()
@@ -69,6 +77,8 @@ class XslPolicyRule
     public function setTrackType($trackType)
     {
         $this->trackType = $trackType;
+
+        return $this;
     }
 
     public function getField()
@@ -79,6 +89,8 @@ class XslPolicyRule
     public function setField($field)
     {
         $this->field = $field;
+
+        return $this;
     }
 
     public function getOccurrence()
@@ -89,6 +101,8 @@ class XslPolicyRule
     public function setOccurrence($occurrence)
     {
         $this->occurrence = $occurrence;
+
+        return $this;
     }
 
     public function getValidator()
@@ -99,6 +113,8 @@ class XslPolicyRule
     public function setValidator($validator)
     {
         $this->validator = $validator;
+
+        return $this;
     }
 
     function __toString() {

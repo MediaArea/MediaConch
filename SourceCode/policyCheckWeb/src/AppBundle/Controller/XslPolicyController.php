@@ -8,11 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use AppBundle\Entity\XslPolicy;
 use AppBundle\Entity\XslPolicyFile;
 use AppBundle\Entity\XslPolicyRule;
 use AppBundle\Lib\XslPolicy\XslPolicyFormFields;
+use AppBundle\Lib\XslPolicy\XslPolicyWriter;
 
 /**
  * @Route("/")
@@ -30,9 +33,9 @@ class XslPolicyController extends Controller
             ->findByUser($this->getUser());
 
         $policy = new XslPolicyFile();
-        $addPolicyForm = $this->createForm('xslPolicy', $policy);
-        $addPolicyForm->handleRequest($request);
-        if ($addPolicyForm->isValid()) {
+        $importPolicyForm = $this->createForm('xslPolicyImport', $policy);
+        $importPolicyForm->handleRequest($request);
+        if ($importPolicyForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
             // Set user at the creation of the policy
@@ -47,10 +50,39 @@ class XslPolicyController extends Controller
                 'success',
                 'Policy successfully added'
                 );
-            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicy', array('id' => $policy->getId())));
-       }
+            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
+        }
 
-        return array('addPolicyForm' => isset($addPolicyForm) ? $addPolicyForm->createView() : false,
+        $createPolicyForm = $this->createForm('xslPolicyCreate', $policy);
+        $createPolicyForm->handleRequest($request);
+        if ($createPolicyForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            // Set user at the creation of the policy
+            if (null === $policy->getUser()) {
+                $policy->setUser($this->getUser());
+            }
+
+            $tmpNameFile = tempnam(sys_get_temp_dir(), 'policy' . $policy->getUser()->getId());
+            $tmpPolicy = new XslPolicy();
+            $tmpPolicy->setTitle($policy->getPolicyName())->setDescription($policy->getPolicyDescription());
+            $tmpPolicyWriter = new XslPolicyWriter();
+            $tmpPolicyWriter->setPolicy($tmpPolicy)->writeXsl($tmpNameFile);
+            $tmpFile = new UploadedFile($tmpNameFile, $policy->getPolicyName() . '.xsl', null, null, null, true);
+            $policy->setPolicyFile($tmpFile);
+
+            $em->persist($policy);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Policy successfully added'
+                );
+            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
+        }
+
+        return array('importPolicyForm' => isset($importPolicyForm) ? $importPolicyForm->createView() : false,
+                     'createPolicyForm' => isset($createPolicyForm) ? $createPolicyForm->createView() : false,
                      'policyList' => $policyList,
                      'selectedPolicy' => '');
     }
