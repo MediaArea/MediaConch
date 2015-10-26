@@ -20,7 +20,7 @@ Test0.mkv -- This is a normal file with associated passing Schematron.
 Create a file:
 `ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 Test0.mkv`
 
-[Test 0 XSL Policy](Files/Test0_File_Conformance.xsl)
+[Test 0 XSL Policy](files/Test0_File_Conformance.xsl)
 This policy checks that the file follows general rules of file conformance, such as the extension being mkv, the file including a video stream, and the file having a unique ID. It also checks for assertions specific to this file, such as the duration being 1 second, the frame rate being 25 frames per second, and the coder type being Golomb Rice.
 
 To gather technical metadata with mediaconch run:
@@ -39,10 +39,10 @@ Create a file:
 Create associated XML:
 `mediaconch -ti -fx Test1.mkv > Test1.xml`
 
-[Test 1 PAL XSL Policy](Test1_Conflicting_Tests_PAL.xs)
+[Test 1 PAL XSL Policy](files/test1_Conflicting_Tests_PAL.xsl)
 This policy checks all files for a framesize of 720 x 576 and a framerate of 25.
 
-[Test 1 NTSC XSL Policy](Test1_Conflicting_Tests_NTSC.xsl)
+[Test 1 NTSC XSL Policy](files/test1_Conflicting_Tests_NTSC.xsl)
 This policy checks all files for a framesize of 720 x 480 and a framerate of 29.970.
 
 Testing each policy:
@@ -64,7 +64,7 @@ Files are identical copies except Test2_2.mkv has had two bytes (value of 0000) 
 Create files:
 (Files provided).
 
-[Test 2 XSL Policy](Test2_Testing_Multiple_Files.xsl)
+[Test 2 XSL Policy](files/Test2_Testing_Multiple_Files.xsl)
 This policy checks all the files for conformance. Test2_2.mkv and Test2_3.mkv fail because they have been manipulated, but they fail in different ways.
 
 Testing many files against a policy document:
