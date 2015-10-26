@@ -11,7 +11,7 @@ class XslPolicyImportFormType extends AbstractType
     {
         $builder->add('policyName')
             ->add('policyFile', 'file', array('attr' => array('accept' => '.xsl,.xml')))
-            ->add('Import policy', 'submit', array('attr' => array('class' => 'btn-warning')));
+            ->add('ImportPolicy', 'submit', array('attr' => array('class' => 'btn-warning')));
 
     }
 

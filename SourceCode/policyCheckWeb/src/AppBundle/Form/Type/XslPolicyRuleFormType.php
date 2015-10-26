@@ -26,7 +26,11 @@ class XslPolicyRuleFormType extends AbstractType
             // Free text editor
             ->add('valueFreeText', 'textarea', array('mapped' => false, 'data' => ('' == $options['data']->getValue()) ? 'mi:MediaInfo/mi:track[@type=\'General\'][1]/mi:Format = \'Matroska\' or mi:MediaInfo/mi:track[@type=\'General\'][1]/mi:Format = \'AVI\'' : $options['data']->getValue(), 'label' => 'Xpath expression'))
 
-            ->add('Save rule', 'submit', array('label' => ('' == $options['data']->getTitle()) ? 'Add rule' : 'Save rule', 'attr' => array('class' => 'btn-warning')));
+            ->add('SaveRule', 'submit', array('label' => ('' == $options['data']->getTitle()) ? 'Add rule' : 'Save rule', 'attr' => array('class' => 'btn-warning')));
+
+            if ('' != $options['data']->getTitle()) {
+                $builder->add('DuplicateRule', 'submit', array('attr' => array('class' => 'btn-warning')));
+            }
 
         $builder->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
             $item = $event->getData();

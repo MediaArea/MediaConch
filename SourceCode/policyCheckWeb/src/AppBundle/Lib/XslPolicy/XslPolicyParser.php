@@ -49,13 +49,6 @@ class XslPolicyParser
             $policyRule->setTrackType($this->getTrackType($policy));
             $policyRule->setOccurrence($this->getOccurrence($policy));
 
-            if ('is_true' == $validator) {
-                $policyRule->setXpath($policyRule->getValue());
-            }
-            else {
-                $policyRule->makeXpath();
-            }
-
             $this->policy->addRule($policyRule);
         }
     }

@@ -40,19 +40,12 @@ class XslPolicyRule
 
     public function getXpath()
     {
-        return $this->xpath;
+        return 'mi:MediaInfo/mi:track[@type=\'' . $this->getTrackType() . '\'][' . $this->getOccurrence() . ']/mi:' . $this->getField();
     }
 
     public function setXpath($xpath)
     {
         $this->xpath = $xpath;
-
-        return $this;
-    }
-
-    public function makeXpath()
-    {
-        $this->xpath = 'mi:MediaInfo/mi:track[@type=\'' . $this->getTrackType() . '\'][' . $this->getOccurrence() . ']/mi:' . $this->getField();
 
         return $this;
     }

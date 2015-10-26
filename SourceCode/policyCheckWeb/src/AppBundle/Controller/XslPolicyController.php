@@ -172,6 +172,7 @@ class XslPolicyController extends Controller
         else {
             if ($parser->getPolicy()->getRules()->containsKey($ruleId)) {
                 $rule = $parser->getPolicy()->getRules()->get($ruleId);
+                $duplicateRule = clone $rule;
             }
             else {
                 $this->get('session')->getFlashBag()->add(
@@ -186,13 +187,13 @@ class XslPolicyController extends Controller
         $policyRuleForm = $this->createForm('xslPolicyRule', $rule);
         $policyRuleForm->handleRequest($request);
         if ($policyRuleForm->isValid()) {
-            $rule->makeXpath();
-
             if ('new' == $ruleId) {
                 $parser->getPolicy()->getRules()->add($rule);
             }
-            else {
-                $parser->getPolicy()->getRules()->set($ruleId, $rule);
+            else if ($policyRuleForm->get('Duplicate rule')->isClicked())
+            {
+                $parser->getPolicy()->getRules()->add($rule);
+                $parser->getPolicy()->getRules()->set($ruleId, $duplicateRule);
             }
 
             $writer = $this->get('mco.xslpolicy.writer');

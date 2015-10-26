@@ -38,6 +38,11 @@ MediaConchOnline Policy Rules Management
 {% block javascripts %}
 <script>
 $(document).ready(function() {
+    if ($('#xslPolicyRule_DuplicateRule').length) {
+        $('#xslPolicyRule_DuplicateRule').parent().addClass('xslPolicyRuleDuplicateButton');
+        $('#xslPolicyRule_SaveRule').parent().addClass('xslPolicyRuleSaveButton');
+    }
+
     $('#xslPolicyRule_trackType').change(function() {
         data = {};
         data['type'] = $('#xslPolicyRule_trackType').val();
