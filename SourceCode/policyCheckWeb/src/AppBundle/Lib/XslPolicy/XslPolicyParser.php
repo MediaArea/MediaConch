@@ -112,7 +112,7 @@ class XslPolicyParser
         $xpath = $element->getElementsByTagNameNS('http://www.w3.org/1999/XSL/Transform', 'for-each');
         if ($xpath->item(0) !== null) {
             $xpath = $xpath->item(0)->getAttribute('select');
-            preg_match('/ma:MediaInfo\/ma:track\[@type=\'([A-Za-z]+)\'\]\[(.*)/', $xpath, $matches);
+            preg_match('/mi:MediaInfo\/mi:track\[@type=\'([A-Za-z]+)\'\]\[(.*)/', $xpath, $matches);
             if (isset($matches[1])) {
                 return $matches[1];
             }
@@ -126,7 +126,7 @@ class XslPolicyParser
         $xpath = $element->getElementsByTagNameNS('http://www.w3.org/1999/XSL/Transform', 'for-each');
         if ($xpath->item(0) !== null) {
             $xpath = $xpath->item(0)->getAttribute('select');
-            preg_match('/ma:MediaInfo\/ma:track\[@type=\'([A-Za-z]+)\'\]\[([\d\*]{1})\](.*)/', $xpath, $matches);
+            preg_match('/mi:MediaInfo\/mi:track\[@type=\'([A-Za-z]+)\'\]\[([\d\*]{1})\](.*)/', $xpath, $matches);
             if (isset($matches[2])) {
                 return $matches[2];
             }
