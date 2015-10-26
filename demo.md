@@ -39,10 +39,10 @@ Create a file:
 Create associated XML:
 `mediaconch -ti -fx Test1.mkv > Test1.xml`
 
-[Test 1 PAL XSL Policy](files/test1_Conflicting_Tests_PAL.xsl)
+[Test 1 PAL XSL Policy](files/Test1_Conflicting_Tests_PAL.xsl)
 This policy checks all files for a framesize of 720 x 576 and a framerate of 25.
 
-[Test 1 NTSC XSL Policy](files/test1_Conflicting_Tests_NTSC.xsl)
+[Test 1 NTSC XSL Policy](files/Test1_Conflicting_Tests_NTSC.xsl)
 This policy checks all files for a framesize of 720 x 480 and a framerate of 29.970.
 
 Testing each policy:
