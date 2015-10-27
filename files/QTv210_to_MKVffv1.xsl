@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma">
   <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
   <xsl:template match="ma:MediaArea">
     <MediaConch>
@@ -21,8 +21,8 @@
                 <xsl:attribute name="value">Matroska</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">Matroska</xsl:with-param>
@@ -38,8 +38,8 @@
                 <xsl:attribute name="value">4</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format_Version">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Format_Version">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format_Version">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format_Version">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">4</xsl:with-param>
@@ -55,8 +55,8 @@
                 <xsl:attribute name="value">1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='General'][1]/ma:FileSize">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:FileSize">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:FileSize">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:FileSize">
                     <xsl:call-template name="is_greater_or_equal_than">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1</xsl:with-param>
@@ -73,8 +73,8 @@
                 <xsl:attribute name="value">1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='General'][1]/ma:Duration">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:Duration">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:Duration">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:Duration">
                     <xsl:call-template name="is_greater_or_equal_than">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1</xsl:with-param>
@@ -91,8 +91,8 @@
                 <xsl:attribute name="value">FFV1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Format">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Format">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">FFV1</xsl:with-param>
@@ -108,8 +108,8 @@
                 <xsl:attribute name="value">1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Format_Version">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Format_Version">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Format_Version">
                     <xsl:call-template name="is_greater_or_equal_than">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1</xsl:with-param>
@@ -126,8 +126,8 @@
                 <xsl:attribute name="value">V_MS/VFW/FOURCC / FFV1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:CodecID">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:CodecID">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:CodecID">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:CodecID">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">V_MS/VFW/FOURCC / FFV1</xsl:with-param>
@@ -143,8 +143,8 @@
                 <xsl:attribute name="value">1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Duration">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Duration">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Duration">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Duration">
                     <xsl:call-template name="is_greater_or_equal_than">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1</xsl:with-param>
@@ -161,8 +161,8 @@
                 <xsl:attribute name="value">720</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Width">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Width">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Width">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Width">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">720</xsl:with-param>
@@ -178,8 +178,8 @@
                 <xsl:attribute name="value">486</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Height">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Height">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Height">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Height">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">486</xsl:with-param>
@@ -195,8 +195,8 @@
                 <xsl:attribute name="value">1.333</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:DisplayAspectRatio">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:DisplayAspectRatio">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:DisplayAspectRatio">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:DisplayAspectRatio">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1.333</xsl:with-param>
@@ -212,8 +212,8 @@
                 <xsl:attribute name="value">CFR</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:FrameRate_Mode">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:FrameRate_Mode">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:FrameRate_Mode">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:FrameRate_Mode">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">CFR</xsl:with-param>
@@ -229,8 +229,8 @@
                 <xsl:attribute name="value">29.970</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:FrameRate">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:FrameRate">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:FrameRate">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:FrameRate">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">29.970</xsl:with-param>
@@ -246,8 +246,8 @@
                 <xsl:attribute name="value">NTSC</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Standard">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Standard">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Standard">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Standard">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">NTSC</xsl:with-param>
@@ -263,8 +263,8 @@
                 <xsl:attribute name="value">YUV</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:ColorSpace">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:ColorSpace">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:ColorSpace">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:ColorSpace">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">YUV</xsl:with-param>
@@ -280,8 +280,8 @@
                 <xsl:attribute name="value">4:2:2</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:ChromaSubsampling">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:ChromaSubsampling">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:ChromaSubsampling">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:ChromaSubsampling">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">4:2:2</xsl:with-param>
@@ -297,8 +297,8 @@
                 <xsl:attribute name="value">10</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:BitDepth">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:BitDepth">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:BitDepth">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:BitDepth">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">10</xsl:with-param>
@@ -314,8 +314,8 @@
                 <xsl:attribute name="value">Lossless</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Compression_Mode">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Compression_Mode">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Compression_Mode">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Compression_Mode">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">Lossless</xsl:with-param>
@@ -331,8 +331,8 @@
                 <xsl:attribute name="value">PCM</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:Format">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:Format">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:Format">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:Format">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">PCM</xsl:with-param>
@@ -348,8 +348,8 @@
                 <xsl:attribute name="value">A_PCM/INT/LIT</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:CodecID">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:CodecID">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:CodecID">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:CodecID">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">A_PCM/INT/LIT</xsl:with-param>
@@ -365,8 +365,8 @@
                 <xsl:attribute name="value">1</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:Duration">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:Duration">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:Duration">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:Duration">
                     <xsl:call-template name="is_greater_or_equal_than">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1</xsl:with-param>
@@ -383,8 +383,8 @@
                 <xsl:attribute name="value">CBR</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:BitRate_Mode">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:BitRate_Mode">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:BitRate_Mode">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:BitRate_Mode">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">CBR</xsl:with-param>
@@ -400,8 +400,8 @@
                 <xsl:attribute name="value">4</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:Channels">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:Channels">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:Channels">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:Channels">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">4</xsl:with-param>
@@ -417,8 +417,8 @@
                 <xsl:attribute name="value">48000</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:SamplingRate">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:SamplingRate">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:SamplingRate">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:SamplingRate">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">48000</xsl:with-param>
@@ -434,8 +434,8 @@
                 <xsl:attribute name="value">16</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:BitDepth">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Audio'][1]/ma:BitDepth">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:BitDepth">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Audio'][1]/mi:BitDepth">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">16</xsl:with-param>

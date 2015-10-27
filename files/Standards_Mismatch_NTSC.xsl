@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma">
   <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
   <xsl:template match="ma:MediaArea">
     <MediaConch>
@@ -21,8 +21,8 @@
                 <xsl:attribute name="value">720</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Width">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Width">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Width">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Width">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">720</xsl:with-param>
@@ -38,8 +38,8 @@
                 <xsl:attribute name="value">480</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Height">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='Video'][1]/ma:Height">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Height">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Height">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">480</xsl:with-param>
@@ -55,8 +55,8 @@
                 <xsl:attribute name="value">29.970</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="ma:MediaInfo/ma:track[@type='General'][1]/ma:FrameRate">
-                  <xsl:for-each select="ma:MediaInfo/ma:track[@type='General'][1]/ma:FrameRate">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:FrameRate">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:FrameRate">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">29.970</xsl:with-param>
