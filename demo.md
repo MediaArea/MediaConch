@@ -6,12 +6,12 @@ title: "MediaConch Demo"
 
 # MediaConch Test Demonstrations
 
-[Description](#description)
-[General Conformance with FFmpeg-generated Matroska and FFV1 file](#general-conformance-with-ffmpeg-generated-matroska-and-ffv1-file)
-[Standards Mismatch](#standards-mismatch)
-[Testing multiple like files](#testing-multiple-like-files)
-[Quicktime and v210 to Matroska and FFV1](#quicktime-and-v210-to-matroska-and-ffv1)
-[Preservation Master File recommended specifications](#preservation-master-file-recommended-specifications)
+- [Description](#description)
+- [General Conformance with FFmpeg-generated Matroska and FFV1 file](#general-conformance-with-ffmpeg-generated-matroska-and-ffv1-file)
+- [Standards Mismatch](#standards-mismatch)
+- [Testing multiple like files](#testing-multiple-like-files)
+- [Quicktime and v210 to Matroska and FFV1](#quicktime-and-v210-to-matroska-and-ffv1)
+- [Preservation Master File recommended specifications](#preservation-master-file-recommended-specifications)
 
 ### Description
 
