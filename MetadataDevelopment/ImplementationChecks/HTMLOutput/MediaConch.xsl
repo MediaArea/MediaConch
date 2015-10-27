@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
     <xsl:output encoding="UTF-8" method="html" version="1.0" indent="yes"/>
+    <!-- Later will include implementation checks here -->
     <xsl:template match="/mc:MediaConch/mc:policyChecks">
         <h1><xsl:value-of select="mc:title"/></h1>
         <p><xsl:value-of select="mc:description"/></p>
