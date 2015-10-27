@@ -24,7 +24,7 @@ title: "Documentation: How To Use"
 - [Validator](#validator)
 - [Value](#value)
 - [Invalid Text](#invalid-text)
-- [Editor and Free Text Mode](#editor-and-free-text-mode)
+- [Free Text Mode](#free-text-mode)
 
 ##Display 
 - [Import display set](#import-display-set)
@@ -108,13 +108,19 @@ For example, the following rule/assert would ensure that all reported files must
 
 Allows a user to select from a list of available metadata stream types. These streams include General, Video, Audio, Image, Text, Menu, or Other. 
 
+Example: *General*
+
 ###Field
 
 Allows a user to select from a list of associated fields. Fields vary according to what type of metadata stream is selected. 
 
+Example: *General/UniqueID*
+
 ###Occurrence
 
 Allows a user to select whether a rule or assert occurs more than once in reportage. 
+
+Example: *Occurrence:1*
 
 ###Validator
 
@@ -166,15 +172,11 @@ User note: When creating a value, do not include any associated strings (e.g., "
 
 Invalid text allows a user to provide a value in the event that there is not enough context for a pass/fail assert. 
 
-###Editor and Free Text mode
+###Free Text mode
 
-Policies can be edited in either Editor or Free Text mode. An example of Free Text mode includes the following:
+In addition to the Editor, policies may also be edited in Free Text mode. Free Text uses the XML Path Language, or XPath. An example of a MediaConch XPath expression in Free Text mode includes the following:
 
-track[@type='General']/FileExtension = 'mkv'
-
-**is_true**: Requires the reported field value to be true. 
-
-Example: *Audio/ID is_true*
+Example: *track[@type='General']/FileExtension = 'mkv'*
 
 ##Display
 
