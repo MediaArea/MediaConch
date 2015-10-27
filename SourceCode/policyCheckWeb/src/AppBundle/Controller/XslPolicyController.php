@@ -190,7 +190,7 @@ class XslPolicyController extends Controller
             if ('new' == $ruleId) {
                 $parser->getPolicy()->getRules()->add($rule);
             }
-            else if ($policyRuleForm->get('Duplicate rule')->isClicked())
+            else if ($policyRuleForm->get('DuplicateRule')->isClicked())
             {
                 $parser->getPolicy()->getRules()->add($rule);
                 $parser->getPolicy()->getRules()->set($ruleId, $duplicateRule);
