@@ -36,6 +36,14 @@ class CheckerController extends Controller
                 $data = $formUpload->getData();
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\XslPolicyFile) {
                     if ($data['file']->isValid()) {
+                        if ($data['policyDisplay'] instanceof \AppBundle\Entity\XslPolicyDisplayFile) {
+                            $helper = $this->container->get('vich_uploader.storage');
+                            $policyDisplayFile = $helper->resolvePath($data['policyDisplay'], 'policyDisplayFile');
+                        }
+                        else {
+                            $policyDisplayFile = null;
+                        }
+
                         $checker = new Checker($data['file']);
                         if ($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                             $checker->setPolicyItem($data['schematron']);
@@ -46,7 +54,11 @@ class CheckerController extends Controller
                             $checker->setPolicyItem($policyFile);
                         }
 
-                        $checker->setInfoFormat(array('xml', 'jstree'))->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
+                        $checker->setInfoFormat(array('xml', 'jstree'))
+                            ->setPolicyDisplayFile($policyDisplayFile)
+                            ->enableTrace()
+                            ->setTraceFormat(array('xml', 'jstree'))
+                            ->run();
                         $checks = array(0 => $checker);
 
                         $this->get('mediaconch_user.quotas')->hitUrls();
@@ -69,6 +81,13 @@ class CheckerController extends Controller
                 $data = $formOnline->getData();
 
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\XslPolicyFile) {
+                    if ($data['policyDisplay'] instanceof \AppBundle\Entity\XslPolicyDisplayFile) {
+                        $helper = $this->container->get('vich_uploader.storage');
+                        $policyDisplayFile = $helper->resolvePath($data['policyDisplay'], 'policyDisplayFile');
+                    }
+                    else {
+                        $policyDisplayFile = null;
+                    }
                     $checker = new Checker(str_replace(' ', '%20', $data['file']));
                     if ($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                         $checker->setPolicyItem($data['schematron']);
@@ -79,7 +98,11 @@ class CheckerController extends Controller
                         $checker->setPolicyItem($policyFile);
                     }
 
-                    $checker->setInfoFormat(array('xml', 'jstree'))->enableTrace()->setTraceFormat(array('xml', 'jstree'))->run();
+                    $checker->setInfoFormat(array('xml', 'jstree'))
+                        ->setPolicyDisplayFile($policyDisplayFile)
+                        ->enableTrace()
+                        ->setTraceFormat(array('xml', 'jstree'))
+                        ->run();
                     $checks = array(0 => $checker);
 
                     $this->get('mediaconch_user.quotas')->hitUrls();
@@ -93,7 +116,7 @@ class CheckerController extends Controller
         }
 
         if ($this->get('mediaconch_user.quotas')->hasPolicyChecksRights()) {
-            $formRepository = $this->createForm('checkerRepository', array('user' => $this->getUser()));
+            $formRepository = $this->createForm('checkerRepository');
             $formRepository->handleRequest($request);
 
             if ($formRepository->isValid()) {
@@ -102,6 +125,14 @@ class CheckerController extends Controller
 
                 if (($data['schematron'] instanceof \Symfony\Component\HttpFoundation\File\UploadedFile && $data['schematron']->isValid()) || $data['policy'] instanceof \AppBundle\Entity\XslPolicyFile) {
                     $checks = array();
+
+                    if ($data['policyDisplay'] instanceof \AppBundle\Entity\XslPolicyDisplayFile) {
+                        $helper = $this->container->get('vich_uploader.storage');
+                        $policyDisplayFile = $helper->resolvePath($data['policyDisplay'], 'policyDisplayFile');
+                    }
+                    else {
+                        $policyDisplayFile = null;
+                    }
 
                     $finder = new Finder();
                     $finder->files()->in($this->container->getParameter('mco_check_folder'));
@@ -116,7 +147,9 @@ class CheckerController extends Controller
                             $checker->setPolicyItem($policyFile);
                         }
 
-                        $checker->disableInfo()->run();
+                        $checker->setPolicyDisplayFile($policyDisplayFile)
+                            ->disableInfo()
+                            ->run();
                         $checks[] = $checker;
                     }
 

@@ -13,20 +13,21 @@ use AppBundle\Entity\XslPolicyFile;
 
 class Checker
 {
-    private $source;
-    private $clientSourceName;
-    private $infoEnable = true;
-    private $info;
-    private $infoFormat = array();
-    private $conformanceEnable = true;
-    private $conformance;
-    private $policyEnable = true;
-    private $policy;
-    private $policyItem;
-    private $traceEnable = false;
-    private $trace;
-    private $traceFormat = array();
-    private $status;
+    protected $source;
+    protected $clientSourceName;
+    protected $infoEnable = true;
+    protected $info;
+    protected $infoFormat = array();
+    protected $conformanceEnable = true;
+    protected $conformance;
+    protected $policyEnable = true;
+    protected $policy;
+    protected $policyItem;
+    protected $policyDisplayFile = null;
+    protected $traceEnable = false;
+    protected $trace;
+    protected $traceFormat = array();
+    protected $status;
 
     public function __construct($source)
     {
@@ -41,7 +42,7 @@ class Checker
             ->runPolicy();
     }
 
-    private function runInfo()
+    protected function runInfo()
     {
         if ($this->infoEnable && count($this->infoFormat) > 0) {
             foreach ($this->infoFormat as $format) {
@@ -54,7 +55,7 @@ class Checker
         return $this;
     }
 
-    private function runTrace()
+    protected function runTrace()
     {
         if ($this->traceEnable && count($this->traceFormat) > 0) {
             foreach ($this->traceFormat as $format) {
@@ -67,7 +68,7 @@ class Checker
         return $this;
     }
 
-    private function runConformance()
+    protected function runConformance()
     {
         if ($this->conformanceEnable) {
             $MediaConch = new MediaConchConformance($this->source);
@@ -78,23 +79,25 @@ class Checker
         return $this;
     }
 
-    private function runPolicy()
+    protected function runPolicy()
     {
         if ($this->policyEnable) {
             if (is_string($this->policyItem) && file_exists($this->policyItem)) {
                 $MediaConchPolicy = new MediaConchPolicy($this->source);
-                $MediaConchPolicy->setPolicyType(pathinfo($this->policyItem, PATHINFO_EXTENSION))->run($this->policyItem);
+                $MediaConchPolicy->setPolicyType(pathinfo($this->policyItem, PATHINFO_EXTENSION))
+                    ->run($this->policyItem, $this->policyDisplayFile);
                 if ($MediaConchPolicy->getSuccess()) {
                     $this->setStatus($MediaConchPolicy->isValid());
-                    $this->policy = array($MediaConchPolicy->getOutput());
+                    $this->policy = $MediaConchPolicy->getOutput();
                 }
             }
             elseif ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                 $MediaConchPolicy = new MediaConchPolicy($this->source);
-                $MediaConchPolicy->setPolicyType($this->policyItem->getClientOriginalExtension())->run($this->policyItem->getRealPath());
+                $MediaConchPolicy->setPolicyType($this->policyItem->getClientOriginalExtension())
+                    ->run($this->policyItem->getRealPath(), $this->policyDisplayFile);
                 if ($MediaConchPolicy->getSuccess()) {
                     $this->setStatus($MediaConchPolicy->isValid());
-                    $this->policy = array($MediaConchPolicy->getOutput());
+                    $this->policy = $MediaConchPolicy->getOutput();
                 }
             }
             else {
@@ -105,7 +108,7 @@ class Checker
         return $this;
     }
 
-    private function setStatus($status)
+    protected function setStatus($status)
     {
         if (false !== $this->status) {
             $this->status = $status;
@@ -119,7 +122,7 @@ class Checker
         return $this->status;
     }
 
-    private function setSource($source)
+    protected function setSource($source)
     {
         if ($source instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
             $this->source = $source->getRealPath();
@@ -236,6 +239,18 @@ class Checker
         return $this->policy;
     }
 
+    public function getPolicyOutputFormat()
+    {
+        if (preg_match('/<\\!DOCTYPE.*html/i', $this->policy)) {
+            return 'html';
+        }
+        elseif (preg_match('/<\\?xml/i', $this->policy)) {
+            return 'xml';
+        }
+
+       return 'txt';
+    }
+
     public function enableTrace()
     {
         $this->traceEnable = true;
@@ -288,6 +303,13 @@ class Checker
     public function setPolicyItem($policyItem)
     {
         $this->policyItem = $policyItem;
+
+        return $this;
+    }
+
+    public function setPolicyDisplayFile($policyDisplayFile)
+    {
+        $this->policyDisplayFile = $policyDisplayFile;
 
         return $this;
     }

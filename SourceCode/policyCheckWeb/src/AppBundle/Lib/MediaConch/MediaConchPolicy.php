@@ -10,13 +10,17 @@ class MediaConchPolicy extends MediaConch
     static public $TYPE_XSLT = 'xslt';
     static public $TYPE_SCHEMATRON = 'schematron';
 
-    public function run($policy)
+    public function run($policy, $policyDisplay = null)
     {
         $builder = new ProcessBuilder();
-        $process = $builder->setPrefix($this->MediaConch)
+        $builder->setPrefix($this->MediaConch)
             ->add($this->source)
-            ->add('--policy=' . $policy)
-            ->getProcess();
+            ->add('--policy=' . $policy);
+        if ($policyDisplay) {
+            $builder->add('--Display=' . $policyDisplay);
+        }
+
+        $process = $builder->getProcess();
         $process->run();
 
         if ($process->isSuccessful()) {

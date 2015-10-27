@@ -32,6 +32,12 @@ class User extends BaseUser
     protected $xslPolicy;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\XslPolicyDisplayFile", mappedBy="user", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    protected $xslPolicyDisplay;
+
+    /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\UserQuotas", mappedBy="user", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
@@ -320,5 +326,38 @@ class User extends BaseUser
     public function getXslPolicy()
     {
         return $this->xslPolicy;
+    }
+
+    /**
+     * Add xslPolicyDisplay
+     *
+     * @param \AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay
+     * @return User
+     */
+    public function addXslPolicyDisplay(\AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay)
+    {
+        $this->xslPolicyDisplay[] = $xslPolicyDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Remove xslPolicyDisplay
+     *
+     * @param \AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay
+     */
+    public function removeXslPolicyDisplay(\AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay)
+    {
+        $this->xslPolicyDisplay->removeElement($xslPolicyDisplay);
+    }
+
+    /**
+     * Get xslPolicyDisplay
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getXslPolicyDisplay()
+    {
+        return $this->xslPolicyDisplay;
     }
 }

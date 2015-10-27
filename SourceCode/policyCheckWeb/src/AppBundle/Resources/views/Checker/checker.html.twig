@@ -86,7 +86,12 @@ MediaConch checker
                 });
 
                 function downloadReport(item) {
-                    report = $(item.data('target')).find('div.modal-body').text().trim();
+                    if (0 < $(item.data('target')).find('div.modal-body').length) {
+                        report = $(item.data('target')).find('div.modal-body').text().trim();
+                    }
+                    else {
+                        report = $(item.data('target')).text().trim();
+                    }
                     reportName = $(item).data('save-name');
                     reportExt = reportName.replace(/(.*)\.([a-z]{3})$/, "$2");
                     switch(reportExt) {
@@ -95,6 +100,9 @@ MediaConch checker
                             break;
                         case 'txt':
                             reportType = 'text/plain';
+                            break;
+                        case 'html':
+                            reportType = 'text/html';
                             break;
                         default:
                             reportType = 'text/plain';

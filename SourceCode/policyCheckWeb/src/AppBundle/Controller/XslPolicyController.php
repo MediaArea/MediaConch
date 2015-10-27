@@ -14,6 +14,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\XslPolicy;
 use AppBundle\Entity\XslPolicyFile;
 use AppBundle\Entity\XslPolicyRule;
+use AppBundle\Entity\XslPolicyDisplayFile;
 use AppBundle\Lib\XslPolicy\XslPolicyFormFields;
 use AppBundle\Lib\XslPolicy\XslPolicyWriter;
 
@@ -81,10 +82,38 @@ class XslPolicyController extends Controller
             return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
         }
 
+        $policyDisplayList = $this->getDoctrine()
+            ->getRepository('AppBundle:XslPolicyDisplayFile')
+            ->findByUser($this->getUser());
+
+        $policyDisplay = new XslPolicyDisplayFile();
+        $importPolicyDisplayForm = $this->createForm('xslPolicyDisplayImport', $policyDisplay);
+        $importPolicyDisplayForm->handleRequest($request);
+        if ($importPolicyDisplayForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            // Set user at the creation of the policy
+            if (null === $policyDisplay->getUser()) {
+                $policyDisplay->setUser($this->getUser());
+            }
+
+            $em->persist($policyDisplay);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Policy display successfully added'
+                );
+            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicy'));
+        }
+
+
         return array('importPolicyForm' => isset($importPolicyForm) ? $importPolicyForm->createView() : false,
                      'createPolicyForm' => isset($createPolicyForm) ? $createPolicyForm->createView() : false,
+                     'importPolicyDisplayForm' => isset($importPolicyDisplayForm) ? $importPolicyDisplayForm->createView() : false,
                      'policyList' => $policyList,
-                     'selectedPolicy' => '');
+                     'policyDisplayList' => $policyDisplayList,
+                     );
     }
 
     /**
@@ -272,5 +301,59 @@ class XslPolicyController extends Controller
         $type = $request->request->get('type');
 
         return new JsonResponse(XslPolicyFormFields::getFields($type));
+    }
+
+    /**
+     * @Route("/xslPolicyDisplay/delete/{id}", requirements={"id": "\d+"})
+     * @Method("GET")
+     */
+    public function xslPolicyDisplayDeleteAction($id)
+    {
+        $policy = $this->getDoctrine()
+            ->getRepository('AppBundle:XslPolicyDisplayFile')
+            ->findOneBy(array('id' => $id, 'user' => $this->getUser()));
+
+        if (!$policy) {
+             $this->get('session')->getFlashBag()->add(
+                'danger',
+                'Policy display not found'
+                );
+        }
+        else {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($policy);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Policy display successfully removed'
+                );
+        }
+
+        return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicy'));
+    }
+
+    /**
+     * @Route("/xslPolicyDisplay/export/{id}", requirements={"id": "\d+"})
+     * @Method("GET")
+     */
+    public function xslPolicyDisplayExportAction($id)
+    {
+        $policy = $this->getDoctrine()
+            ->getRepository('AppBundle:XslPolicyDisplayFile')
+            ->findOneBy(array('id' => $id, 'user' => $this->getUser()));
+
+        if (!$policy) {
+             $this->get('session')->getFlashBag()->add(
+                'danger',
+                'Policy display not found'
+                );
+
+            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicy'));
+        }
+        else {
+            $handler = $this->container->get('vich_uploader.download_handler');
+            return $handler->downloadObject($policy, 'policyDisplayFile');
+        }
     }
 }

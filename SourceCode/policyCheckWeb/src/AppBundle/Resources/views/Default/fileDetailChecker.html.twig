@@ -7,13 +7,13 @@
             </div>
             <div>
                 <ul class="list-group">
-                    {% if check.getPolicy is iterable %}
+                    {% if check.getPolicy %}
                         {% if check.getStatus is not same as(null) %}
                             <li class="list-group-item">This file is: <span class="text-uppercase text-{{ check.getStatus ? 'success' : 'danger' }}"><b>{{ check.getStatus ? '' : 'not ' }}valid</b></span></li>
                         {% endif %}
                         <li class="list-group-item report">Policy report
                             <p class="text-right">
-                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalPolicy{{ loop.index }}" data-save-name="{{ check.filename }}_PolicyReport.txt" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
+                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#policyDld{{ loop.index }}" data-save-name="{{ check.filename }}_PolicyReport.{{ check.getPolicyOutputFormat }}" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
                             </p>
                         </li>
                     {% endif %}
@@ -41,7 +41,7 @@
                 </ul>
             </div>
 
-            {% if check.getPolicy is iterable %}
+            {% if check.getPolicy %}
                 <div id="modalPolicy{{ loop.index }}" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -50,20 +50,21 @@
                                 <h4 class="modal-title">Policy report</h4>
                             </div>
                             <div class="modal-body">
-                                {% if check.getPolicy|length > 0 %}
-                                    {% for policy in check.getPolicy %}
-                                        {{ policy|raw }}
-                                    {% endfor %}
+                                {% if 'html' == check.getPolicyOutputFormat %}
+                                    {{ check.getPolicy|raw }}
                                 {% else %}
-                                    No error!
+                                    {{ check.getPolicy|nl2br }}
                                 {% endif %}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#modalPolicy{{ loop.index }}" data-save-name="{{ check.filename }}_PolicyReport.txt">Download report</button>
+                                <button type="button" class="btn btn-primary report-dld" data-target="#policyDld{{ loop.index }}" data-save-name="{{ check.filename }}_PolicyReport.{{ check.getPolicyOutputFormat }}">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div id="policyDld{{ loop.index }}" class="hidden">
+                    {{ check.getPolicy|nl2br }}
                 </div>
             {% endif %}
 

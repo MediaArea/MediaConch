@@ -40,6 +40,16 @@ class CheckerOnlineFormType extends AbstractType
                 'attr' => array('accept' => '.sch, .xsl'))
                 )
             )
+            ->add('policyDisplay', 'entity', array('class' => 'AppBundle:XslPolicyDisplayFile',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->where('p.user = :user')
+                        ->setParameter('user', $this->user);
+                },
+                'placeholder' => 'Choose a policy display',
+                'required' => false,
+                'label' => 'Policy display')
+                )
             ->add('file', 'url', array('max_length' => 512, 'label' => 'URL of file'))
             ->add('Check file', 'submit', array('attr' => array('class' => 'btn-warning')));
     }

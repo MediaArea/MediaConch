@@ -40,6 +40,16 @@ class CheckerRepositoryFormType extends AbstractType
                 'attr' => array('accept' => '.sch, .xsl'))
                 )
             )
+            ->add('policyDisplay', 'entity', array('class' => 'AppBundle:XslPolicyDisplayFile',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->where('p.user = :user')
+                        ->setParameter('user', $this->user);
+                },
+                'placeholder' => 'Choose a policy display',
+                'required' => false,
+                'label' => 'Policy display')
+                )
             ->add('Check files', 'submit', array('attr' => array('class' => 'btn-warning')));
     }
 

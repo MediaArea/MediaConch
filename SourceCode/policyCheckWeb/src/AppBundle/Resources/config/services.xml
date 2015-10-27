@@ -63,6 +63,10 @@
             <tag name="form.type" alias="xslPolicyRule" />
         </service>
 
+        <service id="app.form.type.policy.display.import" class="AppBundle\Form\Type\XslPolicyDisplayImportFormType">
+            <tag name="form.type" alias="xslPolicyDisplayImport" />
+        </service>
+
         <service id="mco.directory_namer.policy" class="AppBundle\Lib\VichUploaderBundle\UserDirectoryNamer">
         </service>
 
