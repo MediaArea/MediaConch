@@ -179,6 +179,11 @@ p.registration {
     margin-top: 10px;
 }
 
+#xslPolicyRule_editor {
+    display: inline-block;
+    margin-left: 10px;
+}
+
 #xslPolicyRule_editor .radio {
     display: inline-block;
     margin: 0 10px 0 0;
@@ -191,4 +196,8 @@ p.registration {
 .xslPolicyRuleDuplicateButton {
     display: inline-block;
     margin-left: 30px;
+}
+
+.panel-body a button.pull-right {
+    margin-left: 10px;
 }

@@ -31,6 +31,9 @@ MediaConchOnline Policy Rules Management
             {% endfor %}
             </ul>
         </div>
+        <div class="panel-body">
+            <a href="{{ path('app_xslpolicy_xslpolicyruleedit', {'id': policy.id}) }}"><button class="btn-success pull-right">Add a new rule</button></a>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -62,7 +65,7 @@ $(document).ready(function() {
 
     editor = $('#xslPolicyRule_editor input[type=\'radio\']:checked').val();
     $('#xslPolicyRule_editor input[type=\'radio\']').parent().removeClass('required');
-    //$('#xslPolicyRule_editor').prev().removeClass('required');
+    $('#xslPolicyRule_editor').prev().removeClass('required');
 
     if (0 == editor) {
         hideFreetext();

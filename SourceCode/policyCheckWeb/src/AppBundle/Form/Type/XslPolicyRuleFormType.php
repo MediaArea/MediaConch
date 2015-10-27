@@ -14,7 +14,7 @@ class XslPolicyRuleFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', 'text', array('data' => ('' == $options['data']->getTitle()) ? 'New rule' : $options['data']->getTitle(), 'label' => 'Rule name'))
-            ->add('editor', 'choice', array('data' => ('is_true' == $options['data']->getValidator()) ? 1 : 0, 'mapped' => false, 'choices' => array('Editor', 'Free text'), 'expanded' => true, 'multiple' => false))
+            ->add('editor', 'choice', array('data' => ('is_true' == $options['data']->getValidator()) ? 1 : 0, 'mapped' => false, 'choices' => array('Editor', 'Free text'), 'expanded' => true, 'multiple' => false, 'label' => 'Editor type :'))
 
             // Standard editor
             ->add('trackType', 'choice', array('placeholder' => 'Choose a track type', 'choices' => XslPolicyFormFields::getTrackTypes()))
