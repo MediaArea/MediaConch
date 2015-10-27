@@ -7,11 +7,11 @@ title: "MediaConch Demo"
 # MediaConch Test Demonstrations
 
 [Description](#description)
-[General Conformance with FFmpeg-generated Matroska and FFV1 file](general-conformance-with-ffmpeg-generated-matroska-and-ffv1-file)
-[Standards Mismatch](standards-mismatch)
-[Testing multiple like files](testing-multiple-like-files)
-[Quicktime/v210 to Matroska/FFV1](quicktime/v210-to-matroska/ffv1)
-[Preservation Master File recommended specifications](preservation-master-file-recommended-specifications)
+[General Conformance with FFmpeg-generated Matroska and FFV1 file](#general-conformance-with-ffmpeg-generated-matroska-and-ffv1-file)
+[Standards Mismatch](#standards-mismatch)
+[Testing multiple like files](#testing-multiple-like-files)
+[Quicktime and v210 to Matroska and FFV1](#quicktime-and-v210-to-matroska-and-ffv1)
+[Preservation Master File recommended specifications](#preservation-master-file-recommended-specifications)
 
 ### Description
 
@@ -89,7 +89,7 @@ To test, run the following test files with the associated policy document:
 
 `mediaconch -ti -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -s Testing_Multiple_Files.xsl`
 
-#### Quicktime/v210 to Matroska/FFV1 
+#### Quicktime and v210 to Matroska and FFV1 
 
 Description: This test is used to validate Matroska/FFV1 files transcoded from 10-bit uncompressed (v210) QuickTime files originally made for digitally reformatting analog NTSC BetacamSP video. Such a transcoding workflow is becoming increasingly common for institutions who want to take advantage of FFV1's lossless compression and size benefits.  
 
@@ -131,9 +131,9 @@ To test, run the following test file with the associated policy document:
 
 #### Preservation Master File recommended specifications
 
-Description: This test is used to validate recommended preservation master file format specifications described in the resource, "Digitizing Video for Long-Term Preservation: An RFP Guide and Template" by the Barbara Goldsmith Preservation & Conservation Department, New York University Libraries, published in 2013. This resource is available [here](https://library.nyu.edu/preservation/VARRFP.pdf). 
+Description: This test is used to validate recommended preservation master file format specifications described in the resource, "Digitizing Video for Long-Term Preservation: An RFP Guide and Template" by the Barbara Goldsmith Preservation & Conservation Department, New York University Libraries, published in 2013. Preservation master file specifications in both QuickTime and Matroska formats are pesented here. 
 
-Preservation master file specifications in both QuickTime and Matroska formats are pesented here. 
+This resource is available [here](https://library.nyu.edu/preservation/VARRFP.pdf). 
 
 Test File (QuickTime): [Preservation Master File recommended specifications - QuickTime](files/NYULibraries_QTv210.mov)
 
