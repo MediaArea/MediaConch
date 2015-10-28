@@ -8,34 +8,35 @@
             <div>
                 <ul class="list-group">
                     {% if check.getPolicy %}
-                        {% if check.getStatus is not same as(null) %}
-                            <li class="list-group-item">This file is: <span class="text-uppercase text-{{ check.getStatus ? 'success' : 'danger' }}"><b>{{ check.getStatus ? '' : 'not ' }}valid</b></span></li>
-                        {% endif %}
-                        <li class="list-group-item report">Policy report
-                            <p class="text-right">
-                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#policyDld{{ loop.index }}" data-save-name="{{ check.filename }}_PolicyReport.{{ check.getPolicyOutputFormat }}" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
-                            </p>
+                        <li class="list-group-item report">
+                            <div class="checker-result-text">Policy report</div>
+                            <div class="checker-result-buttons">
+                                <a href="#" data-toggle="modal" data-target="#modalPolicy{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#policyDld{{ loop.index }}" data-save-name="{{ check.filename }}_MediaConch.{{ check.getPolicyOutputFormat }}" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
+                            </div>
                         </li>
                     {% endif %}
                     {% if check.getConformance %}
-                        <li class="list-group-item report">Implementation report
-                            <p class="text-right">
-                                <a href="#" data-toggle="modal" data-target="#modalConformance{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalConformance{{ loop.index }}" data-save-name="{{ check.filename }}_ConformanceReport.txt" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
-                            </p>
+                        <li class="list-group-item report">
+                            <div class="checker-result-text">Implementation report</div>
+                            <div class="checker-result-buttons">
+                                <a href="#" data-toggle="modal" data-target="#modalConformance{{ loop.index }}" title="View report"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld" data-target="#modalConformance{{ loop.index }}" data-save-name="{{ check.filename }}_ImplementationReport.txt" title="Download report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
+                            </div>
                         </li>
                     {% endif %}
                     {% if check.getInfo or selectForm == 'repository' %}
-                        <li class="list-group-item report">MediaInfo
-                            <p class="text-right">
+                        <li class="list-group-item report">
+                            <div class="checker-result-text">MediaInfo</div>
+                            <div class="checker-result-buttons">
                                 <a href="#" data-toggle="modal" data-target="#modalInfo{{ loop.index }}" title="View MediaInfo"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld-info{% if not check.getInfo %}-ajax{% endif %}" data-target="#infoXml{{ loop.index }}" data-save-name="{{ check.filename }}_MediaInfo.xml" title="Download MediaInfo"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
-                            </p>
+                            </div>
                         </li>
                     {% endif %}
                     {% if check.getTrace or selectForm == 'repository' %}
-                        <li class="list-group-item report">MediaTrace
-                            <p class="text-right">
+                        <li class="list-group-item report">
+                            <div class="checker-result-text">MediaTrace</div>
+                            <div class="checker-result-buttons">
                                 <a href="#" data-toggle="modal" data-target="#modalTrace{{ loop.index }}" title="View trace"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a><a href="#" class="results-dld-trace{% if not check.getTrace %}-ajax{% endif %}" data-target="#traceXml{{ loop.index }}" data-save-name="{{ check.filename }}_MediaTrace.xml" title="Download trace"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
-                            </p>
+                            </div>
                         </li>
                     {% endif %}
                 </ul>
@@ -57,7 +58,7 @@
                                 {% endif %}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#policyDld{{ loop.index }}" data-save-name="{{ check.filename }}_PolicyReport.{{ check.getPolicyOutputFormat }}">Download report</button>
+                                <button type="button" class="btn btn-primary report-dld" data-target="#policyDld{{ loop.index }}" data-save-name="{{ check.filename }}_MediaConch.{{ check.getPolicyOutputFormat }}">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -80,7 +81,7 @@
                                 <p>{{ check.getConformance|replace({' ': '&nbsp;'})|raw|nl2br }}</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary report-dld" data-target="#modalConformance{{ loop.index }}" data-save-name="{{ check.filename }}_ConformanceReport.txt">Download report</button>
+                                <button type="button" class="btn btn-primary report-dld" data-target="#modalConformance{{ loop.index }}" data-save-name="{{ check.filename }}_ImplementationReport.txt">Download report</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>

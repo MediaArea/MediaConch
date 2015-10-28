@@ -71,7 +71,7 @@ MediaConch checker
         <script>
             $(document).ready(function() {
                 // Add download button to result list
-                $('.checker-results li.report p a.results-dld').each(function() {
+                $('.checker-results li.report div a.results-dld').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadReport($(this));
@@ -112,7 +112,7 @@ MediaConch checker
                 };
 
                 // Add download trace button to result list
-                $('.checker-results li.report p a.results-dld-trace').each(function() {
+                $('.checker-results li.report div a.results-dld-trace').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadTrace($(this));
@@ -134,7 +134,7 @@ MediaConch checker
                 };
 
                 // Add download trace ajax button to result list
-                $('.checker-results li.report p a.results-dld-trace-ajax').each(function() {
+                $('.checker-results li.report div a.results-dld-trace-ajax').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadTraceAjax($(this));
@@ -164,7 +164,7 @@ MediaConch checker
                 };
 
                 // Add download MediaInfo button to result list
-                $('.checker-results li.report p a.results-dld-info').each(function() {
+                $('.checker-results li.report div a.results-dld-info').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadInfo($(this));
@@ -186,7 +186,7 @@ MediaConch checker
                 };
 
                 // Add download MediaInfo ajax button to result list
-                $('.checker-results li.report p a.results-dld-info-ajax').each(function() {
+                $('.checker-results li.report div a.results-dld-info-ajax').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadInfoAjax($(this));
