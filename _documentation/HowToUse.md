@@ -23,7 +23,6 @@ title: "Documentation: How To Use"
 - [Occurrence](#occurrence)
 - [Validator](#validator)
 - [Value](#value)
-- [Invalid Text](#invalid-text)
 - [Free Text Mode](#free-text-mode)
 
 ##Display 
