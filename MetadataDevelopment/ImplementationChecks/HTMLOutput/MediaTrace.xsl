@@ -4,38 +4,39 @@
   <xsl:template match="/ma:MediaArea">
     <xsl:for-each select="ma:media/mt:MediaTrace">
       <table border="1">
-        <xsl:for-each select="mt:block">
-          <tr>
-          <td>
-            <xsl:text>Offset: </xsl:text>
-            <xsl:value-of select="@offset"/>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="@name"/>
-            <xsl:text>(</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-          <xsl:for-each select="mt:block">
-            <tr>
-            <td><xsl:text>Offset: </xsl:text>
-            <xsl:value-of select="@offset"/>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="@name"/>
-            <xsl:text>(</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-            <xsl:for-each select="mt:data">
-              <tr>
-              <td><xsl:text>Offset: </xsl:text>
-              <xsl:value-of select="@offset"/>
-              <xsl:text> </xsl:text>
-              <xsl:value-of select="@name"/>
-              <xsl:text> </xsl:text><xsl:value-of select="."/>
-              </td>
-              </tr>
-            </xsl:for-each>
-            </td>
-            </tr>
-          </xsl:for-each>
-          </td>
-          </tr>
-        </xsl:for-each>
+        <xsl:apply-templates select="mt:block"/>
       </table>
     </xsl:for-each>
   </xsl:template>
+
+  <xsl:template match="mt:block">
+      <tr>
+        <td>
+          <xsl:text>Offset block: </xsl:text>
+          <xsl:value-of select="@offset"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="@name"/>
+          <xsl:text>(</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
+        </td>
+      </tr>
+      <xsl:if test="mt:block">
+        <xsl:apply-templates select="mt:block" />
+      </xsl:if>
+      <xsl:if test="mt:data">
+        <xsl:apply-templates select="mt:data" />
+      </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="mt:data">
+      <tr>
+        <td>
+          <xsl:text>Offset data: </xsl:text>
+          <xsl:value-of select="@offset"/>
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="@name"/>
+          <xsl:text>(</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
+        </td>
+      </tr>
+  </xsl:template>
+
 </xsl:stylesheet>
