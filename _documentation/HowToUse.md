@@ -168,10 +168,6 @@ Allows a user may select a desired value .
 
 User note: When creating a value, do not include any associated strings (e.g., "pixels"). 
 
-###Invalid Text
-
-Invalid text allows a user to provide a value in the event that there is not enough context for a pass/fail assert. 
-
 ###Free Text mode
 
 In addition to the Editor, policies may also be edited in Free Text mode. Free Text uses the XML Path Language, or XPath. An example of a MediaConch XPath expression in Free Text mode includes the following:
@@ -180,18 +176,18 @@ Example: *track[@type='General']/FileExtension = 'mkv'*
 
 ##Display
 
-The Display tab allows a user to view a list of available XSL policy files. List includes Filename and associated Path. 
+The display section will allow a user to apply an XSL to any conformance output XMLs for HTML presentation. 
 
 ###Import display set
 
-Allows a user to import an XSL policy file to the display set. 
+Allows a user to import a display file to the display set. 
 
 ###Export display set
 
-Allows a user to export an XSL policy file to the display set. 
+Allows a user to export a display file to the display set. 
 
 ###Delete selected display file
 
-Allows a user to delete an XSL policy file from the display set. 
+Allows a user to delete a display file from the display set. 
 
 
