@@ -1,5 +1,5 @@
-<!-- See also: ImplementationChecks/HTMLOutput/MediaConch.xsl -->
 <?xml version="1.0"?>
+<!-- See also: ImplementationChecks/HTMLOutput/MediaConch.xsl -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
     <xsl:output encoding="UTF-8" method="html" version="1.0" indent="yes"/>
     <xsl:template match="/mc:MediaConch/mc:policyChecks">
