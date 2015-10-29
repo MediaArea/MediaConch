@@ -59,9 +59,9 @@ Here's an example of a MediaInfo XML General type track element containing the s
 
 A MediaInfo XML can be generated using the following tools and commands:
 
-- With MediaInfo: `mediainfo --Output=XML file.mov`
+- With MediaInfo: `mediainfo --Output=XML file.mkv`
 
-- With MediaConch (CLI): `mediaconch -mi -fx file.mov`
+- With MediaConch (CLI): `mediaconch -mi -fx file.mkv`
 
 - With MediaConch (GUI): Select View Mode in the `MediaInfo` tab from the resulting file Checker reports
 
@@ -98,7 +98,7 @@ Within the <policyChecks> element are individual <policy> rules that contain the
 
 A MediaConch XML can be generated using the following tools and commands:
 
--With MediaConch (CLI): `mediaconch -mi -fx file.mov`
+-With MediaConch (CLI): `mediaconch -mc -fx file.mkv`
 
 -With MediaConch (GUI): Select View Mode in the `Policy Report` tab from the resulting file Checker reports
 
@@ -140,9 +140,9 @@ Many audiovisual formats are based on chunk-based storage where a block of data 
 
 A MediaTrace XML can be generated using the following tools and commands:
 
--With MediaInfo: `mediainfo --Details=1 --Output=XML file.mov`
+-With MediaInfo: `mediainfo --Details=1 --Output=XML file.mkv`
 
--With MediaConch (CLI): `mediaconch -tt -fx file.mov`
+-With MediaConch (CLI): `mediaconch -mt -fx file.mkv`
 
 -With MediaConch (GUI): Select Select View Mode in the `MediaTrace` tab from the resulting file Checker reports
 
@@ -164,9 +164,9 @@ The root element of the MediaArea XML is `<MediaArea>`, followed by a `<media>` 
 
 A MediaTrace XML can be generated using the following tools and commands:
 
--With MediaInfo: `mediainfo --Details=1 --Output=MAXML file.mov`
+-With MediaInfo: `mediainfo --Details=1 --Output=MAXML file.mkv`
 
--With MediaConch (CLI): `mediaconch`
+-With MediaConch (CLI): `mediaconch --Format=maxml -fa file.mkv`
 
 #### Schema
 
