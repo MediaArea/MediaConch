@@ -53,7 +53,7 @@ MediaConch checker
                 {{ form(formRepository) }}
             </div>
         </div>
-    {% else %}
+    {% elseif repositoryEnable is defined and repositoryEnable %}
         {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
     {% endif %}
     </div>
