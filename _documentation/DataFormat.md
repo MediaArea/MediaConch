@@ -4,25 +4,38 @@ permalink: documentation/DataFormat.html
 title: "Documentation: Data Format"
 ---
 
-#Data Format
-
-- [Description](#description)
-- [MediaInfo XML](#mediainfo-xml)
-- [MediaConch XML](#mediaconch-xml)
-- [MediaTrace XML](#mediatrace-xml)
-- [MediaArea XML](#mediaarea-xml)
-
-##Description
+# Data Format
 
 This document describes four MediaArea XML schemas for file reporting. These schemas include the MediaConch XML, the MediaInfo XML, the MediaTrace XML, and the MediaAreaXML (MAXML). 
 
-##MediaInfo XML
+- [MediaInfo XML](#mediainfo-xml)
+- [Description](#description)
+- [Structure](#structure)
+- [Generating a MediaInfo XML](#generating-a-mediainfo-xml)
+- [Schema](#schema)
+- [MediaConch XML](#mediaconch-xml)
+- [Description](#description)
+- [Structure](#structure)
+- [Generating a MediaConch XML](#generating-a-mediaconch-xml)
+- [Schema](#schema)
+- [MediaTrace XML](#mediatrace-xml)
+- [Description](#description)
+- [Structure](#structure)
+- [Generating a MediaTrace XML](#generating-a-mediatrace-xml)
+- [Schema](#schema)
+- [MediaArea XML](#mediaarea-xml)
+- [Description](#description)
+- [Structure](#structure)
+- [Generating a MediaArea XML](#generating-a-mediaarea-xml)
+- [Schema](#schema)
 
-###Summary
+## MediaInfo XML
+
+### Description
 
 MediaInfo XML is a reporting tool that 
 
-###Structure
+### Structure
 
 The root element of the MediaInfo XML is `<Mediainfo>`, followed by a `<File>` sibling element. A `<track type>` child element defines MediaInfo's track types (General, Video, Audio, etc.), and within track type elements are various sub-child elements corresponding to associated field metadata. For example, a "General" track type element will include such sibling elements as `<CompleteName>`, `<Format>`, and `<FileSize>`; a "Video" track type element will include such sibling elements as `<Width>`, <Height>, and <PixelAspectRatio>; an "Audio" track type element will include such sibling elements as `<Channels>`, `<SamplingRate>`, and `<SamplingCount>`; and so on, and so forth. 
 
@@ -51,11 +64,11 @@ An XML Schema for MediaAreaXML is available at .
 
 ##MediaConch XML
 
-###Summary
+### Summary
 
 The MediaConch XML 
 
-###Structure
+### Description
 
 The root element of the MediaConch XML is `<MediaConch>`, followed by a <policyChecks> element which encapsulates individual policy rules. The `<title>` element denotes the title of the policy, while the `<media>` element contains the checked filename its associated path:
 
@@ -72,7 +85,7 @@ Within the <policyChecks> element are individual <policy> rules that contain the
 `<test tracktype="General" actual="Matroska" outcome="pass"/>`
 `</policy>`
 
-### Application
+### Generating a MediaConch XML
 
 A MediaConch XML can be generated using the following tools and commands:
 
@@ -88,11 +101,11 @@ An XML Schema for MediaAreaXML is available at .
 
 ## MediaTrace XML
 
-###Summary
+### Description
 
 The MediaTrace XML is a technical reporting tool that expresses the binary architecture of a file as interpreted by MediaArea’s principal software, MediaInfo. 
 
-##Structure
+## Structure
 
 The root element of the MediaTrace XML is <MediaTrace>, followed by a <creatingLibrary> sibling element denoting the version of MediaInfo’s library used in generating the trace:
 
@@ -130,7 +143,7 @@ An XML Schema for MediaTrace is available at https://mediaarea.net/mediatrace/me
 
 ## MediaArea XML 
 
-###Summary
+### Description
 
 The MediaArea XML (MAXML) incorporates both MediaInfo’s general reporting and MediaTrace’s binary architecture reporting into one condensed XML structure. 
 
