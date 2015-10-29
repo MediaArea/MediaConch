@@ -41,6 +41,8 @@ class Quotas
 
         $this->em->persist($userQuotas);
         $this->em->flush();
+
+        return $userQuotas;
     }
 
     public function getQuotasForProfile()
@@ -172,9 +174,15 @@ class Quotas
 
     private function getQuotasByUser()
     {
-        return $this->em
+        $userQuotas = $this->em
             ->getRepository('AppBundle:UserQuotas')
             ->findOneByUser($this->user);
+
+        if (!$userQuotas) {
+            $userQuotas = $this->setQuotasForNewUser();
+        }
+
+        return $userQuotas;
     }
 
     private function getDefaultQuotas()

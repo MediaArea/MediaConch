@@ -36,13 +36,13 @@ class MediaConchPolicy extends MediaConch
         switch ($fileExtension) {
             case 'xsl' :
             case 'xslt' :
-                $this->policyType = SELF::$TYPE_XSLT;
+                $this->policyType = MediaConchPolicy::$TYPE_XSLT;
                 break;
             case 'sch' :
-                $this->policyType = SELF::$TYPE_SCHEMATRON;
+                $this->policyType = MediaConchPolicy::$TYPE_SCHEMATRON;
                 break;
             default :
-                $this->policyType = SELF::$TYPE_SCHEMATRON;
+                $this->policyType = MediaConchPolicy::$TYPE_SCHEMATRON;
                 break;
         }
 
@@ -52,10 +52,10 @@ class MediaConchPolicy extends MediaConch
     public function isValid()
     {
         switch ($this->policyType) {
-            case SELF::$TYPE_XSLT :
+            case MediaConchPolicy::$TYPE_XSLT :
                 return !preg_match('/<td>(fail|invalid)<\/td>/', $this->output);
                 break;
-            case SELF::$TYPE_SCHEMATRON :
+            case MediaConchPolicy::$TYPE_SCHEMATRON :
                 return !preg_match('/NOT VALID/', $this->output);
                 break;
             default :

@@ -95,7 +95,7 @@ class User extends BaseUser
     protected $newsletter = true;
 
     /**
-     * @ORM\Column(type="string", length=1, nullable=false)
+     * @ORM\Column(type="string", length=1, nullable=true)
      *
      */
     protected $professional;
