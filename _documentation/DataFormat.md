@@ -8,22 +8,22 @@ title: "Documentation: Data Format"
 
 This document describes four MediaArea XML schemas for file reporting. These schemas include the MediaConch XML, the MediaInfo XML, the MediaTrace XML, and the MediaAreaXML (MAXML). 
 
-## MediaInfo XML
+- ## MediaInfo XML
 - [Description](#description)
 - [Structure](#structure)
 - [Generating a MediaInfo XML](#generating-a-mediainfo-xml)
 - [Schema](#schema)
-## MediaConch XML
+- ## MediaConch XML
 - [Description](#description)
 - [Structure](#structure)
 - [Generating a MediaConch XML](#generating-a-mediaconch-xml)
 - [Schema](#schema)
-## MediaTrace XML
+- ## MediaTrace XML
 - [Description](#description)
 - [Structure](#structure)
 - [Generating a MediaTrace XML](#generating-a-mediatrace-xml)
 - [Schema](#schema)
-## MediaArea XML
+- ## MediaArea XML
 - [Description](#description)
 - [Structure](#structure)
 - [Generating a MediaArea XML](#generating-a-mediaarea-xml)
