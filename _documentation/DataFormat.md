@@ -23,7 +23,7 @@ This document describes four XML schemas designed by MediaArea for various types
 - [Generating a MediaTrace XML](#generating-a-mediatrace-xml)
 - [MediaTrace XML Schema](#mediatrace-xml-schema)
 
-#### [MediaArea XML (MAXML)](#mediaarea-xml)
+#### [MediaArea XML](#mediaarea-xml)
 - [Structure of a MediaArea XML](#structure-of-a-mediaarea-xml)
 - [Generating a MediaArea XML](#generating-a-mediaarea-xml)
 - [MediaArea XML Schema](#mediaarea-xml-schema)
@@ -38,7 +38,7 @@ The root element of the MediaInfo XML exists as `<Mediainfo>`. A nested `<File>`
 
 The following is an example of a MediaInfo XML General type track element containing the sub-child elements "Format," "Format_profile," and "Codec_ID": 
 
-        `<track type="General">
+        <track type="General">
 		<Complete_name>/Users/mycomputer//files/ffv1.mkv</Complete_name>
 		<Format>MPEG-4</Format>
 		<Format_profile>QuickTime</Format_profile>
@@ -75,10 +75,10 @@ The root element of the MediaConch XML exists as `<MediaConch>`, and initially c
 
 Within the <policyChecks> element are individual <policy> rules that contain the name of the policy rule, the associated track type and field, a user-declared value, the reported or “actual” value, and a “pass” or “fail” outcome:
 
-`<policy title="General Format equals Matroska">`
-`<context field="Format" value="Matroska"/>`
-`<test tracktype="General" actual="Matroska" outcome="pass"/>`
-`</policy>`
+	<policy title="General Format equals Matroska">
+	<context field="Format" value="Matroska"/>
+	<test tracktype="General" actual="Matroska" outcome="pass"/>
+	</policy>
 
 #### Generating a MediaConch XML
 
@@ -98,7 +98,7 @@ The MediaTrace XML is a technical reporting tool that expresses the binary archi
 
 ### Structure of a MediaTrace XML
 
-The root element of the MediaTrace XML exists as <MediaTrace>. This root element contains a <creatingLibrary> sub-element denoting the version of MediaInfo’s library used in generating the trace report:
+The root element of the MediaTrace XML exists as <MediaTrace>. This root element contains a `<creatingLibrary>` sub-element denoting the version of MediaInfo’s library used in generating the trace report:
 
 	<MediaTrace
     xmlns="https://mediaarea.net/mediatrace"
@@ -122,9 +122,9 @@ Many audiovisual formats are based on chunk-based storage where a block of data 
 
 A MediaTrace XML can be generated using the following tools and associated commands:
 
--With MediaInfo: `mediainfo --Details=1 --Output=XML file.mov`
+-With MediaInfo: `mediainfo --Details=1 --Output=XML file.mkv`
 
--With MediaConch (CLI): `mediaconch -tt -fx file.mov`
+-With MediaConch (CLI): `mediaconch -mt -fx file.mkv`
 
 -With MediaConch (GUI): Select Select View Mode in the `MediaTrace` tab from the resulting file Checker reports
 
@@ -144,9 +144,9 @@ The root element of the MediaArea XML is `<MediaArea>`, followed by a `<media>` 
 
 A MediaTrace XML can be generated using the following tools and associated commands:
 
--With MediaInfo: `mediainfo --Details=1 --Output=MAXML file.mov`
+-With MediaInfo: `mediainfo --Details=1 --Output=MAXML file.mkv`
 
--With MediaConch (CLI): `mediaconch`
+-With MediaConch (CLI): `mediaconch -mt -fx file.mkv`
 
 #### MediaArea XML Schema
 
