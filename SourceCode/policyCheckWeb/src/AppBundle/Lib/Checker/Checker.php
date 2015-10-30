@@ -2,61 +2,57 @@
 
 namespace AppBundle\Lib\Checker;
 
-use AppBundle\Lib\MediaInfo\MediaInfo;
-use AppBundle\Lib\MediaInfo\MediaInfoOutput;
-use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
 use AppBundle\Lib\MediaConch\MediaConchPolicy;
 use AppBundle\Lib\MediaConch\MediaConchConformance;
 use AppBundle\Lib\MediaConch\MediaConchTrace;
-use AppBundle\Entity\Policy;
+use AppBundle\Lib\MediaConch\MediaConchInfo;
+use AppBundle\Entity\XslPolicyFile;
 
 class Checker
 {
-    private $source;
-    private $clientSourceName;
-    private $xmlEnable = true;
-    private $xml;
-    private $conformanceEnable = true;
-    private $conformance;
-    private $policyEnable = true;
-    private $policy;
-    private $policyItem;
-    private $traceEnable = false;
-    private $trace;
-    private $traceFormat = array();
-    private $status;
+    protected $source;
+    protected $clientSourceName;
+    protected $infoEnable = true;
+    protected $info;
+    protected $infoFormat = array();
+    protected $conformanceEnable = true;
+    protected $conformance;
+    protected $policyEnable = true;
+    protected $policy;
+    protected $policyItem;
+    protected $policyDisplayFile = null;
+    protected $traceEnable = false;
+    protected $trace;
+    protected $traceFormat = array();
+    protected $status;
 
-    public function __construct($source, $policyItem = false)
+    public function __construct($source)
     {
         $this->setSource($source);
-        if ($policyItem) {
-            $this->policyItem = $policyItem;
-        }
-        else {
-            $this->disablePolicy();
-        }
     }
 
     public function run()
     {
-        $this->runXml()
+        $this->runInfo()
             ->runTrace()
             ->runConformance()
             ->runPolicy();
     }
 
-    private function runXml()
+    protected function runInfo()
     {
-        if ($this->xmlEnable) {
-            $MediaInfo = new MediaInfo($this->source);
-            $MediaInfo->analyse();
-            $this->xml = $MediaInfo->getSuccess() ? $MediaInfo->getOutputXml() : false;
+        if ($this->infoEnable && count($this->infoFormat) > 0) {
+            foreach ($this->infoFormat as $format) {
+                $MediaConch = new MediaConchInfo($this->source);
+                $MediaConch->run($format);
+                $this->info[$format] = $MediaConch->getSuccess() ? $MediaConch->getOutput() : false;
+            }
         }
 
         return $this;
     }
 
-    private function runTrace()
+    protected function runTrace()
     {
         if ($this->traceEnable && count($this->traceFormat) > 0) {
             foreach ($this->traceFormat as $format) {
@@ -69,7 +65,7 @@ class Checker
         return $this;
     }
 
-    private function runConformance()
+    protected function runConformance()
     {
         if ($this->conformanceEnable) {
             $MediaConch = new MediaConchConformance($this->source);
@@ -80,25 +76,25 @@ class Checker
         return $this;
     }
 
-    private function runPolicy()
+    protected function runPolicy()
     {
         if ($this->policyEnable) {
-            if ($this->policyItem instanceof Policy) {
-                $MediaInfo = new MediaInfo($this->source);
-                $MediaInfo->analyse();
-                if ($MediaInfo->getSuccess()) {
-                    $policyChecker = new MediaInfoPolicyChecker($MediaInfo->getParsedOutput(), $this->policyItem);
-                    $policyChecker->check();
-                    $this->setStatus($policyChecker->isValid());
-                    $this->policy = $policyChecker->getErrors();
+            if (is_string($this->policyItem) && file_exists($this->policyItem)) {
+                $MediaConchPolicy = new MediaConchPolicy($this->source);
+                $MediaConchPolicy->setPolicyType(pathinfo($this->policyItem, PATHINFO_EXTENSION))
+                    ->run($this->policyItem, $this->policyDisplayFile);
+                if ($MediaConchPolicy->getSuccess()) {
+                    $this->setStatus($MediaConchPolicy->isValid());
+                    $this->policy = $MediaConchPolicy->getOutput();
                 }
             }
             elseif ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
                 $MediaConchPolicy = new MediaConchPolicy($this->source);
-                $MediaConchPolicy->setPolicyType($this->policyItem->getClientOriginalExtension())->run($this->policyItem->getRealPath());
+                $MediaConchPolicy->setPolicyType($this->policyItem->getClientOriginalExtension())
+                    ->run($this->policyItem->getRealPath(), $this->policyDisplayFile);
                 if ($MediaConchPolicy->getSuccess()) {
                     $this->setStatus($MediaConchPolicy->isValid());
-                    $this->policy = array($MediaConchPolicy->getOutput());
+                    $this->policy = $MediaConchPolicy->getOutput();
                 }
             }
             else {
@@ -109,7 +105,7 @@ class Checker
         return $this;
     }
 
-    private function setStatus($status)
+    protected function setStatus($status)
     {
         if (false !== $this->status) {
             $this->status = $status;
@@ -123,7 +119,7 @@ class Checker
         return $this->status;
     }
 
-    private function setSource($source)
+    protected function setSource($source)
     {
         if ($source instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
             $this->source = $source->getRealPath();
@@ -144,34 +140,56 @@ class Checker
         }
     }
 
-    public function enableXml()
+    public function enableInfo()
     {
-        $this->xmlEnable = true;
+        $this->infoEnable = true;
 
         return $this;
     }
 
-    public function disableXml()
+    public function disableInfo()
     {
-        $this->xmlEnable = false;
+        $this->infoEnable = false;
 
         return $this;
     }
 
-    public function getXml()
+    public function setInfoFormat(array $format)
     {
-        $xml = $this->xml;
-        $xml = preg_replace('|<FolderName>(.*)</FolderName>\n|', '', $xml);
-        $xml = preg_replace('|<CompleteName>(.*)</CompleteName>\n|', '', $xml);
+        $this->infoFormat = $format;
 
-        if ($this->clientSourceName) {
-            return str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $xml);
+        return $this;
+    }
+
+    public function addInfoFormat($format)
+    {
+        if (!in_array($format, $this->infoFormat)) {
+            $this->infoFormat[] = $format;
+        }
+
+        return $this;
+    }
+
+    public function getInfo($format = null)
+    {
+        if (isset($this->info['xml'])) {
+            $this->info['xml'] = str_replace($this->source, $this->getBasename(), $this->info['xml']);
+        }
+        if (isset($this->info['jstree'])) {
+            $this->info['jstree'] = str_replace($this->source, $this->getBasename(), $this->info['jstree']);
+        }
+
+        if (null == $format) {
+            return $this->info;
         }
         else {
-            return str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $xml);
+            if (isset($this->info[$format])) {
+                return $this->info[$format];
+            }
+            else {
+                return false;
+            }
         }
-
-        return $xml;
     }
 
     public function enableConformance()
@@ -190,12 +208,7 @@ class Checker
 
     public function getConformance()
     {
-        if ($this->clientSourceName) {
-            return str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $this->conformance);
-        }
-        else {
-            return str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $this->conformance);
-        }
+        return str_replace($this->source, $this->getBasename(), $this->conformance);
     }
 
     public function enablePolicy()
@@ -214,12 +227,25 @@ class Checker
 
     public function getPolicy()
     {
+        $this->policy = str_replace($this->source, $this->getBasename(), $this->policy);
+
         if ($this->policyItem instanceof \Symfony\Component\HttpFoundation\File\UploadedFile) {
-            return str_replace($this->policyItem->getRealPath(), $this->policyItem->getClientOriginalName(), $this->policy);
+            $this->policy = str_replace($this->policyItem->getRealPath(), $this->policyItem->getClientOriginalName(), $this->policy);
         }
-        else {
-            return $this->policy;
+
+        return $this->policy;
+    }
+
+    public function getPolicyOutputFormat()
+    {
+        if (preg_match('/<\\!DOCTYPE.*html/i', $this->policy)) {
+            return 'html';
         }
+        elseif (preg_match('/<\\?xml/i', $this->policy)) {
+            return 'xml';
+        }
+
+       return 'txt';
     }
 
     public function enableTrace()
@@ -255,12 +281,7 @@ class Checker
     public function getTrace($format = null)
     {
         if (isset($this->trace['xml'])) {
-            if ($this->clientSourceName) {
-                $this->trace['xml'] = str_replace($this->source, pathinfo($this->clientSourceName, PATHINFO_BASENAME), $this->trace['xml']);
-            }
-            else {
-                $this->trace['xml'] = str_replace($this->source, pathinfo($this->source, PATHINFO_BASENAME), $this->trace['xml']);
-            }
+            $this->trace['xml'] = str_replace($this->source, $this->getBasename(), $this->trace['xml']);
         }
 
         if (null == $format) {
@@ -273,6 +294,40 @@ class Checker
             else {
                 return false;
             }
+        }
+    }
+
+    public function setPolicyItem($policyItem)
+    {
+        $this->policyItem = $policyItem;
+
+        return $this;
+    }
+
+    public function setPolicyDisplayFile($policyDisplayFile)
+    {
+        $this->policyDisplayFile = $policyDisplayFile;
+
+        return $this;
+    }
+
+    public function getFilename()
+    {
+        if ($this->clientSourceName) {
+            return pathinfo($this->clientSourceName, PATHINFO_FILENAME);
+        }
+        else {
+            return pathinfo($this->source, PATHINFO_FILENAME);
+        }
+    }
+
+    protected function getBasename()
+    {
+        if ($this->clientSourceName) {
+            return pathinfo($this->clientSourceName, PATHINFO_BASENAME);
+        }
+        else {
+            return pathinfo($this->source, PATHINFO_BASENAME);
         }
     }
 }

@@ -53,7 +53,7 @@ MediaConch checker
                 {{ form(formRepository) }}
             </div>
         </div>
-    {% else %}
+    {% elseif repositoryEnable is defined and repositoryEnable %}
         {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
     {% endif %}
     </div>
@@ -71,7 +71,7 @@ MediaConch checker
         <script>
             $(document).ready(function() {
                 // Add download button to result list
-                $('.checker-results li.report p a.results-dld').each(function() {
+                $('.checker-results li.report div a.results-dld').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadReport($(this));
@@ -86,7 +86,12 @@ MediaConch checker
                 });
 
                 function downloadReport(item) {
-                    report = $(item.data('target')).find('div.modal-body').text().trim();
+                    if (0 < $(item.data('target')).find('div.modal-body').length) {
+                        report = $(item.data('target')).find('div.modal-body').text().trim();
+                    }
+                    else {
+                        report = $(item.data('target')).text().trim();
+                    }
                     reportName = $(item).data('save-name');
                     reportExt = reportName.replace(/(.*)\.([a-z]{3})$/, "$2");
                     switch(reportExt) {
@@ -96,6 +101,9 @@ MediaConch checker
                         case 'txt':
                             reportType = 'text/plain';
                             break;
+                        case 'html':
+                            reportType = 'text/html';
+                            break;
                         default:
                             reportType = 'text/plain';
                     }
@@ -104,7 +112,7 @@ MediaConch checker
                 };
 
                 // Add download trace button to result list
-                $('.checker-results li.report p a.results-dld-trace').each(function() {
+                $('.checker-results li.report div a.results-dld-trace').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadTrace($(this));
@@ -126,7 +134,7 @@ MediaConch checker
                 };
 
                 // Add download trace ajax button to result list
-                $('.checker-results li.report p a.results-dld-trace-ajax').each(function() {
+                $('.checker-results li.report div a.results-dld-trace-ajax').each(function() {
                     $(this).on('click', function(e) {
                         e.preventDefault(); // Don't put a « # » in URL
                         downloadTraceAjax($(this));
@@ -155,19 +163,57 @@ MediaConch checker
                         });
                 };
 
-                // Button over for result list
-                $('.checker-results li.report').each(function() {
-                    $(this).hover(
-                        function() {
-                            $(this).addClass('report-blue');
-                            $(this).find('p').removeClass('hidden');
-                        },
-                        function() {
-                        $(this).removeClass('report-blue');
-                            $(this).find('p').addClass('hidden');
-                        }
-                    );
+                // Add download MediaInfo button to result list
+                $('.checker-results li.report div a.results-dld-info').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadInfo($(this));
+                    });
                 });
+
+                // Add download MediaInfo button binding on modal
+                $('.modal-footer .report-dld-info').each(function() {
+                    $(this).on('click', function(e) {
+                        downloadInfo($(this));
+                    });
+                });
+
+                function downloadInfo(item) {
+                    report = $(item.data('target')).text().trim();
+                    reportName = $(item).data('save-name');
+                    var blob = new Blob([report], {type: 'text/xml;charset=utf-8'});
+                    saveAs(blob, reportName);
+                };
+
+                // Add download MediaInfo ajax button to result list
+                $('.checker-results li.report div a.results-dld-info-ajax').each(function() {
+                    $(this).on('click', function(e) {
+                        e.preventDefault(); // Don't put a « # » in URL
+                        downloadInfoAjax($(this));
+                    });
+                });
+
+                // Add download MediaInfo ajax button binding on modal
+                $('.modal-footer .report-dld-info-ajax').each(function() {
+                    $(this).on('click', function(e) {
+                        downloadInfoAjax($(this));
+                    });
+                });
+
+                function downloadInfoAjax(item) {
+                    id = $(item).data('target').replace(/#infoXml(\d)/, "$1");
+                    url = '{{ path('app_checker_checkerajaxinfofolder', {'id': 0, 'format': 'xml'}) }}';
+                    url = url.replace(/(.*)\/(0)/, "$1/" + id);
+                    $.get(url)
+                        .done(function (d) {
+                            reportName = $(item).data('save-name');
+                            var blob = new Blob([d], {type: 'text/xml;charset=utf-8'});
+                            saveAs(blob, reportName);
+                        })
+                        .fail(function () {
+                            console.log('Fail to get MediaInfo XML');
+                        });
+                };
 
                 // Remove result block
                 $('.checker-results .panel-heading .close').each(function() {
@@ -190,10 +236,24 @@ MediaConch checker
                     // Remove close all button
                     $(this).addClass('hidden');
                 });
+
+                // Alert user when they leave checker page with results
+                $('.nav a').each(function() {
+                    $(this).click(function (e) {
+                        // Check if there is close all button
+                        if (0 < $('div.checker-results').length) {
+                            choice = confirm('Are you sure ?\nAll analysis results will be discarded!');
+                            if (choice == false) {
+                                e.preventDefault();
+                            }
+                        };
+                    });
+                });
             });
         </script>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+        <script src="/static/jstreegrid.js"></script>
         <script>
         {% for check in checks %}
         $('#modalTrace{{ loop.index }}').on('show.bs.modal',
@@ -209,17 +269,26 @@ MediaConch checker
                             }
                         },
                         'multiple' : false,
+                        'dblclick_toggle' : false,
                         {% if selectForm == 'repository' %}
                             'data' : {'url' : '{{ path('app_checker_checkerajaxtracefolder', {'id': loop.index, 'format': 'jstree'}) }}', 'dataType' : 'json'}
                         {% else %}
                             'data' : {{ check.getTrace.jstree|raw }}
                         {% endif %}
                     },
-                    "plugins" : ['search', 'types'],
+                    "plugins" : ['search', 'types', 'grid'],
                     'types' : {
                         'default' : {'icon' : 'glyphicon glyphicon-folder-open'},
                         'block' : {'icon' : 'glyphicon glyphicon-folder-open'},
                         'data' : {'icon' : 'glyphicon glyphicon-file'},
+                    },
+                    grid: {
+                        columns: [
+                            {width: 120, header: "Offset", value: "offset"},
+                            {width: 500, header: "Key", tree: true},
+                            {header: "Value", value: "dataValue"},
+                        ],
+                        resizable: true,
                     },
                 })
             });
@@ -235,6 +304,75 @@ MediaConch checker
                         }, 250);
                     });
                 });
+            });
+
+            $('#trace{{ loop.index }}').on('loaded.jstree', function (e, data) {
+                data.instance.get_container().find('li').each(function () {
+                    data.instance.open_node($(this));
+                })
+            });
+
+            $('#trace{{ loop.index }}').on('select_node.jstree', function (e, data) {
+                data.instance.toggle_node(data.node);
+            });
+
+        $('#modalInfo{{ loop.index }}').on('show.bs.modal',
+            function() {
+                $('#info{{ loop.index }}').jstree({
+                    'core' : {
+                        'check_callback' : function (operation, node, parent, position, more) {
+                            if (operation === 'copy_node' || operation === 'move_node') {
+                                return false; // disable copy and move
+                            }
+                            else {
+                                return true;
+                            }
+                        },
+                        'multiple' : false,
+                        'dblclick_toggle' : false,
+                        {% if selectForm == 'repository' %}
+                            'data' : {'url' : '{{ path('app_checker_checkerajaxinfofolder', {'id': loop.index, 'format': 'jstree'}) }}', 'dataType' : 'json'}
+                        {% else %}
+                            'data' : {{ check.getInfo.jstree|raw }}
+                        {% endif %}
+                    },
+                    "plugins" : ['search', 'types', 'grid'],
+                    'types' : {
+                        'default' : {'icon' : 'glyphicon glyphicon-folder-open'},
+                        'block' : {'icon' : 'glyphicon glyphicon-folder-open'},
+                        'data' : {'icon' : 'glyphicon glyphicon-file'},
+                    },
+                    grid: {
+                        columns: [
+                            {width: 300, header: "Key", tree: true},
+                            {header: "Value", value: "dataValue"},
+                        ],
+                        resizable: true,
+                    },
+                })
+            });
+
+            $('#info{{ loop.index }}').on('ready.jstree', function () {
+                $(function () {
+                    var to = false;
+                    $('#infoSearch{{ loop.index }}').keyup(function () {
+                        if(to) { clearTimeout(to); }
+                        to = setTimeout(function () {
+                            var v = $('#infoSearch{{ loop.index }}').val();
+                            $('#info{{ loop.index }}').jstree(true).search(v);
+                        }, 250);
+                    });
+                });
+            });
+
+            $('#info{{ loop.index }}').on('loaded.jstree', function (e, data) {
+                data.instance.get_container().find('li').each(function () {
+                    data.instance.open_node($(this));
+                })
+            });
+
+            $('#info{{ loop.index }}').on('select_node.jstree', function (e, data) {
+                data.instance.toggle_node(data.node);
             });
         {% endfor %}
         </script>

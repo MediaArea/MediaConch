@@ -10,22 +10,14 @@ class MediaConchPolicy extends MediaConch
     static public $TYPE_XSLT = 'xslt';
     static public $TYPE_SCHEMATRON = 'schematron';
 
-    public function run($policy)
+    public function run($policy, $policyDisplay = null)
     {
         $builder = new ProcessBuilder();
-        $process = $builder->setPrefix($this->MediaConch)
-            ->add($this->source);
-
-        switch ($this->policyType) {
-            case SELF::$TYPE_XSLT :
-                $builder->add('--XSLT=' . $policy);
-                break;
-            case SELF::$TYPE_SCHEMATRON :
-                $builder->add('--policy=' . $policy);
-                break;
-            default :
-                $builder->add('--policy=' . $policy);
-                break;
+        $builder->setPrefix($this->MediaConch)
+            ->add($this->source)
+            ->add('--policy=' . $policy);
+        if ($policyDisplay) {
+            $builder->add('--Display=' . $policyDisplay);
         }
 
         $process = $builder->getProcess();
@@ -44,13 +36,13 @@ class MediaConchPolicy extends MediaConch
         switch ($fileExtension) {
             case 'xsl' :
             case 'xslt' :
-                $this->policyType = SELF::$TYPE_XSLT;
+                $this->policyType = MediaConchPolicy::$TYPE_XSLT;
                 break;
             case 'sch' :
-                $this->policyType = SELF::$TYPE_SCHEMATRON;
+                $this->policyType = MediaConchPolicy::$TYPE_SCHEMATRON;
                 break;
             default :
-                $this->policyType = SELF::$TYPE_SCHEMATRON;
+                $this->policyType = MediaConchPolicy::$TYPE_SCHEMATRON;
                 break;
         }
 
@@ -60,10 +52,10 @@ class MediaConchPolicy extends MediaConch
     public function isValid()
     {
         switch ($this->policyType) {
-            case SELF::$TYPE_XSLT :
-                return null; /** @TODO not possible to check status for now */
+            case MediaConchPolicy::$TYPE_XSLT :
+                return !preg_match('/<td>(fail|invalid)<\/td>/', $this->output);
                 break;
-            case SELF::$TYPE_SCHEMATRON :
+            case MediaConchPolicy::$TYPE_SCHEMATRON :
                 return !preg_match('/NOT VALID/', $this->output);
                 break;
             default :

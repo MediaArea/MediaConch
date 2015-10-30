@@ -24,8 +24,8 @@ class CheckerOnlineFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy, Schematron or XSL'))
-            ->add('policy', 'entity', array('class' => 'AppBundle:Policy',
+        $builder->add($builder->create('step1', 'form', array('inherit_data' => true, 'label' => 'Policy'))
+            ->add('policy', 'entity', array('class' => 'AppBundle:XslPolicyFile',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
                         ->where('p.user = :user')
@@ -33,14 +33,24 @@ class CheckerOnlineFormType extends AbstractType
                 },
                 'placeholder' => 'Choose a policy',
                 'required' => false,
-                'label' => 'Choose a policy')
+                'label' => 'Select policy from list')
                 )
             ->add('schematron', 'file', array('label' => 'Or upload a Schematron (.sch) or a XSL (.xsl) file',
                 'required' => false,
                 'attr' => array('accept' => '.sch, .xsl'))
                 )
             )
-            ->add('file', 'url', array('max_length' => 512))
+            ->add('policyDisplay', 'entity', array('class' => 'AppBundle:XslPolicyDisplayFile',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->where('p.user = :user')
+                        ->setParameter('user', $this->user);
+                },
+                'placeholder' => 'Choose a policy display',
+                'required' => false,
+                'label' => 'Policy display')
+                )
+            ->add('file', 'url', array('max_length' => 512, 'label' => 'URL of file'))
             ->add('Check file', 'submit', array('attr' => array('class' => 'btn-warning')));
     }
 

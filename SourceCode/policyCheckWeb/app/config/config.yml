@@ -32,6 +32,8 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources: ['bootstrap_3_layout.html.twig']
+    form_themes:
+        - 'VichUploaderBundle:Form:fields.html.twig'
     globals:
         mco_ga_tracking: %mco_ga_tracking%
 
@@ -93,3 +95,16 @@ fos_user:
     from_email:
         address:        info@mediaarea.net
         sender_name:    MediaConch Online
+
+# VichUploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        xsl_policy:
+            upload_destination: %kernel.root_dir%/../files/xsl_policy
+            namer:              vich_uploader.namer_origname
+            directory_namer:    mco.directory_namer.policy
+        xsl_policy_display:
+            upload_destination: %kernel.root_dir%/../files/xsl_policy_display
+            namer:              vich_uploader.namer_origname
+            directory_namer:    mco.directory_namer.policy
