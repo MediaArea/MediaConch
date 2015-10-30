@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
     <xsl:output encoding="UTF-8" method="html" version="1.0" indent="yes"/>
-    <!-- Later will include implementation checks here -->
     <xsl:template match="/mc:MediaConch/mc:policyChecks">
         <h1><xsl:value-of select="mc:title"/></h1>
         <p><xsl:value-of select="mc:description"/></p>
@@ -30,6 +29,33 @@
                         </tr>
                     </xsl:for-each>
                 </table>
+            </xsl:for-each>
+        </xsl:for-each>
+    </xsl:template>
+    <xsl:template match="/mc:MediaConch/mc:implementationChecks">
+        <h1><xsl:value-of select="mc:title"/></h1>
+        <p><xsl:value-of select="mc:description"/></p>
+        <xsl:for-each select="mc:media">
+            <b><xsl:value-of select="@ref"/></b><p/>
+            <xsl:for-each select="mc:check">
+                <i><xsl:value-of select="@icid"/></i>
+                <table border="1">
+                    <p>Context (name): <xsl:value-of select="mc:context/@name"/></p>
+                    <th>
+                        <td>value</td>
+                        <td>outcome</td>
+                        <td>reason</td>
+                    </th>
+                    <xsl:for-each select="mc:test">
+                        <tr>
+                            <td/>
+							<td><xsl:value-of select="mc:value/@name"/></td>
+                            <td><xsl:value-of select="@outcome"/></td>
+                            <td><xsl:value-of select="@reason"/></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+				<hr/>
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
