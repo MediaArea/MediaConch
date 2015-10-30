@@ -33,78 +33,80 @@ class XslPolicyController extends Controller
             ->getRepository('AppBundle:XslPolicyFile')
             ->findByUser($this->getUser());
 
-        $policy = new XslPolicyFile();
-        $importPolicyForm = $this->createForm('xslPolicyImport', $policy);
-        $importPolicyForm->handleRequest($request);
-        if ($importPolicyForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            // Set user at the creation of the policy
-            if (null === $policy->getUser()) {
-                $policy->setUser($this->getUser());
-            }
-
-            $em->persist($policy);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                'Policy successfully added'
-                );
-            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
-        }
-
-        $createPolicyForm = $this->createForm('xslPolicyCreate', $policy);
-        $createPolicyForm->handleRequest($request);
-        if ($createPolicyForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            // Set user at the creation of the policy
-            if (null === $policy->getUser()) {
-                $policy->setUser($this->getUser());
-            }
-
-            $tmpNameFile = tempnam(sys_get_temp_dir(), 'policy' . $policy->getUser()->getId());
-            $tmpPolicy = new XslPolicy();
-            $tmpPolicy->setTitle($policy->getPolicyName())->setDescription($policy->getPolicyDescription());
-            $tmpPolicyWriter = new XslPolicyWriter();
-            $tmpPolicyWriter->setPolicy($tmpPolicy)->writeXsl($tmpNameFile);
-            $tmpFile = new UploadedFile($tmpNameFile, $policy->getPolicyName() . '.xsl', null, null, null, true);
-            $policy->setPolicyFile($tmpFile);
-
-            $em->persist($policy);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                'Policy successfully added'
-                );
-            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
-        }
-
         $policyDisplayList = $this->getDoctrine()
             ->getRepository('AppBundle:XslPolicyDisplayFile')
             ->findByUser($this->getUser());
 
-        $policyDisplay = new XslPolicyDisplayFile();
-        $importPolicyDisplayForm = $this->createForm('xslPolicyDisplayImport', $policyDisplay);
-        $importPolicyDisplayForm->handleRequest($request);
-        if ($importPolicyDisplayForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        if ($this->get('mediaconch_user.quotas')->hasPolicyCreationRights()) {
+            $policy = new XslPolicyFile();
+            $importPolicyForm = $this->createForm('xslPolicyImport', $policy);
+            $importPolicyForm->handleRequest($request);
+            if ($importPolicyForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
 
-            // Set user at the creation of the policy
-            if (null === $policyDisplay->getUser()) {
-                $policyDisplay->setUser($this->getUser());
+                // Set user at the creation of the policy
+                if (null === $policy->getUser()) {
+                    $policy->setUser($this->getUser());
+                }
+
+                $em->persist($policy);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Policy successfully added'
+                    );
+                return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
             }
 
-            $em->persist($policyDisplay);
-            $em->flush();
+            $createPolicyForm = $this->createForm('xslPolicyCreate', $policy);
+            $createPolicyForm->handleRequest($request);
+            if ($createPolicyForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
 
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                'Policy display successfully added'
-                );
-            return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicy'));
+                // Set user at the creation of the policy
+                if (null === $policy->getUser()) {
+                    $policy->setUser($this->getUser());
+                }
+
+                $tmpNameFile = tempnam(sys_get_temp_dir(), 'policy' . $policy->getUser()->getId());
+                $tmpPolicy = new XslPolicy();
+                $tmpPolicy->setTitle($policy->getPolicyName())->setDescription($policy->getPolicyDescription());
+                $tmpPolicyWriter = new XslPolicyWriter();
+                $tmpPolicyWriter->setPolicy($tmpPolicy)->writeXsl($tmpNameFile);
+                $tmpFile = new UploadedFile($tmpNameFile, $policy->getPolicyName() . '.xsl', null, null, null, true);
+                $policy->setPolicyFile($tmpFile);
+
+                $em->persist($policy);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Policy successfully added'
+                    );
+                return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicyruleedit', array('id' => $policy->getId())));
+            }
+
+            $policyDisplay = new XslPolicyDisplayFile();
+            $importPolicyDisplayForm = $this->createForm('xslPolicyDisplayImport', $policyDisplay);
+            $importPolicyDisplayForm->handleRequest($request);
+            if ($importPolicyDisplayForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                // Set user at the creation of the policy
+                if (null === $policyDisplay->getUser()) {
+                    $policyDisplay->setUser($this->getUser());
+                }
+
+                $em->persist($policyDisplay);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Policy display successfully added'
+                    );
+                return $this->redirect($this->generateUrl('app_xslpolicy_xslpolicy'));
+            }
         }
 
 

@@ -12,12 +12,14 @@ MediaConchOnline Policy Management
 <div class="col-md-6">
     <p>Policy checker schemas can check to verify that files fall into parameters specific to the institution or collection. The policy checker can limit files to a fixed range, require that files have both video and audio streams, or conform to a broadcast specification.
     </p>
-    {% if importPolicyForm is defined and importPolicyForm %}
     <div>
         <h2>Import a policy</h2>
-        {{ form(importPolicyForm) }}
+        {% if importPolicyForm is defined and importPolicyForm %}
+            {{ form(importPolicyForm) }}
+        {% else %}
+            {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
+        {% endif %}
     </div>
-    {% endif %}
 
     {% if createPolicyForm is defined and createPolicyForm %}
     <div>
@@ -48,37 +50,37 @@ MediaConchOnline Policy Management
     {% endfor %}
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <h1 class="headline">Policies display</h1>
-    </div>
-    <div class="col-md-6">
+<div class="col-md-12">
+    <h1 class="headline">Policies display</h1>
+</div>
+<div class="col-md-6">
+    <div>
+        <h2>Import a policy display</h2>
         {% if importPolicyDisplayForm is defined and importPolicyDisplayForm %}
-        <div>
-            <h2>Import a policy display</h2>
             {{ form(importPolicyDisplayForm) }}
-        </div>
+        {% else %}
+            {{ include('AppBundle:Default:quotaExceeded.html.twig') }}
         {% endif %}
     </div>
-    <div class="col-md-6">
-        <h4>Policy display list:</h4>
-        {% for item in policyDisplayList %}
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="heading{{ item.id }}">
-                <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ item.id }}" aria-expanded="true" aria-controls="collapse{{ item.id }}">
-                    {{ item.policyDisplayName }}
-                </h4>
-                </div>
-                <div id="collapse{{ item.id }}" class="panel-collapse collapse{% if 0 == loop.index0 %} in{% endif %}" role="tabpanel" aria-labelledby="heading{{ item.id }}">
-                    <div class="panel-body">
-                        <a href="{{ path('app_xslpolicy_xslpolicydisplaydelete', {'id': item.id}) }}"><button class="btn-danger pull-right">Delete</button></a>
-                        <a href="{{ path('app_xslpolicy_xslpolicydisplayexport', {'id': item.id}) }}"><button class="btn-warning pull-right">Export</button></a>
-                    </div>
+</div>
+<div class="col-md-6">
+    <h4>Policy display list:</h4>
+    {% for item in policyDisplayList %}
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{ item.id }}">
+            <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ item.id }}" aria-expanded="true" aria-controls="collapse{{ item.id }}">
+                {{ item.policyDisplayName }}
+            </h4>
+            </div>
+            <div id="collapse{{ item.id }}" class="panel-collapse collapse{% if 0 == loop.index0 %} in{% endif %}" role="tabpanel" aria-labelledby="heading{{ item.id }}">
+                <div class="panel-body">
+                    <a href="{{ path('app_xslpolicy_xslpolicydisplaydelete', {'id': item.id}) }}"><button class="btn-danger pull-right">Delete</button></a>
+                    <a href="{{ path('app_xslpolicy_xslpolicydisplayexport', {'id': item.id}) }}"><button class="btn-warning pull-right">Export</button></a>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
