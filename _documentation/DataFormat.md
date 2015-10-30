@@ -75,10 +75,10 @@ The root element of the MediaConch XML exists as `<MediaConch>`, and initially c
 
 Within the <policyChecks> element are individual <policy> rules that contain the name of the policy rule, the associated track type and field, a user-declared value, the reported or “actual” value, and a “pass” or “fail” outcome:
 
-	<policy title="General Format equals Matroska">
-	<context field="Format" value="Matroska"/>
-	<test tracktype="General" actual="Matroska" outcome="pass"/>
-	</policy>
+		<policy title="General Format equals Matroska">
+		<context field="Format" value="Matroska"/>
+		<test tracktype="General" actual="Matroska" outcome="pass"/>
+		</policy>
 
 #### Generating a MediaConch XML
 
@@ -100,13 +100,13 @@ The MediaTrace XML is a technical reporting tool that expresses the binary archi
 
 The root element of the MediaTrace XML exists as <MediaTrace>. This root element contains a `<creatingLibrary>` sub-element denoting the version of MediaInfo’s library used in generating the trace report:
 
-	<MediaTrace
-    xmlns="https://mediaarea.net/mediatrace"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://mediaarea.net/mediatrace https://mediaarea.net/mediatrace/mediatrace_0_1.xsd"
-    version="0.1"
-    ref="/Users/mycomputer//files/ffv1.mkv">
-	<creatingLibrary version="0.7.78" url="https://mediaarea.net/MediaInfo">MediaInfoLib</creatingLibrary>`
+		<MediaTrace
+    	xmlns="https://mediaarea.net/mediatrace"
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xsi:schemaLocation="https://mediaarea.net/mediatrace https://mediaarea.net/mediatrace/mediatrace_0_1.xsd"
+    	version="0.1"
+    	ref="/Users/mycomputer//files/ffv1.mkv">
+		<creatingLibrary version="0.7.78" url="https://mediaarea.net/MediaInfo">MediaInfoLib</creatingLibrary>`
 
 Many audiovisual formats are based on chunk-based storage where a block of data will either contain a data payload or other blocks. In QuickTime parlance these blocks are called atoms, in AVI “chunks”, and in Matroska, “elements”. MediaTrace will attempt to parse apart each block into subdivisions and report on their contents. Whether the source format specification calls it element, atom, chunk, or another term, MediaTrace will call it a `<block>`. In MediaTrace the contents of the block are called `<data>`:
 
