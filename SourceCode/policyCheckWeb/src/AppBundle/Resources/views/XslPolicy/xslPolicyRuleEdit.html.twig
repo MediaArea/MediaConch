@@ -1,0 +1,124 @@
+{% extends 'AppBundle:Default:base.html.twig' %}
+
+{% block title %}
+MediaConchOnline Policy Rules Management
+{% endblock %}
+
+{% block body %}
+<div class="col-md-12">
+    <h1 class="headline">Policies rule editor</h1>
+</div>
+
+<div class="col-md-6">
+    <p>To create policies, users may select fields from MediaInfo's stream types (General, Video, Audio, etc.) and apply validators (Equal, Not Equal, Greater Than, etc.) to the associated field values. For example, a policy item may state that the "Width" field from the file's Video stream equal 640 pixels. When adding the field's value, however, be sure to leave off any associated strings, such as "pixels" "Kbps" "fps", etc.</p>
+{{ form(policyRuleForm) }}
+    <p>Fields marked by asterisks (*) are required</p>
+</div>
+<div class="col-md-6">
+    <div class="panel panel-default checker-results">
+        <div class="panel-heading" role="tab">
+            <h4 class="panel-title">{{ policy.policyName }} rules</h4>
+        </div>
+        <div>
+            <ul class="list-group">
+            {% for rule in xslPolicy.rules %}
+                <li class="list-group-item report">
+                    {{ rule.title }}
+                    <p class="text-right">
+                        <a href="{{ path('app_xslpolicy_xslpolicyruleedit', {'id': policy.id, 'ruleId': loop.index0}) }}" title="Edit rule"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a href="{{ path('app_xslpolicy_xslpolicyruledelete', {'id': policy.id, 'ruleId': loop.index0}) }}" title="Delete rule" class="results-dld"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </p>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="panel-body">
+            <a href="{{ path('app_xslpolicy_xslpolicyruleedit', {'id': policy.id}) }}"><button class="btn-success pull-right">Add a new rule</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function() {
+    if ($('#xslPolicyRule_DuplicateRule').length) {
+        $('#xslPolicyRule_DuplicateRule').parent().addClass('xslPolicyRuleDuplicateButton');
+        $('#xslPolicyRule_SaveRule').parent().addClass('xslPolicyRuleSaveButton');
+    }
+
+    $('#xslPolicyRule_trackType').change(function() {
+        data = {};
+        data['type'] = $('#xslPolicyRule_trackType').val();
+        $.ajax({
+            url : "{{ path('app_xslpolicy_xslpolicyrulefieldslist') }}",
+            type: "POST",
+            data : data,
+            success: function(data) {
+                $('#xslPolicyRule_field').html('');
+                $('#xslPolicyRule_field').append('<option value="">Choose a field</option>');
+                $.each(data, function(k, v) {
+                    $('#xslPolicyRule_field').append('<option value="' + k + '">' + v + '</option>');
+                });
+            }
+        });
+    });
+
+    editor = $('#xslPolicyRule_editor input[type=\'radio\']:checked').val();
+    $('#xslPolicyRule_editor input[type=\'radio\']').parent().removeClass('required');
+    $('#xslPolicyRule_editor').prev().removeClass('required');
+
+    if (0 == editor) {
+        hideFreetext();
+    }
+    else if (1 == editor) {
+        hideEditor();
+    }
+
+    $('#xslPolicyRule_editor input[type=\'radio\']').change(function() {
+        editor = $('#xslPolicyRule_editor input[type=\'radio\']:checked').val();
+        if (0 == editor) {
+            hideFreetext();
+            showEditor();
+        }
+        else if (1 == editor) {
+            hideEditor();
+            showFreetext();
+        }
+    });
+
+    function hideFreetext() {
+        $('#xslPolicyRule_valueFreeText').parent().addClass('hidden');
+        $('#xslPolicyRule_valueFreeText').removeClass('required');
+    }
+
+    function showFreetext() {
+        $('#xslPolicyRule_valueFreeText').parent().removeClass('hidden');
+        $('#xslPolicyRule_valueFreeText').attr('required', true);
+    }
+
+    function hideEditor() {
+        $('#xslPolicyRule_trackType').parent().addClass('hidden');
+        $('#xslPolicyRule_field').parent().addClass('hidden');
+        $('#xslPolicyRule_occurrence').parent().addClass('hidden');
+        $('#xslPolicyRule_validator').parent().addClass('hidden');
+        $('#xslPolicyRule_value').parent().addClass('hidden');
+        $('#xslPolicyRule_trackType').attr('required', false);
+        $('#xslPolicyRule_field').attr('required', false);
+        $('#xslPolicyRule_occurrence').attr('required', false);
+        $('#xslPolicyRule_validator').attr('required', false);
+    }
+
+    function showEditor() {
+        $('#xslPolicyRule_trackType').parent().removeClass('hidden');
+        $('#xslPolicyRule_field').parent().removeClass('hidden');
+        $('#xslPolicyRule_occurrence').parent().removeClass('hidden');
+        $('#xslPolicyRule_validator').parent().removeClass('hidden');
+        $('#xslPolicyRule_value').parent().removeClass('hidden');
+        $('#xslPolicyRule_trackType').attr('required', true);
+        $('#xslPolicyRule_field').attr('required', true);
+        $('#xslPolicyRule_occurrence').attr('required', true);
+        $('#xslPolicyRule_validator').attr('required', true);
+    }
+});
+</script>
+{% endblock %}

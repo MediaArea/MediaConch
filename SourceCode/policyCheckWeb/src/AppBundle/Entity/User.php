@@ -20,10 +20,16 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Policy", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\XslPolicyFile", mappedBy="user", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
-    protected $policy;
+    protected $xslPolicy;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\XslPolicyDisplayFile", mappedBy="user", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    protected $xslPolicyDisplay;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\UserQuotas", mappedBy="user", cascade={"persist", "remove"})
@@ -83,7 +89,7 @@ class User extends BaseUser
     protected $newsletter = true;
 
     /**
-     * @ORM\Column(type="string", length=1, nullable=false)
+     * @ORM\Column(type="string", length=1, nullable=true)
      *
      */
     protected $professional;
@@ -205,39 +211,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add policy
-     *
-     * @param \AppBundle\Entity\Policy $policy
-     * @return User
-     */
-    public function addPolicy(\AppBundle\Entity\Policy $policy)
-    {
-        $this->policy[] = $policy;
-
-        return $this;
-    }
-
-    /**
-     * Remove policy
-     *
-     * @param \AppBundle\Entity\Policy $policy
-     */
-    public function removePolicy(\AppBundle\Entity\Policy $policy)
-    {
-        $this->policy->removeElement($policy);
-    }
-
-    /**
-     * Get policy
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPolicy()
-    {
-        return $this->policy;
-    }
-
-    /**
      * Set quotasDefault
      *
      * @param \AppBundle\Entity\UserQuotasDefault $quotasDefault
@@ -281,5 +254,71 @@ class User extends BaseUser
     public function getQuotas()
     {
         return $this->quotas;
+    }
+
+    /**
+     * Add xslPolicy
+     *
+     * @param \AppBundle\Entity\XslPolicy $xslPolicy
+     * @return User
+     */
+    public function addXslPolicy(\AppBundle\Entity\XslPolicyFile $xslPolicy)
+    {
+        $this->xslPolicy[] = $xslPolicy;
+
+        return $this;
+    }
+
+    /**
+     * Remove xslPolicy
+     *
+     * @param \AppBundle\Entity\XslPolicy $xslPolicy
+     */
+    public function removeXslPolicy(\AppBundle\Entity\XslPolicyFile $xslPolicy)
+    {
+        $this->xslPolicy->removeElement($xslPolicy);
+    }
+
+    /**
+     * Get xslPolicy
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getXslPolicy()
+    {
+        return $this->xslPolicy;
+    }
+
+    /**
+     * Add xslPolicyDisplay
+     *
+     * @param \AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay
+     * @return User
+     */
+    public function addXslPolicyDisplay(\AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay)
+    {
+        $this->xslPolicyDisplay[] = $xslPolicyDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Remove xslPolicyDisplay
+     *
+     * @param \AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay
+     */
+    public function removeXslPolicyDisplay(\AppBundle\Entity\XslPolicyDisplayFile $xslPolicyDisplay)
+    {
+        $this->xslPolicyDisplay->removeElement($xslPolicyDisplay);
+    }
+
+    /**
+     * Get xslPolicyDisplay
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getXslPolicyDisplay()
+    {
+        return $this->xslPolicyDisplay;
     }
 }

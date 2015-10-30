@@ -41,6 +41,8 @@ class Quotas
 
         $this->em->persist($userQuotas);
         $this->em->flush();
+
+        return $userQuotas;
     }
 
     public function getQuotasForProfile()
@@ -148,14 +150,25 @@ class Quotas
 
     private function countPolicies()
     {
-        return $this->em
-            ->getRepository('AppBundle:Policy')
+        $xslPolicy = $this->em
+            ->getRepository('AppBundle:XslPolicyFile')
             ->createQueryBuilder('p')
                 ->select('COUNT(p)')
                 ->where('p.user = :user')
                 ->setParameter('user', $this->user)
             ->getQuery()
             ->getSingleScalarResult();
+
+        $xslPolicyDisplay = $this->em
+            ->getRepository('AppBundle:XslPolicyDisplayFile')
+            ->createQueryBuilder('p')
+                ->select('COUNT(p)')
+                ->where('p.user = :user')
+                ->setParameter('user', $this->user)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $xslPolicy + $xslPolicyDisplay;
     }
 
     private function getUser($tokenStorage)
@@ -172,15 +185,21 @@ class Quotas
 
     private function getQuotasByUser()
     {
-        return $this->em
+        $userQuotas = $this->em
             ->getRepository('AppBundle:UserQuotas')
             ->findOneByUser($this->user);
+
+        if (!$userQuotas) {
+            $userQuotas = $this->setQuotasForNewUser();
+        }
+
+        return $userQuotas;
     }
 
     private function getDefaultQuotas()
     {
         $defaultQuotas = array('period' => 3600,
-            'policies' => 10,
+            'policies' => 20,
             'uploads' => 10,
             'urls' => 10,
             'policyChecks' => 100,

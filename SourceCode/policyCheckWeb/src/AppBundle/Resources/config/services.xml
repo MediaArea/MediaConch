@@ -50,5 +50,30 @@
             <tag name="form.type" alias="checkerRepository" />
             <argument type="service" id="security.token_storage" />
         </service>
+
+        <service id="app.form.type.policy.create" class="AppBundle\Form\Type\XslPolicyCreateFormType">
+            <tag name="form.type" alias="xslPolicyCreate" />
+        </service>
+
+        <service id="app.form.type.policy.import" class="AppBundle\Form\Type\XslPolicyImportFormType">
+            <tag name="form.type" alias="xslPolicyImport" />
+        </service>
+
+        <service id="app.form.type.policy.rule" class="AppBundle\Form\Type\XslPolicyRuleFormType">
+            <tag name="form.type" alias="xslPolicyRule" />
+        </service>
+
+        <service id="app.form.type.policy.display.import" class="AppBundle\Form\Type\XslPolicyDisplayImportFormType">
+            <tag name="form.type" alias="xslPolicyDisplayImport" />
+        </service>
+
+        <service id="mco.directory_namer.policy" class="AppBundle\Lib\VichUploaderBundle\UserDirectoryNamer">
+        </service>
+
+        <service id="mco.xslpolicy.parser" class="AppBundle\Lib\XslPolicy\XslPolicyParser">
+        </service>
+
+        <service id="mco.xslpolicy.writer" class="AppBundle\Lib\XslPolicy\XslPolicyWriter">
+        </service>
     </services>
 </container>

@@ -26,7 +26,7 @@ class MediaInfo
 
     public function analyse()
     {
-        $opt = '-f  --Language=raw --Output=XML';
+        $opt = '-f  --Language=raw --Output=MAXML';
         $opt .= ' --parseSpeed=' . $this->parseSpeed;
 
         exec($this->MediaInfo . ' ' . $opt . ' ' . escapeshellarg($this->source), $xmlAsArray, $result);
