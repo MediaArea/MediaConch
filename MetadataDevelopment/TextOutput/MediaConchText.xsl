@@ -26,4 +26,29 @@
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
+    <xsl:template match="/mc:MediaConch/mc:implementationChecks">
+        <xsl:text>MediaConch report&#xa;*********************&#xa;&#xa;</xsl:text>
+        <xsl:value-of select="mc:title"/>
+        <xsl:text>&#xa;</xsl:text>
+        <xsl:value-of select="mc:description"/>
+        <xsl:text>&#xa;</xsl:text>
+		<xsl:text>&#xa;****************************************&#xa;</xsl:text>
+        <xsl:for-each select="mc:media">
+            <xsl:value-of select="@ref"/>
+            <xsl:for-each select="mc:check">
+                <xsl:value-of select="@icid"/>&#xa;Context (name): <xsl:value-of select="mc:context/@name"/>
+                    <xsl:for-each select="mc:test">
+                        <xsl:text>&#xa;</xsl:text>
+                        <xsl:if test="mc:value/@name != ''">
+							<xsl:value-of select="mc:value/@name"/>
+							<xsl:text>, </xsl:text>
+                        </xsl:if>
+                        <xsl:text>Outcome: </xsl:text>
+                        <xsl:value-of select="@outcome"/>
+                        <xsl:text>&#xa;Reason: </xsl:text><xsl:value-of select="@reason"/>
+                    </xsl:for-each>
+                <xsl:text>&#xa;****************************************&#xa;</xsl:text>
+            </xsl:for-each>
+        </xsl:for-each>
+    </xsl:template>
 </xsl:stylesheet>
