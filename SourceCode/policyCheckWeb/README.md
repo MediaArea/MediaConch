@@ -14,14 +14,16 @@ This project has received funding from PREFORMA, co-funded by the European Commi
 
 All open source digital assets for the software developed by MediaArea during the PREFORMA project will be made available under the open access license: Creative Commons license attribution – Sharealike 4.0 International (CC BY-SA v4.0). All assets will exist in open file formats within an open platform (an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004)).
 
-# 
-
 # How to install
 
 ## Dependencies
 
-* Apache web server > 2.2 (should also work on nginx and lighttpd)
-* Php >= 5.4 (mandatory modules : php-xml, php-pdo, php-intl, php-mbstring, php-mysql, php-process, php-intl, recommanded modules : opcode cache like php-apc or php-opcache)
+* Apache web server >= 2.2 (should also work on nginx and lighttpd)
+* Php >= 5.4
+    * Mandatory packages for debian-like distributions : libapache2-mod-php5, php5-cli, php5-intl, php5-mysql
+    * Mandatory packages for RedHat-like distributions : php, php-cli, php-intl, php-mbstring, php-mysql, php-pdo, php-process, php-xml
+    * Optional packages for RedHat-like distributions : php-pecl-apc or php-opcache
+    * date.timezone should be set in your php.ini (both cli and apache module)
 * MySQL >= 5.1
 * [MediaConch-cli](https://mediaarea.net/MediaConch/download.html) >= 15.10 (depends on [libmediainfo >= 0.7.79](https://mediaarea.net/en/MediaInfo/Download) and [libzen >= 0.4.31](https://mediaarea.net/en/MediaInfo/Download)) 
 * [Composer](https://getcomposer.org/download/)
@@ -59,7 +61,7 @@ GRANT ALL PRIVILEGES ON `YOUR_DATABASE` . * TO 'YOUR_USER'@'localhost';
 
 Enter project directory and run composer to install dependencies and configure the project
 ```
-cd /YOUR_PATH/MediaConch/SourceCode/policyCheckWeb/
+cd YOUR_PATH/MediaConch/SourceCode/policyCheckWeb/
 composer install
 ```
 Parameters :
@@ -99,12 +101,12 @@ mkdir files && sudo chown apache files
 
 ### Apache
 
-Add a vhost to access MediaConchOnline, like this example :
+Add a vhost to access MediaConchOnline, like this minimal example :
 ```
 <VirtualHost *:80>
     ServerName WWW.YOURWEBSITE.COM
-    DocumentRoot "/YOUR_PATH/MediaConch/SourceCode/policyCheckWeb/web/"
-    <Directory "/YOUR_PATH/MediaConch/SourceCode/policyCheckWeb/web/">
+    DocumentRoot "YOUR_PATH/MediaConch/SourceCode/policyCheckWeb/web/"
+    <Directory "YOUR_PATH/MediaConch/SourceCode/policyCheckWeb/web/">
         AllowOverride All
         Options -Indexes
         <IfModule mod_authz_core.c>
