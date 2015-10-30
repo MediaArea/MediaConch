@@ -2,9 +2,6 @@
 
 namespace AppBundle\Lib\Checker;
 
-use AppBundle\Lib\MediaInfo\MediaInfo;
-use AppBundle\Lib\MediaInfo\MediaInfoOutput;
-use AppBundle\Lib\MediaInfo\MediaInfoPolicyChecker;
 use AppBundle\Lib\MediaConch\MediaConchPolicy;
 use AppBundle\Lib\MediaConch\MediaConchConformance;
 use AppBundle\Lib\MediaConch\MediaConchTrace;

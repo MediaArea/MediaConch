@@ -20,12 +20,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Policy", mappedBy="user", cascade={"persist", "remove"})
-     * @Assert\Valid()
-     */
-    protected $policy;
-
-    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\XslPolicyFile", mappedBy="user", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
@@ -214,39 +208,6 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add policy
-     *
-     * @param \AppBundle\Entity\Policy $policy
-     * @return User
-     */
-    public function addPolicy(\AppBundle\Entity\Policy $policy)
-    {
-        $this->policy[] = $policy;
-
-        return $this;
-    }
-
-    /**
-     * Remove policy
-     *
-     * @param \AppBundle\Entity\Policy $policy
-     */
-    public function removePolicy(\AppBundle\Entity\Policy $policy)
-    {
-        $this->policy->removeElement($policy);
-    }
-
-    /**
-     * Get policy
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPolicy()
-    {
-        return $this->policy;
     }
 
     /**
