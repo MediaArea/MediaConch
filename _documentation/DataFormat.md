@@ -16,7 +16,7 @@ This document describes four XML schemas designed by MediaArea for various types
 #### [MediaConch XML](#mediaconch-xml)
 - [Structure of a MediaConch XML](#structure-of-a-mediaconch-xml)
 - [Generating a MediaConch XML](#generating-a-mediaconch-xml)
-- [MediaConch XML Schema](#schema)
+- [MediaConch XML Schema](#mediaconch-xml-schema)
 
 #### [MediaTrace XML](#mediatrace-xml)
 - [Structure of a MediaTrace XML](#structure-of-a-mediatrace-xml)
