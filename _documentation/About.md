@@ -22,12 +22,12 @@ You should have received a copy of the GNU General Public License along with thi
 
 The software relies on third party libraries. Such libraries have their own license: 
 
-- C++ standard library: libstdc++, libc++, Visual C++ library or any other C++ standard library. 
+- C++ standard library: [libstdc++](http://gcc.gnu.org/onlinedocs/libstdc++/manual/bk01pt01ch01s02.html), [libc++](http://llvm.org/docs/DeveloperPolicy.html#license), [Visual C++ library](http://msdn.microsoft.com/en-us/library/vstudio/ms235299.aspx) or any other C++ standard library. 
 - Base classes library: ZenLib, (c) MediaArea.net SARL, originally zlib license, re-licensed under GPLv3+/MPLv2+. 
-- GUI: Qt. 
-- XML parser: TinyXML-2. 
-- gzip decompression routine: zlib. 
-- FTP, FTPS, SFTP, HTTP, HTTPS: libcurl. 
+- GUI: [Qt](http://qt-project.org/products/licensing). 
+- XML parser: [TinyXML-2](http://www.grinninglizard.com/tinyxml2docs/index.html). 
+- gzip decompression routine: [zlib](http://www.gzip.org/zlib/zlib_license.html). 
+- FTP, FTPS, SFTP, HTTP, HTTPS: [libcurl](http://curl.haxx.se/docs/copyright.html). 
 
 ##The Team 
 
@@ -44,4 +44,4 @@ Other team members are:
 - Tessa Fallon (Archivist): community outreach and standards organization 
 - Erik Piil (Archivist): technical writing and documentation, OAIS compliance support 
  
-This project has received funding from PREFORMA, co-funded by the European Commission under its FP7-ICT Programme 
+This project has received funding from [PREFORMA](http://preforma-project.eu), co-funded by the European Commission under its FP7-ICT Programme 
