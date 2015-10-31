@@ -80,7 +80,7 @@
                         <check>
                             <xsl:attribute name="icid">EBML-VER-COH</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
-                            <xsl:call-template name="x_greater_than_y">
+                            <xsl:call-template name="x_is_less_than_or_equal_to_y">
                                 <xsl:with-param name="x" select="$EBMLReadVersion"/>
                                 <xsl:with-param name="x_name">EBMLReadVersion</xsl:with-param>
                                 <xsl:with-param name="y" select="$EBMLVersion"/>
@@ -90,7 +90,7 @@
                         <check>
                             <xsl:attribute name="icid">EBML-DOCVER-COH</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
-                            <xsl:call-template name="x_greater_than_y">
+                            <xsl:call-template name="x_is_less_than_or_equal_to_y">
                                 <xsl:with-param name="x" select="$DocTypeReadVersion"/>
                                 <xsl:with-param name="x_name">DocTypeReadVersion</xsl:with-param>
                                 <xsl:with-param name="y" select="$DocTypeVersion"/>
@@ -114,7 +114,7 @@
                         <check>
                             <xsl:attribute name="icid">EBML-VALID-MAXID</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
-                            <xsl:call-template name="x_greater_than_y">
+                            <xsl:call-template name="x_is_less_than_or_equal_to_y">
                                 <xsl:with-param name="x">3</xsl:with-param>
                                 <xsl:with-param name="x_name">Minimum valid EBMLMaxIDLength</xsl:with-param>
                                 <xsl:with-param name="y" select="$EBMLMaxIDLength"/>
@@ -124,7 +124,7 @@
                         <check>
                             <xsl:attribute name="icid">EBML-VALID-MAXSIZE</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
-                            <xsl:call-template name="x_greater_than_y">
+                            <xsl:call-template name="x_is_less_than_or_equal_to_y">
                                 <xsl:with-param name="x">0</xsl:with-param>
                                 <xsl:with-param name="x_name">Minimum valid EBMLMaxSizeLength</xsl:with-param>
                                 <xsl:with-param name="y" select="$EBMLMaxSizeLength"/>
@@ -312,20 +312,22 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-    <xsl:template name="x_greater_than_y">
+    <xsl:template name="x_is_less_than_or_equal_to_y">
         <xsl:param name="x"/>
         <xsl:param name="x_name"/>
         <xsl:param name="y"/>
         <xsl:param name="y_name"/>
         <xsl:element name="test">
             <xsl:choose>
-                <xsl:when test="$y &gt; $x">
+                <xsl:when test="$x &lt;= $y">
                     <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">
-                        <xsl:value-of select="$x_name"/> is greater than <xsl:value-of select="$y_name"/>
+                        <xsl:value-of select="$x_name"/>
+                        <xsl:text> is not less than or equal to </xsl:text>
+                        <xsl:value-of select="$y_name"/>
                     </xsl:attribute>
                 </xsl:otherwise>
             </xsl:choose>
