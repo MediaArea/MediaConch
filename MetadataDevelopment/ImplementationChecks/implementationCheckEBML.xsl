@@ -68,8 +68,10 @@
                             <xsl:attribute name="icid">EBML-ELEM-START</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
                             <xsl:variable name="ebml-element-id">172351395</xsl:variable>
-                            <context name="ebml-element-id">
-                                <xsl:value-of select="$ebml-element-id"/>
+                            <context field="ebml-element-id">
+                                <xsl:attribute name="value">
+                                    <xsl:value-of select="$ebml-element-id"/>
+                                </xsl:attribute>
                             </context>
                             <xsl:call-template name="x_equals_y">
                                 <xsl:with-param name="x" select="//mt:data[@offset='0']"/>
@@ -101,8 +103,10 @@
                             <xsl:attribute name="icid">EBML-HEADER-IDS-ONLY</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
                             <xsl:variable name="valid-ebml-header-subelement-ids">'646 759 754 755 642 647 645'</xsl:variable>
-                            <context name="valid-ebml-header-subelement-ids">
-                                <xsl:value-of select="$valid-ebml-header-subelement-ids"/>
+                            <context field="valid-ebml-header-subelement-ids">
+                                <xsl:attribute name="value">
+                                    <xsl:value-of select="$valid-ebml-header-subelement-ids"/>
+                                </xsl:attribute>
                             </context>
                             <xsl:for-each select="//mt:block[../mt:block/mt:data='172351395']/mt:block/mt:data[@name='Name']">
                                 <xsl:call-template name="x_is_in_list">
@@ -134,8 +138,10 @@
                         <check>
                             <xsl:attribute name="icid">ELEMENTS-WITHIN-MAXIDLENGTH</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
-                            <context name="EBMLMaxIDLength">
-                                <xsl:value-of select="$EBMLMaxIDLength"/>
+                            <context field="EBMLMaxIDLength">
+                                <xsl:attribute name="value">
+                                    <xsl:value-of select="$EBMLMaxIDLength"/>
+                                </xsl:attribute>
                             </context>
                             <xsl:choose>
                                 <xsl:when test="//mt:block[@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
@@ -166,8 +172,10 @@
                         <check>
                             <xsl:attribute name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
-                            <context name="EBMLMaxSizeLength">
-                                <xsl:value-of select="$EBMLMaxSizeLength"/>
+                            <context field="EBMLMaxSizeLength">
+                                <xsl:attribute name="value">
+                                    <xsl:value-of select="$EBMLMaxSizeLength"/>
+                                </xsl:attribute>
                             </context>
                             <xsl:choose>
                                 <xsl:when test="//mt:block/mt:data[@name='Size'][(../../mt:data/@offset - @offset) &gt; $EBMLMaxSizeLength]">
