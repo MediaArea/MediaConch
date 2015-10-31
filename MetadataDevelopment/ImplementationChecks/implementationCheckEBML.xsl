@@ -137,21 +137,32 @@
                             <context name="EBMLMaxIDLength">
                                 <xsl:value-of select="$EBMLMaxIDLength"/>
                             </context>
-                            <xsl:for-each select="//mt:block/mt:data[@name='Size']">
-                                <xsl:if test="(@offset - ../../mt:block/@offset) &gt; $EBMLMaxIDLength">
-                                    <test outcome="fail">
-                                         <value>
-                                             <xsl:attribute name="offset">
-                                                 <xsl:value-of select="@offset"/>
-                                             </xsl:attribute>
-                                             <xsl:attribute name="name">
-                                                 <xsl:value-of select="../../@name"/>
-                                             </xsl:attribute>
-                                             <xsl:value-of select="@offset - ../../mt:block/@offset"/>
-                                         </value>
-                                    </test>
-                                </xsl:if>
-                            </xsl:for-each>
+                            <xsl:choose>
+                                <xsl:when test="//mt:block[@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
+                                    <xsl:for-each select="//mt:block[@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
+                                        <test outcome="fail">
+                                            <xsl:attribute name="reason">
+                                                <xsl:text>An Element at has an Element ID Length greater than EBMLMaxIDLength.</xsl:text>
+                                                <xsl:value-of select="offset"/>
+                                            </xsl:attribute>
+                                             <value>
+                                                 <xsl:attribute name="offset">
+                                                     <xsl:value-of select="@offset"/>
+                                                 </xsl:attribute>
+                                                 <xsl:attribute name="name">
+                                                     <xsl:value-of select="../../@name"/>
+                                                     <xsl:text>:Element_ID_Length</xsl:text>
+                                                 </xsl:attribute>
+                                                 <xsl:value-of select="@offset - ../../mt:block/@offset"/>
+                                             </value>
+                                             <xsl:variable name="MAXIDLENGTH_fail">yes</xsl:variable>
+                                        </test>
+                                    </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <test outcome="pass"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </check>
                         <check>
                             <xsl:attribute name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:attribute>
