@@ -38,19 +38,19 @@ In the "Checker" section, files may be checked for conformance using policies de
 
 ###Check local file
 
-“Check local file” allows a user to select a file or files from a local computer. A user may choose from either an existing policy in MediaConch or from an imported XSLT or Schematron policy file. Policies will be run when selecting the "Check files" button.
+“Check local file” allows a user to select a file or files from a local computer. A user may choose from either an existing policy and display in MediaConch or from an imported XSLT or Schematron policy file. Policies will be run when selecting the "Check files" button.
 
 Example: /Users/mycomputer/mediafiles/ffv1.mkv
 
 ###Check online file
 
-“Check online file” allows a user to select a file using a URL path. A user may choose from either an existing policy in MediaConch or from an imported XSLT or Schematron policy file. Please note that this feature supports HTTP/HTTPS/FTP/FTPS application protocols. Policies will be run when selecting the "Check files" button.
+“Check online file” allows a user to select a file using a URL path. A user may choose from either an existing policy and display in MediaConch or from an imported XSLT or Schematron policy file. Please note that this feature supports HTTP/HTTPS/FTP/FTPS application protocols. Policies will be run when selecting the "Check files" button.
 
 Example: *http://www.mywebsite.com/media/ffv1.mkv*
 
 ###Check local folder
 
-“Check local folder” allows a user to select a folder of files from a local computer or volume. A user may choose from either an existing policy in MediaConch or from an imported XSLT or Schematron policy file. Policies will be run when selecting the "Check files" button.
+“Check local folder” allows a user to select a folder of files from a local computer or volume. A user may choose from either an existing policy and display in MediaConch or from an imported XSLT or Schematron policy file. Policies will be run when selecting the "Check files" button.
 
 Example: */Users/mycomputer/mediafiles/* 
 
@@ -175,18 +175,18 @@ Example: *track[@type='General']/FileExtension = 'mkv'*
 
 ##Display
 
-The display section will allow a user to apply an XSL to any conformance output XMLs for HTML presentation. 
+The Display section will allow a user to apply various display XSLs for use with policy and implementation check reports in the checker section. MediaConch has provided example HTML, XML and TXT displays. Once a display XSL is imported, it can be actived by selecting the display in the "Choose a Display" dropdown menu located in the Checker section. 
 
 ###Import display set
 
-Allows a user to import a display file to the display set. 
+Allows a user to import a display XSL file to the display set. 
 
 ###Export display set
 
-Allows a user to export a display file to the display set. 
+Allows a user to export a display XSL file to the display set. 
 
 ###Delete selected display file
 
-Allows a user to delete a display file from the display set. 
+Allows a user to delete a display XSL file from the display set. 
 
 

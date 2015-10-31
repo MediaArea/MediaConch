@@ -1,4 +1,4 @@
----
+		---
 layout: default
 permalink: documentation/DataFormat.html
 title: "Documentation: Data Format"
@@ -34,11 +34,11 @@ Using MediaArea’s principal software, MediaInfo, the MediaInfo XML presents a 
 
 #### Structure of A MediaInfo XML
 
-The root element of the MediaInfo XML exists as `<Mediainfo>`. A nested `<File>` sub-element containing a `ref` attribute specifies the path and filename of the file reported on. A `<track type>` child element defines MediaInfo's track types, and within `<track type>` elements are various sub-child elements corresponding to associated field metadata. For example, a "General" track type element will include such sibling elements as `<CompleteName>`, `<Format>`, and `<FileSize>`; a "Video" track type element will include such sibling elements as `<Width>`, <Height>, and <PixelAspectRatio>; an "Audio" track type element will include such sibling elements as `<Channels>`, `<SamplingRate>`, and `<SamplingCount>`; and so on, and so forth. 
+The root element of the MediaInfo XML exists as `<Mediainfo>`. A nested `<File>` sub-element containing a `ref` attribute specifies the path and filename of the file reported on. A `<track>` child element defines MediaInfo's track types, including `type`and `tracktypeorder` attributes. Within `<track>` elements are various sub-child elements corresponding to associated field metadata. For example, a "General" track type element will include such sibling elements as `<CompleteName>`, `<Format>`, and `<FileSize>`; a "Video" track type element will include such sibling elements as `<Width>`, <Height>, and <PixelAspectRatio>; an "Audio" track type element will include such sibling elements as `<Channels>`, `<SamplingRate>`, and `<SamplingCount>`; and so on, and so forth. 
 
 The following is an example of a MediaInfo XML General type track element containing the sub-child elements "Format," "Format_profile," and "Codec_ID": 
 
-        <track type="General">
+        <track type="General" tracktypeorder="0">
 		<Complete_name>/Users/mycomputer//files/ffv1.mkv</Complete_name>
 		<Format>MPEG-4</Format>
 		<Format_profile>QuickTime</Format_profile>
@@ -65,20 +65,20 @@ The MediaConch XML is designed specifically for file conformance checking using 
 
 #### Structure of a MediaConch XML
 
-The root element of the MediaConch XML exists as `<MediaConch>`, and initially contains a `<policyChecks>` element which encapsulates all policy rules. The `<title>` element denotes the title of the policy, while the `<media>` element contains the checked filename its associated path:
+The root element of the MediaConch XML exists as `<MediaConch>`, and initially contains a `<policyChecks>` element which encapsulates all policy rules. The `<name>` element denotes the title of the policy, while the `<media>` element contains the checked filename its associated path:
 
         <?xml version="1.0" encoding="UTF-8"?>
 		<MediaConch xmlns="https://mediaarea.net/mediaconch" xmlns:mi="https://mediaarea.net/mediainfo" version="0.1">`
 		<policyChecks>
-		<title>Preservation Master File Recommendations - Matroska/FFV1</title>
+		<name>Preservation Master File Recommendations - Matroska/FFV1</name>
 		<media ref="/Users/mycomputer//files/ffv1.mkv">`
 
-Within the <policyChecks> element are individual <policy> rules that contain the name of the policy rule, the associated track type and field, a user-declared value, the reported or “actual” value, and a “pass” or “fail” outcome:
+Within the <policyChecks> element are individual <check> rules that contain the name of the policy rule, the associated track type and field, a user-declared value, the reported or “actual” value, and a “pass” or “fail” outcome:
 
-		<policy title="General Format equals Matroska">
+		<check name="General Format equals Matroska">
 		<context field="Format" value="Matroska"/>
 		<test tracktype="General" actual="Matroska" outcome="pass"/>
-		</policy>
+		</check>
 
 #### Generating a MediaConch XML
 
