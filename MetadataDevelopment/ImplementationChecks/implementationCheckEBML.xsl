@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma mt">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma mi mt">
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
     <xsl:template match="mt:MediaTrace/mt:block">
       <xsl:apply-templates select="*" />
@@ -12,6 +12,8 @@
             <implementationChecks>
                 <name>MediaConch EBML Implementation Checker</name>
                 <xsl:for-each select="ma:media">
+                    <xsl:choose>
+                        <xsl:when test="//mi:Format='Matroska' or //mi:Format='WebM'">
                     <xsl:variable name="EBMLVersion">
                         <xsl:choose>
                             <xsl:when test="//mt:data[../mt:block/mt:data='646']">
@@ -64,6 +66,14 @@
                         <xsl:attribute name="ref">
                             <xsl:value-of select="./@ref"/>
                         </xsl:attribute>
+                                <check icid="IS_EBML" version="1">
+                                    <context field="mi:Format">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="//mi:Format" />
+                                        </xsl:attribute>
+                                    </context>
+                                    <test outcome="pass" />
+                                </check>
                         <check>
                             <xsl:attribute name="icid">EBML-ELEM-START</xsl:attribute>
                             <xsl:attribute name="version">1</xsl:attribute>
@@ -211,6 +221,23 @@
                             </implementation>
                         </xsl:for-each>
                     </media>
+                </xsl:when>
+                <xsl:otherwise>
+                    <check icid="IS_EBML" version="1">
+                        <context field="mi:Format">
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="//mi:Format" />
+                            </xsl:attribute>
+                        </context>
+                        <test outcome="fail">
+                            <value name="reason">
+                                <xsl:value-of select="//mi:CompleteName" />
+                                <xsl:text> is not recognized as an EBML format</xsl:text>
+                            </value>
+                        </test>
+                      </check>
+                </xsl:otherwise>
+            </xsl:choose>
                 </xsl:for-each>
             </implementationChecks>
         </MediaConch>
