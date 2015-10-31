@@ -158,7 +158,7 @@
                                             <xsl:for-each select="//mt:block[@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
                                                 <test outcome="fail">
                                                     <xsl:attribute name="reason">
-                                                        <xsl:text>An Element at has an Element ID Length greater than EBMLMaxIDLength.</xsl:text>
+                                                        <xsl:text>Element ID Length greater than EBMLMaxIDLength.</xsl:text>
                                                     </xsl:attribute>
                                                     <value>
                                                         <xsl:attribute name="offset">
