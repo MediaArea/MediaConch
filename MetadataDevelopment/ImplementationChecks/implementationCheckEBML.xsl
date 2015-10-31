@@ -10,7 +10,7 @@
                 <xsl:text>0.1</xsl:text>
             </xsl:attribute>
             <implementationChecks>
-                <title>MediaConch EBML Implementation Checker</title>
+                <name>MediaConch EBML Implementation Checker</name>
                 <xsl:for-each select="ma:media">
                     <xsl:variable name="EBMLVersion">
                         <xsl:choose>
@@ -195,7 +195,7 @@
                         </check>
                         <xsl:for-each select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']/mt:data">
                             <implementation>
-                                <xsl:attribute name="title">TOTAL_PARTS is number</xsl:attribute>
+                                <xsl:attribute name="name">TOTAL_PARTS is number</xsl:attribute>
                                 <xsl:call-template name="is_number">
                                     <xsl:with-param name="xpath" select="."/>
                                     <xsl:with-param name="field">TOTAL_PARTS</xsl:with-param>
