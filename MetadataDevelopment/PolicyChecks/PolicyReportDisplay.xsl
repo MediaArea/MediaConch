@@ -7,7 +7,7 @@
         <p><xsl:value-of select="mc:description"/></p>
         <xsl:for-each select="mc:media">
             <b><xsl:value-of select="@ref"/></b><p/>
-            <xsl:for-each select="mc:policy">
+            <xsl:for-each select="mc:check">
                 <i><xsl:value-of select="@name"/></i>
                 <table border="1">
                     <p>Context (field): <xsl:value-of select="mc:context/@field"/></p>
