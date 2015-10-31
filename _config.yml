@@ -7,6 +7,8 @@ baseurl: /MediaConch
 collections: 
   releasenotes:
     output: true
+  documentation:
+    output: true
 
 sass:
     sass_dir: _sass
