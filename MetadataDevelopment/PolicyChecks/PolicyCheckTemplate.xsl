@@ -16,7 +16,7 @@
                         </xsl:attribute>
                         <!-- the for-each loop doesn't apply to is_true functions where the xpath is passed as a user-construction -->
                         <!-- the is_true function and example here is for the special case when the free text entry is used, thus only title and xpath are available -->
-                        <policy>
+                        <check>
                             <xsl:attribute name="title">Is Matroska or QuickTime</xsl:attribute>
                             <context>
                                 <xsl:attribute name="value">mi:MediaInfo/mi:track[@type='General'][1]/mi:Format = 'Matroska' or mi:MediaInfo/mi:track[@type='General'][1]/mi:Format = 'AVI'</xsl:attribute>
@@ -24,8 +24,8 @@
                             <xsl:call-template name="is_true">
                                 <xsl:with-param name="xpath" select="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format = 'Matroska' or mi:MediaInfo/mi:track[@type='General'][1]/mi:Format = 'AVI'"/>
                             </xsl:call-template>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Is Matroska</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format</xsl:attribute>
@@ -44,8 +44,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Is FFV1</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format</xsl:attribute>
@@ -64,8 +64,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Audio is PCM</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format</xsl:attribute>
@@ -84,8 +84,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Format version is Version 3.1</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format_Version</xsl:attribute>
@@ -104,8 +104,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">FileSize is greater than 0</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">FileSize</xsl:attribute>
@@ -124,8 +124,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Video track Format exists</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format</xsl:attribute>
@@ -142,8 +142,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Video track Formatzzzzz does not exist</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Formatzzzzz</xsl:attribute>
@@ -160,8 +160,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Format contains 1</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format</xsl:attribute>
@@ -180,8 +180,8 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
-                        <policy>
+                        </check>
+                        <check>
                             <xsl:attribute name="title">Format version does not contain 1</xsl:attribute>
                             <context>
                                 <xsl:attribute name="field">Format_Version</xsl:attribute>
@@ -200,7 +200,7 @@
                                     <test outcome="invalid"/>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </policy>
+                        </check>
                     </media>
                 </xsl:for-each>
             </policyChecks>
