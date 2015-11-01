@@ -33,7 +33,7 @@ Test File: Using the following FFmpeg command, a tester can create a file
 
 Test File: [General Conformance MKV](files/General_Conformance.mkv)
 
-XSL Policy: [General Conformance XSL](files/General_Conformance.xsl)
+XSL Policy: [General Conformance XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/General_Conformance.xsl)
 
 To test, run the following test file with the associated policy document:
 
@@ -49,7 +49,7 @@ Test File: Using the following FFmpeg command, a tester can create a file which 
 
 Test File: [Standards Mismatch MKV](files/Standards_Mismatch.mkv)
 
-XSL Policy: [Standards Mismatch PAL XSL](files/Standards_Mismatch_PAL.xsl)
+XSL Policy: [Standards Mismatch PAL XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/Standards_Mismatch_PAL.xsl)
 
 This policy includes the following rules:
 
@@ -57,7 +57,7 @@ This policy includes the following rules:
 - Video Width is equal to 720 (pixels)
 - Video Height is equal to 576 (pixels)
 
-XSL Policy: [Standards Mismatch NTSC XSL](files/Standards_Mismatch_NTSC.xsl)
+XSL Policy: [Standards Mismatch NTSC XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/Standards_Mismatch_NTSC.xsl)
 
 This policy includes the following rules:
 
@@ -81,9 +81,11 @@ Description: This test demonstrates checking multiple, like files for conformanc
 
 This test is designed to produce a failed or NOT VALID result due to the second and third files being manipulated. However, these two files should produce non-valid results and reporting in different ways. 
 
-Test File: [Testing Multiple Files MKV](TBD)
+Test File 1: [Testing Multiple Files MKV](files/Testing_Multiple_Files_1.mkv)
+Test File 2: [Testing Multiple Files MKV](files/Testing_Multiple_Files_2.mkv)
+Test File 3: [Testing Multiple Files MKV](files/Testing_Multiple_Files_3.mkv)
 
-XSL Policy: [Testing Multiple Files XSL](files/Testing_Multiple_Files.xsl)
+XSL Policy: [Testing Multiple Files XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/Testing_Multiple_Files.xsl)
 
 To test, run the following test files with the associated policy document:
 
@@ -123,7 +125,7 @@ This policy contains the following rules:
 
 Test File: [QuickTime v210 to Matroska FFV1 MKV](files/QTv210_to_MKVffv1.mkv)
 
-XSL Policy: [QuickTime v210 to Matroska FFV1 XSL](files/QTv210_to_MKVffv1.xsl)
+XSL Policy: [QuickTime v210 to Matroska FFV1 XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/QTv210_to_MKVffv1.xsl)
 
 To test, run the following test file with the associated policy document:
 
@@ -137,15 +139,15 @@ This resource is available [here](https://library.nyu.edu/preservation/VARRFP.pd
 
 Test File (QuickTime): [Preservation Master File recommended specifications - QuickTime MOV](files/NYULibraries_QTv210.mov)
 
-XSL Policy (QuickTime): [Preservation Master File recommended specifications - QuickTime XSL](files/NYULibraries_QTv210.xsl)
+XSL Policy (QuickTime): [Preservation Master File recommended specifications - QuickTime XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/NYULibraries_QTv210.xsl)
 
 To test, run the following test file with the associated policy document:
 
 `mediaconch -ti -fx NYULibraries_QTv210.mov -s NYULibraries_QTv210.xsl`
 
-Test File (Matroska): [Preservation Master File recommended specifications - Matroska MKV](files/NYULibraries_KMVFFV1.mkv)
+Test File (Matroska): [Preservation Master File recommended specifications - Matroska MKV](files/NYULibraries_MKVFFV1.mkv)
 
-XSL Policy (Matroska): [Preservation Master File recommended specifications - Matroska XSL](files/NYULibraries_KMVFFV1.xsl)
+XSL Policy (Matroska): [Preservation Master File recommended specifications - Matroska XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/NYULibraries_MKVFFV1.xsl)
 
 To test, run the following test file with the associated policy document:
 
