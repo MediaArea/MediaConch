@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
     <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes"/>
-    <xsl:template match="/mc:MediaConch/mc:policyChecks">
+    <xsl:template match="/mc:MediaConch/mc:media/mc:policyChecks">
         <xsl:text>*********************&#xa;</xsl:text>
         <xsl:text>* MediaConch report *&#xa;</xsl:text>
         <xsl:text>*********************&#xa;</xsl:text>
@@ -17,7 +17,7 @@
 			</xsl:if>
 			<xsl:text>&#xa;</xsl:text>
 		</xsl:if>
-        <xsl:for-each select="mc:media">
+    <xsl:for-each select="mc:media">
 			<xsl:text>******************************************************************************&#xa;</xsl:text>
             <xsl:value-of select="@ref"/>
 			<xsl:text>&#xa;</xsl:text>
@@ -63,7 +63,7 @@
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
-    <xsl:template match="/mc:MediaConch/mc:implementationChecks">
+    <xsl:template match="/mc:MediaConch/mc:media/mc:implementationChecks">
         <xsl:text>*********************&#xa;</xsl:text>
         <xsl:text>* MediaConch report *&#xa;</xsl:text>
         <xsl:text>*********************&#xa;</xsl:text>
@@ -79,7 +79,7 @@
 			</xsl:if>
 			<xsl:text>&#xa;</xsl:text>
 		</xsl:if>
-        <xsl:for-each select="mc:media">
+    <xsl:for-each select="mc:media">
 			<xsl:text>******************************************************************************&#xa;</xsl:text>
             <xsl:value-of select="@ref"/>
 			<xsl:text>&#xa;</xsl:text>
