@@ -66,10 +66,6 @@
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
-                                <media>
-                                    <xsl:attribute name="ref">
-                                        <xsl:value-of select="./@ref"/>
-                                    </xsl:attribute>
                                     <check icid="IS_EBML" version="1">
                                         <context field="mi:Format">
                                             <xsl:attribute name="value">
@@ -224,7 +220,6 @@
                                             </xsl:call-template>
                                         </implementation>
                                     </xsl:for-each>
-                                </media>
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
