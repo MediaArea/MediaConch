@@ -263,9 +263,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -307,9 +307,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -351,9 +351,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -503,9 +503,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -547,9 +547,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -591,9 +591,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -634,9 +634,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -674,9 +674,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -715,9 +715,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="field">
@@ -782,9 +782,9 @@
                     <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../mi:track/ID">
+            <xsl:if test="../mi:ID">
                 <xsl:attribute name="ID">
-                    <xsl:value-of select="../mi:track/ID"/>
+                    <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="value">
