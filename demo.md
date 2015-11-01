@@ -77,9 +77,7 @@ A user may also testing one file against both policies using the following comma
 
 #### Testing multiple like files
 
-Description: This test demonstrates checking multiple, like files for conformance using the same policy. In this case, the files tested are meant to be identical. However, two alterations to the files have been made: the second test file has had two bytes with a value of 0000 purposely removed, and the third test file exists as a copy of the second test file, with the two bytes in question replaced after copying. 
-
-This test is designed to produce a failed or NOT VALID result due to the second and third files being manipulated. However, these two files should produce non-valid results and reporting in different ways. 
+Description: This test demonstrates checking multiple like files for conformance using the same policy. In this case, the files tested are meant to be identical. However, the third test file (Testing_Multiple_Files_3.mkv) contains the incorrect specified color space (YUV). The resulting test produces a failed or NOT VALID result due to the third file being manipulated. 
 
 Test File 1: [Testing Multiple Files MKV](files/Testing_Multiple_Files_1.mkv)
 Test File 2: [Testing Multiple Files MKV](files/Testing_Multiple_Files_2.mkv)
