@@ -9,6 +9,11 @@
             <xsl:attribute name="version">
                 <xsl:text>0.1</xsl:text>
             </xsl:attribute>
+            <xsl:for-each select="ma:media">
+                <media>
+                    <xsl:attribute name="ref">
+                        <xsl:value-of select="./@ref"/>
+                    </xsl:attribute>
             <implementationChecks>
                 <name>MediaConch EBML Implementation Checker</name>
                 <xsl:for-each select="ma:media">
@@ -240,6 +245,8 @@
                     </xsl:choose>
                 </xsl:for-each>
             </implementationChecks>
+                </media>
+            </xsl:for-each>
         </MediaConch>
     </xsl:template>
     <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
