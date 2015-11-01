@@ -16,7 +16,6 @@
                     </xsl:attribute>
                     <implementationChecks>
                         <name>MediaConch EBML Implementation Checker</name>
-                        <xsl:for-each select="ma:media">
                             <xsl:choose>
                                 <xsl:when test="//mi:Format='Matroska' or //mi:Format='WebM'">
                                     <xsl:variable name="EBMLVersion">
@@ -243,7 +242,6 @@
                                     </check>
                                 </xsl:otherwise>
                             </xsl:choose>
-                        </xsl:for-each>
                     </implementationChecks>
                 </media>
             </xsl:for-each>
