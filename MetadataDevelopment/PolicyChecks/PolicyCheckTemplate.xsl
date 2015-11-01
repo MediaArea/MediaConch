@@ -6,14 +6,14 @@
             <xsl:attribute name="version">
                 <xsl:text>0.1</xsl:text>
             </xsl:attribute>
-            <policyChecks>
-                <name>This is the policy set title</name>
-                <description>This is the policy set description</description>
-                <xsl:for-each select="ma:media">
-                    <media>
-                        <xsl:attribute name="ref">
-                            <xsl:value-of select="./@ref"/>
-                        </xsl:attribute>
+            <xsl:for-each select="ma:media">
+                <media>
+                    <xsl:attribute name="ref">
+                        <xsl:value-of select="./@ref"/>
+                    </xsl:attribute>
+                    <policyChecks>
+                        <name>This is the policy set title</name>
+                        <description>This is the policy set description</description>
                         <!-- the for-each loop doesn't apply to is_true functions where the xpath is passed as a user-construction -->
                         <!-- the is_true function and example here is for the special case when the free text entry is used, thus only title and xpath are available -->
                         <check>
@@ -201,9 +201,9 @@
                                 </xsl:otherwise>
                             </xsl:choose>
                         </check>
-                    </media>
-                </xsl:for-each>
-            </policyChecks>
+                    </policyChecks>
+                </media>
+            </xsl:for-each>
         </MediaConch>
     </xsl:template>
     <xsl:template name="is_true">
