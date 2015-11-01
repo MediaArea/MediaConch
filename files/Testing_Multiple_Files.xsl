@@ -7,37 +7,37 @@
         <xsl:text>0.1</xsl:text>
       </xsl:attribute>
       <policyChecks>
-        <title>Testing Multiple Files</title>
+        <name>Testing Multiple Files</name>
         <description>This policy checks all the files for conformance. Test2_2.mkv and Test2_3.mkv fail because they have been manipulated, but they fail in different ways.</description>
         <xsl:for-each select="ma:media">
           <media>
             <xsl:attribute name="ref">
               <xsl:value-of select="./@ref"/>
             </xsl:attribute>
-            <policy>
-              <xsl:attribute name="title">General UniqueID must exist. </xsl:attribute>
+            <check>
+              <xsl:attribute name="name">General UniqueID must exist. </xsl:attribute>
               <context>
                 <xsl:attribute name="field">UniqueID</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:UniqueID">
-                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:UniqueID">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][*]/mi:UniqueID">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][*]/mi:UniqueID">
                     <xsl:call-template name="exists">
                       <xsl:with-param name="xpath" select="."/>
                     </xsl:call-template>
                   </xsl:for-each>
                 </xsl:when>
               </xsl:choose>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">General Format must be Matroska</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">General Format must be Matroska</xsl:attribute>
               <context>
                 <xsl:attribute name="field">Format</xsl:attribute>
                 <xsl:attribute name="value">Matroska</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format">
-                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:Format">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][*]/mi:Format">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][*]/mi:Format">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">Matroska</xsl:with-param>
@@ -45,25 +45,25 @@
                   </xsl:for-each>
                 </xsl:when>
               </xsl:choose>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">General FileExtension must be mkv.</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">General FileExtension must be mkv.</xsl:attribute>
               <context>
                 <xsl:attribute name="value">track[@type='General']/FileExtension = 'mkv'</xsl:attribute>
               </context>
               <xsl:call-template name="is_true">
                 <xsl:with-param name="xpath" select="track[@type='General']/FileExtension = 'mkv'"/>
               </xsl:call-template>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">General Duration must be 40 ms.</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">General Duration must be 40 ms.</xsl:attribute>
               <context>
                 <xsl:attribute name="field">Duration</xsl:attribute>
                 <xsl:attribute name="value">40</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][1]/mi:Duration">
-                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][1]/mi:Duration">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='General'][*]/mi:Duration">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='General'][*]/mi:Duration">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">40</xsl:with-param>
@@ -71,16 +71,16 @@
                   </xsl:for-each>
                 </xsl:when>
               </xsl:choose>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">General FrameRate must be 25</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">General FrameRate must be 25</xsl:attribute>
               <context>
                 <xsl:attribute name="field">FrameRate</xsl:attribute>
                 <xsl:attribute name="value">25</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:FrameRate">
-                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:FrameRate">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][*]/mi:FrameRate">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][*]/mi:FrameRate">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">25</xsl:with-param>
@@ -88,34 +88,34 @@
                   </xsl:for-each>
                 </xsl:when>
               </xsl:choose>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">Video stream must exist.</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">Video stream must exist.</xsl:attribute>
               <context>
                 <xsl:attribute name="value">track[@type='Video']</xsl:attribute>
               </context>
               <xsl:call-template name="is_true">
                 <xsl:with-param name="xpath" select="track[@type='Video']"/>
               </xsl:call-template>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">Video Unique ID must exist.</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">Video Unique ID must exist.</xsl:attribute>
               <context>
                 <xsl:attribute name="value">track[@type='Video']/UniqueID</xsl:attribute>
               </context>
               <xsl:call-template name="is_true">
                 <xsl:with-param name="xpath" select="track[@type='Video']/UniqueID"/>
               </xsl:call-template>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">Video Format must equal RGB</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">Video Format must equal RGB</xsl:attribute>
               <context>
                 <xsl:attribute name="field">Format</xsl:attribute>
                 <xsl:attribute name="value">RGB</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Format">
-                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:Format">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][*]/mi:Format">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][*]/mi:Format">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">RGB</xsl:with-param>
@@ -123,16 +123,16 @@
                   </xsl:for-each>
                 </xsl:when>
               </xsl:choose>
-            </policy>
-            <policy>
-              <xsl:attribute name="title">Video DisplayAspectRatio must be 1.</xsl:attribute>
+            </check>
+            <check>
+              <xsl:attribute name="name">Video DisplayAspectRatio must be 1.</xsl:attribute>
               <context>
                 <xsl:attribute name="field">DisplayAspectRatio</xsl:attribute>
                 <xsl:attribute name="value">1.</xsl:attribute>
               </context>
               <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][1]/mi:DisplayAspectRatio">
-                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][1]/mi:DisplayAspectRatio">
+                <xsl:when test="mi:MediaInfo/mi:track[@type='Video'][*]/mi:DisplayAspectRatio">
+                  <xsl:for-each select="mi:MediaInfo/mi:track[@type='Video'][*]/mi:DisplayAspectRatio">
                     <xsl:call-template name="is_equal">
                       <xsl:with-param name="xpath" select="."/>
                       <xsl:with-param name="value">1.</xsl:with-param>
@@ -140,7 +140,7 @@
                   </xsl:for-each>
                 </xsl:when>
               </xsl:choose>
-            </policy>
+            </check>
           </media>
         </xsl:for-each>
       </policyChecks>
@@ -154,10 +154,15 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="$xpath">
@@ -179,10 +184,15 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
@@ -207,14 +217,16 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="expected">
-        <xsl:value-of select="$value"/>
-      </xsl:attribute>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
       </xsl:attribute>
@@ -238,14 +250,16 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="expected">
-        <xsl:value-of select="$value"/>
-      </xsl:attribute>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
       </xsl:attribute>
@@ -269,14 +283,16 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="expected">
-        <xsl:value-of select="$value"/>
-      </xsl:attribute>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
       </xsl:attribute>
@@ -300,14 +316,16 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="expected">
-        <xsl:value-of select="$value"/>
-      </xsl:attribute>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
       </xsl:attribute>
@@ -331,14 +349,16 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="expected">
-        <xsl:value-of select="$value"/>
-      </xsl:attribute>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
       </xsl:attribute>
@@ -361,10 +381,15 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
@@ -388,10 +413,15 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
       </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
@@ -416,14 +446,16 @@
           <xsl:value-of select="../@type"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="../@streamid">
-        <xsl:attribute name="streamid">
-          <xsl:value-of select="../@streamid"/>
+      <xsl:if test="../@typeorder">
+        <xsl:attribute name="tracktypeorder">
+          <xsl:value-of select="../@typeorder"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="expected">
-        <xsl:value-of select="$value"/>
-      </xsl:attribute>
+      <xsl:if test="../mi:ID">
+          <xsl:attribute name="trackid">
+              <xsl:value-of select="../mi:ID"/>
+          </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="actual">
         <xsl:value-of select="$xpath"/>
       </xsl:attribute>
