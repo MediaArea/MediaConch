@@ -41,9 +41,9 @@
 						<xsl:value-of select="@tracktype"/>
 						<xsl:text>&#xa;</xsl:text>
 					</xsl:if>
-					<xsl:if test="@streamid">
+					<xsl:if test="@typeorder">
 						<xsl:text>Stream ID: </xsl:text>
-						<xsl:value-of select="@streamid"/>
+						<xsl:value-of select="@typeorder"/>
 						<xsl:text>&#xa;</xsl:text>
 					</xsl:if>
 					<xsl:if test="@actual != ''">

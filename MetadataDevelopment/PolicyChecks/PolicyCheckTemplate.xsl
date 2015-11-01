@@ -214,9 +214,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:choose>
@@ -239,9 +239,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -267,9 +267,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -295,9 +295,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -323,9 +323,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -351,9 +351,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -379,9 +379,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -406,9 +406,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -433,9 +433,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">
@@ -461,9 +461,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@streamid">
-                <xsl:attribute name="streamid">
-                    <xsl:value-of select="../@streamid"/>
+            <xsl:if test="../@typeorder">
+                <xsl:attribute name="typeorder">
+                    <xsl:value-of select="../@typeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:attribute name="actual">

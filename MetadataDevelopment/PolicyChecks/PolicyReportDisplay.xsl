@@ -14,7 +14,7 @@
                     <p>Context (value): <xsl:value-of select="mc:context/@value"/></p>
                     <th>
                         <td>tracktype</td>
-                        <td>streamid</td>
+                        <td>typeorder</td>
                         <td>actual</td>
                         <td>outcome</td>
                         <td>reason</td>
@@ -23,7 +23,7 @@
                         <tr>
                             <td/>
                             <td><xsl:value-of select="@tracktype"/></td>
-                            <xsl:if test="streamid"><td><xsl:value-of select="@streamid"/></td></xsl:if>
+                            <xsl:if test="typeorder"><td><xsl:value-of select="@typeorder"/></td></xsl:if>
                             <td><xsl:value-of select="@actual"/></td>
                             <td><xsl:value-of select="@outcome"/></td>
                             <td><xsl:value-of select="@reason"/></td>
