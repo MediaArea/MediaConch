@@ -10,6 +10,73 @@
                 <xsl:text>0.1</xsl:text>
             </xsl:attribute>
             <implementationChecks>
+                <name>MediaConch FFV1 Implementation Checker</name>
+                <xsl:for-each select="ma:media">
+                    <xsl:choose>
+                        <xsl:when test="//mi:Format='FFV1'">
+                            <xsl:variable name="FFV1Version">
+                                <xsl:value-of select="//mt:block[@name='CodecPrivate']/mt:block[@name='Private data']/mt:data[@name='version']"/>
+                            </xsl:variable>
+                            <xsl:variable name="FFV1MicroVersion">
+                                <xsl:value-of select="//mt:block[@name='CodecPrivate']/mt:block[@name='Private data']/mt:data[@name='micro_version']"/>
+                            </xsl:variable>
+                            <media>
+                                <xsl:attribute name="ref">
+                                    <xsl:value-of select="./@ref"/>
+                                </xsl:attribute>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-HEADER-IDS-ONLY</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:variable name="valid-ffv1-slice-count">'1 4 6 9 12 16 24 30'</xsl:variable>
+                                    <context field="valid-ffv1-slice-count">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="$valid-ffv1-slice-count"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <xsl:for-each select="//mt:block[@name='Block']">
+                                        <xsl:call-template name="x_is_in_list">
+                                            <xsl:with-param name="x" select="count(mt:block[@name='Slice'])"/>
+                                            <xsl:with-param name="list" select="$valid-ffv1-slice-count"/>
+                                        </xsl:call-template>
+                                    </xsl:for-each>
+                                </check>
+                                <check>
+                                    <xsl:attribute name="icid">FFV1-CODERTYPE-VALID</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:variable name="valid-ffv1-codertypes">'0 1 2'</xsl:variable>
+                                    <context field="valid-ffv1-codertypes">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="$valid-ffv1-codertypes"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <xsl:for-each select="//mt:data[@name='coder_type']">
+                                        <xsl:call-template name="x_is_in_list">
+                                            <xsl:with-param name="x" select="."/>
+                                            <xsl:with-param name="list" select="$valid-ffv1-codertypes"/>
+                                        </xsl:call-template>
+                                    </xsl:for-each>
+                                </check>
+                            </media>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <check icid="IS_EBML" version="1">
+                                <context field="mi:Format">
+                                    <xsl:attribute name="value">
+                                        <xsl:value-of select="//mi:Format"/>
+                                    </xsl:attribute>
+                                </context>
+                                <test outcome="fail">
+                                    <value name="reason">
+                                        <xsl:value-of select="//mi:CompleteName"/>
+                                        <xsl:text> is not recognized as an EBML format</xsl:text>
+                                    </value>
+                                </test>
+                            </check>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </implementationChecks>
+            <implementationChecks>
                 <name>MediaConch EBML Implementation Checker</name>
                 <xsl:for-each select="ma:media">
                     <xsl:choose>
@@ -258,9 +325,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -302,9 +369,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -346,9 +413,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -498,9 +565,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -542,9 +609,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -586,9 +653,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -629,9 +696,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -669,9 +736,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -710,9 +777,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
@@ -777,9 +844,9 @@
                     <xsl:value-of select="../@type"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="../@typeorder">
-                <xsl:attribute name="typeorder">
-                    <xsl:value-of select="../@typeorder"/>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test="../mi:ID">
