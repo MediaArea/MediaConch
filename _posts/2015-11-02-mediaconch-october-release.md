@@ -1,8 +1,8 @@
 ---
 layout: default
 title:  "MediaConch Press Release: October Release"
-date:   2015-10-22 08:00:00 CET
-categories: mediaconch standardization
+date:   2015-11-02 08:00:00 CET
+categories: mediaconch press release
 ---
 
 # MediaConch Press Release (2 Nov 2015)
