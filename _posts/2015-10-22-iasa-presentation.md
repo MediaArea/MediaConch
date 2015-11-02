@@ -11,6 +11,11 @@ In late September, Herman Lewetz of the [Österreichische Mediathek](http://www.
 Thanks,
 Dave Rice
 
+![Courtesy Tre Berney]({{ site.url }}/images/iasa1.jpg)
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">hi <a href="https://twitter.com/dericed">@dericed</a> and <a href="https://twitter.com/ablwr">@ablwr</a>. <a href="https://twitter.com/hashtag/iasa2015?src=hash">#iasa2015</a> <a href="http://t.co/mmu8yIKk2N">pic.twitter.com/mmu8yIKk2N</a></p>&mdash; tre berney (@treberney) <a href="https://twitter.com/treberney/status/648079073097285632">September 27, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ## Introduction
 
 Hello, I am Herman Lewetz of the Österreich Mediathek. I am presenting this paper on behalf of MediaArea’s project for PREFORMA. Jerome Martinez had a baby on Friday and is unable to be here. Both Dave Rice and Ashley Blewer were also scheduled to be here but for various reasons are unable to attend the conference in person, so you have me. Normally Dave Rice prepares for a presentation by making some notes on the back of the programme before making things up at the podium or Ashley Blewer assembles slides of animated gifs and Taylor Swift lyrics while relating it to archival subjects. Since they are unable to be here, they have accomplished a first in their professional careers and planned out a presentation ahead of time.
@@ -107,3 +112,8 @@ MediaArea is simultaneously developing MediaConch in three forms: a command line
 ## What’s Next
 
 MediaArea anticipates a major release of MediaConch in late October as PREFORMA enters a re-design phase to evaluate and test the current states of our work before proceeding next year on a focused second round of development. MediaArea is eager to find collaborators, testers, and community to participate in, oversee, and use the results of the project. MediaConch has become well-integrated into MediaArea’s other software efforts and the development of this work anticipates that MediaArea will continue to develop support for other audiovisual file formats after the PREFORMA phase of the project has concluded next year.
+
+![Courtesy Tre Berney]({{ site.url }}/images/iasa2.jpg)
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">video solutions.. <a href="https://twitter.com/hashtag/iasa2015?src=hash">#iasa2015</a> <a href="https://twitter.com/hashtag/mikecasey?src=hash">#mikecasey</a> <a href="https://twitter.com/MediaArea_Net">@MediaArea_Net</a> <a href="http://t.co/xrATTLS1UA">pic.twitter.com/xrATTLS1UA</a></p>&mdash; tre berney (@treberney) <a href="https://twitter.com/treberney/status/648083602467491840">September 27, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
