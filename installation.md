@@ -1,3 +1,9 @@
+---
+layout: index
+permalink: /installation.html
+title: "MediaConch Installation"
+---
+
 [Installation](#installation)
 [Dependencies](#dependencies)
 [How to compile from source](#how-to-compile-from-source)
