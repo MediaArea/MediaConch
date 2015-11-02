@@ -7,7 +7,7 @@ categories: mediaconch press release
 
 # MediaConch Press Release (2 Nov 2015)
 
-MediaArea is pleased to announce the latest release of MediaConch (v15.10), software currently being developed under the PREFORMA project. MediaConch is an implementation checker, policy checker and reporter that targets preservation-level audiovisual files (specifically Matroska, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1) for use in memory institutions.
+MediaArea is pleased to announce the latest release of MediaConch (v15.10), a software toolset currently being developed under the PREFORMA project. MediaConch is an implementation checker, policy checker and reporter that targets preservation-level audiovisual files -- specifically Matroska, Linear Pulse Code Modulation (LPCM) and FF Video Codec 1 (FFV1) -- for use in memory institutions.
 
 October’s release of MediaConch features a brand new implementation checker concentrating on Matroska and EBML conformance checks, as well as several illustrative policy sets allowing users to carry out conformance checking on preservation master files, among other workflows. Last month’s release highlighted full user policy creation in the EXtensible Stylesheet Language (XSL) format. A user can now create XSL-based policies with MediaConch’s selection of conformance metadata and validators, import and export XSL policies for quality assurance across institutions, reformatting vendors, and other community collaborators. 
 
