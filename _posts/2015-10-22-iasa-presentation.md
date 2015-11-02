@@ -11,8 +11,6 @@ In late September, Herman Lewetz of the [Österreichische Mediathek](http://www.
 Thanks,
 Dave Rice
 
-![Courtesy Tre Berney](/MediaConch/images/iasa1.jpg)
-
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">hi <a href="https://twitter.com/dericed">@dericed</a> and <a href="https://twitter.com/ablwr">@ablwr</a>. <a href="https://twitter.com/hashtag/iasa2015?src=hash">#iasa2015</a> <a href="http://t.co/mmu8yIKk2N">pic.twitter.com/mmu8yIKk2N</a></p>&mdash; tre berney (@treberney) <a href="https://twitter.com/treberney/status/648079073097285632">September 27, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -112,8 +110,6 @@ MediaArea is simultaneously developing MediaConch in three forms: a command line
 ## What’s Next
 
 MediaArea anticipates a major release of MediaConch in late October as PREFORMA enters a re-design phase to evaluate and test the current states of our work before proceeding next year on a focused second round of development. MediaArea is eager to find collaborators, testers, and community to participate in, oversee, and use the results of the project. MediaConch has become well-integrated into MediaArea’s other software efforts and the development of this work anticipates that MediaArea will continue to develop support for other audiovisual file formats after the PREFORMA phase of the project has concluded next year.
-
-![Courtesy Tre Berney](/MediaConch/images/iasa2.jpg)
 
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">video solutions.. <a href="https://twitter.com/hashtag/iasa2015?src=hash">#iasa2015</a> <a href="https://twitter.com/hashtag/mikecasey?src=hash">#mikecasey</a> <a href="https://twitter.com/MediaArea_Net">@MediaArea_Net</a> <a href="http://t.co/xrATTLS1UA">pic.twitter.com/xrATTLS1UA</a></p>&mdash; tre berney (@treberney) <a href="https://twitter.com/treberney/status/648083602467491840">September 27, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
