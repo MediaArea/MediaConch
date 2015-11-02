@@ -6,26 +6,34 @@ title: "Download MediaConch"
 
 # Downloads
 
-## 15.09 Release Notes
+## 15.10 Release Notes
 
 ### CLI
 
-Support of XSLT policies.  
-Support of HTTP/HTTPS/FTP/FTPS URLs in input.  
+Implementation checker with some EBML tests
+Help updated and split (standard / advanced)
+More output combinations (e.g. implementation checker with Text, HTML, or XML output)
+MediaInfo XML export
+Text/HTML/XSL output support
+Several bug fixes
 
-### CLI and GUI
+### GUI
 
-Design of the report is changed (similar to MediaConchOnline).  
-Examples of policies provided by default.  
-Support of XSLT policies.  
-Drag and drop of several files.  
-MediaTrace UI.  
-Save of MediaTrace output in XML format.  
-Support of HTTP/HTTPS/FTP/FTPS URLs in input.  
+Implementation checker with some EBML tests
+New set of default Policy reports
+About box and Help documentation added
+More coherent list of options
+MediaTrace UI changed, with a grid (offset on the left, value on the right)
+MediaInfo report UI
+MediaInfo XML export
+Policy XSL editor updated
+Display XSL import / export
+Text/HTML/XSL display examples
+Several bug fixes
 
 ### Online
 
-[MediaConchOnline](https://mediaarea.net/MediaConchOnline/) features MediaTrace user interface and XSLT support.
+[MediaConchOnline](https://mediaarea.net/MediaConchOnline/) is not yet synchronized with MediaConch 15.10, ETA 2015-11-04.
 
 ### Historical Release Notes
 
