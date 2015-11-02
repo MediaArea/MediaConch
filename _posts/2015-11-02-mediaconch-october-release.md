@@ -19,6 +19,6 @@ MediaConch is available as a command line interface, a downloadable graphical us
 
 MediaArea is eager to build a community of collaborators and testers to participate in and use the results of the project. You can [contact us here](https://mediaarea.net/MediaConch/contact.html) for more information.
 
-MediaConch is part of the [PREFORMA](http://www.preforma-project.eu/) (PREServation FORMAts for culture information/e-archives) project, co-funded by the European Commission under the FP7-ICT programme. PREFORMA (PREservation FORMAts for culture information/e-archives) is a Pre-Commercial Procurement (PCP) project co-funded by the European Commission under its FP7-ICT Programme. Learn more about MediaConch [here](https://mediaarea.net/MediaConch/about.html). 
+MediaConch is part of the [PREFORMA](http://www.preforma-project.eu/) (PREservation FORMAts for culture information/e-archives) project, co-funded by the European Commission under the FP7-ICT programme. PREFORMA (PREservation FORMAts for culture information/e-archives) is a Pre-Commercial Procurement (PCP) project co-funded by the European Commission under its FP7-ICT Programme. Learn more about MediaConch [here](https://mediaarea.net/MediaConch/about.html). 
 
 Follow us on Twitter: [@MediaConch](https://twitter.com/mediaconch)
