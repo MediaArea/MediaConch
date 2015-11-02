@@ -23,22 +23,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_i386.xUbuntu_15.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_i386.xUbuntu_15.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_i386.xUbuntu_15.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_i386.xUbuntu_15.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_i386.xUbuntu_15.04.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_i386.xUbuntu_15.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_i386.xUbuntu_15.04.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_i386.xUbuntu_15.04.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_15.04.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_15.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_i386.xUbuntu_15.04.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_i386.xUbuntu_15.04.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -47,22 +47,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_amd64.xUbuntu_15.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_amd64.xUbuntu_15.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_amd64.xUbuntu_15.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_amd64.xUbuntu_15.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_amd64.xUbuntu_15.04.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_amd64.xUbuntu_15.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_amd64.xUbuntu_15.04.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_amd64.xUbuntu_15.04.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_15.04.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_15.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_amd64.xUbuntu_15.04.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_amd64.xUbuntu_15.04.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -72,22 +72,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_i386.xUbuntu_14.10.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_i386.xUbuntu_14.10.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_i386.xUbuntu_14.10.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_i386.xUbuntu_14.10.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_i386.xUbuntu_14.10.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_i386.xUbuntu_14.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_i386.xUbuntu_14.10.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_i386.xUbuntu_14.10.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_14.10.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_14.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_i386.xUbuntu_14.10.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_i386.xUbuntu_14.10.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -96,22 +96,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_amd64.xUbuntu_14.10.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_amd64.xUbuntu_14.10.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_amd64.xUbuntu_14.10.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_amd64.xUbuntu_14.10.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_amd64.xUbuntu_14.10.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_amd64.xUbuntu_14.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_amd64.xUbuntu_14.10.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_amd64.xUbuntu_14.10.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_14.10.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_14.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_amd64.xUbuntu_14.10.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_amd64.xUbuntu_14.10.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -121,22 +121,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_i386.Debian_7.0.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_i386.xUbuntu_14.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_i386.Debian_7.0.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_i386.xUbuntu_14.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_i386.xUbuntu_14.04.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_i386.xUbuntu_14.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_i386.xUbuntu_14.04.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_i386.xUbuntu_14.04.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_14.04.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_14.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_i386.xUbuntu_14.04.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_i386.xUbuntu_14.04.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -145,22 +145,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_amd64.Debian_7.0.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_amd64.xUbuntu_14.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_amd64.Debian_7.0.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_amd64.xUbuntu_14.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_amd64.xUbuntu_14.04.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_amd64.xUbuntu_14.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_amd64.xUbuntu_14.04.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_amd64.xUbuntu_14.04.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_14.04.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_14.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_amd64.xUbuntu_14.04.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_amd64.xUbuntu_14.04.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -170,22 +170,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_i386.xUbuntu_12.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_i386.xUbuntu_12.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_i386.xUbuntu_12.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_i386.xUbuntu_12.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_i386.xUbuntu_12.04.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_i386.xUbuntu_12.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_i386.xUbuntu_12.04.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_i386.xUbuntu_12.04.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_i386.xUbuntu_12.04.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_i386.xUbuntu_12.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_i386.xUbuntu_12.04.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_i386.xUbuntu_12.04.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -194,22 +194,22 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.09/mediaconch-gui_15.09-1_amd64.xUbuntu_12.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.10/mediaconch-gui_15.10-1_amd64.xUbuntu_12.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.09/mediaconch_15.09-1_amd64.xUbuntu_12.04.deb">v15.09</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.10/mediaconch_15.10-1_amd64.xUbuntu_12.04.deb">v15.10</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo0_0.7.78-1_amd64.xUbuntu_12.04.deb">v0.7.78</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.78/libmediainfo-dev_0.7.78-1_amd64.xUbuntu_12.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo0_0.7.79-1_amd64.xUbuntu_12.04.deb">v0.7.79</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.79/libmediainfo-dev_0.7.79-1_amd64.xUbuntu_12.04.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen0_0.4.31-1_amd64.xUbuntu_12.04.deb">v0.4.31</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.31/libzen-dev_0.4.31-1_amd64.xUbuntu_12.04.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_amd64.xUbuntu_12.04.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_amd64.xUbuntu_12.04.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 </table>
