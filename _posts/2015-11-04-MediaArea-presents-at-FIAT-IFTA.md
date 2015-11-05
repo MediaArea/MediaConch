@@ -13,13 +13,13 @@ Along with co-presenters Bert Lemmens ([PACKED vxw](http://packed.be)) and Peter
 
 Lemmens introduced  the PREFORMA project and explained the decision to include FFV1 as one of the preservation formats to be researched.  The criteria for formats to be included in the PREFORMA project challenge are summarized in the presentation excerpt here:
 
-![av specs](/images/fiat1.png)
+![av specs](/MediaConch/images/fiat1.png)
 
 *Bert Lemmens, "FFV1 For Preservation" FIAT/IFTA 2015*
 
 Bubestinger explained some of the technical challenges with FFV1 and the current technical developments, including features and advantages of using FFV1 for preservation.  Bubestinger likened the format selection problems facing audiovisual archives to finding the right Swiss Army knife:  if you try and include every possible function or feature,  you end up with an unwieldy and impossible tool.
 
-![all in one approach](/images/fiat2.png)![all in one approach](/images/fiat3.png)
+![all in one approach](/MediaConch/images/fiat2.png)![all in one approach](/MediaConch/images/fiat3.png)
 
 *The tool on the left actually exists--the writer of this blog post does not endorse purchasing this tool.*
 
@@ -29,7 +29,7 @@ Finally, Fallon provided an overview of the standardization efforts for FFV1 thr
 
 Fallon also discussed the current efforts form the IETF working group Codec Encoding for LossLess Archiving and Realtime transmission (CELLAR), which if approved will be the IETF home for work on standardization of FFV1 (as well as FLAC and Matroska).  More information about CELLAR can be found [here](https://datatracker.ietf.org/doc/charter-ietf-cellar/). [Ed. We will be releasing some exciting news regarding the status of the working group very soon!]
 
-![standardization of ffv1](/images/fiat4.png)
+![standardization of ffv1](/MediaConch/images/fiat4.png)
 
 *"Why does FFV1 need to be standardized?"  Here are some answers...*
 
