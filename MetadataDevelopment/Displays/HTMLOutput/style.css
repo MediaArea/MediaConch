@@ -1,0 +1,26 @@
+#mediaconch {
+  max-width: 600px;
+  background-color: #F2F5F8;
+  border: 1px white solid; # mayb
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+#mediaconch h1  {
+  border: 1px white solid;
+  background-color: #64A8DD;
+}
+
+#mediaconch table {
+  max-width: 600px;
+}
+
+#mediaconch table td:first-child {
+  background-color: #64A8DD;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+#mediaconch table td:first-child {
+  padding-left: 20px;
+}
