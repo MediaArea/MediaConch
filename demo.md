@@ -37,7 +37,7 @@ XSL Policy: [General Conformance XSL](https://raw.githubusercontent.com/MediaAre
 
 To test, run the following test file with the associated policy document:
 
-`mediaconch -mi -fx General_Conformance.mkv -p General_Conformance.xsl`
+`mediaconch -mc General_Conformance.mkv -p General_Conformance.xsl`
 
 #### Standards Mismatch
 
@@ -67,13 +67,13 @@ This policy includes the following rules:
 
 To test each policy individually, a tester can use either of the following commands:
 
-`mediaconch -mi -fx Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl`
+`mediaconch -mc Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl`
 
-`mediaconch -mi -fx Conflicting_Tests.mkv -p Conflicting_Tests_PAL.xsl`
+`mediaconch -mc Conflicting_Tests.mkv -p Conflicting_Tests_PAL.xsl`
 
 A user may also testing one file against both policies using the following command:
 
-`mediaconch -mi -fx Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl -p Conflicting_Tests_PAL.xsl`
+`mediaconch -mc Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl -p Conflicting_Tests_PAL.xsl`
 
 #### Testing multiple like files
 
@@ -87,7 +87,7 @@ XSL Policy: [Testing Multiple Files XSL](https://raw.githubusercontent.com/Media
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -p Testing_Multiple_Files.xsl`
+`mediaconch -mc Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -p Testing_Multiple_Files.xsl`
 
 #### Quicktime and v210 to Matroska and FFV1 
 
@@ -127,7 +127,7 @@ XSL Policy: [QuickTime v210 to Matroska FFV1 XSL](https://raw.githubusercontent.
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx QTv210_to_MKVffv1.mkv -p QTv210_to_MKVffv1.xsl`
+`mediaconch -mc QTv210_to_MKVffv1.mkv -p QTv210_to_MKVffv1.xsl`
 
 #### Preservation Master File recommended specifications
 
@@ -141,7 +141,7 @@ XSL Policy (QuickTime): [Preservation Master File recommended specifications - Q
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx NYULibraries_QTv210.mov -p NYULibraries_QTv210.xsl`
+`mediaconch -mc NYULibraries_QTv210.mov -p NYULibraries_QTv210.xsl`
 
 Test File (Matroska): [Preservation Master File recommended specifications - Matroska MKV](files/NYULibraries_MKVFFV1.mkv)
 
@@ -149,7 +149,7 @@ XSL Policy (Matroska): [Preservation Master File recommended specifications - Ma
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx NYULibraries_KMVFFV1.mkv -p NYULibraries_KMVFFV1.xsl`
+`mediaconch -mc NYULibraries_KMVFFV1.mkv -p NYULibraries_KMVFFV1.xsl`
 
 
 
