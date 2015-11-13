@@ -80,7 +80,9 @@ A user may also testing one file against both policies using the following comma
 Description: This test demonstrates checking multiple like files for conformance using the same policy. In this case, the files tested are meant to be identical. However, the third test file (Testing_Multiple_Files_3.mkv) contains the incorrect specified color space (YUV). The resulting test produces a failed or NOT VALID result due to the third file being manipulated. 
 
 Test File 1: [Testing Multiple Files MKV](files/Testing_Multiple_Files_1.mkv)
+
 Test File 2: [Testing Multiple Files MKV](files/Testing_Multiple_Files_2.mkv)
+
 Test File 3: [Testing Multiple Files MKV](files/Testing_Multiple_Files_3.mkv)
 
 XSL Policy: [Testing Multiple Files XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/Testing_Multiple_Files.xsl)
