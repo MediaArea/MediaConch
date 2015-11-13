@@ -67,13 +67,13 @@ This policy includes the following rules:
 
 To test each policy individually, a tester can use either of the following commands:
 
-`mediaconch -mc Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl`
+`mediaconch -mc Standards_Mismatch.mkv -p Standards_Mismatch_NTSC.xsl`
 
-`mediaconch -mc Conflicting_Tests.mkv -p Conflicting_Tests_PAL.xsl`
+`mediaconch -mc Standards_Mismatch.mkv -p Standards_Mismatch_PAL.xsl`
 
 A user may also testing one file against both policies using the following command:
 
-`mediaconch -mc Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl -p Conflicting_Tests_PAL.xsl`
+`mediaconch -mc Standards_Mismatch.mkv -p Standards_Mismatch_NTSC.xsl -p Standards_Mismatch_PAL.xsl`
 
 #### Testing multiple like files
 
