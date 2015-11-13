@@ -87,7 +87,7 @@ XSL Policy: [Testing Multiple Files XSL](https://raw.githubusercontent.com/Media
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mc Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -p Testing_Multiple_Files.xsl`
+`mediaconch -mc Testing Multiple Files_1.mkv  Testing Multiple Files_2.mkv  Testing Multiple Files_3.mkv -p Testing_Multiple_Files.xsl`
 
 #### Quicktime and v210 to Matroska and FFV1 
 
