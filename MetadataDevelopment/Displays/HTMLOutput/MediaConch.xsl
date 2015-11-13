@@ -4,23 +4,27 @@
   <xsl:template match="/mc:MediaConch">
   	<link rel="stylesheet" type="text/css"  href="style.css" />
     <xsl:for-each select="mc:media">
-      <p>
-      <xsl:text> &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A; </xsl:text>
-      </p>
-      <b>
-        <xsl:value-of select="@ref"/>
-      </b>
-      <xsl:for-each select="mc:implementationChecks">
-        <h1>
-          <xsl:value-of select="mc:name"/>
-        </h1>
+      <div class="mc_header">
         <p>
-          <xsl:value-of select="mc:description"/>
+        <xsl:text> &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  </xsl:text>
         </p>
-        <table id="mediaconch">
+        <b>
+          <xsl:value-of select="@ref"/>
+        </b>
+      </div>
+      <xsl:for-each select="mc:implementationChecks">
+        <div class="mc_header">
+          <h2>
+            <xsl:value-of select="mc:name"/>
+          </h2>
+          <p>
+            <xsl:value-of select="mc:description"/>
+          </p>
+        </div>
+        <table id="mc_implementation">
             <xsl:for-each select="mc:check">
               <tr>
-                <td style="border:1px solid black">
+                <td>
                   <p>
                     <xsl:value-of select="@icid"/>
                   </p>
@@ -30,7 +34,7 @@
                       <xsl:value-of select="mc:context/@name"/>
                     </p>
                   </xsl:if>
-                  <table border="1">
+                  <table>
                     <tr>
                       <th>value</th>
                       <th>outcome</th>
@@ -69,16 +73,18 @@
           </table>
       </xsl:for-each>
       <xsl:for-each select="mc:policyChecks">
-        <h1>
-          <xsl:value-of select="mc:name"/>
-        </h1>
-        <p>
-          <xsl:value-of select="mc:description"/>
-        </p>
-        <table style="border: none;border-collapse:separate;border-spacing:0px 1em">
+        <div class="mc_header">
+          <h2>
+            <xsl:value-of select="mc:name"/>
+          </h2>
+          <p>
+            <xsl:value-of select="mc:description"/>
+          </p>
+        </div>
+        <table id="mc_policy">
           <xsl:for-each select="mc:check">
             <tr>
-              <td style="border:1px solid black">
+              <td>
                 <p>
                   <xsl:value-of select="@name"/>
                 </p>
@@ -94,7 +100,7 @@
                     <xsl:value-of select="mc:context/@value"/>
                   </p>
                 </xsl:if>
-                <table border="1">
+                <table>
                   <tr>
                     <th>tracktype</th>
                     <th>tracktypeorder</th>
