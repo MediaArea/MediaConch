@@ -11,12 +11,10 @@ This document describes four XML schemas designed by MediaArea for various types
 #### [MediaInfo XML](#mediainfo-xml)
 - [Structure of a MediaInfo XML](#structure-of-a-mediainfo-xml)
 - [Generating a MediaInfo XML](#generating-a-mediainfo-xml)
-- [MediaInfo XML Schema](#mediainfo-xml-schema)
 
 #### [MediaConch XML](#mediaconch-xml)
 - [Structure of a MediaConch XML](#structure-of-a-mediaconch-xml)
 - [Generating a MediaConch XML](#generating-a-mediaconch-xml)
-- [MediaConch XML Schema](#mediaconch-xml-schema)
 
 #### [MediaTrace XML](#mediatrace-xml)
 - [Structure of a MediaTrace XML](#structure-of-a-mediatrace-xml)
@@ -55,10 +53,6 @@ A MediaInfo XML can be generated using the following tools and associated comman
 
 - With MediaConch (GUI): Select View Mode in the `MediaInfo` tab from the resulting file Checker reports
 
-#### MediaInfo XML Schema
-
-An XML Schema for MediaAreaXML is available at . 
-
 ### MediaConch XML
 
 The MediaConch XML is designed specifically for file conformance checking using MediaArea’s MediaConch software, and contains reportage pertaining to a user-defined policy or policies. Additional information on MediaConch is available [here](https://mediaarea.net/MediaConch/).
@@ -84,13 +78,11 @@ Within the <policyChecks> element are individual <check> rules that contain the 
 
 A MediaConch XML can be generated using the following tools and associated commands:
 
--With MediaConch (CLI): `mediaconch -mi -fx file.mov`
+-With MediaConch (CLI): `mediaconch -mc -fx file.mov`
+
+Note: The command `mediaconch -fx file.mov` will automatically default to `-mc` and produce equivalent results.  
 
 -With MediaConch (GUI): Select View Mode in the `Policy Report` tab from the resulting file Checker reports
-
-#### MediaConch XML Schema
-
-An XML Schema for MediaAreaXML is available at [url](url). 
 
 ### MediaTrace XML
 
@@ -146,11 +138,9 @@ A MediaTrace XML can be generated using the following tools and associated comma
 
 -With MediaInfo: `mediainfo --Details=1 --Output=MAXML file.mkv`
 
--With MediaConch (CLI): `mediaconch -mt -fx file.mkv`
-
 #### MediaArea XML Schema
 
-An XML Schema for MediaAreaXML is available at https://mediaarea.net/mediaarea/mediaarea_0_1.xsd.
+An XML Schema for MediaAreaXML is available [here](https://mediaarea.net/mediaarea/mediaarea_0_1.xsd).
 
 
 
