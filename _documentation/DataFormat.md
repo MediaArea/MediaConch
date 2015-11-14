@@ -122,7 +122,7 @@ A MediaTrace XML can be generated using the following tools and associated comma
 
 #### MediaTrace XML Schema
 
-An XML Schema for MediaTrace is available at https://mediaarea.net/mediatrace/mediatrace.xsd. 
+An XML Schema for MediaTrace is available [here](https://mediaarea.net/mediatrace/mediatrace.xsd). 
 
 ### MediaArea XML 
 
