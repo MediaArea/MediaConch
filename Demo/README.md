@@ -31,13 +31,13 @@ Test File: Using the following FFmpeg command, a tester can create a file
 
 `ffmpeg -f lavfi -i testsrc -t 1 -c:v ffv1 -level 1 -t 1 General_Conformance.mkv`
 
-Test File: [General Conformance MKV](https://mediaarea.net/MediaConch/files/General_Conformance.mkv)
+Test File: [General Conformance MKV](files/General_Conformance.mkv)
 
 XSL Policy: [General Conformance XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/General_Conformance.xsl)
 
 To test, run the following test file with the associated policy document:
 
-`mediaconch -mi -fx General_Conformance.mkv -p General_Conformance.xsl`
+`mediaconch -mc General_Conformance.mkv -p General_Conformance.xsl`
 
 #### Standards Mismatch
 
@@ -47,7 +47,7 @@ Test File: Using the following FFmpeg command, a tester can create a file which 
 
 `ffmpeg -f lavfi -i testsrc=s=720x576:r=30000/1001 -t 1 -c:v ffv1 -g 1 -level 3 Standards_Mismatch.mkv`
 
-Test File: [Standards Mismatch MKV](https://mediaarea.net/MediaConch/files/Standards_Mismatch.mkv)
+Test File: [Standards Mismatch MKV](files/Standards_Mismatch.mkv)
 
 XSL Policy: [Standards Mismatch PAL XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/Standards_Mismatch_PAL.xsl)
 
@@ -67,27 +67,29 @@ This policy includes the following rules:
 
 To test each policy individually, a tester can use either of the following commands:
 
-`mediaconch -mi -fx Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl`
+`mediaconch -mc Standards_Mismatch.mkv -p Standards_Mismatch_NTSC.xsl`
 
-`mediaconch -mi -fx Conflicting_Tests.mkv -p Conflicting_Tests_PAL.xsl`
+`mediaconch -mc Standards_Mismatch.mkv -p Standards_Mismatch_PAL.xsl`
 
 A user may also testing one file against both policies using the following command:
 
-`mediaconch -mi -fx Conflicting_Tests.mkv -p Conflicting_Tests_NTSC.xsl -p Conflicting_Tests_PAL.xsl`
+`mediaconch -mc Standards_Mismatch.mkv -p Standards_Mismatch_NTSC.xsl -p Standards_Mismatch_PAL.xsl`
 
 #### Testing multiple like files
 
 Description: This test demonstrates checking multiple like files for conformance using the same policy. In this case, the files tested are meant to be identical. However, the third test file (Testing_Multiple_Files_3.mkv) contains the incorrect specified color space (YUV). The resulting test produces a failed or NOT VALID result due to the third file being manipulated. 
 
-Test File 1: [Testing Multiple Files MKV](https://mediaarea.net/MediaConch/files/Testing_Multiple_Files_1.mkv)
-Test File 2: [Testing Multiple Files MKV](https://mediaarea.net/MediaConch/files/Testing_Multiple_Files_2.mkv)
-Test File 3: [Testing Multiple Files MKV](https://mediaarea.net/MediaConch/files/Testing_Multiple_Files_3.mkv)
+Test File 1: [Testing Multiple Files MKV](files/Testing_Multiple_Files_1.mkv)
+
+Test File 2: [Testing Multiple Files MKV](files/Testing_Multiple_Files_2.mkv)
+
+Test File 3: [Testing Multiple Files MKV](files/Testing_Multiple_Files_3.mkv)
 
 XSL Policy: [Testing Multiple Files XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/Testing_Multiple_Files.xsl)
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx Test2_0.mkv Test2_1.mkv Test2_2.mkv Test2_3.mkv -p Testing_Multiple_Files.xsl`
+`mediaconch -mc Testing Multiple Files_1.mkv  Testing Multiple Files_2.mkv  Testing Multiple Files_3.mkv -p Testing_Multiple_Files.xsl`
 
 #### Quicktime and v210 to Matroska and FFV1 
 
@@ -121,13 +123,13 @@ This policy contains the following rules:
 - Audio SamplingRate equals 48 (kHz)
 - Audio BitDepth equals 16-bit
 
-Test File: [QuickTime v210 to Matroska FFV1 MKV](https://mediaarea.net/MediaConch/files/QTv210_to_MKVffv1.mkv)
+Test File: [QuickTime v210 to Matroska FFV1 MKV](files/QTv210_to_MKVffv1.mkv)
 
 XSL Policy: [QuickTime v210 to Matroska FFV1 XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/QTv210_to_MKVffv1.xsl)
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx QTv210_to_MKVffv1.mkv -p QTv210_to_MKVffv1.xsl`
+`mediaconch -mc QTv210_to_MKVffv1.mkv -p QTv210_to_MKVffv1.xsl`
 
 #### Preservation Master File recommended specifications
 
@@ -135,21 +137,21 @@ Description: This test is used to validate recommended preservation master file 
 
 This resource is available [here](https://library.nyu.edu/preservation/VARRFP.pdf). 
 
-Test File (QuickTime): [Preservation Master File recommended specifications - QuickTime MOV](https://mediaarea.net/MediaConch/files/NYULibraries_QTv210.mov)
+Test File (QuickTime): [Preservation Master File recommended specifications - QuickTime MOV](files/NYULibraries_QTv210.mov)
 
 XSL Policy (QuickTime): [Preservation Master File recommended specifications - QuickTime XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/NYULibraries_QTv210.xsl)
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx NYULibraries_QTv210.mov -p NYULibraries_QTv210.xsl`
+`mediaconch -mc NYULibraries_QTv210.mov -p NYULibraries_QTv210.xsl`
 
-Test File (Matroska): [Preservation Master File recommended specifications - Matroska MKV](https://mediaarea.net/MediaConch/files/NYULibraries_MKVFFV1.mkv)
+Test File (Matroska): [Preservation Master File recommended specifications - Matroska MKV](files/NYULibraries_MKVFFV1.mkv)
 
 XSL Policy (Matroska): [Preservation Master File recommended specifications - Matroska XSL](https://raw.githubusercontent.com/MediaArea/MediaConch_SourceCode/master/Source/Resource/policies/NYULibraries_MKVFFV1.xsl)
 
 To test, run the following test file on a command line interface with the associated test files and policy document:
 
-`mediaconch -mi -fx NYULibraries_KMVFFV1.mkv -p NYULibraries_KMVFFV1.xsl`
+`mediaconch -mc NYULibraries_KMVFFV1.mkv -p NYULibraries_KMVFFV1.xsl`
 
 
 
