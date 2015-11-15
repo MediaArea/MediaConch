@@ -12,7 +12,7 @@
 #mc_implementation {
   width   : 600px;
   background-color: #F2F5F8;
-  border: 1px white solid; # mayb
+  border: 1px white solid;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
@@ -22,24 +22,29 @@
 }
 
 #mc_implementation table {
+  border: 1px black solid;
   width   : 600px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-#mc_implementation table td:first-child {
+#mc_implementation th {
+  border-bottom: 1px black solid;
+  text-align:left;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+#mc_implementation p {
   background-color: #64A8DD;
   font-size: 18px;
   font-weight: 700;
   padding: 10px;
-}
-
-#mc_implementation table td:first-child {
-  padding-left: 20px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 #mc_policy {
   width   : 600px;
   background-color: #F2F5F8;
-  border: 1px white solid; # mayb
+  border: 1px white solid;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
@@ -49,16 +54,21 @@
 }
 
 #mc_policy table {
+  border: 1px black solid;
   width   : 600px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-#mc_policy table td:first-child {
+#mc_policy th {
+  border-bottom: 1px black solid;
+  text-align:left;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+#mc_policy p {
   background-color: #64A8DD;
   font-size: 18px;
   font-weight: 700;
   padding: 10px;
-}
-
-#mc_policy table td:first-child {
-  padding-left: 20px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }

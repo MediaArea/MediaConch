@@ -9,7 +9,7 @@
         <xsl:text> &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  </xsl:text>
         </p>
         <b>
-          <xsl:value-of select="@ref"/>
+          <p>File path:  <xsl:value-of select="@ref"/></p>
         </b>
       </div>
       <xsl:for-each select="mc:implementationChecks">
