@@ -1,12 +1,12 @@
 .mc_header {
   width   : 600px;
-  border: 1px white solid;
+  border: 1px black solid;
   background-color: #64A8DD;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-.mc_header h1 {
-
+.mc_header h1, h2, div {
+  text-align: center;
 }
 
 #mc_implementation {

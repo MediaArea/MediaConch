@@ -5,11 +5,15 @@
   	<link rel="stylesheet" type="text/css"  href="style.css" />
     <xsl:for-each select="mc:media">
       <div class="mc_header">
-        <p>
-        <xsl:text> &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  </xsl:text>
-        </p>
+        <div>
+        <xsl:text>&#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A; &#x1F41A;</xsl:text>
+        </div>
+        <h1>MediaConch Report</h1>
+        <div>
+        <xsl:text>&#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A;  &#x1F41A; &#x1F41A;</xsl:text>
+        </div>
         <b>
-          <p>File path:  <xsl:value-of select="@ref"/></p>
+          <p>&#x1F41A; File path:  <xsl:value-of select="@ref"/></p>
         </b>
       </div>
       <xsl:for-each select="mc:implementationChecks">
