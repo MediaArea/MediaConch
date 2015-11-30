@@ -6,34 +6,15 @@ title: "Download MediaConch"
 
 # Downloads
 
-## 15.10 Release Notes
+## 15.11 Release Notes
 
-### CLI
+### CLI, GUI and Onlinve version
 
-Implementation checker with some EBML tests
-Help updated and split (standard / advanced)
-More output combinations (e.g. implementation checker with Text, HTML, or XML output)
-MediaInfo XML export
-Text/HTML/XSL output support
-Several bug fixes
-
-### GUI
-
-Implementation checker with some EBML tests
-New set of default Policy reports
-About box and Help documentation added
-More coherent list of options
-MediaTrace UI changed, with a grid (offset on the left, value on the right)
-MediaInfo report UI
-MediaInfo XML export
-Policy XSL editor updated
-Display XSL import / export
-Text/HTML/XSL display examples
-Several bug fixes
-
-### Online
-
-[MediaConchOnline](https://mediaarea.net/MediaConchOnline/) is not yet synchronized with MediaConch 15.10, ETA 2015-11-04.
+Detection of truncated Matroska files
+Support of MKVMerge statistics tags (duration frame count, stream size, bit rate) per track
+Count of subtitle elements
+Frame rate detection algorithm revisited
+Showing precision of 1/1.001 frame rates (e.g. "23.976 (24000/1001) fps" and "23.976 (23976/1000) fps")
 
 ### Historical Release Notes
 
