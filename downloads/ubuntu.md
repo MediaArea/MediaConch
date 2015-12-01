@@ -34,12 +34,12 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0_0.7.80-1_i386.xUbuntu_15.10.deb">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-dev_0.7.80-1_i386.xUbuntu_15.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0v5_0.7.80-1_i386.xUbuntu_15.10.deb">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-dev_0.7.80-1_i386.xUbuntu_15.10.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_i386.xUbuntu_15.10.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_i386.xUbuntu_15.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0v5_0.4.32-1_i386.xUbuntu_15.10.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_i386.xUbuntu_15.10.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -58,12 +58,12 @@ title: "Download MediaConch for Ubuntu"
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0_0.7.80-1_amd64.xUbuntu_15.10.deb">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-dev_0.7.80-1_amd64.xUbuntu_15.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0v5_0.7.80-1_amd64.xUbuntu_15.10.deb">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-dev_0.7.80-1_amd64.xUbuntu_15.10.deb">devel</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
     <th>libzen0</th>
-    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0_0.4.32-1_amd64.xUbuntu_15.10.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_amd64.xUbuntu_15.10.deb">devel</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen0v5_0.4.32-1_amd64.xUbuntu_15.10.deb">v0.4.32</a><small> (<a href="https://mediaarea.net/download/binary/libzen0/0.4.32/libzen-dev_0.4.32-1_amd64.xUbuntu_15.10.deb">devel</a>)</small></td>
     <td>&nbsp;</td>
 </tr>
 
