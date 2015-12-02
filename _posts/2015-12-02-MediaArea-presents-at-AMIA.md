@@ -39,7 +39,7 @@ During the Q&A, Dave emphasized the importance of Matroska as a wrapper because 
 
 Dave Rice also gave a talk at the opening plenery on the future of the Association of Moving Image Archivist and the field at large. A transcript of his talk can be read [here](http://dericed.com/2015/amia15-the-next-25/). He made sure to mention the breaking news of the announcement of CELLAR, an IETF working group that will focus on the standardization of FFV1, Matroska, and FLAC formats.
 
-As usual, mediainfo gets a lot of hype in the audiovisual archivist community. From [posters](https://twitter.com/EddyColloton/status/667455277562621953) to [presentations](/MediaConch/images/gb_mi.png). Even a [lack of MediaInfo](/MediaConch/images/no_mi.png) in a hack day project was notable because it's such an integral part of video preservation (they used ffprobe only). We hope that by next year, AMIA members will have begun integrating MediaConch and MediaTrace into their archiving workflows just as they have with MediaInfo.
+As usual, mediainfo gets a lot of hype in the audiovisual archivist community. From [posters](https://twitter.com/EddyColloton/status/667455277562621953) to [presentations](/MediaConch/images/gb_mi.png). We hope that by next year, AMIA members will have begun integrating MediaConch and MediaTrace into their archiving workflows just as they have with MediaInfo.
 
 ![mkv](/MediaConch/images/final_slide.png)
 
