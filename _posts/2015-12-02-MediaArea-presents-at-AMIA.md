@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "MediaArea presents at AMIA"
-date:   2015-11-04 08:00:00 CET
+date:   2015-12-02 08:00:00 CET
 categories: mediaconch, presentations, amia
 ---
 
