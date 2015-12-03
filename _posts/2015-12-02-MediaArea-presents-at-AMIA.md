@@ -17,7 +17,12 @@ Ashley Blewer and Dave Rice represented MediaConch at the 2015 Association of Mo
 
 Ashley followed suit with semi-live demonstrations (by narrating over gifs) of how the software works based on MediaConch's [online do-it-yourself demo](https://mediaarea.net/MediaConch/demo.html). She demonstrated both versions - the command line and the graphical user interface, which is available as a downloadable GUI or via our web platform - and showed what a conformance report exported into xml and html looks like.
 
-![html sample report](/MediaConch/images/html_report.png)
+Here are the gifs:
+
+![CLI](/MediaConch/images/cli_demo.gif)
+
+![GUI](/MediaConch/images/gui_demo.gif)
+
 
 During the Q&A, Dave emphasized the importance of choosing a well-supported, open source format such as Matroska as a wrapper over a wrapper such as AVI, which is a proprietary wrapper on the verge of becoming obsolete.
 
