@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi ma mi mt">
 
-    <xsl:import href="implementationCheckEBML.xsl" />
-    <xsl:import href="implementationCheckMatroska.xsl" />
-    <xsl:import href="implementationCheckWebM.xsl" />
-
+    <xsl:include href="implementationCheckEBML.xsl" />
+    <xsl:include href="implementationCheckMatroska.xsl" />
+    <xsl:include href="implementationCheckWebM.xsl" />
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
     <xsl:template match="mt:MediaTrace/mt:block">
         <xsl:apply-templates select="*"/>
+
     </xsl:template>
     <xsl:template match="ma:MediaArea">
         <MediaConch>
@@ -23,7 +23,8 @@
                         <name>MediaConch EBML Implementation Checker</name>
                         <xsl:choose>
                             <xsl:when test="//mi:Format='Matroska' or //mi:Format='WebM'">
-                                <xsl:apply-imports/>
+                                <!-- apply imports here -->
+                                <xsl:apply-imports select="ma:media"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
