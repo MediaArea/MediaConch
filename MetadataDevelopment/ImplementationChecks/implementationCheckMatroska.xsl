@@ -41,7 +41,7 @@
                                 <check>
                                     <xsl:attribute name="icid">MKV-FILESIZE</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="is_greater_than">
+                                    <xsl:call-template name="x_is_greater_than_y">
                                         <xsl:with-param name="xpath" select="//mi:FileSize"/>
                                         <xsl:with-param name="value">0</xsl:with-param>
                                         <xsl:with-param name="field">FileSize</xsl:with-param>
