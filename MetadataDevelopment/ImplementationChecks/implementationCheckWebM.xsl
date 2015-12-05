@@ -71,7 +71,7 @@
                 </media>
             </xsl:for-each>
         </MediaConch>
-    </xsl:template>
+   </xsl:template>
     <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
     <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
     <xsl:variable name="digit" select="'0123456789'"/>
@@ -210,6 +210,72 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
+    <xsl:template name="x_is_less_than_y">
+        <xsl:param name="x"/>
+        <xsl:param name="x_name"/>
+        <xsl:param name="y"/>
+        <xsl:param name="y_name"/>
+        <xsl:element name="test">
+            <xsl:choose>
+                <xsl:when test="$x &lt; $y">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">
+                        <xsl:value-of select="$x_name"/>
+                        <xsl:text> is not less than </xsl:text>
+                        <xsl:value-of select="$y_name"/>
+                    </xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:value-of select="$x_name"/>
+                </xsl:attribute>
+                <xsl:value-of select="$x"/>
+            </value>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:value-of select="$y_name"/>
+                </xsl:attribute>
+                <xsl:value-of select="$y"/>
+            </value>
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="x_is_greater_than_y">
+        <xsl:param name="x"/>
+        <xsl:param name="x_name"/>
+        <xsl:param name="y"/>
+        <xsl:param name="y_name"/>
+        <xsl:element name="test">
+            <xsl:choose>
+                <xsl:when test="$x &gt; $y">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">
+                        <xsl:value-of select="$x_name"/>
+                        <xsl:text> is not greater than </xsl:text>
+                        <xsl:value-of select="$y_name"/>
+                    </xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:value-of select="$x_name"/>
+                </xsl:attribute>
+                <xsl:value-of select="$x"/>
+            </value>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:value-of select="$y_name"/>
+                </xsl:attribute>
+                <xsl:value-of select="$y"/>
+            </value>
+        </xsl:element>
+    </xsl:template>
     <xsl:template name="x_is_less_than_or_equal_to_y">
         <xsl:param name="x"/>
         <xsl:param name="x_name"/>
@@ -225,6 +291,39 @@
                     <xsl:attribute name="reason">
                         <xsl:value-of select="$x_name"/>
                         <xsl:text> is not less than or equal to </xsl:text>
+                        <xsl:value-of select="$y_name"/>
+                    </xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:value-of select="$x_name"/>
+                </xsl:attribute>
+                <xsl:value-of select="$x"/>
+            </value>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:value-of select="$y_name"/>
+                </xsl:attribute>
+                <xsl:value-of select="$y"/>
+            </value>
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="x_is_greater_than_or_equal_to_y">
+        <xsl:param name="x"/>
+        <xsl:param name="x_name"/>
+        <xsl:param name="y"/>
+        <xsl:param name="y_name"/>
+        <xsl:element name="test">
+            <xsl:choose>
+                <xsl:when test="$x &gt;= $y">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">
+                        <xsl:value-of select="$x_name"/>
+                        <xsl:text> is not greater than or equal to </xsl:text>
                         <xsl:value-of select="$y_name"/>
                     </xsl:attribute>
                 </xsl:otherwise>
@@ -317,94 +416,6 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
-    </xsl:template>
-    <xsl:template name="is_greater_or_equal_than">
-        <xsl:param name="xpath"/>
-        <xsl:param name="value"/>
-        <xsl:param name="field"/>
-        <xsl:element name="test">
-            <xsl:if test="../@type">
-                <xsl:attribute name="tracktype">
-                    <xsl:value-of select="../@type"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="../@tracktypeorder">
-                <xsl:attribute name="tracktypeorder">
-                    <xsl:value-of select="../@tracktypeorder"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="../mi:ID">
-                <xsl:attribute name="trackid">
-                    <xsl:value-of select="../mi:ID"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:attribute name="field">
-                <xsl:value-of select="$field"/>
-            </xsl:attribute>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
-            <xsl:attribute name="value">
-                <xsl:value-of select="$xpath"/>
-            </xsl:attribute>
-            <xsl:choose>
-                <xsl:when test="$xpath &gt;= $value">
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                    </xsl:element>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">fail</xsl:attribute>
-                        <xsl:attribute name="reason">is less than</xsl:attribute>
-                    </xsl:element>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:element>
-    </xsl:template>
-    <xsl:template name="is_less_or_equal_than">
-        <xsl:param name="xpath"/>
-        <xsl:param name="value"/>
-        <xsl:param name="field"/>
-        <xsl:element name="test">
-            <xsl:if test="../@type">
-                <xsl:attribute name="tracktype">
-                    <xsl:value-of select="../@type"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="../@tracktypeorder">
-                <xsl:attribute name="tracktypeorder">
-                    <xsl:value-of select="../@tracktypeorder"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="../mi:ID">
-                <xsl:attribute name="trackid">
-                    <xsl:value-of select="../mi:ID"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:attribute name="field">
-                <xsl:value-of select="$field"/>
-            </xsl:attribute>
-            <xsl:attribute name="expected">
-                <xsl:value-of select="$value"/>
-            </xsl:attribute>
-            <xsl:attribute name="value">
-                <xsl:value-of select="$xpath"/>
-            </xsl:attribute>
-            <xsl:choose>
-                <xsl:when test="$xpath &lt;= $value">
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                    </xsl:element>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">fail</xsl:attribute>
-                        <xsl:attribute name="reason">is greater than</xsl:attribute>
-                    </xsl:element>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:element>
     </xsl:template>
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
