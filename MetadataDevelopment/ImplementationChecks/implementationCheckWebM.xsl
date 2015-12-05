@@ -19,6 +19,21 @@
                         <xsl:choose>
                             <xsl:when test="//mi:Format='WebM'">
                                 <!-- WebM checks -->
+                                <check>
+                                    <xsl:attribute name="icid">WEBM-EXT</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:variable name="mkv-extension">.webm</xsl:variable>
+                                    <context field="mkv-extension">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="$mkv-extension"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <xsl:call-template name="x_equals_y">
+                                        <xsl:with-param name="x" select="substring(./@ref,  string-length(./@ref) - 4)"/>
+                                        <xsl:with-param name="x_name">File extension</xsl:with-param>
+                                        <xsl:with-param name="y" select="$mkv-extension"/>
+                                    </xsl:call-template>
+                                </check>
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
