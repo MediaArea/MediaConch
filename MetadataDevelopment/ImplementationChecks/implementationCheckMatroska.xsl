@@ -19,6 +19,35 @@
                         <xsl:choose>
                             <xsl:when test="//mi:Format='Matroska'">
                                 <!-- Matroska checks -->
+                                <check>
+                                    <!-- This is a basic check for .mkv but must be extended out for all potential options and rules (mka audio-only, mks subtitle-only, mk3d has stereomode element) -->
+                                    <!-- Or can we test this in a different way? -->
+                                    <!-- The file extension SHOULD be MKV or WebM -->
+                                    <xsl:attribute name="icid">MKV-EXT</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:variable name="mkv-extension">.mkv</xsl:variable>
+                                    <context field="mkv-extension">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="$mkv-extension"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <xsl:call-template name="x_equals_y">
+                                        <xsl:with-param name="x" select="substring(./@ref,  string-length(./@ref) - 3)"/>
+                                        <xsl:with-param name="x_name">File extension</xsl:with-param>
+                                        <xsl:with-param name="y" select="$mkv-extension"/>
+                                    </xsl:call-template>
+                                </check>
+                                <!-- Checks that filesize isn't zero -->
+                                <check>
+                                    <xsl:attribute name="icid">MKV-FILESIZE</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:call-template name="is_greater_than">
+                                        <xsl:with-param name="xpath" select="//mi:FileSize"/>
+                                        <xsl:with-param name="value">0</xsl:with-param>
+                                        <xsl:with-param name="field">FileSize</xsl:with-param>
+                                    </xsl:call-template>
+                                </check>
+
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
@@ -326,6 +355,50 @@
                     <xsl:element name="result">
                         <xsl:attribute name="outcome">fail</xsl:attribute>
                         <xsl:attribute name="reason">is greater than or equal</xsl:attribute>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="is_greater_than">
+        <xsl:param name="xpath"/>
+        <xsl:param name="value"/>
+        <xsl:param name="field"/>
+        <xsl:element name="test">
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../mi:ID">
+                <xsl:attribute name="trackid">
+                    <xsl:value-of select="../mi:ID"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="$xpath &gt; $value">
+                    <xsl:element name="result">
+                        <xsl:attribute name="outcome">pass</xsl:attribute>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="result">
+                        <xsl:attribute name="outcome">fail</xsl:attribute>
+                        <xsl:attribute name="reason">is less than or equal</xsl:attribute>
                     </xsl:element>
                 </xsl:otherwise>
             </xsl:choose>
