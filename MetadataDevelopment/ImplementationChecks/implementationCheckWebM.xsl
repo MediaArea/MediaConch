@@ -346,6 +346,50 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
+    <xsl:template name="is_greater_than">
+        <xsl:param name="xpath"/>
+        <xsl:param name="value"/>
+        <xsl:param name="field"/>
+        <xsl:element name="test">
+            <xsl:if test="../@type">
+                <xsl:attribute name="tracktype">
+                    <xsl:value-of select="../@type"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../@tracktypeorder">
+                <xsl:attribute name="tracktypeorder">
+                    <xsl:value-of select="../@tracktypeorder"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:if test="../mi:ID">
+                <xsl:attribute name="trackid">
+                    <xsl:value-of select="../mi:ID"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="expected">
+                <xsl:value-of select="$value"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="$xpath &gt; $value">
+                    <xsl:element name="result">
+                        <xsl:attribute name="outcome">pass</xsl:attribute>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="result">
+                        <xsl:attribute name="outcome">fail</xsl:attribute>
+                        <xsl:attribute name="reason">is less than or equal</xsl:attribute>
+                    </xsl:element>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
     <xsl:template name="is_greater_or_equal_than">
         <xsl:param name="xpath"/>
         <xsl:param name="value"/>
