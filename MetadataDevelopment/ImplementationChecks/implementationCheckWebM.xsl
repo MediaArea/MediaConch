@@ -19,6 +19,23 @@
                         <xsl:choose>
                             <xsl:when test="//mi:Format='WebM'">
                                 <!-- WebM checks -->
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <check icid="IS_EBML" version="1">
+                                    <context field="mi:Format">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="//mi:Format"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <test outcome="fail">
+                                        <value name="reason">
+                                            <xsl:value-of select="//mi:CompleteName"/>
+                                            <xsl:text> is not recognized as an EBML format</xsl:text>
+                                        </value>
+                                    </test>
+                                </check>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </implementationChecks>
                 </media>
             </xsl:for-each>
