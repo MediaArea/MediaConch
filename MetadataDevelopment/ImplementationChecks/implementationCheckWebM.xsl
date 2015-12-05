@@ -36,7 +36,7 @@
                                 </check>
                                 <!-- DocType must be webm -->
                                 <check>
-                                    <xsl:attribute name="icid">MKV-EBML-DOCT</xsl:attribute>
+                                    <xsl:attribute name="icid">WEBM-EBML-DOCT</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
                                     <xsl:variable name="doctype">webm</xsl:variable>
                                     <context field="doctype">
