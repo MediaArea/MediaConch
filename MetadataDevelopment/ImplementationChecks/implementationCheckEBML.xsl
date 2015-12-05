@@ -50,6 +50,14 @@
                                         <xsl:otherwise>8</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
+                                <xsl:variable name="DocType">
+                                    <xsl:choose>
+                                        <xsl:when test="//mt:data[../mt:block/mt:data='642']">
+                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='642']"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>1</xsl:otherwise>
+                                    </xsl:choose>
+                                </xsl:variable>
                                 <xsl:variable name="DocTypeVersion">
                                     <xsl:choose>
                                         <xsl:when test="//mt:data[../mt:block/mt:data='647']">
@@ -97,6 +105,14 @@
                                         <xsl:with-param name="x_name">EBMLReadVersion</xsl:with-param>
                                         <xsl:with-param name="y" select="$EBMLVersion"/>
                                         <xsl:with-param name="y_name">EBMLVersion</xsl:with-param>
+                                    </xsl:call-template>
+                                </check>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-DOCT</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:call-template name="exists">
+                                        <xsl:with-param name="xpath" select="$DocType"/>
+                                        <xsl:with-param name="field">DocType</xsl:with-param>
                                     </xsl:call-template>
                                 </check>
                                 <check>

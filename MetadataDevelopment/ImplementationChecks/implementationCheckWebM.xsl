@@ -34,6 +34,22 @@
                                         <xsl:with-param name="y" select="$mkv-extension"/>
                                     </xsl:call-template>
                                 </check>
+                                <!-- DocType must be webm -->
+                                <check>
+                                    <xsl:attribute name="icid">MKV-EBML-DOCT</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:variable name="doctype">webm</xsl:variable>
+                                    <context field="doctype">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="$doctype"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <xsl:call-template name="x_equals_y">
+                                        <xsl:with-param name="x" select="//mt:data[../mt:block/mt:data='642']"/>
+                                        <xsl:with-param name="x_name">DocType</xsl:with-param>
+                                        <xsl:with-param name="y" select="$doctype"/>
+                                    </xsl:call-template>
+                                </check>
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
