@@ -55,7 +55,7 @@
                                         <xsl:when test="//mt:data[../mt:block/mt:data='642']">
                                             <xsl:value-of select="//mt:data[../mt:block/mt:data='642']"/>
                                         </xsl:when>
-                                        <xsl:otherwise>1</xsl:otherwise>
+                                        <xsl:otherwise>matroska</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocTypeVersion">
@@ -236,6 +236,38 @@
                                         </xsl:call-template>
                                     </implementation>
                                 </xsl:for-each>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-SEG</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:call-template name="exists">
+                                        <xsl:with-param name="xpath" select="//mt:data[../../mt:block/mt:data='139690087']"/>
+                                        <xsl:with-param name="field">Segment</xsl:with-param>
+                                    </xsl:call-template>
+                                </check>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-SEEKH</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:call-template name="exists">
+                                        <xsl:with-param name="xpath" select="//mt:data[../../mt:block/mt:data='21863284']"/>
+                                        <xsl:with-param name="field">SeekHead</xsl:with-param>
+                                    </xsl:call-template>
+                                </check>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-SEEK</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:call-template name="exists">
+                                        <xsl:with-param name="xpath" select="//mt:block[../mt:block/mt:data='3515']/mt:data[@name='Name']"/>
+                                        <xsl:with-param name="field">Seek</xsl:with-param>
+                                    </xsl:call-template>
+                                </check>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-SEEK-ID</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:call-template name="exists">
+                                        <xsl:with-param name="xpath" select="//mt:block[../../mt:block/mt:data='88713574']/mt:data[@name='Name']"/>
+                                        <xsl:with-param name="field">SeekID</xsl:with-param>
+                                    </xsl:call-template>
+                                </check>
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
