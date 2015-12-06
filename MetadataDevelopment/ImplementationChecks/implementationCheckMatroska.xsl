@@ -37,14 +37,14 @@
                                         <xsl:with-param name="y" select="$mkv-extension"/>
                                     </xsl:call-template>
                                 </check>
-                                <!-- Checks that filesize isn't zero -->
+                                <!-- The actual file size should be the sum of all level 0 Element Size declarations plus the sum of the byte sizes of level 0 Element IDs and Element Sizes. -->
                                 <check>
                                     <xsl:attribute name="icid">MKV-FILESIZE</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="x_is_greater_than_y">
-                                        <xsl:with-param name="xpath" select="//mi:FileSize"/>
-                                        <xsl:with-param name="value">0</xsl:with-param>
-                                        <xsl:with-param name="field">FileSize</xsl:with-param>
+                                    <xsl:call-template name="x_equals_y">
+                                        <xsl:with-param name="x" select="//mi:FileSize"/>
+                                        <xsl:with-param name="x_name">FileSize</xsl:with-param>
+                                        <xsl:with-param name="y" select="//mt:block[@name='EBML']/@size + //mt:block[@name='Segment']/@size"/>
                                     </xsl:call-template>
                                 </check>
                                 <!-- DocType must be matroska -->
