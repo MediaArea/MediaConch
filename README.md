@@ -31,6 +31,33 @@ This project has received funding from PREFORMA, co-funded by the European Commi
 All open source digital assets for the software developed by MediaArea during the PREFORMA project will be made available under the open access license: Creative Commons license attribution – Sharealike 4.0 International (CC BY-SA v4.0). All assets will exist in open file formats within an open platform (an open standard as defined in the European Interoperability Framework for Pan-European eGovernment Service (version 1.0 2004)).
 
 
+# Licensing of third party libraries
+
+The software relies on third party libraries. Such libraries have their own license:
+
+- Media analysis library: MediaInfoLib, (c) MediaArea.net SARL, initialy BSD-2-Clause license, relicensed to GPLv3 or later / MPLv2 or later
+- Base classes library: ZenLib, (c) MediaArea.net SARL, initialy zlib license, relicensed to GPLv3 or later / MPLv2 or later
+- C++ standard library: [libstdc++](http://gcc.gnu.org/onlinedocs/libstdc++/manual/bk01pt01ch01s02.html) (GPLv3+ with linking exception), [libc++](http://llvm.org/docs/DeveloperPolicy.html#license) (MIT license, could be relicensed to GPLv3 or later / MPLv2 or later), [Visual C++ library](http://msdn.microsoft.com/en-us/library/vstudio/ms235299.aspx) (Microsoft proprietary license) or any other C++ standard library
+- GUI (optional): [Qt](https://www.qt.io/qt-licensing-terms/), LGPLv3+ license, compatible with GPLv3 or later / MPLv2 or later
+- WebUI engine (optional) : [Symphony](https://symfony.com/license), MIT license, could be relicensed to GPLv3 or later / MPLv2 or later
+- WebUI design (optional) : [Bootstrap](http://getbootstrap.com/getting-started/), MIT license, could be relicensed to GPLv3 or later / MPLv2 or later
+- XML parser (optional): [TinyXML-2](http://www.grinninglizard.com/tinyxml2docs/index.html), zlib license, could be relicensed to GPLv3 or later / MPLv2 or later
+- gzip decompression routine (optional): [zlib](http://www.gzip.org/zlib/zlib_license.html), zlib license, could be relicensed to GPLv3 or later / MPLv2 or later
+- FTP, FTPS, SFTP, HTTP, HTTPS (optional): [libcurl](http://curl.haxx.se/docs/copyright.html), MIT license, could be relicensed to GPLv3 or later / MPLv2 or later
+- Base64 (optional): base64 by Bob Withers, public domain, could be relicensed to GPLv3 or later / MPLv2 or later
+- AES (optional): aes by Brian Gladman, BSD-2-Clause license, compatible with GPLv3 or later / MPLv2 or later
+- MD5 (optional): md5 by Colin Plumb, public domain, could be relicensed to GPLv3 or later / MPLv2 or later
+- SHA-1 (optional): sha1 by Brian Gladman, BSD-2-Clause license, compatible with GPLv3 or later / MPLv2 or later
+- SHA-2 (optional): sha2 by Brian Gladman, BSD-2-Clause license, compatible with GPLv3 or later / MPLv2 or later
+- HMAC (optional): hmac by Brian Gladman, BSD-2-Clause license, compatible with GPLv3 or later / MPLv2 or later
+
+Compilation has been tested with:
+
+- [GCC](https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html) for Windows, Mac, Linux, GPLv3+ license
+- [LLVM](http://llvm.org/docs/DeveloperPolicy.html#license) for Mac, Linux, NCSA Open Source License, could be relicensed to GPLv3 or later / MPLv2 or later
+- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx), Microsoft proprietary license
+- [Apache web server](https://www.apache.org/licenses/LICENSE-2.0) for Windows, Mac, Linux, Apache license, compatible with GPLv3 or later / MPLv2 or later
+
 # Community outreach
 
 The MediaArea team is active within the open source community and actively presents their work on MediaConch in order to bring attention to the project and draw in a wider audience for potential open source feedback.
