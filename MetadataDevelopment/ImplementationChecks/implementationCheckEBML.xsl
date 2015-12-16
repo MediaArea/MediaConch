@@ -758,6 +758,14 @@
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
         <xsl:param name="field"/>
+        <context>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
+        </context>
         <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
@@ -774,23 +782,13 @@
                     <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="field">
-                <xsl:value-of select="$field"/>
-            </xsl:attribute>
-            <xsl:attribute name="value">
-                <xsl:value-of select="$xpath"/>
-            </xsl:attribute>
             <xsl:choose>
                 <xsl:when test="string-length($xpath) != 0">
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                    </xsl:element>
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">fail</xsl:attribute>
-                        <xsl:attribute name="reason">does not exist</xsl:attribute>
-                    </xsl:element>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">does not exist</xsl:attribute>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
@@ -798,6 +796,14 @@
     <xsl:template name="does_not_exist">
         <xsl:param name="xpath"/>
         <xsl:param name="field"/>
+        <context>
+            <xsl:attribute name="field">
+                <xsl:value-of select="$field"/>
+            </xsl:attribute>
+            <xsl:attribute name="value">
+                <xsl:value-of select="$xpath"/>
+            </xsl:attribute>
+        </context>
         <xsl:element name="test">
             <xsl:if test="../@type">
                 <xsl:attribute name="tracktype">
@@ -814,23 +820,13 @@
                     <xsl:value-of select="../mi:ID"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:attribute name="field">
-                <xsl:value-of select="$field"/>
-            </xsl:attribute>
-            <xsl:attribute name="value">
-                <xsl:value-of select="$xpath"/>
-            </xsl:attribute>
             <xsl:choose>
                 <xsl:when test="string-length($xpath) = '0'">
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                    </xsl:element>
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:element name="result">
-                        <xsl:attribute name="outcome">fail</xsl:attribute>
-                        <xsl:attribute name="reason">exists</xsl:attribute>
-                    </xsl:element>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">exists</xsl:attribute>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
