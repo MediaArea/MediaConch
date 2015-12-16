@@ -542,19 +542,16 @@
                 <xsl:otherwise>
                     <xsl:attribute name="outcome">fail</xsl:attribute>
                     <xsl:attribute name="reason">
-                        <xsl:value-of select="$x"/>
+                        <xsl:value-of select="$parentElementVINT"/>
                         <xsl:text> is not a valid parent element of </xsl:text>
-                        <xsl:value-of select="$y"/>
+                        <xsl:value-of select="$elementVINT"/>
                     </xsl:attribute>
                 </xsl:otherwise>
             </xsl:choose>
             <value>
-                <xsl:attribute name="name">
-                    <xsl:text>Actual EBML Parent Element</xsl:text>
+                <xsl:attribute name="offset">
+                    <xsl:value-of select="@offset"/>
                 </xsl:attribute>
-                <xsl:value-of select="$parentElementVINT"/>
-            </value>
-            <value>
                 <xsl:attribute name="name">
                     <xsl:text>EBML Element</xsl:text>
                 </xsl:attribute>
@@ -565,6 +562,12 @@
                     <xsl:text>Allowed EBML Parent Element</xsl:text>
                 </xsl:attribute>
                 <xsl:value-of select="$allowedParentVINT"/>
+            </value>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:text>Actual EBML Parent Element</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="$parentElementVINT"/>
             </value>
         </xsl:element>
     </xsl:template>
