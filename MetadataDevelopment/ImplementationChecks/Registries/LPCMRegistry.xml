@@ -1,62 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
-  <rule>
+  <rule icid="BWF-LPCM-FMT">
     <name>formatType</name>
-    <icid>BWF-LPCM-FMT</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>
     <citation>EBU Tech 3285 v2, pg. 16</citation>
     <definition>WAVE_FORMAT_PCM = 0x0001</definition>
   </rule>
-  <rule>
+  <rule icid="BWF-LPCM-BPS">
     <name>bitsPerSample</name>
-    <icid>BWF-LPCM-BPS</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>
     <citation>EBU Tech 3285 v2, pg. 17</citation>
     <definition>valid bits per sample 16, 20 or 24</definition>
   </rule>
-  <rule>
+  <rule icid="BWF-LPCM-BYT">
     <name>bytesPerSecond</name>
-    <icid>BWF-LPCM-BYT</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>
     <citation>EBU Tech 3285 v2, pg. 17</citation>
     <definition>MUST equal (nChannels x nSamplesPerSecond x nBitsPerSample) / 8    **only important for compressed formats</definition>
   </rule>
-  <rule>
+  <rule icid="BWF-LPCM-BLK">
     <name>blockAlignment</name>
-    <icid>BWF-LPCM-BLK</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>
     <citation>EBU Tech 3285 v2, pg. 17</citation>
     <definition>C ontainer size (in bytes) of one set of samples. MUST equal (nChannels x nBitsPerSample)/8EBU        **Note: The above formulae do not always give the correct answer. Strictly speaking, the number of bytes per sample (nBitsPerSample/8) should be rounded first. Then this integer should be multiplied by &lt;nChannels&gt; (which is always an integer) to give &lt;nBlockAlign&gt;. This in turn should be multiplied by &lt;nSamplesPerSecond&gt; to give &lt;nAvgBytesPerSec&gt;].</definition>
   </rule>
-  <rule>
+  <rule icid="BWF-LPCM-CHN">
     <name>channelCount</name>
-    <icid>BWF-LPCM-CHN</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>
     <citation>EBU Tech 3285 v2, pg. 17</citation>
     <definition>1 = mono, 2 = stereo, etc.</definition>
   </rule>
-  <rule>
+  <rule icid="BWF-LPCM-CHN">
     <name>nChannels</name>
-    <icid>BWF-LPCM-CHN</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>
     <citation>EBU Tech 3285 v2, pg. 17</citation>
     <definition>1 = mono, 2 = stereo, etc.</definition>
   </rule>
-  <rule>
+  <rule icid="BWF-LPCM-SRT">
     <name>sampleRate</name>
-    <icid>BWF-LPCM-SRT</icid>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
     <target_format_part>FormatChunk 'fmt'</target_format_part>

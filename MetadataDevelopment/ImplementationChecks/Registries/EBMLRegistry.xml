@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
-  <rule>
+  <rule icid="EBML-VINT-EFF">
     <name>EBML vint efficiency</name>
-    <icid>EBML-VINT-EFF</icid>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
     <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
     <definition>The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits,  i.e. vint is expressed as efficiently as feasible.</definition>
   </rule>
-  <rule>
+  <rule icid="MKV-KNOWN-ELEM">
     <name>Element ID Registered</name>
-    <icid>MKV-KNOWN-ELEM</icid>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part></target_format_part>
     <citation></citation>
     <definition>Ensure MKV Element ID is registered in specdata.xml (as of Dec. 13, 2014 this is 224 registered Element IDs)</definition>
   </rule>
-  <rule>
+  <rule icid="EBML-ELEM-SIZE-7F">
     <name>Element Size 0x7F Reservation</name>
-    <icid>EBML-ELEM-SIZE-7F</icid>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
     <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
     <definition>If Element Size is set to 0x11111111 but element size is actually 127 bytes provide a warning.</definition>
   </rule>
-  <rule>
+  <rule icid="EBML-ELEM-SIZE-CAP">
     <name>Element Size Byte Length Limit</name>
-    <icid>EBML-ELEM-SIZE-CAP</icid>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
     <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
     <definition>The first eight bits of any Element Size may not start with 0b00000000.</definition>
   </rule>
-  <rule>
+  <rule icid="EBML-ELEM-SIZE-UNK">
     <name>Element Size Unknown</name>
-    <icid>EBML-ELEM-SIZE-UNK</icid>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
