@@ -635,6 +635,66 @@
             </xsl:choose>
         </xsl:if>
     </xsl:template>
+    <xsl:template name="HexToVINT">
+        <xsl:param name="hex" />
+        <xsl:choose>
+            <xsl:when test="string-length($hex) = 7">
+                <xsl:text>1</xsl:text>
+                <xsl:value-of select="$hex" />
+            </xsl:when>
+            <xsl:when test="string-length($hex) = 5">
+                <xsl:text>2</xsl:text>
+                <xsl:value-of select="$hex" />
+            </xsl:when>
+            <xsl:when test="string-length($hex) = 3">
+                <xsl:text>4</xsl:text>
+                <xsl:value-of select="$hex" />
+            </xsl:when>
+            <xsl:when test="string-length($hex) = 2">
+                <xsl:choose>
+                    <xsl:when test="starts-with($hex, '0')">
+                        <xsl:text>8</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '1')">
+                        <xsl:text>9</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '2')">
+                        <xsl:text>A</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '3')">
+                        <xsl:text>B</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '4')">
+                        <xsl:text>C</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '5')">
+                        <xsl:text>D</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '6')">
+                        <xsl:text>E</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '7')">
+                        <xsl:text>F</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>YYYY</xsl:text>
+                        <xsl:value-of select="$hex" />
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$hex" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     <xsl:template name="exists">
         <xsl:param name="xpath"/>
         <xsl:param name="field"/>
