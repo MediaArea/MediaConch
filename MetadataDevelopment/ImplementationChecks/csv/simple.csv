@@ -1,0 +1,91 @@
+Name,CCID,Authority,Target Format,Target Format Part,Citation,Definition
+Extension Test,MKV-EXT,Matroska Specification,Matroska,File name,http://www.matroska.org/node/2/revisions/153/view,"The file extension SHOULD be one of the following (MKV, MKA, MKS, MK3D, WEBM)"
+EBML Element Start,MKV-EBML-ELEM-START,Matroska Specification,Matroska,EBML Header,specdata.xml,"An Matroska file MUST start with an EBML element id, ie. 0x1A45DFA3."
+Level 0 Segment,MKV-LEVEL-0,Matroska Specification,Matroska,EBML Header,specdata.xml,"The EBML Header MUST be immediately followed by another EBML Header Element, 0x1A45DFA3, or a Segment Element, 0x18538067. {{Can global Elements exist at level 0?!}}"
+Only One EBML Header recommended,MKV-1-EBML,Matroska Specification,Matroska,Matroska structure,,There SHOULD only occur one EBML level 0 element within an MKV file. (EBML Headers could recur if an MKV file is an attachment of an MKV file).
+File Size Consistency,MKV-FILESIZE-MATCH,Matroska Specification,Matroska,Matroska structure,http://www.matroska.org/technical/specs/index.html#block_structure,The actual file size should be the sum of all level 0 Element Size declarations plus the sum of the byte sizes of level 0 Element IDs and Element Sizes.
+EBMLVersion Presence,MKV-EBML-VER,Matroska Specification,Matroska,EBML Header,,Within any EBML Header exactly one EMBL Version element must be present.
+EBMLReadVersion Presence,MKV-EBML-RV,Matroska Specification,Matroska,EBML Header,,
+EBMLMaxIDLength Presence,MKV-EBML-MAXIDL,Matroska Specification,Matroska,EBML Header,,
+EBMLMaxSizeLength Presence,MKV-EBML-MAXSL,Matroska Specification,Matroska,EBML Header,,
+DocType Presence,MKV-EBML-DOCT,Matroska Specification,Matroska,EBML Header,,
+DocTypeVersion Presence,MKV-EBML-DOCTV,Matroska Specification,Matroska,EBML Header,,
+DocTypeReadVersion Presence,MKV-EBML-DOCTRV,Matroska Specification,Matroska,EBML Header,,
+EBML Version Coherency,MKV-VER-COH,Matroska Specification,Matroska,EBML Header,http://www.matroska.org/technical/specs/index.html#block_structure,The value of EBMLVersion MUST be greater than or equal to the vale of EBMLReadVersion.
+EBMLMaxIDLength Limits,MKV-MAXID-LIMIT,Matroska Specification,Matroska,EBML Header,specdata.xml,MUST equal 4
+EBMLMaxSizeLength Limit,MKV-MAXSL-LIMIT,Matroska Specification,Matroska,EBML Header,specdata.xml,Must be less than or equal to 8 and greater than or equal to 1.
+EBMLMaxSizeLength Matches,MKV-MAXSL-MATCH,Matroska Specification,Matroska,EBML Header,specdata.xml,No Element Size Length exceeds the length noted in EBMLMaxSizeLength
+DocType,MKV-DOCT-KNOWN,Matroska Specification,Matroska,EBML Header,,"MUST equal either ""matroska"" or ""webm"""
+DocTypeVersion Coherency,MKV-DOCTV-COH,Matroska Specification,Matroska,EBML Header,,The value of DocTypeVersion MUST be greater than or equal to the vale of DocTypeReadVersion.
+DocTypeVersion Limits,MKV-DOCTV-LIMIT,Matroska Specification,Matroska,EBML Header,,"Values for DocTypeVersion and DocTypeReadVersion must be either 1, 2, 3, or 4."
+Top Elements Coded on 4 Octets,MKV-TOP-ELEM-4CODE,Matroska Specification,Matroska,Matroska structure,http://www.matroska.org/technical/specs/index.html#block_structure,"Note: this seems to contradict EBML rule to use most efficient element size, but perhaps this is an intention deviation of MKV to achieve top elements starting on mutiples of 4 octets. ?"
+CRC Order,MKV-CRC-ORDER,Matroska Specification,Matroska,CRC Element,http://www.matroska.org/technical/specs/index.html#block_structure,CRC Elements SHOULD be the first sub-Element of its parent Element.
+CRC-32 Size Coherency,MKV-CRC-COH,Matroska Specification,Matroska,CRC Element,http://www.matroska.org/technical/specs/index.html#block_structure,The Element Size of the CRC-32 Element MUST be 4 bytes (aka 32 bit).
+CRC Validation,MKV-CRC-VAL,Matroska Specification,Matroska,CRC Element,,"The crc hash of the CRC-32 element MUST validate the subsequent data of the parent Element, from the Element that follows the CRC-32 element to the end of the parent Element."
+CRC Not Pointlessly Used,MKV-CRC-REASON,Matroska Specification,Matroska,CRC Element,author,A CRC-32 element should not be the only child Element of its parent Element (ie hashing no data).
+CRC-Presence,MKV-CRC-PRES,Matroska Specification,Matroska,CRC Element,,Warning when Level 1 elements have no CRC-32. Very common.
+Single Segment Composition,EBML-SEG,Matroska Specification,Matroska,EBML Header,specdata.xml,File MUST contain at least one segment.
+Seek-Presence,MKV-SEEK-PRES,Matroska Specification,Matroska,Meta Seek Element,specdata.xml,File MUST contain at least one Seek element.
+SeekID-Presence,MKV-SEEKID-PRES,Matroska Specification,Matroska,Meta Seek Element,specdata.xml,File MUST contain at least one SeekID element.
+SeekID-Type,MKV-SEEKID-TYPE,Matroska Specification,Matroska,Meta Seek Element,specdata.xml,
+SeekPosition-Presence,MKV-SEEKPOSITION-PRES,Matroska Specification,Matroska,Meta Seek Element,specdata.xml,File MUST contain at least one SeekPosition element.
+Segment-Info-Presence,MKV-SEGMENTINFO-PRES,Matroska Specification,Matroska,Segment Element,specdata.xml,Segment information MUST contain at least one Info element.
+SegmentUID-Range,MKV-SEGMENTUID-RNG,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,SegmentUID MUST be greater than zero.
+SegmentUID-Size,MKV-SEGMENTUID-SIZE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, SegmentUID MUST be 128 bits (16 bytes) in size."
+SegmentUID-Type,MKV-SEGMENTUID-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,
+SegmentFilename-Type,MKV-SEGMENTFILENAME-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, SegmentFilename MUST be in UTF-8 format."
+PrevUID-Size,MKV-PREVUID-SIZE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,
+PrevUID-Type,MKV-PREVUID-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, PrevUID MUST be 128 bits (16 bytes) in size."
+PrevFilename-Type,MKV-PREVFILENAME-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, PrevFilename MUST be in UTF-8 format."
+NextUID-Size,MKV-NEXTUID-SIZE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,
+NextUID-Type,MKV-NEXTUID-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, NextUID MUST be 128 bits (16 bytes) in size."
+NextFilename-Type,MKV-NEXTFILENAME-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, NextFilename MUST be in UTF-8 format."
+SegmentFamily-Size,MKV-SEGMENTFAMILY-SIZE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,
+SegmentFamily-Type,MKV-SEGMENTFAMILY-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, SegmentFamily MUST be 128 bits (16 bytes) in size."
+TimecodeScale-Presence,MKV-TIMECODESCALE-PRES,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,File MUST contain at least one TimecodeScale element.
+Duration-Range,MKV-DURATION-RANG,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, duration range MUST be greater than 0"
+Duration-Type,MKV-DURATION-TYPE,Matroska Specification,Matroska,Segment Element,http://www.matroska.org/technical/specs/index.html,"If present, duration type MUST be float integer."
+DateUTC-Type,MKV-DATEUTC-TYPE,Matroska Specification,Matroska,Segment Element,specdata.xml,"If present, DateUTC MUST be in date format and follow UTC standards."
+Title-Type,MKV-TITLE-TYPE,Matroska Specification,Matroska,Segment Element,specdata.xml,"If present, Title MUST be in UTF-8 format."
+Tag Total Parts,MKV-TAG-TOTALPARTS,Matroska Specification,Matroska,Segment Element,,
+Tag Part Number,MKV-TAG-PARTNUMBER,Matroska Specification,Matroska,Segment Element,,
+Tag Part Offset,MKV-TAG-PARTOFFSET,Matroska Specification,Matroska,Segment Element,,
+Tag Title,MKV-TAG-TITLE,Matroska Specification,Matroska,Segment Element,,
+Tag Subtitle,MKV-TAG-SUBTITLE,Matroska Specification,Matroska,Segment Element,,
+Tag URL,MKV-TAG-URL,Matroska Specification,Matroska,Segment Element,,
+Tag Sort_with,MKV-TAG-SORT_WITH,Matroska Specification,Matroska,Segment Element,,
+Tag Email,MKV-TAG-EMAIL,Matroska Specification,Matroska,Segment Element,,
+Tag Address,MKV-TAG-ADDRESS,Matroska Specification,Matroska,Segment Element,,
+Tag Fax,MKV-TAG-FAX,Matroska Specification,Matroska,Segment Element,,
+Tag Phone,MKV-TAG-PHONE,Matroska Specification,Matroska,Segment Element,,
+Tag Initial_Key,MKV-TAG-INITIAL_KEY,Matroska Specification,Matroska,Segment Element,,
+Tag Law_Rating,MKV-TAG-LAW_RATING,Matroska Specification,Matroska,Segment Element,,
+TAG ICRA,MKV-TAG-ICRA,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_RELEASED,MKV-TAG-DATE_RELEASED,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_RECORDED,MKV-TAG-DATE_RECORDED,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_ENCODED,MKV-TAG-DATE_ENCODED,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_TAGGED,MKV-TAG-DATE_TAGGED,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_DIGITIZED,MKV-TAG-DATE_DIGITIZED,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_WRITTEN,MKV-TAG-DATE_WRITTEN,Matroska Specification,Matroska,Segment Element,,
+Tag DATE_PURCHASED,MKV-TAG-DATE_PURCHASED,Matroska Specification,Matroska,Segment Element,,
+Tag Play_Counter,MKV-TAG-PLAY_COUNTER,Matroska Specification,Matroska,Segment Element,,
+Tag FPS,MKV-TAG-FPS,Matroska Specification,Matroska,Segment Element,,
+Tag BPM,MKV-TAG-BPM,Matroska Specification,Matroska,Segment Element,,
+Tag Measure,MKV-TAG-MEASURE,Matroska Specification,Matroska,Segment Element,,
+Tag Tuning,MKV-TAG-TUNING,Matroska Specification,Matroska,Segment Element,,
+Tag Replay Gain (Gain),MKV-TAG-REPLAYGAIN_GAIN,Matroska Specification,Matroska,Segment Element,,
+Tag Replay Gain (Peak),MKV-TAG-REPLAYGAIN_PEAK,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) ISRC,MKV-TAG-ISRC,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) MCDI,MKV-TAG-MCDI,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) ISBN,MKV-TAG-ISBN,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) Barcode,MKV-TAG-BARCODE,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) Catalog number,MKV-TAG-CATALOG_NUMBERA,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) Label code,MKV-TAG-LABEL_CODE,Matroska Specification,Matroska,Segment Element,,
+Tag (Identifiers) LCCN,MKV-TAG-LCCN,Matroska Specification,Matroska,Segment Element,,
+Tag (Commercial) Purchase Item,MKV-TAG-PURCHASE_ITEM,Matroska Specification,Matroska,Segment Element,,
+Tag (Commercial) Purchase Price,MKV-TAG-PURCHASE_PRICE,Matroska Specification,Matroska,Segment Element,,
+Tag (Commercial) Purchase Currency,MKV-TAG-PURCHASE_CURRENCY,Matroska Specification,Matroska,Segment Element,,
+Extension Test MKV,MKV-EXT-MKV,Matroska Specification,Matroska,File name,http://www.matroska.org/node/2/revisions/153/view,"If the file extension is MKV, the file SHOULD contain at least one video track."
+Extension Test MKA,MKV-EXT-MKA,Matroska Specification,Matroska,File name,http://www.matroska.org/node/7/revisions/214/view,"If the file extension is MKA, the file SHOULD contain at least one audio track and no other type of track, i.e. ""audio-only""."
+Extension Test MKS,MKV-EXT-MKS,Matroska Specification,Matroska,File name,http://www.matroska.org/node/2/revisions/153/view,"If the file extension is MKS, the file SHOULD contain at least one subtitle track and no other type of track, i.e. ""subtitle-only""."
+Extension Test MK3D,MKV-EXT-MK3D,Matroska Specification,Matroska,"File name, StereoMode element",http://www.matroska.org/node/2/revisions/153/view,If the file extension is MKV3D the file SHOULD contain at least one video track AND SHOULD contain at least one StereoMode element.
