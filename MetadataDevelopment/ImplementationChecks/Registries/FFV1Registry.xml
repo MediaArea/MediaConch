@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csv>
+  <row>
+    <name>Name</name>
+    <icid>CCID</icid>
+    <col3>Version</col3>
+    <authority>Authority</authority>
+    <target_format>Target Format</target_format>
+    <col6>Target Format Version</col6>
+    <target_format_part>Target Format Part</target_format_part>
+    <citation>Citation</citation>
+    <col9>Quote</col9>
+    <name0>Rule Clarity?</name0>
+    <definition>Definition</definition>
+    <name2>Done through MediaTrace?</name2>
+  </row>
+  <row>
+    <name>Missing header</name>
+    <icid>OUTOFBAND-HEADER-MISSING</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1 &gt;=2</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>If version is 2 or more, there should be a global header in the container private data</definition>
+  </row>
+  <row>
+    <name>version</name>
+    <icid>FFV1-HEADER-version</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)</definition>
+  </row>
+  <row>
+    <name>version 2</name>
+    <icid>FFV1-HEADER-version2</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>Version 2 is forbidden, analysis stops</definition>
+  </row>
+  <row>
+    <name>micro_version 2</name>
+    <icid>FFV1-HEADER-micro_version</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>Not supported version, high risk of decoding issue</definition>
+  </row>
+  <row>
+    <name>coder_type</name>
+    <icid>FFV1-HEADER-coder_type</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>coder_type &gt;2 is not supported</definition>
+  </row>
+  <row>
+    <name>state_transition_delta</name>
+    <icid>FFV1-HEADER-state_transition_delta</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>(To be defined)</definition>
+  </row>
+  <row>
+    <name>colorspace_type</name>
+    <icid>FFV1-HEADER-colorspace_type</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>colorspace_type &gt;1 is not supported</definition>
+  </row>
+  <row>
+    <name>bits_per_raw_sample</name>
+    <icid>FFV1-HEADER-bits_per_raw_sample</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition></definition>
+  </row>
+  <row>
+    <name>h_chroma_subsample</name>
+    <icid>FFV1-HEADER-h_chroma_subsample-max</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>chroma subsampling factor can not be higher than slice width</definition>
+  </row>
+  <row>
+    <name>h_chroma_subsample</name>
+    <icid>FFV1-HEADER-h_chroma_subsample-int</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>width divided by chroma subsampling factor is not an integer</definition>
+  </row>
+  <row>
+    <name>v_chroma_subsample</name>
+    <icid>FFV1-HEADER-v_chroma_subsample-max</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>chroma subsampling factor can not be higher than slice height</definition>
+  </row>
+  <row>
+    <name>v_chroma_subsample</name>
+    <icid>FFV1-HEADER-v_chroma_subsample-int</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>height divided by chroma subsampling factor is not an integer</definition>
+  </row>
+  <row>
+    <name>QuantizationTables</name>
+    <icid>FFV1-HEADER-QuantizationTables</icid>
+    <authority>Ffmpeg source code</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>QuantizationTables incoherency</definition>
+  </row>
+  <row>
+    <name>initial_state_delta</name>
+    <icid>FFV1-HEADER-åÊinitial_state_delta</icid>
+    <authority>Ffmpeg source code</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>initial_state_deltas incoherency</definition>
+  </row>
+  <row>
+    <name>ec</name>
+    <icid>FFV1-HEADER-åÊec</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>ec &gt;1 is not supported</definition>
+  </row>
+  <row>
+    <name>intra</name>
+    <icid>FFV1-HEADER-åÊintra</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>intra &gt;1 is not supported</definition>
+  </row>
+  <row>
+    <name>crc_parity</name>
+    <icid>FFV1-HEADER-crc_parity</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>CRC is wrong</definition>
+  </row>
+  <row>
+    <name>end of header</name>
+    <icid>FFV1-HEADER-END</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Header</target_format_part>
+    <citation></citation>
+    <definition>Real header end is met before or after expected header end</definition>
+  </row>
+  <row>
+    <name>slice x / y / width / height</name>
+    <icid>FFV1-SLICE-slice_xywh</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation></citation>
+    <definition>Slices x/y and slices width/height are not coherant (areas are not sticked)</definition>
+  </row>
+  <row>
+    <name>quant_table_index</name>
+    <icid>FFV1-SLICE-quant_table_index</icid>
+    <authority>Ffmpeg source code</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation></citation>
+    <definition>quant_table_index incoherency</definition>
+  </row>
+  <row>
+    <name>picture_structure</name>
+    <icid>FFV1-SLICE-picture_structure</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>picture_structure &gt;3 is not supported</definition>
+  </row>
+  <row>
+    <name>sar_den</name>
+    <icid>FFV1-SLICE-sar_den</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>if num is not 0, den should be not 0</definition>
+  </row>
+  <row>
+    <name>slice_size</name>
+    <icid>FFV1-SLICE-slice_size</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation></citation>
+    <definition>slice_size is bigger than frame size</definition>
+  </row>
+  <row>
+    <name>error_status</name>
+    <icid>FFV1-SLICE-crc_parity</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>error_status &gt;2 is not supported</definition>
+  </row>
+  <row>
+    <name>crc_parity</name>
+    <icid>FFV1-SLICE-crc_parity</icid>
+    <authority>FFV1 Specification</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
+    <definition>CRC is wrong</definition>
+  </row>
+  <row>
+    <name>end of slice</name>
+    <icid>FFV1-SLICE-END</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Slice</target_format_part>
+    <citation></citation>
+    <definition>Real slice end is met before or after expected slice end</definition>
+  </row>
+  <row>
+    <name>end of frame</name>
+    <icid>FFV1-FRAME-END</icid>
+    <authority>Coherency</authority>
+    <target_format>FFV1</target_format>
+    <target_format_part>Frame</target_format_part>
+    <citation></citation>
+    <definition>Real frame end is met before or after expected frame end</definition>
+  </row>
+</csv>
