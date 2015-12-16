@@ -6,7 +6,7 @@
     <target_format>FFV1 &gt;=2</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>If version is 2 or more, there should be a global header in the container private data</definition>
+    <definition>"Version 2 and later files use a global header." If version is 2 or more, there should be a global header in the container private data</definition>
   </rule>
   <rule icid="FFV1-HEADER-version">
     <name>version</name>
@@ -14,7 +14,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)</definition>
+    <definition>"version 0, 1 or 3" Maximum known version is 3, analysis stops (note: doc sometimes indicates version 4)</definition>
   </rule>
   <rule icid="FFV1-HEADER-version2">
     <name>version 2</name>
@@ -22,7 +22,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>Version 2 is forbidden, analysis stops</definition>
+    <definition>"Version 2 was never enabled in the encoder thus version 2 files should not exist" Version 2 is forbidden, analysis stops</definition>
   </rule>
   <rule icid="FFV1-HEADER-micro_version">
     <name>micro_version 2</name>
@@ -30,7 +30,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>Not supported version, high risk of decoding issue</definition>
+    <definition>"For version 3, micro_version is 4, micro versions prior to this represent pre standard" Not supported version, high risk of decoding issue</definition>
   </rule>
   <rule icid="FFV1-HEADER-coder_type">
     <name>coder_type</name>
@@ -38,7 +38,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>coder_type &gt;2 is not supported</definition>
+    <definition>"0 (Golomb Rice), 1 (Range coder), 2 (Range coder with custom state transition table)" coder_type &gt;2 is not supported</definition>
   </rule>
   <rule icid="FFV1-HEADER-state_transition_delta">
     <name>state_transition_delta</name>
@@ -54,7 +54,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>colorspace_type &gt;1 is not supported</definition>
+    <definition>"0 (YCbCr), 1 (JPEG2000_RCT)" colorspace_type &gt;1 is not supported</definition>
   </rule>
   <rule icid="FFV1-HEADER-bits_per_raw_sample">
     <name>bits_per_raw_sample</name>
@@ -62,7 +62,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition></definition>
+    <definition>"commonly 8, 9, 10 or 16"</definition>
   </rule>
   <rule icid="FFV1-HEADER-h_chroma_subsample-max">
     <name>h_chroma_subsample</name>
@@ -104,7 +104,7 @@
     <citation></citation>
     <definition>QuantizationTables incoherency</definition>
   </rule>
-  <rule icid="FFV1-HEADER-åÊinitial_state_delta">
+  <rule icid="FFV1-HEADER-initial_state_delta">
     <name>initial_state_delta</name>
     <authority>Ffmpeg source code</authority>
     <target_format>FFV1</target_format>
@@ -112,21 +112,21 @@
     <citation></citation>
     <definition>initial_state_deltas incoherency</definition>
   </rule>
-  <rule icid="FFV1-HEADER-åÊec">
+  <rule icid="FFV1-HEADER-ec">
     <name>ec</name>
     <authority>FFV1 Specification</authority>
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>ec &gt;1 is not supported</definition>
+    <definition>"0(32bit CRC on the global header), 1(32bit CRC per slice and the global header)" ec &gt;1 is not supported</definition>
   </rule>
-  <rule icid="FFV1-HEADER-åÊintra">
+  <rule icid="FFV1-HEADER-intra">
     <name>intra</name>
     <authority>FFV1 Specification</authority>
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>intra &gt;1 is not supported</definition>
+    <definition>"intra 0(key and non key frames), 1(the video contains only key frames)" intra &gt;1 is not supported</definition>
   </rule>
   <rule icid="FFV1-HEADER-crc_parity">
     <name>crc_parity</name>
@@ -134,7 +134,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Header</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>CRC is wrong</definition>
+    <definition>"32bit that are choosen so that the global header as a whole or slice as a whole has a crc" CRC is wrong</definition>
   </rule>
   <rule icid="FFV1-HEADER-END">
     <name>end of header</name>
@@ -166,7 +166,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Slice</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>picture_structure &gt;3 is not supported</definition>
+    <definition>"0(unknown) 1(top field first) 2(bottom field first) 3(progressive)" picture_structure &gt;3 is not supported</definition>
   </rule>
   <rule icid="FFV1-SLICE-sar_den">
     <name>sar_den</name>
@@ -174,7 +174,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Slice</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>if num is not 0, den should be not 0</definition>
+    <definition>"0/0 when unknown " if num is not 0, den should be not 0</definition>
   </rule>
   <rule icid="FFV1-SLICE-slice_size">
     <name>slice_size</name>
@@ -190,7 +190,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Slice</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>error_status &gt;2 is not supported</definition>
+    <definition>"0(no error), 1(slice contained a correctable error), 2(slice contains a uncorrectable error)" error_status &gt;2 is not supported</definition>
   </rule>
   <rule icid="FFV1-SLICE-crc_parity">
     <name>crc_parity</name>
@@ -198,7 +198,7 @@
     <target_format>FFV1</target_format>
     <target_format_part>Slice</target_format_part>
     <citation>http://www.ffmpeg.org/~michael/FFV1.html</citation>
-    <definition>CRC is wrong</definition>
+    <definition>"32bit that are choosen so that the global header as a whole or slice as a whole has a crc" CRC is wrong</definition>
   </rule>
   <rule icid="FFV1-SLICE-END">
     <name>end of slice</name>

@@ -6,7 +6,7 @@
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
     <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits,  i.e. vint is expressed as efficiently as feasible.</definition>
+    <definition>Section 2.2 "IDs are always encoded in their shortest form, e.g. 1 is always encoded as 0x81 and never as 0x4001." The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits,  i.e. vint is expressed as efficiently as feasible.</definition>
   </rule>
   <rule icid="MKV-KNOWN-ELEM">
     <name>Element ID Registered</name>
@@ -22,7 +22,7 @@
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
     <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>If Element Size is set to 0x11111111 but element size is actually 127 bytes provide a warning.</definition>
+    <definition>"Note that the shortest encoding form for 127 is 0x407f since 0x7f is reserved." If Element Size is set to 0x11111111 but element size is actually 127 bytes provide a warning.</definition>
   </rule>
   <rule icid="EBML-ELEM-SIZE-CAP">
     <name>Element Size Byte Length Limit</name>
@@ -30,14 +30,14 @@
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
     <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>The first eight bits of any Element Size may not start with 0b00000000.</definition>
+    <definition>Section 2.3: "The EBML element data size is encoded as a variable size integer with, by default, widths up to 8." The first eight bits of any Element Size may not start with 0b00000000.</definition>
   </rule>
   <rule icid="EBML-ELEM-SIZE-UNK">
     <name>Element Size Unknown</name>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
-    <citation>Dave</citation>
-    <definition>Warning on unknown element sizes, unoptimized MKV.</definition>
+    <citation></citation>
+    <definition>"Values with all data bits set to 1 means size unknown, which allows for dynamically generated EBML streams where the final size isn't known beforehand." Warning on unknown element sizes, unoptimized MKV.</definition>
   </rule>
 </registry>

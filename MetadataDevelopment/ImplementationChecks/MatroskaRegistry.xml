@@ -14,7 +14,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>EBML Header</target_format_part>
     <citation>specdata.xml</citation>
-    <definition>An Matroska file MUST start with an EBML element id, ie. 0x1A45DFA3.</definition>
+    <definition>"Set the EBML characteristics of the data to follow. Each EBML document has to start with this." An Matroska file MUST start with an EBML element id, ie. 0x1A45DFA3.</definition>
   </rule>
   <rule icid="MKV-LEVEL-0">
     <name>Level 0 Segment</name>
@@ -22,7 +22,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>EBML Header</target_format_part>
     <citation>specdata.xml</citation>
-    <definition>The EBML Header MUST be immediately followed by another EBML Header Element, 0x1A45DFA3, or a Segment Element, 0x18538067. {{Can global Elements exist at level 0?!}}</definition>
+    <definition>Inferred: EBML and Segment are the only level 0 elements, both are allowed to occur multiple times. The EBML Header MUST be immediately followed by another EBML Header Element, 0x1A45DFA3, or a Segment Element, 0x18538067. {{Can global Elements exist at level 0?!}}</definition>
   </rule>
   <rule icid="MKV-1-EBML">
     <name>Only One EBML Header recommended</name>
@@ -30,7 +30,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Matroska structure</target_format_part>
     <citation></citation>
-    <definition>There SHOULD only occur one EBML level 0 element within an MKV file. (EBML Headers could recur if an MKV file is an attachment of an MKV file).</definition>
+    <definition>Assumed: Two EBML Headers in one MKV file seems contradictory. There SHOULD only occur one EBML level 0 element within an MKV file. (EBML Headers could recur if an MKV file is an attachment of an MKV file).</definition>
   </rule>
   <rule icid="MKV-FILESIZE-MATCH">
     <name>File Size Consistency</name>
@@ -206,7 +206,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>EBML Header</target_format_part>
     <citation>specdata.xml</citation>
-    <definition>File MUST contain at least one segment.</definition>
+    <definition>"Typically a Matroska file is composed of 1 segment."</definition>
   </rule>
   <rule icid="MKV-SEEK-PRES">
     <name>Seek-Presence</name>
