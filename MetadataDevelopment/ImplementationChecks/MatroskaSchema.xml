@@ -205,7 +205,7 @@
                 <element name="ReferenceFrame" level="3" id="0xC8" type="master" multiple="0" minver="0" webm="0" divx="1">
                     <documentation><a href="http://developer.divx.com/docs/divx_plus_hd/format_features/Smooth_FF_RW">DivX trick track extenstions</a></documentation>
                     <element name="ReferenceOffset" level="4" id="0xC9" type="uinteger" multiple="0" minOccurs="1" minver="0" webm="0" divx="1">
-                        <documentation><a href="http://developer.divx.com/docs/divx_plus_hd/format_features/Smooth_FF_RW">DivX trick track extenstions</a>
+                        <documentation><a href="http://developer.divx.com/docs/divx_plus_hd/format_features/Smooth_FF_RW">DivX trick track extenstions</a></documentation>
                     </element>
                     <element name="ReferenceTimeCode" level="4" id="0xCA" type="uinteger" multiple="0" minOccurs="1" minver="0" webm="0" divx="1">
                         <documentation><a href="http://developer.divx.com/docs/divx_plus_hd/format_features/Smooth_FF_RW">DivX trick track extenstions</a></documentation>
