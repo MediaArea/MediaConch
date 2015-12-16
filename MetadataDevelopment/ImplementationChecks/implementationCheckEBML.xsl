@@ -527,6 +527,78 @@
             </value>
         </xsl:element>
     </xsl:template>
+    <xsl:template name="x_is_valid_parent_of_y">
+        <xsl:param name="x"/>
+        <xsl:param name="y"/>
+        <xsl:variable name="ElementListWIthParents">
+            <xsl:for-each select="document('MatroskaSchema.xml')//element">
+                <xsl:value-of select="@id"/>
+                <xsl:text>,</xsl:text>
+                <xsl:value-of select="../@id"/>
+                <xsl:text>.</xsl:text>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="elementVINT">
+            <xsl:text>0x</xsl:text>
+            <xsl:call-template name="HexToVINT">
+                <xsl:with-param name="hex">
+                    <xsl:call-template name="DecToHex">
+                        <xsl:with-param name="dec">
+                            <xsl:value-of select="$y"/>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="parentElementVINT">
+            <xsl:text>0x</xsl:text>
+            <xsl:call-template name="HexToVINT">
+                <xsl:with-param name="hex">
+                    <xsl:call-template name="DecToHex">
+                        <xsl:with-param name="dec">
+                            <xsl:value-of select="$x"/>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="allowedParentVINT">
+            <xsl:value-of select="substring-before(substring-after($ElementListWIthParents,concat($elementVINT,',')),'.')"/>
+        </xsl:variable>
+        <xsl:element name="test">
+            <xsl:choose>
+                <xsl:when test="$allowedParentVINT=$parentElementVINT">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">
+                        <xsl:value-of select="$x"/>
+                        <xsl:text> is not a valid parent element of </xsl:text>
+                        <xsl:value-of select="$y"/>
+                    </xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:text>Actual EBML Parent Element</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="$parentElementVINT"/>
+            </value>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:text>EBML Element</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="$elementVINT"/>
+            </value>
+            <value>
+                <xsl:attribute name="name">
+                    <xsl:text>Allowed EBML Parent Element</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="$allowedParentVINT"/>
+            </value>
+        </xsl:element>
+    </xsl:template>
     <xsl:template name="x_is_greater_than_y">
         <xsl:param name="x"/>
         <xsl:param name="x_name"/>
