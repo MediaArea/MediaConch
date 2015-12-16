@@ -24,10 +24,10 @@
             <documentation>The minimum DocType version an interpreter has to support to read this file.</documentation>
         </element>
     </element>
-    <element name="Void" level="-1" id="0xEC" type="binary" minver="1">
+    <element name="Void" global="1" level="-1" id="0xEC" type="binary" minver="1">
         <documentation>Used to void damaged data, to avoid unexpected behaviors when using damaged data. The content is discarded. Also used to reserve space in a sub-element for later use.</documentation>
     </element>
-    <element name="CRC-32" level="-1" id="0xBF" type="binary" minver="1" webm="0">
+    <element name="CRC-32" global="1" level="-1" id="0xBF" type="binary" minver="1" webm="0">
         <documentation>The CRC is computed on all the data of the Master element it's in. The CRC element should be the first in it's parent master for easier reading. All level 1 elements should include a CRC-32. The CRC in use is the IEEE CRC32 Little Endian</documentation>
     </element>
     <element name="SignatureSlot" level="-1" id="0x1B538667" type="master" maxOccurs="unbounded" webm="0">
