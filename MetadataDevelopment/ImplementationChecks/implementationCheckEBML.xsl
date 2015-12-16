@@ -141,6 +141,66 @@
                                         </xsl:call-template>
                                     </xsl:for-each>
                                 </check>
+                                <!-- get all non level 0 Elements -->
+                                <xsl:for-each select="//mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']]">
+                                    <n><xsl:value-of select="@name"/></n>
+                                    <hey>
+                                        <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                    </hey>
+                                    <xsl:variable name="elementHex">
+                                        <xsl:text>0x</xsl:text>
+                                        <xsl:call-template name="HexToVINT">
+                                            <xsl:with-param name="hex">
+                                                <xsl:call-template name="DecToHex">
+                                                    <xsl:with-param name="dec">
+                                                        <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                    </xsl:with-param>
+                                                </xsl:call-template>
+                                            </xsl:with-param>
+                                        </xsl:call-template>
+                                    </xsl:variable>
+                                    <xsl:variable name="parentElementHex">
+                                        <xsl:text>0x</xsl:text>
+                                        <xsl:call-template name="HexToVINT">
+                                            <xsl:with-param name="hex">
+                                                <xsl:call-template name="DecToHex">
+                                                    <xsl:with-param name="dec">
+                                                        <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                    </xsl:with-param>
+                                                </xsl:call-template>
+                                            </xsl:with-param>
+                                        </xsl:call-template>
+                                    </xsl:variable>
+                                    <xsl:variable name="allowedParent">
+                                        <xsl:value-of select="document('MatroskaSchema.xml')//element[@id=$elementHex]/@id"/>
+                                    </xsl:variable>
+                                    <hex>
+                                        <xsl:value-of select="$elementHex"/>
+                                    </hex>
+                                    <allowedParent>
+                                        <xsl:value-of select="$allowedParent"/>
+                                    </allowedParent>
+                                    <parent>
+                                        <xsl:value-of select="$parentElementHex"/>
+                                    </parent>
+                                    <br/>
+                                </xsl:for-each>
+                                <xsl:for-each select="document('MatroskaSchema.xml')//element[@maxOccurs!='unbouded']/@id">
+                                    <a><xsl:value-of select="."/></a>
+                                    <check>
+                                        <xsl:attribute name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:attribute>
+                                        <xsl:attribute name="version">1</xsl:attribute>
+                                        <context field="valid-ebml-header-subelement-ids">
+                                            <xsl:attribute name="value">
+                                                <xsl:value-of select="."/>
+                                            </xsl:attribute>
+                                        </context>
+                                        <xsl:call-template name="x_is_in_list">
+                                            <xsl:with-param name="x" select="."/>
+                                            <xsl:with-param name="list" select="."/>
+                                        </xsl:call-template>
+                                    </check>
+                                </xsl:for-each>
                                 <check>
                                     <xsl:attribute name="icid">EBML-VALID-MAXID</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
