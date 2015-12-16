@@ -702,9 +702,41 @@
                 <xsl:text>1</xsl:text>
                 <xsl:value-of select="$hex" />
             </xsl:when>
+            <xsl:when test="string-length($hex) = 6">
+                <xsl:choose>
+                    <xsl:when test="starts-with($hex, '1')">
+                        <xsl:text>3</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>YYYY</xsl:text>
+                        <xsl:value-of select="$hex" />
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
             <xsl:when test="string-length($hex) = 5">
                 <xsl:text>2</xsl:text>
                 <xsl:value-of select="$hex" />
+            </xsl:when>
+            <xsl:when test="string-length($hex) = 4">
+                <xsl:choose>
+                    <xsl:when test="starts-with($hex, '1')">
+                        <xsl:text>5</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '2')">
+                        <xsl:text>6</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:when test="starts-with($hex, '3')">
+                        <xsl:text>7</xsl:text>
+                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>YYYY</xsl:text>
+                        <xsl:value-of select="$hex" />
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:when>
             <xsl:when test="string-length($hex) = 3">
                 <xsl:text>4</xsl:text>
@@ -712,10 +744,6 @@
             </xsl:when>
             <xsl:when test="string-length($hex) = 2">
                 <xsl:choose>
-                    <xsl:when test="starts-with($hex, '0')">
-                        <xsl:text>8</xsl:text>
-                        <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
-                    </xsl:when>
                     <xsl:when test="starts-with($hex, '1')">
                         <xsl:text>9</xsl:text>
                         <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
@@ -749,6 +777,10 @@
                         <xsl:value-of select="$hex" />
                     </xsl:otherwise>
                 </xsl:choose>
+            </xsl:when>
+            <xsl:when test="string-length($hex) = 1">
+                <xsl:text>8</xsl:text>
+                <xsl:value-of select="$hex" />
             </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="$hex" />
