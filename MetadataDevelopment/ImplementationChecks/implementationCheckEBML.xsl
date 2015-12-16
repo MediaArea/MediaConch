@@ -74,6 +74,12 @@
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
+                                <xsl:variable name="GlobalElements">
+                                    <xsl:for-each select="document('MatroskaSchema.xml')//element[@global='1']">
+                                        <xsl:value-of select="@id"/>
+                                        <xsl:text> </xsl:text>
+                                    </xsl:for-each>
+                                </xsl:variable>
                                 <check icid="IS_EBML" version="1">
                                     <context field="mi:Format">
                                         <xsl:attribute name="value">
