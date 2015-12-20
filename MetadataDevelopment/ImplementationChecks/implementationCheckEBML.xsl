@@ -176,6 +176,41 @@
                                         </xsl:call-template>
                                     </check>
                                 </xsl:for-each>
+                                <!-- START: verify that Master Elements contain mandatory child Elements where no default value is declared for the child Element -->
+                                <!-- get a list of all Elements that contain mandates from the schema -->
+                                <xsl:variable name="ElementsThatContainMandates">
+                                    <xsl:for-each select="document('MatroskaSchema.xml')//element[element[not(@default)][@minOccurs>0]]">
+                                        <xsl:value-of select="@id"/>
+                                        <xsl:text> </xsl:text>
+                                    </xsl:for-each>
+                                </xsl:variable>
+                                <!-- loop through all Master Elements -->
+                                <xsl:for-each select="//mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]">
+                                    <!-- evaluate the Element ID in VINT form of the current Master Element -->
+                                    <xsl:variable name="currentVINT">
+                                        <xsl:text>0x</xsl:text>
+                                        <xsl:call-template name="HexToVINT">
+                                            <xsl:with-param name="hex">
+                                                <xsl:call-template name="DecToHex">
+                                                    <xsl:with-param name="dec">
+                                                        <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                    </xsl:with-param>
+                                                </xsl:call-template>
+                                            </xsl:with-param>
+                                        </xsl:call-template>
+                                    </xsl:variable>
+                                    <!-- test to see if the current Master Element is one that should contain mandatory child elements -->
+                                    <xsl:if test="contains($ElementsThatContainMandates,$currentVINT)">
+                                        <check>
+                                            <xsl:attribute name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:attribute>
+                                            <xsl:attribute name="version">1</xsl:attribute>
+                                            <xsl:call-template name="x_contains_mandates">
+                                                <xsl:with-param name="x" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                            </xsl:call-template>
+                                        </check>
+                                    </xsl:if>
+                                </xsl:for-each>
+                                <!-- END: verify that Master Elements contain mandatory child Elements where no default value is declared for the child Element -->
                                 <check>
                                     <xsl:attribute name="icid">EBML-VALID-MAXID</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
@@ -570,6 +605,85 @@
                 <xsl:value-of select="$parentElementVINT"/>
             </value>
         </xsl:element>
+    </xsl:template>
+    <xsl:template name="x_contains_mandates">
+        <xsl:param name="x"/>
+        <xsl:variable name="ElementsWithMandatoryChildrenWithoutDefaults">
+            <xsl:for-each select="document('MatroskaSchema.xml')//element[element[not(@default)][@minOccurs>0]]">
+                <xsl:value-of select="@id"/>
+                <xsl:text>:</xsl:text>
+                <xsl:for-each select="element[not(@default)][@minOccurs>0]">
+                    <xsl:value-of select="@id"/>
+                    <xsl:text> </xsl:text>
+                </xsl:for-each>
+                <xsl:text>;</xsl:text>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="CurrentElementChildren">
+            <xsl:for-each select="mt:block/mt:block[@name='Header']/mt:data[@name='Name']">
+                <xsl:text>0x</xsl:text>
+                <xsl:call-template name="HexToVINT">
+                    <xsl:with-param name="hex">
+                        <xsl:call-template name="DecToHex">
+                            <xsl:with-param name="dec">
+                                <xsl:value-of select="."/>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:with-param>
+                </xsl:call-template>
+                <xsl:text> </xsl:text>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="elementVINT">
+            <xsl:text>0x</xsl:text>
+            <xsl:call-template name="HexToVINT">
+                <xsl:with-param name="hex">
+                    <xsl:call-template name="DecToHex">
+                        <xsl:with-param name="dec">
+                            <xsl:value-of select="$x"/>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="offset">
+            <xsl:value-of select="@offset"/>
+        </xsl:variable>
+        <xsl:variable name="mandatoryChildrenVINT">
+            <xsl:value-of select="substring-before(substring-after($ElementsWithMandatoryChildrenWithoutDefaults,concat($elementVINT,':')),';')"/>
+        </xsl:variable>
+        <xsl:for-each select="str:tokenize($mandatoryChildrenVINT)">
+            <xsl:element name="test">
+                <xsl:choose>
+                    <xsl:when test="contains($CurrentElementChildren,.)">
+                        <xsl:attribute name="outcome">pass</xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="outcome">fail</xsl:attribute>
+                        <xsl:attribute name="reason">
+                            <xsl:value-of select="."/>
+                            <xsl:text> MUST be a child element of </xsl:text>
+                            <xsl:value-of select="$elementVINT"/>
+                        </xsl:attribute>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <value>
+                    <xsl:attribute name="name">
+                        <xsl:text>Mandatory Element with No Default</xsl:text>
+                    </xsl:attribute>
+                    <xsl:value-of select="."/>
+                </value>
+                <value>
+                    <xsl:attribute name="offset">
+                        <xsl:value-of select="$offset"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="name">
+                        <xsl:text>Master Element</xsl:text>
+                    </xsl:attribute>
+                    <xsl:value-of select="$elementVINT"/>
+                </value>
+            </xsl:element>
+        </xsl:for-each>
     </xsl:template>
     <xsl:template name="x_is_greater_than_y">
         <xsl:param name="x"/>
