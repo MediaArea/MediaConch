@@ -33,14 +33,6 @@
     <definition>"The nBlockAlign field should be equal to the following formula, rounded to the next whole number: (nChannels x nBitsPerSample)/8" Container size (in bytes) of one set of samples. MUST equal (nChannels x nBitsPerSample)/8EBU        **Note: The above formulae do not always give the correct answer. Strictly speaking, the number of bytes per sample (nBitsPerSample/8) should be rounded first. Then this integer should be multiplied by &lt;nChannels&gt; (which is always an integer) to give &lt;nBlockAlign&gt;. This in turn should be multiplied by &lt;nSamplesPerSecond&gt; to give &lt;nAvgBytesPerSec&gt;].</definition>
   </rule>
   <rule icid="BWF-LPCM-CHN">
-    <name>channelCount</name>
-    <authority>EBU BWAV v2 Specification</authority>
-    <target_format>BWF</target_format>
-    <target_format_part>FormatChunk 'fmt'</target_format_part>
-    <citation>EBU Tech 3285 v2, pg. 17</citation>
-    <definition>1 = mono, 2 = stereo, etc.</definition>
-  </rule>
-  <rule icid="BWF-LPCM-CHN">
     <name>nChannels</name>
     <authority>EBU BWAV v2 Specification</authority>
     <target_format>BWF</target_format>
