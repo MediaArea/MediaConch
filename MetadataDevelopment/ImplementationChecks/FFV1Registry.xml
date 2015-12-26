@@ -96,7 +96,7 @@
     <citation></citation>
     <definition>height divided by chroma subsampling factor is not an integer</definition>
   </rule>
-  <rule icid="FFV1-HEADER-QuantizationTables">
+  <rule icid="FFV1-HEADER-QUANTIZATION_TABLES">
     <name>QuantizationTables</name>
     <authority>Ffmpeg source code</authority>
     <target_format>FFV1</target_format>
