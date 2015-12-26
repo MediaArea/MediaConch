@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
+  <rule icid="IS_EBML">
+    <name></name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
+    <definition>Format must be EBML.</definition>
+  </rule>
+  <rule icid="EBML-ELEM-START">
+    <name></name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
+    <definition>The first Element ID must equal 172351395</definition>
+  </rule>
+  <rule icid="EBML-VER-COH">
+    <name></name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
+    <definition>EBMLVersion is the version of EBML to which the document conforms
+   to. (5.1.1). The minimum EBML version a parser has to support in order to read
+   the document. (5.1.2). Therefore, the EBMLReadVersion must be equal or less than the EBMLVersion.</definition>
+  </rule>
+  <rule icid="EBML-DOCT">
+    <name></name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
+    <definition></definition>
+  </rule>
+  <rule icid="EBML-DOCVER-COH">
+    <name></name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
+    <definition>DocTypeVersion is the version of document type to which the
+   document conforms to (5.1.6). The minimum DocType version an interpreter has to support in order to read the document (5.1.7). Therefore, the DocTypeReadVersion must be equal or less than the DocTypeVersion.</definition>
+  </rule>
   <rule icid="EBML-VINT-EFF">
     <name>EBML vint efficiency</name>
     <authority>EBML Specification</authority>
