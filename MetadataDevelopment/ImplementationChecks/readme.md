@@ -1,13 +1,21 @@
 # Document reconciliation list
 
 TODO: Move checker functions to independent XSL and apply to each template.
+
 TODO: Review, modify, contribute to LPCM list
+
 TODO: Create LPCM implementation checker
+
 TODO: Review FFv1 registry (ICIDs not standardized, needs additional work)
+
 TODO: Create FFv1 implementation checker
+
 TODO: Decision on the line between EBML vs Matroska
+
 TODO: Consolidate Matroska+WebM documents (maybe EBML too)
+
 TODO: Renconcile each list so they both share the same ICIDs
+
 
 # EBML Registry ICID list
 
