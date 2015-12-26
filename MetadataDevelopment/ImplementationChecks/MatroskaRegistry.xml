@@ -640,7 +640,7 @@
     <citation></citation>
     <definition></definition>
   </rule>
-  <rule icid="MKV-TAG-CATALOG_NUMBERA">
+  <rule icid="MKV-TAG-CATALOG_NUMBER">
     <name>Tag (Identifiers) Catalog number</name>
     <authority>Matroska Specification</authority>
     <target_format>Matroska</target_format>
