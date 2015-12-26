@@ -1,5 +1,7 @@
 # Document reconciliation list
 
+Future plans for the implementation checker XSL and registry XML:
+
 TODO: Move checker functions to independent XSL and apply to each template.
 
 TODO: Review, modify, contribute to LPCM list
@@ -17,6 +19,8 @@ TODO: Consolidate Matroska+WebM documents (maybe EBML too)
 TODO: Renconcile each list so they both share the same ICIDs
 
 TODO: Confirm no data loss between csv to xml transition, then remove csv 
+
+TODO: Structure may require changing to integrate registry data
 
 # EBML Registry ICID list
 
