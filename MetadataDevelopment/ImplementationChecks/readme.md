@@ -16,6 +16,7 @@ TODO: Consolidate Matroska+WebM documents (maybe EBML too)
 
 TODO: Renconcile each list so they both share the same ICIDs
 
+TODO: Confirm no data loss between csv to xml transition, then remove csv 
 
 # EBML Registry ICID list
 
