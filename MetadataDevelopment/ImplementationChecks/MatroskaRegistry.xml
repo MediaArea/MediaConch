@@ -390,7 +390,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers only</definition>
   </rule>
   <rule icid="MKV-TAG-PARTNUMBER">
     <name>Tag Part Number</name>
@@ -398,7 +398,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers only</definition>
   </rule>
   <rule icid="MKV-TAG-PARTOFFSET">
     <name>Tag Part Offset</name>
@@ -406,7 +406,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers only</definition>
   </rule>
   <rule icid="MKV-TAG-TITLE">
     <name>Tag Title</name>
@@ -414,7 +414,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Limit to standard characters only</definition>
   </rule>
   <rule icid="MKV-TAG-SUBTITLE">
     <name>Tag Subtitle</name>
@@ -422,7 +422,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Limit to standard characters only</definition>
   </rule>
   <rule icid="MKV-TAG-URL">
     <name>Tag URL</name>
@@ -430,7 +430,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Must be valid URL</definition>
   </rule>
   <rule icid="MKV-TAG-SORT_WITH">
     <name>Tag Sort_with</name>
@@ -438,7 +438,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Limit to standard characters only</definition>
   </rule>
   <rule icid="MKV-TAG-EMAIL">
     <name>Tag Email</name>
@@ -446,7 +446,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Must be valid email address.</definition>
   </rule>
   <rule icid="MKV-TAG-ADDRESS">
     <name>Tag Address</name>
@@ -462,7 +462,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-PHONE">
     <name>Tag Phone</name>
@@ -470,7 +470,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-INITIAL_KEY">
     <name>Tag Initial_Key</name>
@@ -478,7 +478,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Limit to possible keys</definition>
   </rule>
   <rule icid="MKV-TAG-LAW_RATING">
     <name>Tag Law_Rating</name>
@@ -486,7 +486,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Limit to potential ratings but depends on global standards</definition>
   </rule>
   <rule icid="MKV-TAG-ICRA">
     <name>TAG ICRA</name>
@@ -502,7 +502,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-DATE_RECORDED">
     <name>Tag DATE_RECORDED</name>
@@ -510,7 +510,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-DATE_ENCODED">
     <name>Tag DATE_ENCODED</name>
@@ -518,7 +518,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-DATE_TAGGED">
     <name>Tag DATE_TAGGED</name>
@@ -526,7 +526,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-DATE_DIGITIZED">
     <name>Tag DATE_DIGITIZED</name>
@@ -534,7 +534,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-DATE_WRITTEN">
     <name>Tag DATE_WRITTEN</name>
@@ -542,7 +542,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-DATE_PURCHASED">
     <name>Tag DATE_PURCHASED</name>
@@ -550,7 +550,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers and number-related characters only</definition>
   </rule>
   <rule icid="MKV-TAG-PLAY_COUNTER">
     <name>Tag Play_Counter</name>
@@ -558,7 +558,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers only</definition>
   </rule>
   <rule icid="MKV-TAG-FPS">
     <name>Tag FPS</name>
@@ -566,7 +566,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers only</definition>
   </rule>
   <rule icid="MKV-TAG-BPM">
     <name>Tag BPM</name>
@@ -574,7 +574,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Numbers only</definition>
   </rule>
   <rule icid="MKV-TAG-MEASURE">
     <name>Tag Measure</name>
@@ -670,7 +670,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Must be URL</definition>
   </rule>
   <rule icid="MKV-TAG-PURCHASE_PRICE">
     <name>Tag (Commercial) Purchase Price</name>
@@ -678,7 +678,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>Tag can include numbers and . only</definition>
   </rule>
   <rule icid="MKV-TAG-PURCHASE_CURRENCY">
     <name>Tag (Commercial) Purchase Currency</name>
@@ -686,7 +686,7 @@
     <target_format>Matroska</target_format>
     <target_format_part>Segment Element</target_format_part>
     <citation></citation>
-    <definition></definition>
+    <definition>3-letter currency code</definition>
   </rule>
   <rule icid="MKV-EXT-MKV">
     <name>Extension Test MKV</name>
