@@ -75,7 +75,7 @@
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="GlobalElements">
-                                    <xsl:for-each select="document('MatroskaSchema.xml')//element[@global='1']">
+                                    <xsl:for-each select="document($schema)//element[@global='1']">
                                         <xsl:value-of select="@id"/>
                                         <xsl:text> </xsl:text>
                                     </xsl:for-each>
@@ -161,7 +161,7 @@
                                         </check>
                                     </xsl:if>
                                 </xsl:for-each>
-                                <xsl:for-each select="document('MatroskaSchema.xml')//element[@maxOccurs!='unbouded']/@id">
+                                <xsl:for-each select="document($schema)//element[@maxOccurs!='unbouded']/@id">
                                     <check>
                                         <xsl:attribute name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:attribute>
                                         <xsl:attribute name="version">1</xsl:attribute>
@@ -179,7 +179,7 @@
                                 <!-- START: verify that Master Elements contain mandatory child Elements where no default value is declared for the child Element -->
                                 <!-- get a list of all Elements that contain mandates from the schema -->
                                 <xsl:variable name="ElementsThatContainMandates">
-                                    <xsl:for-each select="document('MatroskaSchema.xml')//element[element[not(@default)][@minOccurs>0]]">
+                                    <xsl:for-each select="document($schema)//element[element[not(@default)][@minOccurs>0]]">
                                         <xsl:value-of select="@id"/>
                                         <xsl:text> </xsl:text>
                                     </xsl:for-each>
@@ -535,7 +535,7 @@
         <xsl:param name="x"/>
         <xsl:param name="y"/>
         <xsl:variable name="ElementListWIthParents">
-            <xsl:for-each select="document('MatroskaSchema.xml')//element">
+            <xsl:for-each select="document($schema)//element">
                 <xsl:value-of select="@id"/>
                 <xsl:text>,</xsl:text>
                 <xsl:value-of select="../@id"/>
@@ -609,7 +609,7 @@
     <xsl:template name="x_contains_mandates">
         <xsl:param name="x"/>
         <xsl:variable name="ElementsWithMandatoryChildrenWithoutDefaults">
-            <xsl:for-each select="document('MatroskaSchema.xml')//element[element[not(@default)][@minOccurs>0]]">
+            <xsl:for-each select="document($schema)//element[element[not(@default)][@minOccurs>0]]">
                 <xsl:value-of select="@id"/>
                 <xsl:text>:</xsl:text>
                 <xsl:for-each select="element[not(@default)][@minOccurs>0]">
