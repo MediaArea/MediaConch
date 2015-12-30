@@ -26,6 +26,10 @@ body {
   background-color: white;
 }
 
+.navbar-brand img {
+    display: inline;
+}
+
 .serif {
   font-family: Merriweather;
 }
