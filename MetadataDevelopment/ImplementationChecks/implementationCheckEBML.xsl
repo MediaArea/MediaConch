@@ -150,7 +150,19 @@
                                 <!-- get all non level 0 Elements to check for valid parents-->
                                 <xsl:for-each select="//mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]">
                                     <!-- test non-global elements for valid parent Elements -->
-                                    <xsl:if test="not(contains($GlobalElements,mt:block[@name='Header']/mt:data[@name='Name']))">
+                                    <xsl:variable name="selectedVINT">
+                                        <xsl:text>0x</xsl:text>
+                                        <xsl:call-template name="HexToVINT">
+                                            <xsl:with-param name="hex">
+                                                <xsl:call-template name="DecToHex">
+                                                    <xsl:with-param name="dec">
+                                                        <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                    </xsl:with-param>
+                                                </xsl:call-template>
+                                            </xsl:with-param>
+                                        </xsl:call-template>
+                                    </xsl:variable>
+                                    <xsl:if test="not(contains($GlobalElements,$selectedVINT))">
                                         <check>
                                             <xsl:attribute name="icid">EBML-ELEMENT-VALID-PARENT</xsl:attribute>
                                             <xsl:attribute name="version">1</xsl:attribute>
