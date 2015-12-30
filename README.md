@@ -15,13 +15,13 @@ New nightly builds and updates of the source code will also be made available to
 
 Downloads will be made available through a public repository with a functioning issue tracker (GitHub). In conjunction with the releases, a roadmap will be created in order to track these updates publically and encourage open collaborative usage and issue feedback. Both the older and more recent development, stable, and deployed (LTS) versions will be made available to users of any level, throughout these multiple platforms, for the entirety of the project. If a user wishes to download an older version of the source code or executable, MediaArea will have this option available.
 
-All source codes and updates will be made accessible on the following platforms:
+All source codes and updates are and will be made accessible on the following platforms:
 
 - MS Windows
 - Mac OSX
 - Linux (Ubuntu, Fedora, Debian, and Suse)
 
-The target release date will be the 15th of each month.
+Monthly releases and nightly builds are available on the :shell: MediaConch [Downloads page](https://mediaarea.net/MediaConch/download.html) or via [MediaConchOnline](https://mediaarea.net/MediaConchOnline/).
 
 
 # Funding and Licensing
