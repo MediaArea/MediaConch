@@ -328,14 +328,6 @@
                                     </xsl:call-template>
                                 </check>
                                 <check>
-                                    <xsl:attribute name="icid">EBML-SEEKH</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="exists">
-                                        <xsl:with-param name="xpath" select="//mt:data[../../mt:block/mt:data='21863284']"/>
-                                        <xsl:with-param name="field">SeekHead</xsl:with-param>
-                                    </xsl:call-template>
-                                </check>
-                                <check>
                                     <xsl:attribute name="icid">EBML-SEEK</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
                                     <xsl:call-template name="exists">
