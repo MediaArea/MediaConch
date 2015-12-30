@@ -131,22 +131,6 @@
                                         <xsl:with-param name="y_name">DocTypeVersion</xsl:with-param>
                                     </xsl:call-template>
                                 </check>
-                                <check>
-                                    <xsl:attribute name="icid">EBML-HEADER-IDS-ONLY</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:variable name="valid-ebml-header-subelement-ids">'646 759 754 755 642 647 645'</xsl:variable>
-                                    <context field="valid-ebml-header-subelement-ids">
-                                        <xsl:attribute name="value">
-                                            <xsl:value-of select="$valid-ebml-header-subelement-ids"/>
-                                        </xsl:attribute>
-                                    </context>
-                                    <xsl:for-each select="//mt:block[../mt:block/mt:data='172351395']/mt:block/mt:data[@name='Name']">
-                                        <xsl:call-template name="x_is_in_list">
-                                            <xsl:with-param name="x" select="."/>
-                                            <xsl:with-param name="list" select="$valid-ebml-header-subelement-ids"/>
-                                        </xsl:call-template>
-                                    </xsl:for-each>
-                                </check>
                                 <!-- get all non level 0 Elements to check for valid parents-->
                                 <xsl:for-each select="//mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]">
                                     <!-- test non-global elements for valid parent Elements -->
