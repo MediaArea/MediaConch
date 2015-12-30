@@ -24,7 +24,7 @@
             <documentation>The minimum DocType version an interpreter has to support to read this file.</documentation>
         </element>
     </element>
-    <element name="Void" global="1" level="-1" id="0xEC" type="binary" minver="1">
+    <element name="Void" global="1" level="-1" id="0xEC" type="binary" maxOccurs="unbounded" minver="1">
         <documentation>Used to void damaged data, to avoid unexpected behaviors when using damaged data. The content is discarded. Also used to reserve space in a sub-element for later use.</documentation>
     </element>
     <element name="CRC-32" global="1" level="-1" id="0xBF" type="binary" minver="1" webm="0">
