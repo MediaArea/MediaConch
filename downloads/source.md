@@ -25,17 +25,17 @@ title: "Download MediaConch source code"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/MediaConch_GUI_15.11_GNU_FromSource.tar.xz">v15.11</a> (<a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/MediaConch_GUI_15.11_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/MediaConch_GUI_15.11_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/MediaConch_GUI_15.12_GNU_FromSource.tar.xz">v15.12</a> (<a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/MediaConch_GUI_15.12_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/MediaConch_GUI_15.12_GNU_FromSource.tar.gz">gz</a>)</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/MediaConch_CLI_15.11_GNU_FromSource.tar.xz">v15.11</a> (<a href="https://mediaarea.net/download/binary/mediaconch/15.11/MediaConch_CLI_15.11_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch/15.11/MediaConch_CLI_15.11_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/MediaConch_CLI_15.12_GNU_FromSource.tar.xz">v15.12</a> (<a href="https://mediaarea.net/download/binary/mediaconch/15.12/MediaConch_CLI_15.12_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch/15.12/MediaConch_CLI_15.12_GNU_FromSource.tar.gz">gz</a>)</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th><abbr title="Shared Object">SO</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/MediaInfo_DLL_0.7.80_GNU_FromSource.tar.xz">v0.7.80</a> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/MediaInfo_DLL_0.7.80_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/MediaInfo_DLL_0.7.80_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/MediaInfo_DLL_0.7.81_GNU_FromSource.tar.xz">v0.7.81</a> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/MediaInfo_DLL_0.7.81_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/MediaInfo_DLL_0.7.81_GNU_FromSource.tar.gz">gz</a>)</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -44,12 +44,12 @@ title: "Download MediaConch source code"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr>/<abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/source/mediaconch/15.11/mediaconch_15.11.tar.xz">v15.11</a> (<a href="https://mediaarea.net/download/source/mediaconch/15.11/mediaconch_15.11.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/mediaconch/15.11/mediaconch_15.11.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12.tar.xz">v15.12</a> (<a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12.tar.gz">gz</a>)</td>
     <td>requires libmediainfo</td>
 </tr>
 <tr>
     <th>libmediainfo</th>
-    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.80/libmediainfo_0.7.80.tar.xz">v0.7.80</a> (<a href="https://mediaarea.net/download/source/libmediainfo/0.7.80/libmediainfo_0.7.80.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/libmediainfo/0.7.80/libmediainfo_0.7.80.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81.tar.xz">v0.7.81</a> (<a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81.tar.gz">gz</a>)</td>
     <td>requires libzen</td>
 </tr>
 <tr>
@@ -63,12 +63,12 @@ title: "Download MediaConch source code"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr>/<abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/source/mediaconch/15.11/mediaconch_15.11_AllInclusive.7z">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12_AllInclusive.7z">v15.12</a></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th>libmediainfo</th>
-    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.80/libmediainfo_0.7.80_AllInclusive.7z">v0.7.80</a></td>
+    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81_AllInclusive.7z">v0.7.81</a></td>
     <td>&nbsp;</td>
 </tr>
 </table>

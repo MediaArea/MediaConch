@@ -24,17 +24,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.i686.Fedora_23.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.i686.Fedora_23.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.i686.Fedora_23.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.i686.Fedora_23.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.i686.Fedora_23.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.i686.Fedora_23.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.i686.Fedora_23.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.i686.Fedora_23.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.i686.Fedora_23.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.i686.Fedora_23.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -48,17 +48,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.x86_64.Fedora_23.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.x86_64.Fedora_23.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.x86_64.Fedora_23.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.x86_64.Fedora_23.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.x86_64.Fedora_23.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.x86_64.Fedora_23.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.x86_64.Fedora_23.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.x86_64.Fedora_23.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.x86_64.Fedora_23.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.x86_64.Fedora_23.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -74,17 +74,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.i686.Fedora_22.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.i686.Fedora_22.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.i686.Fedora_22.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.i686.Fedora_22.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.i686.Fedora_22.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.i686.Fedora_22.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.i686.Fedora_22.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.i686.Fedora_22.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.i686.Fedora_22.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.i686.Fedora_22.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -98,17 +98,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.x86_64.Fedora_22.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.x86_64.Fedora_22.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.x86_64.Fedora_22.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.x86_64.Fedora_22.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.x86_64.Fedora_22.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.x86_64.Fedora_22.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.x86_64.Fedora_22.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.x86_64.Fedora_22.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.x86_64.Fedora_22.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.x86_64.Fedora_22.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -124,17 +124,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.i686.Fedora_21.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.i686.Fedora_21.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.i686.Fedora_21.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.i686.Fedora_21.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.i686.Fedora_21.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.i686.Fedora_21.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.i686.Fedora_21.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.i686.Fedora_21.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.i686.Fedora_21.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.i686.Fedora_21.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -148,17 +148,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.x86_64.Fedora_21.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.x86_64.Fedora_21.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.x86_64.Fedora_21.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.x86_64.Fedora_21.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.x86_64.Fedora_21.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.x86_64.Fedora_21.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.x86_64.Fedora_21.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.x86_64.Fedora_21.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.x86_64.Fedora_21.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.x86_64.Fedora_21.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -173,17 +173,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.i686.Fedora_20.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.i686.Fedora_20.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.i686.Fedora_20.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.i686.Fedora_20.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.i686.Fedora_20.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.i686.Fedora_20.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.i686.Fedora_20.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.i686.Fedora_20.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.i686.Fedora_20.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.i686.Fedora_20.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
@@ -197,17 +197,17 @@ title: "Download MediaConch for Fedora"
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.11/mediaconch-gui-15.11.x86_64.Fedora_20.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/mediaconch-gui-15.12.x86_64.Fedora_20.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.11/mediaconch-15.11.x86_64.Fedora_20.rpm">v15.11</a></td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/mediaconch-15.12.x86_64.Fedora_20.rpm">v15.12</a></td>
     <td>requires libmediainfo0</td>
 </tr>
 <tr>
     <th>libmediainfo0</th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo0-0.7.80.x86_64.Fedora_20.rpm">v0.7.80</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-devel-0.7.80.x86_64.Fedora_20.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.80/libmediainfo-doc-0.7.80.x86_64.Fedora_20.rpm">doc</a>)</small></td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo0-0.7.81.x86_64.Fedora_20.rpm">v0.7.81</a><small> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-devel-0.7.81.x86_64.Fedora_20.rpm">devel</a>, <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/libmediainfo-doc-0.7.81.x86_64.Fedora_20.rpm">doc</a>)</small></td>
     <td>requires libzen0</td>
 </tr>
 <tr>
