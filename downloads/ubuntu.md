@@ -167,7 +167,7 @@ title: "Download MediaConch for Ubuntu"
     <td>&nbsp;</td>
 </tr>
 <tr>
-    <th rowspan="10">Ubuntu 14.04<br/>(Trusty Tahr)<br/><br/>Linux Mint 17<br/>(Qiana)<br/><br/>Linux Mint 17.1<br/>(Rebecca)<br/><br/>Linux Mint 17.2<br/>(Rafaela)</th>
+    <th rowspan="10">Ubuntu 14.04<br/>(Trusty Tahr)<br/><br/>Linux Mint 17<br/>(Qiana)<br/><br/>Linux Mint 17.1<br/>(Rebecca)<br/><br/>Linux Mint 17.2<br/>(Rafaela)<br/><br/>Linux Mint 17.3<br/>(Rosa)</th>
     <th rowspan="5">i686</th>
     <td class="table-OS" colspan="3" id="14.04.i386">Ubuntu 14.04 (Trusty Tahr), i386</td>
 </tr>
