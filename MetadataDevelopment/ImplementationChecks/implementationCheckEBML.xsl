@@ -131,51 +131,64 @@
                                         <xsl:with-param name="y_name">DocTypeVersion</xsl:with-param>
                                     </xsl:call-template>
                                 </check>
-                                <check>
-                                    <xsl:attribute name="icid">EBML-HEADER-IDS-ONLY</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:variable name="valid-ebml-header-subelement-ids">'646 759 754 755 642 647 645'</xsl:variable>
-                                    <context field="valid-ebml-header-subelement-ids">
-                                        <xsl:attribute name="value">
-                                            <xsl:value-of select="$valid-ebml-header-subelement-ids"/>
-                                        </xsl:attribute>
-                                    </context>
-                                    <xsl:for-each select="//mt:block[../mt:block/mt:data='172351395']/mt:block/mt:data[@name='Name']">
-                                        <xsl:call-template name="x_is_in_list">
-                                            <xsl:with-param name="x" select="."/>
-                                            <xsl:with-param name="list" select="$valid-ebml-header-subelement-ids"/>
-                                        </xsl:call-template>
-                                    </xsl:for-each>
-                                </check>
                                 <!-- get all non level 0 Elements to check for valid parents-->
-                                <xsl:for-each select="//mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]">
-                                    <!-- test non-global elements for valid parent Elements -->
-                                    <xsl:if test="not(contains($GlobalElements,mt:block[@name='Header']/mt:data[@name='Name']))">
-                                        <check>
-                                            <xsl:attribute name="icid">EBML-ELEMENT-VALID-PARENT</xsl:attribute>
-                                            <xsl:attribute name="version">1</xsl:attribute>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-ELEMENT-VALID-PARENT</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:for-each select="//mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]">
+                                        <!-- test non-global elements for valid parent Elements -->
+                                        <xsl:variable name="selectedVINT">
+                                            <xsl:text>0x</xsl:text>
+                                            <xsl:call-template name="HexToVINT">
+                                                <xsl:with-param name="hex">
+                                                    <xsl:call-template name="DecToHex">
+                                                        <xsl:with-param name="dec">
+                                                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                        </xsl:with-param>
+                                                    </xsl:call-template>
+                                                </xsl:with-param>
+                                            </xsl:call-template>
+                                        </xsl:variable>
+                                        <xsl:if test="not(contains($GlobalElements,$selectedVINT))">
                                             <xsl:call-template name="x_is_valid_parent_of_y">
                                                 <xsl:with-param name="x" select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
                                                 <xsl:with-param name="y" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                                             </xsl:call-template>
-                                        </check>
-                                    </xsl:if>
-                                </xsl:for-each>
-                                <xsl:for-each select="document($schema)//element[@maxOccurs!='unbouded']/@id">
-                                    <check>
-                                        <xsl:attribute name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:attribute>
-                                        <xsl:attribute name="version">1</xsl:attribute>
-                                        <context field="valid-ebml-header-subelement-ids">
-                                            <xsl:attribute name="value">
-                                                <xsl:value-of select="."/>
-                                            </xsl:attribute>
-                                        </context>
-                                        <xsl:call-template name="x_is_in_list">
-                                            <xsl:with-param name="x" select="."/>
-                                            <xsl:with-param name="list" select="."/>
-                                        </xsl:call-template>
-                                    </check>
-                                </xsl:for-each>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </check>
+                                <!-- START: verify that Elements which may not repeat do not occur more than once within the parent element -->
+                                <!-- get a list of all Elements that may not repeat from the schema -->
+                                <xsl:variable name="NonRepeatingElements">
+                                    <xsl:for-each select="document($schema)//element[@maxOccurs!='unbounded' or not(@maxOccurs)]"><!-- needs a correction is maxOccurs may be something other than 'unbounded' -->
+                                        <xsl:value-of select="@id"/>
+                                        <xsl:text> </xsl:text>
+                                    </xsl:for-each>
+                                </xsl:variable>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:for-each select="//mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]">
+                                        <xsl:variable name="currentVINT">
+                                            <xsl:text>0x</xsl:text>
+                                            <xsl:call-template name="HexToVINT">
+                                                <xsl:with-param name="hex">
+                                                    <xsl:call-template name="DecToHex">
+                                                        <xsl:with-param name="dec">
+                                                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                        </xsl:with-param>
+                                                    </xsl:call-template>
+                                                </xsl:with-param>
+                                            </xsl:call-template>
+                                        </xsl:variable>
+                                        <xsl:if test="contains($NonRepeatingElements,$currentVINT)">
+                                            <xsl:call-template name="x_does_not_repeat_in_parent">
+                                                <xsl:with-param name="x" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                            </xsl:call-template>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </check>
+                                <!-- END: verify that Elements which may not repeat do not occur more than once within the parent element -->
                                 <!-- START: verify that Master Elements contain mandatory child Elements where no default value is declared for the child Element -->
                                 <!-- get a list of all Elements that contain mandates from the schema -->
                                 <xsl:variable name="ElementsThatContainMandates">
@@ -185,31 +198,31 @@
                                     </xsl:for-each>
                                 </xsl:variable>
                                 <!-- loop through all Master Elements -->
-                                <xsl:for-each select="//mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]">
-                                    <!-- evaluate the Element ID in VINT form of the current Master Element -->
-                                    <xsl:variable name="currentVINT">
-                                        <xsl:text>0x</xsl:text>
-                                        <xsl:call-template name="HexToVINT">
-                                            <xsl:with-param name="hex">
-                                                <xsl:call-template name="DecToHex">
-                                                    <xsl:with-param name="dec">
-                                                        <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                                                    </xsl:with-param>
-                                                </xsl:call-template>
-                                            </xsl:with-param>
-                                        </xsl:call-template>
-                                    </xsl:variable>
-                                    <!-- test to see if the current Master Element is one that should contain mandatory child elements -->
-                                    <xsl:if test="contains($ElementsThatContainMandates,$currentVINT)">
-                                        <check>
-                                            <xsl:attribute name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:attribute>
-                                            <xsl:attribute name="version">1</xsl:attribute>
+                                <check>
+                                    <xsl:attribute name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:attribute>
+                                    <xsl:attribute name="version">1</xsl:attribute>
+                                    <xsl:for-each select="//mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]">
+                                        <!-- evaluate the Element ID in VINT form of the current Master Element -->
+                                        <xsl:variable name="currentVINT">
+                                            <xsl:text>0x</xsl:text>
+                                            <xsl:call-template name="HexToVINT">
+                                                <xsl:with-param name="hex">
+                                                    <xsl:call-template name="DecToHex">
+                                                        <xsl:with-param name="dec">
+                                                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                                        </xsl:with-param>
+                                                    </xsl:call-template>
+                                                </xsl:with-param>
+                                            </xsl:call-template>
+                                        </xsl:variable>
+                                        <!-- test to see if the current Master Element is one that should contain mandatory child elements -->
+                                        <xsl:if test="contains($ElementsThatContainMandates,$currentVINT)">
                                             <xsl:call-template name="x_contains_mandates">
                                                 <xsl:with-param name="x" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                                             </xsl:call-template>
-                                        </check>
-                                    </xsl:if>
-                                </xsl:for-each>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </check>
                                 <!-- END: verify that Master Elements contain mandatory child Elements where no default value is declared for the child Element -->
                                 <check>
                                     <xsl:attribute name="icid">EBML-VALID-MAXID</xsl:attribute>
@@ -306,38 +319,6 @@
                                         </xsl:call-template>
                                     </implementation>
                                 </xsl:for-each>
-                                <check>
-                                    <xsl:attribute name="icid">EBML-SEG</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="exists">
-                                        <xsl:with-param name="xpath" select="//mt:data[../../mt:block/mt:data='139690087']"/>
-                                        <xsl:with-param name="field">Segment</xsl:with-param>
-                                    </xsl:call-template>
-                                </check>
-                                <check>
-                                    <xsl:attribute name="icid">EBML-SEEKH</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="exists">
-                                        <xsl:with-param name="xpath" select="//mt:data[../../mt:block/mt:data='21863284']"/>
-                                        <xsl:with-param name="field">SeekHead</xsl:with-param>
-                                    </xsl:call-template>
-                                </check>
-                                <check>
-                                    <xsl:attribute name="icid">EBML-SEEK</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="exists">
-                                        <xsl:with-param name="xpath" select="//mt:block[../mt:block/mt:data='3515']/mt:data[@name='Name']"/>
-                                        <xsl:with-param name="field">Seek</xsl:with-param>
-                                    </xsl:call-template>
-                                </check>
-                                <check>
-                                    <xsl:attribute name="icid">EBML-SEEK-ID</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="exists">
-                                        <xsl:with-param name="xpath" select="//mt:block[../../mt:block/mt:data='88713574']/mt:data[@name='Name']"/>
-                                        <xsl:with-param name="field">SeekID</xsl:with-param>
-                                    </xsl:call-template>
-                                </check>
                             </xsl:when>
                             <xsl:otherwise>
                                 <check icid="IS_EBML" version="1">
@@ -603,6 +584,81 @@
                     <xsl:text>Actual EBML Parent Element</xsl:text>
                 </xsl:attribute>
                 <xsl:value-of select="$parentElementVINT"/>
+            </value>
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="x_does_not_repeat_in_parent">
+        <xsl:param name="x"/>
+        <xsl:variable name="elementVINT">
+            <xsl:text>0x</xsl:text>
+            <xsl:call-template name="HexToVINT">
+                <xsl:with-param name="hex">
+                    <xsl:call-template name="DecToHex">
+                        <xsl:with-param name="dec">
+                            <xsl:value-of select="$x"/>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="siblingsVINT">
+            <xsl:for-each select="../mt:block[@name!='Header']">
+                <xsl:text>0x</xsl:text>
+                <xsl:call-template name="HexToVINT">
+                    <xsl:with-param name="hex">
+                        <xsl:call-template name="DecToHex">
+                            <xsl:with-param name="dec">
+                                <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:with-param>
+                </xsl:call-template>
+                <xsl:text> </xsl:text>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="parentVINT">
+            <xsl:text>0x</xsl:text>
+            <xsl:call-template name="HexToVINT">
+                <xsl:with-param name="hex">
+                    <xsl:call-template name="DecToHex">
+                        <xsl:with-param name="dec">
+                            <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:element name="test">
+            <xsl:choose>
+                <xsl:when test="not(contains(substring-after($siblingsVINT,$elementVINT),$elementVINT))">
+                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="outcome">fail</xsl:attribute>
+                    <xsl:attribute name="reason">
+                        <xsl:value-of select="$elementVINT"/>
+                        <xsl:text> occurs more times than allowed within </xsl:text>
+                        <xsl:value-of select="$parentVINT"/>
+                    </xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            <value>
+                <xsl:attribute name="offset">
+                    <xsl:value-of select="@offset"/>
+                </xsl:attribute>
+                <xsl:attribute name="name">
+                    <xsl:text>Non-Repeating Element</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="$elementVINT"/>
+            </value>
+            <value>
+                <xsl:attribute name="offset">
+                    <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
+                </xsl:attribute>
+                <xsl:attribute name="name">
+                    <xsl:text>Parent Element</xsl:text>
+                </xsl:attribute>
+                <xsl:value-of select="$parentVINT"/>
             </value>
         </xsl:element>
     </xsl:template>
@@ -1131,5 +1187,31 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:element>
+    </xsl:template>
+    <xsl:template name="replace">
+        <xsl:param name="text"/>
+        <xsl:param name="search"/>
+        <xsl:param name="replace"/>
+        <xsl:choose>
+            <xsl:when test="contains($text, $search)">
+                <xsl:variable name="replace-next">
+                    <xsl:call-template name="replace">
+                        <xsl:with-param name="text" select="substring-after($text, $search)"/>
+                        <xsl:with-param name="search" select="$search"/>
+                        <xsl:with-param name="replace" select="$replace"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:value-of 
+                    select="
+                        concat(
+                            substring-before($text, $search)
+                        ,   $replace
+                        ,   $replace-next
+                        )
+                    "
+                />
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$text"/></xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
