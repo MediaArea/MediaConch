@@ -35,7 +35,6 @@ If an ICID is listed in both, it is marked below in bold.
 * **EBML-VER-COH**
 * **EBML-DOCT**
 * **EBML-DOCVER-COH**
-* **EBML-HEADER-IDS-ONLY**
 * **EBML-ELEMENT-VALID-PARENT**
 * **EBML-ELEMENT-NONMULTIPLES**
 * **EBML-ELEMENT-CONTAINS-MANDATES**
@@ -43,16 +42,11 @@ If an ICID is listed in both, it is marked below in bold.
 * **EBML-VALID-MAXSIZE**
 * **ELEMENTS-WITHIN-MAXIDLENGTH**
 * **ELEMENTS-WITHIN-MAXSIZELENGTH**
-* **EBML-SEG**
-* **EBML-SEEKH**
-* **EBML-SEEK**
-* **EBML-SEEK-ID**
 * EBML-VINT-EFF
 * MKV-KNOWN-ELEM
 * EBML-ELEM-SIZE-7F
 * EBML-ELEM-SIZE-CAP
 * EBML-ELEM-SIZE-UNK
-
 
 # EBML Implementation Check list
 
@@ -62,7 +56,6 @@ If an ICID is listed in both, it is marked below in bold.
 * **EBML-VER-COH**
 * **EBML-DOCT**
 * **EBML-DOCVER-COH**
-* **EBML-HEADER-IDS-ONLY**
 * **EBML-ELEMENT-VALID-PARENT**
 * **EBML-ELEMENT-NONMULTIPLES**
 * **EBML-ELEMENT-CONTAINS-MANDATES**
@@ -70,10 +63,6 @@ If an ICID is listed in both, it is marked below in bold.
 * **EBML-VALID-MAXSIZE**
 * **ELEMENTS-WITHIN-MAXIDLENGTH**
 * **ELEMENTS-WITHIN-MAXSIZELENGTH**
-* **EBML-SEG**
-* **EBML-SEEKH**
-* **EBML-SEEK**
-* **EBML-SEEK-ID**
 
 
 # Matroska Registry ICID list
