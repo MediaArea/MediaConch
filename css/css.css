@@ -6,6 +6,7 @@ body {
   font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
   padding-top: 70px;
   padding-bottom: 70px;
+  background:url(/images/bg.png);
 }
 
 #footer {
@@ -39,13 +40,13 @@ body {
   font-weight: 700;
   line-height: 1;
   font-size: 100px;
-  padding-top: 180px;
+  padding-top: 200px;
 }
 
 .tagline {
   font-size: 30px;
   line-height: 1.4;
-  padding-bottom: 40px;
+  padding-bottom: 140px;
 }
 
 .button-padding {
