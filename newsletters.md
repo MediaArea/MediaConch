@@ -4,7 +4,7 @@ permalink: /newsletters.html
 title: "MediaConch Newsletters"
 ---
 
-# Recent MediaConch blog posts
+# MediaConch Newsletters
 
 {% for post in site.posts %}
 {% if post.categories contains 'newsletter' %}
