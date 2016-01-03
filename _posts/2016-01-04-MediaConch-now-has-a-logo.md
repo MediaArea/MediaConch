@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "MediaConch now has a logo!"
-date:   2015-12-02 08:00:00 CET
+date:   2016-01-04 00:00:00 CET
 categories: mediaconch, logo
 ---
 
