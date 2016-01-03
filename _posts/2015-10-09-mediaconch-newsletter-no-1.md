@@ -2,7 +2,7 @@
 layout: default
 title:  "MediaConch Newsletter No. 1 (9 Oct 2015)"
 date:   2015-10-09 16:00:00 CET
-categories: mediaconch, newsletter
+categories: newsletter
 ---
 
 #MediaConch Newsletter No. 1 (9 Oct 2015)
