@@ -13,6 +13,11 @@ body {
   margin-top: 40px;
 }
 
+h3 {
+    border-top: 50px solid transparent;
+    margin-top: -50px;
+}
+
 .navbar {
   color: black;
   background-color: #64A8DD;
