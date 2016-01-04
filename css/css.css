@@ -4,13 +4,21 @@ html, body {
 
 body {
   font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
-  padding-top: 70px;
-  padding-bottom: 70px;
   background:url(/MediaConch/images/bg.png);
 }
 
 #footer {
   margin-top: 40px;
+}
+
+h3 {
+    border-top: 50px solid transparent;
+    margin-top: -50px;
+}
+
+.main {
+  padding-top:70px;
+  padding-bottom:70px;
 }
 
 .navbar {
