@@ -4,6 +4,22 @@ MediaConch is an open source software project consisting of a toolset that aims 
 
 Website: <a href="https://mediaarea.net/MediaConch/">:shell: MediaConch project</a>.
 
+# Table of Repositories
+
+#### [MediaConch](https://github.com/MediaArea/MediaConch)
+The original repository for the MediaConch project, this repository holds all public documentation related to Phase I of the project (the design phase) and some metadata-related work.
+
+#### [MediaConch_SourceCode](https://github.com/MediaArea/MediaConch_SourceCode)
+This repository hosts the source code for MediaConch, the GUI.
+
+#### [MediaConchOnline](https://github.com/MediaArea/MediaConchOnline)
+This is the source code for MediaConchOnline, the online version of the MediaConch shell.
+
+#### [MediaConch-Website](https://github.com/MediaArea/MediaConch-Website)
+This is the repository for content hosted on [https://mediaarea.net/MediaConch/](https://mediaarea.net/MediaConch/). 
+
+#### [MediaAreaXml](https://github.com/MediaArea/MediaAreaXml)
+This repository holds XSD (XML Schema Definitions) for MediaConch, MediaInfo, and MediaTrace.
 
 # Release Schedule
 
