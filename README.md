@@ -27,6 +27,12 @@ This repository contains sample files used to test MediaConch.
 #### [MediaConch_MKVSurvey](https://github.com/MediaArea/MediaConch_MKVSurvey)
 This repository holds a research corpus used in the development of the MediaConch.
 
+
+# How to Contribute
+
+Please see the [Contribution Guide](CONTRIBUTING.md) for contributing code. Contributions via feedback on our [Issues page](https://github.com/MediaArea/MediaConch/issues) are also very welcome.
+
+
 # Release Schedule
 
 MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
@@ -80,10 +86,6 @@ Compilation has been tested with:
 - [Microsoft Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx), Microsoft proprietary license
 - [Apache web server](https://www.apache.org/licenses/LICENSE-2.0) for Windows, Mac, Linux, Apache license, compatible with GPLv3 or later / MPLv2 or later
 
-
-# How to Contribute
-
-Please see the [Contribution Guide](CONTRIBUTING.md) for contributing code. Contributions via feedback on our [Issues page](https://github.com/MediaArea/MediaConch/issues) is also very welcome.
 
 # Test Files
 
