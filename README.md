@@ -21,6 +21,12 @@ This is the repository for content hosted on [https://mediaarea.net/MediaConch/]
 #### [MediaAreaXml](https://github.com/MediaArea/MediaAreaXml)
 This repository holds XSD (XML Schema Definitions) for MediaConch, MediaInfo, and MediaTrace.
 
+#### [MediaConch_SampleFiles](https://github.com/MediaArea/MediaConch_SampleFiles)
+This repository contains sample files used to test MediaConch.
+
+#### [MediaConch_MKVSurvey](https://github.com/MediaArea/MediaConch_MKVSurvey)
+This repository holds a research corpus used in the development of the MediaConch.
+
 # Release Schedule
 
 MediaArea intends to release various versions of all relevant source codes and executables for each of the deployment platforms that the project will be configured to perform upon successfully. For stable versions of the software, new downloads and rolling releases will be provided and made available on a monthly basis. Stable versions will take into account software fixes, updates, and bug reports throughout the development phase and additionally will have gone through a QA process during that time.
