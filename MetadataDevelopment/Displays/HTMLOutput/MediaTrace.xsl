@@ -8,15 +8,8 @@
               <p>&#x1F41A; File path:  <xsl:value-of select="@ref"/></p>
           </div>
           <table id="mt_table">
-          <xsl:for-each select="//mt:block">
-            <tr>
-              <td>
-              <xsl:value-of select="@name"/>
-              <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-              <xsl:text> Offset: </xsl:text>
-              <xsl:value-of select="@offset"/>
-              </td>
-            </tr>
+          <xsl:for-each select="mt:block">
+            <xsl:apply-templates select="mt:block" />
           </xsl:for-each>
           </table>
         </xsl:for-each>
@@ -46,5 +39,19 @@
             font-family: 'Open Sans', Helvetica, Arial, sans-serif;
           }
         </style>
+    </xsl:template>
+
+    <xsl:template match="mt:block">
+      <tr>
+        <td>
+        <xsl:value-of select="@name"/>
+        <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
+        <xsl:text> Offset: </xsl:text>
+        <xsl:value-of select="@offset"/>
+        </td>
+      </tr>
+        <xsl:if test="mt:block">
+            <xsl:apply-templates select="mt:block" />
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
