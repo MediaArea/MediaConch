@@ -3,6 +3,7 @@
     <xsl:output encoding="UTF-8" method="text" version="1.0" indent="yes"/>
     <xsl:template match="/mt:MediaTrace">
         <xsl:for-each select="mt:media">
+            <xsl:text>File: </xsl:text>
             <xsl:value-of select="@ref"/>
             <xsl:text>&#xa;</xsl:text>
             <xsl:text>*********************&#xa;</xsl:text>
