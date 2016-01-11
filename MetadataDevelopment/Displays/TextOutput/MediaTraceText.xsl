@@ -10,13 +10,21 @@
             <xsl:text>* MediaTrace report *&#xa;</xsl:text>
             <xsl:text>*********************&#xa;</xsl:text>
             <xsl:text>&#xa;</xsl:text>
-            <xsl:for-each select="//mt:block">
-                <xsl:value-of select="@name"/>
-                <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-                <xsl:text> Offset: </xsl:text>
-                <xsl:value-of select="@offset"/>
-                <xsl:text>     &#xa;</xsl:text>
+            <xsl:for-each select="mt:block">
+                <xsl:apply-templates select="mt:block" />
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
+
+    <xsl:template match="mt:block">
+        <xsl:value-of select="@name"/>
+        <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
+        <xsl:text> Offset: </xsl:text>
+        <xsl:value-of select="@offset"/>
+        <xsl:text>     &#xa;</xsl:text>
+        <xsl:if test="mt:block">
+            <xsl:text>     </xsl:text><xsl:apply-templates select="mt:block" />
+        </xsl:if>
+    </xsl:template>
+
 </xsl:stylesheet>
