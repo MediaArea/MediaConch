@@ -114,14 +114,6 @@
                                     </xsl:call-template>
                                 </check>
                                 <check>
-                                    <xsl:attribute name="icid">EBML-DOCT</xsl:attribute>
-                                    <xsl:attribute name="version">1</xsl:attribute>
-                                    <xsl:call-template name="exists">
-                                        <xsl:with-param name="xpath" select="$DocType"/>
-                                        <xsl:with-param name="field">DocType</xsl:with-param>
-                                    </xsl:call-template>
-                                </check>
-                                <check>
                                     <xsl:attribute name="icid">EBML-DOCVER-COH</xsl:attribute>
                                     <xsl:attribute name="version">1</xsl:attribute>
                                     <xsl:call-template name="x_is_less_than_or_equal_to_y">

@@ -26,14 +26,6 @@
    to. (5.1.1). The minimum EBML version a parser has to support in order to read
    the document. (5.1.2). Therefore, the EBMLReadVersion must be equal or less than the EBMLVersion.</definition>
   </rule>
-  <rule icid="EBML-DOCT">
-    <name></name>
-    <authority></authority>
-    <target_format>EBML</target_format>
-    <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition></definition>
-  </rule>
   <rule icid="EBML-DOCVER-COH">
     <name></name>
     <authority></authority>
