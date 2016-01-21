@@ -31,7 +31,7 @@
             font-family: 'Open Sans', Helvetica, Arial, sans-serif;
           }
 
-          .mt_header h1, h2, div {
+          .mt_header h1, .mc_header h2, .mc_header div {
             text-align: center;
           }
 
