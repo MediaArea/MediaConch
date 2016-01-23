@@ -25,7 +25,6 @@
     </xsl:template>
 
     <xsl:template match="mt:block">
-        <xsl:text>&#xa;</xsl:text>
         <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/>
         <xsl:text>  </xsl:text>
         <xsl:value-of select="substring($spaces,1,count(ancestor::*))"/>
