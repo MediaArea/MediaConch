@@ -16,7 +16,7 @@
                 <xsl:value-of select="@name"/>
                 <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
                 <xsl:apply-templates select="mt:data" />
-                <xsl:text>     &#xa;</xsl:text>
+                <xsl:text>&#xa;</xsl:text>
                  <xsl:if test="mt:block">
                     <xsl:apply-templates select="mt:block" />
                 </xsl:if>
@@ -32,7 +32,7 @@
         <xsl:value-of select="@name"/>
         <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
         <xsl:apply-templates select="mt:data" />
-        <xsl:text>     &#xa;</xsl:text>
+        <xsl:text>&#xa;</xsl:text>
          <xsl:if test="mt:block">
             <xsl:apply-templates select="mt:block" />
         </xsl:if>
