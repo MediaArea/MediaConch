@@ -38,6 +38,38 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="substring($spaces,1,count(ancestor::mt:block))"/>
         <xsl:value-of select="@name"/>
+        <xsl:if test="@info">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info"/>
+        </xsl:if>
+        <xsl:if test="@info2">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info2"/>
+        </xsl:if>
+        <xsl:if test="@info3">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info3"/>
+        </xsl:if>
+        <xsl:if test="@info4">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info4"/>
+        </xsl:if>
+        <xsl:if test="@info5">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info5"/>
+        </xsl:if>
+        <xsl:if test="@info6">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info6"/>
+        </xsl:if>
+        <xsl:if test="@info7">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info7"/>
+        </xsl:if>
+        <xsl:if test="@info8">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info8"/>
+        </xsl:if>
         <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
         <xsl:apply-templates select="mt:data|mt:block" />
     </xsl:template>
@@ -66,6 +98,38 @@
                 </xsl:with-param>
             </xsl:call-template>
             <xsl:text>)</xsl:text>
+        </xsl:if>
+        <xsl:if test="@info">
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="@info"/>
+        </xsl:if>
+        <xsl:if test="@info2">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info2"/>
+        </xsl:if>
+        <xsl:if test="@info3">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info3"/>
+        </xsl:if>
+        <xsl:if test="@info4">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info4"/>
+        </xsl:if>
+        <xsl:if test="@info5">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info5"/>
+        </xsl:if>
+        <xsl:if test="@info6">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info6"/>
+        </xsl:if>
+        <xsl:if test="@info7">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info7"/>
+        </xsl:if>
+        <xsl:if test="@info8">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info8"/>
         </xsl:if>
     </xsl:template>
 
