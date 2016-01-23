@@ -11,27 +11,46 @@
             <xsl:text>*********************&#xa;</xsl:text>
             <xsl:text>&#xa;</xsl:text>
             <xsl:for-each select="mt:block">
+                <xsl:value-of select="@offset"/><xsl:text> | </xsl:text>
                 <xsl:value-of select="@name"/>
                 <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-                <xsl:text> Offset: </xsl:text>
-                <xsl:value-of select="@offset"/>
+                <xsl:apply-templates select="mt:data[@name='Name']/text()" />
+                <xsl:apply-templates select="mt:data[@name='Size']/text()" />
+                <xsl:apply-templates select="mt:data[@name='Data']/text()" />
                 <xsl:text>     &#xa;</xsl:text>
                  <xsl:if test="mt:block">
-                    <xsl:text>     </xsl:text><xsl:apply-templates select="mt:block" />
+                    <xsl:text> -- </xsl:text><xsl:apply-templates select="mt:block" />
                 </xsl:if>
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
 
     <xsl:template match="mt:block">
+        <xsl:value-of select="@offset"/><xsl:text> | </xsl:text>
         <xsl:value-of select="@name"/>
         <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-        <xsl:text> Offset: </xsl:text>
-        <xsl:value-of select="@offset"/>
+        <xsl:apply-templates select="mt:data[@name='Name']/text()" />
+        <xsl:apply-templates select="mt:data[@name='Size']/text()" />
+        <xsl:apply-templates select="mt:data[@name='Data']/text()" />
         <xsl:text>     &#xa;</xsl:text>
-        <xsl:if test="mt:block">
-            <xsl:text>     </xsl:text><xsl:apply-templates select="mt:block" />
+         <xsl:if test="mt:block">
+            <xsl:text> -- </xsl:text><xsl:apply-templates select="mt:block" />
         </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="mt:data[@name='Data']/text()">
+        <xsl:text>&#xa;</xsl:text> 
+        <xsl:text> -- Data: </xsl:text><xsl:value-of select="."/>
+    </xsl:template>
+
+    <xsl:template match="mt:data[@name='Name']/text()">
+        <xsl:text>&#xa;</xsl:text> 
+        <xsl:text> -- Name: </xsl:text><xsl:value-of select="."/>
+    </xsl:template>
+
+    <xsl:template match="mt:data[@name='Size']/text()">
+        <xsl:text>&#xa;</xsl:text> 
+        <xsl:text> -- Size: </xsl:text><xsl:value-of select="."/>
     </xsl:template>
 
 </xsl:stylesheet>
