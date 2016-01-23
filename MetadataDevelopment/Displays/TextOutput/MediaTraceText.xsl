@@ -27,8 +27,8 @@
 
     <xsl:template match="mt:block">
         <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/>
-        <xsl:value-of select="substring($spaces,1,count(ancestor::*))"/>
         <xsl:text> </xsl:text>
+        <xsl:value-of select="substring($spaces,1,count(ancestor::mt:block))"/>
         <xsl:value-of select="@name"/>
         <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
         <xsl:apply-templates select="mt:data" />
@@ -41,8 +41,8 @@
     <xsl:template match="mt:data">
         <xsl:text>&#xa;</xsl:text>
         <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/>
-        <xsl:value-of select="substring($spaces,1,count(ancestor::*))"/>
         <xsl:text> </xsl:text>
+        <xsl:value-of select="substring($spaces,1,count(ancestor::mt:block))"/>
         <xsl:value-of select="@name"/>
         <xsl:text>: </xsl:text>
         <xsl:value-of select="text()"/>
