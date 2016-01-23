@@ -11,7 +11,7 @@
             <xsl:text>*********************&#xa;</xsl:text>
             <xsl:text>&#xa;</xsl:text>
             <xsl:for-each select="mt:block">
-                <xsl:value-of select="@offset"/><xsl:text> | </xsl:text>
+                <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/><xsl:text> | </xsl:text>
                 <xsl:value-of select="@name"/>
                 <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
                 <xsl:apply-templates select="mt:data" />
@@ -25,7 +25,7 @@
 
     <xsl:template match="mt:block">
         <xsl:text>   </xsl:text>
-        <xsl:value-of select="@offset"/><xsl:text> | </xsl:text>
+        <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/><xsl:text> | </xsl:text>
         <xsl:value-of select="@name"/>
         <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
         <xsl:apply-templates select="mt:data" />
