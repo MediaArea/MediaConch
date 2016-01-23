@@ -58,6 +58,15 @@
         <xsl:text>: </xsl:text>
         <xsl:value-of select="substring($spaces,1,41-(count(ancestor::mt:block)+string-length(@name)))"/>
         <xsl:value-of select="text()"/>
+        <xsl:if test="floor(text())">
+            <xsl:text> (0x</xsl:text>
+            <xsl:call-template name="DecToHex">
+                <xsl:with-param name="dec">
+                    <xsl:value-of select="text()"/>
+                </xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>)</xsl:text>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template name="DecToHex">
