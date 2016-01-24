@@ -274,6 +274,14 @@
                                     <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-FIRST -->
+                                <!-- EBML-CRC-VALID -->
+                                <xsl:call-template name="child_data_info_is_ok">
+                                    <xsl:with-param name="icid">EBML-CRC-VALID</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='63']"/>
+                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
+                                </xsl:call-template>
+                                <!-- /EBML-CRC-VALID -->
                                 <!-- MKV-SEEK-RESOLVE -->
                                 <xsl:call-template name="seek_element_resolves">
                                     <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
@@ -1174,6 +1182,103 @@
                 <xsl:with-param name="icid" select="$icid"/>
                 <xsl:with-param name="version" select="$version"/>
                 <xsl:with-param name="context" select="$context"/>
+                <xsl:with-param name="test" select="$tests"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="child_data_info_is_ok">
+        <xsl:param name="icid"/>
+        <xsl:param name="version"/>
+        <xsl:param name="x"/>
+        <xsl:variable name="tests">
+            <xsl:for-each select="$x">
+                <xsl:variable name="info">
+                    <xsl:value-of select="mt:data[@name='Value']/@info"/>
+                </xsl:variable>
+                <xsl:variable name="CRCValue">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="mt:data[@name='Value']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="parentVINT">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="values">
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="mt:data[@name='Value']/@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>CRC-32 Value</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$CRCValue"/>
+                    </value>
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="mt:data[@name='Value']/@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>CRC-32 Validation Outcome</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$info"/>
+                    </value>
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>EBML Parent Element</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$parentVINT"/>
+                    </value>
+                </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="$info != 'NOK'">
+                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <test>
+                                <xsl:attribute name="outcome">fail</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The CRC-32 Element at </xsl:text>
+                                    <xsl:value-of select="@offset"/>
+                                    <xsl:text> contains a value </xsl:text>
+                                    <xsl:value-of select="$CRCValue"/>
+                                    <xsl:text> which results in a status of </xsl:text>
+                                    <xsl:value-of select="$info"/>
+                                    <xsl:text>.</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
+                        </xsl:otherwise>
+                    </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="$tests != ''">
+            <xsl:call-template name="check">
+                <xsl:with-param name="icid" select="$icid"/>
+                <xsl:with-param name="version" select="$version"/>
                 <xsl:with-param name="test" select="$tests"/>
             </xsl:call-template>
         </xsl:if>
