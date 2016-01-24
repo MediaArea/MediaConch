@@ -532,8 +532,11 @@
                         <xsl:value-of select="$allowedParentVINT"/>
                     </value>
                     <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="../@offset"/>
+                        </xsl:attribute>
                         <xsl:attribute name="name">
-                            <xsl:text>Actual EBML Parent Element</xsl:text>
+                            <xsl:text>EBML Parent Element</xsl:text>
                         </xsl:attribute>
                         <xsl:value-of select="$parentVINT"/>
                     </value>
