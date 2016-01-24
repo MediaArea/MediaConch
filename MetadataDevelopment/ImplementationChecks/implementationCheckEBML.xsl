@@ -274,6 +274,13 @@
                                     <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-FIRST -->
+                                <!-- MKV-SEEK-RESOLVE -->
+                                <xsl:call-template name="seek_element_resolves">
+                                    <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="seek_element" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3515']"/>
+                                </xsl:call-template>
+                                <!-- /MKV-SEEK-RESOLVE -->
                                 <xsl:for-each select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']/mt:data">
                                     <implementation>
                                         <xsl:attribute name="name">TOTAL_PARTS is number</xsl:attribute>
@@ -1062,6 +1069,111 @@
             <xsl:call-template name="check">
                 <xsl:with-param name="icid" select="$icid"/>
                 <xsl:with-param name="version" select="$version"/>
+                <xsl:with-param name="test" select="$tests"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="seek_element_resolves">
+        <xsl:param name="icid"/>
+        <xsl:param name="version"/>
+        <xsl:param name="seek_element"/>
+        <xsl:variable name="FirstSegmentValueOffset">
+            <xsl:value-of select="//mt:block[mt:block[@name='Header']/mt:data[@name='Name']='139690087']/@offset + //mt:block[mt:block[@name='Header']/mt:data[@name='Name']='139690087']/mt:block[@name='Header']/@size"/>
+        </xsl:variable>
+        <xsl:variable name="context">
+            <context>
+                <xsl:attribute name="field">
+                    <xsl:text>Offset of First Segment Element</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="value">
+                    <xsl:value-of select="$FirstSegmentValueOffset"/>
+                </xsl:attribute>
+            </context>
+        </xsl:variable>
+        <xsl:variable name="tests">
+            <xsl:for-each select="$seek_element">
+                <xsl:variable name="SeekID">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5035']/mt:data[@name='Data']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="SeekPosition">
+                    <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5036']/mt:data[@name='Data']"/>
+                </xsl:variable>
+                <xsl:variable name="SeekPositionFileOffset">
+                    <xsl:value-of select="$FirstSegmentValueOffset + $SeekPosition"/>
+                </xsl:variable>
+                <xsl:variable name="ElementIDatOffset">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="//mt:block[@offset=$SeekPositionFileOffset]/mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="values">
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5035']/@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>SeekID</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$SeekID"/>
+                    </value>
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5036']/@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>SeekPosition</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$SeekPosition"/>
+                    </value>
+                </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="$SeekID = $ElementIDatOffset">
+                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <test>
+                                <xsl:attribute name="outcome">fail</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The Seek Element at </xsl:text>
+                                    <xsl:value-of select="@offset"/>
+                                    <xsl:text> octets references an Element with </xsl:text>
+                                    <xsl:value-of select="$SeekID"/>
+                                    <xsl:text> as an ID and a Seek Position of </xsl:text>
+                                    <xsl:value-of select="$SeekPosition"/>
+                                    <xsl:text> but it is not there.</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
+                        </xsl:otherwise>
+                    </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="$tests != ''">
+            <xsl:call-template name="check">
+                <xsl:with-param name="icid" select="$icid"/>
+                <xsl:with-param name="version" select="$version"/>
+                <xsl:with-param name="context" select="$context"/>
                 <xsl:with-param name="test" select="$tests"/>
             </xsl:call-template>
         </xsl:if>
