@@ -266,6 +266,14 @@
                                     </xsl:call-template>
                                 </xsl:if>
                                 <!-- /ELEMENTS-WITHIN-MAXSIZELENGTH -->
+                                <!-- EBML-CRC-FIRST -->
+                                <xsl:call-template name="x_is_first_child">
+                                    <xsl:with-param name="icid">EBML-CRC-FIRST</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='63']"/>
+                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
+                                </xsl:call-template>
+                                <!-- /EBML-CRC-FIRST -->
                                 <xsl:for-each select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']/mt:data">
                                     <implementation>
                                         <xsl:attribute name="name">TOTAL_PARTS is number</xsl:attribute>
@@ -971,6 +979,92 @@
                 </xsl:call-template>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+    <xsl:template name="x_is_first_child">
+        <xsl:param name="icid"/>
+        <xsl:param name="version"/>
+        <xsl:param name="x"/>
+        <xsl:param name="x_name"/>
+        <xsl:variable name="tests">
+            <xsl:for-each select="$x">
+                <xsl:variable name="xVINT">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="parentVINT">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="values">
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:value-of select="$x_name"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="$xVINT"/>
+                    </value>
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="../@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>EBML Parent Element</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$parentVINT"/>
+                    </value>
+                </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="count(preceding-sibling::mt:block[mt:block[@name='Header']]) = '0'">
+                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <test>
+                                <xsl:attribute name="outcome">fail</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:value-of select="$xVINT"/>
+                                    <xsl:text> is used but not as the first element. It is Child Element number </xsl:text>
+                                    <xsl:value-of select="count(preceding-sibling::mt:block[mt:block[@name='Header']]) + 1"/>
+                                    <xsl:text> of </xsl:text>
+                                    <xsl:value-of select="count(../mt:block[mt:block[@name='Header']])"/>
+                                    <xsl:text> Child Elements under </xsl:text>
+                                    <xsl:value-of select="$parentVINT"/>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
+                        </xsl:otherwise>
+                    </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="$tests != ''">
+            <xsl:call-template name="check">
+                <xsl:with-param name="icid" select="$icid"/>
+                <xsl:with-param name="version" select="$version"/>
+                <xsl:with-param name="test" select="$tests"/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
     <xsl:template name="x_is_in_list">
         <xsl:param name="x"/>
