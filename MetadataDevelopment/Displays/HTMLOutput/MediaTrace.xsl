@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" extension-element-prefixes="xsi">
     <xsl:output encoding="UTF-8" method="html" version="1.0" indent="yes"/>
-<xsl:variable name="spaces"><xsl:text>                                                               </xsl:text></xsl:variable>
+<xsl:variable name="spaces"><xsl:text> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;</xsl:text></xsl:variable>
     <xsl:template match="/mt:MediaTrace">
         <xsl:for-each select="mt:media">
           <div class="mt_header">
@@ -10,17 +10,23 @@
           </div>
           <table id="mt_table">
           <xsl:for-each select="mt:block">
-            <tr>
-              <td>
-              <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/>
+            <tr><td>
+              <xsl:variable name="offsetHex">
+                  <xsl:call-template name="DecToHex">
+                      <xsl:with-param name="dec">
+                          <xsl:value-of select="@offset"/>
+                      </xsl:with-param>
+                  </xsl:call-template>
+              </xsl:variable>
+              <xsl:text>&#xa;</xsl:text>
+              <xsl:value-of select="concat(substring('0000000', string-length($offsetHex)), $offsetHex)"/>
               <xsl:text> </xsl:text>
-                <xsl:value-of select="@name"/>
-                <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-                <xsl:apply-templates select="mt:data" />
-              </td>
-            </tr>
+              <xsl:value-of select="@name"/>
+              <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
+            </td></tr>
+              <xsl:apply-templates select="mt:data" />
               <xsl:if test="mt:block">
-                  <xsl:apply-templates select="mt:block" />
+                <xsl:apply-templates select="mt:block" />
               </xsl:if>
           </xsl:for-each>
           </table>
@@ -44,87 +50,63 @@
             font-family: 'Open Sans', Helvetica, Arial, sans-serif;
           }
 
-          #mt_policy td {
-            background-color: #64A8DD;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 10px;
-            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+          #mt_table span {
+            float:right;
           }
         </style>
     </xsl:template>
 
     <xsl:template match="mt:block">
-      <tr>
-        <td>
-        <xsl:value-of select="concat(substring('0000000', string-length(@offset)), @offset)"/>
+      <tr><td>
+        <xsl:variable name="offsetHex">
+            <xsl:call-template name="DecToHex">
+                <xsl:with-param name="dec">
+                    <xsl:value-of select="@offset"/>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:value-of select="concat(substring('0000000', string-length($offsetHex)), $offsetHex)"/>
         <xsl:text> </xsl:text>
-          <xsl:value-of select="@name"/>
-          <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-          <xsl:apply-templates select="mt:data" />
-        </td>
-      </tr>
-        <xsl:if test="mt:block">
-            <xsl:apply-templates select="mt:block" />
+        <xsl:value-of select="@name"/>
+        <xsl:if test="@info">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info"/>
         </xsl:if>
-    </xsl:template>
-
-    <xsl:template match="mt:block">
-       <tr>
-        <td>
-          <xsl:variable name="offsetHex">
-              <xsl:call-template name="DecToHex">
-                  <xsl:with-param name="dec">
-                      <xsl:value-of select="@offset"/>
-                  </xsl:with-param>
-              </xsl:call-template>
-          </xsl:variable>
-          <xsl:text>&#xa;</xsl:text>
-          <xsl:value-of select="concat(substring('0000000', string-length($offsetHex)), $offsetHex)"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="substring($spaces,1,count(ancestor::mt:block))"/>
-          <xsl:value-of select="@name"/>
-          <xsl:if test="@info">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info"/>
-          </xsl:if>
-          <xsl:if test="@info2">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info2"/>
-          </xsl:if>
-          <xsl:if test="@info3">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info3"/>
-          </xsl:if>
-          <xsl:if test="@info4">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info4"/>
-          </xsl:if>
-          <xsl:if test="@info5">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info5"/>
-          </xsl:if>
-          <xsl:if test="@info6">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info6"/>
-          </xsl:if>
-          <xsl:if test="@info7">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info7"/>
-          </xsl:if>
-          <xsl:if test="@info8">
-              <xsl:text> - </xsl:text>
-              <xsl:value-of select="@info8"/>
-          </xsl:if>
-          <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
-        </td>
-      </tr>
-        <xsl:apply-templates select="mt:data|mt:block" />
+        <xsl:if test="@info2">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info2"/>
+        </xsl:if>
+        <xsl:if test="@info3">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info3"/>
+        </xsl:if>
+        <xsl:if test="@info4">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info4"/>
+        </xsl:if>
+        <xsl:if test="@info5">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info5"/>
+        </xsl:if>
+        <xsl:if test="@info6">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info6"/>
+        </xsl:if>
+        <xsl:if test="@info7">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info7"/>
+        </xsl:if>
+        <xsl:if test="@info8">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="@info8"/>
+        </xsl:if>
+        <xsl:text> (</xsl:text><xsl:value-of select="@size"/><xsl:text> bytes)</xsl:text>
+       </td></tr>
+      <xsl:apply-templates select="mt:data|mt:block" />
     </xsl:template>
 
     <xsl:template match="mt:data">
-      <tr>
-        <td>
+      <tr><td>
           <xsl:variable name="offsetHex">
               <xsl:call-template name="DecToHex">
                   <xsl:with-param name="dec">
@@ -135,10 +117,10 @@
           <xsl:text>&#xa;</xsl:text>
           <xsl:value-of select="concat(substring('0000000', string-length($offsetHex)), $offsetHex)"/>
           <xsl:text> </xsl:text>
-          <xsl:value-of select="substring($spaces,1,count(ancestor::mt:block))"/>
+          <xsl:value-of select="substring($spaces,2,count(ancestor::mt:block))"/>
           <xsl:value-of select="@name"/>
           <xsl:text>: </xsl:text>
-          <xsl:value-of select="substring($spaces,1,41-(count(ancestor::mt:block)+string-length(@name)))"/>
+          <span>
           <xsl:value-of select="text()"/>
           <xsl:if test="floor(text())">
               <xsl:text> (0x</xsl:text>
@@ -181,10 +163,9 @@
               <xsl:text> - </xsl:text>
               <xsl:value-of select="@info8"/>
           </xsl:if>
-        </td>
-      </tr>
+        </span>
+      </td></tr>
     </xsl:template>
-
 
     <xsl:template name="DecToHex">
         <xsl:param name="dec" />
