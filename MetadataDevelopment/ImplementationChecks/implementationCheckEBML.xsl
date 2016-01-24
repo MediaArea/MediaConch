@@ -282,6 +282,14 @@
                                     <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-VALID -->
+                                <!-- EBML-CRC-LEGNTH -->
+                                <xsl:call-template name="x_value_is_y_bytes">
+                                    <xsl:with-param name="icid">EBML-CRC-LENGTH</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='63']"/>
+                                    <xsl:with-param name="y">4</xsl:with-param>
+                                </xsl:call-template>
+                                <!-- /EBML-CRC-LENGTH -->
                                 <!-- MKV-SEEK-RESOLVE -->
                                 <xsl:call-template name="seek_element_resolves">
                                     <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
@@ -1081,6 +1089,93 @@
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
+    <xsl:template name="x_value_is_y_bytes">
+        <xsl:param name="icid"/>
+        <xsl:param name="version"/>
+        <xsl:param name="x"/>
+        <xsl:param name="y"/>
+        <xsl:variable name="context">
+            <context>
+                <xsl:attribute name="field">
+                    <xsl:text>Expected Size in Bytes</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="value">
+                    <xsl:value-of select="$y"/>
+                </xsl:attribute>
+            </context>
+        </xsl:variable>
+        <xsl:variable name="tests">
+            <xsl:for-each select="$x">
+                <xsl:variable name="xVINT">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="xSize">
+                    <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Size']"/>
+                </xsl:variable>
+                <xsl:variable name="values">
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>EBML Element ID</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$xVINT"/>
+                    </value>
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="../@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>EBML Element Data Size</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$xSize"/>
+                    </value>
+                </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="$y = $xSize">
+                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <test>
+                                <xsl:attribute name="outcome">fail</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The Element with id </xsl:text>
+                                    <xsl:value-of select="$xVINT"/>
+                                    <xsl:text> is an invalid size of </xsl:text>
+                                    <xsl:value-of select="$xSize"/>
+                                    <xsl:text> bytes.</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
+                        </xsl:otherwise>
+                    </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="$tests != ''">
+            <xsl:call-template name="check">
+                <xsl:with-param name="icid" select="$icid"/>
+                <xsl:with-param name="version" select="$version"/>
+                <xsl:with-param name="context" select="$context"/>
+                <xsl:with-param name="test" select="$tests"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template name="seek_element_resolves">
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
