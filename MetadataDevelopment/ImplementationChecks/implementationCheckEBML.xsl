@@ -311,10 +311,18 @@
                                     <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3']"/>
-                                    <xsl:with-param name="x_name">Track Type</xsl:with-param>
                                     <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /MKV-VALID-TRACKTYPE-VALUE -->
+                                <!-- MKV-VALID-BOOLEANS -->
+                                <xsl:call-template name="x_is_in_list">
+                                    <xsl:with-param name="icid">MKV-VALID-BOOLEANS</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <!-- FlagEnabled is 57, FlagDefault is 8, FlagForced is 5,546, Flag Lacing is 28, CodecDecodeAll is 42, FlagInterlaced is 26, EditionFlagHidden is 1,469, EditionFlagDefault is 1,499, EditionFlagOrdered is 1,501, ChapterFlagHidden is 24, ChapterFlagEnabled is 1,432, TagDefault is 1,156-->
+                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header'][mt:data[@name='Name']='57' or mt:data[@name='Name']='8' or mt:data[@name='Name']='5546' or mt:data[@name='Name']='28' or mt:data[@name='Name']='42' or mt:data[@name='Name']='26' or mt:data[@name='Name']='1469' or mt:data[@name='Name']='1499' or mt:data[@name='Name']='1501' or mt:data[@name='Name']='24' or mt:data[@name='Name']='1432' or mt:data[@name='Name']='1156']]"/>
+                                    <xsl:with-param name="list">0 1</xsl:with-param>
+                                </xsl:call-template>
+                                <!-- /MKV-VALID-BOOLEANS -->
                                 <xsl:for-each select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']/mt:data">
                                     <implementation>
                                         <xsl:attribute name="name">TOTAL_PARTS is number</xsl:attribute>
@@ -1400,13 +1408,11 @@
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
         <xsl:param name="x"/>
-        <xsl:param name="x_name"/>
         <xsl:param name="list"/>
         <xsl:variable name="context">
             <context>
                 <xsl:attribute name="field">
-                    <xsl:text>Valid Values for </xsl:text>
-                    <xsl:value-of select="$x_name"/>
+                    <xsl:text>Valid Values</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="value">
                     <xsl:value-of select="$list"/>
@@ -1416,19 +1422,7 @@
         <xsl:variable name="tests">
             <xsl:for-each select="$x">
                 <xsl:variable name="xValue">
-                    <xsl:value-of select="mt:data[@name='Data']"/>
-                </xsl:variable>
-                <xsl:variable name="CRCValue">
-                    <xsl:text>0x</xsl:text>
-                    <xsl:call-template name="HexToVINT">
-                        <xsl:with-param name="hex">
-                            <xsl:call-template name="DecToHex">
-                                <xsl:with-param name="dec">
-                                    <xsl:value-of select="mt:data[@name='Value']"/>
-                                </xsl:with-param>
-                            </xsl:call-template>
-                        </xsl:with-param>
-                    </xsl:call-template>
+                    <xsl:value-of select="mt:data[1]"/>
                 </xsl:variable>
                 <xsl:variable name="xVINT">
                     <xsl:text>0x</xsl:text>
@@ -1454,10 +1448,10 @@
                     </value>
                     <value>
                         <xsl:attribute name="offset">
-                            <xsl:value-of select="mt:data/@offset"/>
+                            <xsl:value-of select="@offset"/>
                         </xsl:attribute>
                         <xsl:attribute name="name">
-                            <xsl:value-of select="$x_name"/>
+                            <xsl:value-of select="@name"/>
                         </xsl:attribute>
                         <xsl:value-of select="$xValue"/>
                     </value>
@@ -1476,7 +1470,7 @@
                                 <xsl:attribute name="outcome">fail</xsl:attribute>
                                 <xsl:attribute name="reason">
                                     <xsl:text>The value of </xsl:text>
-                                    <xsl:value-of select="$x_name"/>
+                                    <xsl:value-of select="@name"/>
                                     <xsl:text> is not a valid value (</xsl:text>
                                     <xsl:value-of select="$list"/>
                                     <xsl:text>).</xsl:text>
