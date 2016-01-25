@@ -306,6 +306,15 @@
                                     <xsl:with-param name="y">16</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /MKV-SEGMENT-UID-LEGNTH -->
+                                <!-- MKV-VALID-TRACKTYPE-VALUE -->
+                                <xsl:call-template name="x_is_in_list">
+                                    <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3']"/>
+                                    <xsl:with-param name="x_name">Track Type</xsl:with-param>
+                                    <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
+                                </xsl:call-template>
+                                <!-- /MKV-VALID-TRACKTYPE-VALUE -->
                                 <xsl:for-each select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']/mt:data">
                                     <implementation>
                                         <xsl:attribute name="name">TOTAL_PARTS is number</xsl:attribute>
@@ -1388,30 +1397,104 @@
         </xsl:if>
     </xsl:template>
     <xsl:template name="x_is_in_list">
+        <xsl:param name="icid"/>
+        <xsl:param name="version"/>
         <xsl:param name="x"/>
+        <xsl:param name="x_name"/>
         <xsl:param name="list"/>
-        <xsl:element name="test">
-            <xsl:choose>
-                <xsl:when test="contains($list,$x)">
-                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:attribute name="outcome">fail</xsl:attribute>
-                    <xsl:attribute name="reason">
-                        <xsl:text>value is not one in the list</xsl:text>
-                    </xsl:attribute>
-                </xsl:otherwise>
-            </xsl:choose>
-            <value>
-                <xsl:attribute name="offset">
-                    <xsl:value-of select="@offset"/>
+        <xsl:variable name="context">
+            <context>
+                <xsl:attribute name="field">
+                    <xsl:text>Valid Values for </xsl:text>
+                    <xsl:value-of select="$x_name"/>
                 </xsl:attribute>
-                <xsl:attribute name="name">
-                    <xsl:value-of select="../../@name"/>
+                <xsl:attribute name="value">
+                    <xsl:value-of select="$list"/>
                 </xsl:attribute>
-                <xsl:value-of select="$x"/>
-            </value>
-        </xsl:element>
+            </context>
+        </xsl:variable>
+        <xsl:variable name="tests">
+            <xsl:for-each select="$x">
+                <xsl:variable name="xValue">
+                    <xsl:value-of select="mt:data[@name='Data']"/>
+                </xsl:variable>
+                <xsl:variable name="CRCValue">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="mt:data[@name='Value']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="xVINT">
+                    <xsl:text>0x</xsl:text>
+                    <xsl:call-template name="HexToVINT">
+                        <xsl:with-param name="hex">
+                            <xsl:call-template name="DecToHex">
+                                <xsl:with-param name="dec">
+                                    <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                </xsl:with-param>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="values">
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:text>EBML Element ID</xsl:text>
+                        </xsl:attribute>
+                        <xsl:value-of select="$xVINT"/>
+                    </value>
+                    <value>
+                        <xsl:attribute name="offset">
+                            <xsl:value-of select="mt:data/@offset"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="name">
+                            <xsl:value-of select="$x_name"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="$xValue"/>
+                    </value>
+                </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="contains($list,$xValue)">
+                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <test>
+                                <xsl:attribute name="outcome">fail</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The value of </xsl:text>
+                                    <xsl:value-of select="$x_name"/>
+                                    <xsl:text> is not a valid value (</xsl:text>
+                                    <xsl:value-of select="$list"/>
+                                    <xsl:text>).</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
+                        </xsl:otherwise>
+                    </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="$tests != ''">
+            <xsl:call-template name="check">
+                <xsl:with-param name="icid" select="$icid"/>
+                <xsl:with-param name="version" select="$version"/>
+                <xsl:with-param name="context" select="$context"/>
+                <xsl:with-param name="test" select="$tests"/>
+            </xsl:call-template>
+        </xsl:if>
     </xsl:template>
     <xsl:template name="DecToHex">
         <xsl:param name="dec" />
