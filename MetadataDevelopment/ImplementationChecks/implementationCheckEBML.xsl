@@ -297,6 +297,15 @@
                                     <xsl:with-param name="seek_element" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3515']"/>
                                 </xsl:call-template>
                                 <!-- /MKV-SEEK-RESOLVE -->
+                                <!-- MKV-SEGMENT-UID-LEGNTH -->
+                                <xsl:call-template name="x_value_is_y_bytes">
+                                    <xsl:with-param name="icid">MKV-SEGMENT-UID-LEGNTH</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <!-- SegmentUID is 13220, PrevUID is 1,882,403, NextUID is 2,013,475, Segment Family is 1,092 -->
+                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header'][mt:data[@name='Name']='13220' or mt:data[@name='Name']='1882403' or mt:data[@name='Name']='2013475' or mt:data[@name='Name']='1092']]"/>
+                                    <xsl:with-param name="y">16</xsl:with-param>
+                                </xsl:call-template>
+                                <!-- /MKV-SEGMENT-UID-LEGNTH -->
                                 <xsl:for-each select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']/mt:data">
                                     <implementation>
                                         <xsl:attribute name="name">TOTAL_PARTS is number</xsl:attribute>
