@@ -20,22 +20,27 @@ title: "Download MediaConch source code"
     <th>Comment</th>
 </tr>
 <tr>
-    <th rowspan="4" colspan="2">All in one package<br /> for an easy and quick compilation<br /> on Linux without install</th>
+    <th rowspan="5" colspan="2">All in one package<br /> for an easy and quick compilation<br /> on Linux without install</th>
     <td class="table-OS" colspan="3" id="AllInOne">Source code, all in one package</td>
 </tr>
 <tr>
     <th><abbr title="Graphical User Interface">GUI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/MediaConch_GUI_15.12_GNU_FromSource.tar.xz">v15.12</a> (<a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/MediaConch_GUI_15.12_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch-gui/15.12/MediaConch_GUI_15.12_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-gui/16.01/MediaConch_GUI_16.01_GNU_FromSource.tar.xz">v16.01</a> (<a href="https://mediaarea.net/download/binary/mediaconch-gui/16.01/MediaConch_GUI_16.01_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch-gui/16.01/MediaConch_GUI_16.01_GNU_FromSource.tar.gz">gz</a>)</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th><abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/mediaconch/15.12/MediaConch_CLI_15.12_GNU_FromSource.tar.xz">v15.12</a> (<a href="https://mediaarea.net/download/binary/mediaconch/15.12/MediaConch_CLI_15.12_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch/15.12/MediaConch_CLI_15.12_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch/16.01/MediaConch_CLI_16.01_GNU_FromSource.tar.xz">v16.01</a> (<a href="https://mediaarea.net/download/binary/mediaconch/16.01/MediaConch_CLI_16.01_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch/16.01/MediaConch_CLI_16.01_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th><abbr title="Server">Server</abbr></th>
+    <td><a href="https://mediaarea.net/download/binary/mediaconch-server/16.01/MediaConch_Server_16.01_GNU_FromSource.tar.xz">v16.01</a> (<a href="https://mediaarea.net/download/binary/mediaconch-server/16.01/MediaConch_Server_16.01_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/mediaconch-server/16.01/MediaConch_Server_16.01_GNU_FromSource.tar.gz">gz</a>)</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th><abbr title="Shared Object">SO</abbr></th>
-    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/MediaInfo_DLL_0.7.81_GNU_FromSource.tar.xz">v0.7.81</a> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/MediaInfo_DLL_0.7.81_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.81/MediaInfo_DLL_0.7.81_GNU_FromSource.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.82/MediaInfo_DLL_0.7.82_GNU_FromSource.tar.xz">v0.7.82</a> (<a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.82/MediaInfo_DLL_0.7.82_GNU_FromSource.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/binary/libmediainfo0/0.7.82/MediaInfo_DLL_0.7.82_GNU_FromSource.tar.gz">gz</a>)</td>
     <td>&nbsp;</td>
 </tr>
 <tr>
@@ -43,13 +48,13 @@ title: "Download MediaConch source code"
     <td class="table-OS" colspan="3" id="Split">Source code, split packages</td>
 </tr>
 <tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr>/<abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12.tar.xz">v15.12</a> (<a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12.tar.gz">gz</a>)</td>
+    <th><abbr title="Graphical User Interface">GUI</abbr>/<abbr title="Command Line Interface">CLI</abbr>/Server</th>
+    <td><a href="https://mediaarea.net/download/source/mediaconch/16.01/mediaconch_16.01.tar.xz">v16.01</a> (<a href="https://mediaarea.net/download/source/mediaconch/16.01/mediaconch_16.01.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/mediaconch/16.01/mediaconch_16.01.tar.gz">gz</a>)</td>
     <td>requires libmediainfo</td>
 </tr>
 <tr>
     <th>libmediainfo</th>
-    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81.tar.xz">v0.7.81</a> (<a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81.tar.gz">gz</a>)</td>
+    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.82/libmediainfo_0.7.82.tar.xz">v0.7.82</a> (<a href="https://mediaarea.net/download/source/libmediainfo/0.7.82/libmediainfo_0.7.82.tar.bz2">bz2</a> / <a href="https://mediaarea.net/download/source/libmediainfo/0.7.82/libmediainfo_0.7.82.tar.gz">gz</a>)</td>
     <td>requires libzen</td>
 </tr>
 <tr>
@@ -62,13 +67,13 @@ title: "Download MediaConch source code"
     <td class="table-OS" colspan="3" id="Split">Source code, All included</td>
 </tr>
 <tr>
-    <th><abbr title="Graphical User Interface">GUI</abbr>/<abbr title="Command Line Interface">CLI</abbr></th>
-    <td><a href="https://mediaarea.net/download/source/mediaconch/15.12/mediaconch_15.12_AllInclusive.7z">v15.12</a></td>
+    <th><abbr title="Graphical User Interface">GUI</abbr>/<abbr title="Command Line Interface">CLI</abbr>/Server</th>
+    <td><a href="https://mediaarea.net/download/source/mediaconch/16.01/mediaconch_16.01_AllInclusive.7z">v16.01</a></td>
     <td>&nbsp;</td>
 </tr>
 <tr>
     <th>libmediainfo</th>
-    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.81/libmediainfo_0.7.81_AllInclusive.7z">v0.7.81</a></td>
+    <td><a href="https://mediaarea.net/download/source/libmediainfo/0.7.82/libmediainfo_0.7.82_AllInclusive.7z">v0.7.82</a></td>
     <td>&nbsp;</td>
 </tr>
 </table>
