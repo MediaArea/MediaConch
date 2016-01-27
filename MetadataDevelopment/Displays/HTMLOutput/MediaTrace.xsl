@@ -3,9 +3,9 @@
     <xsl:output encoding="UTF-8" method="html" version="1.0" indent="yes"/>
 <xsl:variable name="spaces"><xsl:text> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;</xsl:text></xsl:variable>
     <xsl:template match="/mt:MediaTrace">
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <html>
       <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <style>
           .mt_header {
             width: 600px;
