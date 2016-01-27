@@ -3,6 +3,33 @@
     <xsl:output encoding="UTF-8" method="html" version="1.0" indent="yes"/>
 <xsl:variable name="spaces"><xsl:text> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;</xsl:text></xsl:variable>
     <xsl:template match="/mt:MediaTrace">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <html>
+      <head>
+        <style>
+          .mt_header {
+            width: 600px;
+            border: 1px black solid;
+            background-color: #64A8DD;
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+          }
+
+          .mt_header h1, .mc_header h2, .mc_header div {
+            text-align: center;
+          }
+
+          #mt_table {
+            border: 1px black solid;
+            width: 600px;
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+          }
+
+          #mt_table span {
+            float:right;
+          }
+        </style>
+      </head>
+      <body>
         <xsl:for-each select="mt:media">
           <div class="mt_header">
               <h1>MediaTrace report</h1>
@@ -31,29 +58,8 @@
           </xsl:for-each>
           </table>
         </xsl:for-each>
-
-        <style>
-          .mt_header {
-            width: 600px;
-            border: 1px black solid;
-            background-color: #64A8DD;
-            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-          }
-
-          .mt_header h1, .mc_header h2, .mc_header div {
-            text-align: center;
-          }
-
-          #mt_table {
-            border: 1px black solid;
-            width: 600px;
-            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-          }
-
-          #mt_table span {
-            float:right;
-          }
-        </style>
+      </body>
+      </html>
     </xsl:template>
 
     <xsl:template match="mt:block">
@@ -194,5 +200,4 @@
             <xsl:otherwise>0</xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
 </xsl:stylesheet>
