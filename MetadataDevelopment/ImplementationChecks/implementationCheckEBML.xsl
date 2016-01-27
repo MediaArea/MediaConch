@@ -1245,7 +1245,7 @@
                         <xsl:with-param name="hex">
                             <xsl:call-template name="DecToHex">
                                 <xsl:with-param name="dec">
-                                    <xsl:value-of select="//mt:block[@offset=$SeekPositionFileOffset]/mt:block[@name='Header']/mt:data[@name='Name']"/>
+                                    <xsl:value-of select="//mt:block[@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
                                 </xsl:with-param>
                             </xsl:call-template>
                         </xsl:with-param>
