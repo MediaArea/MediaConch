@@ -1528,7 +1528,7 @@
                         <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:text>YYYY</xsl:text>
+                        <xsl:text>10</xsl:text>
                         <xsl:value-of select="$hex" />
                     </xsl:otherwise>
                 </xsl:choose>
@@ -1552,7 +1552,7 @@
                         <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:text>YYYY</xsl:text>
+                        <xsl:text>20</xsl:text>
                         <xsl:value-of select="$hex" />
                     </xsl:otherwise>
                 </xsl:choose>
@@ -1592,7 +1592,7 @@
                         <xsl:value-of select="substring($hex, 2, string-length($hex)-1)" />
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:text>YYYY</xsl:text>
+                        <xsl:text>40</xsl:text>
                         <xsl:value-of select="$hex" />
                     </xsl:otherwise>
                 </xsl:choose>
@@ -1600,6 +1600,9 @@
             <xsl:when test="string-length($hex) = 1">
                 <xsl:text>8</xsl:text>
                 <xsl:value-of select="$hex" />
+            </xsl:when>
+            <xsl:when test="string-length($hex) = 0">
+                <xsl:text>80</xsl:text>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="$hex" />
