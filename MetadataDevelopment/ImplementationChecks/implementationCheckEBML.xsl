@@ -18,12 +18,12 @@
                     <implementationChecks>
                         <name>MediaConch EBML Implementation Checker</name>
                         <xsl:choose>
-                            <xsl:when test="//mi:Format='Matroska' or //mi:Format='WebM'">
+                            <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
                                 <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                     <check icid="IS_EBML" version="1">
                                         <context field="mi:Format">
                                             <xsl:attribute name="value">
-                                                <xsl:value-of select="//mi:Format"/>
+                                                <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
                                             </xsl:attribute>
                                         </context>
                                         <test outcome="pass"/>
@@ -31,56 +31,56 @@
                                 </xsl:if>
                                 <xsl:variable name="EBMLVersion">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='646']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='646']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='646']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='646']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="EBMLReadVersion">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='759']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='759']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='759']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='759']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="EBMLMaxIDLength">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='754']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='754']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='754']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='754']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>4</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="EBMLMaxSizeLength">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='755']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='755']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='755']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='755']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>8</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocType">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='642']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='642']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='642']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='642']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>matroska</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocTypeVersion">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='647']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='647']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='647']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='647']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocTypeReadVersion">
                                     <xsl:choose>
-                                        <xsl:when test="//mt:data[../mt:block/mt:data='645']">
-                                            <xsl:value-of select="//mt:data[../mt:block/mt:data='645']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='645']">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='645']/mt:data[@name='Data']"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
@@ -95,7 +95,7 @@
                                 <xsl:call-template name="x_equals_y">
                                     <xsl:with-param name="icid">EBML-ELEM-START</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x" select="//mt:data[@offset='0']"/>
+                                    <xsl:with-param name="x" select="//mt:data[@offset='0'][1]"/>
                                     <xsl:with-param name="x_name">First Element ID</xsl:with-param>
                                     <xsl:with-param name="y">172351395</xsl:with-param>
                                     <xsl:with-param name="y_name">Expected First Element ID</xsl:with-param>
@@ -125,7 +125,7 @@
                                 <xsl:call-template name="x_has_valid_parent">
                                     <xsl:with-param name="icid">EBML-ELEMENT-VALID-PARENT</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x" select="//mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
+                                    <xsl:with-param name="x" select="mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
                                     <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-VALID-PARENT -->
@@ -133,7 +133,7 @@
                                 <xsl:call-template name="x_does_not_repeat_in_parent">
                                     <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x" select="//mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
+                                    <xsl:with-param name="x" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
                                     <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-NONMULTIPLES -->
@@ -141,7 +141,7 @@
                                 <xsl:call-template name="x_contains_mandates">
                                     <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x" select="//mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]"/>
+                                    <xsl:with-param name="x" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]"/>
                                     <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
@@ -294,7 +294,7 @@
                                 <xsl:call-template name="seek_element_resolves">
                                     <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="seek_element" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3515']"/>
+                                    <xsl:with-param name="seek_element" select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='21863284']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3515']"/>
                                 </xsl:call-template>
                                 <!-- /MKV-SEEK-RESOLVE -->
                                 <!-- MKV-SEGMENT-UID-LEGNTH -->
@@ -302,7 +302,7 @@
                                     <xsl:with-param name="icid">MKV-SEGMENT-UID-LEGNTH</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <!-- SegmentUID is 13220, PrevUID is 1,882,403, NextUID is 2,013,475, Segment Family is 1,092 -->
-                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header'][mt:data[@name='Name']='13220' or mt:data[@name='Name']='1882403' or mt:data[@name='Name']='2013475' or mt:data[@name='Name']='1092']]"/>
+                                    <xsl:with-param name="x" select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='88713574']/mt:block[mt:block[1][@name='Header'][mt:data[@name='Name']='13220' or mt:data[@name='Name']='1882403' or mt:data[@name='Name']='2013475' or mt:data[@name='Name']='1092']]"/>
                                     <xsl:with-param name="y">16</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /MKV-SEGMENT-UID-LEGNTH -->
@@ -310,7 +310,7 @@
                                 <xsl:call-template name="x_is_in_list">
                                     <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3']"/>
+                                    <xsl:with-param name="x" select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='106212971']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='46']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3']"/>
                                     <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /MKV-VALID-TRACKTYPE-VALUE -->
@@ -319,7 +319,7 @@
                                     <xsl:with-param name="icid">MKV-VALID-BOOLEANS</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <!-- FlagEnabled is 57, FlagDefault is 8, FlagForced is 5,546, Flag Lacing is 28, CodecDecodeAll is 42, FlagInterlaced is 26, EditionFlagHidden is 1,469, EditionFlagDefault is 1,499, EditionFlagOrdered is 1,501, ChapterFlagHidden is 24, ChapterFlagEnabled is 1,432, TagDefault is 1,156-->
-                                    <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header'][mt:data[@name='Name']='57' or mt:data[@name='Name']='8' or mt:data[@name='Name']='5546' or mt:data[@name='Name']='28' or mt:data[@name='Name']='42' or mt:data[@name='Name']='26' or mt:data[@name='Name']='1469' or mt:data[@name='Name']='1499' or mt:data[@name='Name']='1501' or mt:data[@name='Name']='24' or mt:data[@name='Name']='1432' or mt:data[@name='Name']='1156']]"/>
+                                    <xsl:with-param name="x" select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='106212971']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='46']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='57' or mt:data[@name='Name']='8' or mt:data[@name='Name']='5546' or mt:data[@name='Name']='28' or mt:data[@name='Name']='42']|mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='106212971']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='46']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='96']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='26']|mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='4433776']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='1465']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='1469' or mt:data[@name='Name']='1499' or mt:data[@name='Name']='1501']|mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='4433776']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='1465']//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='54']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='24' or mt:data[@name='Name']='1432']|mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='39109479']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='13171']//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='10184']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='1156']"/>
                                     <xsl:with-param name="list">0 1</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /MKV-VALID-BOOLEANS -->
