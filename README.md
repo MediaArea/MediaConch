@@ -18,6 +18,9 @@ This is the source code for MediaConchOnline, the online version of the MediaCon
 #### [MediaConch-Website](https://github.com/MediaArea/MediaConch-Website)
 This is the repository for content hosted on [https://mediaarea.net/MediaConch/](https://mediaarea.net/MediaConch/). 
 
+#### [MediaInfoLib](https://github.com/MediaArea/MediaInfoLib)
+This is the repository for the analyzing engine. We expand the generic engine in order to add Matroska and FFV1 tests.
+
 #### [MediaAreaXml](https://github.com/MediaArea/MediaAreaXml)
 This repository holds XSD (XML Schema Definitions) for MediaConch, MediaInfo, and MediaTrace.
 
