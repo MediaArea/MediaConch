@@ -5,6 +5,7 @@
         <xsl:apply-templates select="*"/>
     </xsl:template>
     <xsl:variable name="minimum_verbosity_for_pass">4</xsl:variable>
+    <xsl:variable name="lookupschema" select="document($schema)"/>
     <xsl:template match="ma:MediaArea">
         <MediaConch>
             <xsl:attribute name="version">
@@ -86,7 +87,7 @@
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="GlobalElements">
-                                    <xsl:for-each select="document($schema)//element[@global='1']">
+                                    <xsl:for-each select="$lookupschema//element[@global='1']">
                                         <xsl:value-of select="@id"/>
                                         <xsl:text> </xsl:text>
                                     </xsl:for-each>
@@ -367,13 +368,13 @@
         <xsl:param name="x"/>
         <xsl:param name="x_name"/>
         <xsl:variable name="GlobalElements">
-            <xsl:for-each select="document($schema)//element[@global='1']">
+            <xsl:for-each select="$lookupschema//element[@global='1']">
                 <xsl:value-of select="@id"/>
                 <xsl:text> </xsl:text>
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="ElementListWIthParents">
-            <xsl:for-each select="document($schema)//element">
+            <xsl:for-each select="$lookupschema//element">
                 <xsl:value-of select="@id"/>
                 <xsl:text>,</xsl:text>
                 <xsl:value-of select="../@id"/>
@@ -460,7 +461,7 @@
         <xsl:param name="x"/>
         <xsl:param name="x_name"/>
         <xsl:variable name="NonRepeatingElements">
-            <xsl:for-each select="document($schema)//element[@maxOccurs!='unbounded' or not(@maxOccurs)]"><!-- needs a correction is maxOccurs may be something other than 'unbounded' -->
+            <xsl:for-each select="$lookupschema//element[@maxOccurs!='unbounded' or not(@maxOccurs)]"><!-- needs a correction is maxOccurs may be something other than 'unbounded' -->
                 <xsl:value-of select="@id"/>
                 <xsl:text> </xsl:text>
             </xsl:for-each>
@@ -544,7 +545,7 @@
         <xsl:param name="x"/>
         <xsl:param name="x_name"/>
         <xsl:variable name="ElementsWithMandatoryChildrenWithoutDefaults">
-            <xsl:for-each select="document($schema)//element[element[not(@default)][@minOccurs>0]]">
+            <xsl:for-each select="$lookupschema//element[element[not(@default)][@minOccurs>0]]">
                 <xsl:value-of select="@id"/>
                 <xsl:text>:</xsl:text>
                 <xsl:for-each select="element[not(@default)][@minOccurs>0]">
@@ -555,7 +556,7 @@
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="ElementsThatContainMandates">
-            <xsl:for-each select="document($schema)//element[element[not(@default)][@minOccurs>0]]">
+            <xsl:for-each select="$lookupschema//element[element[not(@default)][@minOccurs>0]]">
                 <xsl:value-of select="@id"/>
                 <xsl:text> </xsl:text>
             </xsl:for-each>
