@@ -95,9 +95,15 @@
                                 <xsl:call-template name="x_equals_y">
                                     <xsl:with-param name="icid">EBML-ELEM-START</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x" select="//mt:data[@offset='0'][1]"/>
+                                    <xsl:with-param name="x">
+                                        <xsl:call-template name="DecToVINT">
+                                            <xsl:with-param name="dec">
+                                                <xsl:value-of select="//mt:data[@offset='0'][1]"/>
+                                            </xsl:with-param>
+                                        </xsl:call-template>
+                                    </xsl:with-param>
                                     <xsl:with-param name="x_name">First Element ID</xsl:with-param>
-                                    <xsl:with-param name="y">172351395</xsl:with-param>
+                                    <xsl:with-param name="y">0x1A45DFA3</xsl:with-param>
                                     <xsl:with-param name="y_name">Expected First Element ID</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEM-START -->
