@@ -97,9 +97,7 @@
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x">
                                         <xsl:call-template name="DecToVINT">
-                                            <xsl:with-param name="dec">
-                                                <xsl:value-of select="//mt:data[@offset='0'][1]"/>
-                                            </xsl:with-param>
+                                            <xsl:with-param name="dec" select="//mt:data[@offset='0'][1]"/>
                                         </xsl:call-template>
                                     </xsl:with-param>
                                     <xsl:with-param name="x_name">First Element ID</xsl:with-param>
@@ -386,16 +384,12 @@
             <xsl:for-each select="$x">
                 <xsl:variable name="xVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="parentVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="allowedParentVINT">
@@ -475,24 +469,18 @@
             <xsl:for-each select="$x">
                 <xsl:variable name="xVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="parentVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="siblingsVINT">
                     <xsl:for-each select="../mt:block[@name!='Header']">
                         <xsl:call-template name="DecToVINT">
-                            <xsl:with-param name="dec">
-                                <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                            </xsl:with-param>
+                            <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                         </xsl:call-template>
                         <xsl:text> </xsl:text>
                     </xsl:for-each>
@@ -576,17 +564,13 @@
             <xsl:for-each select="$x">
                 <xsl:variable name="xVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="CurrentElementChildren">
                     <xsl:for-each select="mt:block/mt:block[@name='Header']/mt:data[@name='Name']">
                         <xsl:call-template name="DecToVINT">
-                            <xsl:with-param name="dec">
-                                <xsl:value-of select="."/>
-                            </xsl:with-param>
+                            <xsl:with-param name="dec" select="."/>
                         </xsl:call-template>
                         <xsl:text> </xsl:text>
                     </xsl:for-each>
@@ -775,16 +759,12 @@
             <xsl:for-each select="$x">
                 <xsl:variable name="xVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="parentVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
@@ -861,14 +841,10 @@
             <xsl:for-each select="$x">
                 <xsl:variable name="xVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:variable name="xSize">
-                    <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Size']"/>
-                </xsl:variable>
+                <xsl:variable name="xSize" select="mt:block[@name='Header']/mt:data[@name='Size']"/>
                 <xsl:variable name="values">
                     <value>
                         <xsl:attribute name="offset">
@@ -944,22 +920,14 @@
             <xsl:for-each select="$seek_element">
                 <xsl:variable name="SeekID">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5035']/mt:data[@name='Data']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5035']/mt:data[@name='Data']"/>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:variable name="SeekPosition">
-                    <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5036']/mt:data[@name='Data']"/>
-                </xsl:variable>
-                <xsl:variable name="SeekPositionFileOffset">
-                    <xsl:value-of select="$FirstSegmentValueOffset + $SeekPosition"/>
-                </xsl:variable>
+                <xsl:variable name="SeekPosition" select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5036']/mt:data[@name='Data']"/>
+                <xsl:variable name="SeekPositionFileOffset" select="$FirstSegmentValueOffset + $SeekPosition"/>
                 <xsl:variable name="ElementIDatOffset">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="//mt:block[@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="//mt:block[@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
@@ -1029,16 +997,12 @@
                 </xsl:variable>
                 <xsl:variable name="CRCValue">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:data[@name='Value']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:data[@name='Value']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="parentVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
@@ -1127,9 +1091,7 @@
                 </xsl:variable>
                 <xsl:variable name="xVINT">
                     <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec">
-                            <xsl:value-of select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
@@ -1214,9 +1176,7 @@
         <xsl:param name="dec" />
         <xsl:variable name="hex">
             <xsl:call-template name="DecToHex">
-                <xsl:with-param name="dec">
-                    <xsl:value-of select="$dec"/>
-                </xsl:with-param>
+                <xsl:with-param name="dec" select="$dec"/>
             </xsl:call-template>
         </xsl:variable>
         <xsl:text>0x</xsl:text>
