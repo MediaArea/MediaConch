@@ -6,6 +6,7 @@
     </xsl:template>
     <xsl:variable name="minimum_verbosity_for_pass">4</xsl:variable>
     <xsl:variable name="lookupschema" select="document($schema)"/>
+    <xsl:key name="elementNameViaSchema" match="element" use="@id"/>
     <xsl:template match="ma:MediaArea">
         <MediaConch>
             <xsl:attribute name="version">
@@ -1308,6 +1309,11 @@
             </xsl:attribute>
             <xsl:attribute name="name">
                 <xsl:text>EBML Element ID</xsl:text>
+            </xsl:attribute>
+            <xsl:attribute name="label">
+                <xsl:for-each select="$lookupschema">
+                    <xsl:value-of select="key('elementNameViaSchema',$ID_VINT)/@name"/>
+                </xsl:for-each>
             </xsl:attribute>
             <xsl:value-of select="$ID_VINT"/>
         </value>
