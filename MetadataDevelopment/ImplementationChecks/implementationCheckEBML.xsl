@@ -131,7 +131,6 @@
                                     <xsl:with-param name="icid">EBML-ELEMENT-VALID-PARENT</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
-                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-VALID-PARENT -->
                                 <!-- EBML-ELEMENT-NONMULTIPLES -->
@@ -139,7 +138,6 @@
                                     <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
-                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-NONMULTIPLES -->
                                 <!-- EBML-ELEMENT-CONTAINS-MANDATES -->
@@ -147,7 +145,6 @@
                                     <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]"/>
-                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
                                 <!-- EBML-VALID-MAXID -->
@@ -276,7 +273,6 @@
                                     <xsl:with-param name="icid">EBML-CRC-FIRST</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='63']"/>
-                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-FIRST -->
                                 <!-- EBML-CRC-VALID -->
@@ -284,7 +280,6 @@
                                     <xsl:with-param name="icid">EBML-CRC-VALID</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='63']"/>
-                                    <xsl:with-param name="x_name">EBML Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-VALID -->
                                 <!-- EBML-CRC-LEGNTH -->
@@ -366,7 +361,6 @@
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
         <xsl:param name="x"/>
-        <xsl:param name="x_name"/>
         <xsl:variable name="GlobalElements">
             <xsl:for-each select="$lookupschema//element[@global='1']">
                 <xsl:value-of select="@id"/>
@@ -397,15 +391,9 @@
                     <xsl:value-of select="substring-before(substring-after($ElementListWIthParents,concat($xVINT,',')),'.')"/>
                 </xsl:variable>
                 <xsl:variable name="values">
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:value-of select="$x_name"/>
-                        </xsl:attribute>
-                        <xsl:value-of select="$xVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                    </xsl:call-template>
                     <value>
                         <xsl:attribute name="name">
                             <xsl:text>Allowed EBML Parent Element</xsl:text>
@@ -459,7 +447,6 @@
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
         <xsl:param name="x"/>
-        <xsl:param name="x_name"/>
         <xsl:variable name="NonRepeatingElements">
             <xsl:for-each select="$lookupschema//element[@maxOccurs!='unbounded' or not(@maxOccurs)]"><!-- needs a correction is maxOccurs may be something other than 'unbounded' -->
                 <xsl:value-of select="@id"/>
@@ -487,15 +474,9 @@
                     </xsl:for-each>
                 </xsl:variable>
                 <xsl:variable name="values">
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>Non-Repeating Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$xVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                    </xsl:call-template>
                     <value>
                         <xsl:attribute name="offset">
                             <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
@@ -543,7 +524,6 @@
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
         <xsl:param name="x"/>
-        <xsl:param name="x_name"/>
         <xsl:variable name="ElementsWithMandatoryChildrenWithoutDefaults">
             <xsl:for-each select="$lookupschema//element[element[not(@default)][@minOccurs>0]]">
                 <xsl:value-of select="@id"/>
@@ -755,7 +735,6 @@
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
         <xsl:param name="x"/>
-        <xsl:param name="x_name"/>
         <xsl:variable name="tests">
             <xsl:for-each select="$x">
                 <xsl:variable name="xVINT">
@@ -769,15 +748,9 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:value-of select="$x_name"/>
-                        </xsl:attribute>
-                        <xsl:value-of select="$xVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                    </xsl:call-template>
                     <value>
                         <xsl:attribute name="offset">
                             <xsl:value-of select="../@offset"/>
@@ -847,15 +820,9 @@
                 </xsl:variable>
                 <xsl:variable name="xSize" select="mt:block[@name='Header']/mt:data[@name='Size']"/>
                 <xsl:variable name="values">
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Element ID</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$xVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                    </xsl:call-template>
                     <value>
                         <xsl:attribute name="offset">
                             <xsl:value-of select="../@offset"/>
@@ -1007,6 +974,9 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                    </xsl:call-template>
                     <value>
                         <xsl:attribute name="offset">
                             <xsl:value-of select="mt:data[@name='Value']/@offset"/>
@@ -1096,15 +1066,9 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:variable name="values">
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Element ID</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$xVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                    </xsl:call-template>
                     <value>
                         <xsl:attribute name="offset">
                             <xsl:value-of select="@offset"/>
@@ -1335,6 +1299,18 @@
             </xsl:when>
             <xsl:otherwise><xsl:value-of select="$text"/></xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+    <xsl:template name="EBMLElementValue">
+        <xsl:param name="ID_VINT"/>
+        <value>
+            <xsl:attribute name="offset">
+                <xsl:value-of select="@offset"/>
+            </xsl:attribute>
+            <xsl:attribute name="name">
+                <xsl:text>EBML Element ID</xsl:text>
+            </xsl:attribute>
+            <xsl:value-of select="$ID_VINT"/>
+        </value>
     </xsl:template>
     <xsl:template name="check">
         <xsl:param name="icid"/>
