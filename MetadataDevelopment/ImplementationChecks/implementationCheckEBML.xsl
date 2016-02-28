@@ -401,15 +401,11 @@
                         </xsl:attribute>
                         <xsl:value-of select="$allowedParentVINT"/>
                     </value>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="not(contains($GlobalElements,$xVINT))">
                     <xsl:choose>
@@ -478,15 +474,11 @@
                     <xsl:call-template name="EBMLElementValue">
                         <xsl:with-param name="ID_VINT" select="$xVINT"/>
                     </xsl:call-template>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="contains($NonRepeatingElements,$xVINT)">
                     <xsl:choose>
@@ -566,21 +558,15 @@
                 <xsl:if test="contains($ElementsThatContainMandates,$xVINT)">
                     <xsl:for-each select="str:tokenize($mandatoryChildrenVINT)">
                         <xsl:variable name="values">
-                            <value>
-                                <xsl:attribute name="name">
-                                    <xsl:text>Mandatory Element with No Default</xsl:text>
-                                </xsl:attribute>
-                                <xsl:value-of select="."/>
-                            </value>
-                            <value>
-                                <xsl:attribute name="offset">
-                                    <xsl:value-of select="$offset"/>
-                                </xsl:attribute>
-                                <xsl:attribute name="name">
-                                    <xsl:text>Master Element</xsl:text>
-                                </xsl:attribute>
-                                <xsl:value-of select="$xVINT"/>
-                            </value>
+                            <xsl:call-template name="EBMLElementValue">
+                                <xsl:with-param name="ID_VINT" select="."/>
+                                <xsl:with-param name="name">Mandatory Element with No Default</xsl:with-param>
+                            </xsl:call-template>
+                            <xsl:call-template name="EBMLElementValue">
+                                <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                                <xsl:with-param name="offset" select="$offset"/>
+                                <xsl:with-param name="name">Master-element</xsl:with-param>
+                            </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
                             <xsl:when test="contains($CurrentElementChildren,.)">
@@ -752,15 +738,11 @@
                     <xsl:call-template name="EBMLElementValue">
                         <xsl:with-param name="ID_VINT" select="$xVINT"/>
                     </xsl:call-template>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="count(preceding-sibling::mt:block[mt:block[@name='Header']]) = '0'">
@@ -996,15 +978,11 @@
                         </xsl:attribute>
                         <xsl:value-of select="$info"/>
                     </value>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$info != 'NOK'">
@@ -1303,12 +1281,28 @@
     </xsl:template>
     <xsl:template name="EBMLElementValue">
         <xsl:param name="ID_VINT"/>
+        <xsl:param name="offset"/>
+        <xsl:param name="name"/>
         <value>
             <xsl:attribute name="offset">
-                <xsl:value-of select="@offset"/>
+                <xsl:choose>
+                    <xsl:when test="$name">
+                        <xsl:value-of select="$offset"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="@offset"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:attribute>
             <xsl:attribute name="name">
-                <xsl:text>EBML Element ID</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$name">
+                        <xsl:value-of select="$name"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>EBML Element ID</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:attribute>
             <xsl:attribute name="label">
                 <xsl:for-each select="$lookupschema">
