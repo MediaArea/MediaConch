@@ -202,6 +202,12 @@
                                             <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                                 <test>
                                                     <xsl:attribute name="outcome">pass</xsl:attribute>
+                                                    <value>
+                                                        <xsl:attribute name="name">
+                                                            <xsl:text>EBMLMaxIDLength</xsl:text>
+                                                        </xsl:attribute>
+                                                        <xsl:value-of select="$EBMLMaxIDLength"/>
+                                                    </value>
                                                 </test>
                                             </xsl:if>
                                         </xsl:otherwise>
