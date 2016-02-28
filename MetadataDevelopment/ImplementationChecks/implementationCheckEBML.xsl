@@ -202,6 +202,12 @@
                                             <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                                 <test>
                                                     <xsl:attribute name="outcome">pass</xsl:attribute>
+                                                    <value>
+                                                        <xsl:attribute name="name">
+                                                            <xsl:text>EBMLMaxIDLength</xsl:text>
+                                                        </xsl:attribute>
+                                                        <xsl:value-of select="$EBMLMaxIDLength"/>
+                                                    </value>
                                                 </test>
                                             </xsl:if>
                                         </xsl:otherwise>
@@ -350,6 +356,90 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </implementationChecks>
+                    <implementationChecks>
+                        <name>MediaConch FFV1 Implementation Checker</name>
+                        <xsl:choose>
+                            <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
+                                <check icid="FFV1-VALID-VERSION-VALUE" version="1">
+                                    <context field="Valid Values" value="1 3"/>
+                                    <xsl:for-each select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='256095861']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='35']/mt:block[@parser='FFV1']">
+                                        <xsl:choose>
+                                            <xsl:when test="mt:data[@name='version'] = '1' or mt:data[@name='version'] = '3'">
+                                                <test outcome="pass">
+                                                    <value offset="@offset" name="FFV1 version">
+                                                        <xsl:value-of select="mt:data[@name='version']"/>
+                                                    </value>
+                                                </test>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <test outcome="pass">
+                                                  <value offset="@offset" name="FFV1 version">
+                                                      <xsl:value-of select="mt:data[@name='version']"/>
+                                                  </value>
+                                                </test>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </xsl:for-each>
+                                </check>
+                                <check icid="FFV1-VALID-CODERTYPE-VALUE" version="1">
+                                    <context field="Valid Values" value="0 1 2"/>
+                                    <xsl:for-each select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='256095861']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='35']/mt:block[@parser='FFV1']">
+                                        <xsl:choose>
+                                            <xsl:when test="mt:data[@name='coder_type'] = '0' or mt:data[@name='coder_type'] = '1' or mt:data[@name='coder_type'] = '2'">
+                                                <test outcome="pass">
+                                                    <value offset="@offset" name="FFV1 coder type">
+                                                        <xsl:value-of select="mt:data[@name='coder_type']"/>
+                                                    </value>
+                                                </test>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <test outcome="pass">
+                                                  <value offset="@offset" name="FFV1 coder type">
+                                                      <xsl:value-of select="mt:data[@name='coder_type']"/>
+                                                  </value>
+                                                </test>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </xsl:for-each>
+                                </check>
+                                <check icid="FFV1-VALID-COLORSPACETYPE-VALUE" version="1">
+                                    <context field="Valid Values" value="0 1"/>
+                                    <xsl:for-each select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='256095861']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='35']/mt:block[@parser='FFV1']">
+                                        <xsl:choose>
+                                            <xsl:when test="mt:data[@name='colorspace_type'] = '0' or mt:data[@name='colorspace_type'] = '1'">
+                                                <test outcome="pass">
+                                                    <value offset="@offset" name="FFV1 colorspace type">
+                                                        <xsl:value-of select="mt:data[@name='colorspace_type']"/>
+                                                    </value>
+                                                </test>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <test outcome="pass">
+                                                  <value offset="@offset" name="FFV1 colorspace type">
+                                                      <xsl:value-of select="mt:data[@name='colorspace_type']"/>
+                                                  </value>
+                                                </test>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
+                                    </xsl:for-each>
+                                </check>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <check icid="IS_FFV1" version="1">
+                                    <context field="mi:Format">
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="//mi:Format"/>
+                                        </xsl:attribute>
+                                    </context>
+                                    <test outcome="n/a">
+                                        <value name="reason">
+                                            <xsl:text>Not recognized to contain an FFV1 encoding</xsl:text>
+                                        </value>
+                                    </test>
+                                </check>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </implementationChecks>
                 </media>
             </xsl:for-each>
         </MediaConch>
@@ -401,15 +491,11 @@
                         </xsl:attribute>
                         <xsl:value-of select="$allowedParentVINT"/>
                     </value>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="not(contains($GlobalElements,$xVINT))">
                     <xsl:choose>
@@ -478,15 +564,11 @@
                     <xsl:call-template name="EBMLElementValue">
                         <xsl:with-param name="ID_VINT" select="$xVINT"/>
                     </xsl:call-template>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="contains($NonRepeatingElements,$xVINT)">
                     <xsl:choose>
@@ -566,21 +648,15 @@
                 <xsl:if test="contains($ElementsThatContainMandates,$xVINT)">
                     <xsl:for-each select="str:tokenize($mandatoryChildrenVINT)">
                         <xsl:variable name="values">
-                            <value>
-                                <xsl:attribute name="name">
-                                    <xsl:text>Mandatory Element with No Default</xsl:text>
-                                </xsl:attribute>
-                                <xsl:value-of select="."/>
-                            </value>
-                            <value>
-                                <xsl:attribute name="offset">
-                                    <xsl:value-of select="$offset"/>
-                                </xsl:attribute>
-                                <xsl:attribute name="name">
-                                    <xsl:text>Master Element</xsl:text>
-                                </xsl:attribute>
-                                <xsl:value-of select="$xVINT"/>
-                            </value>
+                            <xsl:call-template name="EBMLElementValue">
+                                <xsl:with-param name="ID_VINT" select="."/>
+                                <xsl:with-param name="name">Mandatory Element with No Default</xsl:with-param>
+                            </xsl:call-template>
+                            <xsl:call-template name="EBMLElementValue">
+                                <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                                <xsl:with-param name="offset" select="$offset"/>
+                                <xsl:with-param name="name">Master-element</xsl:with-param>
+                            </xsl:call-template>
                         </xsl:variable>
                         <xsl:choose>
                             <xsl:when test="contains($CurrentElementChildren,.)">
@@ -752,15 +828,11 @@
                     <xsl:call-template name="EBMLElementValue">
                         <xsl:with-param name="ID_VINT" select="$xVINT"/>
                     </xsl:call-template>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="count(preceding-sibling::mt:block[mt:block[@name='Header']]) = '0'">
@@ -996,15 +1068,11 @@
                         </xsl:attribute>
                         <xsl:value-of select="$info"/>
                     </value>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="../mt:block[@name='Header']/@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>EBML Parent Element</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$parentVINT"/>
-                    </value>
+                    <xsl:call-template name="EBMLElementValue">
+                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="offset" select="../@offset"/>
+                        <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
+                    </xsl:call-template>
                 </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$info != 'NOK'">
@@ -1303,12 +1371,28 @@
     </xsl:template>
     <xsl:template name="EBMLElementValue">
         <xsl:param name="ID_VINT"/>
+        <xsl:param name="offset"/>
+        <xsl:param name="name"/>
         <value>
             <xsl:attribute name="offset">
-                <xsl:value-of select="@offset"/>
+                <xsl:choose>
+                    <xsl:when test="$name">
+                        <xsl:value-of select="$offset"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="@offset"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:attribute>
             <xsl:attribute name="name">
-                <xsl:text>EBML Element ID</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="$name">
+                        <xsl:value-of select="$name"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>EBML Element ID</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:attribute>
             <xsl:attribute name="label">
                 <xsl:for-each select="$lookupschema">
