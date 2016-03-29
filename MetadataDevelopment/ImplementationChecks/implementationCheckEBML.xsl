@@ -1033,6 +1033,11 @@
         <xsl:param name="x"/>
         <xsl:variable name="tests">
             <xsl:for-each select="$x">
+                <xsl:variable name="xVINT">
+                    <xsl:call-template name="DecToVINT">
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                    </xsl:call-template>
+                </xsl:variable>
                 <xsl:variable name="info">
                     <xsl:value-of select="mt:data[@name='Value']/@info"/>
                 </xsl:variable>
