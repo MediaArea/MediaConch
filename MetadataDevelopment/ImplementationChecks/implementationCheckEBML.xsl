@@ -289,7 +289,7 @@
                                     <xsl:with-param name="x" select="//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='63']"/>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-VALID -->
-                                <!-- EBML-CRC-LEGNTH -->
+                                <!-- EBML-CRC-LENGTH -->
                                 <xsl:call-template name="x_value_is_y_bytes">
                                     <xsl:with-param name="icid">EBML-CRC-LENGTH</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
@@ -304,15 +304,15 @@
                                     <xsl:with-param name="seek_element" select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='21863284']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='3515']"/>
                                 </xsl:call-template>
                                 <!-- /MKV-SEEK-RESOLVE -->
-                                <!-- MKV-SEGMENT-UID-LEGNTH -->
+                                <!-- MKV-SEGMENT-UID-LENGTH -->
                                 <xsl:call-template name="x_value_is_y_bytes">
-                                    <xsl:with-param name="icid">MKV-SEGMENT-UID-LEGNTH</xsl:with-param>
+                                    <xsl:with-param name="icid">MKV-SEGMENT-UID-LENGTH</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <!-- SegmentUID is 13220, PrevUID is 1,882,403, NextUID is 2,013,475, Segment Family is 1,092 -->
                                     <xsl:with-param name="x" select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='139690087']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='88713574']/mt:block[mt:block[1][@name='Header'][mt:data[@name='Name']='13220' or mt:data[@name='Name']='1882403' or mt:data[@name='Name']='2013475' or mt:data[@name='Name']='1092']]"/>
                                     <xsl:with-param name="y">16</xsl:with-param>
                                 </xsl:call-template>
-                                <!-- /MKV-SEGMENT-UID-LEGNTH -->
+                                <!-- /MKV-SEGMENT-UID-LENGTH -->
                                 <!-- MKV-VALID-TRACKTYPE-VALUE -->
                                 <xsl:call-template name="x_is_in_list">
                                     <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
