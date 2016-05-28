@@ -33,78 +33,68 @@
                                 </xsl:if>
                                 <xsl:variable name="EBMLVersion">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='646']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='646']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLVersion']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLVersion']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="EBMLReadVersion">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='759']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='759']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLReadVersion']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLReadVersion']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="EBMLMaxIDLength">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='754']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='754']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLMaxIDLength']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLMaxIDLength']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>4</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="EBMLMaxSizeLength">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='755']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='755']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLMaxSizeLength']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='EBMLMaxSizeLength']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>8</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocType">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='642']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='642']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='DocType']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='DocType']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>matroska</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocTypeVersion">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='647']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='647']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='DocTypeVersion']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='DocTypeVersion']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
                                 </xsl:variable>
                                 <xsl:variable name="DocTypeReadVersion">
                                     <xsl:choose>
-                                        <xsl:when test="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='645']">
-                                            <xsl:value-of select="mt:MediaTrace/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='172351395']/mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']='645']/mt:data[@name='Data']"/>
+                                        <xsl:when test="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='DocTypeReadVersion']/mt:data">
+                                            <xsl:value-of select="mt:MediaTrace/mt:block[@name='EBML']/mt:block[@name='DocTypeReadVersion']/mt:data"/>
                                         </xsl:when>
                                         <xsl:otherwise>1</xsl:otherwise>
                                     </xsl:choose>
-                                </xsl:variable>
-                                <xsl:variable name="GlobalElements">
-                                    <xsl:for-each select="$lookupschema//element[@global='1']">
-                                        <xsl:value-of select="@id"/>
-                                        <xsl:text> </xsl:text>
-                                    </xsl:for-each>
                                 </xsl:variable>
                                 <!-- EBML-ELEM-START -->
                                 <xsl:call-template name="x_equals_y">
                                     <xsl:with-param name="icid">EBML-ELEM-START</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="x">
-                                        <xsl:call-template name="DecToVINT">
-                                            <xsl:with-param name="dec" select="//mt:data[@offset='0'][1]"/>
-                                        </xsl:call-template>
-                                    </xsl:with-param>
-                                    <xsl:with-param name="x_name">First Element ID</xsl:with-param>
-                                    <xsl:with-param name="y">0x1A45DFA3</xsl:with-param>
-                                    <xsl:with-param name="y_name">Expected First Element ID</xsl:with-param>
+                                    <xsl:with-param name="x" select="mt:MediaTrace/mt:block[@offset='0'][1]/@name"/>
+                                    <xsl:with-param name="x_name">First Element Name</xsl:with-param>
+                                    <xsl:with-param name="y">EBML</xsl:with-param>
+                                    <xsl:with-param name="y_name">Expected First Element</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEM-START -->
                                 <!-- EBML-VER-COH -->
@@ -453,53 +443,46 @@
         <xsl:param name="version"/>
         <xsl:param name="x"/>
         <xsl:variable name="GlobalElements">
-            <xsl:for-each select="$lookupschema//element[@global='1']">
-                <xsl:value-of select="@id"/>
-                <xsl:text> </xsl:text>
-            </xsl:for-each>
+            <xsl:text>Void CRC-32</xsl:text>
         </xsl:variable>
         <xsl:variable name="ElementListWIthParents">
             <xsl:for-each select="$lookupschema//element">
-                <xsl:value-of select="@id"/>
+                <xsl:value-of select="@name"/>
                 <xsl:text>,</xsl:text>
-                <xsl:value-of select="../@id"/>
+                <xsl:value-of select="../@name"/>
                 <xsl:text>.</xsl:text>
             </xsl:for-each>
         </xsl:variable>
         <xsl:variable name="tests">
             <xsl:for-each select="$x">
-                <xsl:variable name="xVINT">
-                    <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                    </xsl:call-template>
+                <xsl:variable name="ElementName">
+                    <xsl:value-of select="@name"/>
                 </xsl:variable>
-                <xsl:variable name="parentVINT">
-                    <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec" select="../mt:block[@name='Header']/mt:data[@name='Name']"/>
-                    </xsl:call-template>
+                <xsl:variable name="ParentElement">
+                    <xsl:value-of select="../@name"/>
                 </xsl:variable>
-                <xsl:variable name="allowedParentVINT">
-                    <xsl:value-of select="substring-before(substring-after($ElementListWIthParents,concat($xVINT,',')),'.')"/>
+                <xsl:variable name="allowedParentElement">
+                    <xsl:value-of select="substring-before(substring-after($ElementListWIthParents,concat('.',$ElementName,',')),'.')"/>
                 </xsl:variable>
                 <xsl:variable name="values">
                     <xsl:call-template name="EBMLElementValue">
-                        <xsl:with-param name="ID_VINT" select="$xVINT"/>
+                        <xsl:with-param name="ID_VINT" select="$ElementName"/>
                     </xsl:call-template>
                     <value>
                         <xsl:attribute name="name">
                             <xsl:text>Allowed EBML Parent Element</xsl:text>
                         </xsl:attribute>
-                        <xsl:value-of select="$allowedParentVINT"/>
+                        <xsl:value-of select="$allowedParentElement"/>
                     </value>
                     <xsl:call-template name="EBMLElementValue">
-                        <xsl:with-param name="ID_VINT" select="$parentVINT"/>
+                        <xsl:with-param name="ID_VINT" select="$ParentElement"/>
                         <xsl:with-param name="offset" select="../@offset"/>
                         <xsl:with-param name="name">EBML Parent Element</xsl:with-param>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:if test="not(contains($GlobalElements,$xVINT))">
+                <xsl:if test="not(contains($GlobalElements,$ElementName))">
                     <xsl:choose>
-                        <xsl:when test="$allowedParentVINT=$parentVINT">
+                        <xsl:when test="$allowedParentElement=$ParentElement">
                             <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                 <test>
                                     <xsl:attribute name="outcome">pass</xsl:attribute>
@@ -511,9 +494,9 @@
                             <test>
                                 <xsl:attribute name="outcome">fail</xsl:attribute>
                                 <xsl:attribute name="reason">
-                                    <xsl:value-of select="$parentVINT"/>
+                                    <xsl:value-of select="$ParentElement"/>
                                     <xsl:text> is not a valid parent element of </xsl:text>
-                                    <xsl:value-of select="$xVINT"/>
+                                    <xsl:value-of select="$ElementName"/>
                                 </xsl:attribute>
                                 <xsl:copy-of select="$values"/>
                             </test>
