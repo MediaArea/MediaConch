@@ -283,7 +283,7 @@
                                 <xsl:call-template name="child_data_info_is_ok">
                                     <xsl:with-param name="icid">EBML-CRC-VALID</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="element" select="$CRC_Elements"/>
+                                    <xsl:with-param name="element" select="$CRC_Elements/mt:data[@name='Value']"/>
                                 </xsl:call-template>
                                 <!-- /EBML-CRC-VALID -->
                                 <!-- EBML-CRC-LENGTH -->
@@ -949,17 +949,19 @@
                         <xsl:value-of select="../@name"/>
                     </xsl:variable>
                     <xsl:variable name="info">
-                        <xsl:value-of select="mt:data[@name='Value']/@info"/>
+                        <xsl:value-of select="@info"/>
                     </xsl:variable>
                     <xsl:variable name="CRCValue">
                         <xsl:call-template name="DecToVINT">
-                            <xsl:with-param name="dec" select="mt:data[@name='Value']"/>
+                            <xsl:with-param name="dec" select="."/>
                         </xsl:call-template>
                     </xsl:variable>
                     <xsl:variable name="values">
-                        <xsl:call-template name="EBMLElementValue">
-                            <xsl:with-param name="ElementName" select="$ElementName"/>
-                        </xsl:call-template>
+                        <xsl:for-each select="parent::mt:block">
+                            <xsl:call-template name="EBMLElementValue">
+                                <xsl:with-param name="ElementName" select="$ElementName"/>
+                            </xsl:call-template>
+                        </xsl:for-each>
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$info != 'NOK'">
@@ -974,7 +976,7 @@
                             <test>
                                 <xsl:attribute name="outcome">fail</xsl:attribute>
                                 <xsl:attribute name="reason">
-                                    <xsl:text>A CRC-32 Element contains an md5 that gives a status of </xsl:text>
+                                    <xsl:text>A crc evaluation gives a result of </xsl:text>
                                     <xsl:value-of select="$info"/>
                                     <xsl:text>.</xsl:text>
                                 </xsl:attribute>
