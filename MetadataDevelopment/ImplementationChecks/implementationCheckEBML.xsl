@@ -1357,6 +1357,20 @@
                 </xsl:call-template>
             </xsl:attribute>
             <xsl:choose>
+                <xsl:when test="@name='SeekID'">
+                    <xsl:variable name="ElementHex">
+                        <xsl:call-template name="DecToVINT">
+                            <xsl:with-param name="dec" select="format-number(mt:data,'#')"/>
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:variable name="lookupElementNameFromID">
+                        <xsl:value-of select="substring-before(substring-after($ElementListWIthIDs,concat('.',$ElementHex,',')),'.')"/>
+                    </xsl:variable>
+                    <xsl:value-of select="$ElementHex"/>
+                    <xsl:text> (</xsl:text>
+                    <xsl:value-of select="$lookupElementNameFromID"/>
+                    <xsl:text>)</xsl:text>
+                </xsl:when>
                 <xsl:when test="@name='CRC-32'">
                     <xsl:text>0x</xsl:text>
                     <xsl:call-template name="DecToHex">
