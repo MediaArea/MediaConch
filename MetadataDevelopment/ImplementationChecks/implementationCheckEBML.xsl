@@ -372,6 +372,14 @@
                                     <xsl:with-param name="x" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='Cluster']/mt:block[@name='SimpleBlock']/mt:block[@parser='FFV1']/mt:data[@name='colorspace_type']"/>
                                     <xsl:with-param name="list">0 1</xsl:with-param>
                                 </xsl:call-template>
+                                
+                                <!-- FFV1-SLICE-CRC-VALID -->
+                                <xsl:call-template name="child_data_info_is_ok">
+                                    <xsl:with-param name="icid">FFV1-SLICE-CRC-VALID</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="element" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='Cluster']/mt:block[@name='SimpleBlock']/mt:block[@parser='FFV1']/mt:block[@name='Slice']/mt:data[@name='crc_parity']"/>
+                                </xsl:call-template>
+                                <!-- /FFV1-SLICE-CRC-VALID -->
 
                             </xsl:when>
                             <xsl:otherwise>
@@ -1353,11 +1361,13 @@
                     <xsl:text>]</xsl:text>
                 </xsl:for-each>
             </xsl:attribute>
-            <xsl:attribute name="id">
-                <xsl:call-template name="DecToVINT">
-                    <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
-                </xsl:call-template>
-            </xsl:attribute>
+            <xsl:if test="@name!='Slice'">
+                <xsl:attribute name="id">
+                    <xsl:call-template name="DecToVINT">
+                        <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
+                    </xsl:call-template>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:choose>
                 <xsl:when test="@name='SeekID'">
                     <xsl:variable name="ElementHex">
