@@ -7,6 +7,14 @@
     <xsl:variable name="minimum_verbosity_for_pass">4</xsl:variable>
     <xsl:variable name="lookupschema" select="document($schema)"/>
     <xsl:key name="elementNameViaSchema" match="element" use="@id"/>
+    <xsl:variable name="ElementListWIthIDs">
+        <xsl:for-each select="$lookupschema//element">
+            <xsl:value-of select="@id"/>
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="@name"/>
+            <xsl:text>.</xsl:text>
+        </xsl:for-each>
+    </xsl:variable>
     <xsl:template match="ma:MediaArea">
         <MediaConch>
             <xsl:attribute name="version">
@@ -260,7 +268,7 @@
                                 <xsl:call-template name="seek_element_resolves">
                                     <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="seek_element" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='SeekHead']/mt:block[@name='Seek']"/>
+                                    <xsl:with-param name="seek_element" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='SeekHead']/mt:block[@name='Seek']/mt:block[@name='SeekID']"/>
                                 </xsl:call-template>
                                 <!-- /MKV-SEEK-RESOLVE -->
                                 <xsl:variable name="CRC_Elements" select="//mt:block[@name='CRC-32']"/>
@@ -850,7 +858,7 @@
         <xsl:param name="version"/>
         <xsl:param name="seek_element"/>
         <xsl:variable name="FirstSegmentValueOffset">
-            <xsl:value-of select="//mt:block[mt:block[@name='Header']/mt:data[@name='Name']='139690087']/@offset + //mt:block[mt:block[@name='Header']/mt:data[@name='Name']='139690087']/mt:block[@name='Header']/@size"/>
+            <xsl:value-of select="mt:MediaTrace/mt:block[@name='Segment']/@offset + mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='Header']/@size"/>
         </xsl:variable>
         <xsl:variable name="context">
             <context>
@@ -860,45 +868,47 @@
                 <xsl:value-of select="$FirstSegmentValueOffset"/>
             </context>
         </xsl:variable>
-        <xsl:variable name="tests">
-            <xsl:for-each select="$seek_element">
-                <xsl:variable name="SeekID">
-                    <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec" select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5035']/mt:data[@name='Data']"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="SeekPosition" select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5036']/mt:data[@name='Data']"/>
-                <xsl:variable name="SeekPositionFileOffset" select="$FirstSegmentValueOffset + $SeekPosition"/>
-                <xsl:variable name="ElementIDatOffset">
-                    <xsl:call-template name="DecToVINT">
-                        <xsl:with-param name="dec" select="//mt:block[@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="values">
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5035']/@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>SeekID</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$SeekID"/>
-                    </value>
-                    <value>
-                        <xsl:attribute name="offset">
-                            <xsl:value-of select="mt:block[mt:block[@name='Header']/mt:data[@name='Name']='5036']/@offset"/>
-                        </xsl:attribute>
-                        <xsl:attribute name="name">
-                            <xsl:text>SeekPosition</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$SeekPosition"/>
-                    </value>
-                </xsl:variable>
+        <xsl:call-template name="check">
+            <xsl:with-param name="icid" select="$icid"/>
+            <xsl:with-param name="version" select="$version"/>
+            <xsl:with-param name="context" select="$context"/>
+            <xsl:with-param name="test">
+                <xsl:for-each select="$seek_element">
+                    <xsl:variable name="SeekID">
+                        <xsl:call-template name="DecToVINT">
+                            <xsl:with-param name="dec" select="mt:data[@name='Data']"/>
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:variable name="lookupElementNameFromID">
+                        <xsl:value-of select="substring-before(substring-after($ElementListWIthIDs,concat('.',$SeekID,',')),'.')"/>
+                    </xsl:variable>
+                    <xsl:variable name="SeekPosition" select="../mt:block[@name='SeekPosition']/mt:data[@name='Data']"/>
+                    <xsl:variable name="SeekPositionFileOffset" select="$FirstSegmentValueOffset + $SeekPosition"/>
+                    <xsl:variable name="ElementIDatOffset">
+                        <xsl:call-template name="DecToVINT">
+                            <xsl:with-param name="dec" select="//mt:block[@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:variable name="values">
+                        <xsl:call-template name="EBMLElementValue">
+                            <xsl:with-param name="ElementName" select="$SeekID"/>
+                        </xsl:call-template>
+                        <xsl:for-each select="../mt:block[@name='SeekPosition']">
+                            <xsl:call-template name="EBMLElementValue">
+                                <xsl:with-param name="ElementName" select="../mt:block[@name='SeekPosition']"/>
+                            </xsl:call-template>
+                        </xsl:for-each>
+                    </xsl:variable>
                     <xsl:choose>
-                        <xsl:when test="$SeekID = $ElementIDatOffset">
+                        <xsl:when test="$SeekID = $ElementIDatOffset or $SeekID = '0x1F43B675'">
                             <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                 <test>
                                     <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:attribute name="reason">
+                                        <xsl:text>The Seek ID references an Element (</xsl:text>
+                                        <xsl:value-of select="$SeekID"/>
+                                        <xsl:text>) which is stored at that location. Note: this test currently does not test Seek references to Clusters.</xsl:text>
+                                    </xsl:attribute>
                                     <xsl:copy-of select="$values"/>
                                 </test>
                             </xsl:if>
@@ -919,16 +929,9 @@
                             </test>
                         </xsl:otherwise>
                     </xsl:choose>
-            </xsl:for-each>
-        </xsl:variable>
-        <xsl:if test="$tests != ''">
-            <xsl:call-template name="check">
-                <xsl:with-param name="icid" select="$icid"/>
-                <xsl:with-param name="version" select="$version"/>
-                <xsl:with-param name="context" select="$context"/>
-                <xsl:with-param name="test" select="$tests"/>
-            </xsl:call-template>
-        </xsl:if>
+                </xsl:for-each>
+            </xsl:with-param>
+        </xsl:call-template>
     </xsl:template>
     <xsl:template name="child_data_info_is_ok">
         <xsl:param name="icid"/>
