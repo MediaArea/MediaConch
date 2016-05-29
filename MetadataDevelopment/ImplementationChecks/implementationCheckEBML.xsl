@@ -383,19 +383,6 @@
 
                             </xsl:when>
                             <xsl:otherwise>
-                                <check icid="IS_FFV1" version="1">
-                                    <context>
-                                        <xsl:attribute name="name">
-                                            <xsl:text>mi:Format</xsl:text>
-                                        </xsl:attribute>
-                                        <xsl:value-of select="//mi:Format"/>
-                                    </context>
-                                    <test outcome="n/a">
-                                        <value name="reason">
-                                            <xsl:text>Not recognized to contain an FFV1 encoding</xsl:text>
-                                        </value>
-                                    </test>
-                                </check>
                                 <check>
                                     <xsl:attribute name="icid">
                                         <xsl:text>IS_FFV1</xsl:text>
