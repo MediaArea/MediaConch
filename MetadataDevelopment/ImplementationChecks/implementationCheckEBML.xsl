@@ -1349,7 +1349,7 @@
                 </xsl:for-each>
             </xsl:attribute>
             <xsl:if test="@name!='Slice'">
-                <xsl:attribute name="id">
+                <xsl:attribute name="formatid">
                     <xsl:call-template name="DecToVINT">
                         <xsl:with-param name="dec" select="mt:block[@name='Header']/mt:data[@name='Name']"/>
                     </xsl:call-template>
