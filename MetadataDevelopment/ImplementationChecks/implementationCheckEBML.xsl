@@ -1371,6 +1371,11 @@
                         <xsl:with-param name="dec" select="format-number(mt:data,'#')"/>
                     </xsl:call-template>
                 </xsl:when>
+                <xsl:when test="@name='Block'">
+                    <xsl:text>[</xsl:text>
+                    <xsl:value-of select="@size"/>
+                    <xsl:text> bytes]</xsl:text>
+                </xsl:when>
                 <xsl:when test="@name='SegmentUID'">
                     <xsl:text>[</xsl:text>
                     <xsl:value-of select="@size"/>
