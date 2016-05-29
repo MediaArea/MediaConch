@@ -358,21 +358,18 @@
                         <name>MediaConch FFV1 Implementation Checker</name>
                         <xsl:choose>
                             <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
-                                
                                 <xsl:call-template name="data_is_in_list">
                                     <xsl:with-param name="icid">FFV1-VALID-CODERTYPE-VALUE</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='Cluster']/mt:block[@name='SimpleBlock']/mt:block[@parser='FFV1']/mt:data[@name='coder_type']"/>
                                     <xsl:with-param name="list">0 1 2</xsl:with-param>
                                 </xsl:call-template>
-                                
                                 <xsl:call-template name="data_is_in_list">
                                     <xsl:with-param name="icid">FFV1-VALID-COLORSPACETYPE-VALUE2</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="x" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='Cluster']/mt:block[@name='SimpleBlock']/mt:block[@parser='FFV1']/mt:data[@name='colorspace_type']"/>
                                     <xsl:with-param name="list">0 1</xsl:with-param>
                                 </xsl:call-template>
-                                
                                 <!-- FFV1-SLICE-CRC-VALID -->
                                 <xsl:call-template name="child_data_info_is_ok">
                                     <xsl:with-param name="icid">FFV1-SLICE-CRC-VALID</xsl:with-param>
@@ -1253,11 +1250,9 @@
                         <xsl:value-of select="@name"/>
                     </xsl:variable>
                     <xsl:variable name="values">
-                        <value>
-                            <xsl:call-template name="EBMLElementValue">
-                                <xsl:with-param name="ElementName" select="$ElementName"/>
-                            </xsl:call-template>
-                        </value>
+                        <xsl:call-template name="EBMLElementValue">
+                            <xsl:with-param name="ElementName" select="$ElementName"/>
+                        </xsl:call-template>
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="string-length(translate(mt:data,$decimal,'')) = 0">
@@ -1298,7 +1293,7 @@
                         <xsl:with-param name="replace" select="$replace"/>
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:value-of 
+                <xsl:value-of
                     select="
                         concat(
                             substring-before($text, $search)
@@ -1376,11 +1371,11 @@
                         <xsl:with-param name="dec" select="format-number(mt:data,'#')"/>
                     </xsl:call-template>
                 </xsl:when>
-                 <xsl:when test="@name='SegmentUID'">
-                     <xsl:text>[</xsl:text>
-                     <xsl:value-of select="@size"/>
-                     <xsl:text> bytes]</xsl:text>
-                 </xsl:when>
+                <xsl:when test="@name='SegmentUID'">
+                    <xsl:text>[</xsl:text>
+                    <xsl:value-of select="@size"/>
+                    <xsl:text> bytes]</xsl:text>
+                </xsl:when>
                 <xsl:when test="mt:data">
                     <xsl:value-of select="mt:data"/>
                 </xsl:when>
