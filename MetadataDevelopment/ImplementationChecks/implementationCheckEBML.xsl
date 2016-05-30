@@ -18,7 +18,7 @@
     <xsl:template match="ma:MediaArea">
         <MediaConch>
             <xsl:attribute name="version">
-                <xsl:text>0.1</xsl:text>
+                <xsl:text>0.2</xsl:text>
             </xsl:attribute>
             <xsl:for-each select="ma:media">
                 <media>
