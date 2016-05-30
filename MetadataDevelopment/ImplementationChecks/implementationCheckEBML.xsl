@@ -137,6 +137,13 @@
                                     <xsl:with-param name="element" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-NONMULTIPLES -->
+                                <!-- EBML-ELEMENT-SIZE-CHECK -->
+                                <xsl:call-template name="element_size_check">
+                                    <xsl:with-param name="icid">EBML-ELEMENT-SIZE-CHECK</xsl:with-param>
+                                    <xsl:with-param name="version">1</xsl:with-param>
+                                    <xsl:with-param name="element" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
+                                </xsl:call-template>
+                                <!-- /EBML-ELEMENT-SIZE-CHECK -->
                                 <!-- EBML-ELEMENT-CONTAINS-MANDATES -->
                                 <xsl:call-template name="element_contains_mandates">
                                     <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
@@ -834,6 +841,55 @@
                                     <xsl:text>The Element with id </xsl:text>
                                     <xsl:value-of select="$ElementName"/>
                                     <xsl:text> is an invalid size of </xsl:text>
+                                    <xsl:value-of select="$ElementDataSize"/>
+                                    <xsl:text> bytes.</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template name="element_size_check">
+        <xsl:param name="icid"/>
+        <xsl:param name="version"/>
+        <xsl:param name="element"/>
+        <xsl:call-template name="check">
+            <xsl:with-param name="icid" select="$icid"/>
+            <xsl:with-param name="version" select="$version"/>
+            <xsl:with-param name="test">
+                <xsl:for-each select="$element">
+                    <xsl:variable name="ElementName">
+                        <xsl:value-of select="@name"/>
+                    </xsl:variable>
+                    <xsl:variable name="ReportedElementSize" select="@size"/>
+                    <xsl:variable name="ElementHeaderSize" select="mt:block[@name='Header']/@size"/>
+                    <xsl:variable name="ElementDataSize" select="mt:block[@name='Header']/mt:data[@name='Size']"/>
+                    <xsl:variable name="values">
+                        <xsl:call-template name="EBMLElementValue">
+                            <xsl:with-param name="ElementName" select="$ElementName"/>
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:choose>
+                        <xsl:when test="$ElementHeaderSize + $ElementDataSize = $ReportedElementSize">
+                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <test>
+                                <xsl:attribute name="outcome">fail</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The </xsl:text>
+                                    <xsl:value-of select="$ElementName"/>
+                                    <xsl:text> Element reports a size of </xsl:text>
+                                    <xsl:value-of select="$ReportedElementSize"/>
+                                    <xsl:text> bytes but it appears to be </xsl:text>
                                     <xsl:value-of select="$ElementDataSize"/>
                                     <xsl:text> bytes.</xsl:text>
                                 </xsl:attribute>
