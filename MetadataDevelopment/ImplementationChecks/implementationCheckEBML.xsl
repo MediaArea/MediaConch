@@ -472,8 +472,11 @@
                                         <xsl:value-of select="$ParentElement"/>
                                         <xsl:text> is not a valid Parent Element of </xsl:text>
                                         <xsl:value-of select="$ElementName"/>
-                                        <xsl:text>. The valid Parent Element is </xsl:text>
-                                        <xsl:value-of select="$allowedParentElement"/>
+                                        <xsl:if test="string-length($allowedParentElement)>0">
+                                            <a><xsl:value-of select="$allowedParentElement"/></a>
+                                            <xsl:text>. The valid Parent Element is </xsl:text>
+                                            <xsl:value-of select="$allowedParentElement"/>
+                                        </xsl:if>
                                         <xsl:text>.</xsl:text>
                                     </xsl:attribute>
                                     <xsl:copy-of select="$values"/>
