@@ -340,14 +340,22 @@
                                             <xsl:text>n/a</xsl:text>
                                         </xsl:attribute>
                                         <xsl:attribute name="reason">
-                                            <xsl:text>Not recognized as an EBML format but as </xsl:text>
-                                            <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
+                                            <xsl:text>Not recognized as an FFV1 format</xsl:text>
+                                            <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)>0">
+                                                <xsl:text> but as </xsl:text>
+                                                <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
+                                            </xsl:if>
                                         </xsl:attribute>
                                         <value>
                                             <xsl:attribute name="name">
                                                 <xsl:text>mi:Format</xsl:text>
                                             </xsl:attribute>
-                                            <xsl:value-of select="//mi:Format"/>
+                                            <xsl:choose>
+                                                <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)>0">
+                                                    <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>Undetermined</xsl:otherwise>
+                                            </xsl:choose>
                                         </value>
                                     </test>
                                 </check>
@@ -392,14 +400,22 @@
                                             <xsl:text>n/a</xsl:text>
                                         </xsl:attribute>
                                         <xsl:attribute name="reason">
-                                            <xsl:text>Not recognized as an FFV1 format but as </xsl:text>
-                                            <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
+                                            <xsl:text>Not recognized as an FFV1 format</xsl:text>
+                                            <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)>0">
+                                                <xsl:text> but as </xsl:text>
+                                                <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
+                                            </xsl:if>
                                         </xsl:attribute>
                                         <value>
                                             <xsl:attribute name="name">
                                                 <xsl:text>mi:Format</xsl:text>
                                             </xsl:attribute>
-                                            <xsl:value-of select="//mi:Format"/>
+                                            <xsl:choose>
+                                                <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)>0">
+                                                    <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
+                                                </xsl:when>
+                                                <xsl:otherwise>Undetermined</xsl:otherwise>
+                                            </xsl:choose>
                                         </value>
                                     </test>
                                 </check>
