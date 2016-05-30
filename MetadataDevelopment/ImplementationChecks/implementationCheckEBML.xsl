@@ -891,8 +891,10 @@
                             </xsl:call-template>
                         </xsl:for-each>
                     </xsl:variable>
+                    <!-- $ElementIDatOffset = '0x80' means that there is no block in mediatrace at that offset. If that and the id is Cluster, SeekHead, or Cues, then skip the test. Later this can be expanded if the mediatrace coverage is higher. -->
+                    <xsl:if test="not ($ElementIDatOffset = '0x80' and ($SeekID = '0x1F43B675' or $SeekID = '0x114D9B74' or $SeekID = '0x1C53BB6B'))">
                     <xsl:choose>
-                        <xsl:when test="$SeekID = $ElementIDatOffset or $SeekID = '0x1F43B675'">
+                        <xsl:when test="$SeekID = $ElementIDatOffset">
                             <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                 <test>
                                     <xsl:attribute name="outcome">pass</xsl:attribute>
@@ -921,6 +923,7 @@
                             </test>
                         </xsl:otherwise>
                     </xsl:choose>
+                    </xsl:if>
                 </xsl:for-each>
             </xsl:with-param>
         </xsl:call-template>
