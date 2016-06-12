@@ -25,8 +25,9 @@
                     <xsl:attribute name="ref">
                         <xsl:value-of select="./@ref"/>
                     </xsl:attribute>
-                    <implementationChecks>
-                        <name>MediaConch EBML Implementation Checker</name>
+                    <xsl:call-template name="implementationChecks">
+                        <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
+                        <xsl:with-param name="checks">
                         <xsl:choose>
                             <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
                                 <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
@@ -361,9 +362,11 @@
                                 </check>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </implementationChecks>
-                    <implementationChecks>
-                        <name>MediaConch FFV1 Implementation Checker</name>
+                    </xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="implementationChecks">
+                    <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
+                    <xsl:with-param name="checks">
                         <xsl:choose>
                             <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
                                 <xsl:call-template name="data_is_in_list">
@@ -421,7 +424,8 @@
                                 </check>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </implementationChecks>
+                        </xsl:with-param>
+                    </xsl:call-template>
                 </media>
             </xsl:for-each>
         </MediaConch>
@@ -1413,6 +1417,14 @@
                 </xsl:otherwise>
             </xsl:choose>
         </value>
+    </xsl:template>
+    <xsl:template name="implementationChecks">
+        <xsl:param name="name"/>
+        <xsl:param name="checks"/>
+        <implementationChecks>
+            <name><xsl:value-of select="$name"/></name>
+            <xsl:copy-of select="$checks"/>
+        </implementationChecks>
     </xsl:template>
     <xsl:template name="check">
         <xsl:param name="icid"/>
