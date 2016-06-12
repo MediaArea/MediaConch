@@ -1422,6 +1422,12 @@
         <xsl:param name="name"/>
         <xsl:param name="checks"/>
         <implementationChecks>
+            <xsl:attribute name="checks_run">
+                <xsl:value-of select="count(exsl:node-set($checks)/mc:check)"/>
+            </xsl:attribute>
+            <xsl:attribute name="fail_count">
+                <xsl:value-of select="count(exsl:node-set($checks)/mc:check[mc:test[@outcome='fail']])"/>
+            </xsl:attribute>
             <name><xsl:value-of select="$name"/></name>
             <xsl:copy-of select="$checks"/>
         </implementationChecks>
