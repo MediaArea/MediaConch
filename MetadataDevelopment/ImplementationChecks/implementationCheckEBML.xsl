@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="xsi ma mi mt str">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="xsi ma mc mi mt exsl str">
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
     <xsl:template match="mt:MediaTrace/mt:block">
         <xsl:apply-templates select="*"/>
@@ -1426,6 +1426,15 @@
                 </xsl:attribute>
                 <xsl:attribute name="version">
                     <xsl:value-of select="$version"/>
+                </xsl:attribute>
+                <xsl:attribute name="tests_run">
+                    <xsl:value-of select="count(exsl:node-set($test)/mc:test)"/>
+                </xsl:attribute>
+                <xsl:attribute name="fail_count">
+                    <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='fail'])"/>
+                </xsl:attribute>
+                <xsl:attribute name="pass_count">
+                    <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='pass'])"/>
                 </xsl:attribute>
                 <xsl:copy-of select="$context"/>
                 <xsl:copy-of select="$test"/>
