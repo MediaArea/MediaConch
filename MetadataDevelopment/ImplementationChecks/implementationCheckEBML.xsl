@@ -476,10 +476,10 @@
                     <xsl:if test="not(contains($GlobalElements,$ElementName))">
                         <xsl:choose>
                             <xsl:when test="$allowedParentElement=$ParentElement or ( contains($RecursiveElements,concat(',',$ElementName,'.')) and $ElementName = $ParentElement )">
-                                    <test>
-                                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                                        <xsl:copy-of select="$values"/>
-                                    </test>
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
                             </xsl:when>
                             <xsl:otherwise>
                                 <test>
@@ -540,10 +540,10 @@
                     <xsl:if test="contains($NonRepeatingElements,concat(' ',$ElementName,' '))">
                         <xsl:choose>
                             <xsl:when test="not(contains(concat(' ',substring-after($SiblingNames,concat(' ',$ElementName,' '))),concat(' ',$ElementName,' ')))">
-                                    <test>
-                                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                                        <xsl:copy-of select="$values"/>
-                                    </test>
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
                             </xsl:when>
                             <xsl:otherwise>
                                 <test>
@@ -614,15 +614,15 @@
                         <xsl:for-each select="str:tokenize($mandatoryChildrenVINT)">
                             <xsl:choose>
                                 <xsl:when test="contains($CurrentElementChildren,.)">
-                                        <test>
-                                            <xsl:attribute name="outcome">pass</xsl:attribute>
-                                            <xsl:attribute name="reason">
-                                                <xsl:value-of select="."/>
-                                                <xsl:text> is present within </xsl:text>
-                                                <xsl:value-of select="$ElementName"/>
-                                            </xsl:attribute>
-                                            <xsl:copy-of select="$values"/>
-                                        </test>
+                                    <test>
+                                        <xsl:attribute name="outcome">pass</xsl:attribute>
+                                        <xsl:attribute name="reason">
+                                            <xsl:value-of select="."/>
+                                            <xsl:text> is present within </xsl:text>
+                                            <xsl:value-of select="$ElementName"/>
+                                        </xsl:attribute>
+                                        <xsl:copy-of select="$values"/>
+                                    </test>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <test>
@@ -675,10 +675,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$ElementValue &lt;= $x">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -730,10 +730,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$x = $ElementName">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -775,10 +775,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="count(preceding-sibling::mt:block[mt:block[@name='Header']]) = '0'">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -829,10 +829,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$x = $ElementDataSize">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -902,15 +902,15 @@
                     <xsl:if test="not ($ElementIDatOffset = '0x80')">
                     <xsl:choose>
                         <xsl:when test="$SeekID = $ElementIDatOffset">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:attribute name="reason">
-                                        <xsl:text>The Seek ID references an Element (</xsl:text>
-                                        <xsl:value-of select="$SeekID"/>
-                                        <xsl:text>) which is stored at that location. Note: this test currently does not test Seek references to Clusters.</xsl:text>
-                                    </xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The Seek ID references an Element (</xsl:text>
+                                    <xsl:value-of select="$SeekID"/>
+                                    <xsl:text>) which is stored at that location. Note: this test currently does not test Seek references to Clusters.</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -965,10 +965,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$info != 'NOK'">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -1417,47 +1417,47 @@
         <xsl:choose>
             <xsl:when test="not (2 >= $verbosity and count(exsl:node-set($test)/mc:test[@outcome='fail']) = 0)">
                 <!-- verbosity <= 2: only export checks with a positive fail count -->
-        <xsl:if test="$test!=''">
-            <check>
-                <xsl:attribute name="icid">
-                    <xsl:value-of select="$icid"/>
-                </xsl:attribute>
-                <xsl:attribute name="version">
-                    <xsl:value-of select="$version"/>
-                </xsl:attribute>
-                <xsl:attribute name="tests_run">
-                    <xsl:value-of select="count(exsl:node-set($test)/mc:test)"/>
-                </xsl:attribute>
-                <xsl:attribute name="fail_count">
-                    <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='fail'])"/>
-                </xsl:attribute>
-                <xsl:attribute name="pass_count">
-                    <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='pass'])"/>
-                </xsl:attribute>
-                <xsl:copy-of select="$context"/>
-                <xsl:choose>
-                    <xsl:when test="$verbosity > 4">
-                        <!-- verbosity > 4: export all tests-->
-                        <xsl:copy-of select="exsl:node-set($test)/mc:test"/>
-                    </xsl:when>
-                    <xsl:when test="$verbosity = 4">
-                        <!-- verbosity = 4: export all failed tests or if none than the first pass -->
+                <xsl:if test="$test!=''">
+                    <check>
+                        <xsl:attribute name="icid">
+                            <xsl:value-of select="$icid"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="version">
+                            <xsl:value-of select="$version"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="tests_run">
+                            <xsl:value-of select="count(exsl:node-set($test)/mc:test)"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="fail_count">
+                            <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='fail'])"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="pass_count">
+                            <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='pass'])"/>
+                        </xsl:attribute>
+                        <xsl:copy-of select="$context"/>
                         <xsl:choose>
-                            <xsl:when test="exsl:node-set($test)/mc:test[@outcome='fail']">
+                            <xsl:when test="$verbosity > 4">
+                                <!-- verbosity > 4: export all tests-->
+                                <xsl:copy-of select="exsl:node-set($test)/mc:test"/>
+                            </xsl:when>
+                            <xsl:when test="$verbosity = 4">
+                                <!-- verbosity = 4: export all failed tests or if none than the first pass -->
+                                <xsl:choose>
+                                    <xsl:when test="exsl:node-set($test)/mc:test[@outcome='fail']">
+                                        <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:copy-of select="exsl:node-set($test)/mc:test[1]"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:when>
+                            <xsl:when test="$verbosity = 3">
+                                <!-- verbosity = 3: export all failed tests -->
                                 <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
                             </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:copy-of select="exsl:node-set($test)/mc:test[1]"/>
-                            </xsl:otherwise>
                         </xsl:choose>
-                    </xsl:when>
-                    <xsl:when test="$verbosity = 3">
-                        <!-- verbosity = 3: export all failed tests -->
-                        <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
-                    </xsl:when>
-                </xsl:choose>
-            </check>
-        </xsl:if>
+                    </check>
+                </xsl:if>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
