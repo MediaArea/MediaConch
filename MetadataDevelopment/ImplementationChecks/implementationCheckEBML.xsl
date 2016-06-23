@@ -4,7 +4,6 @@
     <xsl:template match="mt:MediaTrace/mt:block">
         <xsl:apply-templates select="*"/>
     </xsl:template>
-    <xsl:variable name="minimum_verbosity_for_pass">4</xsl:variable>
     <xsl:variable name="lookupschema" select="document($schema)"/>
     <xsl:key name="elementNameViaSchema" match="element" use="@id"/>
     <xsl:variable name="ElementListWIthIDs">
@@ -33,7 +32,7 @@
                         <xsl:with-param name="checks">
                         <xsl:choose>
                             <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
-                                <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <xsl:if test="$verbosity > 4">
                                     <check icid="IS_EBML" version="1">
                                         <context>
                                             <xsl:attribute name="name">
@@ -1434,7 +1433,7 @@
                 </xsl:attribute>
                 <xsl:copy-of select="$context"/>
                 <xsl:choose>
-                    <xsl:when test="$verbosity > $minimum_verbosity_for_pass">
+                    <xsl:when test="$verbosity > 4">
                         <xsl:copy-of select="exsl:node-set($test)/mc:test"/>
                     </xsl:when>
                     <xsl:when test="$verbosity = 3">
