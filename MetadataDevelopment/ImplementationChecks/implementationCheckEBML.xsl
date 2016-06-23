@@ -1416,6 +1416,7 @@
         <xsl:param name="test"/>
         <xsl:choose>
             <xsl:when test="not (2 >= $verbosity and count(exsl:node-set($test)/mc:test[@outcome='fail']) = 0)">
+                <!-- verbosity <= 2: only export checks with a positive fail count -->
         <xsl:if test="$test!=''">
             <check>
                 <xsl:attribute name="icid">
@@ -1436,9 +1437,11 @@
                 <xsl:copy-of select="$context"/>
                 <xsl:choose>
                     <xsl:when test="$verbosity > 4">
+                        <!-- verbosity > 4: export all tests-->
                         <xsl:copy-of select="exsl:node-set($test)/mc:test"/>
                     </xsl:when>
                     <xsl:when test="$verbosity = 4">
+                        <!-- verbosity = 4: export all failed tests or if none than the first pass -->
                         <xsl:choose>
                             <xsl:when test="exsl:node-set($test)/mc:test[@outcome='fail']">
                                 <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
@@ -1449,6 +1452,7 @@
                         </xsl:choose>
                     </xsl:when>
                     <xsl:when test="$verbosity = 3">
+                        <!-- verbosity = 3: export all failed tests -->
                         <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
                     </xsl:when>
                 </xsl:choose>
