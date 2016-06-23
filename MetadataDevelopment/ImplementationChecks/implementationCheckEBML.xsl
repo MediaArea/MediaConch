@@ -1414,6 +1414,8 @@
         <xsl:param name="version"/>
         <xsl:param name="context"/>
         <xsl:param name="test"/>
+        <xsl:choose>
+            <xsl:when test="not (2 >= $verbosity and count(exsl:node-set($test)/mc:test[@outcome='fail']) = 0)">
         <xsl:if test="$test!=''">
             <check>
                 <xsl:attribute name="icid">
@@ -1436,11 +1438,23 @@
                     <xsl:when test="$verbosity > 4">
                         <xsl:copy-of select="exsl:node-set($test)/mc:test"/>
                     </xsl:when>
+                    <xsl:when test="$verbosity = 4">
+                        <xsl:choose>
+                            <xsl:when test="exsl:node-set($test)/mc:test[@outcome='fail']">
+                                <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:copy-of select="exsl:node-set($test)/mc:test[1]"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:when>
                     <xsl:when test="$verbosity = 3">
-                        <xsl:copy-of select="exsl:node-set($test)/mc:test[1]|exsl:node-set($test)/mc:test[@outcome='fail']"/>
+                        <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
                     </xsl:when>
                 </xsl:choose>
             </check>
         </xsl:if>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
