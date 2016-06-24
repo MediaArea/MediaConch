@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="xsi ma mi mt str">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://mediaarea.net/mediaconch" xmlns:mc="https://mediaarea.net/mediaconch" xmlns:ma="https://mediaarea.net/mediaarea" xmlns:mi="https://mediaarea.net/mediainfo" xmlns:mt="https://mediaarea.net/mediatrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:exsl="http://exslt.org/common" xmlns:str="http://exslt.org/strings" version="1.0" extension-element-prefixes="xsi ma mc mi mt exsl str">
     <xsl:output encoding="UTF-8" method="xml" version="1.0" indent="yes"/>
     <xsl:template match="mt:MediaTrace/mt:block">
         <xsl:apply-templates select="*"/>
     </xsl:template>
-    <xsl:variable name="minimum_verbosity_for_pass">4</xsl:variable>
     <xsl:variable name="lookupschema" select="document($schema)"/>
     <xsl:key name="elementNameViaSchema" match="element" use="@id"/>
     <xsl:variable name="ElementListWIthIDs">
@@ -20,16 +19,20 @@
             <xsl:attribute name="version">
                 <xsl:text>0.2</xsl:text>
             </xsl:attribute>
+            <xsl:attribute name="verbosity">
+                <xsl:value-of select="$verbosity"/>
+            </xsl:attribute>
             <xsl:for-each select="ma:media">
                 <media>
                     <xsl:attribute name="ref">
                         <xsl:value-of select="./@ref"/>
                     </xsl:attribute>
-                    <implementationChecks>
-                        <name>MediaConch EBML Implementation Checker</name>
+                    <xsl:call-template name="implementationChecks">
+                        <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
+                        <xsl:with-param name="checks">
                         <xsl:choose>
                             <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
-                                <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
+                                <xsl:if test="$verbosity > 4">
                                     <check icid="IS_EBML" version="1">
                                         <context>
                                             <xsl:attribute name="name">
@@ -197,7 +200,6 @@
                                                 </xsl:for-each>
                                             </xsl:when>
                                             <xsl:otherwise>
-                                                <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                                     <test>
                                                         <xsl:attribute name="outcome">pass</xsl:attribute>
                                                         <value>
@@ -207,7 +209,6 @@
                                                             <xsl:value-of select="$EBMLMaxIDLength"/>
                                                         </value>
                                                     </test>
-                                                </xsl:if>
                                             </xsl:otherwise>
                                         </xsl:choose>
                                     </xsl:with-param>
@@ -248,7 +249,6 @@
                                                 </xsl:for-each>
                                             </xsl:when>
                                             <xsl:otherwise>
-                                                <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                                     <test>
                                                         <xsl:attribute name="outcome">pass</xsl:attribute>
                                                         <value>
@@ -258,7 +258,6 @@
                                                             <xsl:value-of select="$EBMLMaxSizeLength"/>
                                                         </value>
                                                     </test>
-                                                </xsl:if>
                                             </xsl:otherwise>
                                         </xsl:choose>
                                     </xsl:with-param>
@@ -361,9 +360,11 @@
                                 </check>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </implementationChecks>
-                    <implementationChecks>
-                        <name>MediaConch FFV1 Implementation Checker</name>
+                    </xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="implementationChecks">
+                    <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
+                    <xsl:with-param name="checks">
                         <xsl:choose>
                             <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
                                 <xsl:call-template name="data_is_in_list">
@@ -421,7 +422,8 @@
                                 </check>
                             </xsl:otherwise>
                         </xsl:choose>
-                    </implementationChecks>
+                        </xsl:with-param>
+                    </xsl:call-template>
                 </media>
             </xsl:for-each>
         </MediaConch>
@@ -474,12 +476,10 @@
                     <xsl:if test="not(contains($GlobalElements,$ElementName))">
                         <xsl:choose>
                             <xsl:when test="$allowedParentElement=$ParentElement or ( contains($RecursiveElements,concat(',',$ElementName,'.')) and $ElementName = $ParentElement )">
-                                <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                    <test>
-                                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                                        <xsl:copy-of select="$values"/>
-                                    </test>
-                                </xsl:if>
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
                             </xsl:when>
                             <xsl:otherwise>
                                 <test>
@@ -540,12 +540,10 @@
                     <xsl:if test="contains($NonRepeatingElements,concat(' ',$ElementName,' '))">
                         <xsl:choose>
                             <xsl:when test="not(contains(concat(' ',substring-after($SiblingNames,concat(' ',$ElementName,' '))),concat(' ',$ElementName,' ')))">
-                                <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                    <test>
-                                        <xsl:attribute name="outcome">pass</xsl:attribute>
-                                        <xsl:copy-of select="$values"/>
-                                    </test>
-                                </xsl:if>
+                                <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <xsl:copy-of select="$values"/>
+                                </test>
                             </xsl:when>
                             <xsl:otherwise>
                                 <test>
@@ -616,17 +614,15 @@
                         <xsl:for-each select="str:tokenize($mandatoryChildrenVINT)">
                             <xsl:choose>
                                 <xsl:when test="contains($CurrentElementChildren,.)">
-                                    <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                        <test>
-                                            <xsl:attribute name="outcome">pass</xsl:attribute>
-                                            <xsl:attribute name="reason">
-                                                <xsl:value-of select="."/>
-                                                <xsl:text> is present within </xsl:text>
-                                                <xsl:value-of select="$ElementName"/>
-                                            </xsl:attribute>
-                                            <xsl:copy-of select="$values"/>
-                                        </test>
-                                    </xsl:if>
+                                    <test>
+                                        <xsl:attribute name="outcome">pass</xsl:attribute>
+                                        <xsl:attribute name="reason">
+                                            <xsl:value-of select="."/>
+                                            <xsl:text> is present within </xsl:text>
+                                            <xsl:value-of select="$ElementName"/>
+                                        </xsl:attribute>
+                                        <xsl:copy-of select="$values"/>
+                                    </test>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <test>
@@ -679,12 +675,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$ElementValue &lt;= $x">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
-                            </xsl:if>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -736,12 +730,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$x = $ElementName">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
-                            </xsl:if>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -783,12 +775,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="count(preceding-sibling::mt:block[mt:block[@name='Header']]) = '0'">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
-                            </xsl:if>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -839,12 +829,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$x = $ElementDataSize">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
-                            </xsl:if>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -914,17 +902,15 @@
                     <xsl:if test="not ($ElementIDatOffset = '0x80')">
                     <xsl:choose>
                         <xsl:when test="$SeekID = $ElementIDatOffset">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:attribute name="reason">
-                                        <xsl:text>The Seek ID references an Element (</xsl:text>
-                                        <xsl:value-of select="$SeekID"/>
-                                        <xsl:text>) which is stored at that location. Note: this test currently does not test Seek references to Clusters.</xsl:text>
-                                    </xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
-                            </xsl:if>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:attribute name="reason">
+                                    <xsl:text>The Seek ID references an Element (</xsl:text>
+                                    <xsl:value-of select="$SeekID"/>
+                                    <xsl:text>) which is stored at that location. Note: this test currently does not test Seek references to Clusters.</xsl:text>
+                                </xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -979,12 +965,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="$info != 'NOK'">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
-                                <test>
-                                    <xsl:attribute name="outcome">pass</xsl:attribute>
-                                    <xsl:copy-of select="$values"/>
-                                </test>
-                            </xsl:if>
+                            <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <xsl:copy-of select="$values"/>
+                            </test>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -1041,12 +1025,10 @@
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="contains($list,$xValue)">
-                        <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                             <test>
                                 <xsl:attribute name="outcome">pass</xsl:attribute>
                                 <xsl:copy-of select="$values"/>
                             </test>
-                        </xsl:if>
                     </xsl:when>
                     <xsl:otherwise>
                         <test>
@@ -1101,12 +1083,10 @@
                 </xsl:variable>
                 <xsl:choose>
                     <xsl:when test="contains($list,.)">
-                        <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                             <test>
                                 <xsl:attribute name="outcome">pass</xsl:attribute>
                                 <xsl:copy-of select="$values"/>
                             </test>
-                        </xsl:if>
                     </xsl:when>
                     <xsl:otherwise>
                         <test>
@@ -1278,12 +1258,10 @@
                     </xsl:variable>
                     <xsl:choose>
                         <xsl:when test="string-length(translate(mt:data,$decimal,'')) = 0">
-                            <xsl:if test="$verbosity > $minimum_verbosity_for_pass">
                                 <test>
                                     <xsl:attribute name="outcome">pass</xsl:attribute>
                                     <xsl:copy-of select="$values"/>
                                 </test>
-                            </xsl:if>
                         </xsl:when>
                         <xsl:otherwise>
                             <test>
@@ -1414,22 +1392,73 @@
             </xsl:choose>
         </value>
     </xsl:template>
+    <xsl:template name="implementationChecks">
+        <xsl:param name="name"/>
+        <xsl:param name="checks"/>
+        <implementationChecks>
+            <xsl:attribute name="checks_run">
+                <xsl:value-of select="count(exsl:node-set($checks)/mc:check)"/>
+            </xsl:attribute>
+            <xsl:attribute name="fail_count">
+                <xsl:value-of select="count(exsl:node-set($checks)/mc:check[mc:test[@outcome='fail']])"/>
+            </xsl:attribute>
+            <xsl:attribute name="pass_count">
+                <xsl:value-of select="count(exsl:node-set($checks)/mc:check[mc:test[@outcome!='fail']])"/>
+            </xsl:attribute>
+            <name><xsl:value-of select="$name"/></name>
+            <xsl:copy-of select="$checks"/>
+        </implementationChecks>
+    </xsl:template>
     <xsl:template name="check">
         <xsl:param name="icid"/>
         <xsl:param name="version"/>
         <xsl:param name="context"/>
         <xsl:param name="test"/>
-        <xsl:if test="$test!=''">
-            <check>
-                <xsl:attribute name="icid">
-                    <xsl:value-of select="$icid"/>
-                </xsl:attribute>
-                <xsl:attribute name="version">
-                    <xsl:value-of select="$version"/>
-                </xsl:attribute>
-                <xsl:copy-of select="$context"/>
-                <xsl:copy-of select="$test"/>
-            </check>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="not (2 >= $verbosity and count(exsl:node-set($test)/mc:test[@outcome='fail']) = 0)">
+                <!-- verbosity <= 2: only export checks with a positive fail count -->
+                <xsl:if test="$test!=''">
+                    <check>
+                        <xsl:attribute name="icid">
+                            <xsl:value-of select="$icid"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="version">
+                            <xsl:value-of select="$version"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="tests_run">
+                            <xsl:value-of select="count(exsl:node-set($test)/mc:test)"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="fail_count">
+                            <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='fail'])"/>
+                        </xsl:attribute>
+                        <xsl:attribute name="pass_count">
+                            <xsl:value-of select="count(exsl:node-set($test)/mc:test[@outcome='pass'])"/>
+                        </xsl:attribute>
+                        <xsl:copy-of select="$context"/>
+                        <xsl:choose>
+                            <xsl:when test="$verbosity > 4">
+                                <!-- verbosity > 4: export all tests-->
+                                <xsl:copy-of select="exsl:node-set($test)/mc:test"/>
+                            </xsl:when>
+                            <xsl:when test="$verbosity = 4">
+                                <!-- verbosity = 4: export all failed tests or if none than the first pass -->
+                                <xsl:choose>
+                                    <xsl:when test="exsl:node-set($test)/mc:test[@outcome='fail']">
+                                        <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:copy-of select="exsl:node-set($test)/mc:test[1]"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:when>
+                            <xsl:when test="$verbosity = 3">
+                                <!-- verbosity = 3: export all failed tests -->
+                                <xsl:copy-of select="exsl:node-set($test)/mc:test[@outcome='fail']"/>
+                            </xsl:when>
+                        </xsl:choose>
+                    </check>
+                </xsl:if>
+            </xsl:when>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
