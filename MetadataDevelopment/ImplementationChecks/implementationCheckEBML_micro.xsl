@@ -270,7 +270,7 @@
                                     <xsl:with-param name="seek_element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='SeekHead']/mmt:b[@n='Seek']/mmt:b[@n='SeekID']"/>
                                 </xsl:call-template>
                                 <!-- /MKV-SEEK-RESOLVE -->
-                                <xsl:variable name="CRC_Elements" select="//mmt:b[@n='CRC-32']"/>
+                                <xsl:variable name="CRC_Elements" select="mmt:MicroMediaTrace/mmt:b/mmt:b[@n='CRC-32']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b/mmt:b[@n='CRC-32']"/>
                                 <!-- EBML-CRC-FIRST -->
                                 <xsl:call-template name="element_is_first_child">
                                     <xsl:with-param name="icid">EBML-CRC-FIRST</xsl:with-param>
@@ -322,7 +322,7 @@
                                     <xsl:with-param name="icid">MKV_NUMERICAL_TAG</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
-                                    <xsl:with-param name="element" select="//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
+                                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
                                 </xsl:call-template>
                                 <!-- /MKV_NUMERICAL_TAG -->
                             </xsl:when>
@@ -885,7 +885,7 @@
                     <xsl:variable name="SeekPositionFileOffset" select="$FirstSegmentValueOffset + $SeekPosition"/>
                     <xsl:variable name="ElementIDatOffset">
                         <xsl:call-template name="DecToVINT">
-                            <xsl:with-param name="dec" select="//mmt:b[@o=format-number($SeekPositionFileOffset, '#')]/mmt:b[@n='Header']/mmt:d[@n='Name']"/>
+                            <xsl:with-param name="dec" select="../../../mmt:b[@o=format-number($SeekPositionFileOffset, '#')]/mmt:b[@n='Header']/mmt:d[@n='Name']"/>
                         </xsl:call-template>
                     </xsl:variable>
                     <xsl:variable name="values">
