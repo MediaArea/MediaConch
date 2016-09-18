@@ -433,6 +433,20 @@
                   </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
+              <xsl:otherwise>
+                  <xsl:call-template name="implementationChecks">
+                    <xsl:with-param name="name">
+                      <xsl:text>MediaConch Implementation Checker does not support </xsl:text>
+                      <xsl:value-of select="."/>
+                      <xsl:if test="parent::mi:track/@type!='General'">
+                        <xsl:text> as found in </xsl:text>
+                        <xsl:value-of select="parent::mi:track/@type"/>
+                        <xsl:text> track #</xsl:text>
+                        <xsl:value-of select="parent::mi:track/@typeorder"/>
+                      </xsl:if>
+                    </xsl:with-param>
+                  </xsl:call-template>
+              </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
         </media>
