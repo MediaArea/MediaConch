@@ -368,7 +368,7 @@
                   </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
-              <xsl:when test=".='FFV1' or .='WebM'">
+              <xsl:when test=".='FFV1'">
                 <xsl:for-each select="ancestor::ma:media">
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
