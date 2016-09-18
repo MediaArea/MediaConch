@@ -34,19 +34,6 @@
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
                     <xsl:with-param name="checks">
-                      <xsl:choose>
-                        <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
-                          <xsl:if test="$verbosity &gt; 4">
-                            <check icid="IS_EBML" version="1">
-                              <context>
-                                <xsl:attribute name="name">
-                                  <xsl:text>mi:Format</xsl:text>
-                                </xsl:attribute>
-                                <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
-                              </context>
-                              <test outcome="pass"/>
-                            </check>
-                          </xsl:if>
                           <xsl:variable name="EBMLVersion">
                             <xsl:choose>
                               <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLVersion']/mmt:d">
@@ -329,41 +316,6 @@
                             <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
                           </xsl:call-template>
                           <!-- /MKV_NUMERICAL_TAG -->
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <check>
-                            <xsl:attribute name="icid">
-                              <xsl:text>IS_EBML</xsl:text>
-                            </xsl:attribute>
-                            <xsl:attribute name="version">
-                              <xsl:text>1</xsl:text>
-                            </xsl:attribute>
-                            <test>
-                              <xsl:attribute name="outcome">
-                                <xsl:text>n/a</xsl:text>
-                              </xsl:attribute>
-                              <xsl:attribute name="reason">
-                                <xsl:text>Not recognized as an FFV1 format</xsl:text>
-                                <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)&gt;0">
-                                  <xsl:text> but as </xsl:text>
-                                  <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
-                                </xsl:if>
-                              </xsl:attribute>
-                              <value>
-                                <xsl:attribute name="name">
-                                  <xsl:text>mi:Format</xsl:text>
-                                </xsl:attribute>
-                                <xsl:choose>
-                                  <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)&gt;0">
-                                    <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
-                                  </xsl:when>
-                                  <xsl:otherwise>Undetermined</xsl:otherwise>
-                                </xsl:choose>
-                              </value>
-                            </test>
-                          </check>
-                        </xsl:otherwise>
-                      </xsl:choose>
                     </xsl:with-param>
                   </xsl:call-template>
                 </xsl:for-each>
@@ -373,8 +325,6 @@
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
                     <xsl:with-param name="checks">
-                      <xsl:choose>
-                        <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
                           <xsl:call-template name="data_is_in_list">
                             <xsl:with-param name="icid">FFV1-VALID-CODERTYPE-VALUE</xsl:with-param>
                             <xsl:with-param name="version">1</xsl:with-param>
@@ -394,41 +344,6 @@
                             <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:b[@n='Slice']/mmt:d[@n='crc_parity']"/>
                           </xsl:call-template>
                           <!-- /FFV1-SLICE-CRC-VALID -->
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <check>
-                            <xsl:attribute name="icid">
-                              <xsl:text>IS_FFV1</xsl:text>
-                            </xsl:attribute>
-                            <xsl:attribute name="version">
-                              <xsl:text>1</xsl:text>
-                            </xsl:attribute>
-                            <test>
-                              <xsl:attribute name="outcome">
-                                <xsl:text>n/a</xsl:text>
-                              </xsl:attribute>
-                              <xsl:attribute name="reason">
-                                <xsl:text>Not recognized as an FFV1 format</xsl:text>
-                                <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)&gt;0">
-                                  <xsl:text> but as </xsl:text>
-                                  <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
-                                </xsl:if>
-                              </xsl:attribute>
-                              <value>
-                                <xsl:attribute name="name">
-                                  <xsl:text>mi:Format</xsl:text>
-                                </xsl:attribute>
-                                <xsl:choose>
-                                  <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)&gt;0">
-                                    <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
-                                  </xsl:when>
-                                  <xsl:otherwise>Undetermined</xsl:otherwise>
-                                </xsl:choose>
-                              </value>
-                            </test>
-                          </check>
-                        </xsl:otherwise>
-                      </xsl:choose>
                     </xsl:with-param>
                   </xsl:call-template>
                 </xsl:for-each>
