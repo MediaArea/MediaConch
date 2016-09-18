@@ -441,8 +441,11 @@
                       <xsl:if test="parent::mi:track/@type!='General'">
                         <xsl:text> as found in </xsl:text>
                         <xsl:value-of select="parent::mi:track/@type"/>
-                        <xsl:text> track #</xsl:text>
-                        <xsl:value-of select="parent::mi:track/@typeorder"/>
+                        <xsl:text> track</xsl:text>
+                        <xsl:if test="parent::mi:track/@typeorder">
+                          <xsl:text> #</xsl:text>
+                          <xsl:value-of select="parent::mi:track/@typeorder"/>
+                        </xsl:if>
                       </xsl:if>
                     </xsl:with-param>
                   </xsl:call-template>
