@@ -31,406 +31,406 @@
             <xsl:choose>
               <xsl:when test=".='Matroska' or .='WebM'">
                 <xsl:for-each select="ancestor::ma:media">
-          <xsl:call-template name="implementationChecks">
-            <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
-            <xsl:with-param name="checks">
-              <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
-                  <xsl:if test="$verbosity &gt; 4">
-                    <check icid="IS_EBML" version="1">
-                      <context>
-                        <xsl:attribute name="name">
-                          <xsl:text>mi:Format</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
-                      </context>
-                      <test outcome="pass"/>
-                    </check>
-                  </xsl:if>
-                  <xsl:variable name="EBMLVersion">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLVersion']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLVersion']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>1</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <xsl:variable name="EBMLReadVersion">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLReadVersion']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLReadVersion']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>1</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <xsl:variable name="EBMLMaxIDLength">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxIDLength']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxIDLength']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>4</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <xsl:variable name="EBMLMaxSizeLength">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxSizeLength']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxSizeLength']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>8</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <xsl:variable name="DocType">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocType']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocType']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>matroska</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <xsl:variable name="DocTypeVersion">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeVersion']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeVersion']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>1</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <xsl:variable name="DocTypeReadVersion">
-                    <xsl:choose>
-                      <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeReadVersion']/mmt:d">
-                        <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeReadVersion']/mmt:d"/>
-                      </xsl:when>
-                      <xsl:otherwise>1</xsl:otherwise>
-                    </xsl:choose>
-                  </xsl:variable>
-                  <!-- EBML-ELEM-START -->
-                  <xsl:call-template name="element_is_x">
-                    <xsl:with-param name="icid">EBML-ELEM-START</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="x">EBML</xsl:with-param>
-                    <xsl:with-param name="x_name">Required First Element of an EBML Document</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[1]"/>
-                  </xsl:call-template>
-                  <!-- /EBML-ELEM-START -->
-                  <!-- EBML-VER-COH -->
-                  <xsl:call-template name="element_is_less_than_or_equal_to_x">
-                    <xsl:with-param name="icid">EBML-VER-COH</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLReadVersion']"/>
-                    <xsl:with-param name="x" select="$EBMLVersion"/>
-                    <xsl:with-param name="x_name">EBMLVersion</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /EBML-VER-COH -->
-                  <!-- EBML-DOCVER-COH -->
-                  <xsl:call-template name="element_is_less_than_or_equal_to_x">
-                    <xsl:with-param name="icid">EBML-DOCVER-COH</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeReadVersion']"/>
-                    <xsl:with-param name="x" select="$DocTypeVersion"/>
-                    <xsl:with-param name="x_name">DocTypeVersion</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /EBML-DOCVER-COH -->
-                  <!-- EBML-ELEMENT-VALID-PARENT -->
-                  <xsl:call-template name="element_has_valid_parent">
-                    <xsl:with-param name="icid">EBML-ELEMENT-VALID-PARENT</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
-                  </xsl:call-template>
-                  <!-- /EBML-ELEMENT-VALID-PARENT -->
-                  <!-- EBML-ELEMENT-NONMULTIPLES -->
-                  <xsl:call-template name="element_does_not_repeat_in_parent">
-                    <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
-                  </xsl:call-template>
-                  <!-- /EBML-ELEMENT-NONMULTIPLES -->
-                  <!-- EBML-ELEMENT-CONTAINS-MANDATES -->
-                  <xsl:call-template name="element_contains_mandates">
-                    <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
-                  </xsl:call-template>
-                  <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
-                  <!-- EBML-VALID-MAXID -->
-                  <xsl:call-template name="element_is_less_than_or_equal_to_x">
-                    <xsl:with-param name="icid">EBML-VALID-MAXID</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxIDLength']"/>
-                    <xsl:with-param name="x">4</xsl:with-param>
-                    <xsl:with-param name="x_name">Minimum valid EBMLMaxIDLength</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /EBML-VALID-MAXID -->
-                  <!-- EBML-VALID-MAXSIZE -->
-                  <xsl:call-template name="element_is_less_than_or_equal_to_x">
-                    <xsl:with-param name="icid">EBML-VALID-MAXSIZE</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxSizeLength']"/>
-                    <xsl:with-param name="x">8</xsl:with-param>
-                    <xsl:with-param name="x_name">Minimum valid EBMLMaxSizeLength</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /EBML-VALID-MAXSIZE -->
-                  <!-- ELEMENTS-WITHIN-MAXIDLENGTH -->
-                  <xsl:call-template name="check">
-                    <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="context">
-                      <context>
-                        <xsl:attribute name="name">
-                          <xsl:text>EBMLMaxIDLength</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$EBMLMaxIDLength"/>
-                      </context>
-                    </xsl:with-param>
-                    <xsl:with-param name="test">
+                  <xsl:call-template name="implementationChecks">
+                    <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
+                    <xsl:with-param name="checks">
                       <xsl:choose>
-                        <xsl:when test="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
-                          <xsl:for-each select="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
-                            <test>
-                              <xsl:attribute name="outcome">fail</xsl:attribute>
-                              <xsl:attribute name="reason">
-                                <xsl:text>Element ID Length greater than EBMLMaxIDLength.</xsl:text>
-                              </xsl:attribute>
-                              <value>
-                                <xsl:attribute name="offset">
-                                  <xsl:value-of select="@o"/>
-                                </xsl:attribute>
+                        <xsl:when test="mi:MediaInfo/mi:track[@type='General']/mi:Format='Matroska' or mi:MediaInfo/mi:track[@type='General']/mi:Format='WebM'">
+                          <xsl:if test="$verbosity &gt; 4">
+                            <check icid="IS_EBML" version="1">
+                              <context>
                                 <xsl:attribute name="name">
-                                  <xsl:value-of select="../../@n"/>
-                                  <xsl:text>:Element_ID_Length</xsl:text>
+                                  <xsl:text>mi:Format</xsl:text>
                                 </xsl:attribute>
-                                <xsl:value-of select="@o - ../../mmt:b/@o"/>
-                              </value>
-                            </test>
-                          </xsl:for-each>
+                                <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
+                              </context>
+                              <test outcome="pass"/>
+                            </check>
+                          </xsl:if>
+                          <xsl:variable name="EBMLVersion">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLVersion']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLVersion']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>1</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <xsl:variable name="EBMLReadVersion">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLReadVersion']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLReadVersion']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>1</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <xsl:variable name="EBMLMaxIDLength">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxIDLength']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxIDLength']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>4</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <xsl:variable name="EBMLMaxSizeLength">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxSizeLength']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxSizeLength']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>8</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <xsl:variable name="DocType">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocType']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocType']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>matroska</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <xsl:variable name="DocTypeVersion">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeVersion']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeVersion']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>1</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <xsl:variable name="DocTypeReadVersion">
+                            <xsl:choose>
+                              <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeReadVersion']/mmt:d">
+                                <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeReadVersion']/mmt:d"/>
+                              </xsl:when>
+                              <xsl:otherwise>1</xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+                          <!-- EBML-ELEM-START -->
+                          <xsl:call-template name="element_is_x">
+                            <xsl:with-param name="icid">EBML-ELEM-START</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="x">EBML</xsl:with-param>
+                            <xsl:with-param name="x_name">Required First Element of an EBML Document</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[1]"/>
+                          </xsl:call-template>
+                          <!-- /EBML-ELEM-START -->
+                          <!-- EBML-VER-COH -->
+                          <xsl:call-template name="element_is_less_than_or_equal_to_x">
+                            <xsl:with-param name="icid">EBML-VER-COH</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLReadVersion']"/>
+                            <xsl:with-param name="x" select="$EBMLVersion"/>
+                            <xsl:with-param name="x_name">EBMLVersion</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /EBML-VER-COH -->
+                          <!-- EBML-DOCVER-COH -->
+                          <xsl:call-template name="element_is_less_than_or_equal_to_x">
+                            <xsl:with-param name="icid">EBML-DOCVER-COH</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeReadVersion']"/>
+                            <xsl:with-param name="x" select="$DocTypeVersion"/>
+                            <xsl:with-param name="x_name">DocTypeVersion</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /EBML-DOCVER-COH -->
+                          <!-- EBML-ELEMENT-VALID-PARENT -->
+                          <xsl:call-template name="element_has_valid_parent">
+                            <xsl:with-param name="icid">EBML-ELEMENT-VALID-PARENT</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                          </xsl:call-template>
+                          <!-- /EBML-ELEMENT-VALID-PARENT -->
+                          <!-- EBML-ELEMENT-NONMULTIPLES -->
+                          <xsl:call-template name="element_does_not_repeat_in_parent">
+                            <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                          </xsl:call-template>
+                          <!-- /EBML-ELEMENT-NONMULTIPLES -->
+                          <!-- EBML-ELEMENT-CONTAINS-MANDATES -->
+                          <xsl:call-template name="element_contains_mandates">
+                            <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
+                          </xsl:call-template>
+                          <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
+                          <!-- EBML-VALID-MAXID -->
+                          <xsl:call-template name="element_is_less_than_or_equal_to_x">
+                            <xsl:with-param name="icid">EBML-VALID-MAXID</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxIDLength']"/>
+                            <xsl:with-param name="x">4</xsl:with-param>
+                            <xsl:with-param name="x_name">Minimum valid EBMLMaxIDLength</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /EBML-VALID-MAXID -->
+                          <!-- EBML-VALID-MAXSIZE -->
+                          <xsl:call-template name="element_is_less_than_or_equal_to_x">
+                            <xsl:with-param name="icid">EBML-VALID-MAXSIZE</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='EBMLMaxSizeLength']"/>
+                            <xsl:with-param name="x">8</xsl:with-param>
+                            <xsl:with-param name="x_name">Minimum valid EBMLMaxSizeLength</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /EBML-VALID-MAXSIZE -->
+                          <!-- ELEMENTS-WITHIN-MAXIDLENGTH -->
+                          <xsl:call-template name="check">
+                            <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="context">
+                              <context>
+                                <xsl:attribute name="name">
+                                  <xsl:text>EBMLMaxIDLength</xsl:text>
+                                </xsl:attribute>
+                                <xsl:value-of select="$EBMLMaxIDLength"/>
+                              </context>
+                            </xsl:with-param>
+                            <xsl:with-param name="test">
+                              <xsl:choose>
+                                <xsl:when test="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
+                                  <xsl:for-each select="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
+                                    <test>
+                                      <xsl:attribute name="outcome">fail</xsl:attribute>
+                                      <xsl:attribute name="reason">
+                                        <xsl:text>Element ID Length greater than EBMLMaxIDLength.</xsl:text>
+                                      </xsl:attribute>
+                                      <value>
+                                        <xsl:attribute name="offset">
+                                          <xsl:value-of select="@o"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="name">
+                                          <xsl:value-of select="../../@n"/>
+                                          <xsl:text>:Element_ID_Length</xsl:text>
+                                        </xsl:attribute>
+                                        <xsl:value-of select="@o - ../../mmt:b/@o"/>
+                                      </value>
+                                    </test>
+                                  </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <value>
+                                      <xsl:attribute name="name">
+                                        <xsl:text>EBMLMaxIDLength</xsl:text>
+                                      </xsl:attribute>
+                                      <xsl:value-of select="$EBMLMaxIDLength"/>
+                                    </value>
+                                  </test>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /ELEMENTS-WITHIN-MAXIDLENGTH -->
+                          <!-- ELEMENTS-WITHIN-MAXSIZELENGTH -->
+                          <xsl:call-template name="check">
+                            <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="context">
+                              <context>
+                                <xsl:attribute name="name">
+                                  <xsl:text>EBMLMaxSizeLength</xsl:text>
+                                </xsl:attribute>
+                                <xsl:value-of select="$EBMLMaxSizeLength"/>
+                              </context>
+                            </xsl:with-param>
+                            <xsl:with-param name="test">
+                              <xsl:choose>
+                                <xsl:when test="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
+                                  <xsl:for-each select="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
+                                    <test>
+                                      <xsl:attribute name="outcome">fail</xsl:attribute>
+                                      <xsl:attribute name="reason">
+                                        <xsl:text>An Element at has an Element Size Length greater than EBMLMaxSizeLength.</xsl:text>
+                                      </xsl:attribute>
+                                      <value>
+                                        <xsl:attribute name="offset">
+                                          <xsl:value-of select="@o"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="name">
+                                          <xsl:value-of select="../../@n"/>
+                                          <xsl:text>:ElementDataSize_Length</xsl:text>
+                                        </xsl:attribute>
+                                        <xsl:value-of select="../../mmt:d/@o - @o"/>
+                                      </value>
+                                    </test>
+                                  </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                  <test>
+                                    <xsl:attribute name="outcome">pass</xsl:attribute>
+                                    <value>
+                                      <xsl:attribute name="name">
+                                        <xsl:text>EBMLMaxSizeLength</xsl:text>
+                                      </xsl:attribute>
+                                      <xsl:value-of select="$EBMLMaxSizeLength"/>
+                                    </value>
+                                  </test>
+                                </xsl:otherwise>
+                              </xsl:choose>
+                            </xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /ELEMENTS-WITHIN-MAXSIZELENGTH -->
+                          <!-- MKV-SEEK-RESOLVE -->
+                          <xsl:call-template name="seek_element_resolves">
+                            <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="seek_element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='SeekHead']/mmt:b[@n='Seek']/mmt:b[@n='SeekID']"/>
+                          </xsl:call-template>
+                          <!-- /MKV-SEEK-RESOLVE -->
+                          <xsl:variable name="CRC_Elements" select="mmt:MicroMediaTrace/mmt:b/mmt:b[@n='CRC-32']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b/mmt:b[@n='CRC-32']"/>
+                          <!-- EBML-CRC-FIRST -->
+                          <xsl:call-template name="element_is_first_child">
+                            <xsl:with-param name="icid">EBML-CRC-FIRST</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="$CRC_Elements"/>
+                          </xsl:call-template>
+                          <!-- /EBML-CRC-FIRST -->
+                          <!-- EBML-CRC-VALID -->
+                          <xsl:call-template name="child_data_info_is_ok">
+                            <xsl:with-param name="icid">EBML-CRC-VALID</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="$CRC_Elements/mmt:d[@n='Value']"/>
+                          </xsl:call-template>
+                          <!-- /EBML-CRC-VALID -->
+                          <!-- EBML-CRC-LENGTH -->
+                          <xsl:call-template name="element_value_is_x_bytes">
+                            <xsl:with-param name="icid">EBML-CRC-LENGTH</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="$CRC_Elements"/>
+                            <xsl:with-param name="x">4</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /EBML-CRC-LENGTH -->
+                          <!-- MKV-SEGMENT-UID-LENGTH -->
+                          <xsl:call-template name="element_value_is_x_bytes">
+                            <xsl:with-param name="icid">MKV-SEGMENT-UID-LENGTH</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Info']/mmt:b[@n='SegmentUID' or @n='PrevUID' or @n='NextUID' or @n='SegmentFamily']"/>
+                            <xsl:with-param name="x">16</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /MKV-SEGMENT-UID-LENGTH -->
+                          <!-- MKV-VALID-TRACKTYPE-VALUE -->
+                          <xsl:call-template name="x_is_in_list">
+                            <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='TrackType']"/>
+                            <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /MKV-VALID-TRACKTYPE-VALUE -->
+                          <!-- MKV-VALID-BOOLEANS -->
+                          <xsl:call-template name="x_is_in_list">
+                            <xsl:with-param name="icid">MKV-VALID-BOOLEANS</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='FlagEnabled' or @n='FlagDefault' or @n='FlagForced' or @n='FlagLacing' or @n='CodecDecodeAll']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='Video']/mmt:b[@n='FlagInterlaced']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Chapters']/mmt:b[@n='EditionEntry']/mmt:b[@n='EditionFlagHidden' or @n='EditionFlagDefault' or @n='EditionFlagOrdered']|mmt:MicroMediaTrace/mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']='Segment']/mmt:b[@n='Chapters']/mmt:b[@n='EditionEntry']//mmt:b[@n='ChapterAtom']/mmt:b[@n='ChapterFlagHidden' or @n='ChapterFlagEnabled']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag']/mmt:b[@n='TagDefault']"/>
+                            <xsl:with-param name="list">0 1</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- /MKV-VALID-BOOLEANS -->
+                          <!-- MKV_NUMERICAL_TAG -->
+                          <xsl:call-template name="tag_is_number">
+                            <xsl:with-param name="icid">MKV_NUMERICAL_TAG</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
+                          </xsl:call-template>
+                          <!-- /MKV_NUMERICAL_TAG -->
                         </xsl:when>
                         <xsl:otherwise>
-                          <test>
-                            <xsl:attribute name="outcome">pass</xsl:attribute>
-                            <value>
-                              <xsl:attribute name="name">
-                                <xsl:text>EBMLMaxIDLength</xsl:text>
+                          <check>
+                            <xsl:attribute name="icid">
+                              <xsl:text>IS_EBML</xsl:text>
+                            </xsl:attribute>
+                            <xsl:attribute name="version">
+                              <xsl:text>1</xsl:text>
+                            </xsl:attribute>
+                            <test>
+                              <xsl:attribute name="outcome">
+                                <xsl:text>n/a</xsl:text>
                               </xsl:attribute>
-                              <xsl:value-of select="$EBMLMaxIDLength"/>
-                            </value>
-                          </test>
+                              <xsl:attribute name="reason">
+                                <xsl:text>Not recognized as an FFV1 format</xsl:text>
+                                <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)&gt;0">
+                                  <xsl:text> but as </xsl:text>
+                                  <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
+                                </xsl:if>
+                              </xsl:attribute>
+                              <value>
+                                <xsl:attribute name="name">
+                                  <xsl:text>mi:Format</xsl:text>
+                                </xsl:attribute>
+                                <xsl:choose>
+                                  <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)&gt;0">
+                                    <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
+                                  </xsl:when>
+                                  <xsl:otherwise>Undetermined</xsl:otherwise>
+                                </xsl:choose>
+                              </value>
+                            </test>
+                          </check>
                         </xsl:otherwise>
                       </xsl:choose>
                     </xsl:with-param>
                   </xsl:call-template>
-                  <!-- /ELEMENTS-WITHIN-MAXIDLENGTH -->
-                  <!-- ELEMENTS-WITHIN-MAXSIZELENGTH -->
-                  <xsl:call-template name="check">
-                    <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="context">
-                      <context>
-                        <xsl:attribute name="name">
-                          <xsl:text>EBMLMaxSizeLength</xsl:text>
-                        </xsl:attribute>
-                        <xsl:value-of select="$EBMLMaxSizeLength"/>
-                      </context>
-                    </xsl:with-param>
-                    <xsl:with-param name="test">
-                      <xsl:choose>
-                        <xsl:when test="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
-                          <xsl:for-each select="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
-                            <test>
-                              <xsl:attribute name="outcome">fail</xsl:attribute>
-                              <xsl:attribute name="reason">
-                                <xsl:text>An Element at has an Element Size Length greater than EBMLMaxSizeLength.</xsl:text>
-                              </xsl:attribute>
-                              <value>
-                                <xsl:attribute name="offset">
-                                  <xsl:value-of select="@o"/>
-                                </xsl:attribute>
-                                <xsl:attribute name="name">
-                                  <xsl:value-of select="../../@n"/>
-                                  <xsl:text>:ElementDataSize_Length</xsl:text>
-                                </xsl:attribute>
-                                <xsl:value-of select="../../mmt:d/@o - @o"/>
-                              </value>
-                            </test>
-                          </xsl:for-each>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <test>
-                            <xsl:attribute name="outcome">pass</xsl:attribute>
-                            <value>
-                              <xsl:attribute name="name">
-                                <xsl:text>EBMLMaxSizeLength</xsl:text>
-                              </xsl:attribute>
-                              <xsl:value-of select="$EBMLMaxSizeLength"/>
-                            </value>
-                          </test>
-                        </xsl:otherwise>
-                      </xsl:choose>
-                    </xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /ELEMENTS-WITHIN-MAXSIZELENGTH -->
-                  <!-- MKV-SEEK-RESOLVE -->
-                  <xsl:call-template name="seek_element_resolves">
-                    <xsl:with-param name="icid">MKV-SEEK-RESOLVE</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="seek_element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='SeekHead']/mmt:b[@n='Seek']/mmt:b[@n='SeekID']"/>
-                  </xsl:call-template>
-                  <!-- /MKV-SEEK-RESOLVE -->
-                  <xsl:variable name="CRC_Elements" select="mmt:MicroMediaTrace/mmt:b/mmt:b[@n='CRC-32']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b/mmt:b[@n='CRC-32']"/>
-                  <!-- EBML-CRC-FIRST -->
-                  <xsl:call-template name="element_is_first_child">
-                    <xsl:with-param name="icid">EBML-CRC-FIRST</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="$CRC_Elements"/>
-                  </xsl:call-template>
-                  <!-- /EBML-CRC-FIRST -->
-                  <!-- EBML-CRC-VALID -->
-                  <xsl:call-template name="child_data_info_is_ok">
-                    <xsl:with-param name="icid">EBML-CRC-VALID</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="$CRC_Elements/mmt:d[@n='Value']"/>
-                  </xsl:call-template>
-                  <!-- /EBML-CRC-VALID -->
-                  <!-- EBML-CRC-LENGTH -->
-                  <xsl:call-template name="element_value_is_x_bytes">
-                    <xsl:with-param name="icid">EBML-CRC-LENGTH</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="$CRC_Elements"/>
-                    <xsl:with-param name="x">4</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /EBML-CRC-LENGTH -->
-                  <!-- MKV-SEGMENT-UID-LENGTH -->
-                  <xsl:call-template name="element_value_is_x_bytes">
-                    <xsl:with-param name="icid">MKV-SEGMENT-UID-LENGTH</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Info']/mmt:b[@n='SegmentUID' or @n='PrevUID' or @n='NextUID' or @n='SegmentFamily']"/>
-                    <xsl:with-param name="x">16</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /MKV-SEGMENT-UID-LENGTH -->
-                  <!-- MKV-VALID-TRACKTYPE-VALUE -->
-                  <xsl:call-template name="x_is_in_list">
-                    <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='TrackType']"/>
-                    <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /MKV-VALID-TRACKTYPE-VALUE -->
-                  <!-- MKV-VALID-BOOLEANS -->
-                  <xsl:call-template name="x_is_in_list">
-                    <xsl:with-param name="icid">MKV-VALID-BOOLEANS</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='FlagEnabled' or @n='FlagDefault' or @n='FlagForced' or @n='FlagLacing' or @n='CodecDecodeAll']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='Video']/mmt:b[@n='FlagInterlaced']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Chapters']/mmt:b[@n='EditionEntry']/mmt:b[@n='EditionFlagHidden' or @n='EditionFlagDefault' or @n='EditionFlagOrdered']|mmt:MicroMediaTrace/mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']='Segment']/mmt:b[@n='Chapters']/mmt:b[@n='EditionEntry']//mmt:b[@n='ChapterAtom']/mmt:b[@n='ChapterFlagHidden' or @n='ChapterFlagEnabled']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag']/mmt:b[@n='TagDefault']"/>
-                    <xsl:with-param name="list">0 1</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- /MKV-VALID-BOOLEANS -->
-                  <!-- MKV_NUMERICAL_TAG -->
-                  <xsl:call-template name="tag_is_number">
-                    <xsl:with-param name="icid">MKV_NUMERICAL_TAG</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
-                  </xsl:call-template>
-                  <!-- /MKV_NUMERICAL_TAG -->
-                </xsl:when>
-                <xsl:otherwise>
-                  <check>
-                    <xsl:attribute name="icid">
-                      <xsl:text>IS_EBML</xsl:text>
-                    </xsl:attribute>
-                    <xsl:attribute name="version">
-                      <xsl:text>1</xsl:text>
-                    </xsl:attribute>
-                    <test>
-                      <xsl:attribute name="outcome">
-                        <xsl:text>n/a</xsl:text>
-                      </xsl:attribute>
-                      <xsl:attribute name="reason">
-                        <xsl:text>Not recognized as an FFV1 format</xsl:text>
-                        <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)&gt;0">
-                          <xsl:text> but as </xsl:text>
-                          <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
-                        </xsl:if>
-                      </xsl:attribute>
-                      <value>
-                        <xsl:attribute name="name">
-                          <xsl:text>mi:Format</xsl:text>
-                        </xsl:attribute>
-                        <xsl:choose>
-                          <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='General']/mi:Format)&gt;0">
-                            <xsl:value-of select="mi:MediaInfo/mi:track[@type='General']/mi:Format"/>
-                          </xsl:when>
-                          <xsl:otherwise>Undetermined</xsl:otherwise>
-                        </xsl:choose>
-                      </value>
-                    </test>
-                  </check>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:with-param>
-          </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
               <xsl:when test=".='FFV1' or .='WebM'">
                 <xsl:for-each select="ancestor::ma:media">
-          <xsl:call-template name="implementationChecks">
-            <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
-            <xsl:with-param name="checks">
-              <xsl:choose>
-                <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
-                  <xsl:call-template name="data_is_in_list">
-                    <xsl:with-param name="icid">FFV1-VALID-CODERTYPE-VALUE</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='coder_type']"/>
-                    <xsl:with-param name="list">0 1 2</xsl:with-param>
+                  <xsl:call-template name="implementationChecks">
+                    <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
+                    <xsl:with-param name="checks">
+                      <xsl:choose>
+                        <xsl:when test="mi:MediaInfo/mi:track[@type='Video']/mi:Format='FFV1'">
+                          <xsl:call-template name="data_is_in_list">
+                            <xsl:with-param name="icid">FFV1-VALID-CODERTYPE-VALUE</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='coder_type']"/>
+                            <xsl:with-param name="list">0 1 2</xsl:with-param>
+                          </xsl:call-template>
+                          <xsl:call-template name="data_is_in_list">
+                            <xsl:with-param name="icid">FFV1-VALID-COLORSPACETYPE-VALUE2</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='colorspace_type']"/>
+                            <xsl:with-param name="list">0 1</xsl:with-param>
+                          </xsl:call-template>
+                          <!-- FFV1-SLICE-CRC-VALID -->
+                          <xsl:call-template name="child_data_info_is_ok">
+                            <xsl:with-param name="icid">FFV1-SLICE-CRC-VALID</xsl:with-param>
+                            <xsl:with-param name="version">1</xsl:with-param>
+                            <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:b[@n='Slice']/mmt:d[@n='crc_parity']"/>
+                          </xsl:call-template>
+                          <!-- /FFV1-SLICE-CRC-VALID -->
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <check>
+                            <xsl:attribute name="icid">
+                              <xsl:text>IS_FFV1</xsl:text>
+                            </xsl:attribute>
+                            <xsl:attribute name="version">
+                              <xsl:text>1</xsl:text>
+                            </xsl:attribute>
+                            <test>
+                              <xsl:attribute name="outcome">
+                                <xsl:text>n/a</xsl:text>
+                              </xsl:attribute>
+                              <xsl:attribute name="reason">
+                                <xsl:text>Not recognized as an FFV1 format</xsl:text>
+                                <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)&gt;0">
+                                  <xsl:text> but as </xsl:text>
+                                  <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
+                                </xsl:if>
+                              </xsl:attribute>
+                              <value>
+                                <xsl:attribute name="name">
+                                  <xsl:text>mi:Format</xsl:text>
+                                </xsl:attribute>
+                                <xsl:choose>
+                                  <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)&gt;0">
+                                    <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
+                                  </xsl:when>
+                                  <xsl:otherwise>Undetermined</xsl:otherwise>
+                                </xsl:choose>
+                              </value>
+                            </test>
+                          </check>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:with-param>
                   </xsl:call-template>
-                  <xsl:call-template name="data_is_in_list">
-                    <xsl:with-param name="icid">FFV1-VALID-COLORSPACETYPE-VALUE2</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='colorspace_type']"/>
-                    <xsl:with-param name="list">0 1</xsl:with-param>
-                  </xsl:call-template>
-                  <!-- FFV1-SLICE-CRC-VALID -->
-                  <xsl:call-template name="child_data_info_is_ok">
-                    <xsl:with-param name="icid">FFV1-SLICE-CRC-VALID</xsl:with-param>
-                    <xsl:with-param name="version">1</xsl:with-param>
-                    <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:b[@n='Slice']/mmt:d[@n='crc_parity']"/>
-                  </xsl:call-template>
-                  <!-- /FFV1-SLICE-CRC-VALID -->
-                </xsl:when>
-                <xsl:otherwise>
-                  <check>
-                    <xsl:attribute name="icid">
-                      <xsl:text>IS_FFV1</xsl:text>
-                    </xsl:attribute>
-                    <xsl:attribute name="version">
-                      <xsl:text>1</xsl:text>
-                    </xsl:attribute>
-                    <test>
-                      <xsl:attribute name="outcome">
-                        <xsl:text>n/a</xsl:text>
-                      </xsl:attribute>
-                      <xsl:attribute name="reason">
-                        <xsl:text>Not recognized as an FFV1 format</xsl:text>
-                        <xsl:if test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)&gt;0">
-                          <xsl:text> but as </xsl:text>
-                          <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
-                        </xsl:if>
-                      </xsl:attribute>
-                      <value>
-                        <xsl:attribute name="name">
-                          <xsl:text>mi:Format</xsl:text>
-                        </xsl:attribute>
-                        <xsl:choose>
-                          <xsl:when test="string-length(mi:MediaInfo/mi:track[@type='Video']/mi:Format)&gt;0">
-                            <xsl:value-of select="mi:MediaInfo/mi:track[@type='Video']/mi:Format"/>
-                          </xsl:when>
-                          <xsl:otherwise>Undetermined</xsl:otherwise>
-                        </xsl:choose>
-                      </value>
-                    </test>
-                  </check>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:with-param>
-          </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
             </xsl:choose>
