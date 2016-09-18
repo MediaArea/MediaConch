@@ -27,6 +27,10 @@
           <xsl:attribute name="ref">
             <xsl:value-of select="./@ref"/>
           </xsl:attribute>
+          <xsl:for-each select="mi:MediaInfo/mi:track/mi:Format">
+            <xsl:choose>
+              <xsl:when test=".='Matroska' or .='WebM'">
+                <xsl:for-each select="ancestor::ma:media">
           <xsl:call-template name="implementationChecks">
             <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
             <xsl:with-param name="checks">
@@ -362,6 +366,10 @@
               </xsl:choose>
             </xsl:with-param>
           </xsl:call-template>
+                </xsl:for-each>
+              </xsl:when>
+              <xsl:when test=".='FFV1' or .='WebM'">
+                <xsl:for-each select="ancestor::ma:media">
           <xsl:call-template name="implementationChecks">
             <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
             <xsl:with-param name="checks">
@@ -423,6 +431,10 @@
               </xsl:choose>
             </xsl:with-param>
           </xsl:call-template>
+                </xsl:for-each>
+              </xsl:when>
+            </xsl:choose>
+          </xsl:for-each>
         </media>
       </xsl:for-each>
     </MediaConch>
