@@ -66,14 +66,6 @@
                           <xsl:otherwise>8</xsl:otherwise>
                         </xsl:choose>
                       </xsl:variable>
-                      <xsl:variable name="DocType">
-                        <xsl:choose>
-                          <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocType']/mmt:d">
-                            <xsl:value-of select="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocType']/mmt:d"/>
-                          </xsl:when>
-                          <xsl:otherwise>matroska</xsl:otherwise>
-                        </xsl:choose>
-                      </xsl:variable>
                       <xsl:variable name="DocTypeVersion">
                         <xsl:choose>
                           <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']/mmt:b[@n='DocTypeVersion']/mmt:d">
