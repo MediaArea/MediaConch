@@ -348,6 +348,23 @@
                   </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
+              <xsl:when test=".='PCM'">
+                <xsl:for-each select="parent::mi:track">
+                  <xsl:call-template name="implementationChecks">
+                    <xsl:with-param name="name">MediaConch PCM Implementation Checker</xsl:with-param>
+                    <xsl:with-param name="checks">
+                      <!-- PCM-IS-CBR -->
+                      <xsl:call-template name="data_is_in_list">
+                        <xsl:with-param name="icid">PCM-IS-CBR</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="x" select="mi:BitRate_Mode"/>
+                        <xsl:with-param name="list">CBR</xsl:with-param>
+                      </xsl:call-template>
+                      <!-- /PCM-IS-CBR -->
+                    </xsl:with-param>
+                  </xsl:call-template>
+                </xsl:for-each>
+              </xsl:when>
               <xsl:otherwise>
                 <xsl:call-template name="implementationChecks">
                   <xsl:with-param name="name">
