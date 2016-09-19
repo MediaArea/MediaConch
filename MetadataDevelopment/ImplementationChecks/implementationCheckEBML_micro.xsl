@@ -148,6 +148,55 @@
                         <xsl:with-param name="x_name">Minimum valid EBMLMaxSizeLength</xsl:with-param>
                       </xsl:call-template>
                       <!-- /EBML-VALID-MAXSIZE -->
+                      <!-- HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT -->
+                      <xsl:call-template name="check">
+                        <xsl:with-param name="icid">HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="context">
+                          <context>
+                            <xsl:attribute name="name">
+                              <xsl:text>EBMLMaxIDLength</xsl:text>
+                            </xsl:attribute>
+                            <xsl:value-of select="$EBMLMaxIDLength"/>
+                          </context>
+                        </xsl:with-param>
+                        <xsl:with-param name="test">
+                          <xsl:choose>
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
+                              <xsl:for-each select="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
+                                <test>
+                                  <xsl:attribute name="outcome">fail</xsl:attribute>
+                                  <xsl:attribute name="reason">
+                                    <xsl:text>Element ID Length greater than EBMLMaxIDLength.</xsl:text>
+                                  </xsl:attribute>
+                                  <value>
+                                    <xsl:attribute name="offset">
+                                      <xsl:value-of select="@o"/>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="name">
+                                      <xsl:value-of select="../../@n"/>
+                                      <xsl:text>:Element_ID_Length</xsl:text>
+                                    </xsl:attribute>
+                                    <xsl:value-of select="@o - ../../mmt:b/@o"/>
+                                  </value>
+                                </test>
+                              </xsl:for-each>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <value>
+                                  <xsl:attribute name="name">
+                                    <xsl:text>EBMLMaxIDLength (for EBML Header Elements)</xsl:text>
+                                  </xsl:attribute>
+                                  <xsl:value-of select="4"/>
+                                </value>
+                              </test>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:with-param>
+                      </xsl:call-template>
+                      <!-- /HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT -->
                       <!-- ELEMENTS-WITHIN-MAXIDLENGTH -->
                       <xsl:call-template name="check">
                         <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
@@ -197,6 +246,55 @@
                         </xsl:with-param>
                       </xsl:call-template>
                       <!-- /ELEMENTS-WITHIN-MAXIDLENGTH -->
+                      <!-- HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH -->
+                      <xsl:call-template name="check">
+                        <xsl:with-param name="icid">HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="context">
+                          <context>
+                            <xsl:attribute name="name">
+                              <xsl:text>EBMLMaxSizeLength</xsl:text>
+                            </xsl:attribute>
+                            <xsl:value-of select="$EBMLMaxSizeLength"/>
+                          </context>
+                        </xsl:with-param>
+                        <xsl:with-param name="test">
+                          <xsl:choose>
+                            <xsl:when test="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
+                              <xsl:for-each select="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
+                                <test>
+                                  <xsl:attribute name="outcome">fail</xsl:attribute>
+                                  <xsl:attribute name="reason">
+                                    <xsl:text>An Element at has an Element Size Length greater than EBMLMaxSizeLength.</xsl:text>
+                                  </xsl:attribute>
+                                  <value>
+                                    <xsl:attribute name="offset">
+                                      <xsl:value-of select="@o"/>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="name">
+                                      <xsl:value-of select="../../@n"/>
+                                      <xsl:text>:ElementDataSize_Length</xsl:text>
+                                    </xsl:attribute>
+                                    <xsl:value-of select="../../mmt:d/@o - @o"/>
+                                  </value>
+                                </test>
+                              </xsl:for-each>
+                            </xsl:when>
+                            <xsl:otherwise>
+                              <test>
+                                <xsl:attribute name="outcome">pass</xsl:attribute>
+                                <value>
+                                  <xsl:attribute name="name">
+                                    <xsl:text>EBMLMaxSizeLength (for EBML Header Elements)</xsl:text>
+                                  </xsl:attribute>
+                                  <xsl:value-of select="4"/>
+                                </value>
+                              </test>
+                            </xsl:otherwise>
+                          </xsl:choose>
+                        </xsl:with-param>
+                      </xsl:call-template>
+                      <!-- /HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <!-- ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <xsl:call-template name="check">
                         <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
