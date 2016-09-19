@@ -1349,10 +1349,10 @@
         <xsl:value-of select="count(exsl:node-set($checks)/mc:check)"/>
       </xsl:attribute>
       <xsl:attribute name="fail_count">
-        <xsl:value-of select="count(exsl:node-set($checks)/mc:check[mc:test[@outcome='fail']])"/>
+        <xsl:value-of select="count(exsl:node-set($checks)/mc:check[@fail_count!='0'])"/>
       </xsl:attribute>
       <xsl:attribute name="pass_count">
-        <xsl:value-of select="count(exsl:node-set($checks)/mc:check[mc:test[@outcome!='fail']])"/>
+        <xsl:value-of select="count(exsl:node-set($checks)/mc:check[@fail_count='0'])"/>
       </xsl:attribute>
       <name>
         <xsl:value-of select="$name"/>
