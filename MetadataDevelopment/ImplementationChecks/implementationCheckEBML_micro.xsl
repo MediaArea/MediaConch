@@ -27,9 +27,9 @@
           <xsl:attribute name="ref">
             <xsl:value-of select="./@ref"/>
           </xsl:attribute>
-          <xsl:for-each select="mi:MediaInfo/mi:track/mi:Format">
+          <xsl:for-each select="mi:MediaInfo/mi:track">
             <xsl:choose>
-              <xsl:when test=".='Matroska' or .='WebM'">
+              <xsl:when test="mi:Format='Matroska' or mi:Format='WebM'">
                 <xsl:for-each select="ancestor::ma:media">
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch EBML Implementation Checker</xsl:with-param>
@@ -162,7 +162,7 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
                               <xsl:for-each select="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
@@ -312,7 +312,7 @@
                   </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
-              <xsl:when test=".='FFV1'">
+              <xsl:when test="mi:Format='FFV1'">
                 <xsl:for-each select="ancestor::ma:media">
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
@@ -340,37 +340,51 @@
                   </xsl:call-template>
                 </xsl:for-each>
               </xsl:when>
-              <xsl:when test=".='PCM'">
-                <xsl:for-each select="parent::mi:track">
-                  <xsl:call-template name="implementationChecks">
-                    <xsl:with-param name="name">MediaConch PCM Implementation Checker</xsl:with-param>
-                    <xsl:with-param name="checks">
-                      <!-- PCM-IS-CBR -->
-                      <xsl:call-template name="data_is_in_list">
-                        <xsl:with-param name="icid">PCM-IS-CBR</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="x" select="mi:BitRate_Mode"/>
-                        <xsl:with-param name="list">CBR</xsl:with-param>
-                      </xsl:call-template>
-                      <!-- /PCM-IS-CBR -->
-                    </xsl:with-param>
-                  </xsl:call-template>
-                </xsl:for-each>
+              <xsl:when test="mi:Format='PCM'">
+                <xsl:call-template name="implementationChecks">
+                  <xsl:with-param name="name">MediaConch PCM Implementation Checker</xsl:with-param>
+                  <xsl:with-param name="checks">
+                    <!-- PCM-IS-CBR -->
+                    <xsl:call-template name="data_is_in_list">
+                      <xsl:with-param name="icid">PCM-IS-CBR</xsl:with-param>
+                      <xsl:with-param name="version">1</xsl:with-param>
+                      <xsl:with-param name="x" select="mi:BitRate_Mode"/>
+                      <xsl:with-param name="list">CBR</xsl:with-param>
+                    </xsl:call-template>
+                    <!-- /PCM-IS-CBR -->
+                  </xsl:with-param>
+                </xsl:call-template>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:call-template name="implementationChecks">
                   <xsl:with-param name="name">
-                    <xsl:text>MediaConch Implementation Checker does not support </xsl:text>
-                    <xsl:value-of select="."/>
-                    <xsl:if test="parent::mi:track/@type!='General'">
-                      <xsl:text> as found in </xsl:text>
-                      <xsl:value-of select="parent::mi:track/@type"/>
-                      <xsl:text> track</xsl:text>
-                      <xsl:if test="parent::mi:track/@typeorder">
-                        <xsl:text> #</xsl:text>
-                        <xsl:value-of select="parent::mi:track/@typeorder"/>
-                      </xsl:if>
-                    </xsl:if>
+                    <xsl:choose>
+                      <xsl:when test="mi:Format">
+                        <xsl:text>MediaConch Implementation Checker does not support </xsl:text>
+                        <xsl:value-of select="mi:Format"/>
+                        <xsl:if test="@type!='General'">
+                          <xsl:text> as found in </xsl:text>
+                          <xsl:value-of select="@type"/>
+                          <xsl:text> track</xsl:text>
+                          <xsl:if test="@typeorder">
+                            <xsl:text> #</xsl:text>
+                            <xsl:value-of select="@typeorder"/>
+                          </xsl:if>
+                        </xsl:if>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:text>Unrecognized format</xsl:text>
+                        <xsl:if test="@type!='General'">
+                          <xsl:text> as found in </xsl:text>
+                          <xsl:value-of select="@type"/>
+                          <xsl:text> track</xsl:text>
+                          <xsl:if test="@typeorder">
+                            <xsl:text> #</xsl:text>
+                            <xsl:value-of select="@typeorder"/>
+                          </xsl:if>
+                        </xsl:if>
+                      </xsl:otherwise>
+                    </xsl:choose>
                   </xsl:with-param>
                 </xsl:call-template>
               </xsl:otherwise>
