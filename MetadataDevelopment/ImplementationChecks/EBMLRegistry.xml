@@ -1,103 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
-  <rule icid="IS_EBML">
-    <name></name>
-    <authority></authority>
-    <target_format>EBML</target_format>
-    <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Format must be EBML.</definition>
-  </rule>
   <rule icid="EBML-ELEM-START">
-    <name></name>
+    <name>The First Element must be the EBML Header.</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>The first Element ID must equal 172351395</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>The first Element ID must equal 0x172351395 (EBML Header)</definition>
+    <note>Validity tbd per CELLAR.</note>
   </rule>
   <rule icid="EBML-VER-COH">
-    <name></name>
+    <name>EBMLVersion must be greater than or equal to EBMLReadVersion</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>EBMLVersion is the version of EBML to which the document conforms
-   to. (5.1.1). The minimum EBML version a parser has to support in order to read
-   the document. (5.1.2). Therefore, the EBMLReadVersion must be equal or less than the EBMLVersion.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>EBMLReadVersion must be equal or less than the EBMLVersion.</definition>
+    <reference_file>EBMLReadVersion_greaterthan_EBMLVersion.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-DOCVER-COH">
-    <name></name>
+    <name>DocTypeVersion must be greater than or equal to DocTypeReadVersion</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>DocTypeVersion is the version of document type to which the
-   document conforms to (5.1.6). The minimum DocType version an interpreter has to support in order to read the document (5.1.7). Therefore, the DocTypeReadVersion must be equal or less than the DocTypeVersion.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>DocTypeReadVersion must be equal or less than the DocTypeVersion.</definition>
+    <reference_file>docTypeReadVersion_greaterthan_docTypeVersion.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-ELEMENT-VALID-PARENT">
-    <name></name>
+    <name>All Elements MUST have valid parents</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>EBML is structured hierarchically and elements with a level greater than 0 must have a valid parent.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Check that each EBML Element has a valid Parent Element.</definition>
+    <reference_file>unknown_element.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-ELEMENT-NONMULTIPLES">
-    <name></name>
+    <name>Elements follow maxOccurs</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Mandatory child elements must be present.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Verify maxOccurs of EBML Elements</definition>
+    <reference_file>too_many_copies_of_DocTypeVersion.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-ELEMENT-CONTAINS-MANDATES">
-    <name></name>
+    <name>Elements follow minOccurs</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Mandatory child elements must be present under the correct master element.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Verify minOccurs of EBML Elements</definition>
+    <reference_file>no_DocType.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-VALID-MAXID">
-    <name></name>
+    <name>EBMLMaxIDLength valid</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>EBMLMaxIDLength must be greater than the minimum length.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>EBMLMaxIDLength must be in valid range.</definition>
+    <reference_file>invalid_EBMLMaxIDLength.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-VALID-MAXSIZE">
-    <name></name>
+    <name>EBMLMaxSizeLength valid</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>EBMLMaxSizeLength must be greater than the minimum length.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>EBMLMaxSizeLength must be in valid range.</definition>
+    <reference_file>higher_EBMLMaxSizeLength_than_matroska_allows.mkv</reference_file>
+    <manager>MediaConch</manager>
+  </rule>
+  <rule icid="HEADER-ELEMENTS-WITHIN-MAXIDLENGTH">
+    <name>Header Elements in Element ID length range</name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Element ID (descending from Root Element) lengths must be less than or equal to 4.</definition>
+    <reference_file>invalid_EBML_ElementDataSize_in_EBMLHeader.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="ELEMENTS-WITHIN-MAXIDLENGTH">
-    <name></name>
+    <name>Elements in Element ID length range</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Element ID Length must be less than EBMLMaxIDLength.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Element ID (descending from Root Element) lengths must be less than or equal to EBMLMaxIDLength.</definition>
+    <reference_file>lower_EBMLMaxSizeLength_than_elements_are_using.mkv</reference_file>
+    <manager>MediaConch</manager>
+  </rule>
+  <rule icid="HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH">
+    <name>Header Elements in Element Data Size length range</name>
+    <authority></authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Structure</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Element Data Size (descending from Root Element) lengths must be less than or equal to 4.</definition>
+    <reference_file>invalid_EBML_ElementDataSize_in_EBMLHeader.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="ELEMENTS-WITHIN-MAXSIZELENGTH">
-    <name></name>
+    <name>Elements in Element Data Size length range</name>
     <authority></authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Element length must be less than EBMLMaxSizeLength.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Element Data Size (descending from Root Element) lengths must be less than or equal to EBMLMaxSizeLength.</definition>
+    <reference_file>really_invalid_EBML_ElementDataSize_in_EBMLHeader.mkv</reference_file>
+    <manager>MediaConch</manager>
   </rule>
   <rule icid="EBML-VINT-EFF">
     <name>EBML vint efficiency</name>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Structure</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Section 2.2 "IDs are always encoded in their shortest form, e.g. 1 is always encoded as 0x81 and never as 0x4001." The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits,  i.e. vint is expressed as efficiently as feasible.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Section 2.2 "IDs are always encoded in their shortest form e.g. 1 is always encoded as 0x81 and never as 0x4001." The bits following the Element ID's Length Descriptor are not more than (8 - ${bit-length-of-length-descriptor}) successive 0 bits i.e. vint is expressed as efficiently as feasible.</definition>
+    <reference_file>inefficient_elementid.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note>to do</note>
   </rule>
   <rule icid="MKV-KNOWN-ELEM">
     <name>Element ID Registered</name>
@@ -105,23 +149,31 @@
     <target_format>EBML</target_format>
     <target_format_part></target_format_part>
     <citation></citation>
-    <definition>Ensure MKV Element ID is registered in specdata.xml (as of Dec. 13, 2014 this is 224 registered Element IDs)</definition>
+    <severity>1</severity>
+    <definition>Ensure MKV Element ID is registered in specdata.xml (as of 2014-12-13 this is 224 registered Element IDs)</definition>
+    <reference_file>unknown_element.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note>deprecated by EBML-ELEMENT-VALID-PARENT</note>
   </rule>
   <rule icid="EBML-ELEM-SIZE-7F">
     <name>Element Size 0x7F Reservation</name>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>"Note that the shortest encoding form for 127 is 0x407f since 0x7f is reserved." If Element Size is set to 0x11111111 but element size is actually 127 bytes provide a warning.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>"Note that the shortest encoding form for 127 is 0x407f since 0x7f is reserved." Provide a warning if the Element Size is set to 0x11111111 but element size is actually 127 bytes.</definition>
+    <note>This coincidence waiting to resolve unknownsizeallowed attribute.</note>
   </rule>
   <rule icid="EBML-ELEM-SIZE-CAP">
     <name>Element Size Byte Length Limit</name>
     <authority>EBML Specification</authority>
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
-    <citation>http://matroska.org/technical/specs/rfc/index.html</citation>
-    <definition>Section 2.3: "The EBML element data size is encoded as a variable size integer with, by default, widths up to 8." The first eight bits of any Element Size may not start with 0b00000000.</definition>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Section 2.3: "The EBML element data size is encoded as a variable size integer with by default widths up to 8." The first eight bits of any Element Size may not start with 0b00000000.</definition>
+    <note>deprecated by ELEMENTS-WITHIN-MAXSIZELENGTH</note>
   </rule>
   <rule icid="EBML-ELEM-SIZE-UNK">
     <name>Element Size Unknown</name>
@@ -129,6 +181,154 @@
     <target_format>EBML</target_format>
     <target_format_part>EBML Element Size</target_format_part>
     <citation></citation>
-    <definition>"Values with all data bits set to 1 means size unknown, which allows for dynamically generated EBML streams where the final size isn't known beforehand." Warning on unknown element sizes, unoptimized MKV.</definition>
+    <severity>1</severity>
+    <definition>only Master Elements may be unknown size</definition>
+    <reference_file>unknown_sized_non_master_element.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note>tbd; CELLAR; waiting on unknownsizeallowed attribute</note>
+  </rule>
+  <rule icid="EBML-WITHIN-SIZE-LIMIT">
+    <name>Element Data within Size Limits</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>test EBML Schema size restrictions per element</definition>
+    <reference_file>element_outside_of_size_range.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note>tbd; CELLAR; waiting on size attribute definitions</note>
+  </rule>
+  <rule icid="EBML-NON-ASCII-IN-STRING">
+    <name>Non-ASCII Data in String</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>The string element is limited to certain byte ranges of ASCII plus a trailing optional null byte.</definition>
+    <reference_file>non_ascii_in_string_element.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note>tbd</note>
+  </rule>
+  <rule icid="MKV-SEEK-RESOLVE">
+    <name>Do the Matroska Seek Elements properly resolve</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Test offsets of Seek Elements to ensure they resolve properly.</definition>
+    <reference_file></reference_file>
+    <manager>MediaConch</manager>
+    <note></note>
+  </rule>
+  <rule icid="EBML-CRC-FIRST">
+    <name>EBML CRC Element must be first</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>The CRC Element if used must be the first Child Element of the Parent Element.</definition>
+    <reference_file>crc_element_is_not_first.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note></note>
+  </rule>
+  <rule icid="EBML-CRC-VALID">
+    <name>EBML CRC Element must contain a valid hash</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>The stored CRC-32 value should verify.</definition>
+    <reference_file>crc_element_has_invalid_hash.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note></note>
+  </rule>
+  <rule icid="EBML-CRC-LENGTH">
+    <name>EBML CRC Element must use a valid length</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition></definition>
+    <note>to be deprecated by EBML-WITHIN-SIZE-LIMIT with size attribute update per celler</note>
+  </rule>
+  <rule icid="EBML-MINVER-COHERANT">
+    <name>EBML Elements used correlate to DocVersion</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition></definition>
+    <note>tpd per celler review</note>
+  </rule>
+  <rule icid="EBML-MAXVER-COHERANT">
+    <name>EBML Elements used correlate to DocVersion</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition></definition>
+    <note>tpd per celler review</note>
+  </rule>
+  <rule icid="EBML-DOCTYPEREADVERSION-COHERANT">
+    <name>EBML Elements used correlate to DocTypeReadVersion</name>
+    <authority>EBML Specification</authority>
+    <target_format>EBML</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition></definition>
+    <note>tpd per celler review</note>
+  </rule>
+  <rule icid="MKV-SEGMENT-UID-LENGTH">
+    <name>Matroska Segment Element must use a valid length</name>
+    <authority>EBML Specification</authority>
+    <target_format>Matroska</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition></definition>
+    <note>to be deprecated by EBML-WITHIN-SIZE-LIMIT with size attribute update per celler</note>
+  </rule>
+  <rule icid="MKV-VALID-TRACKTYPE-VALUE">
+    <name>Matroska TrackType must be a valid value</name>
+    <authority>EBML Specification</authority>
+    <target_format>Matroska</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Only tracktype values of 1 2 3 16 17 18 32 are currently defined</definition>
+    <note>to be deprecated by EBML-WITHIN-SIZE-LIMIT with size attribute update per celler</note>
+  </rule>
+  <rule icid="MKV-VALID-BOOLEANS">
+    <name>Matroska Boolean Elements are valid</name>
+    <authority>EBML Specification</authority>
+    <target_format>Matroska</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Some elements are defined as boolean but expressed in unsigned integer; verify that they are valid.</definition>
+    <reference_file>invalid_boolean.mkv</reference_file>
+    <manager>MediaConch</manager>
+    <note>to be deprecated by EBML-WITHIN-SIZE-LIMIT with size attribute update per celler</note>
+  </rule>
+  <rule icid="MKV-NUMERICAL-TAGS">
+    <name>Matroska Tags defined as numerical should be.</name>
+    <authority>EBML Specification</authority>
+    <target_format>Matroska</target_format>
+    <target_format_part>EBML Element Size</target_format_part>
+    <citation></citation>
+    <severity>1</severity>
+    <definition>Some tags are defined to be a number in a UTF-8 element test that the value is numeric.</definition>
+    <reference_file></reference_file>
+    <manager>MediaConch</manager>
+    <note>tbd; needs metadata definition updates per CELLAR</note>
   </rule>
 </registry>
