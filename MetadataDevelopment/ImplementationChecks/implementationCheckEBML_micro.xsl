@@ -163,7 +163,7 @@
                         <xsl:with-param name="test">
                           <xsl:choose>
                             <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
-                              <xsl:for-each select="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -212,7 +212,7 @@
                         <xsl:with-param name="test">
                           <xsl:choose>
                             <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
-                              <xsl:for-each select="//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -260,8 +260,8 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
-                              <xsl:for-each select="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -309,8 +309,8 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
-                              <xsl:for-each select="//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
