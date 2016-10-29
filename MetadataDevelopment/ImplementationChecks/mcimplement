@@ -39,10 +39,10 @@ while [ "${*}" != "" ] ; do
   INPUT="${1}"
   shift
   mc_tmp=$(_maketemp)
-  mediaconch -mi -mt -fx --ParseSpeed=0.5 --force "${INPUT}" > "${mc_tmp}"
+  mediaconch -mi -mmt -fx --ParseSpeed=0.5 --force "${INPUT}" > "${mc_tmp}"
   if [ -f "${displayfile}" ] ; then
-    xsltproc /Users/davidrice/github/MediaAreaXml/transforms/micro.xsl "${mc_tmp}" | xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" - | xsltproc "${displayfile}" -
+    xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" "${mc_tmp}" | xsltproc "${displayfile}" -
   else
-    xsltproc /Users/davidrice/github/MediaAreaXml/transforms/micro.xsl "${mc_tmp}" | xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" -
+    xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" "${mc_tmp}"
   fi
 done
