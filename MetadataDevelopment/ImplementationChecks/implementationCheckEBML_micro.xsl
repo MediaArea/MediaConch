@@ -373,22 +373,6 @@
                         <xsl:with-param name="element" select="$CRC_Elements/mmt:d[@n='Value']"/>
                       </xsl:call-template>
                       <!-- /EBML-CRC-VALID -->
-                      <!-- EBML-CRC-LENGTH -->
-                      <xsl:call-template name="element_value_is_x_bytes">
-                        <xsl:with-param name="icid">EBML-CRC-LENGTH</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="$CRC_Elements"/>
-                        <xsl:with-param name="x">4</xsl:with-param>
-                      </xsl:call-template>
-                      <!-- /EBML-CRC-LENGTH -->
-                      <!-- MKV-SEGMENT-UID-LENGTH -->
-                      <xsl:call-template name="element_value_is_x_bytes">
-                        <xsl:with-param name="icid">MKV-SEGMENT-UID-LENGTH</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Info']/mmt:b[@n='SegmentUID' or @n='PrevUID' or @n='NextUID' or @n='SegmentFamily']"/>
-                        <xsl:with-param name="x">16</xsl:with-param>
-                      </xsl:call-template>
-                      <!-- /MKV-SEGMENT-UID-LENGTH -->
                       <!-- MKV-VALID-TRACKTYPE-VALUE -->
                       <xsl:call-template name="x_is_in_list">
                         <xsl:with-param name="icid">MKV-VALID-TRACKTYPE-VALUE</xsl:with-param>
@@ -1017,58 +1001,6 @@
                   <xsl:value-of select="count(../mmt:b[mmt:b[@n='Header']])"/>
                   <xsl:text> Child Elements under </xsl:text>
                   <xsl:value-of select="$ParentElement"/>
-                </xsl:attribute>
-                <xsl:copy-of select="$values"/>
-              </test>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:for-each>
-      </xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
-  <xsl:template name="element_value_is_x_bytes">
-    <xsl:param name="icid"/>
-    <xsl:param name="version"/>
-    <xsl:param name="element"/>
-    <xsl:param name="x"/>
-    <xsl:call-template name="check">
-      <xsl:with-param name="icid" select="$icid"/>
-      <xsl:with-param name="version" select="$version"/>
-      <xsl:with-param name="context">
-        <context>
-          <xsl:attribute name="name">
-            <xsl:text>Expected Size in Bytes</xsl:text>
-          </xsl:attribute>
-          <xsl:value-of select="$x"/>
-        </context>
-      </xsl:with-param>
-      <xsl:with-param name="test">
-        <xsl:for-each select="$element">
-          <xsl:variable name="ElementName">
-            <xsl:value-of select="@n"/>
-          </xsl:variable>
-          <xsl:variable name="ElementDataSize" select="mmt:b[@n='Header']/mmt:d[@n='Size']"/>
-          <xsl:variable name="values">
-            <xsl:call-template name="EBMLElementValue">
-              <xsl:with-param name="ElementName" select="$ElementName"/>
-            </xsl:call-template>
-          </xsl:variable>
-          <xsl:choose>
-            <xsl:when test="$x = $ElementDataSize">
-              <test>
-                <xsl:attribute name="outcome">pass</xsl:attribute>
-                <xsl:copy-of select="$values"/>
-              </test>
-            </xsl:when>
-            <xsl:otherwise>
-              <test>
-                <xsl:attribute name="outcome">fail</xsl:attribute>
-                <xsl:attribute name="reason">
-                  <xsl:text>The Element with id </xsl:text>
-                  <xsl:value-of select="$ElementName"/>
-                  <xsl:text> is an invalid size of </xsl:text>
-                  <xsl:value-of select="$ElementDataSize"/>
-                  <xsl:text> bytes.</xsl:text>
                 </xsl:attribute>
                 <xsl:copy-of select="$values"/>
               </test>
