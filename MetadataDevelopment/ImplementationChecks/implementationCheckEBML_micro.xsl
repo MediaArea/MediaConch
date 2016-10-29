@@ -498,14 +498,14 @@
       <xsl:for-each select="$lookupschema//element">
         <xsl:value-of select="@name"/>
         <xsl:text>,</xsl:text>
-        <xsl:value-of select="../@name"/>
+        <xsl:value-of select="@parent"/>
         <xsl:text>.</xsl:text>
       </xsl:for-each>
     </xsl:variable>
     <xsl:variable name="RecursiveElements">
-      <xsl:for-each select="$lookupschema//element[@recursive='1']">
+      <xsl:for-each select="$lookupschema//element[@recursive='true']">
         <xsl:text>,</xsl:text>
-        <xsl:value-of select="@n"/>
+        <xsl:value-of select="@name"/>
         <xsl:text>.</xsl:text>
       </xsl:for-each>
     </xsl:variable>
@@ -626,20 +626,17 @@
     <xsl:param name="element"/>
     <xsl:variable name="ElementsWithMandatoryChildrenWithoutDefaults">
       <xsl:text> </xsl:text>
-      <xsl:for-each select="$lookupschema//element[element[not(@default)][@minOccurs&gt;0]]">
+      <xsl:for-each select="$lookupschema//element[not(@default)][@minOccurs>0]">
+        <xsl:value-of select="@parent"/>
+        <xsl:text>=</xsl:text>
         <xsl:value-of select="@name"/>
-        <xsl:text>: </xsl:text>
-        <xsl:for-each select="element[not(@default)][@minOccurs&gt;0]">
-          <xsl:value-of select="@name"/>
-          <xsl:text> </xsl:text>
-        </xsl:for-each>
-        <xsl:text> ; </xsl:text>
+        <xsl:text>;</xsl:text>
       </xsl:for-each>
     </xsl:variable>
     <xsl:variable name="ElementsThatContainMandates">
       <xsl:text> </xsl:text>
-      <xsl:for-each select="$lookupschema//element[element[not(@default)][@minOccurs&gt;0]]">
-        <xsl:value-of select="@name"/>
+      <xsl:for-each select="$lookupschema//element[not(@default)][@minOccurs>0]">
+        <xsl:value-of select="@parent"/>
         <xsl:text> </xsl:text>
       </xsl:for-each>
     </xsl:variable>
@@ -651,19 +648,27 @@
           <xsl:variable name="ElementName">
             <xsl:value-of select="@n"/>
           </xsl:variable>
-          <xsl:variable name="CurrentElementChildren">
-            <xsl:for-each select="mmt:b[@n!='Header']">
-              <xsl:value-of select="@n"/>
-              <xsl:text> </xsl:text>
-            </xsl:for-each>
-          </xsl:variable>
-          <xsl:variable name="mandatoryChildrenVINT">
-            <xsl:value-of select="substring-before(substring-after($ElementsWithMandatoryChildrenWithoutDefaults,concat($ElementName,':')),';')"/>
-          </xsl:variable>
-          <xsl:variable name="offset">
-            <xsl:value-of select="@o"/>
-          </xsl:variable>
           <xsl:if test="contains($ElementsThatContainMandates,$ElementName)">
+            <xsl:variable name="CurrentElementChildren">
+              <xsl:for-each select="mmt:b[@n!='Header']">
+                <xsl:value-of select="@n"/>
+                <xsl:text> </xsl:text>
+              </xsl:for-each>
+            </xsl:variable>
+            <xsl:variable name="mandatoryChildrenVINT">
+              <xsl:for-each select="str:tokenize($ElementsWithMandatoryChildrenWithoutDefaults, ';')">
+                <xsl:variable name="parent" select="substring-before(.,'=')"/>
+                <xsl:variable name="name" select="substring-after(.,'=')"/>
+                <xsl:if test="$parent=$ElementName">
+                  <xsl:value-of select="$name"/>
+                  <xsl:text> </xsl:text>
+                </xsl:if>
+              </xsl:for-each>
+              <xsl:value-of select="substring-before(substring-after($ElementsWithMandatoryChildrenWithoutDefaults,concat($ElementName,':')),';')"/>
+            </xsl:variable>
+            <xsl:variable name="offset">
+              <xsl:value-of select="@o"/>
+            </xsl:variable>
             <xsl:variable name="values">
               <xsl:call-template name="EBMLElementValue">
                 <xsl:with-param name="ElementName" select="$ElementName"/>
