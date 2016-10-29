@@ -130,6 +130,13 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
+                      <!-- EBML-ELEMENT-IN-SIZE-RANGE -->
+                      <xsl:call-template name="element_at_correct_size">
+                        <xsl:with-param name="icid">EBML-ELEMENT-IN-SIZE-RANGE</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
+                      </xsl:call-template>
+                      <!-- /EBML-ELEMENT-IN-SIZE-RANGE -->
                       <!-- EBML-VALID-MAXID -->
                       <xsl:call-template name="element_is_less_than_or_equal_to_x">
                         <xsl:with-param name="icid">EBML-VALID-MAXID</xsl:with-param>
@@ -710,6 +717,158 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+
+
+  <xsl:template name="element_at_correct_size">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="element"/>
+    <xsl:variable name="ElementsWithSizeRestrictions">
+      <xsl:text>;</xsl:text>
+      <xsl:for-each select="$lookupschema//element">
+        <xsl:choose>
+          <xsl:when test="@size">
+            <xsl:value-of select="@name"/>
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="@size"/>
+            <xsl:text>;</xsl:text>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:variable name="ElementsWithTypes">
+      <xsl:text>;</xsl:text>
+      <xsl:for-each select="$lookupschema//element">
+        <xsl:value-of select="@name"/>
+        <xsl:text>=</xsl:text>
+        <xsl:value-of select="@type"/>
+        <xsl:text>;</xsl:text>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid" select="$icid"/>
+      <xsl:with-param name="version" select="$version"/>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="type">
+            <xsl:value-of select="substring-before(substring-after($ElementsWithTypes,concat(';',$ElementName,'=')),';')"/>
+          </xsl:variable>
+          <xsl:if test="contains($ElementsWithSizeRestrictions,concat(';',$ElementName,'=')) or $type='uinteger' or $type='integer' or $type='float'">
+            <xsl:variable name="ElementSize">
+              <xsl:value-of select="mmt:b[@n='Header']/mmt:d[@n='Size']"/>
+            </xsl:variable>
+            <xsl:variable name="allowedElementSize">
+              <xsl:value-of select="substring-before(substring-after($ElementsWithSizeRestrictions,concat(';',$ElementName,'=')),';')"/>
+            </xsl:variable>
+            <xsl:variable name="values">
+              <xsl:call-template name="EBMLElementValue">
+                <xsl:with-param name="ElementName" select="$ElementName"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$allowedElementSize=$ElementSize">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$type='uinteger' or $type='integer'">
+                <xsl:choose>
+                  <xsl:when test="$ElementSize >= 0 and $ElementSize &lt;= 8">
+                    <test>
+                      <xsl:attribute name="outcome">pass</xsl:attribute>
+                      <xsl:copy-of select="$values"/>
+                    </test>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <test>
+                      <xsl:attribute name="outcome">fail</xsl:attribute>
+                      <xsl:attribute name="reason">
+                        <xsl:value-of select="$ElementName"/>
+                        <xsl:text> is a </xsl:text>
+                        <xsl:value-of select="$type"/>
+                        <xsl:text> and does not have a valid Element Size of 0-8 octets but is instead using </xsl:text>
+                        <xsl:value-of select="$ElementSize"/>
+                        <xsl:text> octets.</xsl:text>
+                      </xsl:attribute>
+                      <xsl:copy-of select="$values"/>
+                    </test>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:when test="$type='float'">
+                <xsl:choose>
+                  <xsl:when test="$ElementSize = 0 or $ElementSize = 4 or $ElementSize = 8">
+                    <test>
+                      <xsl:attribute name="outcome">pass</xsl:attribute>
+                      <xsl:copy-of select="$values"/>
+                    </test>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <test>
+                      <xsl:attribute name="outcome">fail</xsl:attribute>
+                      <xsl:attribute name="reason">
+                        <xsl:value-of select="$ElementName"/>
+                        <xsl:text> is a </xsl:text>
+                        <xsl:value-of select="$type"/>
+                        <xsl:text> and does not have a valid Element Size of 0, 4, or 8 octets but is instead using </xsl:text>
+                        <xsl:value-of select="$ElementSize"/>
+                        <xsl:text> octets.</xsl:text>
+                      </xsl:attribute>
+                      <xsl:copy-of select="$values"/>
+                    </test>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:when test="$type='date'">
+                <xsl:choose>
+                  <xsl:when test="$ElementSize = 0 or $ElementSize = 8">
+                    <test>
+                      <xsl:attribute name="outcome">pass</xsl:attribute>
+                      <xsl:copy-of select="$values"/>
+                    </test>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <test>
+                      <xsl:attribute name="outcome">fail</xsl:attribute>
+                      <xsl:attribute name="reason">
+                        <xsl:value-of select="$ElementName"/>
+                        <xsl:text> is a </xsl:text>
+                        <xsl:value-of select="$type"/>
+                        <xsl:text> and does not have a valid Element Size of 0 or 8 octets but is instead using </xsl:text>
+                        <xsl:value-of select="$ElementSize"/>
+                        <xsl:text> octets.</xsl:text>
+                      </xsl:attribute>
+                      <xsl:copy-of select="$values"/>
+                    </test>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:otherwise>
+                <test>
+                  <xsl:attribute name="outcome">fail</xsl:attribute>
+                  <xsl:attribute name="reason">
+                    <xsl:value-of select="$ElementName"/>
+                    <xsl:text> is not a valid Element Size of </xsl:text>
+                    <xsl:value-of select="$allowedElementSize"/>
+                    <xsl:text> octets but is instead using </xsl:text>
+                    <xsl:value-of select="$ElementSize"/>
+                    <xsl:text> octets.</xsl:text>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+  
   <xsl:template name="element_is_less_than_or_equal_to_x">
     <xsl:param name="icid"/>
     <xsl:param name="version"/>
