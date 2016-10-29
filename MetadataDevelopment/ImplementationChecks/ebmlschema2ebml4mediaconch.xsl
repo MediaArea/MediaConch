@@ -91,6 +91,9 @@
       </xsl:attribute>
         -->
       <xsl:choose>
+        <xsl:when test="@recursive='1'">
+          <xsl:attribute name="recursive">true</xsl:attribute>
+        </xsl:when>
         <xsl:when test="substring($EBMLReferencePath,string-length($EBMLReferencePath),1)!=')'">
           <xsl:attribute name="recursive">false</xsl:attribute>
           <!--
