@@ -1112,7 +1112,7 @@
             <xsl:value-of select="../@n"/>
           </xsl:variable>
           <xsl:variable name="info">
-            <xsl:value-of select="@info"/>
+            <xsl:value-of select="@i"/>
           </xsl:variable>
           <xsl:variable name="CRCValue">
             <xsl:call-template name="DecToVINT">
