@@ -215,7 +215,7 @@
   <element name="EditionFlagHidden" id="0x45BD" type="uinteger" range="0-1" default="0" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EditionEntry"/>
   <element name="EditionFlagDefault" id="0x45DB" type="uinteger" range="0-1" default="0" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EditionEntry"/>
   <element name="EditionFlagOrdered" id="0x45DD" type="uinteger" range="0-1" default="0" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="EditionEntry"/>
-  <element name="ChapterAtom" id="0xB6" type="master" minver="1" minOccurs="1" maxOccurs="unbounded" recursive="true" parent="EditionEntry(1*"/>
+  <element name="ChapterAtom" id="0xB6" type="master" minver="1" minOccurs="1" maxOccurs="unbounded" recursive="true" parent="EditionEntry"/>
   <element name="ChapterUID" id="0x73C4" type="uinteger" range="not 0" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="ChapterAtom"/>
   <element name="ChapterStringUID" id="0x5654" type="utf-8" minver="3" minOccurs="0" maxOccurs="1" recursive="false" parent="ChapterAtom"/>
   <element name="ChapterTimeStart" id="0x91" type="uinteger" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="ChapterAtom"/>
