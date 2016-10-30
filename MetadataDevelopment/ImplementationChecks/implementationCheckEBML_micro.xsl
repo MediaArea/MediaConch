@@ -648,6 +648,9 @@
           <xsl:variable name="ElementName">
             <xsl:value-of select="@n"/>
           </xsl:variable>
+          <xsl:variable name="ElementSize">
+            <xsl:value-of select="mmt:b[@n='Header']/mmt:d[@n='Size']"/>
+          </xsl:variable>
           <xsl:if test="contains($ElementsThatContainMandates,$ElementName)">
             <xsl:variable name="CurrentElementChildren">
               <xsl:for-each select="mmt:b[@n!='Header']">
@@ -674,6 +677,18 @@
                 <xsl:with-param name="ElementName" select="$ElementName"/>
               </xsl:call-template>
             </xsl:variable>
+            <xsl:if test="$ElementSize &lt; 2">
+              <test>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:attribute name="reason">
+                  <xsl:value-of select="$ElementName"/>
+                  <xsl:text> MUST contain mandates but has an ElementSize of </xsl:text>
+                  <xsl:value-of select="$ElementSize"/>
+                  <xsl:text>.</xsl:text>
+                </xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:if>
             <xsl:for-each select="str:tokenize($mandatoryChildrenVINT)">
               <xsl:choose>
                 <xsl:when test="contains($CurrentElementChildren,.)">
