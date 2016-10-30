@@ -544,9 +544,6 @@
                     <xsl:text> is not a valid Parent Element of </xsl:text>
                     <xsl:value-of select="$ElementName"/>
                     <xsl:if test="string-length($allowedParentElement)&gt;0">
-                      <a>
-                        <xsl:value-of select="$allowedParentElement"/>
-                      </a>
                       <xsl:text>. The valid Parent Element is </xsl:text>
                       <xsl:value-of select="$allowedParentElement"/>
                     </xsl:if>
