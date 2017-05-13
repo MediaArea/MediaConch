@@ -116,6 +116,13 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-VALID-PARENT -->
+                      <!-- NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
+                      <xsl:call-template name="element_contains_no_junk">
+                        <xsl:with-param name="icid">NO-JUNK-IN-FIXEDSIZE-MATROSKA</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
+                      </xsl:call-template>
+                      <!-- /NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <!-- EBML-ELEMENT-NONMULTIPLES -->
                       <xsl:call-template name="element_does_not_repeat_in_parent">
                         <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
@@ -704,6 +711,44 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template name="element_contains_no_junk">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="element"/>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid" select="$icid"/>
+      <xsl:with-param name="version" select="$version"/>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:if test="mmt:b[@n='Junk']">
+            <xsl:variable name="offset">
+              <xsl:value-of select="@o"/>
+            </xsl:variable>
+            <xsl:variable name="values">
+              <xsl:call-template name="EBMLElementValue">
+                <xsl:with-param name="ElementName" select="$ElementName"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <test>
+              <xsl:attribute name="outcome">fail</xsl:attribute>
+              <xsl:attribute name="reason">
+                <xsl:value-of select="$ElementName"/>
+                <xsl:text> contains </xsl:text>
+                <xsl:value-of select="mmt:b[@n='Junk']/@s"/>
+                <xsl:text> bytes of junk data at offset </xsl:text>
+                <xsl:value-of select="mmt:b[@n='Junk']/@o"/>
+                <xsl:text>.</xsl:text>
+              </xsl:attribute>
+              <xsl:copy-of select="$values"/>
+            </test>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 
   <xsl:template name="element_at_correct_size">
     <xsl:param name="icid"/>
