@@ -123,6 +123,13 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
                       </xsl:call-template>
                       <!-- /NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
+                      <!-- EBML-ELEM-UNKNOWN-SIZE -->
+                      <xsl:call-template name="size_is_not_unlimited">
+                        <xsl:with-param name="icid">EBML-ELEM-UNKNOWN-SIZE</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:b[1][@n='Header']/mmt:d[@n='Size']='Unlimited']"/>
+                      </xsl:call-template>
+                      <!-- /EBML-ELEM-UNKNOWN-SIZE -->
                       <!-- EBML-ELEMENT-NONMULTIPLES -->
                       <xsl:call-template name="element_does_not_repeat_in_parent">
                         <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
@@ -1182,6 +1189,52 @@
                   <xsl:text>A crc evaluation gives a result of </xsl:text>
                   <xsl:value-of select="$info"/>
                   <xsl:text>.</xsl:text>
+                </xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template name="size_is_not_unlimited">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="element"/>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid" select="$icid"/>
+      <xsl:with-param name="version" select="$version"/>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="element_size">
+            <xsl:value-of select="mmt:b[1][@n='Header']/mmt:d[@n='Size']"/>
+          </xsl:variable>
+          <xsl:variable name="values">
+            <xsl:for-each select="parent::mmt:b">
+              <xsl:call-template name="EBMLElementValue">
+                <xsl:with-param name="ElementName" select="$ElementName"/>
+              </xsl:call-template>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="$element_size != 'Unlimited'">
+              <test>
+                <xsl:attribute name="outcome">pass</xsl:attribute>
+                <xsl:attribute name="ya">
+                  <xsl:value-of select="mmt:b[1][@n='Header']/mmt:d[@n='Size']"/>
+                </xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:when>
+            <xsl:otherwise>
+              <test>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:attribute name="reason">
+                  <xsl:text>An element uses an unknown size where it isn't allowed.</xsl:text>
                 </xsl:attribute>
                 <xsl:copy-of select="$values"/>
               </test>
