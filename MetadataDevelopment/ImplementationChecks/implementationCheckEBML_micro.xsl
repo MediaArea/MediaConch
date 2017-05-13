@@ -402,6 +402,7 @@
                 </xsl:for-each>
               </xsl:when>
               <xsl:when test="mi:Format='FFV1'">
+                <xsl:variable name="ffv1version" select="mi:Format_Version"/>
                 <xsl:for-each select="ancestor::ma:media">
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
@@ -417,6 +418,12 @@
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='colorspace_type']"/>
                         <xsl:with-param name="list">0 1</xsl:with-param>
+                      </xsl:call-template>
+                      <xsl:call-template name="data_is_not_in_list">
+                        <xsl:with-param name="icid">FFV1-VALID-VERSION</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="x" select="$ffv1version"/>
+                        <xsl:with-param name="list">2 3.0 3.1 3.2 3.3</xsl:with-param>
                       </xsl:call-template>
                       <!-- FFV1-SLICE-CRC-VALID -->
                       <xsl:call-template name="child_data_info_is_ok">
@@ -1268,8 +1275,80 @@
               <xsl:attribute name="outcome">fail</xsl:attribute>
               <xsl:attribute name="reason">
                 <xsl:text>The value of </xsl:text>
-                <xsl:value-of select="@n"/>
+                <xsl:choose>
+                  <xsl:when test="namespace-uri()='https://mediaarea.net/mediainfo'">
+                    <xsl:value-of select="$x"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="@n"/>
+                  </xsl:otherwise>
+                </xsl:choose>
                 <xsl:text> is not a valid value (</xsl:text>
+                <xsl:value-of select="$list"/>
+                <xsl:text>).</xsl:text>
+              </xsl:attribute>
+              <xsl:copy-of select="$values"/>
+            </test>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:if test="$tests != ''">
+      <xsl:call-template name="check">
+        <xsl:with-param name="icid" select="$icid"/>
+        <xsl:with-param name="version" select="$version"/>
+        <xsl:with-param name="context" select="$context"/>
+        <xsl:with-param name="test" select="$tests"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template name="data_is_not_in_list">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="x"/>
+    <xsl:param name="list"/>
+    <xsl:variable name="context">
+      <context>
+        <xsl:attribute name="name">
+          <xsl:text>Invalid Values</xsl:text>
+        </xsl:attribute>
+        <xsl:value-of select="$list"/>
+      </context>
+    </xsl:variable>
+    <xsl:variable name="tests">
+      <xsl:for-each select="$x">
+        <xsl:variable name="values">
+          <value>
+            <xsl:attribute name="offset">
+              <xsl:value-of select="@o"/>
+            </xsl:attribute>
+            <xsl:attribute name="name">
+              <xsl:value-of select="@n"/>
+            </xsl:attribute>
+            <xsl:value-of select="."/>
+          </value>
+        </xsl:variable>
+        <xsl:choose>
+          <xsl:when test="not(contains($list,.))">
+            <test>
+              <xsl:attribute name="outcome">pass</xsl:attribute>
+              <xsl:copy-of select="$values"/>
+            </test>
+          </xsl:when>
+          <xsl:otherwise>
+            <test>
+              <xsl:attribute name="outcome">fail</xsl:attribute>
+              <xsl:attribute name="reason">
+                <xsl:text>The value of </xsl:text>
+                <xsl:choose>
+                  <xsl:when test="namespace-uri()='https://mediaarea.net/mediainfo'">
+                    <xsl:value-of select="$x"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="@n"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text> is an invalid value (</xsl:text>
                 <xsl:value-of select="$list"/>
                 <xsl:text>).</xsl:text>
               </xsl:attribute>
