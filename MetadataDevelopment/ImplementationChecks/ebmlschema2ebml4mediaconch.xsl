@@ -120,10 +120,17 @@
 
       <xsl:variable name="EBMLParentPath">
         <!--<xsl:value-of select="substring-before($EBMLReferencePath,$EBMLElementPath)"/>-->
-        <xsl:for-each select="str:tokenize($EBMLReferencePath,'\')[position() &lt; last()]">
-          <xsl:text>\</xsl:text>
-          <xsl:value-of select="."/>
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test="contains($EBMLReferencePath, '(1*(')">
+            <xsl:value-of select="substring-before($EBMLReferencePath, '(1*(')"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:for-each select="str:tokenize($EBMLReferencePath,'\')[position() &lt; last()]">
+              <xsl:text>\</xsl:text>
+              <xsl:value-of select="."/>
+            </xsl:for-each>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:variable>
       <!--
       <xsl:attribute name="EBMLParentPath">
