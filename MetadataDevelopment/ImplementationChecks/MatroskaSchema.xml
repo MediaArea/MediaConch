@@ -10,17 +10,7 @@
   <element name="DocTypeReadVersion" id="0x4285" type="uinteger" default="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
   <element name="Void" id="0xEC" type="binary" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="*"/>
   <element name="CRC-32" id="0xBF" type="binary" size="4" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="1*"/>
-  <element name="EBML" id="0x1A45DFA3" type="master" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Root"/>
-  <element name="EBMLVersion" id="0x4286" type="uinteger" default="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="EBMLReadVersion" id="0x42F7" type="uinteger" default="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="EBMLMaxIDLength" id="0x42F2" type="uinteger" default="4" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="EBMLMaxSizeLength" id="0x42F3" type="uinteger" default="8" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="DocType" id="0x4282" type="string" default="matroska" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="DocTypeVersion" id="0x4287" type="uinteger" default="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="DocTypeReadVersion" id="0x4285" type="uinteger" default="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="EBML"/>
-  <element name="Void" id="0xEC" type="binary" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="*"/>
-  <element name="CRC-32" id="0xBF" type="binary" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="1*"/>
-  <element name="Segment" id="0x18538067" type="master" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Root"/>
+  <element name="Segment" id="0x18538067" type="master" unknownsizeallowed="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Root"/>
   <element name="SeekHead" id="0x114D9B74" type="master" minver="1" minOccurs="0" maxOccurs="2" recursive="false" parent="Segment"/>
   <element name="Seek" id="0x4DBB" type="master" minver="1" minOccurs="1" maxOccurs="unbounded" recursive="false" parent="SeekHead"/>
   <element name="SeekID" id="0x53AB" type="binary" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Seek"/>
@@ -43,7 +33,7 @@
   <element name="Title" id="0x7BA9" type="utf-8" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="Info"/>
   <element name="MuxingApp" id="0x4D80" type="utf-8" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Info"/>
   <element name="WritingApp" id="0x5741" type="utf-8" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Info"/>
-  <element name="Cluster" id="0x1F43B675" type="master" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="Segment"/>
+  <element name="Cluster" id="0x1F43B675" type="master" unknownsizeallowed="1" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="Segment"/>
   <element name="Timecode" id="0xE7" type="uinteger" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Cluster"/>
   <element name="SilentTracks" id="0x5854" type="master" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="Cluster"/>
   <element name="SilentTrackNumber" id="0x58D7" type="uinteger" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="SilentTracks"/>
@@ -64,8 +54,8 @@
   <element name="CodecState" id="0xA4" type="binary" minver="2" minOccurs="0" maxOccurs="1" recursive="false" parent="BlockGroup"/>
   <element name="DiscardPadding" id="0x75A2" type="integer" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="BlockGroup"/>
   <element name="Slices" id="0x8E" type="master" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="BlockGroup"/>
-  <element name="TimeSlice" id="0xE8" type="master" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="Slices"/>
-  <element name="LaceNumber" id="0xCC" type="uinteger" default="0" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TimeSlice"/>
+  <element name="TimeSlice" id="0xE8" type="master" minver="1" maxver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="Slices"/>
+  <element name="LaceNumber" id="0xCC" type="uinteger" default="0" minver="1" maxver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TimeSlice"/>
   <element name="FrameNumber" id="0xCD" type="uinteger" default="0" minver="0" maxver="0" minOccurs="0" maxOccurs="1" recursive="false" parent="TimeSlice"/>
   <element name="BlockAdditionID" id="0xCB" type="uinteger" default="0" minver="0" maxver="0" minOccurs="0" maxOccurs="1" recursive="false" parent="TimeSlice"/>
   <element name="Delay" id="0xCE" type="uinteger" default="0" minver="0" maxver="0" minOccurs="0" maxOccurs="1" recursive="false" parent="TimeSlice"/>
@@ -87,11 +77,12 @@
   <element name="MaxCache" id="0x6DF8" type="uinteger" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="DefaultDuration" id="0x23E383" type="uinteger" range="not 0" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="DefaultDecodedFieldDuration" id="0x234E7A" type="uinteger" range="not 0" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
-  <element name="TrackTimecodeScale" id="0x23314F" type="float" range="&gt; 0x0p+0" default="0x1p+0" minver="0" maxver="0" minOccurs="1" maxOccurs="1" recursive="false" parent="TrackEntry"/>
+  <element name="TrackTimecodeScale" id="0x23314F" type="float" range="&gt; 0x0p+0" default="0x1p+0" minver="1" maxver="3" minOccurs="1" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="TrackOffset" id="0x537F" type="integer" default="0" minver="0" maxver="0" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="MaxBlockAdditionID" id="0x55EE" type="uinteger" default="0" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="Name" id="0x536E" type="utf-8" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="Language" id="0x22B59C" type="string" default="eng" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
+  <element name="LanguageIETF" id="0x22B59D" type="string" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="CodecID" id="0x86" type="string" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="CodecPrivate" id="0x63A2" type="binary" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="CodecName" id="0x258688" type="utf-8" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
@@ -141,16 +132,22 @@
   <element name="MaxCLL" id="0x55BC" type="uinteger" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="Colour"/>
   <element name="MaxFALL" id="0x55BD" type="uinteger" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="Colour"/>
   <element name="MasteringMetadata" id="0x55D0" type="master" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="Colour"/>
-  <element name="PrimaryRChromaticityX" id="0x55D1" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="PrimaryRChromaticityY" id="0x55D2" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="PrimaryGChromaticityX" id="0x55D3" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="PrimaryGChromaticityY" id="0x55D4" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="PrimaryBChromaticityX" id="0x55D5" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="PrimaryBChromaticityY" id="0x55D6" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="WhitePointChromaticityX" id="0x55D7" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="WhitePointChromaticityY" id="0x55D8" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="LuminanceMax" id="0x55D9" type="float" range="0-9999.99" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
-  <element name="LuminanceMin" id="0x55DA" type="float" range="0-999.9999" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="PrimaryRChromaticityX"/>
+  <element name="PrimaryRChromaticityX" id="0x55D1" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="PrimaryRChromaticityY" id="0x55D2" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="PrimaryGChromaticityX" id="0x55D3" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="PrimaryGChromaticityY" id="0x55D4" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="PrimaryBChromaticityX" id="0x55D5" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="PrimaryBChromaticityY" id="0x55D6" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="WhitePointChromaticityX" id="0x55D7" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="WhitePointChromaticityY" id="0x55D8" type="float" range="0-1" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="LuminanceMax" id="0x55D9" type="float" range="0-9999.99" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="LuminanceMin" id="0x55DA" type="float" range="0-999.9999" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="MasteringMetadata"/>
+  <element name="Projection" id="0x7670" type="master" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="Video"/>
+  <element name="ProjectionType" id="0x7671" type="uinteger" range="0-3" default="0" minver="4" minOccurs="1" maxOccurs="1" recursive="false" parent="Projection"/>
+  <element name="ProjectionPrivate" id="0x7672" type="binary" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="Projection"/>
+  <element name="ProjectionPoseYaw" id="0x7673" type="float" default="0x0p+0" minver="4" minOccurs="1" maxOccurs="1" recursive="false" parent="Projection"/>
+  <element name="ProjectionPosePitch" id="0x7674" type="float" default="0x0p+0" minver="4" minOccurs="1" maxOccurs="1" recursive="false" parent="Projection"/>
+  <element name="ProjectionPoseRoll" id="0x7675" type="float" default="0x0p+0" minver="4" minOccurs="1" maxOccurs="1" recursive="false" parent="Projection"/>
   <element name="Audio" id="0xE1" type="master" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="TrackEntry"/>
   <element name="SamplingFrequency" id="0xB5" type="float" range="&gt; 0x0p+0" default="0x1.f4p+12" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="Audio"/>
   <element name="OutputSamplingFrequency" id="0x78B5" type="float" range="&gt; 0x0p+0" default="SamplingFrequency" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="Audio"/>
@@ -230,6 +227,7 @@
   <element name="ChapterDisplay" id="0x80" type="master" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="ChapterAtom"/>
   <element name="ChapString" id="0x85" type="utf-8" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="ChapterDisplay"/>
   <element name="ChapLanguage" id="0x437C" type="string" default="eng" minver="1" minOccurs="1" maxOccurs="unbounded" recursive="false" parent="ChapterDisplay"/>
+  <element name="ChapLanguageIETF" id="0x437D" type="string" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="ChapterDisplay"/>
   <element name="ChapCountry" id="0x437E" type="string" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="ChapterDisplay"/>
   <element name="ChapProcess" id="0x6944" type="master" minver="1" minOccurs="0" maxOccurs="unbounded" recursive="false" parent="ChapterAtom"/>
   <element name="ChapProcessCodecID" id="0x6955" type="uinteger" default="0" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="ChapProcess"/>
@@ -249,6 +247,7 @@
   <element name="SimpleTag" id="0x67C8" type="master" minver="1" minOccurs="1" maxOccurs="unbounded" recursive="true" parent="Tag"/>
   <element name="TagName" id="0x45A3" type="utf-8" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="SimpleTag"/>
   <element name="TagLanguage" id="0x447A" type="string" default="und" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="SimpleTag"/>
+  <element name="TagLanguageIETF" id="0x447B" type="string" minver="4" minOccurs="0" maxOccurs="1" recursive="false" parent="SimpleTag"/>
   <element name="TagDefault" id="0x4484" type="uinteger" range="0-1" default="1" minver="1" minOccurs="1" maxOccurs="1" recursive="false" parent="SimpleTag"/>
   <element name="TagString" id="0x4487" type="utf-8" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="SimpleTag"/>
   <element name="TagBinary" id="0x4485" type="binary" minver="1" minOccurs="0" maxOccurs="1" recursive="false" parent="SimpleTag"/>
