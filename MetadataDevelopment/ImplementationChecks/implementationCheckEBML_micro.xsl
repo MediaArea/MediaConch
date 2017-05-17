@@ -402,14 +402,14 @@
                         <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
                       </xsl:call-template>
                       <!-- /MKV-VALID-TRACKTYPE-VALUE -->
-                      <!-- MKV_NUMERICAL_TAG -->
+                      <!-- MKV-NUMERICAL-TAG -->
                       <xsl:call-template name="tag_is_number">
-                        <xsl:with-param name="icid">MKV_NUMERICAL_TAG</xsl:with-param>
+                        <xsl:with-param name="icid">MKV-NUMERICAL-TAG</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@i='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
                       </xsl:call-template>
-                      <!-- /MKV_NUMERICAL_TAG -->
+                      <!-- /MKV-NUMERICAL-TAG -->
                     </xsl:with-param>
                   </xsl:call-template>
                 </xsl:for-each>
