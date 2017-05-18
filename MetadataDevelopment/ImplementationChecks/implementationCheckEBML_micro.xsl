@@ -151,6 +151,13 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-IN-SIZE-RANGE -->
+                      <!-- EBML-ELEMENT-VALID-RANGE -->
+                      <xsl:call-template name="element_in_correct_range">
+                        <xsl:with-param name="icid">EBML-ELEMENT-VALID-RANGE</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
+                      </xsl:call-template>
+                      <!-- /EBML-ELEMENT-VALID-RANGE -->
                       <!-- EBML-VALID-MAXID -->
                       <xsl:call-template name="element_is_less_than_or_equal_to_x">
                         <xsl:with-param name="icid">EBML-VALID-MAXID</xsl:with-param>
@@ -395,22 +402,14 @@
                         <xsl:with-param name="list">1 2 3 16 17 18 32</xsl:with-param>
                       </xsl:call-template>
                       <!-- /MKV-VALID-TRACKTYPE-VALUE -->
-                      <!-- MKV-VALID-BOOLEANS -->
-                      <xsl:call-template name="x_is_in_list">
-                        <xsl:with-param name="icid">MKV-VALID-BOOLEANS</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tracks']/mmt:b[@n='TrackEntry']/mmt:b[@n='FlagEnabled' or @n='FlagDefault' or @n='FlagForced' or @n='FlagLacing' or @n='CodecDecodeAll']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Chapters']/mmt:b[@n='EditionEntry']/mmt:b[@n='EditionFlagHidden' or @n='EditionFlagDefault' or @n='EditionFlagOrdered']|mmt:MicroMediaTrace/mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']='Segment']/mmt:b[@n='Chapters']/mmt:b[@n='EditionEntry']//mmt:b[@n='ChapterAtom']/mmt:b[@n='ChapterFlagHidden' or @n='ChapterFlagEnabled']|mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag']/mmt:b[@n='TagDefault']"/>
-                        <xsl:with-param name="list">0 1</xsl:with-param>
-                      </xsl:call-template>
-                      <!-- /MKV-VALID-BOOLEANS -->
-                      <!-- MKV_NUMERICAL_TAG -->
+                      <!-- MKV-NUMERICAL-TAG -->
                       <xsl:call-template name="tag_is_number">
-                        <xsl:with-param name="icid">MKV_NUMERICAL_TAG</xsl:with-param>
+                        <xsl:with-param name="icid">MKV-NUMERICAL-TAG</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@info='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@i='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
                       </xsl:call-template>
-                      <!-- /MKV_NUMERICAL_TAG -->
+                      <!-- /MKV-NUMERICAL-TAG -->
                     </xsl:with-param>
                   </xsl:call-template>
                 </xsl:for-each>
@@ -920,8 +919,189 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
-  
+
+  <xsl:template name="element_in_correct_range">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="element"/>
+    <xsl:variable name="ElementsWithRangeRestrictions">
+      <xsl:text>;</xsl:text>
+      <xsl:for-each select="$lookupschema//element">
+        <xsl:choose>
+          <xsl:when test="@range">
+            <xsl:value-of select="@name"/>
+            <xsl:text>=</xsl:text>
+            <xsl:value-of select="@range"/>
+            <xsl:text>;</xsl:text>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid" select="$icid"/>
+      <xsl:with-param name="version" select="$version"/>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="ElementData">
+            <xsl:value-of select="mmt:d"/>
+          </xsl:variable>
+          <xsl:if test="contains($ElementsWithRangeRestrictions,concat(';',$ElementName,'='))">
+            <xsl:variable name="allowedElementRange">
+              <xsl:value-of select="substring-before(substring-after($ElementsWithRangeRestrictions,concat(';',$ElementName,'=')),';')"/>
+            </xsl:variable>
+            <xsl:variable name="Range_X">
+              <xsl:choose>
+                <xsl:when test="$allowedElementRange='&gt; 0x0p+0'">
+                  <xsl:value-of select="0.000"/>
+                </xsl:when>
+                <xsl:when test="contains(substring($allowedElementRange,2),'-')">
+                  <xsl:choose>
+                    <xsl:when test="substring($allowedElementRange,1,1)='-'">
+                      <xsl:text>-</xsl:text>
+                      <xsl:value-of select="substring-before(substring($allowedElementRange,2),'-')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:value-of select="substring-before($allowedElementRange,'-')"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'>=')">
+                  <xsl:value-of select="substring-after($allowedElementRange,'=')"/>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'$lt;=')">
+                  <xsl:value-of select="substring-after($allowedElementRange,'=')"/>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'>')">
+                  <xsl:value-of select="substring-after($allowedElementRange,'>')"/>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'$lt;')">
+                  <xsl:value-of select="substring-after($allowedElementRange,'&lt;')"/>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'not')">
+                  <xsl:value-of select="substring-after($allowedElementRange,'t')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="$allowedElementRange"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="Range_Y">
+              <xsl:choose>
+                <xsl:when test="contains(substring($allowedElementRange,2),'-')">
+                  <xsl:value-of select="substring-after($allowedElementRange,'-')"/>
+                </xsl:when>
+                <xsl:otherwise></xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="operator">
+              <xsl:choose>
+                <xsl:when test="$allowedElementRange='&gt; 0x0p+0'">
+                  <xsl:text>></xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'p')">
+                  <xsl:text>untested</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains(substring($allowedElementRange,2),'-')">
+                  <xsl:text>-</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'>=')">
+                  <xsl:text>>=</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'$lt;=')">
+                  <xsl:text>&lt;=</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'>')">
+                  <xsl:text>></xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'$lt;')">
+                  <xsl:text>&lt;</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($allowedElementRange,'not')">
+                  <xsl:text>not</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:text>is</xsl:text>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="values">
+              <xsl:call-template name="EBMLElementValue">
+                <xsl:with-param name="ElementName" select="$ElementName"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:choose>
+              <xsl:when test="$operator='>=' and $ElementData >= $Range_X">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='&lt;=' and $ElementData &lt;= $Range_X">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='>' and $ElementData > $Range_X">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='&lt;' and $ElementData &lt; $Range_X">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='not' and $ElementData != $Range_X">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='-' and $ElementData >= $Range_X and $ElementData &lt;= $Range_Y">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='is' and $ElementData = $Range_X">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:when test="$operator='untested'">
+                <test>
+                  <xsl:attribute name="outcome">untested</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:otherwise>
+                <test>
+                  <xsl:attribute name="outcome">fail</xsl:attribute>
+                  <xsl:attribute name="reason">
+                    <xsl:value-of select="$ElementName"/>
+                    <xsl:text> is not a valid Element range of </xsl:text>
+                    <xsl:value-of select="$allowedElementRange"/>
+                    <xsl:text> octets but is instead storing </xsl:text>
+                    <xsl:value-of select="$ElementData"/>
+                    <xsl:text>.</xsl:text>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
   <xsl:template name="element_is_less_than_or_equal_to_x">
     <xsl:param name="icid"/>
     <xsl:param name="version"/>
