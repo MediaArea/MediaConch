@@ -118,7 +118,7 @@
                       <!-- /EBML-ELEMENT-VALID-PARENT -->
                       <!-- NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <xsl:call-template name="element_contains_no_junk">
-                        <xsl:with-param name="icid">NO-JUNK-IN-FIXEDSIZE-MATROSKA</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-NO-JUNK-IN-FIXEDSIZE-ELEMENT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
                       </xsl:call-template>
@@ -178,7 +178,7 @@
                       <!-- /EBML-VALID-MAXSIZE -->
                       <!-- HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -227,7 +227,7 @@
                       <!-- /HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT -->
                       <!-- ELEMENTS-WITHIN-MAXIDLENGTH -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -276,7 +276,7 @@
                       <!-- /ELEMENTS-WITHIN-MAXIDLENGTH -->
                       <!-- HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -325,7 +325,7 @@
                       <!-- /HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <!-- ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -445,6 +445,11 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:b[@n='Slice']/mmt:d[@n='crc_parity']"/>
                       </xsl:call-template>
                       <!-- /FFV1-SLICE-CRC-VALID -->
+                      <!-- MEDIATRACE-FFV1-ERRORS -->
+                      <xsl:call-template name="mediatrace-ffv1-errors">
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:d[@e]|mmt:MicroMediaTrace//mmt:b[@e]"/>
+                      </xsl:call-template>
+                      <!-- /MEDIATRACE-FFV1-ERRORS -->
                     </xsl:with-param>
                   </xsl:call-template>
                 </xsl:for-each>
@@ -1812,6 +1817,43 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+  <xsl:template name="mediatrace-ffv1-errors">
+    <xsl:param name="element"/>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid">
+        <xsl:value-of select="substring-before($element/@e,':')"/>
+      </xsl:with-param>
+      <xsl:with-param name="version">
+        <xsl:value-of select="substring-after($element/@e,':')"/>
+      </xsl:with-param>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="values">
+            <xsl:call-template name="EBMLElementValue">
+              <xsl:with-param name="ElementName" select="$ElementName"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="string-length(translate(mmt:d,$decimal,'')) = 0">
+              <test>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:when>
+            <xsl:otherwise>
+              <test>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
   <xsl:template name="replace">
     <xsl:param name="text"/>
     <xsl:param name="search"/>
@@ -1869,7 +1911,7 @@
           <xsl:text>]</xsl:text>
         </xsl:for-each>
       </xsl:attribute>
-      <xsl:if test="@n!='Slice'">
+      <xsl:if test="@n!='Slice' and mmt:b[@n='Header']/mmt:d[@n='Name']">
         <xsl:attribute name="formatid">
           <xsl:call-template name="DecToVINT">
             <xsl:with-param name="dec" select="mmt:b[@n='Header']/mmt:d[@n='Name']"/>
@@ -1910,10 +1952,16 @@
         <xsl:when test="mmt:d">
           <xsl:value-of select="mmt:d"/>
         </xsl:when>
-        <xsl:otherwise>
+        <xsl:when test="@s">
           <xsl:text>[</xsl:text>
           <xsl:value-of select="@s"/>
           <xsl:text> bytes]</xsl:text>
+        </xsl:when>
+        <xsl:when test=".">
+          <xsl:value-of select="."/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>no info</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
     </value>
