@@ -1952,10 +1952,16 @@
         <xsl:when test="mmt:d">
           <xsl:value-of select="mmt:d"/>
         </xsl:when>
-        <xsl:otherwise>
+        <xsl:when test="@s">
           <xsl:text>[</xsl:text>
           <xsl:value-of select="@s"/>
           <xsl:text> bytes]</xsl:text>
+        </xsl:when>
+        <xsl:when test=".">
+          <xsl:value-of select="."/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>no info</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
     </value>
