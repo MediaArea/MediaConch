@@ -38,11 +38,16 @@ implementationcheckfile="implementationCheckEBML_micro.xsl"
 while [ "${*}" != "" ] ; do
   INPUT="${1}"
   shift
-  mc_tmp=$(_maketemp)
-  mediaconch -mi -mmt -fx --ParseSpeed=0.5 --force "${INPUT}" > "${mc_tmp}"
-  if [ -f "${displayfile}" ] ; then
-    xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" "${mc_tmp}" | xsltproc "${displayfile}" -
+  if [[ "${INPUT##*.}" == "xml" ]] ; then
+    MIMMTFILE="${INPUT}"
   else
-    xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" "${mc_tmp}"
+    mc_tmp=$(_maketemp)
+    mediaconch -mi -mmt -fx --ParseSpeed=0.5 --force "${INPUT}" > "${mc_tmp}"
+    MIMMTFILE="${mc_tmp}"
+  fi
+  if [ -f "${displayfile}" ] ; then
+    xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" "${MIMMTFILE}" | xsltproc "${displayfile}" -
+  else
+    xsltproc --stringparam schema MatroskaSchema.xml --stringparam verbosity 5 "${implementationcheckfile}" "${MIMMTFILE}"
   fi
 done
