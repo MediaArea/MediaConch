@@ -118,7 +118,7 @@
                       <!-- /EBML-ELEMENT-VALID-PARENT -->
                       <!-- NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <xsl:call-template name="element_contains_no_junk">
-                        <xsl:with-param name="icid">NO-JUNK-IN-FIXEDSIZE-MATROSKA</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-NO-JUNK-IN-FIXEDSIZE-ELEMENT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
                       </xsl:call-template>
@@ -178,7 +178,7 @@
                       <!-- /EBML-VALID-MAXSIZE -->
                       <!-- HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -227,7 +227,7 @@
                       <!-- /HEADER-ELEMENTS-WITHIN-IDLENGTH-LIMIT -->
                       <!-- ELEMENTS-WITHIN-MAXIDLENGTH -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-ELEMENTS-WITHIN-MAXIDLENGTH</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -276,7 +276,7 @@
                       <!-- /ELEMENTS-WITHIN-MAXIDLENGTH -->
                       <!-- HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
@@ -325,7 +325,7 @@
                       <!-- /HEADER-ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <!-- ELEMENTS-WITHIN-MAXSIZELENGTH -->
                       <xsl:call-template name="check">
-                        <xsl:with-param name="icid">ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
+                        <xsl:with-param name="icid">EBML-ELEMENTS-WITHIN-MAXSIZELENGTH</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="context">
                           <context>
