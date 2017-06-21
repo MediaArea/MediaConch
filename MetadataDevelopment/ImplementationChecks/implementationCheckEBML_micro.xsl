@@ -1911,7 +1911,7 @@
           <xsl:text>]</xsl:text>
         </xsl:for-each>
       </xsl:attribute>
-      <xsl:if test="@n!='Slice'">
+      <xsl:if test="@n!='Slice' and mmt:b[@n='Header']/mmt:d[@n='Name']">
         <xsl:attribute name="formatid">
           <xsl:call-template name="DecToVINT">
             <xsl:with-param name="dec" select="mmt:b[@n='Header']/mmt:d[@n='Name']"/>
