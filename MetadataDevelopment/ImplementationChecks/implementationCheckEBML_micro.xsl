@@ -445,6 +445,11 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:b[@n='Slice']/mmt:d[@n='crc_parity']"/>
                       </xsl:call-template>
                       <!-- /FFV1-SLICE-CRC-VALID -->
+                      <!-- MEDIATRACE-FFV1-ERRORS -->
+                      <xsl:call-template name="mediatrace-ffv1-errors">
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:d[@e]|mmt:MicroMediaTrace//mmt:b[@e]"/>
+                      </xsl:call-template>
+                      <!-- /MEDIATRACE-FFV1-ERRORS -->
                     </xsl:with-param>
                   </xsl:call-template>
                 </xsl:for-each>
@@ -1804,6 +1809,43 @@
                   <xsl:value-of select="$tagname"/>
                   <xsl:text>) contains non-numeric values</xsl:text>
                 </xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template name="mediatrace-ffv1-errors">
+    <xsl:param name="element"/>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid">
+        <xsl:value-of select="substring-before($element/@e,':')"/>
+      </xsl:with-param>
+      <xsl:with-param name="version">
+        <xsl:value-of select="substring-after($element/@e,':')"/>
+      </xsl:with-param>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="values">
+            <xsl:call-template name="EBMLElementValue">
+              <xsl:with-param name="ElementName" select="$ElementName"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="string-length(translate(mmt:d,$decimal,'')) = 0">
+              <test>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
+                <xsl:copy-of select="$values"/>
+              </test>
+            </xsl:when>
+            <xsl:otherwise>
+              <test>
+                <xsl:attribute name="outcome">fail</xsl:attribute>
                 <xsl:copy-of select="$values"/>
               </test>
             </xsl:otherwise>
