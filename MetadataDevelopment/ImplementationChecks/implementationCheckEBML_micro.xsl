@@ -109,13 +109,13 @@
                         <xsl:with-param name="x_name">DocTypeVersion</xsl:with-param>
                       </xsl:call-template>
                       <!-- /EBML-DOCVER-COH -->
-                      <!-- EBML-ELEMENT-VALID-PARENT -->
+                      <!-- MKV-ELEMENT-VALID-PARENT -->
                       <xsl:call-template name="element_has_valid_parent">
-                        <xsl:with-param name="icid">EBML-ELEMENT-VALID-PARENT</xsl:with-param>
+                        <xsl:with-param name="icid">MKV-ELEMENT-VALID-PARENT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
-                      <!-- /EBML-ELEMENT-VALID-PARENT -->
+                      <!-- /MKV-ELEMENT-VALID-PARENT -->
                       <!-- NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <xsl:call-template name="element_contains_no_junk">
                         <xsl:with-param name="icid">EBML-NO-JUNK-IN-FIXEDSIZE-ELEMENT</xsl:with-param>

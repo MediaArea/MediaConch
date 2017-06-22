@@ -126,13 +126,13 @@
                                     <xsl:with-param name="x_name">DocTypeVersion</xsl:with-param>
                                 </xsl:call-template>
                                 <!-- /EBML-DOCVER-COH -->
-                                <!-- EBML-ELEMENT-VALID-PARENT -->
+                                <!-- MKV-ELEMENT-VALID-PARENT -->
                                 <xsl:call-template name="element_has_valid_parent">
-                                    <xsl:with-param name="icid">EBML-ELEMENT-VALID-PARENT</xsl:with-param>
+                                    <xsl:with-param name="icid">MKV-ELEMENT-VALID-PARENT</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="element" select="mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
                                 </xsl:call-template>
-                                <!-- /EBML-ELEMENT-VALID-PARENT -->
+                                <!-- /MKV-ELEMENT-VALID-PARENT -->
                                 <!-- EBML-ELEMENT-NONMULTIPLES -->
                                 <xsl:call-template name="element_does_not_repeat_in_parent">
                                     <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
