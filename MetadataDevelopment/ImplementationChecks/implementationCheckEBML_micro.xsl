@@ -420,31 +420,6 @@
                   <xsl:call-template name="implementationChecks">
                     <xsl:with-param name="name">MediaConch FFV1 Implementation Checker</xsl:with-param>
                     <xsl:with-param name="checks">
-                      <xsl:call-template name="data_is_in_list">
-                        <xsl:with-param name="icid">FFV1-VALID-CODERTYPE-VALUE</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='coder_type']"/>
-                        <xsl:with-param name="list">0 1 2</xsl:with-param>
-                      </xsl:call-template>
-                      <xsl:call-template name="data_is_in_list">
-                        <xsl:with-param name="icid">FFV1-VALID-COLORSPACETYPE-VALUE2</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="x" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:d[@n='colorspace_type']"/>
-                        <xsl:with-param name="list">0 1</xsl:with-param>
-                      </xsl:call-template>
-                      <xsl:call-template name="data_is_not_in_list">
-                        <xsl:with-param name="icid">FFV1-VALID-VERSION</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="x" select="$ffv1version"/>
-                        <xsl:with-param name="list">2 3.0 3.1 3.2 3.3</xsl:with-param>
-                      </xsl:call-template>
-                      <!-- FFV1-SLICE-CRC-VALID -->
-                      <xsl:call-template name="child_data_info_is_ok">
-                        <xsl:with-param name="icid">FFV1-SLICE-CRC-VALID</xsl:with-param>
-                        <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Cluster']/mmt:b[@n='SimpleBlock']/mmt:b[@parser='FFV1']/mmt:b[@n='Slice']/mmt:d[@n='crc_parity']"/>
-                      </xsl:call-template>
-                      <!-- /FFV1-SLICE-CRC-VALID -->
                       <!-- MEDIATRACE-FFV1-ERRORS -->
                       <xsl:call-template name="mediatrace-ffv1-errors">
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:d[@e]|mmt:MicroMediaTrace//mmt:b[@e]"/>
