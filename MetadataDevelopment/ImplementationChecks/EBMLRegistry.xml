@@ -32,7 +32,7 @@
     <reference_file>docTypeReadVersion_greaterthan_docTypeVersion.mkv</reference_file>
     <manager>MediaConch</manager>
   </rule>
-  <rule icid="EBML-ELEMENT-VALID-PARENT">
+  <rule icid="MKV-ELEMENT-VALID-PARENT">
     <name>All Elements MUST have valid parents</name>
     <authority></authority>
     <target_format>EBML</target_format>
@@ -153,7 +153,7 @@
     <definition>Ensure MKV Element ID is registered in specdata.xml (as of 2014-12-13 this is 224 registered Element IDs)</definition>
     <reference_file>unknown_element.mkv</reference_file>
     <manager>MediaConch</manager>
-    <note>deprecated by EBML-ELEMENT-VALID-PARENT</note>
+    <note>deprecated by MKV-ELEMENT-VALID-PARENT</note>
   </rule>
   <rule icid="EBML-ELEM-SIZE-7F">
     <name>Element Size 0x7F Reservation</name>
