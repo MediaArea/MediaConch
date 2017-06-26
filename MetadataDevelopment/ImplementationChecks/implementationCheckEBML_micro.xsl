@@ -293,7 +293,7 @@
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
-                                    <xsl:text>An Element at has an Element Size Length greater than EBMLMaxSizeLength.</xsl:text>
+                                    <xsl:text>An Element of the EBML Header has an Element Data Size with a length greater than 4 octets.</xsl:text>
                                   </xsl:attribute>
                                   <value>
                                     <xsl:attribute name="offset">
