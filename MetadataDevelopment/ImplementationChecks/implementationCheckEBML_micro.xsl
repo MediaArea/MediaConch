@@ -937,11 +937,11 @@
           </xsl:variable>
           <xsl:if test="contains($ElementsWithRangeRestrictions,concat(';',$ElementName,'='))">
             <xsl:variable name="allowedElementRange">
-              <xsl:value-of select="substring-before(substring-after($ElementsWithRangeRestrictions,concat(';',$ElementName,'=')),';')"/>
+              <xsl:value-of select="translate(substring-before(substring-after($ElementsWithRangeRestrictions,concat(';',$ElementName,'=')),';'),' ','')"/>
             </xsl:variable>
             <xsl:variable name="Range_X">
               <xsl:choose>
-                <xsl:when test="$allowedElementRange='&gt; 0x0p+0'">
+                <xsl:when test="$allowedElementRange='&gt;0x0p+0'">
                   <xsl:value-of select="0.000"/>
                 </xsl:when>
                 <xsl:when test="contains(substring($allowedElementRange,2),'-')">
@@ -985,7 +985,7 @@
             </xsl:variable>
             <xsl:variable name="operator">
               <xsl:choose>
-                <xsl:when test="$allowedElementRange='&gt; 0x0p+0'">
+                <xsl:when test="$allowedElementRange='&gt;0x0p+0'">
                   <xsl:text>></xsl:text>
                 </xsl:when>
                 <xsl:when test="contains($allowedElementRange,'p')">
