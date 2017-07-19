@@ -116,6 +116,22 @@
                         <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
                       <!-- /MKV-ELEMENT-VALID-PARENT -->
+                      <!-- EBML-MINVER-COHERANT -->
+                      <xsl:call-template name="element_has_valid_minver">
+                        <xsl:with-param name="icid">EBML-MINVER-COHERANT</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="doctype_version" select="$DocTypeVersion"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                      </xsl:call-template>
+                      <!-- /EBML-MINVER-COHERANT -->
+                      <!-- EBML-MAXVER-COHERANT -->
+                      <xsl:call-template name="element_has_valid_maxver">
+                        <xsl:with-param name="icid">EBML-MAXVER-COHERANT</xsl:with-param>
+                        <xsl:with-param name="version">1</xsl:with-param>
+                        <xsl:with-param name="doctype_version" select="$DocTypeVersion"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                      </xsl:call-template>
+                      <!-- /EBML-MAXVER-COHERANT -->
                       <!-- NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <xsl:call-template name="element_contains_no_junk">
                         <xsl:with-param name="icid">EBML-NO-JUNK-IN-FIXEDSIZE-ELEMENT</xsl:with-param>
@@ -547,6 +563,122 @@
                       <xsl:text>. The valid Parent Element is </xsl:text>
                       <xsl:value-of select="$allowedParentElement"/>
                     </xsl:if>
+                    <xsl:text>.</xsl:text>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template name="element_has_valid_minver">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="doctype_version"/>
+    <xsl:param name="element"/>
+    <xsl:variable name="ElementListWithMinver">
+      <xsl:text>.</xsl:text>
+      <xsl:for-each select="$lookupschema//element[@minver]">
+        <xsl:value-of select="@name"/>
+        <xsl:text>,</xsl:text>
+        <xsl:value-of select="@minver"/>
+        <xsl:text>.</xsl:text>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid" select="$icid"/>
+      <xsl:with-param name="version" select="$version"/>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="ElementMinver">
+            <xsl:value-of select="substring-before(substring-after($ElementListWithMinver,concat('.',$ElementName,',')),'.')"/>
+          </xsl:variable>
+          <xsl:variable name="values">
+            <xsl:call-template name="EBMLElementValue">
+              <xsl:with-param name="ElementName" select="$ElementName"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:if test="contains($ElementListWithMinver,concat('.',$ElementName,','))">
+            <xsl:choose>
+              <xsl:when test="$doctype_version >= $ElementMinver">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:otherwise>
+                <test>
+                  <xsl:attribute name="outcome">fail</xsl:attribute>
+                  <xsl:attribute name="reason">
+                    <xsl:value-of select="$ElementName"/>
+                    <xsl:text> is defined starting in version </xsl:text>
+                    <xsl:value-of select="$ElementMinver"/>
+                    <xsl:text> but occurs in a Matroska file of version </xsl:text>
+                    <xsl:value-of select="$doctype_version"/>
+                    <xsl:text>.</xsl:text>
+                  </xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template name="element_has_valid_maxver">
+    <xsl:param name="icid"/>
+    <xsl:param name="version"/>
+    <xsl:param name="doctype_version"/>
+    <xsl:param name="element"/>
+    <xsl:variable name="ElementListWithMaxver">
+      <xsl:text>.</xsl:text>
+      <xsl:for-each select="$lookupschema//element[@maxver]">
+        <xsl:value-of select="@name"/>
+        <xsl:text>,</xsl:text>
+        <xsl:value-of select="@maxver"/>
+        <xsl:text>.</xsl:text>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:call-template name="check">
+      <xsl:with-param name="icid" select="$icid"/>
+      <xsl:with-param name="version" select="$version"/>
+      <xsl:with-param name="test">
+        <xsl:for-each select="$element">
+          <xsl:variable name="ElementName">
+            <xsl:value-of select="@n"/>
+          </xsl:variable>
+          <xsl:variable name="ElementMaxver">
+            <xsl:value-of select="substring-before(substring-after($ElementListWithMaxver,concat('.',$ElementName,',')),'.')"/>
+          </xsl:variable>
+          <xsl:variable name="values">
+            <xsl:call-template name="EBMLElementValue">
+              <xsl:with-param name="ElementName" select="$ElementName"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:if test="contains($ElementListWithMaxver,concat('.',$ElementName,','))">
+            <xsl:choose>
+              <xsl:when test="$doctype_version &lt;= $ElementMaxver">
+                <test>
+                  <xsl:attribute name="outcome">pass</xsl:attribute>
+                  <xsl:copy-of select="$values"/>
+                </test>
+              </xsl:when>
+              <xsl:otherwise>
+                <test>
+                  <xsl:attribute name="outcome">fail</xsl:attribute>
+                  <xsl:attribute name="reason">
+                    <xsl:value-of select="$ElementName"/>
+                    <xsl:text> is deprecated after version </xsl:text>
+                    <xsl:value-of select="$ElementMaxver"/>
+                    <xsl:text> but occurs in a Matroska file of version </xsl:text>
+                    <xsl:value-of select="$doctype_version"/>
                     <xsl:text>.</xsl:text>
                   </xsl:attribute>
                   <xsl:copy-of select="$values"/>
