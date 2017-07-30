@@ -66,8 +66,8 @@ All open source digital assets for the software developed by MediaArea during th
 
 The software relies on third party libraries. Such libraries have their own license:
 
-- Media analysis library: MediaInfoLib, (c) MediaArea.net SARL, initialy BSD-2-Clause license, relicensed to GPLv3 or later / MPLv2 or later
-- Base classes library: ZenLib, (c) MediaArea.net SARL, initialy zlib license, relicensed to GPLv3 or later / MPLv2 or later
+- Media analysis library: MediaInfoLib, (c) MediaArea.net SARL, initially BSD-2-Clause license, relicensed to GPLv3 or later / MPLv2 or later
+- Base classes library: ZenLib, (c) MediaArea.net SARL, initially zlib license, relicensed to GPLv3 or later / MPLv2 or later
 - C++ standard library: [libstdc++](http://gcc.gnu.org/onlinedocs/libstdc++/manual/bk01pt01ch01s02.html) (GPLv3+ with linking exception), [libc++](http://llvm.org/docs/DeveloperPolicy.html#license) (MIT license, could be relicensed to GPLv3 or later / MPLv2 or later), [Visual C++ library](http://msdn.microsoft.com/en-us/library/vstudio/ms235299.aspx) (Microsoft proprietary license) or any other C++ standard library
 - GUI (optional): [Qt](https://www.qt.io/qt-licensing-terms/), LGPLv3+ license, compatible with GPLv3 or later / MPLv2 or later
 - WebUI engine (optional) : [Symphony](https://symfony.com/license), MIT license, could be relicensed to GPLv3 or later / MPLv2 or later
