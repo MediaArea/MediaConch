@@ -113,7 +113,7 @@
                       <xsl:call-template name="element_has_valid_parent">
                         <xsl:with-param name="icid">MKV-ELEMENT-VALID-PARENT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
                       <!-- /MKV-ELEMENT-VALID-PARENT -->
                       <!-- EBML-MINVER-COHERANT -->
@@ -121,7 +121,7 @@
                         <xsl:with-param name="icid">EBML-MINVER-COHERANT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="doctype_version" select="$DocTypeVersion"/>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
                       <!-- /EBML-MINVER-COHERANT -->
                       <!-- EBML-MAXVER-COHERANT -->
@@ -129,49 +129,49 @@
                         <xsl:with-param name="icid">EBML-MAXVER-COHERANT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="doctype_version" select="$DocTypeVersion"/>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
                       <!-- /EBML-MAXVER-COHERANT -->
                       <!-- NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <xsl:call-template name="element_contains_no_junk">
                         <xsl:with-param name="icid">EBML-NO-JUNK-IN-FIXEDSIZE-ELEMENT</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
                       </xsl:call-template>
                       <!-- /NO-JUNK-IN-FIXEDSIZE-MATROSKA -->
                       <!-- EBML-ELEM-UNKNOWN-SIZE -->
                       <xsl:call-template name="size_is_not_unlimited">
                         <xsl:with-param name="icid">EBML-ELEM-UNKNOWN-SIZE</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:b[1][@n='Header']/mmt:d[@n='Size']='Unlimited']"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n!='Segment'][@n!='Cluster'][mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:b[1][@n='Header']/mmt:d[@n='Size']='Unlimited']"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEM-UNKNOWN-SIZE -->
                       <!-- EBML-ELEMENT-NONMULTIPLES -->
                       <xsl:call-template name="element_does_not_repeat_in_parent">
                         <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-NONMULTIPLES -->
                       <!-- EBML-ELEMENT-CONTAINS-MANDATES -->
                       <xsl:call-template name="element_contains_mandates">
                         <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']][not(mmt:d)]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
                       <!-- EBML-ELEMENT-IN-SIZE-RANGE -->
                       <xsl:call-template name="element_at_correct_size">
                         <xsl:with-param name="icid">EBML-ELEMENT-IN-SIZE-RANGE</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-IN-SIZE-RANGE -->
                       <!-- EBML-ELEMENT-VALID-RANGE -->
                       <xsl:call-template name="element_in_correct_range">
                         <xsl:with-param name="icid">EBML-ELEMENT-VALID-RANGE</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][mmt:b[1][@n='Header']/mmt:d[@n='Name']][mmt:d]"/>
                       </xsl:call-template>
                       <!-- /EBML-ELEMENT-VALID-RANGE -->
                       <!-- EBML-VALID-MAXID -->
@@ -206,8 +206,8 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
-                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + 4)]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -255,8 +255,8 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
-                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n='Header']/mmt:d[@n='Size'][@o &gt; (../../mmt:b/@o + $EBMLMaxIDLength)]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -304,8 +304,8 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
-                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])]/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])]/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; 4]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -353,8 +353,8 @@
                         </xsl:with-param>
                         <xsl:with-param name="test">
                           <xsl:choose>
-                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
-                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
+                            <xsl:when test="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])]/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
+                              <xsl:for-each select="mmt:MicroMediaTrace/mmt:b[@n!='EBML']//mmt:b[not(ancestor::mmt:b[@n='FileData'])]/mmt:d[@n='Size'][(../../mmt:d/@o - @o) &gt; $EBMLMaxSizeLength]">
                                 <test>
                                   <xsl:attribute name="outcome">fail</xsl:attribute>
                                   <xsl:attribute name="reason">
@@ -423,7 +423,7 @@
                         <xsl:with-param name="icid">MKV-NUMERICAL-TAG</xsl:with-param>
                         <xsl:with-param name="version">1</xsl:with-param>
                         <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[@n='SimpleTag'][mmt:b[@n='TagName'][@i='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace/mmt:b[@n='Segment']/mmt:b[@n='Tags']/mmt:b[@n='Tag']//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@n='SimpleTag'][mmt:b[@n='TagName'][@i='TOTAL_PARTS']]/mmt:b[@n='TagString']"/>
                       </xsl:call-template>
                       <!-- /MKV-NUMERICAL-TAG -->
                     </xsl:with-param>
@@ -438,7 +438,7 @@
                     <xsl:with-param name="checks">
                       <!-- MEDIATRACE-FFV1-ERRORS -->
                       <xsl:call-template name="mediatrace-ffv1-errors">
-                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:d[@e]|mmt:MicroMediaTrace//mmt:b[@e]"/>
+                        <xsl:with-param name="element" select="mmt:MicroMediaTrace//mmt:d[@e]|mmt:MicroMediaTrace//mmt:b[not(ancestor::mmt:b[@n='FileData'])][@e]"/>
                       </xsl:call-template>
                       <!-- /MEDIATRACE-FFV1-ERRORS -->
                     </xsl:with-param>

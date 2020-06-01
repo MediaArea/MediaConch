@@ -130,21 +130,21 @@
                                 <xsl:call-template name="element_has_valid_parent">
                                     <xsl:with-param name="icid">MKV-ELEMENT-VALID-PARENT</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="element" select="mt:MediaTrace/mt:block//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
+                                    <xsl:with-param name="element" select="mt:MediaTrace/mt:block//mt:block[not(ancestor::mt:block[@nname='FileData'])][mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
                                 </xsl:call-template>
                                 <!-- /MKV-ELEMENT-VALID-PARENT -->
                                 <!-- EBML-ELEMENT-NONMULTIPLES -->
                                 <xsl:call-template name="element_does_not_repeat_in_parent">
                                     <xsl:with-param name="icid">EBML-ELEMENT-NONMULTIPLES</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="element" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
+                                    <xsl:with-param name="element" select="mt:MediaTrace//mt:block[not(ancestor::mt:block[@nname='FileData'])][mt:block[1][@name='Header']/mt:data[@name='Name']]"/>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-NONMULTIPLES -->
                                 <!-- EBML-ELEMENT-CONTAINS-MANDATES -->
                                 <xsl:call-template name="element_contains_mandates">
                                     <xsl:with-param name="icid">EBML-ELEMENT-CONTAINS-MANDATES</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
-                                    <xsl:with-param name="element" select="mt:MediaTrace//mt:block[mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]"/>
+                                    <xsl:with-param name="element" select="mt:MediaTrace//mt:block[not(ancestor::mt:block[@nname='FileData'])][mt:block[1][@name='Header']/mt:data[@name='Name']][not(mt:data)]"/>
                                 </xsl:call-template>
                                 <!-- /EBML-ELEMENT-CONTAINS-MANDATES -->
                                 <!-- EBML-VALID-MAXID -->
@@ -179,8 +179,8 @@
                                     </xsl:with-param>
                                     <xsl:with-param name="test">
                                         <xsl:choose>
-                                            <xsl:when test="//mt:block[@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
-                                                <xsl:for-each select="//mt:block[@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
+                                            <xsl:when test="//mt:block[not(ancestor::mt:block[@name='FileData'])][@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
+                                                <xsl:for-each select="//mt:block[not(ancestor::mt:block[@name='FileData'])][@name='Header']/mt:data[@name='Size'][@offset &gt; (../../mt:block/@offset + $EBMLMaxIDLength)]">
                                                     <test>
                                                         <xsl:attribute name="outcome">fail</xsl:attribute>
                                                         <xsl:attribute name="reason">
@@ -228,8 +228,8 @@
                                     </xsl:with-param>
                                     <xsl:with-param name="test">
                                         <xsl:choose>
-                                            <xsl:when test="//mt:block/mt:data[@name='Size'][(../../mt:data/@offset - @offset) &gt; $EBMLMaxSizeLength]">
-                                                <xsl:for-each select="//mt:block/mt:data[@name='Size'][(../../mt:data/@offset - @offset) &gt; $EBMLMaxSizeLength]">
+                                            <xsl:when test="//mt:block[not(ancestor::mt:block[@name='FileData'])]/mt:data[@name='Size'][(../../mt:data/@offset - @offset) &gt; $EBMLMaxSizeLength]">
+                                                <xsl:for-each select="//mt:block[not(ancestor::mt:block[@name='FileData'])]/mt:data[@name='Size'][(../../mt:data/@offset - @offset) &gt; $EBMLMaxSizeLength]">
                                                     <test>
                                                         <xsl:attribute name="outcome">fail</xsl:attribute>
                                                         <xsl:attribute name="reason">
@@ -270,7 +270,7 @@
                                     <xsl:with-param name="seek_element" select="mt:MediaTrace/mt:block[@name='Segment']/mt:block[@name='SeekHead']/mt:block[@name='Seek']/mt:block[@name='SeekID']"/>
                                 </xsl:call-template>
                                 <!-- /MKV-SEEK-RESOLVE -->
-                                <xsl:variable name="CRC_Elements" select="//mt:block[@name='CRC-32']"/>
+                                <xsl:variable name="CRC_Elements" select="//mt:block[not(ancestor::mt:block[@name='FileData'])][@name='CRC-32']"/>
                                 <!-- EBML-CRC-FIRST -->
                                 <xsl:call-template name="element_is_first_child">
                                     <xsl:with-param name="icid">EBML-CRC-FIRST</xsl:with-param>
@@ -322,7 +322,7 @@
                                     <xsl:with-param name="icid">MKV_NUMERICAL_TAG</xsl:with-param>
                                     <xsl:with-param name="version">1</xsl:with-param>
                                     <xsl:with-param name="tagname">TOTAL_PARTS</xsl:with-param>
-                                    <xsl:with-param name="element" select="//mt:block[@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']"/>
+                                    <xsl:with-param name="element" select="//mt:block[not(ancestor::mt:block[@name='FileData'])][@name='SimpleTag'][mt:block[@name='TagName'][@info='TOTAL_PARTS']]/mt:block[@name='TagString']"/>
                                 </xsl:call-template>
                                 <!-- /MKV_NUMERICAL_TAG -->
                             </xsl:when>
@@ -885,7 +885,7 @@
                     <xsl:variable name="SeekPositionFileOffset" select="$FirstSegmentValueOffset + $SeekPosition"/>
                     <xsl:variable name="ElementIDatOffset">
                         <xsl:call-template name="DecToVINT">
-                            <xsl:with-param name="dec" select="//mt:block[@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
+                            <xsl:with-param name="dec" select="//mt:block[not(ancestor::mt:block[@name='FileData'])][@offset=format-number($SeekPositionFileOffset, '#')]/mt:block[@name='Header']/mt:data[@name='Name']"/>
                         </xsl:call-template>
                     </xsl:variable>
                     <xsl:variable name="values">
